@@ -78,7 +78,8 @@ export type ServiceIcon =
   | "bot"
   | "pen-tool"
   | "share-2"
-  | "funnel";
+  | "funnel"
+  | "target";
 
 export type ServiceCard = {
   id: string;
@@ -159,6 +160,65 @@ export type FaqContent = {
   headline: { parts: HeadlinePart[] };
   sub: string;
   items: FaqItem[];
+};
+
+export type Testimonial = {
+  id: string;
+  name: string;
+  title: string;
+  company: string;
+  quote: string;
+  image?: string;
+};
+
+export type TestimonialsContent = {
+  id: string;
+  eyebrow: string;
+  headline: { parts: HeadlinePart[] };
+  sub: string;
+  testimonials: Testimonial[];
+};
+
+export type PricingTier = {
+  id: string;
+  name: string;
+  price: string;
+  description: string;
+  features: string[];
+  cta: CTA;
+  highlighted?: boolean;
+};
+
+export type PricingContent = {
+  id: string;
+  eyebrow: string;
+  headline: { parts: HeadlinePart[] };
+  sub: string;
+  tiers: PricingTier[];
+};
+
+export type ComparisonRow = {
+  feature: string;
+  scalify: boolean | string;
+  inHouse: boolean | string;
+  traditional: boolean | string;
+};
+
+export type ComparisonContent = {
+  id: string;
+  eyebrow: string;
+  headline: { parts: HeadlinePart[] };
+  sub: string;
+  rows: ComparisonRow[];
+};
+
+export type GrowthCalculatorContent = {
+  id: string;
+  eyebrow: string;
+  headline: { parts: HeadlinePart[] };
+  sub: string;
+  description: string;
+  cta: CTA;
 };
 
 export type PageSlug = "home";

@@ -1,0 +1,68 @@
+{
+  "id": "mod-comparison",
+  "eyebrow": "Why Agencies Choose Scalify",
+  "headline": {
+    "parts": [
+      { "type": "text", "value": "Scalify vs. " },
+      { "type": "highlight", "value": "Traditional Options" },
+      { "type": "text", "value": "." }
+    ]
+  },
+  "sub": "The clear choice for agencies that need to scale fast without the risk, cost, or overhead of traditional hiring.",
+  "rows": [
+    {
+      "feature": "Cost per project",
+      "scalify": "$1,500–$4,500",
+      "inHouse": "$8,000–$15,000+",
+      "traditional": "$5,000–$10,000"
+    },
+    {
+      "feature": "Onboarding time",
+      "scalify": "24 hours",
+      "inHouse": "2–4 weeks",
+      "traditional": "5–10 days"
+    },
+    {
+      "feature": "Turnaround speed",
+      "scalify": "24-hour delivery",
+      "inHouse": "Same-week",
+      "traditional": "5–10 business days"
+    },
+    {
+      "feature": "Quality guarantee",
+      "scalify": true,
+      "inHouse": true,
+      "traditional": "Variable"
+    },
+    {
+      "feature": "Scalability (can grow projects next month?)",
+      "scalify": true,
+      "inHouse": "Limited",
+      "traditional": true
+    },
+    {
+      "feature": "Fixed overhead cost",
+      "scalify": "Only pay per project",
+      "inHouse": "$4,000–$7,000/month min",
+      "traditional": "$3,000–$6,000/month min"
+    },
+    {
+      "feature": "White-label available?",
+      "scalify": true,
+      "inHouse": true,
+      "traditional": false
+    },
+    {
+      "feature": "Capacity variability risk",
+      "scalify": "Zero",
+      "inHouse": "High (turnover, vacations)",
+      "traditional": "Medium (less control)"
+    },
+    {
+      "feature": "Dedicated support",
+      "scalify": true,
+      "inHouse": true,
+      "traditional": "Project manager only"
+    }
+  ]
+}

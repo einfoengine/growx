@@ -8,18 +8,26 @@ import processData from "@/data/modules/process.json";
 import ctaBannerData from "@/data/modules/cta-banner.json";
 import painPointsData from "@/data/modules/pain-points.json";
 import faqData from "@/data/modules/faq.json";
+import testimonialsData from "@/data/modules/testimonials.json";
+import pricingData from "@/data/modules/pricing.json";
+import comparisonData from "@/data/modules/comparison.json";
+import growthCalculatorData from "@/data/modules/growth-calculator.json";
 import type {
+  ComparisonContent,
   CtaBannerContent,
   FaqContent,
   FooterContent,
+  GrowthCalculatorContent,
   HeaderContent,
   HeroContent,
   LogoMarqueeContent,
   PageSlug,
   PainPointsContent,
+  PricingContent,
   ProcessContent,
   ServicesContent,
   Site,
+  TestimonialsContent,
 } from "./types";
 
 const HERO_BY_PAGE: Record<PageSlug, HeroContent> = {
@@ -64,4 +72,20 @@ export async function getPainPoints(): Promise<PainPointsContent> {
 
 export async function getFaq(): Promise<FaqContent> {
   return faqData as FaqContent;
+}
+
+export async function getTestimonials(): Promise<TestimonialsContent> {
+  return testimonialsData as TestimonialsContent;
+}
+
+export async function getPricing(): Promise<PricingContent> {
+  return pricingData as PricingContent;
+}
+
+export async function getComparison(): Promise<ComparisonContent> {
+  return comparisonData as ComparisonContent;
+}
+
+export async function getGrowthCalculator(): Promise<GrowthCalculatorContent> {
+  return growthCalculatorData as GrowthCalculatorContent;
 }

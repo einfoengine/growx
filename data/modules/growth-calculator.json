@@ -1,0 +1,19 @@
+{
+  "id": "mod-growth-calculator",
+  "eyebrow": "See Your Potential",
+  "headline": {
+    "parts": [
+      { "type": "text", "value": "How much revenue are you " },
+      { "type": "highlight", "value": "leaving on the table" },
+      { "type": "text", "value": "?" }
+    ]
+  },
+  "sub": "Use our interactive calculator to see how scaling with Scalify could impact your bottom line.",
+  "description": "Enter your current traffic and conversion rate to see realistic revenue projections with Scalify. We'll show you the ROI in real time.",
+  "cta": {
+    "id": "cta-calculator",
+    "label": "See Your Numbers",
+    "href": "#calculator",
+    "variant": "primary"
+  }
+}

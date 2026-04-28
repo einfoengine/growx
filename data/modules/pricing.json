@@ -1,0 +1,77 @@
+{
+  "id": "mod-pricing",
+  "eyebrow": "Simple, Transparent Pricing",
+  "headline": {
+    "parts": [
+      { "type": "text", "value": "Scale your delivery " },
+      { "type": "highlight", "value": "without scaling costs" },
+      { "type": "text", "value": "." }
+    ]
+  },
+  "sub": "Choose the package that fits your needs. All plans include dedicated support, 24-hour turnaround, and quality guarantees.",
+  "tiers": [
+    {
+      "id": "pricing-tier-1",
+      "name": "Starter",
+      "price": "$2,500",
+      "description": "Perfect for agencies getting started with outsourcing.",
+      "features": [
+        "1–3 projects per month",
+        "Website design (basic)",
+        "SEO audit & recommendations",
+        "Monthly check-in calls",
+        "Unlimited revisions",
+        "24-hour response time"
+      ],
+      "cta": {
+        "id": "cta-starter",
+        "label": "Get Started",
+        "href": "/book-a-call",
+        "variant": "ghost"
+      }
+    },
+    {
+      "id": "pricing-tier-2",
+      "name": "Pro",
+      "price": "$6,500",
+      "description": "Our most popular option for scaling agencies.",
+      "features": [
+        "4–8 projects per month",
+        "Full website design & development",
+        "SEO + content strategy",
+        "Weekly calls + Slack support",
+        "Unlimited revisions",
+        "12-hour response time",
+        "Priority scheduling"
+      ],
+      "cta": {
+        "id": "cta-pro",
+        "label": "Start Free Trial",
+        "href": "/book-a-call",
+        "variant": "primary"
+      },
+      "highlighted": true
+    },
+    {
+      "id": "pricing-tier-3",
+      "name": "Enterprise",
+      "price": "Custom",
+      "description": "For high-volume agencies needing dedicated capacity.",
+      "features": [
+        "8+ projects per month",
+        "All services (design, dev, SEO, content)",
+        "Dedicated project manager",
+        "Daily check-ins",
+        "Real-time Slack support",
+        "Custom SLAs",
+        "White-label only"
+      ],
+      "cta": {
+        "id": "cta-enterprise",
+        "label": "Talk to Sales",
+        "href": "/book-a-call",
+        "variant": "ghost"
+      }
+    }
+  ]
+}

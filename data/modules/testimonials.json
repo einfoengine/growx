@@ -1,0 +1,42 @@
+{
+  "id": "mod-testimonials",
+  "eyebrow": "Real Results from Real Clients",
+  "headline": {
+    "parts": [
+      { "type": "text", "value": "Trusted by " },
+      { "type": "highlight", "value": "growing agencies" },
+      { "type": "text", "value": "." }
+    ]
+  },
+  "sub": "See how Scalify's white-label solutions have helped agency owners close bigger deals and scale faster.",
+  "testimonials": [
+    {
+      "id": "testimonial-1",
+      "name": "Sarah Chen",
+      "title": "Founder & CEO",
+      "company": "Peak Digital",
+      "quote": "Scalify has been a game-changer for our agency. We went from turning away projects to delivering 3x more work without hiring. The quality is indistinguishable from what we'd do in-house."
+    },
+    {
+      "id": "testimonial-2",
+      "name": "Marcus Rodriguez",
+      "title": "Managing Partner",
+      "company": "Velocity Marketing",
+      "quote": "The turnaround time is incredible. We quoted a client a 4-week timeline, got the entire project delivered in 10 days. Our client was amazed. Scalify makes us look like we've got a 50-person team."
+    },
+    {
+      "id": "testimonial-3",
+      "name": "Emily Thompson",
+      "title": "Agency Owner",
+      "company": "Bright Strategy",
+      "quote": "I was skeptical about quality at first, but honestly? The work is exceptional. We've partnered with Scalify on 47 projects—I trust them with our premium clients."
+    },
+    {
+      "id": "testimonial-4",
+      "name": "David Lee",
+      "title": "Creative Director",
+      "company": "Next Wave Creative",
+      "quote": "White-labeling has been seamless. Our clients have no idea. The handoff is smooth, communication is clear, and every project comes back exactly as scoped. We've become their go-to fulfillment partner."
+    }
+  ]
+}

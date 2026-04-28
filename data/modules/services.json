@@ -18,18 +18,18 @@
       "icon": "code"
     },
     {
-      "id": "service-seo",
-      "title": "Search Engine Optimization",
-      "blurb": "On-page, off-page, technical. Built as an ongoing retainer for compounding results — with reporting your client trusts.",
-      "href": "/services/seo",
+      "id": "service-seo-aeo",
+      "title": "SEO & AEO",
+      "blurb": "Traditional search and AI search, covered. On-page, off-page, technical SEO plus Answer Engine Optimization for ChatGPT, Perplexity, and Google AI Overviews.",
+      "href": "/services/seo-aeo",
       "icon": "search"
     },
     {
-      "id": "service-aeo",
-      "title": "Answer Engine Optimization",
-      "blurb": "Optimize content for ChatGPT, Perplexity, and Google AI Overviews. First-mover advantage for your clients in the AI search era.",
-      "href": "/services/aeo",
-      "icon": "bot"
+      "id": "service-ppc",
+      "title": "Media Buying & PPC",
+      "blurb": "Google Ads, Meta Ads, and beyond. Performance-driven paid media campaigns scoped to your client's budget and conversion goals.",
+      "href": "/services/ppc",
+      "icon": "target"
     },
     {
       "id": "service-content",

@@ -7,6 +7,7 @@ import {
   PenTool,
   Search,
   Share2,
+  Target,
 } from "lucide-react";
 import type { ComponentType } from "react";
 import Headline from "@/components/elements/Headline";
@@ -22,6 +23,7 @@ const ICON_BY_KEY: Record<ServiceIcon, ComponentType<IconProps>> = {
   "pen-tool": PenTool,
   "share-2": Share2,
   funnel: Funnel,
+  target: Target,
 };
 
 export default async function Services() {

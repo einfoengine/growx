@@ -7,8 +7,8 @@
       "title": "Services",
       "links": [
         { "id": "footer-services-website", "label": "Website Design & Development", "href": "/services/website" },
-        { "id": "footer-services-seo", "label": "Search Engine Optimization", "href": "/services/seo" },
-        { "id": "footer-services-aeo", "label": "Answer Engine Optimization", "href": "/services/aeo" },
+        { "id": "footer-services-seo-aeo", "label": "SEO & AEO", "href": "/services/seo-aeo" },
+        { "id": "footer-services-ppc", "label": "Media Buying & PPC", "href": "/services/ppc" },
         { "id": "footer-services-content", "label": "Content & Copywriting", "href": "/services/content" },
         { "id": "footer-services-social", "label": "Social Media Management", "href": "/services/social" },
         { "id": "footer-services-funnels", "label": "Funnel Building", "href": "/services/funnels" }
