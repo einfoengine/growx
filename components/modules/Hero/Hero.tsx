@@ -32,7 +32,7 @@ export default async function Hero() {
       />
 
       <div className="container-1200 relative pt-24 pb-24 sm:pt-32 sm:pb-28 lg:pt-40 lg:pb-36">
-        <div className="mx-auto max-w-3xl text-center">
+        <div className="mx-auto text-center">
 
           {/* Eyebrow */}
           <Link
