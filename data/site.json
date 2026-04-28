@@ -1,0 +1,34 @@
+{
+  "name": "growX",
+  "legalName": "growX",
+  "tagline": "Deliver more. Close more. Scale without chaos.",
+  "description": "growX is the white-label fulfillment studio for agency owners and solopreneurs — website design, SEO, AEO, content, social media, and funnels delivered under your brand or ours.",
+  "url": "https://growx.studio",
+  "email": "hi@growx.studio",
+  "social": [
+    {
+      "id": "el-social-linkedin",
+      "label": "LinkedIn",
+      "href": "https://linkedin.com/company/joingrowx",
+      "icon": "linkedin"
+    },
+    {
+      "id": "el-social-facebook",
+      "label": "Facebook",
+      "href": "https://facebook.com/joingrowx",
+      "icon": "facebook"
+    },
+    {
+      "id": "el-social-instagram",
+      "label": "Instagram",
+      "href": "https://instagram.com/joingrowx",
+      "icon": "instagram"
+    },
+    {
+      "id": "el-social-youtube",
+      "label": "YouTube",
+      "href": "https://youtube.com/@joingrowx",
+      "icon": "youtube"
+    }
+  ]
+}

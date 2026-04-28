@@ -1,13 +1,12 @@
 import type { NextConfig } from "next";
+import path from "node:path";
 
 const nextConfig: NextConfig = {
-  images: {
-    remotePatterns: [
-      {
-        protocol: "https",
-        hostname: "i.pravatar.cc",
-      },
-    ],
+  turbopack: {
+    root: path.resolve(__dirname),
+  },
+  experimental: {
+    optimizePackageImports: ["lucide-react"],
   },
 };
 

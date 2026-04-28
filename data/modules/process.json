@@ -1,0 +1,38 @@
+{
+  "id": "mod-process",
+  "eyebrow": "How it works",
+  "headline": {
+    "parts": [
+      { "type": "text", "value": "From discovery call\nto " },
+      { "type": "highlight", "value": "shipped" },
+      { "type": "text", "value": "." }
+    ]
+  },
+  "sub": "A predictable rhythm tuned for agencies juggling multiple client timelines.",
+  "steps": [
+    {
+      "id": "step-discovery",
+      "number": "01",
+      "title": "Discovery Call",
+      "blurb": "Book a 30-minute call. We scope the brief, confirm fit, and align on outcomes. No pricing pressure."
+    },
+    {
+      "id": "step-proposal",
+      "number": "02",
+      "title": "24-hour Proposal",
+      "blurb": "Custom scope, timeline, and pricing in your inbox within one business day. No templates, no boilerplate."
+    },
+    {
+      "id": "step-build",
+      "number": "03",
+      "title": "Build",
+      "blurb": "Daily Slack updates, weekly demos, single point of contact. You stay in control of every milestone."
+    },
+    {
+      "id": "step-handoff",
+      "number": "04",
+      "title": "Handoff",
+      "blurb": "White-label or branded delivery — your choice. Documentation, training, and post-launch support included."
+    }
+  ]
+}

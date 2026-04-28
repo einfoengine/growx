@@ -1,0 +1,15 @@
+{
+  "id": "mod-header",
+  "nav": [
+    { "id": "nav-services", "label": "Services", "href": "#mod-services" },
+    { "id": "nav-process", "label": "Process", "href": "#mod-process" },
+    { "id": "nav-case-studies", "label": "Case Studies", "href": "/case-studies" },
+    { "id": "nav-about", "label": "About", "href": "/about" }
+  ],
+  "cta": {
+    "id": "mod-header-cta",
+    "label": "Book a Discovery Call",
+    "href": "/book-a-call",
+    "variant": "primary"
+  }
+}

@@ -1,0 +1,49 @@
+{
+  "id": "mod-footer",
+  "brandBlurb": "growX is the white-label fulfillment studio for agency owners and solopreneurs. Website design, SEO, AEO, content, social, and funnels — delivered under your brand or ours.",
+  "columns": [
+    {
+      "id": "mod-footer-col-services",
+      "title": "Services",
+      "links": [
+        { "id": "footer-services-website", "label": "Website Design & Development", "href": "/services/website" },
+        { "id": "footer-services-seo", "label": "Search Engine Optimization", "href": "/services/seo" },
+        { "id": "footer-services-aeo", "label": "Answer Engine Optimization", "href": "/services/aeo" },
+        { "id": "footer-services-content", "label": "Content & Copywriting", "href": "/services/content" },
+        { "id": "footer-services-social", "label": "Social Media Management", "href": "/services/social" },
+        { "id": "footer-services-funnels", "label": "Funnel Building", "href": "/services/funnels" }
+      ]
+    },
+    {
+      "id": "mod-footer-col-company",
+      "title": "Company",
+      "links": [
+        { "id": "footer-company-about", "label": "About", "href": "/about" },
+        { "id": "footer-company-process", "label": "Process", "href": "#mod-process" },
+        { "id": "footer-company-case-studies", "label": "Case Studies", "href": "/case-studies" },
+        { "id": "footer-company-careers", "label": "Careers", "href": "/careers" }
+      ]
+    },
+    {
+      "id": "mod-footer-col-resources",
+      "title": "Resources",
+      "links": [
+        { "id": "footer-resources-blog", "label": "Blog", "href": "/blog" },
+        { "id": "footer-resources-faq", "label": "FAQ", "href": "#mod-faq" },
+        { "id": "footer-resources-guides", "label": "Guides", "href": "/guides" }
+      ]
+    },
+    {
+      "id": "mod-footer-col-contact",
+      "title": "Get in touch",
+      "links": [
+        { "id": "footer-contact-book", "label": "Book a Discovery Call", "href": "/book-a-call" },
+        { "id": "footer-contact-email", "label": "hi@growx.studio", "href": "mailto:hi@growx.studio" }
+      ]
+    }
+  ],
+  "legal": [
+    { "id": "footer-legal-privacy", "label": "Privacy", "href": "/privacy" },
+    { "id": "footer-legal-terms", "label": "Terms", "href": "/terms" }
+  ]
+}

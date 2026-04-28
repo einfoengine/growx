@@ -1,0 +1,36 @@
+{
+  "id": "mod-hero",
+  "eyebrow": {
+    "label": "White-label or branded delivery — your choice",
+    "href": "#mod-services"
+  },
+  "headline": {
+    "parts": [
+      { "type": "text", "value": "The agency\nbehind the " },
+      { "type": "highlight", "value": "agency" },
+      { "type": "text", "value": "." }
+    ]
+  },
+  "tagline": "Deliver more. Close more. Scale without chaos.",
+  "sub": "The white-label fulfillment studio for agency owners and solopreneurs — website design, SEO, AEO, content, social, and funnels delivered under your brand or ours.",
+  "ctas": [
+    {
+      "id": "mod-hero-cta-primary",
+      "label": "Book a Discovery Call",
+      "href": "/book-a-call",
+      "variant": "primary"
+    },
+    {
+      "id": "mod-hero-cta-secondary",
+      "label": "Explore services",
+      "href": "#mod-services",
+      "variant": "ghost"
+    }
+  ],
+  "stats": [
+    { "id": "mod-hero-stat-proposal", "label": "24-hour proposal turnaround" },
+    { "id": "mod-hero-stat-team", "label": "6 services, one team" },
+    { "id": "mod-hero-stat-mode", "label": "White-label or branded" },
+    { "id": "mod-hero-stat-reach", "label": "US · CA · UK · AU" }
+  ]
+}

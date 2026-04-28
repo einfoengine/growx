@@ -1,0 +1,44 @@
+{
+  "id": "mod-pain-points",
+  "eyebrow": "Why agencies come to growX",
+  "headline": {
+    "parts": [
+      { "type": "text", "value": "Sound\n" },
+      { "type": "highlight", "value": "familiar" },
+      { "type": "text", "value": "?" }
+    ]
+  },
+  "sub": "Five moments that send agency owners hunting for a reliable fulfillment partner.",
+  "cards": [
+    {
+      "id": "pain-fulfillment",
+      "title": "Fulfillment bottleneck",
+      "blurb": "You're winning clients faster than you can deliver. Capacity is killing growth.",
+      "icon": "triangle-alert"
+    },
+    {
+      "id": "pain-freelancers",
+      "title": "Freelancer nightmare",
+      "blurb": "Underdelivery, missed deadlines, ghosting — and your name on every invoice.",
+      "icon": "user-x"
+    },
+    {
+      "id": "pain-services",
+      "title": "Limited service offering",
+      "blurb": "Clients ask for SEO, content, funnels — and you have to say no, or scramble.",
+      "icon": "layers"
+    },
+    {
+      "id": "pain-margins",
+      "title": "Margin pressure",
+      "blurb": "Random vendors eat your margins. You need transparent, predictable delivery costs.",
+      "icon": "trending-down"
+    },
+    {
+      "id": "pain-time",
+      "title": "Time drain",
+      "blurb": "Sales, delivery, client management, ops — all on you. Something's about to break.",
+      "icon": "clock"
+    }
+  ]
+}

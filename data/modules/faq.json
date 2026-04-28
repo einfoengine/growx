@@ -1,0 +1,44 @@
+{
+  "id": "mod-faq",
+  "eyebrow": "Common questions",
+  "headline": {
+    "parts": [
+      { "type": "text", "value": "Before you " },
+      { "type": "highlight", "value": "ask" },
+      { "type": "text", "value": "." }
+    ]
+  },
+  "sub": "Six things every agency owner wants to know before bringing us into a client relationship.",
+  "items": [
+    {
+      "id": "faq-trust",
+      "question": "Can I trust you with my clients?",
+      "answer": "Your reputation rides on the work — we get it. We sign mutual NDAs, work invisibly under your brand if you want, and never communicate with your clients without you in the loop. Every project has a single point of contact on our side."
+    },
+    {
+      "id": "faq-pricing",
+      "question": "Is this worth it vs. cheap freelancers?",
+      "answer": "Reliability has a cost — and missed deadlines have a bigger one. Our pricing buys predictable delivery, transparent timelines, and one team that doesn't ghost you mid-project. We don't compete on hourly rate — we replace the cost of a hire."
+    },
+    {
+      "id": "faq-quality",
+      "question": "What if the quality isn't good enough?",
+      "answer": "Every project ships through internal QA before it touches your client. Weekly demos, written feedback, iteration until you sign off. If something isn't right, we fix it — that's the deal."
+    },
+    {
+      "id": "faq-niche",
+      "question": "Will you understand my niche?",
+      "answer": "We work with agencies serving local businesses and SMBs — that's the lane. The discovery call is where we map your client's voice, vertical, and ICP. If we're not the right fit, we'll tell you on that call."
+    },
+    {
+      "id": "faq-turnaround",
+      "question": "What's the turnaround time?",
+      "answer": "Proposal in your inbox within 24 hours of the discovery call. Project kickoff inside one week. Most retainers run on weekly demos with same-day Slack response during business hours."
+    },
+    {
+      "id": "faq-size",
+      "question": "Am I too small to work with you?",
+      "answer": "If you have one client, you're the right size. Half our partners are solopreneurs scaling their first roster — the model works whether you're at $0/mo or $100k/mo MRR."
+    }
+  ]
+}

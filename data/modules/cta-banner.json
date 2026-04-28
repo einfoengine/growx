@@ -1,0 +1,26 @@
+{
+  "id": "mod-cta-banner",
+  "eyebrow": "Ready when you are",
+  "headline": {
+    "parts": [
+      { "type": "text", "value": "Sell more.\nHire " },
+      { "type": "highlight", "value": "less" },
+      { "type": "text", "value": "." }
+    ]
+  },
+  "sub": "Bring the brief — we'll bring the team, the timeline, and the deliverables. Discovery call, then a proposal in 24 hours.",
+  "ctas": [
+    {
+      "id": "cta-banner-primary",
+      "label": "Book a Discovery Call",
+      "href": "/book-a-call",
+      "variant": "primary"
+    },
+    {
+      "id": "cta-banner-secondary",
+      "label": "Explore services",
+      "href": "#mod-services",
+      "variant": "ghost"
+    }
+  ]
+}

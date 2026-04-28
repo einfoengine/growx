@@ -1,0 +1,56 @@
+{
+  "id": "mod-services",
+  "eyebrow": "What we deliver",
+  "headline": {
+    "parts": [
+      { "type": "text", "value": "Six services.\nOne reliable " },
+      { "type": "highlight", "value": "team" },
+      { "type": "text", "value": "." }
+    ]
+  },
+  "sub": "From day-one solos to 20-person studios — pick your fulfillment lane and mix as your roster needs shift.",
+  "cards": [
+    {
+      "id": "service-website",
+      "title": "Website Design & Development",
+      "blurb": "Conversion-optimized sites built for your clients. Mobile responsive, SEO foundation included. One-off project pricing.",
+      "href": "/services/website",
+      "icon": "code"
+    },
+    {
+      "id": "service-seo",
+      "title": "Search Engine Optimization",
+      "blurb": "On-page, off-page, technical. Built as an ongoing retainer for compounding results — with reporting your client trusts.",
+      "href": "/services/seo",
+      "icon": "search"
+    },
+    {
+      "id": "service-aeo",
+      "title": "Answer Engine Optimization",
+      "blurb": "Optimize content for ChatGPT, Perplexity, and Google AI Overviews. First-mover advantage for your clients in the AI search era.",
+      "href": "/services/aeo",
+      "icon": "bot"
+    },
+    {
+      "id": "service-content",
+      "title": "Content & Copywriting",
+      "blurb": "Blog posts, landing pages, email sequences, ad copy. SEO-informed and written for business outcomes — not vanity metrics.",
+      "href": "/services/content",
+      "icon": "pen-tool"
+    },
+    {
+      "id": "service-social",
+      "title": "Social Media Management",
+      "blurb": "Monthly content calendar, graphics, captions, scheduling. Platform-flexible, retainer-based, and tuned to your client's voice.",
+      "href": "/services/social",
+      "icon": "share-2"
+    },
+    {
+      "id": "service-funnels",
+      "title": "Funnel Building",
+      "blurb": "End-to-end sales and lead-gen funnels. Platform-flexible, scoped to your client's stack and built to convert.",
+      "href": "/services/funnels",
+      "icon": "funnel"
+    }
+  ]
+}
