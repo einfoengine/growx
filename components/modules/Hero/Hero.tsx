@@ -31,57 +31,6 @@ export default async function Hero() {
         className="pointer-events-none absolute -z-10 -right-40 -bottom-48 h-130 w-130 rounded-full bg-(--brand-soft) blur-[130px]"
       />
 
-      {/* Floating side cards — xl+ only */}
-      <div
-        id={`${data.id}-float-left`}
-        aria-hidden="true"
-        className="absolute left-8 top-1/2 hidden -translate-y-1/2 flex-col gap-3 rounded-2xl border border-border bg-background/85 p-5 shadow-[0_4px_24px_rgba(0,0,0,0.07)] backdrop-blur-md xl:flex"
-        style={{ width: "176px" }}
-      >
-        <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-(--brand-soft)">
-          <span className="text-sm font-bold text-brand">24h</span>
-        </div>
-        <div>
-          <p className="text-xs font-semibold text-foreground">Proposal turnaround</p>
-          <p className="mt-1 text-[11px] leading-relaxed text-muted">
-            Scoped and priced in your inbox within one business day.
-          </p>
-        </div>
-        <div className="h-px w-full bg-border" />
-        <div className="flex items-center gap-1.5">
-          <span className="h-1.5 w-1.5 rounded-full bg-brand" />
-          <span className="text-[11px] text-muted">No templates. No fluff.</span>
-        </div>
-      </div>
-
-      <div
-        id={`${data.id}-float-right`}
-        aria-hidden="true"
-        className="absolute right-8 top-2/5 hidden flex-col gap-3 rounded-2xl border border-border bg-background/85 p-5 shadow-[0_4px_24px_rgba(0,0,0,0.07)] backdrop-blur-md xl:flex"
-        style={{ width: "176px" }}
-      >
-        <div className="flex items-center gap-2">
-          <span className="relative flex h-2 w-2">
-            <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-brand opacity-60" />
-            <span className="relative inline-flex h-2 w-2 rounded-full bg-brand" />
-          </span>
-          <span className="text-xs font-semibold text-foreground">Onboarding open</span>
-        </div>
-        <p className="text-[11px] leading-relaxed text-muted">
-          White-label or branded delivery — your call.
-        </p>
-        <div className="flex flex-wrap gap-1">
-          {["US", "CA", "UK", "AU"].map((m) => (
-            <span
-              key={m}
-              className="rounded-md border border-border bg-surface px-1.5 py-0.5 text-[10px] font-medium text-foreground"
-            >
-              {m}
-            </span>
-          ))}
-        </div>
-      </div>
-
       <div className="container-1200 relative pt-24 pb-24 sm:pt-32 sm:pb-28 lg:pt-40 lg:pb-36">
         <div className="mx-auto max-w-3xl text-center">
 
