@@ -1,7 +1,7 @@
 import Headline from "@/components/elements/Headline";
 import { getProcess } from "@/lib/content";
 
-export default async function Process() {
+export default async function Process({ noPaddingTop }: { noPaddingTop?: boolean }) {
   const data = await getProcess();
 
   return (
@@ -10,7 +10,7 @@ export default async function Process() {
       aria-labelledby={`${data.id}-headline`}
       className="relative bg-background"
     >
-      <div className="container-1200 py-24 sm:py-28 lg:py-32">
+      <div className={`container-1200 ${noPaddingTop ? "pt-0 pb-24 sm:pb-28 lg:pb-32" : "py-24 sm:py-28 lg:py-32"}`}>
         <div
           id={`${data.id}-intro`}
           className="mx-auto max-w-3xl text-center"

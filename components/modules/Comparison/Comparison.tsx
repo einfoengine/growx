@@ -2,7 +2,7 @@ import { Check, X } from "lucide-react";
 import Headline from "@/components/elements/Headline";
 import { getComparison } from "@/lib/content";
 
-export default async function Comparison() {
+export default async function Comparison({ noPaddingTop }: { noPaddingTop?: boolean }) {
   const data = await getComparison();
 
   return (
@@ -13,7 +13,7 @@ export default async function Comparison() {
     >
       <div className="pointer-events-none absolute inset-0 -z-10 bg-[linear-gradient(to_right,rgba(10,10,10,0.05)_1px,transparent_1px),linear-gradient(to_bottom,rgba(10,10,10,0.05)_1px,transparent_1px)] bg-size-[48px_48px] mask-[radial-gradient(ellipse_80%_70%_at_50%_30%,#000_20%,transparent_85%)]" />
 
-      <div className="container-1200 relative py-24 sm:py-32 lg:py-40">
+      <div className={`container-1200 relative ${noPaddingTop ? "pt-0 pb-24 sm:pb-32 lg:pb-40" : "py-24 sm:py-32 lg:py-40"}`}>
         <div className="mx-auto max-w-3xl text-center">
           <p className="text-sm font-semibold text-brand">{data.eyebrow}</p>
           <Headline
@@ -32,7 +32,7 @@ export default async function Comparison() {
             <thead>
               <tr className="border-b border-border">
                 <th className="px-4 py-4 text-left font-semibold text-foreground">Feature</th>
-                <th className="px-4 py-4 text-center font-semibold text-brand">Scalify</th>
+                <th className="px-4 py-4 text-center font-semibold text-brand">growX</th>
                 <th className="px-4 py-4 text-center font-semibold text-foreground">Hire In-House</th>
                 <th className="px-4 py-4 text-center font-semibold text-foreground">Traditional Agency</th>
               </tr>
@@ -83,7 +83,7 @@ export default async function Comparison() {
         <div className="mx-auto mt-12 max-w-2xl rounded-2xl border border-border bg-background/70 p-8 text-center backdrop-blur-sm">
           <p className="text-sm font-semibold text-brand">The verdict</p>
           <p className="mt-3 text-lg font-semibold text-foreground">
-            Scalify gives you the speed, quality, and cost-efficiency of a 50-person agency—without the overhead.
+            growX gives you the speed, quality, and cost-efficiency of a 50-person agency — without the overhead.
           </p>
         </div>
       </div>

@@ -3,7 +3,7 @@
   "eyebrow": "How it works",
   "headline": {
     "parts": [
-      { "type": "text", "value": "From discovery call\nto " },
+      { "type": "text", "value": "From discovery call to " },
       { "type": "highlight", "value": "shipped" },
       { "type": "text", "value": "." }
     ]

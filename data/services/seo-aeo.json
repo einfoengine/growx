@@ -1,0 +1,84 @@
+{
+  "id": "service-page-seo-aeo",
+  "slug": "seo-aeo",
+  "name": "SEO & AEO",
+  "tagline": "Rank in search. Dominate AI-generated answers.",
+  "description": "Traditional SEO and Answer Engine Optimization in one retainer. We rank your clients in Google and position them as the source AI tools like ChatGPT, Perplexity, and Google AI Overviews pull from.",
+  "pricingModel": "retainer",
+  "deliverables": [
+    {
+      "id": "d-seo-1",
+      "title": "Keyword Research & Strategy",
+      "description": "Intent-mapped keyword clusters targeting your client's buyers at every stage — not just high-volume vanity terms."
+    },
+    {
+      "id": "d-seo-2",
+      "title": "On-Page Optimization",
+      "description": "Title tags, meta descriptions, heading structure, internal linking, and content optimization across all priority pages."
+    },
+    {
+      "id": "d-seo-3",
+      "title": "Technical SEO Audit & Fixes",
+      "description": "Crawlability, indexation, site speed, Core Web Vitals, schema markup — diagnosed and resolved."
+    },
+    {
+      "id": "d-seo-4",
+      "title": "Off-Page & Link Building",
+      "description": "White-hat link acquisition through editorial outreach, digital PR, and relevant niche placements."
+    },
+    {
+      "id": "d-seo-5",
+      "title": "AEO Content Optimization",
+      "description": "Structured content designed to be cited by ChatGPT, Perplexity, and Google AI Overviews as a primary source."
+    },
+    {
+      "id": "d-seo-6",
+      "title": "Schema & Entity Markup",
+      "description": "FAQ, HowTo, Article, and LocalBusiness schema that helps AI systems recognize and cite your client's content."
+    },
+    {
+      "id": "d-seo-7",
+      "title": "Monthly Reporting",
+      "description": "Transparent ranking reports, traffic analysis, and AEO citation tracking delivered in a format you can forward to your client."
+    }
+  ],
+  "whyUs": [
+    {
+      "id": "w-seo-1",
+      "title": "SEO and AEO under one roof",
+      "description": "Most agencies handle one or the other. We do both — because search is splitting between traditional engines and AI tools, and your clients need coverage across both."
+    },
+    {
+      "id": "w-seo-2",
+      "title": "Retainer model that compounds",
+      "description": "SEO is a long game. We build month over month, not one-off audits left to gather dust. Results compound — and so does your client's MRR."
+    },
+    {
+      "id": "w-seo-3",
+      "title": "Reporting your clients actually trust",
+      "description": "Clean, client-ready reports that explain what moved, why, and what's next — so your client sees the value and renews."
+    }
+  ],
+  "faq": [
+    {
+      "id": "faq-seo-1",
+      "question": "How long before we see results?",
+      "answer": "Typically 3–6 months for meaningful ranking movement on competitive terms. Technical fixes and low-competition keywords move faster — sometimes within weeks. AEO citation results can appear sooner."
+    },
+    {
+      "id": "faq-seo-2",
+      "question": "What's the difference between SEO and AEO?",
+      "answer": "SEO targets traditional search engines (Google, Bing). AEO — Answer Engine Optimization — targets AI tools that generate direct answers: ChatGPT, Perplexity, Google AI Overviews. We optimize for both because AI search is already eating significant query share."
+    },
+    {
+      "id": "faq-seo-3",
+      "question": "Do you need CMS access?",
+      "answer": "Yes, for on-page work. We'll request editor-level access to publish optimized content and meta tags. We never need admin credentials."
+    },
+    {
+      "id": "faq-seo-4",
+      "question": "Can I add this on top of a web dev project?",
+      "answer": "Absolutely — and we recommend it. A new site without ongoing SEO won't rank. Bundling both is the strongest position for your client."
+    }
+  ]
+}

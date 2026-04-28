@@ -1,0 +1,79 @@
+{
+  "id": "service-page-content",
+  "slug": "content",
+  "name": "Content & Copywriting",
+  "tagline": "Words that rank, convert, and sound like your client wrote them.",
+  "description": "Blog posts, landing pages, email sequences, and ad copy — SEO-informed and written to produce business outcomes. We match your client's voice so precisely they'll wonder if they wrote it themselves.",
+  "pricingModel": "both",
+  "deliverables": [
+    {
+      "id": "d-content-1",
+      "title": "Blog Posts & Articles",
+      "description": "Long-form, SEO-optimised content targeting high-intent keywords. Built to rank, educate, and convert."
+    },
+    {
+      "id": "d-content-2",
+      "title": "Landing Page Copy",
+      "description": "Conversion-focused page copy with a clear hierarchy — headline, benefit stack, objection handling, CTA."
+    },
+    {
+      "id": "d-content-3",
+      "title": "Email Sequences",
+      "description": "Welcome flows, nurture sequences, and promotional campaigns. Written to move subscribers toward a decision."
+    },
+    {
+      "id": "d-content-4",
+      "title": "Ad Copy",
+      "description": "Headlines, body copy, and CTAs for Google, Meta, and LinkedIn. Tested variants included."
+    },
+    {
+      "id": "d-content-5",
+      "title": "Website Copy",
+      "description": "Homepage, about, services, and contact pages — structured to guide visitors and convert browsers into enquiries."
+    },
+    {
+      "id": "d-content-6",
+      "title": "Brand Voice Matching",
+      "description": "We absorb your client's tone, vocabulary, and style before writing a single word. The output sounds like them, not us."
+    }
+  ],
+  "whyUs": [
+    {
+      "id": "w-content-1",
+      "title": "SEO-informed from the start",
+      "description": "Every piece is written with keyword intent in mind. We don't retrofit SEO — it's built into the brief, the structure, and the copy."
+    },
+    {
+      "id": "w-content-2",
+      "title": "Voice matching that holds up",
+      "description": "We don't write generic content — we write in your client's voice. A discovery brief, a tone audit, and we match it close enough that your client reads it back to you."
+    },
+    {
+      "id": "w-content-3",
+      "title": "Fast turnaround, consistent quality",
+      "description": "Most deliverables turn around in 3–5 business days. Retainer partners get predictable delivery dates, every month, on time."
+    }
+  ],
+  "faq": [
+    {
+      "id": "faq-content-1",
+      "question": "How do you match the client's voice?",
+      "answer": "We start with a voice and tone brief — existing content samples, audience descriptions, and a short Q&A. The first deliverable includes a voice reference doc you can reuse across all future content."
+    },
+    {
+      "id": "faq-content-2",
+      "question": "Do you include revisions?",
+      "answer": "Yes — two rounds of revisions are included on every piece. Additional rounds are available if needed. In practice, most clients pass on round two."
+    },
+    {
+      "id": "faq-content-3",
+      "question": "Can this be combined with SEO?",
+      "answer": "It's the strongest combination. Content without SEO strategy targets the wrong terms. SEO without content can't rank. We'll surface that opportunity in the discovery call if it applies."
+    },
+    {
+      "id": "faq-content-4",
+      "question": "What industries do you write for?",
+      "answer": "We work across the industries your clients serve — local services, e-commerce, SaaS, professional services, and more. The voice-matching process handles the niche specifics."
+    }
+  ]
+}

@@ -1,0 +1,94 @@
+{
+  "id": "service-page-website",
+  "slug": "website",
+  "name": "Website Design & Development",
+  "tagline": "Conversion-first websites your clients brag about.",
+  "description": "We design and develop conversion-optimized websites for your clients — mobile responsive, SEO-ready, and shipped on time. Your brand on every delivery, our team handling every pixel.",
+  "pricingModel": "one-off",
+  "deliverables": [
+    {
+      "id": "d-website-1",
+      "title": "Custom Website Design",
+      "description": "Figma-to-code designs tailored to your client's brand and audience. Not a theme — built from scratch."
+    },
+    {
+      "id": "d-website-2",
+      "title": "Responsive Development",
+      "description": "Pixel-perfect builds that work flawlessly across all devices and browsers without compromise."
+    },
+    {
+      "id": "d-website-3",
+      "title": "SEO Foundation",
+      "description": "Clean HTML structure, meta tags, sitemap, and Core Web Vitals optimization baked in from day one."
+    },
+    {
+      "id": "d-website-4",
+      "title": "CMS Integration",
+      "description": "Easy content management via Webflow, WordPress, or headless CMS — your client updates without you."
+    },
+    {
+      "id": "d-website-5",
+      "title": "Performance Optimization",
+      "description": "Sub-2s load times, compressed assets, lazy loading. Lighthouse scores that hold up under client scrutiny."
+    },
+    {
+      "id": "d-website-6",
+      "title": "Cross-Browser QA",
+      "description": "Thorough testing across Chrome, Safari, Firefox, and mobile before any file leaves our hands."
+    },
+    {
+      "id": "d-website-7",
+      "title": "Launch Support",
+      "description": "Go-live assistance, DNS guidance, and a 14-day post-launch window for minor fixes at no extra cost."
+    },
+    {
+      "id": "d-website-8",
+      "title": "Handoff Documentation",
+      "description": "A page-by-page walkthrough so your client can manage their site without calling you every week."
+    }
+  ],
+  "whyUs": [
+    {
+      "id": "w-website-1",
+      "title": "Fast without cutting corners",
+      "description": "Most projects ship in 2–4 weeks. We don't sacrifice quality for speed — we've done this enough times to move fast and right."
+    },
+    {
+      "id": "w-website-2",
+      "title": "Invisible to your client",
+      "description": "White-label by default. Your logo, your email, your Slack. Your client never knows we exist — and that's exactly how it should be."
+    },
+    {
+      "id": "w-website-3",
+      "title": "Scope-locked delivery",
+      "description": "Quoted price is final price. No surprise hours, no scope creep invoices. We scope tightly upfront so everyone wins."
+    }
+  ],
+  "faq": [
+    {
+      "id": "faq-website-1",
+      "question": "What platforms do you build on?",
+      "answer": "We're platform-flexible — Next.js, Webflow, WordPress, Framer, or custom. We'll recommend what suits the client's needs and your team's ability to hand off."
+    },
+    {
+      "id": "faq-website-2",
+      "question": "Do you handle design and development, or just one?",
+      "answer": "Both. Full design-to-dev. Provide the brief, brand assets, and feedback — we handle the rest. You don't need a separate designer."
+    },
+    {
+      "id": "faq-website-3",
+      "question": "How long does a typical project take?",
+      "answer": "Most projects complete in 2–4 weeks depending on scope. You'll get a precise timeline in the proposal, which lands within 24 hours of the discovery call."
+    },
+    {
+      "id": "faq-website-4",
+      "question": "Who communicates with the end client?",
+      "answer": "You do — always. We stay behind the curtain, supplying you with updates to pass along or working inside your project management tools."
+    },
+    {
+      "id": "faq-website-5",
+      "question": "Can I mark up the price however I like?",
+      "answer": "Yes. Our pricing is your cost — what you charge your client is entirely your call. Most partners mark up 30–100%."
+    }
+  ]
+}

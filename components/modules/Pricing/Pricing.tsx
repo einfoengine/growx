@@ -3,7 +3,7 @@ import { Check } from "lucide-react";
 import Headline from "@/components/elements/Headline";
 import { getPricing } from "@/lib/content";
 
-export default async function Pricing() {
+export default async function Pricing({ noPaddingTop }: { noPaddingTop?: boolean }) {
   const data = await getPricing();
 
   return (
@@ -14,7 +14,7 @@ export default async function Pricing() {
     >
       <div className="pointer-events-none absolute inset-0 -z-10 bg-[linear-gradient(to_right,rgba(10,10,10,0.05)_1px,transparent_1px),linear-gradient(to_bottom,rgba(10,10,10,0.05)_1px,transparent_1px)] bg-size-[48px_48px] mask-[radial-gradient(ellipse_80%_70%_at_50%_30%,#000_20%,transparent_85%)]" />
 
-      <div className="container-1200 relative py-24 sm:py-32 lg:py-40">
+      <div className={`container-1200 relative ${noPaddingTop ? "pt-0 pb-24 sm:pb-32 lg:pb-40" : "py-24 sm:py-32 lg:py-40"}`}>
         <div className="mx-auto max-w-3xl text-center">
           <p className="text-sm font-semibold text-brand">{data.eyebrow}</p>
           <Headline

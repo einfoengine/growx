@@ -3,7 +3,7 @@
   "eyebrow": "Why agencies come to growX",
   "headline": {
     "parts": [
-      { "type": "text", "value": "Sound\n" },
+      { "type": "text", "value": "Sound " },
       { "type": "highlight", "value": "familiar" },
       { "type": "text", "value": "?" }
     ]

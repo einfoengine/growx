@@ -3,7 +3,7 @@
   "eyebrow": "Ready when you are",
   "headline": {
     "parts": [
-      { "type": "text", "value": "Sell more.\nHire " },
+      { "type": "text", "value": "Sell more. Hire " },
       { "type": "highlight", "value": "less" },
       { "type": "text", "value": "." }
     ]

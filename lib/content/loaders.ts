@@ -1,3 +1,9 @@
+import serviceWebsiteData from "@/data/services/website.json";
+import serviceSeoAeoData from "@/data/services/seo-aeo.json";
+import servicePpcData from "@/data/services/ppc.json";
+import serviceContentData from "@/data/services/content.json";
+import serviceSocialData from "@/data/services/social.json";
+import serviceFunnelsData from "@/data/services/funnels.json";
 import siteData from "@/data/site.json";
 import headerData from "@/data/modules/header.json";
 import footerData from "@/data/modules/footer.json";
@@ -13,6 +19,7 @@ import pricingData from "@/data/modules/pricing.json";
 import comparisonData from "@/data/modules/comparison.json";
 import growthCalculatorData from "@/data/modules/growth-calculator.json";
 import type {
+  ServicePageContent,
   ComparisonContent,
   CtaBannerContent,
   FaqContent,
@@ -88,4 +95,19 @@ export async function getComparison(): Promise<ComparisonContent> {
 
 export async function getGrowthCalculator(): Promise<GrowthCalculatorContent> {
   return growthCalculatorData as GrowthCalculatorContent;
+}
+
+const SERVICE_PAGES: Record<string, ServicePageContent> = {
+  website: serviceWebsiteData as ServicePageContent,
+  "seo-aeo": serviceSeoAeoData as ServicePageContent,
+  ppc: servicePpcData as ServicePageContent,
+  content: serviceContentData as ServicePageContent,
+  social: serviceSocialData as ServicePageContent,
+  funnels: serviceFunnelsData as ServicePageContent,
+};
+
+export const SERVICE_SLUGS = Object.keys(SERVICE_PAGES);
+
+export async function getServicePage(slug: string): Promise<ServicePageContent | null> {
+  return SERVICE_PAGES[slug] ?? null;
 }

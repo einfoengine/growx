@@ -168,6 +168,8 @@ export type Testimonial = {
   title: string;
   company: string;
   quote: string;
+  metric?: string;
+  metricLabel?: string;
   image?: string;
 };
 
@@ -219,6 +221,26 @@ export type GrowthCalculatorContent = {
   sub: string;
   description: string;
   cta: CTA;
+};
+
+export type ServiceDeliverable = {
+  id: string;
+  title: string;
+  description: string;
+};
+
+export type ServicePricingModel = "one-off" | "retainer" | "both";
+
+export type ServicePageContent = {
+  id: string;
+  slug: string;
+  name: string;
+  tagline: string;
+  description: string;
+  pricingModel: ServicePricingModel;
+  deliverables: ServiceDeliverable[];
+  whyUs: ServiceDeliverable[];
+  faq: FaqItem[];
 };
 
 export type PageSlug = "home";

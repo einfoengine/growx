@@ -17,9 +17,9 @@ export default function HomePage() {
       <PainPoints />
       <Services />
       <Testimonials />
-      <Pricing />
-      <Comparison />
-      <Process />
+      <Pricing noPaddingTop />
+      <Comparison noPaddingTop />
+      <Process noPaddingTop />
       {/* <GrowthCalculator /> */}
       <Faq />
       <CtaBanner />

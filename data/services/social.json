@@ -1,0 +1,79 @@
+{
+  "id": "service-page-social",
+  "slug": "social",
+  "name": "Social Media Management",
+  "tagline": "Consistent, on-brand content — handled entirely by us.",
+  "description": "Monthly content calendars, platform graphics, captions, and scheduling — fully managed under your agency's name. Your client stays active and on-brand without you spending an hour on it.",
+  "pricingModel": "retainer",
+  "deliverables": [
+    {
+      "id": "d-social-1",
+      "title": "Monthly Content Calendar",
+      "description": "A full month of planned posts — topics, formats, and posting schedule — delivered for your approval before anything goes live."
+    },
+    {
+      "id": "d-social-2",
+      "title": "Graphic Design",
+      "description": "On-brand static and carousel graphics for each platform. Sized correctly, visually consistent, client-approved."
+    },
+    {
+      "id": "d-social-3",
+      "title": "Caption Writing",
+      "description": "Platform-native captions written in the client's voice — hooks, body, hashtags, and CTAs included."
+    },
+    {
+      "id": "d-social-4",
+      "title": "Scheduling & Publishing",
+      "description": "Posts scheduled at optimal times for reach and engagement. We handle the publishing — your client just shows up."
+    },
+    {
+      "id": "d-social-5",
+      "title": "Platform Management",
+      "description": "LinkedIn, Instagram, Facebook, Twitter/X, and TikTok. We manage whichever platforms your client needs."
+    },
+    {
+      "id": "d-social-6",
+      "title": "Monthly Performance Report",
+      "description": "Reach, engagement, follower growth, and top-performing content — white-labelled and ready to forward."
+    }
+  ],
+  "whyUs": [
+    {
+      "id": "w-social-1",
+      "title": "Completely hands-off for you",
+      "description": "You approve the calendar once a month. We do everything else — design, write, schedule, and report. Your bandwidth stays free."
+    },
+    {
+      "id": "w-social-2",
+      "title": "Retainer stability for predictable revenue",
+      "description": "Social is a natural retainer service — every client needs it every month. It's a reliable income stream that grows your MRR without adding complexity."
+    },
+    {
+      "id": "w-social-3",
+      "title": "Platform-native execution",
+      "description": "We don't repost the same content everywhere. Each platform gets content built for its format, audience, and algorithm."
+    }
+  ],
+  "faq": [
+    {
+      "id": "faq-social-1",
+      "question": "Which platforms do you manage?",
+      "answer": "LinkedIn, Instagram, Facebook, Twitter/X, and TikTok. We'll recommend the right mix for your client's business and audience during the discovery call."
+    },
+    {
+      "id": "faq-social-2",
+      "question": "How does the approval process work?",
+      "answer": "We deliver a full monthly content calendar — posts, graphics, captions — for your review each month. You approve, request changes, or pass it straight to your client for sign-off. Nothing goes live without approval."
+    },
+    {
+      "id": "faq-social-3",
+      "question": "Do you engage with comments and DMs?",
+      "answer": "Community management (responding to comments and DMs) is available as an add-on. By default, this retainer covers content creation and scheduling only."
+    },
+    {
+      "id": "faq-social-4",
+      "question": "What do you need from us to get started?",
+      "answer": "Brand assets (logo, colours, fonts), existing content samples or tone notes, and platform access. The onboarding call covers all of this in under 30 minutes."
+    }
+  ]
+}

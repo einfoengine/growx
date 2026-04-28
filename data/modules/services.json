@@ -3,7 +3,7 @@
   "eyebrow": "What we deliver",
   "headline": {
     "parts": [
-      { "type": "text", "value": "Six services.\nOne reliable " },
+      { "type": "text", "value": "Six services. One reliable " },
       { "type": "highlight", "value": "team" },
       { "type": "text", "value": "." }
     ]

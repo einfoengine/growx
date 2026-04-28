@@ -1,0 +1,84 @@
+{
+  "id": "service-page-funnels",
+  "slug": "funnels",
+  "name": "Funnel Building",
+  "tagline": "End-to-end lead gen funnels built to convert.",
+  "description": "We design, build, and launch complete sales and lead generation funnels for your clients — from landing page to email automation. Platform-flexible and scoped to your client's stack.",
+  "pricingModel": "one-off",
+  "deliverables": [
+    {
+      "id": "d-funnels-1",
+      "title": "Funnel Strategy & Mapping",
+      "description": "Audience definition, offer positioning, funnel stage mapping, and conversion goal setting before any build begins."
+    },
+    {
+      "id": "d-funnels-2",
+      "title": "Landing Page Design & Build",
+      "description": "High-converting landing pages built and optimized — headline, offer, social proof, and CTA structure done right."
+    },
+    {
+      "id": "d-funnels-3",
+      "title": "Thank You & Confirmation Pages",
+      "description": "Post-conversion pages that reinforce the decision, deliver the promise, and set up the next step in the journey."
+    },
+    {
+      "id": "d-funnels-4",
+      "title": "Form & CRM Integration",
+      "description": "Lead capture connected to the client's CRM — HubSpot, GoHighLevel, ActiveCampaign, or similar. No leads lost."
+    },
+    {
+      "id": "d-funnels-5",
+      "title": "Email Automation",
+      "description": "Triggered welcome sequences and nurture flows that follow up automatically — no manual sending required."
+    },
+    {
+      "id": "d-funnels-6",
+      "title": "Tracking & Analytics Setup",
+      "description": "Conversion tracking via Google Tag Manager, Meta Pixel, or GA4. Know exactly where leads come from and where they drop."
+    },
+    {
+      "id": "d-funnels-7",
+      "title": "Go-Live & QA Support",
+      "description": "Full end-to-end test before launch. We run leads through the funnel to confirm every step fires correctly."
+    }
+  ],
+  "whyUs": [
+    {
+      "id": "w-funnels-1",
+      "title": "Platform-flexible",
+      "description": "We build in GoHighLevel, Webflow, ClickFunnels, Systeme.io, or custom — whatever your client's stack requires. No forcing a tool that doesn't fit."
+    },
+    {
+      "id": "w-funnels-2",
+      "title": "Strategy before build",
+      "description": "We scope the offer, the audience, and the conversion goal before writing a line. A funnel built on a clear strategy converts. A funnel built on assumptions doesn't."
+    },
+    {
+      "id": "w-funnels-3",
+      "title": "Fast delivery without cutting corners",
+      "description": "Most funnels deliver in 1–3 weeks. We move quickly because we have a repeatable process — not because we skip QA."
+    }
+  ],
+  "faq": [
+    {
+      "id": "faq-funnels-1",
+      "question": "What platforms do you build funnels in?",
+      "answer": "GoHighLevel is our preferred stack for agencies because of the white-label capabilities. We also build in ClickFunnels, Webflow, Systeme.io, and custom WordPress. We'll recommend based on what the client already uses."
+    },
+    {
+      "id": "faq-funnels-2",
+      "question": "Do you write the funnel copy?",
+      "answer": "Yes — landing page copy, email sequence copy, and thank-you page messaging are included. You provide the offer details and audience information; we write the words."
+    },
+    {
+      "id": "faq-funnels-3",
+      "question": "How long does a funnel build take?",
+      "answer": "A standard lead-gen funnel typically completes in 1–3 weeks. More complex multi-step funnels with extensive automation may take 3–5 weeks. Timeline is confirmed in the proposal."
+    },
+    {
+      "id": "faq-funnels-4",
+      "question": "Can you connect it to the client's existing tools?",
+      "answer": "Yes. We integrate with most major CRMs, email platforms, and booking tools. If you're unsure about a specific integration, flag it on the discovery call and we'll confirm."
+    }
+  ]
+}

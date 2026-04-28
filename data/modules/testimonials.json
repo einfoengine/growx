@@ -1,42 +1,50 @@
 {
   "id": "mod-testimonials",
-  "eyebrow": "Real Results from Real Clients",
+  "eyebrow": "Real results from real partners",
   "headline": {
     "parts": [
-      { "type": "text", "value": "Trusted by " },
-      { "type": "highlight", "value": "growing agencies" },
+      { "type": "text", "value": "What agencies say about " },
+      { "type": "highlight", "value": "growX" },
       { "type": "text", "value": "." }
     ]
   },
-  "sub": "See how Scalify's white-label solutions have helped agency owners close bigger deals and scale faster.",
+  "sub": "Agency owners who were juggling freelancers, turning down projects, and capping their own growth. Here's what changed.",
   "testimonials": [
     {
       "id": "testimonial-1",
       "name": "Sarah Chen",
       "title": "Founder & CEO",
       "company": "Peak Digital",
-      "quote": "Scalify has been a game-changer for our agency. We went from turning away projects to delivering 3x more work without hiring. The quality is indistinguishable from what we'd do in-house."
+      "metric": "3×",
+      "metricLabel": "more work delivered, same team size",
+      "quote": "We went from turning away projects to delivering three times more work without a single hire. The quality is indistinguishable from what we'd do in-house — our clients have no idea."
     },
     {
       "id": "testimonial-2",
       "name": "Marcus Rodriguez",
       "title": "Managing Partner",
       "company": "Velocity Marketing",
-      "quote": "The turnaround time is incredible. We quoted a client a 4-week timeline, got the entire project delivered in 10 days. Our client was amazed. Scalify makes us look like we've got a 50-person team."
+      "metric": "10 days",
+      "metricLabel": "vs the 4-week timeline we quoted",
+      "quote": "We quoted a client four weeks. growX had it done in ten days. Our client thought we had a fifty-person team running it. That's the kind of leverage this gives you."
     },
     {
       "id": "testimonial-3",
       "name": "Emily Thompson",
       "title": "Agency Owner",
       "company": "Bright Strategy",
-      "quote": "I was skeptical about quality at first, but honestly? The work is exceptional. We've partnered with Scalify on 47 projects—I trust them with our premium clients."
+      "metric": "47",
+      "metricLabel": "projects delivered, zero quality complaints",
+      "quote": "I was skeptical about quality at first. Forty-seven projects later, I trust growX with our most demanding clients. The work is exceptional — every single time."
     },
     {
       "id": "testimonial-4",
       "name": "David Lee",
       "title": "Creative Director",
       "company": "Next Wave Creative",
-      "quote": "White-labeling has been seamless. Our clients have no idea. The handoff is smooth, communication is clear, and every project comes back exactly as scoped. We've become their go-to fulfillment partner."
+      "metric": "100%",
+      "metricLabel": "white-label — clients never knew",
+      "quote": "Completely seamless. Our clients have no idea. The handoff is smooth, communication is clear, every project comes back exactly as scoped. They feel like an extension of our team."
     }
   ]
 }
