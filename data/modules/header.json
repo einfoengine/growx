@@ -1,8 +1,20 @@
 {
   "id": "mod-header",
   "nav": [
-    { "id": "nav-services", "label": "Services", "href": "#mod-services" },
-    { "id": "nav-process", "label": "Process", "href": "#mod-process" },
+    {
+      "id": "nav-services",
+      "label": "Services",
+      "href": "/#mod-services",
+      "children": [
+        { "id": "nav-service-website", "label": "Web Design & Development", "href": "/services/website" },
+        { "id": "nav-service-seo-aeo", "label": "SEO & AEO", "href": "/services/seo-aeo" },
+        { "id": "nav-service-ppc", "label": "PPC & Media Buying", "href": "/services/ppc" },
+        { "id": "nav-service-content", "label": "Content Marketing", "href": "/services/content" },
+        { "id": "nav-service-social", "label": "Social Media Management", "href": "/services/social" },
+        { "id": "nav-service-funnels", "label": "Funnel Building", "href": "/services/funnels" }
+      ]
+    },
+    { "id": "nav-process", "label": "Process", "href": "/#mod-process" },
     { "id": "nav-case-studies", "label": "Case Studies", "href": "/case-studies" },
     { "id": "nav-about", "label": "About", "href": "/about" }
   ],

@@ -1,6 +1,6 @@
 "use client";
 
-import { Menu, X } from "lucide-react";
+import { ChevronDown, Menu, X } from "lucide-react";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import type { CTA, Link as LinkType } from "@/lib/content";
@@ -17,6 +17,7 @@ export default function MobileMenu({
   cta,
 }: MobileMenuProps) {
   const [open, setOpen] = useState(false);
+  const [expandedId, setExpandedId] = useState<string | null>(null);
 
   useEffect(() => {
     if (!open) return;
@@ -26,6 +27,11 @@ export default function MobileMenu({
       document.body.style.overflow = prev;
     };
   }, [open]);
+
+  function closeAll() {
+    setOpen(false);
+    setExpandedId(null);
+  }
 
   return (
     <div id={id} className="lg:hidden">
@@ -49,23 +55,58 @@ export default function MobileMenu({
         >
           <nav className="container-1200 py-6">
             <ul className="flex flex-col divide-y divide-border">
-              {nav.map((item) => (
-                <li key={item.id}>
-                  <Link
-                    id={`${item.id}-mobile`}
-                    href={item.href}
-                    onClick={() => setOpen(false)}
-                    className="block py-4 text-base font-medium text-foreground"
-                  >
-                    {item.label}
-                  </Link>
-                </li>
-              ))}
+              {nav.map((item) =>
+                item.children ? (
+                  <li key={item.id}>
+                    <button
+                      type="button"
+                      onClick={() =>
+                        setExpandedId((v) => (v === item.id ? null : item.id))
+                      }
+                      className="flex w-full items-center justify-between py-4 text-base font-medium text-foreground"
+                    >
+                      {item.label}
+                      <ChevronDown
+                        size={16}
+                        className={`transition-transform duration-200 ${expandedId === item.id ? "rotate-180" : ""}`}
+                      />
+                    </button>
+
+                    {expandedId === item.id && (
+                      <ul className="mb-2 flex flex-col gap-0.5">
+                        {item.children.map((child) => (
+                          <li key={child.id}>
+                            <Link
+                              id={`${child.id}-mobile`}
+                              href={child.href}
+                              onClick={closeAll}
+                              className="block rounded-lg px-3 py-2.5 text-sm text-foreground/70 hover:bg-surface hover:text-foreground transition-colors"
+                            >
+                              {child.label}
+                            </Link>
+                          </li>
+                        ))}
+                      </ul>
+                    )}
+                  </li>
+                ) : (
+                  <li key={item.id}>
+                    <Link
+                      id={`${item.id}-mobile`}
+                      href={item.href}
+                      onClick={closeAll}
+                      className="block py-4 text-base font-medium text-foreground"
+                    >
+                      {item.label}
+                    </Link>
+                  </li>
+                )
+              )}
             </ul>
             <Link
               id={`${cta.id}-mobile`}
               href={cta.href}
-              onClick={() => setOpen(false)}
+              onClick={closeAll}
               className="mt-6 inline-flex w-full items-center justify-center rounded-full bg-foreground px-6 py-3 text-sm font-medium text-background"
             >
               {cta.label}

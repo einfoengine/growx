@@ -2,6 +2,7 @@ export type Link = {
   id: string;
   label: string;
   href: string;
+  children?: Link[];
 };
 
 export type SocialIcon = "linkedin" | "instagram" | "facebook" | "youtube";
