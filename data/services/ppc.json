@@ -2,8 +2,8 @@
   "id": "service-page-ppc",
   "slug": "ppc",
   "name": "Media Buying & PPC",
-  "tagline": "Paid media that converts — not just clicks.",
-  "description": "We run Google Ads, Meta Ads, and beyond for your clients — fully managed, performance-focused, and reported in a way that makes you look like the expert. Every campaign starts with a clear revenue goal.",
+  "tagline": "Paid media that converts, not just clicks.",
+  "description": "We run Google Ads, Meta Ads, and beyond for your clients, fully managed, performance-focused, and reported in a way that makes you look like the expert. Every campaign starts with a clear revenue goal.",
   "pricingModel": "retainer",
   "deliverables": [
     {
@@ -14,17 +14,17 @@
     {
       "id": "d-ppc-2",
       "title": "Ad Creative",
-      "description": "Copy and visual assets for each ad format — search ads, display, social. Built for the platform and the audience."
+      "description": "Copy and visual assets for each ad format: search ads, display, social. Built for the platform and the audience."
     },
     {
       "id": "d-ppc-3",
       "title": "Campaign Setup & Launch",
-      "description": "Full account structure, tracking setup, conversion events, and UTM parameters — built to measure what matters."
+      "description": "Full account structure, tracking setup, conversion events, and UTM parameters, built to measure what matters."
     },
     {
       "id": "d-ppc-4",
       "title": "Audience Targeting & Segmentation",
-      "description": "Custom audiences, lookalikes, retargeting, and exclusion lists — precision targeting that respects budget."
+      "description": "Custom audiences, lookalikes, retargeting, and exclusion lists for precision targeting that respects budget."
     },
     {
       "id": "d-ppc-5",
@@ -34,24 +34,24 @@
     {
       "id": "d-ppc-6",
       "title": "Performance Reporting",
-      "description": "Monthly reports covering spend, impressions, clicks, conversions, CPA, and ROAS — white-labelled for your client."
+      "description": "Monthly reports covering spend, impressions, clicks, conversions, CPA, and ROAS, white-labelled for your client."
     }
   ],
   "whyUs": [
     {
       "id": "w-ppc-1",
       "title": "Revenue-focused, not vanity-metric focused",
-      "description": "We optimize for conversions and cost-per-acquisition — not impressions and click-through rates that look good on a slide but don't pay your client's rent."
+      "description": "We optimize for conversions and cost-per-acquisition, not impressions and click-through rates that look good on a slide but don't pay your client's rent."
     },
     {
       "id": "w-ppc-2",
       "title": "Platform-flexible",
-      "description": "Google, Meta, LinkedIn, TikTok — wherever your client's audience is. We don't push a platform because we have a preferred tool."
+      "description": "Google, Meta, LinkedIn, TikTok, wherever your client's audience is. We don't push a platform because we have a preferred tool."
     },
     {
       "id": "w-ppc-3",
       "title": "No agency markup on ad spend",
-      "description": "Our fee is for management. Every dollar of your client's ad budget goes to the platform — not into our margin."
+      "description": "Our fee is for management. Every dollar of your client's ad budget goes to the platform, not into our margin."
     }
   ],
   "faq": [
@@ -68,12 +68,12 @@
     {
       "id": "faq-ppc-3",
       "question": "Do you create the ad creatives?",
-      "answer": "Yes — copy and static visuals are included. For video creative, we'll either work from existing assets you provide or advise on production if needed."
+      "answer": "Yes, copy and static visuals are included. For video creative, we'll either work from existing assets you provide or advise on production if needed."
     },
     {
       "id": "faq-ppc-4",
       "question": "How do you handle the client's ad account?",
-      "answer": "We work inside your client's ad account (or one set up in their name). All spend and history stays with them — they own it, we run it."
+      "answer": "We work inside your client's ad account (or one set up in their name). All spend and history stays with them. They own it, we run it."
     }
   ]
 }

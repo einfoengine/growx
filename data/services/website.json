@@ -3,13 +3,13 @@
   "slug": "website",
   "name": "Website Design & Development",
   "tagline": "Conversion-first websites your clients brag about.",
-  "description": "We design and develop conversion-optimized websites for your clients — mobile responsive, SEO-ready, and shipped on time. Your brand on every delivery, our team handling every pixel.",
+  "description": "We design and develop conversion-optimized websites for your clients: mobile responsive, SEO-ready, and shipped on time. Your brand on every delivery, our team handling every pixel.",
   "pricingModel": "one-off",
   "deliverables": [
     {
       "id": "d-website-1",
       "title": "Custom Website Design",
-      "description": "Figma-to-code designs tailored to your client's brand and audience. Not a theme — built from scratch."
+      "description": "Figma-to-code designs tailored to your client's brand and audience. Not a theme. Built from scratch."
     },
     {
       "id": "d-website-2",
@@ -24,7 +24,7 @@
     {
       "id": "d-website-4",
       "title": "CMS Integration",
-      "description": "Easy content management via Webflow, WordPress, or headless CMS — your client updates without you."
+      "description": "Easy content management via Webflow, WordPress, or headless CMS. Your client updates without you."
     },
     {
       "id": "d-website-5",
@@ -51,12 +51,12 @@
     {
       "id": "w-website-1",
       "title": "Fast without cutting corners",
-      "description": "Most projects ship in 2–4 weeks. We don't sacrifice quality for speed — we've done this enough times to move fast and right."
+      "description": "Most projects ship in 2–4 weeks. We don't sacrifice quality for speed. We've done this enough times to move fast and right."
     },
     {
       "id": "w-website-2",
       "title": "Invisible to your client",
-      "description": "White-label by default. Your logo, your email, your Slack. Your client never knows we exist — and that's exactly how it should be."
+      "description": "White-label by default. Your logo, your email, your Slack. Your client never knows we exist. That's exactly how it should be."
     },
     {
       "id": "w-website-3",
@@ -68,12 +68,12 @@
     {
       "id": "faq-website-1",
       "question": "What platforms do you build on?",
-      "answer": "We're platform-flexible — Next.js, Webflow, WordPress, Framer, or custom. We'll recommend what suits the client's needs and your team's ability to hand off."
+      "answer": "We're platform-flexible: Next.js, Webflow, WordPress, Framer, or custom. We'll recommend what suits the client's needs and your team's ability to hand off."
     },
     {
       "id": "faq-website-2",
       "question": "Do you handle design and development, or just one?",
-      "answer": "Both. Full design-to-dev. Provide the brief, brand assets, and feedback — we handle the rest. You don't need a separate designer."
+      "answer": "Both. Full design-to-dev. Provide the brief, brand assets, and feedback. We handle the rest. You don't need a separate designer."
     },
     {
       "id": "faq-website-3",
@@ -83,12 +83,12 @@
     {
       "id": "faq-website-4",
       "question": "Who communicates with the end client?",
-      "answer": "You do — always. We stay behind the curtain, supplying you with updates to pass along or working inside your project management tools."
+      "answer": "You do, always. We stay behind the curtain, supplying you with updates to pass along or working inside your project management tools."
     },
     {
       "id": "faq-website-5",
       "question": "Can I mark up the price however I like?",
-      "answer": "Yes. Our pricing is your cost — what you charge your client is entirely your call. Most partners mark up 30–100%."
+      "answer": "Yes. Our pricing is your cost. What you charge your client is entirely your call. Most partners mark up 30–100%."
     }
   ]
 }

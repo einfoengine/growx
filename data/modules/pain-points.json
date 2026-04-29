@@ -19,13 +19,13 @@
     {
       "id": "pain-freelancers",
       "title": "Freelancer nightmare",
-      "blurb": "Underdelivery, missed deadlines, ghosting — and your name on every invoice.",
+      "blurb": "Underdelivery, missed deadlines, ghosting. Your name on every invoice.",
       "icon": "user-x"
     },
     {
       "id": "pain-services",
       "title": "Limited service offering",
-      "blurb": "Clients ask for SEO, content, funnels — and you have to say no, or scramble.",
+      "blurb": "Clients ask for SEO, content, funnels, and you have to say no, or scramble.",
       "icon": "layers"
     },
     {
@@ -37,7 +37,7 @@
     {
       "id": "pain-time",
       "title": "Time drain",
-      "blurb": "Sales, delivery, client management, ops — all on you. Something's about to break.",
+      "blurb": "Sales, delivery, client management, ops, all on you. Something's about to break.",
       "icon": "clock"
     }
   ]

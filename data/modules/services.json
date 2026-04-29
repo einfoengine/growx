@@ -8,7 +8,7 @@
       { "type": "text", "value": "." }
     ]
   },
-  "sub": "From day-one solos to 20-person studios — pick your fulfillment lane and mix as your roster needs shift.",
+  "sub": "From day-one solos to 20-person studios. Pick your fulfillment lane and mix as your roster needs shift.",
   "cards": [
     {
       "id": "service-website",
@@ -34,7 +34,7 @@
     {
       "id": "service-content",
       "title": "Content & Copywriting",
-      "blurb": "Blog posts, landing pages, email sequences, ad copy. SEO-informed and written for business outcomes — not vanity metrics.",
+      "blurb": "Blog posts, landing pages, email sequences, ad copy. SEO-informed and written for business outcomes, not vanity metrics.",
       "href": "/services/content",
       "icon": "pen-tool"
     },

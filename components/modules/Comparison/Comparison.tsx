@@ -83,7 +83,7 @@ export default async function Comparison({ noPaddingTop }: { noPaddingTop?: bool
         <div className="mx-auto mt-12 max-w-2xl rounded-2xl border border-border bg-background/70 p-8 text-center backdrop-blur-sm">
           <p className="text-sm font-semibold text-brand">The verdict</p>
           <p className="mt-3 text-lg font-semibold text-foreground">
-            growX gives you the speed, quality, and cost-efficiency of a 50-person agency — without the overhead.
+            growX gives you the speed, quality, and cost-efficiency of a 50-person agency, without the overhead.
           </p>
         </div>
       </div>

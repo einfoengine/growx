@@ -17,7 +17,7 @@
       "company": "Peak Digital",
       "metric": "3×",
       "metricLabel": "more work delivered, same team size",
-      "quote": "We went from turning away projects to delivering three times more work without a single hire. The quality is indistinguishable from what we'd do in-house — our clients have no idea."
+      "quote": "We went from turning away projects to delivering three times more work without a single hire. The quality is indistinguishable from what we'd do in-house. Our clients have no idea."
     },
     {
       "id": "testimonial-2",
@@ -35,7 +35,7 @@
       "company": "Bright Strategy",
       "metric": "47",
       "metricLabel": "projects delivered, zero quality complaints",
-      "quote": "I was skeptical about quality at first. Forty-seven projects later, I trust growX with our most demanding clients. The work is exceptional — every single time."
+      "quote": "I was skeptical about quality at first. Forty-seven projects later, I trust growX with our most demanding clients. The work is exceptional, every single time."
     },
     {
       "id": "testimonial-4",
@@ -43,7 +43,7 @@
       "title": "Creative Director",
       "company": "Next Wave Creative",
       "metric": "100%",
-      "metricLabel": "white-label — clients never knew",
+      "metricLabel": "white-label, clients never knew",
       "quote": "Completely seamless. Our clients have no idea. The handoff is smooth, communication is clear, every project comes back exactly as scoped. They feel like an extension of our team."
     }
   ]

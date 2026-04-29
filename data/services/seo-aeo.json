@@ -9,7 +9,7 @@
     {
       "id": "d-seo-1",
       "title": "Keyword Research & Strategy",
-      "description": "Intent-mapped keyword clusters targeting your client's buyers at every stage — not just high-volume vanity terms."
+      "description": "Intent-mapped keyword clusters targeting your client's buyers at every stage, not just high-volume vanity terms."
     },
     {
       "id": "d-seo-2",
@@ -19,7 +19,7 @@
     {
       "id": "d-seo-3",
       "title": "Technical SEO Audit & Fixes",
-      "description": "Crawlability, indexation, site speed, Core Web Vitals, schema markup — diagnosed and resolved."
+      "description": "Crawlability, indexation, site speed, Core Web Vitals, schema markup, diagnosed and resolved."
     },
     {
       "id": "d-seo-4",
@@ -46,29 +46,29 @@
     {
       "id": "w-seo-1",
       "title": "SEO and AEO under one roof",
-      "description": "Most agencies handle one or the other. We do both — because search is splitting between traditional engines and AI tools, and your clients need coverage across both."
+      "description": "Most agencies handle one or the other. We do both, because search is splitting between traditional engines and AI tools, and your clients need coverage across both."
     },
     {
       "id": "w-seo-2",
       "title": "Retainer model that compounds",
-      "description": "SEO is a long game. We build month over month, not one-off audits left to gather dust. Results compound — and so does your client's MRR."
+      "description": "SEO is a long game. We build month over month, not one-off audits left to gather dust. Results compound, and so does your client's MRR."
     },
     {
       "id": "w-seo-3",
       "title": "Reporting your clients actually trust",
-      "description": "Clean, client-ready reports that explain what moved, why, and what's next — so your client sees the value and renews."
+      "description": "Clean, client-ready reports that explain what moved, why, and what's next, so your client sees the value and renews."
     }
   ],
   "faq": [
     {
       "id": "faq-seo-1",
       "question": "How long before we see results?",
-      "answer": "Typically 3–6 months for meaningful ranking movement on competitive terms. Technical fixes and low-competition keywords move faster — sometimes within weeks. AEO citation results can appear sooner."
+      "answer": "Typically 3–6 months for meaningful ranking movement on competitive terms. Technical fixes and low-competition keywords move faster, sometimes within weeks. AEO citation results can appear sooner."
     },
     {
       "id": "faq-seo-2",
       "question": "What's the difference between SEO and AEO?",
-      "answer": "SEO targets traditional search engines (Google, Bing). AEO — Answer Engine Optimization — targets AI tools that generate direct answers: ChatGPT, Perplexity, Google AI Overviews. We optimize for both because AI search is already eating significant query share."
+      "answer": "SEO targets traditional search engines (Google, Bing). AEO (Answer Engine Optimization) targets AI tools that generate direct answers: ChatGPT, Perplexity, Google AI Overviews. We optimize for both because AI search is already eating significant query share."
     },
     {
       "id": "faq-seo-3",
@@ -78,7 +78,7 @@
     {
       "id": "faq-seo-4",
       "question": "Can I add this on top of a web dev project?",
-      "answer": "Absolutely — and we recommend it. A new site without ongoing SEO won't rank. Bundling both is the strongest position for your client."
+      "answer": "Absolutely, and we recommend it. A new site without ongoing SEO won't rank. Bundling both is the strongest position for your client."
     }
   ]
 }

@@ -2,14 +2,14 @@
   "id": "service-page-social",
   "slug": "social",
   "name": "Social Media Management",
-  "tagline": "Consistent, on-brand content — handled entirely by us.",
-  "description": "Monthly content calendars, platform graphics, captions, and scheduling — fully managed under your agency's name. Your client stays active and on-brand without you spending an hour on it.",
+  "tagline": "Consistent, on-brand content. Handled entirely by us.",
+  "description": "Monthly content calendars, platform graphics, captions, and scheduling, fully managed under your agency's name. Your client stays active and on-brand without you spending an hour on it.",
   "pricingModel": "retainer",
   "deliverables": [
     {
       "id": "d-social-1",
       "title": "Monthly Content Calendar",
-      "description": "A full month of planned posts — topics, formats, and posting schedule — delivered for your approval before anything goes live."
+      "description": "A full month of planned posts (topics, formats, and posting schedule) delivered for your approval before anything goes live."
     },
     {
       "id": "d-social-2",
@@ -19,12 +19,12 @@
     {
       "id": "d-social-3",
       "title": "Caption Writing",
-      "description": "Platform-native captions written in the client's voice — hooks, body, hashtags, and CTAs included."
+      "description": "Platform-native captions written in the client's voice: hooks, body, hashtags, and CTAs included."
     },
     {
       "id": "d-social-4",
       "title": "Scheduling & Publishing",
-      "description": "Posts scheduled at optimal times for reach and engagement. We handle the publishing — your client just shows up."
+      "description": "Posts scheduled at optimal times for reach and engagement. We handle the publishing. Your client just shows up."
     },
     {
       "id": "d-social-5",
@@ -34,19 +34,19 @@
     {
       "id": "d-social-6",
       "title": "Monthly Performance Report",
-      "description": "Reach, engagement, follower growth, and top-performing content — white-labelled and ready to forward."
+      "description": "Reach, engagement, follower growth, and top-performing content, white-labelled and ready to forward."
     }
   ],
   "whyUs": [
     {
       "id": "w-social-1",
       "title": "Completely hands-off for you",
-      "description": "You approve the calendar once a month. We do everything else — design, write, schedule, and report. Your bandwidth stays free."
+      "description": "You approve the calendar once a month. We do everything else: design, write, schedule, and report. Your bandwidth stays free."
     },
     {
       "id": "w-social-2",
       "title": "Retainer stability for predictable revenue",
-      "description": "Social is a natural retainer service — every client needs it every month. It's a reliable income stream that grows your MRR without adding complexity."
+      "description": "Social is a natural retainer service. Every client needs it every month. It's a reliable income stream that grows your MRR without adding complexity."
     },
     {
       "id": "w-social-3",
@@ -63,7 +63,7 @@
     {
       "id": "faq-social-2",
       "question": "How does the approval process work?",
-      "answer": "We deliver a full monthly content calendar — posts, graphics, captions — for your review each month. You approve, request changes, or pass it straight to your client for sign-off. Nothing goes live without approval."
+      "answer": "We deliver a full monthly content calendar (posts, graphics, captions) for your review each month. You approve, request changes, or pass it straight to your client for sign-off. Nothing goes live without approval."
     },
     {
       "id": "faq-social-3",

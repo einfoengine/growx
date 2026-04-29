@@ -3,7 +3,7 @@
   "slug": "funnels",
   "name": "Funnel Building",
   "tagline": "End-to-end lead gen funnels built to convert.",
-  "description": "We design, build, and launch complete sales and lead generation funnels for your clients — from landing page to email automation. Platform-flexible and scoped to your client's stack.",
+  "description": "We design, build, and launch complete sales and lead generation funnels for your clients, from landing page to email automation. Platform-flexible and scoped to your client's stack.",
   "pricingModel": "one-off",
   "deliverables": [
     {
@@ -14,7 +14,7 @@
     {
       "id": "d-funnels-2",
       "title": "Landing Page Design & Build",
-      "description": "High-converting landing pages built and optimized — headline, offer, social proof, and CTA structure done right."
+      "description": "High-converting landing pages built and optimized: headline, offer, social proof, and CTA structure done right."
     },
     {
       "id": "d-funnels-3",
@@ -24,12 +24,12 @@
     {
       "id": "d-funnels-4",
       "title": "Form & CRM Integration",
-      "description": "Lead capture connected to the client's CRM — HubSpot, GoHighLevel, ActiveCampaign, or similar. No leads lost."
+      "description": "Lead capture connected to the client's CRM: HubSpot, GoHighLevel, ActiveCampaign, or similar. No leads lost."
     },
     {
       "id": "d-funnels-5",
       "title": "Email Automation",
-      "description": "Triggered welcome sequences and nurture flows that follow up automatically — no manual sending required."
+      "description": "Triggered welcome sequences and nurture flows that follow up automatically, no manual sending required."
     },
     {
       "id": "d-funnels-6",
@@ -46,7 +46,7 @@
     {
       "id": "w-funnels-1",
       "title": "Platform-flexible",
-      "description": "We build in GoHighLevel, Webflow, ClickFunnels, Systeme.io, or custom — whatever your client's stack requires. No forcing a tool that doesn't fit."
+      "description": "We build in GoHighLevel, Webflow, ClickFunnels, Systeme.io, or custom, whatever your client's stack requires. No forcing a tool that doesn't fit."
     },
     {
       "id": "w-funnels-2",
@@ -56,7 +56,7 @@
     {
       "id": "w-funnels-3",
       "title": "Fast delivery without cutting corners",
-      "description": "Most funnels deliver in 1–3 weeks. We move quickly because we have a repeatable process — not because we skip QA."
+      "description": "Most funnels deliver in 1–3 weeks. We move quickly because we have a repeatable process, not because we skip QA."
     }
   ],
   "faq": [
@@ -68,7 +68,7 @@
     {
       "id": "faq-funnels-2",
       "question": "Do you write the funnel copy?",
-      "answer": "Yes — landing page copy, email sequence copy, and thank-you page messaging are included. You provide the offer details and audience information; we write the words."
+      "answer": "Yes, landing page copy, email sequence copy, and thank-you page messaging are included. You provide the offer details and audience information; we write the words."
     },
     {
       "id": "faq-funnels-3",

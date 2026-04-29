@@ -31,7 +31,7 @@ export default function Logo({
     <Link
       id={id}
       href={href}
-      aria-label="growX.studio — home"
+      aria-label="growX.studio home"
       className={`inline-flex items-center ${className}`}
     >
       {/* eslint-disable-next-line @next/next/no-img-element */}

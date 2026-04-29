@@ -1,7 +1,7 @@
 {
   "id": "mod-hero",
   "eyebrow": {
-    "label": "White-label or branded delivery — your choice",
+    "label": "White-label or branded delivery, your choice",
     "href": "#mod-services"
   },
   "headline": {
@@ -12,7 +12,7 @@
     ]
   },
   "tagline": "Deliver more. Close more. Scale without chaos.",
-  "sub": "The white-label fulfillment studio for agency owners and solopreneurs — website design, SEO, AEO, content, social, and funnels delivered under your brand or ours.",
+  "sub": "The white-label fulfillment studio for agency owners and solopreneurs. Website design, SEO, AEO, content, social, and funnels delivered under your brand or ours.",
   "ctas": [
     {
       "id": "mod-hero-cta-primary",

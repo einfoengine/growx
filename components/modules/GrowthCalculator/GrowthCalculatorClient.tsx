@@ -61,7 +61,7 @@ export default function GrowthCalculatorClient({ data }: GrowthCalculatorProps) 
                 onChange={(e) => setMonthlyTraffic(Number(e.target.value))}
                 className="mt-3 w-full accent-brand"
               />
-              <p className="mt-2 text-xs text-muted">1K — 100K visitors/month</p>
+              <p className="mt-2 text-xs text-muted">1K to 100K visitors/month</p>
             </div>
 
             {/* Conversion Rate */}
@@ -77,7 +77,7 @@ export default function GrowthCalculatorClient({ data }: GrowthCalculatorProps) 
                 onChange={(e) => setConversionRate(Number(e.target.value))}
                 className="mt-3 w-full accent-brand"
               />
-              <p className="mt-2 text-xs text-muted">0.5% — 10%</p>
+              <p className="mt-2 text-xs text-muted">0.5% to 10%</p>
             </div>
 
             {/* Average Order Value */}
@@ -93,7 +93,7 @@ export default function GrowthCalculatorClient({ data }: GrowthCalculatorProps) 
                 onChange={(e) => setAvgOrderValue(Number(e.target.value))}
                 className="mt-3 w-full accent-brand"
               />
-              <p className="mt-2 text-xs text-muted">$50 — $5,000</p>
+              <p className="mt-2 text-xs text-muted">$50 to $5,000</p>
             </div>
 
             {/* Results */}
