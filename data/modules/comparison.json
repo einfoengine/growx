@@ -1,9 +1,9 @@
 {
   "id": "mod-comparison",
-  "eyebrow": "Why Agencies Choose Scalify",
+  "eyebrow": "Why Agencies Choose growX",
   "headline": {
     "parts": [
-      { "type": "text", "value": "Scalify vs. " },
+      { "type": "text", "value": "growX vs. " },
       { "type": "highlight", "value": "Traditional Options" },
       { "type": "text", "value": "." }
     ]
@@ -12,21 +12,21 @@
   "rows": [
     {
       "feature": "Cost per project",
-      "scalify": "$1,500–$4,500",
-      "inHouse": "$8,000–$15,000+",
-      "traditional": "$5,000–$10,000"
+      "scalify": "$1,500 – $4,500",
+      "inHouse": "$8,000 – $15,000+",
+      "traditional": "$5,000 – $10,000"
     },
     {
       "feature": "Onboarding time",
       "scalify": "24 hours",
-      "inHouse": "2–4 weeks",
-      "traditional": "5–10 days"
+      "inHouse": "2 – 4 weeks",
+      "traditional": "5 – 10 days"
     },
     {
       "feature": "Turnaround speed",
       "scalify": "24-hour delivery",
-      "inHouse": "Same-week",
-      "traditional": "5–10 business days"
+      "inHouse": "Same week",
+      "traditional": "5 – 10 business days"
     },
     {
       "feature": "Quality guarantee",
@@ -35,31 +35,31 @@
       "traditional": "Variable"
     },
     {
-      "feature": "Scalability (can grow projects next month?)",
+      "feature": "Scales up next month",
       "scalify": true,
       "inHouse": "Limited",
       "traditional": true
     },
     {
-      "feature": "Fixed overhead cost",
-      "scalify": "Only pay per project",
-      "inHouse": "$4,000–$7,000/month min",
-      "traditional": "$3,000–$6,000/month min"
+      "feature": "Fixed overhead",
+      "scalify": "Pay per project only",
+      "inHouse": "$4,000 – $7,000/mo min",
+      "traditional": "$3,000 – $6,000/mo min"
     },
     {
-      "feature": "White-label available?",
+      "feature": "White-label delivery",
       "scalify": true,
       "inHouse": true,
       "traditional": false
     },
     {
-      "feature": "Capacity variability risk",
-      "scalify": "Zero",
-      "inHouse": "High (turnover, vacations)",
-      "traditional": "Medium (less control)"
+      "feature": "Capacity risk",
+      "scalify": "None",
+      "inHouse": "High (turnover, leave)",
+      "traditional": "Medium"
     },
     {
-      "feature": "Dedicated support",
+      "feature": "Dedicated point of contact",
       "scalify": true,
       "inHouse": true,
       "traditional": "Project manager only"
