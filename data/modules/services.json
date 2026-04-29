@@ -3,8 +3,8 @@
   "eyebrow": "What we deliver",
   "headline": {
     "parts": [
-      { "type": "text", "value": "Six services. One reliable " },
-      { "type": "highlight", "value": "team" },
+      { "type": "text", "value": "Six services. " },
+      { "type": "highlight", "value": "One powerhouse" },
       { "type": "text", "value": "." }
     ]
   },
