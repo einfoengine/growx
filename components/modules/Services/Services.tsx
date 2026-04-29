@@ -1,3 +1,4 @@
+import type React from "react";
 import Link from "next/link";
 import {
   ArrowUpRight,
@@ -34,6 +35,7 @@ export default async function Services() {
       id={data.id}
       aria-labelledby={`${data.id}-headline`}
       className="bg-surface"
+      style={{ "--cg": "max(2rem, calc((100vw - 1400px) / 2 + 2rem))" } as React.CSSProperties}
     >
       {/* Header stays inside container */}
       <div className="container-1200 pb-14 pt-24 sm:pb-16 sm:pt-28 lg:pb-20 lg:pt-32">
@@ -61,7 +63,7 @@ export default async function Services() {
       {/* Full-width bordered grid — parent owns top + left edge */}
       <div
         id={`${data.id}-grid`}
-        className="grid border-l border-t border-border sm:grid-cols-2 lg:grid-cols-3"
+        className="grid border-l border-t border-border sm:grid-cols-2 lg:grid-cols-3 lg:[&>*:nth-child(3n+1)]:pl-(--cg) lg:[&>*:nth-child(3n)]:pr-(--cg)"
       >
         {data.cards.map((card) => {
           const Icon = ICON_BY_KEY[card.icon];
