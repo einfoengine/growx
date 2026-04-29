@@ -33,9 +33,10 @@ export default async function Services() {
     <section
       id={data.id}
       aria-labelledby={`${data.id}-headline`}
-      className="relative bg-surface"
+      className="bg-surface"
     >
-      <div className="container-1200 py-24 sm:py-28 lg:py-32">
+      {/* Header stays inside container */}
+      <div className="container-1200 pb-14 pt-24 sm:pb-16 sm:pt-28 lg:pb-20 lg:pt-32">
         <div
           id={`${data.id}-intro`}
           className="grid gap-10 lg:grid-cols-12 lg:items-end"
@@ -55,39 +56,40 @@ export default async function Services() {
             {data.sub}
           </p>
         </div>
+      </div>
 
-        <div
-          id={`${data.id}-grid`}
-          className="mt-14 grid gap-5 sm:grid-cols-2 lg:grid-cols-3"
-        >
-          {data.cards.map((card) => {
-            const Icon = ICON_BY_KEY[card.icon];
-            return (
-              <Link
-                key={card.id}
-                id={card.id}
-                href={card.href}
-                className="group relative flex flex-col rounded-2xl border border-border bg-background p-7 transition-all hover:-translate-y-1 hover:border-foreground/20 hover:shadow-[0_20px_40px_-20px_rgba(10,10,10,0.18)]"
-              >
-                <div className="flex items-center justify-between">
-                  <span className="inline-flex h-11 w-11 items-center justify-center rounded-xl bg-(--brand-soft) text-brand transition-transform group-hover:scale-105">
-                    <Icon size={20} />
-                  </span>
-                  <ArrowUpRight
-                    size={18}
-                    className="text-foreground/30 transition-all group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-foreground"
-                  />
-                </div>
-                <h3 className="mt-6 text-lg font-semibold tracking-tight text-foreground">
-                  {card.title}
-                </h3>
-                <p className="mt-2 text-sm leading-relaxed text-muted">
-                  {card.blurb}
-                </p>
-              </Link>
-            );
-          })}
-        </div>
+      {/* Full-width bordered grid — parent owns top + left edge */}
+      <div
+        id={`${data.id}-grid`}
+        className="grid border-l border-t border-border sm:grid-cols-2 lg:grid-cols-3"
+      >
+        {data.cards.map((card) => {
+          const Icon = ICON_BY_KEY[card.icon];
+          return (
+            <Link
+              key={card.id}
+              id={card.id}
+              href={card.href}
+              className="group flex flex-col border-b border-r border-border bg-surface p-8 transition-colors hover:bg-background"
+            >
+              <div className="flex items-center justify-between">
+                <span className="inline-flex h-11 w-11 items-center justify-center rounded-xl bg-(--brand-soft) text-brand transition-transform group-hover:scale-105">
+                  <Icon size={20} />
+                </span>
+                <ArrowUpRight
+                  size={18}
+                  className="text-foreground/30 transition-all group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-foreground"
+                />
+              </div>
+              <h3 className="mt-6 text-lg font-semibold tracking-tight text-foreground transition-colors group-hover:text-brand">
+                {card.title}
+              </h3>
+              <p className="mt-2 text-sm leading-relaxed text-muted">
+                {card.blurb}
+              </p>
+            </Link>
+          );
+        })}
       </div>
     </section>
   );
