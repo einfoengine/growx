@@ -205,6 +205,7 @@ export type ComparisonRow = {
   scalify: boolean | string;
   inHouse: boolean | string;
   traditional: boolean | string;
+  marketplace: boolean | string;
 };
 
 export type ComparisonContent = {

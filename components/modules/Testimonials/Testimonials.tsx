@@ -1,5 +1,6 @@
 import { Quote, Star } from "lucide-react";
 import Headline from "@/components/elements/Headline";
+import ScrollFadeIn from "@/components/elements/ScrollFadeIn";
 import { getTestimonials } from "@/lib/content";
 import type { Testimonial } from "@/lib/content";
 
@@ -31,7 +32,7 @@ function FeaturedCard({ t }: { t: Testimonial }) {
   return (
     <div
       id={t.id}
-      className="relative flex flex-col rounded-2xl bg-foreground p-8 lg:col-span-2"
+      className="h-full relative flex flex-col rounded-2xl bg-foreground p-8"
     >
       {/* Decorative grid overlay */}
       <div
@@ -81,7 +82,7 @@ function RegularCard({ t, wide }: { t: Testimonial; wide?: boolean }) {
   return (
     <div
       id={t.id}
-      className={`flex flex-col rounded-2xl border border-border bg-background p-8 ${wide ? "lg:col-span-2" : ""}`}
+      className={`h-full flex flex-col rounded-2xl border border-border bg-background p-8`}
     >
       {/* Metric */}
       {t.metric && (
@@ -139,37 +140,39 @@ export default async function Testimonials() {
 
       <div className="container-1200 py-24 sm:py-32 lg:py-40">
         {/* Header — left-aligned with split layout */}
-        <div
-          id={`${data.id}-header`}
-          className="grid gap-6 lg:grid-cols-2 lg:items-end"
-        >
-          <div>
-            <p className="text-xs font-semibold uppercase tracking-[0.18em] text-brand">
-              {data.eyebrow}
+        <ScrollFadeIn delay={0.1}>
+          <div
+            id={`${data.id}-header`}
+            className="grid gap-6 lg:grid-cols-2 lg:items-end"
+          >
+            <div>
+              <p className="text-xs font-semibold uppercase tracking-[0.18em] text-brand">
+                {data.eyebrow}
+              </p>
+              <Headline
+                id={`${data.id}-headline`}
+                parts={data.headline.parts}
+                as="h2"
+                className="mt-4 text-4xl font-semibold tracking-tight text-foreground sm:text-5xl"
+                highlightClassName="bg-gradient-to-br from-brand to-[#059669] bg-clip-text text-transparent"
+                underlineHighlight={false}
+              />
+            </div>
+            <p className="text-base text-muted lg:max-w-sm">
+              {data.sub}
             </p>
-            <Headline
-              id={`${data.id}-headline`}
-              parts={data.headline.parts}
-              as="h2"
-              className="mt-4 text-4xl font-semibold tracking-tight text-foreground sm:text-5xl"
-              highlightClassName="bg-gradient-to-br from-brand to-[#059669] bg-clip-text text-transparent"
-              underlineHighlight={false}
-            />
           </div>
-          <p className="text-base text-muted lg:max-w-sm">
-            {data.sub}
-          </p>
-        </div>
+        </ScrollFadeIn>
 
         {/* Bento grid — zigzag on desktop */}
         <div
           id={`${data.id}-grid`}
           className="mt-12 grid grid-cols-1 gap-5 md:grid-cols-2 lg:grid-cols-3"
         >
-          {t1 && <FeaturedCard t={t1} />}
-          {t2 && <RegularCard t={t2} />}
-          {t3 && <RegularCard t={t3} />}
-          {t4 && <RegularCard t={t4} wide />}
+          {t1 && <ScrollFadeIn delay={0.2} className="lg:col-span-2"><FeaturedCard t={t1} /></ScrollFadeIn>}
+          {t2 && <ScrollFadeIn delay={0.3}><RegularCard t={t2} /></ScrollFadeIn>}
+          {t3 && <ScrollFadeIn delay={0.4}><RegularCard t={t3} /></ScrollFadeIn>}
+          {t4 && <ScrollFadeIn delay={0.5} className="lg:col-span-2"><RegularCard t={t4} wide /></ScrollFadeIn>}
         </div>
       </div>
     </section>

@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 import Headline from "@/components/elements/Headline";
+import ScrollFadeIn from "@/components/elements/ScrollFadeIn";
 import { getCtaBanner } from "@/lib/content";
 
 export default async function CtaBanner() {
@@ -26,54 +27,58 @@ export default async function CtaBanner() {
       />
 
       <div className="container-1200 relative py-24 sm:py-28 lg:py-32">
-        <div className="mx-auto max-w-3xl text-center">
-          {data.eyebrow && (
+        <ScrollFadeIn delay={0.1}>
+          <div className="mx-auto max-w-3xl text-center">
+            {data.eyebrow && (
+              <p
+                id={`${data.id}-eyebrow`}
+                className="text-xs font-semibold uppercase tracking-[0.18em] text-brand"
+              >
+                {data.eyebrow}
+              </p>
+            )}
+            <Headline
+              id={`${data.id}-headline`}
+              parts={data.headline.parts}
+              as="h2"
+              className="mt-4 text-4xl font-semibold tracking-tight sm:text-5xl lg:text-6xl"
+            />
             <p
-              id={`${data.id}-eyebrow`}
-              className="text-xs font-semibold uppercase tracking-[0.18em] text-brand"
+              id={`${data.id}-sub`}
+              className="mx-auto mt-6 max-w-xl text-base text-white/70 sm:text-lg"
             >
-              {data.eyebrow}
+              {data.sub}
             </p>
-          )}
-          <Headline
-            id={`${data.id}-headline`}
-            parts={data.headline.parts}
-            as="h2"
-            className="mt-4 text-4xl font-semibold tracking-tight sm:text-5xl lg:text-6xl"
-          />
-          <p
-            id={`${data.id}-sub`}
-            className="mx-auto mt-6 max-w-xl text-base text-white/70 sm:text-lg"
-          >
-            {data.sub}
-          </p>
-
-          <div
-            id={`${data.id}-ctas`}
-            className="mt-10 flex flex-col items-center justify-center gap-3 sm:flex-row"
-          >
-            {data.ctas.map((cta) => {
-              const isPrimary = cta.variant === "primary";
-              const className = isPrimary
-                ? "group inline-flex items-center gap-2 rounded-full bg-background px-6 py-3 text-sm font-medium text-foreground shadow-sm transition hover:opacity-90"
-                : "group inline-flex items-center gap-2 rounded-full border border-white/15 px-5 py-3 text-sm font-medium text-white/80 transition hover:border-white/30 hover:text-white";
-              return (
-                <Link
-                  key={cta.id}
-                  id={cta.id}
-                  href={cta.href}
-                  className={className}
-                >
-                  {cta.label}
-                  <ArrowRight
-                    size={isPrimary ? 16 : 14}
-                    className="transition-transform group-hover:translate-x-0.5"
-                  />
-                </Link>
-              );
-            })}
           </div>
-        </div>
+        </ScrollFadeIn>
+
+          <ScrollFadeIn delay={0.3}>
+            <div
+              id={`${data.id}-ctas`}
+              className="mt-10 flex flex-col items-center justify-center gap-3 sm:flex-row"
+            >
+              {data.ctas.map((cta) => {
+                const isPrimary = cta.variant === "primary";
+                const className = isPrimary
+                  ? "group inline-flex items-center gap-2 rounded-full bg-background px-6 py-3 text-sm font-medium text-foreground shadow-sm transition hover:opacity-90"
+                  : "group inline-flex items-center gap-2 rounded-full border border-white/15 px-5 py-3 text-sm font-medium text-white/80 transition hover:border-white/30 hover:text-white";
+                return (
+                  <Link
+                    key={cta.id}
+                    id={cta.id}
+                    href={cta.href}
+                    className={className}
+                  >
+                    {cta.label}
+                    <ArrowRight
+                      size={isPrimary ? 16 : 14}
+                      className="transition-transform group-hover:translate-x-0.5"
+                    />
+                  </Link>
+                );
+              })}
+            </div>
+          </ScrollFadeIn>
       </div>
     </section>
   );
