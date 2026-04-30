@@ -14,31 +14,56 @@
       "id": "pain-fulfillment",
       "title": "Fulfillment bottleneck",
       "blurb": "You're winning clients faster than you can deliver. Capacity is killing growth.",
-      "icon": "triangle-alert"
+      "icon": "triangle-alert",
+      "points": [
+        "Turning away high-ticket clients due to lack of bandwidth",
+        "Rushed deliverables leading to client churn",
+        "Unable to scale beyond your current team's limits"
+      ]
     },
     {
       "id": "pain-freelancers",
       "title": "Freelancer nightmare",
       "blurb": "Underdelivery, missed deadlines, ghosting. Your name on every invoice.",
-      "icon": "user-x"
+      "icon": "user-x",
+      "points": [
+        "Constantly hunting for reliable talent on Upwork/Fiverr",
+        "Varying quality and unpredictable delivery times",
+        "Wasting hours managing multiple disconnected freelancers"
+      ]
     },
     {
       "id": "pain-services",
       "title": "Limited service offering",
       "blurb": "Clients ask for SEO, content, funnels, and you have to say no, or scramble.",
-      "icon": "layers"
+      "icon": "layers",
+      "points": [
+        "Losing clients to full-service agencies",
+        "Leaving money on the table by not offering upsells",
+        "Struggling to learn new skills just to fulfill a single project"
+      ]
     },
     {
       "id": "pain-margins",
       "title": "Margin pressure",
       "blurb": "Random vendors eat your margins. You need transparent, predictable delivery costs.",
-      "icon": "trending-down"
+      "icon": "trending-down",
+      "points": [
+        "Unpredictable freelancer costs shrinking your profit",
+        "Scope creep making projects unprofitable",
+        "Inability to confidently price your services"
+      ]
     },
     {
       "id": "pain-time",
       "title": "Time drain",
       "blurb": "Sales, delivery, client management, ops, all on you. Something's about to break.",
-      "icon": "clock"
+      "icon": "clock",
+      "points": [
+        "Working 80-hour weeks just to keep the lights on",
+        "Zero time spent on actually growing your agency",
+        "Burnout from wearing every hat in the business"
+      ]
     }
   ]
 }

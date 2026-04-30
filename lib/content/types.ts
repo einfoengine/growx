@@ -139,6 +139,7 @@ export type PainCard = {
   title: string;
   blurb: string;
   icon: PainIcon;
+  points?: string[];
 };
 
 export type PainPointsContent = {
