@@ -247,3 +247,24 @@ export type ServicePageContent = {
 };
 
 export type PageSlug = "home";
+
+export type PortfolioCategory = "web" | "social" | "video";
+
+export type PortfolioItem = {
+  id: string;
+  title: string;
+  client: string;
+  tag: string;
+  image: string;
+  category: PortfolioCategory;
+  featured?: boolean;
+};
+
+export type PortfolioContent = {
+  id: string;
+  eyebrow: string;
+  headline: { parts: HeadlinePart[] };
+  sub: string;
+  categories: { key: PortfolioCategory; label: string }[];
+  items: PortfolioItem[];
+};
