@@ -13,7 +13,7 @@
     {
       "id": "cta-banner-primary",
       "label": "Book a Discovery Call",
-      "href": "/book-a-call",
+      "href": "#book",
       "variant": "primary"
     },
     {

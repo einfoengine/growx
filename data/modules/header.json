@@ -21,7 +21,7 @@
   "cta": {
     "id": "mod-header-cta",
     "label": "Book a Discovery Call",
-    "href": "/book-a-call",
+    "href": "#book",
     "variant": "primary"
   }
 }

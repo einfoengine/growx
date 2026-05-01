@@ -26,7 +26,7 @@
       "cta": {
         "id": "cta-starter",
         "label": "Get Started",
-        "href": "/book-a-call",
+        "href": "#book",
         "variant": "ghost"
       }
     },
@@ -47,7 +47,7 @@
       "cta": {
         "id": "cta-pro",
         "label": "Start Free Trial",
-        "href": "/book-a-call",
+        "href": "#book",
         "variant": "primary"
       },
       "highlighted": true
@@ -69,7 +69,7 @@
       "cta": {
         "id": "cta-enterprise",
         "label": "Talk to Sales",
-        "href": "/book-a-call",
+        "href": "#book",
         "variant": "ghost"
       }
     }

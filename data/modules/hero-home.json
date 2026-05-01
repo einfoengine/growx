@@ -17,7 +17,7 @@
     {
       "id": "mod-hero-cta-primary",
       "label": "Book a Discovery Call",
-      "href": "/book-a-call",
+      "href": "#book",
       "variant": "primary"
     },
     {

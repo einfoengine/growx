@@ -37,7 +37,7 @@
       "id": "mod-footer-col-contact",
       "title": "Get in touch",
       "links": [
-        { "id": "footer-contact-book", "label": "Book a Discovery Call", "href": "/book-a-call" },
+        { "id": "footer-contact-book", "label": "Book a Discovery Call", "href": "#book" },
         { "id": "footer-contact-email", "label": "hi@growx.studio", "href": "mailto:hi@growx.studio" }
       ]
     }

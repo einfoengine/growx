@@ -33,7 +33,7 @@ export default function PortfolioCarousel() {
               {PORTFOLIO_ITEMS.map((item, index) => (
                 <div 
                   key={`${groupIndex}-${index}`} 
-                  className="group relative h-[300px] w-[450px] sm:h-[450px] sm:w-[650px] overflow-hidden border-y border-r border-border bg-surface"
+                  className="group relative h-[250px] w-[300px] sm:h-[350px] sm:w-[500px] lg:h-[450px] lg:w-[650px] overflow-hidden border-y border-r border-border bg-surface"
                 >
                   <Image
                     src={item.src}
