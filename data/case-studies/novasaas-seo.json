@@ -1,0 +1,32 @@
+{
+  "id": "cs-novasaas-seo",
+  "slug": "novasaas-seo",
+  "client": "NovaSaaS",
+  "industry": "B2B SaaS",
+  "service": "SEO & AEO",
+  "serviceSlug": "seo-aeo",
+  "duration": "6 months",
+  "tagline": "From invisible to page one — organic growth that compounds.",
+  "description": "NovaSaaS had strong product-market fit but virtually no organic presence. We turned their blog into a lead engine in six months, cutting their dependence on paid channels and building traffic that keeps growing long after the engagement.",
+  "challenge": "NovaSaaS ranked for almost zero transactional keywords despite a technically sound product. Paid acquisition costs were climbing month-over-month and the marketing team needed a sustainable, owned channel. Their existing blog had 40+ articles that were generating no traffic due to poor keyword targeting, weak internal linking, and no structured data.",
+  "solution": "We rebuilt their content strategy from the ground up around high-intent buyer keywords mapped to each funnel stage. Legacy articles were refreshed with updated data, better headings, and answer-engine optimisation markup. A targeted link-building campaign focused on SaaS-adjacent publications secured 28 new referring domains in the first quarter alone. We also implemented a content velocity system so their in-house writer could publish two SEO-optimised posts per week without bottlenecks.",
+  "results": [
+    { "id": "r1", "value": "340%", "label": "Increase in organic traffic" },
+    { "id": "r2", "value": "#1", "label": "Rankings for 12 target keywords" },
+    { "id": "r3", "value": "28", "label": "New referring domains in Q1" },
+    { "id": "r4", "value": "4.1×", "label": "Growth in demo sign-ups" }
+  ],
+  "testimonial": {
+    "quote": "growX didn't just deliver traffic — they delivered qualified buyers. Our sales team noticed the difference within 60 days and we've since cut our paid spend by 40%.",
+    "author": "Priya Nair",
+    "title": "Head of Marketing, NovaSaaS"
+  },
+  "services": [
+    "Keyword Research & Mapping",
+    "Content Refresh & Creation",
+    "AEO Structured Data",
+    "Link Building",
+    "Content Velocity System",
+    "Monthly Reporting"
+  ]
+}

@@ -268,3 +268,116 @@ export type PortfolioContent = {
   categories: { key: PortfolioCategory; label: string }[];
   items: PortfolioItem[];
 };
+
+export type AboutStat = {
+  id: string;
+  value: string;
+  label: string;
+};
+
+export type AboutValue = {
+  id: string;
+  title: string;
+  description: string;
+};
+
+export type AboutPillar = {
+  id: string;
+  label: string;
+};
+
+export type FounderExperience = {
+  id: string;
+  role: string;
+  company: string;
+  period: string;
+};
+
+export type FounderSocial = {
+  platform: "linkedin" | "twitter" | "instagram";
+  url: string;
+};
+
+export type Founder = {
+  id: string;
+  name: string;
+  role: string;
+  bio: string;
+  qualifications: string[];
+  experience: FounderExperience[];
+  socials: FounderSocial[];
+  image?: string;
+  initials: string;
+  avatarColor: string;
+};
+
+export type TeamMember = {
+  id: string;
+  name: string;
+  role: string;
+  department: string;
+  bio: string;
+  image?: string;
+  initials: string;
+  avatarColor: string;
+};
+
+export type AboutContent = {
+  id: string;
+  hero: {
+    eyebrow: string;
+    headline: string;
+    sub: string;
+  };
+  mission: {
+    eyebrow: string;
+    headline: string;
+    body: string;
+  };
+  founders: Founder[];
+  team: TeamMember[];
+  values: AboutValue[];
+  stats: AboutStat[];
+  approach: {
+    eyebrow: string;
+    headline: string;
+    body: string;
+    pillars: AboutPillar[];
+  };
+  featuredTestimonial: {
+    quote: string;
+    author: string;
+    title: string;
+    metric: string;
+    metricLabel: string;
+  };
+};
+
+export type CaseStudyResult = {
+  id: string;
+  value: string;
+  label: string;
+};
+
+export type CaseStudyTestimonial = {
+  quote: string;
+  author: string;
+  title: string;
+};
+
+export type CaseStudy = {
+  id: string;
+  slug: string;
+  client: string;
+  industry: string;
+  service: string;
+  serviceSlug: string;
+  duration: string;
+  tagline: string;
+  description: string;
+  challenge: string;
+  solution: string;
+  results: CaseStudyResult[];
+  testimonial?: CaseStudyTestimonial;
+  services: string[];
+};
