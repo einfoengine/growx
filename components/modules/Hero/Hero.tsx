@@ -1,4 +1,5 @@
 import HeroAnimatedContent from "@/components/modules/Hero/HeroAnimatedContent";
+import MouseGlow from "@/components/elements/MouseGlow";
 import { getHero } from "@/lib/content";
 
 export default async function Hero() {
@@ -10,6 +11,7 @@ export default async function Hero() {
       aria-labelledby={`${data.id}-headline`}
       className="relative isolate overflow-hidden bg-background"
     >
+      <MouseGlow />
       {/* Dot grid */}
       <div
         id={`${data.id}-bg-grid`}
