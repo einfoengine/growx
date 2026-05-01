@@ -1,6 +1,7 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { motion, useScroll, useTransform } from "framer-motion";
+import { useRef } from "react";
 import {
   Clock,
   Layers,
@@ -30,6 +31,15 @@ type Card = {
 };
 
 export default function PainPointsCards({ cards }: { cards: Card[] }) {
+  const ctaRef = useRef<HTMLDivElement>(null);
+  const { scrollYProgress } = useScroll({
+    target: ctaRef,
+    offset: ["start 90%", "center center"],
+  });
+  
+  const textScale = useTransform(scrollYProgress, [0, 1], [0.8, 1.25]);
+  const textOpacity = useTransform(scrollYProgress, [0, 1], [0.3, 1]);
+
   return (
     <>
       <div className="mt-20 flex flex-col gap-6">
@@ -95,19 +105,20 @@ export default function PainPointsCards({ cards }: { cards: Card[] }) {
       </div>
       
       {/* End CTA */}
-      <motion.div
-        initial={{ opacity: 0, y: 40 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true, margin: "-50px" }}
-        transition={{ duration: 0.6 }}
-        className="mt-16 flex flex-col items-center justify-center py-20 px-6 text-center"
-      >
-        <h3 className="text-3xl font-semibold tracking-tight text-white sm:text-4xl">
+      <div ref={ctaRef} className="mt-16 flex flex-col items-center justify-center py-32 text-center overflow-hidden">
+        <motion.h3 
+          style={{ scale: textScale, opacity: textOpacity }}
+          className="text-4xl font-bold tracking-tight text-white sm:text-5xl md:text-6xl lg:text-7xl"
+        >
           Pitch big, we will deliver
-        </h3>
-        <a
+        </motion.h3>
+        <motion.a
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-50px" }}
+          transition={{ duration: 0.5, delay: 0.2 }}
           href="/contact"
-          className="group mt-8 inline-flex items-center gap-2 rounded-full bg-brand px-8 py-3.5 text-sm font-semibold text-black transition-all hover:scale-105 hover:bg-[#059669] hover:shadow-[0_0_30px_rgba(16,185,129,0.4)]"
+          className="group mt-12 inline-flex items-center gap-2 rounded-full bg-brand px-8 py-4 text-sm font-semibold text-black transition-all hover:scale-105 hover:bg-[#059669] hover:shadow-[0_0_30px_rgba(16,185,129,0.4)]"
         >
           Lets engage in a meeting
           <svg
@@ -125,8 +136,8 @@ export default function PainPointsCards({ cards }: { cards: Card[] }) {
             <path d="M5 12h14" />
             <path d="m12 5 7 7-7 7" />
           </svg>
-        </a>
-      </motion.div>
+        </motion.a>
+      </div>
     </>
   );
 }
