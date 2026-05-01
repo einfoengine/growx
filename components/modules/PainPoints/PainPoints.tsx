@@ -1,6 +1,6 @@
 import Headline from "@/components/elements/Headline";
 import ScrollFadeIn from "@/components/elements/ScrollFadeIn";
-import PainPointsAccordion from "./PainPointsAccordion";
+import PainPointsCards from "./PainPointsCards";
 import { getPainPoints } from "@/lib/content";
 
 export default async function PainPoints() {
@@ -10,7 +10,7 @@ export default async function PainPoints() {
     <section
       id={data.id}
       aria-labelledby={`${data.id}-headline`}
-      className="relative isolate overflow-hidden bg-foreground text-background"
+      className="relative isolate overflow-x-clip bg-foreground text-background"
     >
       <div
         id={`${data.id}-bg-glow`}
@@ -46,7 +46,7 @@ export default async function PainPoints() {
           </div>
         </ScrollFadeIn>
 
-        <PainPointsAccordion cards={data.cards} />
+        <PainPointsCards cards={data.cards} />
       </div>
     </section>
   );

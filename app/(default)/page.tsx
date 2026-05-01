@@ -15,7 +15,7 @@ export default function HomePage() {
     <>
       <Hero />
       <ScrollReveal><LogoMarquee /></ScrollReveal>
-      <ScrollReveal><PainPoints /></ScrollReveal>
+      <PainPoints />
       <ScrollReveal><Services /></ScrollReveal>
       <ScrollReveal><Testimonials /></ScrollReveal>
       <ScrollReveal><Pricing noPaddingTop /></ScrollReveal>

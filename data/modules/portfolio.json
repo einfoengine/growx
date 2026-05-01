@@ -1,0 +1,61 @@
+{
+  "id": "mod-portfolio",
+  "eyebrow": "Our Work",
+  "headline": {
+    "parts": [
+      { "type": "text", "value": "Results you can " },
+      { "type": "highlight", "value": "see" }
+    ]
+  },
+  "sub": "A curated look at the websites, campaigns, and creative content we've delivered for our agency partners.",
+  "categories": [
+    { "key": "web", "label": "Web Design & Dev" },
+    { "key": "social", "label": "Social Media" },
+    { "key": "video", "label": "Video & Reels" }
+  ],
+  "items": [
+    {
+      "id": "pf-web-1",
+      "title": "Agency Landing Page",
+      "client": "Nexus Digital",
+      "tag": "Web Design",
+      "image": "/assets/portfolio/web-1.png",
+      "category": "web",
+      "featured": true
+    },
+    {
+      "id": "pf-web-2",
+      "title": "E-Commerce Storefront",
+      "client": "Luna Living",
+      "tag": "Web Development",
+      "image": "/assets/portfolio/web-2.png",
+      "category": "web"
+    },
+    {
+      "id": "pf-web-3",
+      "title": "SaaS Analytics Dashboard",
+      "client": "Fintech Analytics",
+      "tag": "Web Development",
+      "image": "/assets/portfolio/web-3.png",
+      "category": "web"
+    },
+    {
+      "id": "pf-social-1",
+      "title": "Brand Awareness Campaign",
+      "client": "The Agency Co.",
+      "tag": "Social Media",
+      "image": "/assets/portfolio/social-1.png",
+      "category": "social",
+      "featured": true
+    },
+    {
+      "id": "pf-social-2",
+      "title": "Growth Masterclass Reel",
+      "client": "Arcane Agency",
+      "tag": "Video Reel",
+      "image": "/assets/portfolio/social-2.png",
+      "category": "video",
+      "featured": true
+    }
+  ]
+}

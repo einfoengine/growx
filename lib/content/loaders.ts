@@ -18,6 +18,7 @@ import testimonialsData from "@/data/modules/testimonials.json";
 import pricingData from "@/data/modules/pricing.json";
 import comparisonData from "@/data/modules/comparison.json";
 import growthCalculatorData from "@/data/modules/growth-calculator.json";
+import portfolioData from "@/data/modules/portfolio.json";
 import type {
   ServicePageContent,
   ComparisonContent,
@@ -30,6 +31,7 @@ import type {
   LogoMarqueeContent,
   PageSlug,
   PainPointsContent,
+  PortfolioContent,
   PricingContent,
   ProcessContent,
   ServicesContent,
@@ -95,6 +97,10 @@ export async function getComparison(): Promise<ComparisonContent> {
 
 export async function getGrowthCalculator(): Promise<GrowthCalculatorContent> {
   return growthCalculatorData as GrowthCalculatorContent;
+}
+
+export async function getPortfolio(): Promise<PortfolioContent> {
+  return portfolioData as PortfolioContent;
 }
 
 const SERVICE_PAGES: Record<string, ServicePageContent> = {
