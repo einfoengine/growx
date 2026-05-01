@@ -1,5 +1,6 @@
 import Headline from "@/components/elements/Headline";
 import ScrollFadeIn from "@/components/elements/ScrollFadeIn";
+import Eyebrow from "@/components/elements/Eyebrow";
 import PainPointsCards from "./PainPointsCards";
 import { getPainPoints } from "@/lib/content";
 
@@ -31,9 +32,7 @@ export default async function PainPoints() {
             id={`${data.id}-intro`}
             className="mx-auto max-w-2xl text-center"
           >
-            <p className="text-xs font-semibold uppercase tracking-[0.18em] text-brand">
-              {data.eyebrow}
-            </p>
+            <Eyebrow text={data.eyebrow} />
             <Headline
               id={`${data.id}-headline`}
               parts={data.headline.parts}

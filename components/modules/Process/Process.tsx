@@ -1,6 +1,7 @@
 import Headline from "@/components/elements/Headline";
 import ScrollFadeIn from "@/components/elements/ScrollFadeIn";
 import { getProcess } from "@/lib/content";
+import Eyebrow from "@/components/elements/Eyebrow";
 
 export default async function Process({ noPaddingTop }: { noPaddingTop?: boolean }) {
   const data = await getProcess();
@@ -17,9 +18,7 @@ export default async function Process({ noPaddingTop }: { noPaddingTop?: boolean
             id={`${data.id}-intro`}
             className="mx-auto max-w-3xl text-center"
           >
-            <p className="text-xs font-semibold uppercase tracking-[0.18em] text-brand">
-              {data.eyebrow}
-            </p>
+            <Eyebrow text={data.eyebrow} />
             <Headline
               id={`${data.id}-headline`}
               parts={data.headline.parts}

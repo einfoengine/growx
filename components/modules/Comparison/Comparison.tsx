@@ -2,6 +2,7 @@ import { Check, X } from "lucide-react";
 import Headline from "@/components/elements/Headline";
 import ScrollFadeIn from "@/components/elements/ScrollFadeIn";
 import { getComparison } from "@/lib/content";
+import Eyebrow from "@/components/elements/Eyebrow";
 
 function Cell({
   value,
@@ -48,7 +49,7 @@ export default async function Comparison({ noPaddingTop }: { noPaddingTop?: bool
       <div className={`container-1200 relative ${noPaddingTop ? "pb-24 pt-0 sm:pb-32 lg:pb-40" : "py-24 sm:py-32 lg:py-40"}`}>
         <ScrollFadeIn delay={0.1}>
           <div className="mx-auto max-w-3xl text-center">
-            <p className="text-sm font-semibold text-brand">{data.eyebrow}</p>
+            <Eyebrow text={data.eyebrow} />
             <Headline
               id={`${data.id}-headline`}
               parts={data.headline.parts}

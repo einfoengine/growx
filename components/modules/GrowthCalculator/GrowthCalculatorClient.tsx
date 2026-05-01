@@ -4,6 +4,7 @@ import { useState, useRef } from "react";
 import Link from "next/link";
 import Headline from "@/components/elements/Headline";
 import type { GrowthCalculatorContent } from "@/lib/content/types";
+import Eyebrow from "@/components/elements/Eyebrow";
 
 type GrowthCalculatorProps = {
   data: GrowthCalculatorContent;
@@ -30,7 +31,7 @@ export default function GrowthCalculatorClient({ data }: GrowthCalculatorProps) 
 
       <div className="container-1200 relative py-24 sm:py-32 lg:py-40">
         <div className="mx-auto max-w-3xl text-center">
-          <p className="text-sm font-semibold text-brand">{data.eyebrow}</p>
+          <Eyebrow text={data.eyebrow} />
           <Headline
             id={`${data.id}-headline`}
             parts={data.headline.parts}

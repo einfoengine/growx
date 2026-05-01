@@ -3,6 +3,7 @@ import { ArrowRight } from "lucide-react";
 import Headline from "@/components/elements/Headline";
 import ScrollFadeIn from "@/components/elements/ScrollFadeIn";
 import { getCtaBanner } from "@/lib/content";
+import Eyebrow from "@/components/elements/Eyebrow";
 
 export default async function CtaBanner() {
   const data = await getCtaBanner();
@@ -30,12 +31,7 @@ export default async function CtaBanner() {
         <ScrollFadeIn delay={0.1}>
           <div className="mx-auto max-w-3xl text-center">
             {data.eyebrow && (
-              <p
-                id={`${data.id}-eyebrow`}
-                className="text-xs font-semibold uppercase tracking-[0.18em] text-brand"
-              >
-                {data.eyebrow}
-              </p>
+              <Eyebrow text={data.eyebrow} />
             )}
             <Headline
               id={`${data.id}-headline`}

@@ -15,6 +15,7 @@ import Headline from "@/components/elements/Headline";
 import ScrollFadeIn from "@/components/elements/ScrollFadeIn";
 import { getServices } from "@/lib/content";
 import type { ServiceIcon } from "@/lib/content";
+import Eyebrow from "@/components/elements/Eyebrow";
 
 type IconProps = { size?: number; className?: string };
 
@@ -46,9 +47,7 @@ export default async function Services() {
             className="grid gap-10 lg:grid-cols-12 lg:items-end"
           >
             <div className="lg:col-span-7">
-              <p className="text-xs font-semibold uppercase tracking-[0.18em] text-brand">
-                {data.eyebrow}
-              </p>
+              <Eyebrow text={data.eyebrow} />
               <Headline
                 id={`${data.id}-headline`}
                 parts={data.headline.parts}

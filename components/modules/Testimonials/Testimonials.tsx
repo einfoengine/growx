@@ -3,6 +3,7 @@ import Headline from "@/components/elements/Headline";
 import ScrollFadeIn from "@/components/elements/ScrollFadeIn";
 import { getTestimonials } from "@/lib/content";
 import type { Testimonial } from "@/lib/content";
+import Eyebrow from "@/components/elements/Eyebrow";
 
 function Stars() {
   return (
@@ -146,9 +147,7 @@ export default async function Testimonials() {
             className="grid gap-6 lg:grid-cols-2 lg:items-end"
           >
             <div>
-              <p className="text-xs font-semibold uppercase tracking-[0.18em] text-brand">
-                {data.eyebrow}
-              </p>
+              <Eyebrow text={data.eyebrow} />
               <Headline
                 id={`${data.id}-headline`}
                 parts={data.headline.parts}
