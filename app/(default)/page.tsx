@@ -1,5 +1,4 @@
 import Comparison from "@/components/modules/Comparison";
-import CtaBanner from "@/components/modules/CtaBanner";
 import Faq from "@/components/modules/Faq";
 import Hero from "@/components/modules/Hero";
 import LogoMarquee from "@/components/modules/LogoMarquee";
@@ -30,7 +29,6 @@ export default function HomePage() {
       <ScrollReveal><BlogSection /></ScrollReveal>
       <ScrollReveal><Faq /></ScrollReveal>
       <ScrollReveal><Newsletter /></ScrollReveal>
-      <ScrollReveal><CtaBanner /></ScrollReveal>
     </>
   );
 }

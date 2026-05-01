@@ -1,5 +1,7 @@
 import Link from "next/link";
 import Logo from "@/components/elements/Logo";
+import MouseGlow from "@/components/elements/MouseGlow";
+import CtaBanner from "@/components/modules/CtaBanner";
 import { getFooter, getSite } from "@/lib/content";
 import type { SocialIcon } from "@/lib/content";
 
@@ -77,9 +79,14 @@ export default async function Footer() {
   return (
     <footer
       id={data.id}
-      className="mt-auto w-full bg-(--footer-bg) text-(--footer-fg)"
+      className="mt-auto w-full bg-(--footer-bg) text-(--footer-fg) relative overflow-hidden"
     >
-      <div className="container-1200 py-16">
+      <CtaBanner />
+      <MouseGlow />
+      <div
+        className="pointer-events-none absolute inset-0 z-0 bg-[linear-gradient(to_right,rgba(255,255,255,0.03)_1px,transparent_1px),linear-gradient(to_bottom,rgba(255,255,255,0.03)_1px,transparent_1px)] bg-[size:48px_48px]"
+      />
+      <div className="container-1200 py-16 relative z-10">
         <div
           id={`${data.id}-top`}
           className="grid gap-10 lg:grid-cols-12 lg:gap-12 pb-12 border-b border-white/10"
