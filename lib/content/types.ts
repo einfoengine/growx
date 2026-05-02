@@ -381,3 +381,71 @@ export type CaseStudy = {
   testimonial?: CaseStudyTestimonial;
   services: string[];
 };
+
+export type ProcessJourneyStep = {
+  id: string;
+  title: string;
+  body: string;
+};
+
+export type ProcessJourneyPhase = {
+  id: string;
+  number: string;
+  label: string;
+  title: string;
+  description: string;
+  steps: ProcessJourneyStep[];
+};
+
+export type ProcessChannel = {
+  id: string;
+  name: string;
+  description: string;
+};
+
+export type ProcessCadenceItem = {
+  id: string;
+  period: string;
+  action: string;
+};
+
+export type ProcessPromise = {
+  id: string;
+  title: string;
+  description: string;
+};
+
+export type ProcessFaqItem = {
+  id: string;
+  question: string;
+  answer: string;
+};
+
+export type ProcessPageContent = {
+  id: string;
+  hero: {
+    eyebrow: string;
+    headline: string;
+    sub: string;
+  };
+  journey: {
+    eyebrow: string;
+    headline: string;
+    sub: string;
+    phases: ProcessJourneyPhase[];
+  };
+  communication: {
+    eyebrow: string;
+    headline: string;
+    sub: string;
+    channels: ProcessChannel[];
+    cadence: ProcessCadenceItem[];
+  };
+  whiteLabel: {
+    eyebrow: string;
+    headline: string;
+    sub: string;
+    promises: ProcessPromise[];
+  };
+  faq: ProcessFaqItem[];
+};

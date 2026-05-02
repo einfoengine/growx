@@ -1,4 +1,5 @@
 import aboutData from "@/data/modules/about.json";
+import processPageData from "@/data/pages/process.json";
 import caseStudyNovaSaasData from "@/data/case-studies/novasaas-seo.json";
 import caseStudyMeridianData from "@/data/case-studies/meridian-ppc.json";
 import caseStudyStyleSphereData from "@/data/case-studies/stylesphere-social.json";
@@ -27,6 +28,7 @@ import portfolioData from "@/data/modules/portfolio.json";
 import type {
   AboutContent,
   CaseStudy,
+  ProcessPageContent,
   ServicePageContent,
   ComparisonContent,
   CtaBannerContent,
@@ -52,6 +54,10 @@ const HERO_BY_PAGE: Record<PageSlug, HeroContent> = {
 
 export async function getAbout(): Promise<AboutContent> {
   return aboutData as AboutContent;
+}
+
+export async function getProcessPage(): Promise<ProcessPageContent> {
+  return processPageData as ProcessPageContent;
 }
 
 export async function getSite(): Promise<Site> {

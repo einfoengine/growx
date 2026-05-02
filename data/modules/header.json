@@ -14,7 +14,7 @@
         { "id": "nav-service-funnels", "label": "Funnel Building", "href": "/services/funnels" }
       ]
     },
-    { "id": "nav-process", "label": "Process", "href": "/#mod-process" },
+    { "id": "nav-process", "label": "Process", "href": "/process" },
     { "id": "nav-case-studies", "label": "Case Studies", "href": "/case-studies" },
     { "id": "nav-about", "label": "About", "href": "/about" }
   ],

@@ -1,0 +1,218 @@
+{
+  "id": "page-process",
+
+  "hero": {
+    "eyebrow": "How we work",
+    "headline": "From first call to final delivery — and everything in between.",
+    "sub": "A transparent, repeatable process built for agency owners who need reliable execution without the coordination overhead. No guessing, no chasing, no surprises."
+  },
+
+  "journey": {
+    "eyebrow": "The engagement journey",
+    "headline": "What happens, and when.",
+    "sub": "Every engagement follows the same four-phase rhythm. Whether it's a one-off project or an ongoing retainer, you always know exactly where things stand.",
+    "phases": [
+      {
+        "id": "journey-phase-1",
+        "number": "01",
+        "label": "Booking",
+        "title": "Book a discovery call",
+        "description": "The process starts with a single 30-minute call. No lengthy questionnaires, no sales decks, no pressure.",
+        "steps": [
+          {
+            "id": "jp1-s1",
+            "title": "Book online in 60 seconds",
+            "body": "Pick a time that suits you from our calendar. You'll get a confirmation with a brief pre-call form — three questions, two minutes."
+          },
+          {
+            "id": "jp1-s2",
+            "title": "30-minute discovery call",
+            "body": "We scope the brief, understand your client's goals, and confirm whether we're the right fit. If we're not, we'll tell you on the call."
+          },
+          {
+            "id": "jp1-s3",
+            "title": "Proposal in your inbox within 24 hours",
+            "body": "Custom scope, fixed timeline, and a locked price. No hourly rates, no change order surprises. You approve or push back — we iterate until it's right."
+          }
+        ]
+      },
+      {
+        "id": "journey-phase-2",
+        "number": "02",
+        "label": "Kickoff",
+        "title": "Brief to kickoff in 48 hours",
+        "description": "Once you sign off on the proposal, we move fast. Your dedicated team is briefed and your project is live within two business days.",
+        "steps": [
+          {
+            "id": "jp2-s1",
+            "title": "Team assignment",
+            "body": "Your project is assigned to a specialist team — not a generalist VA. The right people for the specific service, every time."
+          },
+          {
+            "id": "jp2-s2",
+            "title": "Onboarding to your tools",
+            "body": "We join your Slack, your Notion, your Linear — whatever you already use. No new tools forced on your workflow unless you want them."
+          },
+          {
+            "id": "jp2-s3",
+            "title": "Kickoff call and milestone map",
+            "body": "A 30-minute kickoff call to walk through the scope, confirm deliverables, and align on the milestone map. Then we get to work."
+          }
+        ]
+      },
+      {
+        "id": "journey-phase-3",
+        "number": "03",
+        "label": "Delivery",
+        "title": "Execution with full visibility",
+        "description": "You stay in control without doing the work. Daily updates, weekly demos, and a single point of contact throughout the project.",
+        "steps": [
+          {
+            "id": "jp3-s1",
+            "title": "Daily async updates",
+            "body": "Every business day, a short Slack update lands in your channel: what was done, what's next, and any blockers. No chasing required."
+          },
+          {
+            "id": "jp3-s2",
+            "title": "Weekly progress demo",
+            "body": "Every Friday, a 20-minute video call to walk through that week's output, gather your feedback, and confirm next week's priorities."
+          },
+          {
+            "id": "jp3-s3",
+            "title": "Structured revision rounds",
+            "body": "Feedback is collected in one round per milestone — not an open-ended back-and-forth. Unlimited revisions within scope, processed within 48 hours."
+          }
+        ]
+      },
+      {
+        "id": "journey-phase-4",
+        "number": "04",
+        "label": "Handoff",
+        "title": "Clean delivery, ready to present",
+        "description": "Every project is handed off in a format that makes you look good — under your brand, with documentation your clients can actually use.",
+        "steps": [
+          {
+            "id": "jp4-s1",
+            "title": "White-label packaging",
+            "body": "Files, reports, and deliverables are branded with your logo and agency name. Your client sees your work, not ours."
+          },
+          {
+            "id": "jp4-s2",
+            "title": "Handoff documentation",
+            "body": "A plain-English handoff doc covers everything your client needs to know — structured so you can send it directly without editing."
+          },
+          {
+            "id": "jp4-s3",
+            "title": "14-day post-launch window",
+            "body": "Minor fixes and small adjustments in the two weeks after delivery are included at no extra cost. We don't disappear at handoff."
+          }
+        ]
+      }
+    ]
+  },
+
+  "communication": {
+    "eyebrow": "During your subscription",
+    "headline": "You're always in the loop.",
+    "sub": "Retainer partners get a structured communication rhythm that keeps you informed without pulling you into the weeds. You know what's happening without having to ask.",
+    "channels": [
+      {
+        "id": "ch-slack",
+        "name": "Slack",
+        "description": "Direct access to your team. Messages answered same-day during business hours. No ticketing systems, no waiting rooms."
+      },
+      {
+        "id": "ch-demos",
+        "name": "Weekly Demos",
+        "description": "A 20-minute video call every Friday to review output, give feedback, and align on the following week's priorities."
+      },
+      {
+        "id": "ch-board",
+        "name": "Project Board",
+        "description": "Live task tracking in your preferred tool — Notion, Linear, Asana, or ClickUp. Every task has a status, owner, and due date."
+      },
+      {
+        "id": "ch-reports",
+        "name": "Monthly Reports",
+        "description": "A performance summary delivered on the first of each month: what was built, metrics moved, and the priorities for the month ahead."
+      }
+    ],
+    "cadence": [
+      { "id": "cad-daily", "period": "Daily", "action": "Async Slack update — done, doing, blocked" },
+      { "id": "cad-weekly", "period": "Weekly", "action": "20-min Friday demo + next week priorities confirmed" },
+      { "id": "cad-monthly", "period": "Monthly", "action": "Performance report + retainer review call" },
+      { "id": "cad-quarterly", "period": "Quarterly", "action": "Strategic review — results, roadmap, and growth opportunities" }
+    ]
+  },
+
+  "whiteLabel": {
+    "eyebrow": "White-label partnership",
+    "headline": "We stay invisible. You take the credit.",
+    "sub": "Your client never knows we exist. Every touchpoint — files, reports, communications, and deliverables — goes through you, under your brand.",
+    "promises": [
+      {
+        "id": "wl-1",
+        "title": "We never contact your clients directly",
+        "description": "All client-facing communication is yours to own. We supply the updates, you pass them on. Your client relationship stays exactly that — yours."
+      },
+      {
+        "id": "wl-2",
+        "title": "Everything leaves under your brand",
+        "description": "Proposals, reports, files, and handoff docs carry your logo and agency name. Nothing leaves our side with growX branding unless you specifically ask for it."
+      },
+      {
+        "id": "wl-3",
+        "title": "Your pricing is your business",
+        "description": "Our rates are your cost. What you charge your client is entirely your decision. Most partners mark up 30–100%. We never know, and it's not our place to."
+      },
+      {
+        "id": "wl-4",
+        "title": "We join your tools, not the other way around",
+        "description": "We operate inside your Slack workspace, your project board, your email aliases if needed. To your client, it looks like a seamless extension of your team."
+      },
+      {
+        "id": "wl-5",
+        "title": "NDAs available on request",
+        "description": "If your agency or your client requires a non-disclosure agreement, we sign. Standard mutual NDA, returned within 24 hours, no legal wrangling."
+      },
+      {
+        "id": "wl-6",
+        "title": "We escalate to you, never around you",
+        "description": "If a project issue requires a client decision, we flag it to you with a recommended path forward. You make the call. We execute it."
+      }
+    ]
+  },
+
+  "faq": [
+    {
+      "id": "pfaq-1",
+      "question": "How quickly can you start after I sign the proposal?",
+      "answer": "Your project kicks off within 48 hours of proposal sign-off. The team is briefed, tools are set up, and a kickoff call is scheduled — all within two business days."
+    },
+    {
+      "id": "pfaq-2",
+      "question": "What if I need to pause or cancel a retainer?",
+      "answer": "Retainers run month-to-month. Give us 14 days' notice and we'll wrap active work cleanly, hand off everything in progress, and close out with a final report. No lock-in clauses."
+    },
+    {
+      "id": "pfaq-3",
+      "question": "Can I add more work mid-month?",
+      "answer": "Yes. If you have a one-off project outside your retainer scope, we quote it separately and run it in parallel. Your dedicated team handles both without dropping the ball on either."
+    },
+    {
+      "id": "pfaq-4",
+      "question": "Who is my single point of contact?",
+      "answer": "A dedicated delivery manager is assigned at kickoff. They coordinate the specialist team on your behalf, field your Slack messages, and run your weekly demos. One person, full accountability."
+    },
+    {
+      "id": "pfaq-5",
+      "question": "How are revisions handled?",
+      "answer": "Each milestone includes one structured revision round. Feedback is collected in a single session — not drip-fed over days. Revisions are processed within 48 hours. Unlimited revisions within the agreed scope."
+    },
+    {
+      "id": "pfaq-6",
+      "question": "What happens if a deadline is missed?",
+      "answer": "We flag it before it happens — not after. If a milestone is at risk, you'll know 48 hours in advance with a revised timeline and clear reason. We don't hide delays."
+    }
+  ]
+}
