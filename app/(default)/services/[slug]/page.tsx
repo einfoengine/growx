@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { SERVICE_SLUGS, getServicePage } from "@/lib/content";
-import ServicePage from "@/components/templates/ServicePage";
+import LandingPageTemplate from "@/components/templates/LandingPage";
 
 type Params = { params: Promise<{ slug: string }> };
 
@@ -23,5 +23,5 @@ export default async function ServiceLandingPage({ params }: Params) {
   const { slug } = await params;
   const data = await getServicePage(slug);
   if (!data) notFound();
-  return <ServicePage data={data} />;
+  return <LandingPageTemplate data={data} />;
 }

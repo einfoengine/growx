@@ -26,7 +26,7 @@
       "cta": {
         "id": "cta-starter",
         "label": "Get Started",
-        "href": "#book",
+        "href": "#onboard-starter",
         "variant": "ghost"
       }
     },
@@ -46,8 +46,8 @@
       ],
       "cta": {
         "id": "cta-pro",
-        "label": "Start Free Trial",
-        "href": "#book",
+        "label": "Get Started",
+        "href": "#onboard-pro",
         "variant": "primary"
       },
       "highlighted": true

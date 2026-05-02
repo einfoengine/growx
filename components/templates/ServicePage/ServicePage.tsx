@@ -65,7 +65,7 @@ export default function ServicePage({ data }: Props) {
               <div className="mt-8 flex flex-wrap items-center gap-3">
                 <Link
                   id={`${data.id}-cta-primary`}
-                  href="/book-a-call"
+                  href="#book"
                   className="group inline-flex items-center gap-2 rounded-full bg-foreground px-6 py-3 text-sm font-medium text-background transition hover:opacity-90 hover:shadow-[0_0_28px_rgba(16,185,129,0.3)]"
                 >
                   Book a Discovery Call
@@ -251,7 +251,7 @@ export default function ServicePage({ data }: Props) {
           </p>
           <div className="mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row">
             <Link
-              href="/book-a-call"
+              href="#book"
               className="group inline-flex items-center gap-2 rounded-full bg-background px-6 py-3 text-sm font-medium text-foreground transition hover:opacity-90"
             >
               Book a Discovery Call

@@ -1,6 +1,7 @@
 import Header from "@/components/modules/Header";
 import Footer from "@/components/modules/Footer";
 import BookingModal from "@/components/modules/BookingModal/BookingModal";
+import OnboardingModal from "@/components/modules/OnboardingModal/OnboardingModal";
 
 export default function DefaultLayout({
   children,
@@ -15,6 +16,7 @@ export default function DefaultLayout({
       </main>
       <Footer />
       <BookingModal />
+      <OnboardingModal />
     </>
   );
 }

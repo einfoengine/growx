@@ -14,7 +14,7 @@ import type { ComponentType } from "react";
 import Headline from "@/components/elements/Headline";
 import ScrollFadeIn from "@/components/elements/ScrollFadeIn";
 import { getServices } from "@/lib/content";
-import type { ServiceIcon } from "@/lib/content";
+import type { ServiceIcon, ServicesContent } from "@/lib/content";
 import Eyebrow from "@/components/elements/Eyebrow";
 
 type IconProps = { size?: number; className?: string };
@@ -29,13 +29,13 @@ const ICON_BY_KEY: Record<ServiceIcon, ComponentType<IconProps>> = {
   target: Target,
 };
 
-export default async function Services() {
-  const data = await getServices();
+export default async function Services({ data }: { data?: ServicesContent } = {}) {
+  const servicesData = data ?? await getServices();
 
   return (
     <section
-      id={data.id}
-      aria-labelledby={`${data.id}-headline`}
+      id={servicesData.id}
+      aria-labelledby={`${servicesData.id}-headline`}
       className="bg-surface"
       style={{ "--cg": "max(2rem, calc((100vw - 1400px) / 2 + 2rem))" } as React.CSSProperties}
     >
@@ -43,20 +43,20 @@ export default async function Services() {
       <div className="container-1200 pb-14 pt-24 sm:pb-16 sm:pt-28 lg:pb-20 lg:pt-32">
         <ScrollFadeIn delay={0.1}>
           <div
-            id={`${data.id}-intro`}
+            id={`${servicesData.id}-intro`}
             className="grid gap-10 lg:grid-cols-12 lg:items-end"
           >
             <div className="lg:col-span-7">
-              <Eyebrow text={data.eyebrow} />
+              <Eyebrow text={servicesData.eyebrow} />
               <Headline
-                id={`${data.id}-headline`}
-                parts={data.headline.parts}
+                id={`${servicesData.id}-headline`}
+                parts={servicesData.headline.parts}
                 as="h2"
                 className="mt-4 text-4xl font-semibold tracking-tight text-foreground sm:text-5xl lg:text-6xl"
               />
             </div>
             <p className="text-base text-muted lg:col-span-5 lg:max-w-md">
-              {data.sub}
+              {servicesData.sub}
             </p>
           </div>
         </ScrollFadeIn>
@@ -64,10 +64,10 @@ export default async function Services() {
 
       {/* Full-width bordered grid — parent owns top + left edge */}
       <div
-        id={`${data.id}-grid`}
+        id={`${servicesData.id}-grid`}
         className="grid border-l border-t border-border sm:grid-cols-2 lg:grid-cols-3 lg:[&>*:nth-child(3n+1)]:pl-(--cg) lg:[&>*:nth-child(3n)]:pr-(--cg)"
       >
-        {data.cards.map((card, i) => {
+        {servicesData.cards.map((card, i) => {
           const Icon = ICON_BY_KEY[card.icon];
           return (
             <Link

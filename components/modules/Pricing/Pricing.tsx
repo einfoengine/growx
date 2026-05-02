@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { Check } from "lucide-react";
+import PricingCTA from "./PricingCTA";
 import Headline from "@/components/elements/Headline";
 import ScrollFadeIn from "@/components/elements/ScrollFadeIn";
 import { getPricing } from "@/lib/content";
@@ -60,16 +61,24 @@ export default async function Pricing({ noPaddingTop }: { noPaddingTop?: boolean
                   )}
                 </div>
   
-                <Link
-                  href={tier.cta.href}
-                  className={`mt-8 rounded-full py-3 text-center text-sm font-medium transition ${
-                    tier.highlighted
-                      ? "bg-brand text-background hover:bg-brand/90"
-                      : "border border-border text-foreground hover:border-foreground/20 hover:bg-black/5"
-                  }`}
-                >
-                  {tier.cta.label}
-                </Link>
+                {tier.cta.href.startsWith("#onboard-") ? (
+                  <PricingCTA
+                    planKey={tier.cta.href.replace("#onboard-", "")}
+                    label={tier.cta.label}
+                    highlighted={tier.highlighted}
+                  />
+                ) : (
+                  <Link
+                    href={tier.cta.href}
+                    className={`mt-8 block rounded-full py-3 text-center text-sm font-medium transition ${
+                      tier.highlighted
+                        ? "bg-brand text-background hover:bg-brand/90"
+                        : "border border-border text-foreground hover:border-foreground/20 hover:bg-black/5"
+                    }`}
+                  >
+                    {tier.cta.label}
+                  </Link>
+                )}
   
                 <div className="mt-8 space-y-4 border-t border-border pt-8">
                   {tier.features.map((feature, featureIdx) => (
@@ -86,7 +95,7 @@ export default async function Pricing({ noPaddingTop }: { noPaddingTop?: boolean
 
         <p className="mx-auto mt-12 max-w-2xl text-center text-sm text-muted">
           All plans include unlimited revisions, dedicated support, and a satisfaction guarantee. Not sure which plan is right for you?{" "}
-          <Link href="/book-a-call" className="font-semibold text-brand hover:text-brand/80">
+          <Link href="#book" className="font-semibold text-brand hover:text-brand/80">
             Let's talk.
           </Link>
         </p>
