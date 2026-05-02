@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 import Headline from "@/components/elements/Headline";
+import Button from "@/components/elements/Button";
 import type { HeroContent } from "@/lib/content/types";
 
 type HeroAnimatedContentProps = {
@@ -120,18 +121,16 @@ export default function HeroAnimatedContent({ data }: HeroAnimatedContentProps) 
         >
           {data.ctas.map((cta) => {
             const isPrimary = cta.variant === "primary";
-            const className = isPrimary
-              ? "group inline-flex items-center gap-2 rounded-full bg-foreground px-6 py-3 text-sm font-medium text-background shadow-sm transition hover:opacity-90 hover:shadow-[0_0_28px_rgba(16,185,129,0.35)]"
-              : "group inline-flex items-center gap-2 rounded-full border border-border px-5 py-3 text-sm font-medium text-foreground/80 transition hover:border-foreground/20 hover:bg-black/5 hover:text-foreground";
             return (
               <motion.div key={cta.id} variants={ctaVariants}>
-                <Link id={cta.id} href={cta.href} className={className}>
-                  {cta.label}
-                  <ArrowRight
-                    size={isPrimary ? 16 : 14}
-                    className="transition-transform group-hover:translate-x-0.5"
-                  />
-                </Link>
+                <Button
+                  id={cta.id}
+                  label={cta.label}
+                  href={cta.href}
+                  variant={isPrimary ? "primary" : "secondary"}
+                  icon={<ArrowRight size={isPrimary ? 16 : 14} />}
+                  className={isPrimary ? "shadow-sm hover:shadow-[0_0_28px_rgba(16,185,129,0.35)]" : ""}
+                />
               </motion.div>
             );
           })}

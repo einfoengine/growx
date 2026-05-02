@@ -32,7 +32,7 @@ const BLOG_POSTS = [
 
 export default function BlogSection() {
   return (
-    <section className="relative overflow-hidden bg-background py-24 sm:py-32">
+    <section id="mod-blog" className="relative overflow-hidden bg-background py-24 sm:py-32">
       <div className="container-1200">
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-16">
           <SectionHeader

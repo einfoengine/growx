@@ -1,4 +1,3 @@
-import { Plus } from "lucide-react";
 import SectionHeader from "@/components/elements/SectionHeader";
 import ScrollFadeIn from "@/components/elements/ScrollFadeIn";
 import { getFaq } from "@/lib/content";

@@ -2,6 +2,7 @@ import Link from "next/link";
 import { ArrowLeft, ArrowRight, Check, RefreshCw, Sparkles } from "lucide-react";
 import type { ServicePageContent, ServicePricingModel } from "@/lib/content";
 import SectionHeader from "@/components/elements/SectionHeader";
+import Button from "@/components/elements/Button";
 
 const PRICING_LABELS: Record<ServicePricingModel, { label: string; description: string }> = {
   "one-off": { label: "One-off project", description: "Scoped, quoted, delivered." },
@@ -64,22 +65,20 @@ export default function ServicePage({ data }: Props) {
               </p>
 
               <div className="mt-8 flex flex-wrap items-center gap-3">
-                <Link
+                <Button
                   id={`${data.id}-cta-primary`}
+                  label="Book a Discovery Call"
                   href="#book"
-                  className="group inline-flex items-center gap-2 rounded-full bg-foreground px-6 py-3 text-sm font-medium text-background transition hover:opacity-90 hover:shadow-[0_0_28px_rgba(16,185,129,0.3)]"
-                >
-                  Book a Discovery Call
-                  <ArrowRight size={15} className="transition-transform group-hover:translate-x-0.5" />
-                </Link>
-                <Link
+                  icon={<ArrowRight size={15} />}
+                  className="hover:shadow-[0_0_28px_rgba(16,185,129,0.3)]"
+                />
+                <Button
                   id={`${data.id}-cta-secondary`}
+                  label="Explore all services"
                   href="/#mod-services"
-                  className="inline-flex items-center gap-1.5 text-sm font-medium text-foreground/70 transition hover:text-foreground"
-                >
-                  Explore all services
-                  <ArrowRight size={13} />
-                </Link>
+                  variant="ghost"
+                  icon={<ArrowRight size={13} />}
+                />
               </div>
             </div>
 
@@ -238,19 +237,8 @@ export default function ServicePage({ data }: Props) {
             align="center"
           />
           <div className="mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row">
-            <Link
-              href="#book"
-              className="group inline-flex items-center gap-2 rounded-full bg-background px-6 py-3 text-sm font-medium text-foreground transition hover:opacity-90"
-            >
-              Book a Discovery Call
-              <ArrowRight size={15} className="transition-transform group-hover:translate-x-0.5" />
-            </Link>
-            <Link
-              href="/#mod-services"
-              className="inline-flex items-center gap-2 rounded-full border border-white/15 px-5 py-3 text-sm font-medium text-white/80 transition hover:border-white/30 hover:text-white"
-            >
-              View all services
-            </Link>
+            <Button label="Book a Discovery Call" href="#book" icon={<ArrowRight size={15} />} darkBg />
+            <Button label="View all services" href="/#mod-services" variant="secondary" darkBg />
           </div>
         </div>
       </section>

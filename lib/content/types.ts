@@ -250,14 +250,27 @@ export type PageSlug = "home";
 
 export type PortfolioCategory = "web" | "social" | "video";
 
+export type PortfolioMedia = {
+  type: "image" | "video";
+  src: string;
+  alt?: string;
+};
+
 export type PortfolioItem = {
   id: string;
+  slug: string;
   title: string;
   client: string;
   tag: string;
   image: string;
   category: PortfolioCategory;
   featured?: boolean;
+  description: string;
+  problem: string;
+  technologies: string[];
+  duration: string;
+  rating: number;
+  media: PortfolioMedia[];
 };
 
 export type PortfolioContent = {

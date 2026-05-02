@@ -41,6 +41,7 @@ import type {
   PageSlug,
   PainPointsContent,
   PortfolioContent,
+  PortfolioItem,
   PricingContent,
   ProcessContent,
   ServicesContent,
@@ -118,6 +119,16 @@ export async function getGrowthCalculator(): Promise<GrowthCalculatorContent> {
 
 export async function getPortfolio(): Promise<PortfolioContent> {
   return portfolioData as PortfolioContent;
+}
+
+export const WORK_ITEM_SLUGS = (portfolioData as PortfolioContent).items.map(
+  (item) => item.slug
+);
+
+export async function getWorkItem(slug: string): Promise<PortfolioItem | null> {
+  return (
+    (portfolioData as PortfolioContent).items.find((item) => item.slug === slug) ?? null
+  );
 }
 
 const SERVICE_PAGES: Record<string, ServicePageContent> = {

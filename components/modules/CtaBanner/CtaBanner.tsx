@@ -1,6 +1,6 @@
-import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 import SectionHeader from "@/components/elements/SectionHeader";
+import Button from "@/components/elements/Button";
 import ScrollFadeIn from "@/components/elements/ScrollFadeIn";
 import { getCtaBanner } from "@/lib/content";
 
@@ -46,22 +46,16 @@ export default async function CtaBanner() {
             >
               {data.ctas.map((cta) => {
                 const isPrimary = cta.variant === "primary";
-                const className = isPrimary
-                  ? "group inline-flex items-center gap-2 rounded-full bg-background px-6 py-3 text-sm font-medium text-foreground shadow-sm transition hover:opacity-90"
-                  : "group inline-flex items-center gap-2 rounded-full border border-white/15 px-5 py-3 text-sm font-medium text-white/80 transition hover:border-white/30 hover:text-white";
                 return (
-                  <Link
+                  <Button
                     key={cta.id}
                     id={cta.id}
+                    label={cta.label}
                     href={cta.href}
-                    className={className}
-                  >
-                    {cta.label}
-                    <ArrowRight
-                      size={isPrimary ? 16 : 14}
-                      className="transition-transform group-hover:translate-x-0.5"
-                    />
-                  </Link>
+                    variant={isPrimary ? "primary" : "secondary"}
+                    icon={<ArrowRight size={isPrimary ? 16 : 14} />}
+                    darkBg
+                  />
                 );
               })}
             </div>

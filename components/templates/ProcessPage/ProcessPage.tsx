@@ -1,7 +1,7 @@
-import Link from "next/link";
 import { ArrowRight, Check, MessageSquare, BarChart3, Layout, FileText } from "lucide-react";
 import type { ProcessPageContent, ProcessChannel } from "@/lib/content";
 import SectionHeader from "@/components/elements/SectionHeader";
+import Button from "@/components/elements/Button";
 
 const CHANNEL_ICONS: Record<string, typeof Check> = {
   Slack: MessageSquare,
@@ -31,19 +31,8 @@ export default function ProcessPage({ data }: Props) {
             subClassName="mt-6 max-w-2xl text-base leading-relaxed text-muted sm:text-lg"
           />
           <div className="mt-8 flex flex-wrap gap-3">
-            <Link
-              href="#book"
-              className="group inline-flex items-center gap-2 rounded-full bg-foreground px-6 py-3 text-sm font-medium text-background transition hover:opacity-90"
-            >
-              Book a discovery call
-              <ArrowRight size={15} className="transition-transform group-hover:translate-x-0.5" />
-            </Link>
-            <Link
-              href="/case-studies"
-              className="inline-flex items-center gap-2 rounded-full border border-border px-5 py-3 text-sm font-medium text-foreground/70 transition hover:border-foreground/30 hover:text-foreground"
-            >
-              See our work
-            </Link>
+            <Button label="Book a discovery call" href="#book" icon={<ArrowRight size={15} />} />
+            <Button label="See our work" href="/case-studies" variant="secondary" />
           </div>
         </div>
       </section>
@@ -177,13 +166,7 @@ export default function ProcessPage({ data }: Props) {
                 sub={data.whiteLabel.sub}
                 subClassName="mt-4 text-base leading-relaxed text-muted"
               />
-              <Link
-                href="#book"
-                className="group mt-8 inline-flex items-center gap-2 rounded-full bg-foreground px-6 py-3 text-sm font-medium text-background transition hover:opacity-90"
-              >
-                Become a partner
-                <ArrowRight size={15} className="transition-transform group-hover:translate-x-0.5" />
-              </Link>
+              <Button label="Become a partner" href="#book" icon={<ArrowRight size={15} />} className="mt-8" />
             </div>
 
             <div className="space-y-0 divide-y divide-border border border-border">
@@ -252,19 +235,8 @@ export default function ProcessPage({ data }: Props) {
             align="center"
           />
           <div className="mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row">
-            <Link
-              href="#book"
-              className="group inline-flex items-center gap-2 rounded-full bg-foreground px-6 py-3 text-sm font-medium text-background transition hover:opacity-90"
-            >
-              Book a Discovery Call
-              <ArrowRight size={15} className="transition-transform group-hover:translate-x-0.5" />
-            </Link>
-            <Link
-              href="/case-studies"
-              className="inline-flex items-center gap-2 rounded-full border border-border px-5 py-3 text-sm font-medium text-foreground/70 transition hover:border-foreground/30 hover:text-foreground"
-            >
-              See our results
-            </Link>
+            <Button label="Book a Discovery Call" href="#book" icon={<ArrowRight size={15} />} />
+            <Button label="See our results" href="/case-studies" variant="secondary" />
           </div>
         </div>
       </section>

@@ -3,7 +3,7 @@ import { ArrowRight } from "lucide-react";
 
 export default function Newsletter() {
   return (
-    <section className="relative overflow-hidden bg-background py-24 sm:py-32">
+    <section id="mod-newsletter" className="relative overflow-hidden bg-background py-24 sm:py-32">
       <div className="container-1200">
         <div className="relative overflow-hidden rounded-[3rem] bg-surface border border-border px-6 py-20 sm:px-16 sm:py-24 text-center">
           {/* Background glows */}

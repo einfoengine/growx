@@ -2,6 +2,7 @@ import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 import type { CaseStudy } from "@/lib/content";
 import SectionHeader from "@/components/elements/SectionHeader";
+import Button from "@/components/elements/Button";
 
 const SERVICE_COLORS: Record<string, string> = {
   "seo-aeo": "bg-emerald-50 text-emerald-700 border-emerald-200",
@@ -63,19 +64,8 @@ export default function CaseStudiesPage({ caseStudies }: Props) {
             align="center"
           />
           <div className="mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row">
-            <Link
-              href="#book"
-              className="group inline-flex items-center gap-2 rounded-full bg-foreground px-6 py-3 text-sm font-medium text-background transition hover:opacity-90"
-            >
-              Book a Discovery Call
-              <ArrowRight size={15} className="transition-transform group-hover:translate-x-0.5" />
-            </Link>
-            <Link
-              href="/#mod-services"
-              className="inline-flex items-center gap-2 rounded-full border border-border px-5 py-3 text-sm font-medium text-foreground/70 transition hover:border-foreground/30 hover:text-foreground"
-            >
-              View all services
-            </Link>
+            <Button label="Book a Discovery Call" href="#book" icon={<ArrowRight size={15} />} />
+            <Button label="View all services" href="/#mod-services" variant="secondary" />
           </div>
         </div>
       </section>

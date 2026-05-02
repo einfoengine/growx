@@ -11,7 +11,7 @@ const ITEMS = [
 
 export default function TextMarquee() {
   return (
-    <section className="relative overflow-hidden border-y border-border bg-background sm:py-12">
+    <section id="mod-text-marquee" className="relative overflow-hidden border-y border-border bg-background sm:py-12">
       <div className="relative flex w-full overflow-hidden mask-[linear-gradient(to_right,transparent,#000_8%,#000_92%,transparent)]">
         <div className="flex w-fit animate-[marquee_25s_linear_infinite] hover:[animation-play-state:paused]">
           {[...Array(4)].map((_, groupIndex) => (

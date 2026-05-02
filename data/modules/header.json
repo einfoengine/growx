@@ -15,7 +15,7 @@
       ]
     },
     { "id": "nav-process", "label": "Process", "href": "/process" },
-    { "id": "nav-case-studies", "label": "Case Studies", "href": "/case-studies" },
+    { "id": "nav-works", "label": "Works", "href": "/works" },
     { "id": "nav-about", "label": "About", "href": "/about" }
   ],
   "cta": {

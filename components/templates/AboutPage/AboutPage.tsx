@@ -1,9 +1,10 @@
-import Link from "next/link";
 import Image from "next/image";
-import { ArrowRight, Check, Quote } from "lucide-react";
+import { Check, Quote } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 import type { AboutContent, TeamMember } from "@/lib/content";
 import FoundersSection from "./FoundersSection";
 import SectionHeader from "@/components/elements/SectionHeader";
+import Button from "@/components/elements/Button";
 
 const AVATAR_COLORS: Record<string, string> = {
   emerald: "bg-emerald-100 text-emerald-700",
@@ -48,19 +49,8 @@ export default function AboutPage({ data }: Props) {
             subClassName="mt-6 max-w-2xl text-base leading-relaxed text-muted sm:text-lg"
           />
           <div className="mt-8 flex flex-wrap gap-3">
-            <Link
-              href="#book"
-              className="group inline-flex items-center gap-2 rounded-full bg-foreground px-6 py-3 text-sm font-medium text-background transition hover:opacity-90"
-            >
-              Work with us
-              <ArrowRight size={15} className="transition-transform group-hover:translate-x-0.5" />
-            </Link>
-            <Link
-              href="/case-studies"
-              className="inline-flex items-center gap-2 rounded-full border border-border px-5 py-3 text-sm font-medium text-foreground/70 transition hover:border-foreground/30 hover:text-foreground"
-            >
-              See our work
-            </Link>
+            <Button label="Work with us" href="#book" icon={<ArrowRight size={15} />} />
+            <Button label="See our work" href="/case-studies" variant="secondary" />
           </div>
         </div>
       </section>
@@ -247,19 +237,8 @@ export default function AboutPage({ data }: Props) {
             align="center"
           />
           <div className="mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row">
-            <Link
-              href="#book"
-              className="group inline-flex items-center gap-2 rounded-full bg-foreground px-6 py-3 text-sm font-medium text-background transition hover:opacity-90"
-            >
-              Book a Discovery Call
-              <ArrowRight size={15} className="transition-transform group-hover:translate-x-0.5" />
-            </Link>
-            <Link
-              href="/case-studies"
-              className="inline-flex items-center gap-2 rounded-full border border-border px-5 py-3 text-sm font-medium text-foreground/70 transition hover:border-foreground/30 hover:text-foreground"
-            >
-              View case studies
-            </Link>
+            <Button label="Book a Discovery Call" href="#book" icon={<ArrowRight size={15} />} />
+            <Button label="View case studies" href="/case-studies" variant="secondary" />
           </div>
         </div>
       </section>

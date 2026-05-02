@@ -16,46 +16,101 @@
   "items": [
     {
       "id": "pf-web-1",
+      "slug": "agency-landing-page",
       "title": "Agency Landing Page",
       "client": "Nexus Digital",
       "tag": "Web Design",
       "image": "/assets/portfolio/web-1.png",
       "category": "web",
-      "featured": true
+      "featured": true,
+      "description": "A high-converting agency landing page built to turn cold traffic into booked calls. The design focuses on social proof, clear service positioning, and a frictionless booking flow.",
+      "problem": "Nexus Digital had strong inbound traffic but a landing page that failed to communicate their value proposition. Visitors were bouncing before reaching the CTA, and the booking rate was under 1.2%.",
+      "technologies": ["Next.js", "Tailwind CSS", "Framer Motion", "Figma"],
+      "duration": "3 weeks",
+      "rating": 5,
+      "media": [
+        { "type": "image", "src": "/assets/portfolio/web-1.png", "alt": "Agency landing page hero section" },
+        { "type": "image", "src": "/assets/portfolio/web-2.png", "alt": "Services and social proof section" },
+        { "type": "image", "src": "/assets/portfolio/web-3.png", "alt": "Mobile responsive view" }
+      ]
     },
     {
       "id": "pf-web-2",
+      "slug": "ecommerce-storefront",
       "title": "E-Commerce Storefront",
       "client": "Luna Living",
       "tag": "Web Development",
       "image": "/assets/portfolio/web-2.png",
-      "category": "web"
+      "category": "web",
+      "description": "A full-stack e-commerce storefront with product filtering, cart, and checkout — built for speed and conversion. Mobile-first design with seamless Shopify integration on the back end.",
+      "problem": "Luna Living's existing store was slow, visually dated, and losing mobile users at checkout. Their mobile conversion rate was 40% lower than desktop, and page load times exceeded 4 seconds.",
+      "technologies": ["Next.js", "Shopify Storefront API", "TypeScript", "Tailwind CSS"],
+      "duration": "5 weeks",
+      "rating": 5,
+      "media": [
+        { "type": "image", "src": "/assets/portfolio/web-2.png", "alt": "Product listing page" },
+        { "type": "image", "src": "/assets/portfolio/web-3.png", "alt": "Product detail and cart" },
+        { "type": "image", "src": "/assets/portfolio/web-1.png", "alt": "Checkout flow" }
+      ]
     },
     {
       "id": "pf-web-3",
+      "slug": "saas-analytics-dashboard",
       "title": "SaaS Analytics Dashboard",
       "client": "Fintech Analytics",
       "tag": "Web Development",
       "image": "/assets/portfolio/web-3.png",
-      "category": "web"
+      "category": "web",
+      "description": "A complex data dashboard for a fintech analytics platform — built for power users who need real-time metrics, custom chart configurations, and exportable reports at their fingertips.",
+      "problem": "Fintech Analytics had a working product but an interface that frustrated power users. Feature discovery was poor, chart rendering was slow, and the codebase lacked the performance headroom for real-time data feeds.",
+      "technologies": ["React", "TypeScript", "Recharts", "Tailwind CSS", "Zustand"],
+      "duration": "8 weeks",
+      "rating": 4,
+      "media": [
+        { "type": "image", "src": "/assets/portfolio/web-3.png", "alt": "Main dashboard overview" },
+        { "type": "image", "src": "/assets/portfolio/web-1.png", "alt": "Chart configuration panel" },
+        { "type": "image", "src": "/assets/portfolio/web-2.png", "alt": "Report export interface" }
+      ]
     },
     {
       "id": "pf-social-1",
+      "slug": "brand-awareness-campaign",
       "title": "Brand Awareness Campaign",
       "client": "The Agency Co.",
       "tag": "Social Media",
       "image": "/assets/portfolio/social-1.png",
       "category": "social",
-      "featured": true
+      "featured": true,
+      "description": "A 60-day multi-platform brand awareness campaign across Instagram and LinkedIn. Included content strategy, creative production, copy, and community management — all delivered white-label.",
+      "problem": "The Agency Co. needed to establish thought leadership for a B2B client in a crowded market. Their client had no social presence and a tight 60-day window before a product launch.",
+      "technologies": ["Figma", "CapCut", "Canva Pro", "Later", "Meta Business Suite"],
+      "duration": "60 days",
+      "rating": 5,
+      "media": [
+        { "type": "image", "src": "/assets/portfolio/social-1.png", "alt": "Instagram grid overview" },
+        { "type": "image", "src": "/assets/portfolio/social-2.png", "alt": "LinkedIn post series" },
+        { "type": "image", "src": "/assets/portfolio/web-1.png", "alt": "Story template set" }
+      ]
     },
     {
       "id": "pf-social-2",
+      "slug": "growth-masterclass-reel",
       "title": "Growth Masterclass Reel",
       "client": "Arcane Agency",
       "tag": "Video Reel",
       "image": "/assets/portfolio/social-2.png",
       "category": "video",
-      "featured": true
+      "featured": true,
+      "description": "A series of short-form video reels produced for a high-ticket coaching programme launch. Includes hook-driven scripts, motion graphics, captions, and platform-specific exports for Instagram, TikTok, and YouTube Shorts.",
+      "problem": "Arcane Agency's client was launching a £3,000 masterclass with no existing video content or audience trust signals. They needed fast-turnaround reels that looked premium and drove sign-ups within a 2-week launch window.",
+      "technologies": ["Premiere Pro", "After Effects", "Figma", "CapCut"],
+      "duration": "2 weeks",
+      "rating": 5,
+      "media": [
+        { "type": "image", "src": "/assets/portfolio/social-2.png", "alt": "Reel thumbnail series" },
+        { "type": "image", "src": "/assets/portfolio/social-1.png", "alt": "Motion graphics still" },
+        { "type": "image", "src": "/assets/portfolio/web-1.png", "alt": "Caption and hook overlay" }
+      ]
     }
   ]
 }
