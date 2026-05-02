@@ -3,6 +3,7 @@ import Image from "next/image";
 import { ArrowRight, Check, Quote } from "lucide-react";
 import type { AboutContent, TeamMember } from "@/lib/content";
 import FoundersSection from "./FoundersSection";
+import SectionHeader from "@/components/elements/SectionHeader";
 
 const AVATAR_COLORS: Record<string, string> = {
   emerald: "bg-emerald-100 text-emerald-700",
@@ -38,15 +39,14 @@ export default function AboutPage({ data }: Props) {
           className="pointer-events-none absolute -z-10 left-1/2 -top-24 h-80 w-[700px] -translate-x-1/2 rounded-full bg-brand/8 blur-[100px]"
         />
         <div className="container-1200 pb-20 pt-16 sm:pb-24 sm:pt-20 lg:pb-28 lg:pt-24">
-          <p className="text-xs font-semibold uppercase tracking-[0.18em] text-brand">
-            {data.hero.eyebrow}
-          </p>
-          <h1 className="mt-4 max-w-3xl text-4xl font-semibold tracking-tight text-foreground sm:text-5xl lg:text-6xl">
-            {data.hero.headline}
-          </h1>
-          <p className="mt-6 max-w-2xl text-base leading-relaxed text-muted sm:text-lg">
-            {data.hero.sub}
-          </p>
+          <SectionHeader
+            eyebrow={data.hero.eyebrow}
+            headlineText={data.hero.headline}
+            as="h1"
+            headlineClassName="mt-4 max-w-3xl text-4xl font-semibold tracking-tight text-foreground sm:text-5xl lg:text-6xl"
+            sub={data.hero.sub}
+            subClassName="mt-6 max-w-2xl text-base leading-relaxed text-muted sm:text-lg"
+          />
           <div className="mt-8 flex flex-wrap gap-3">
             <Link
               href="#book"
@@ -85,14 +85,12 @@ export default function AboutPage({ data }: Props) {
       <section className="bg-background">
         <div className="container-1200 py-20 sm:py-24 lg:py-28">
           <div className="grid gap-12 lg:grid-cols-2 lg:gap-20 lg:items-start">
-            <div className="lg:sticky lg:top-28">
-              <p className="text-xs font-semibold uppercase tracking-[0.18em] text-brand">
-                {data.mission.eyebrow}
-              </p>
-              <h2 className="mt-4 text-3xl font-semibold tracking-tight text-foreground sm:text-4xl">
-                {data.mission.headline}
-              </h2>
-            </div>
+            <SectionHeader
+              eyebrow={data.mission.eyebrow}
+              headlineText={data.mission.headline}
+              headlineClassName="mt-4 text-3xl font-semibold tracking-tight text-foreground sm:text-4xl"
+              className="lg:sticky lg:top-28"
+            />
             <div className="space-y-5">
               {missionParagraphs.map((p, i) => (
                 <p key={i} className="text-base leading-relaxed text-muted">
@@ -107,17 +105,14 @@ export default function AboutPage({ data }: Props) {
       {/* ── Founders ─────────────────────────────────────────── */}
       <section className="bg-surface">
         <div className="container-1200 py-20 sm:py-24 lg:py-28">
-          <div className="max-w-xl">
-            <p className="text-xs font-semibold uppercase tracking-[0.18em] text-brand">
-              Leadership
-            </p>
-            <h2 className="mt-4 text-3xl font-semibold tracking-tight text-foreground sm:text-4xl">
-              Meet the founders
-            </h2>
-            <p className="mt-3 text-base text-muted">
-              Operators who&apos;ve been on both sides of the agency relationship — and built growX to fix what frustrated them most.
-            </p>
-          </div>
+          <SectionHeader
+            eyebrow="Leadership"
+            headlineText="Meet the founders"
+            headlineClassName="mt-4 text-3xl font-semibold tracking-tight text-foreground sm:text-4xl"
+            sub="Operators who've been on both sides of the agency relationship — and built growX to fix what frustrated them most."
+            subClassName="mt-3 text-base text-muted"
+            className="max-w-xl"
+          />
 
           <div className="mt-14">
             <FoundersSection founders={data.founders} />
@@ -128,17 +123,14 @@ export default function AboutPage({ data }: Props) {
       {/* ── Team ─────────────────────────────────────────────── */}
       <section className="bg-background">
         <div className="container-1200 py-20 sm:py-24 lg:py-28">
-          <div className="max-w-xl">
-            <p className="text-xs font-semibold uppercase tracking-[0.18em] text-brand">
-              The crew
-            </p>
-            <h2 className="mt-4 text-3xl font-semibold tracking-tight text-foreground sm:text-4xl">
-              Specialists, not generalists
-            </h2>
-            <p className="mt-3 text-base text-muted">
-              Each discipline is led by someone who has spent years doing exactly that — not a project manager wearing six hats.
-            </p>
-          </div>
+          <SectionHeader
+            eyebrow="The crew"
+            headlineText="Specialists, not generalists"
+            headlineClassName="mt-4 text-3xl font-semibold tracking-tight text-foreground sm:text-4xl"
+            sub="Each discipline is led by someone who has spent years doing exactly that — not a project manager wearing six hats."
+            subClassName="mt-3 text-base text-muted"
+            className="max-w-xl"
+          />
 
           <div className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
             {data.team.map((m) => (
@@ -151,14 +143,12 @@ export default function AboutPage({ data }: Props) {
       {/* ── Values ───────────────────────────────────────────── */}
       <section className="bg-surface">
         <div className="container-1200 py-20 sm:py-24 lg:py-28">
-          <div className="max-w-xl">
-            <p className="text-xs font-semibold uppercase tracking-[0.18em] text-brand">
-              What we stand for
-            </p>
-            <h2 className="mt-4 text-3xl font-semibold tracking-tight text-foreground sm:text-4xl">
-              Our values
-            </h2>
-          </div>
+          <SectionHeader
+            eyebrow="What we stand for"
+            headlineText="Our values"
+            headlineClassName="mt-4 text-3xl font-semibold tracking-tight text-foreground sm:text-4xl"
+            className="max-w-xl"
+          />
 
           <div className="mt-12 grid gap-5 sm:grid-cols-2">
             {data.values.map((v, i) => (
@@ -184,12 +174,11 @@ export default function AboutPage({ data }: Props) {
         <div className="container-1200 py-20 sm:py-24 lg:py-28">
           <div className="grid gap-12 lg:grid-cols-2 lg:gap-20 lg:items-start">
             <div className="lg:sticky lg:top-28">
-              <p className="text-xs font-semibold uppercase tracking-[0.18em] text-brand">
-                {data.approach.eyebrow}
-              </p>
-              <h2 className="mt-4 text-3xl font-semibold tracking-tight text-foreground sm:text-4xl">
-                {data.approach.headline}
-              </h2>
+              <SectionHeader
+                eyebrow={data.approach.eyebrow}
+                headlineText={data.approach.headline}
+                headlineClassName="mt-4 text-3xl font-semibold tracking-tight text-foreground sm:text-4xl"
+              />
               <div className="mt-8 grid grid-cols-1 gap-3 sm:grid-cols-2">
                 {data.approach.pillars.map((p) => (
                   <div key={p.id} className="flex items-center gap-2.5">
@@ -249,15 +238,14 @@ export default function AboutPage({ data }: Props) {
           className="pointer-events-none absolute -z-10 left-1/2 top-0 h-72 w-150 -translate-x-1/2 rounded-full bg-brand/8 blur-[90px]"
         />
         <div className="container-1200 py-24 text-center">
-          <p className="text-xs font-semibold uppercase tracking-[0.18em] text-brand">
-            Ready to scale
-          </p>
-          <h2 className="mt-4 text-4xl font-semibold tracking-tight text-foreground sm:text-5xl">
-            Let&apos;s build something together.
-          </h2>
-          <p className="mx-auto mt-5 max-w-xl text-base text-muted">
-            Book a free 30-minute discovery call. We&apos;ll scope the brief, confirm fit, and have a proposal in your inbox within 24 hours.
-          </p>
+          <SectionHeader
+            eyebrow="Ready to scale"
+            headlineText="Let's build something together."
+            headlineClassName="mt-4 text-4xl font-semibold tracking-tight text-foreground sm:text-5xl"
+            sub="Book a free 30-minute discovery call. We'll scope the brief, confirm fit, and have a proposal in your inbox within 24 hours."
+            subClassName="mx-auto mt-5 max-w-xl text-base text-muted"
+            align="center"
+          />
           <div className="mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row">
             <Link
               href="#book"

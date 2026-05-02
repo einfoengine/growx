@@ -1,7 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
-import Eyebrow from "@/components/elements/Eyebrow";
+import SectionHeader from "@/components/elements/SectionHeader";
 
 const BLOG_POSTS = [
   {
@@ -35,12 +35,12 @@ export default function BlogSection() {
     <section className="relative overflow-hidden bg-background py-24 sm:py-32">
       <div className="container-1200">
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-16">
-          <div className="max-w-2xl">
-            <Eyebrow text="Insights" />
-            <h2 className="mt-4 text-4xl font-semibold tracking-tight text-foreground sm:text-5xl">
-              Latest from the blog
-            </h2>
-          </div>
+          <SectionHeader
+            eyebrow="Insights"
+            headlineText="Latest from the blog"
+            headlineClassName="mt-4 text-4xl font-semibold tracking-tight text-foreground sm:text-5xl"
+            className="max-w-2xl"
+          />
           <Link href="#" className="inline-flex items-center gap-2 text-brand font-medium hover:text-[#059669] transition-colors">
             View all posts <ArrowRight size={16} />
           </Link>

@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { ArrowLeft, ArrowRight, Check, Quote } from "lucide-react";
 import type { CaseStudy } from "@/lib/content";
+import SectionHeader from "@/components/elements/SectionHeader";
 
 const SERVICE_COLORS: Record<string, string> = {
   "seo-aeo": "bg-emerald-50 text-emerald-700 border-emerald-200",
@@ -51,15 +52,15 @@ export default function CaseStudyPage({ caseStudy: cs, related }: Props) {
               </span>
             </div>
 
-            <p className="mt-5 text-xs font-semibold uppercase tracking-[0.18em] text-brand">
-              {cs.client}
-            </p>
-            <h1 className="mt-3 text-3xl font-semibold tracking-tight text-foreground sm:text-4xl lg:text-5xl">
-              {cs.tagline}
-            </h1>
-            <p className="mt-5 text-base leading-relaxed text-muted max-w-2xl">
-              {cs.description}
-            </p>
+            <SectionHeader
+              eyebrow={cs.client}
+              headlineText={cs.tagline}
+              as="h1"
+              headlineClassName="mt-3 text-3xl font-semibold tracking-tight text-foreground sm:text-4xl lg:text-5xl"
+              sub={cs.description}
+              subClassName="mt-5 text-base leading-relaxed text-muted max-w-2xl"
+              className="mt-5"
+            />
           </div>
         </div>
       </section>
@@ -85,26 +86,20 @@ export default function CaseStudyPage({ caseStudy: cs, related }: Props) {
         <div className="container-1200 py-20 sm:py-24 lg:py-28">
           <div className="grid gap-16 lg:grid-cols-2 lg:gap-20">
             <div>
-              <p className="text-xs font-semibold uppercase tracking-[0.18em] text-brand">
-                The challenge
-              </p>
-              <h2 className="mt-3 text-2xl font-semibold tracking-tight text-foreground sm:text-3xl">
-                What we were solving
-              </h2>
-              <p className="mt-5 text-base leading-relaxed text-muted">
-                {cs.challenge}
-              </p>
+              <SectionHeader
+                eyebrow="The challenge"
+                headlineText="What we were solving"
+                headlineClassName="mt-3 text-2xl font-semibold tracking-tight text-foreground sm:text-3xl"
+              />
+              <p className="mt-5 text-base leading-relaxed text-muted">{cs.challenge}</p>
             </div>
             <div>
-              <p className="text-xs font-semibold uppercase tracking-[0.18em] text-brand">
-                The solution
-              </p>
-              <h2 className="mt-3 text-2xl font-semibold tracking-tight text-foreground sm:text-3xl">
-                How we approached it
-              </h2>
-              <p className="mt-5 text-base leading-relaxed text-muted">
-                {cs.solution}
-              </p>
+              <SectionHeader
+                eyebrow="The solution"
+                headlineText="How we approached it"
+                headlineClassName="mt-3 text-2xl font-semibold tracking-tight text-foreground sm:text-3xl"
+              />
+              <p className="mt-5 text-base leading-relaxed text-muted">{cs.solution}</p>
             </div>
           </div>
         </div>
@@ -114,17 +109,13 @@ export default function CaseStudyPage({ caseStudy: cs, related }: Props) {
       <section className="bg-surface">
         <div className="container-1200 py-16 sm:py-20">
           <div className="grid gap-10 lg:grid-cols-2 lg:items-center">
-            <div>
-              <p className="text-xs font-semibold uppercase tracking-[0.18em] text-brand">
-                Scope of work
-              </p>
-              <h2 className="mt-3 text-2xl font-semibold tracking-tight text-foreground sm:text-3xl">
-                What we delivered
-              </h2>
-              <p className="mt-3 text-sm text-muted">
-                Every engagement is scoped and agreed upfront. Here&apos;s exactly what was included.
-              </p>
-            </div>
+            <SectionHeader
+              eyebrow="Scope of work"
+              headlineText="What we delivered"
+              headlineClassName="mt-3 text-2xl font-semibold tracking-tight text-foreground sm:text-3xl"
+              sub="Every engagement is scoped and agreed upfront. Here's exactly what was included."
+              subClassName="mt-3 text-sm text-muted"
+            />
             <ul className="grid gap-3 sm:grid-cols-2">
               {cs.services.map((s) => (
                 <li key={s} className="flex items-start gap-2.5">
@@ -164,14 +155,11 @@ export default function CaseStudyPage({ caseStudy: cs, related }: Props) {
         <section className="bg-surface">
           <div className="container-1200 py-20 sm:py-24">
             <div className="flex items-end justify-between gap-4">
-              <div>
-                <p className="text-xs font-semibold uppercase tracking-[0.18em] text-brand">
-                  More results
-                </p>
-                <h2 className="mt-2 text-2xl font-semibold tracking-tight text-foreground sm:text-3xl">
-                  Other case studies
-                </h2>
-              </div>
+              <SectionHeader
+                eyebrow="More results"
+                headlineText="Other case studies"
+                headlineClassName="mt-2 text-2xl font-semibold tracking-tight text-foreground sm:text-3xl"
+              />
               <Link
                 href="/case-studies"
                 className="hidden items-center gap-1.5 text-sm font-medium text-foreground/70 transition hover:text-foreground sm:inline-flex"
@@ -223,16 +211,15 @@ export default function CaseStudyPage({ caseStudy: cs, related }: Props) {
         >
           <div className="absolute -top-40 left-1/2 h-130 w-[760px] -translate-x-1/2 rounded-full bg-brand/20 blur-[140px]" />
         </div>
-        <div className="container-1200 py-24 text-center">
-          <p className="text-xs font-semibold uppercase tracking-[0.18em] text-brand">
-            Ready to start
-          </p>
-          <h2 className="mt-4 text-4xl font-semibold tracking-tight sm:text-5xl">
-            Want results like these?
-          </h2>
-          <p className="mx-auto mt-5 max-w-xl text-base text-white/70">
-            Book a free discovery call and we&apos;ll scope out exactly what&apos;s possible for your business.
-          </p>
+        <div className="container-1200 py-24">
+          <SectionHeader
+            eyebrow="Ready to start"
+            headlineText="Want results like these?"
+            headlineClassName="mt-4 text-4xl font-semibold tracking-tight sm:text-5xl"
+            sub="Book a free discovery call and we'll scope out exactly what's possible for your business."
+            subClassName="mx-auto mt-5 max-w-xl text-base text-white/70"
+            align="center"
+          />
           <div className="mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row">
             <Link
               href="#book"

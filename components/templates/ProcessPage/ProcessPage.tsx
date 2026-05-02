@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { ArrowRight, Check, MessageSquare, BarChart3, Layout, FileText } from "lucide-react";
 import type { ProcessPageContent, ProcessChannel } from "@/lib/content";
+import SectionHeader from "@/components/elements/SectionHeader";
 
 const CHANNEL_ICONS: Record<string, typeof Check> = {
   Slack: MessageSquare,
@@ -21,15 +22,14 @@ export default function ProcessPage({ data }: Props) {
           className="pointer-events-none absolute -z-10 left-1/2 -top-24 h-80 w-[700px] -translate-x-1/2 rounded-full bg-brand/8 blur-[100px]"
         />
         <div className="container-1200 pb-20 pt-16 sm:pb-24 sm:pt-20 lg:pb-28 lg:pt-24">
-          <p className="text-xs font-semibold uppercase tracking-[0.18em] text-brand">
-            {data.hero.eyebrow}
-          </p>
-          <h1 className="mt-4 max-w-3xl text-4xl font-semibold tracking-tight text-foreground sm:text-5xl lg:text-6xl">
-            {data.hero.headline}
-          </h1>
-          <p className="mt-6 max-w-2xl text-base leading-relaxed text-muted sm:text-lg">
-            {data.hero.sub}
-          </p>
+          <SectionHeader
+            eyebrow={data.hero.eyebrow}
+            headlineText={data.hero.headline}
+            as="h1"
+            headlineClassName="mt-4 max-w-3xl text-4xl font-semibold tracking-tight text-foreground sm:text-5xl lg:text-6xl"
+            sub={data.hero.sub}
+            subClassName="mt-6 max-w-2xl text-base leading-relaxed text-muted sm:text-lg"
+          />
           <div className="mt-8 flex flex-wrap gap-3">
             <Link
               href="#book"
@@ -51,15 +51,14 @@ export default function ProcessPage({ data }: Props) {
       {/* ── Journey ──────────────────────────────────────────── */}
       <section className="bg-surface">
         <div className="container-1200 py-20 sm:py-24 lg:py-28">
-          <div className="max-w-2xl">
-            <p className="text-xs font-semibold uppercase tracking-[0.18em] text-brand">
-              {data.journey.eyebrow}
-            </p>
-            <h2 className="mt-4 text-3xl font-semibold tracking-tight text-foreground sm:text-4xl">
-              {data.journey.headline}
-            </h2>
-            <p className="mt-3 text-base text-muted">{data.journey.sub}</p>
-          </div>
+          <SectionHeader
+            eyebrow={data.journey.eyebrow}
+            headlineText={data.journey.headline}
+            headlineClassName="mt-4 text-3xl font-semibold tracking-tight text-foreground sm:text-4xl"
+            sub={data.journey.sub}
+            subClassName="mt-3 text-base text-muted"
+            className="max-w-2xl"
+          />
 
           <div className="mt-14 space-y-6">
             {data.journey.phases.map((phase) => (
@@ -122,13 +121,13 @@ export default function ProcessPage({ data }: Props) {
           <div className="grid gap-14 lg:grid-cols-2 lg:gap-20 lg:items-start">
             {/* Left: copy + channels */}
             <div>
-              <p className="text-xs font-semibold uppercase tracking-[0.18em] text-brand">
-                {data.communication.eyebrow}
-              </p>
-              <h2 className="mt-4 text-3xl font-semibold tracking-tight sm:text-4xl">
-                {data.communication.headline}
-              </h2>
-              <p className="mt-4 text-base text-white/70">{data.communication.sub}</p>
+              <SectionHeader
+                eyebrow={data.communication.eyebrow}
+                headlineText={data.communication.headline}
+                headlineClassName="mt-4 text-3xl font-semibold tracking-tight sm:text-4xl"
+                sub={data.communication.sub}
+                subClassName="mt-4 text-base text-white/70"
+              />
 
               <div className="mt-10 grid gap-5 sm:grid-cols-2">
                 {data.communication.channels.map((ch) => {
@@ -171,15 +170,13 @@ export default function ProcessPage({ data }: Props) {
         <div className="container-1200 py-20 sm:py-24 lg:py-28">
           <div className="grid gap-14 lg:grid-cols-2 lg:gap-20 lg:items-start">
             <div className="lg:sticky lg:top-28">
-              <p className="text-xs font-semibold uppercase tracking-[0.18em] text-brand">
-                {data.whiteLabel.eyebrow}
-              </p>
-              <h2 className="mt-4 text-3xl font-semibold tracking-tight text-foreground sm:text-4xl">
-                {data.whiteLabel.headline}
-              </h2>
-              <p className="mt-4 text-base leading-relaxed text-muted">
-                {data.whiteLabel.sub}
-              </p>
+              <SectionHeader
+                eyebrow={data.whiteLabel.eyebrow}
+                headlineText={data.whiteLabel.headline}
+                headlineClassName="mt-4 text-3xl font-semibold tracking-tight text-foreground sm:text-4xl"
+                sub={data.whiteLabel.sub}
+                subClassName="mt-4 text-base leading-relaxed text-muted"
+              />
               <Link
                 href="#book"
                 className="group mt-8 inline-flex items-center gap-2 rounded-full bg-foreground px-6 py-3 text-sm font-medium text-background transition hover:opacity-90"
@@ -209,34 +206,33 @@ export default function ProcessPage({ data }: Props) {
       {/* ── FAQ ──────────────────────────────────────────────── */}
       <section className="bg-surface">
         <div className="container-1200 py-20 sm:py-24 lg:py-28">
-          <div className="mx-auto max-w-2xl">
-            <p className="text-xs font-semibold uppercase tracking-[0.18em] text-brand">
-              Questions
-            </p>
-            <h2 className="mt-4 text-3xl font-semibold tracking-tight text-foreground sm:text-4xl">
-              About how we work
-            </h2>
+          <SectionHeader
+            eyebrow="Questions"
+            headlineText="About how we work"
+            headlineClassName="mt-4 text-3xl font-semibold tracking-tight text-foreground sm:text-4xl"
+            align="center"
+            maxWidth="max-w-2xl"
+          />
 
-            <dl className="mt-10 divide-y divide-border">
-              {data.faq.map((item) => (
-                <details
-                  key={item.id}
-                  className="group py-5 marker:content-none"
-                >
-                  <summary className="flex cursor-pointer list-none items-center justify-between gap-4">
-                    <dt className="text-sm font-semibold text-foreground">{item.question}</dt>
-                    <span
-                      aria-hidden="true"
-                      className="shrink-0 text-lg text-muted transition-transform group-open:rotate-45"
-                    >
-                      +
-                    </span>
-                  </summary>
-                  <dd className="mt-3 text-sm leading-relaxed text-muted">{item.answer}</dd>
-                </details>
-              ))}
-            </dl>
-          </div>
+          <dl className="mx-auto mt-10 max-w-2xl divide-y divide-border">
+            {data.faq.map((item) => (
+              <details
+                key={item.id}
+                className="group py-5 marker:content-none"
+              >
+                <summary className="flex cursor-pointer list-none items-center justify-between gap-4">
+                  <dt className="text-sm font-semibold text-foreground">{item.question}</dt>
+                  <span
+                    aria-hidden="true"
+                    className="shrink-0 text-lg text-muted transition-transform group-open:rotate-45"
+                  >
+                    +
+                  </span>
+                </summary>
+                <dd className="mt-3 text-sm leading-relaxed text-muted">{item.answer}</dd>
+              </details>
+            ))}
+          </dl>
         </div>
       </section>
 
@@ -247,15 +243,14 @@ export default function ProcessPage({ data }: Props) {
           className="pointer-events-none absolute -z-10 left-1/2 top-0 h-72 w-150 -translate-x-1/2 rounded-full bg-brand/8 blur-[90px]"
         />
         <div className="container-1200 py-24 text-center">
-          <p className="text-xs font-semibold uppercase tracking-[0.18em] text-brand">
-            Ready to start
-          </p>
-          <h2 className="mt-4 text-4xl font-semibold tracking-tight text-foreground sm:text-5xl">
-            Let&apos;s put this into motion.
-          </h2>
-          <p className="mx-auto mt-5 max-w-xl text-base text-muted">
-            Book a 30-minute discovery call. We&apos;ll scope the brief, confirm fit, and have a proposal in your inbox within 24 hours.
-          </p>
+          <SectionHeader
+            eyebrow="Ready to start"
+            headlineText="Let's put this into motion."
+            headlineClassName="mt-4 text-4xl font-semibold tracking-tight text-foreground sm:text-5xl"
+            sub="Book a 30-minute discovery call. We'll scope the brief, confirm fit, and have a proposal in your inbox within 24 hours."
+            subClassName="mx-auto mt-5 max-w-xl text-base text-muted"
+            align="center"
+          />
           <div className="mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row">
             <Link
               href="#book"

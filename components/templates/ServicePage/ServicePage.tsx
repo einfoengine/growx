@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { ArrowLeft, ArrowRight, Check, RefreshCw, Sparkles } from "lucide-react";
 import type { ServicePageContent, ServicePricingModel } from "@/lib/content";
+import SectionHeader from "@/components/elements/SectionHeader";
 
 const PRICING_LABELS: Record<ServicePricingModel, { label: string; description: string }> = {
   "one-off": { label: "One-off project", description: "Scoped, quoted, delivered." },
@@ -110,20 +111,15 @@ export default function ServicePage({ data }: Props) {
         className="bg-surface"
       >
         <div className="container-1200 py-20 sm:py-24 lg:py-28">
-          <div className="max-w-xl">
-            <p className="text-xs font-semibold uppercase tracking-[0.18em] text-brand">
-              Full scope
-            </p>
-            <h2
-              id={`${data.id}-deliverables-heading`}
-              className="mt-3 text-3xl font-semibold tracking-tight text-foreground sm:text-4xl"
-            >
-              What&apos;s included
-            </h2>
-            <p className="mt-3 text-base text-muted">
-              Every deliverable scoped, priced, and agreed upfront. No surprises at handoff.
-            </p>
-          </div>
+          <SectionHeader
+            eyebrow="Full scope"
+            headlineText="What's included"
+            headlineId={`${data.id}-deliverables-heading`}
+            headlineClassName="mt-3 text-3xl font-semibold tracking-tight text-foreground sm:text-4xl"
+            sub="Every deliverable scoped, priced, and agreed upfront. No surprises at handoff."
+            subClassName="mt-3 text-base text-muted"
+            className="max-w-xl"
+          />
 
           <div className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
             {data.deliverables.map((d) => (
@@ -150,17 +146,13 @@ export default function ServicePage({ data }: Props) {
         className="bg-background"
       >
         <div className="container-1200 py-20 sm:py-24 lg:py-28">
-          <div className="max-w-xl">
-            <p className="text-xs font-semibold uppercase tracking-[0.18em] text-brand">
-              Why growX
-            </p>
-            <h2
-              id={`${data.id}-why-heading`}
-              className="mt-3 text-3xl font-semibold tracking-tight text-foreground sm:text-4xl"
-            >
-              Why agencies choose us for {data.name}
-            </h2>
-          </div>
+          <SectionHeader
+            eyebrow="Why growX"
+            headlineText={`Why agencies choose us for ${data.name}`}
+            headlineId={`${data.id}-why-heading`}
+            headlineClassName="mt-3 text-3xl font-semibold tracking-tight text-foreground sm:text-4xl"
+            className="max-w-xl"
+          />
 
           <div className="mt-12 grid gap-8 sm:grid-cols-3">
             {data.whyUs.map((item, i) => (
@@ -185,45 +177,42 @@ export default function ServicePage({ data }: Props) {
         className="bg-surface"
       >
         <div className="container-1200 py-20 sm:py-24 lg:py-28">
-          <div className="mx-auto max-w-2xl">
-            <p className="text-xs font-semibold uppercase tracking-[0.18em] text-brand">
-              Questions
-            </p>
-            <h2
-              id={`${data.id}-faq-heading`}
-              className="mt-3 text-3xl font-semibold tracking-tight text-foreground sm:text-4xl"
-            >
-              About {data.name}
-            </h2>
+          <SectionHeader
+            eyebrow="Questions"
+            headlineText={`About ${data.name}`}
+            headlineId={`${data.id}-faq-heading`}
+            headlineClassName="mt-3 text-3xl font-semibold tracking-tight text-foreground sm:text-4xl"
+            align="center"
+            maxWidth="max-w-2xl"
+          />
 
-            <dl
-              id={`${data.id}-faq-list`}
-              className="mt-10 divide-y divide-border"
-            >
-              {data.faq.map((item) => (
-                <details
-                  key={item.id}
-                  id={item.id}
-                  className="group py-5 marker:content-none"
-                >
-                  <summary className="flex cursor-pointer list-none items-center justify-between gap-4">
-                    <dt className="text-sm font-semibold text-foreground">
-                      {item.question}
-                    </dt>
-                    <span
-                      aria-hidden="true"
-                      className="shrink-0 text-muted transition-transform group-open:rotate-45"
-                    >
-                      +
-                    </span>
-                  </summary>
-                  <dd className="mt-3 text-sm leading-relaxed text-muted">
-                    {item.answer}
-                  </dd>
-                </details>
-              ))}
-            </dl>
-          </div>
+          <dl
+            id={`${data.id}-faq-list`}
+            className="mx-auto mt-10 max-w-2xl divide-y divide-border"
+          >
+            {data.faq.map((item) => (
+              <details
+                key={item.id}
+                id={item.id}
+                className="group py-5 marker:content-none"
+              >
+                <summary className="flex cursor-pointer list-none items-center justify-between gap-4">
+                  <dt className="text-sm font-semibold text-foreground">
+                    {item.question}
+                  </dt>
+                  <span
+                    aria-hidden="true"
+                    className="shrink-0 text-muted transition-transform group-open:rotate-45"
+                  >
+                    +
+                  </span>
+                </summary>
+                <dd className="mt-3 text-sm leading-relaxed text-muted">
+                  {item.answer}
+                </dd>
+              </details>
+            ))}
+          </dl>
         </div>
       </section>
 
@@ -240,15 +229,14 @@ export default function ServicePage({ data }: Props) {
         </div>
 
         <div className="container-1200 py-24 text-center">
-          <p className="text-xs font-semibold uppercase tracking-[0.18em] text-brand">
-            Ready to start
-          </p>
-          <h2 className="mt-4 text-4xl font-semibold tracking-tight sm:text-5xl">
-            Add {data.name} to your roster.
-          </h2>
-          <p className="mx-auto mt-5 max-w-xl text-base text-white/70">
-            Bring the brief. We&apos;ll bring the team, the timeline, and a proposal in 24 hours.
-          </p>
+          <SectionHeader
+            eyebrow="Ready to start"
+            headlineText={`Add ${data.name} to your roster.`}
+            headlineClassName="mt-4 text-4xl font-semibold tracking-tight sm:text-5xl"
+            sub="Bring the brief. We'll bring the team, the timeline, and a proposal in 24 hours."
+            subClassName="mx-auto mt-5 max-w-xl text-base text-white/70"
+            align="center"
+          />
           <div className="mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row">
             <Link
               href="#book"

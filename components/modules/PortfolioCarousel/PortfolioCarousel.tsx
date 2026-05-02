@@ -1,5 +1,5 @@
 import Image from "next/image";
-import Eyebrow from "@/components/elements/Eyebrow";
+import SectionHeader from "@/components/elements/SectionHeader";
 
 const PORTFOLIO_ITEMS = [
   { src: "/assets/portfolio/web-1.png", title: "Web Design" },
@@ -12,14 +12,15 @@ const PORTFOLIO_ITEMS = [
 export default function PortfolioCarousel() {
   return (
     <section className="relative overflow-hidden bg-background pt-24">
-      <div className="container-1200 mb-16 text-center">
-        <Eyebrow text="Our Work" />
-        <h2 className="mt-4 text-4xl font-semibold tracking-tight text-foreground sm:text-5xl lg:text-6xl">
-          Recent Projects
-        </h2>
-        <p className="mx-auto mt-4 max-w-xl text-base text-muted sm:text-lg">
-          A showcase of our high-converting web experiences and engaging social media campaigns.
-        </p>
+      <div className="container-1200 mb-16">
+        <SectionHeader
+          eyebrow="Our Work"
+          headlineText="Recent Projects"
+          headlineClassName="mt-4 text-4xl font-semibold tracking-tight text-foreground sm:text-5xl lg:text-6xl"
+          sub="A showcase of our high-converting web experiences and engaging social media campaigns."
+          subClassName="mx-auto mt-4 max-w-xl text-base text-muted sm:text-lg"
+          align="center"
+        />
       </div>
 
       <div className="relative flex w-full overflow-hidden">

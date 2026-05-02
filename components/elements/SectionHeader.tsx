@@ -4,11 +4,15 @@ import Headline from "./Headline";
 
 type SectionHeaderProps = {
   eyebrow?: string;
-  headline: HeadlinePart[];
+  /** Rich headline with highlight segments — use with the Headline component. */
+  headline?: HeadlinePart[];
+  /** Plain string headline — renders a bare heading tag. */
+  headlineText?: string;
   headlineId?: string;
   as?: "h1" | "h2" | "h3";
   sub?: string;
   align?: "center" | "left";
+  /** Max-width class applied to the centered wrapper (default "max-w-3xl"). */
   maxWidth?: string;
   headlineClassName?: string;
   subClassName?: string;
@@ -20,8 +24,9 @@ type SectionHeaderProps = {
 export default function SectionHeader({
   eyebrow,
   headline,
+  headlineText,
   headlineId,
-  as = "h2",
+  as: Tag = "h2",
   sub,
   align = "left",
   maxWidth = "max-w-3xl",
@@ -42,14 +47,21 @@ export default function SectionHeader({
   return (
     <div className={wrapperClass}>
       {eyebrow && <Eyebrow text={eyebrow} />}
-      <Headline
-        id={headlineId}
-        parts={headline}
-        as={as}
-        className={headlineClassName}
-        highlightClassName={highlightClassName}
-        underlineHighlight={underlineHighlight}
-      />
+      {headline && (
+        <Headline
+          id={headlineId}
+          parts={headline}
+          as={Tag}
+          className={headlineClassName}
+          highlightClassName={highlightClassName}
+          underlineHighlight={underlineHighlight}
+        />
+      )}
+      {headlineText && (
+        <Tag id={headlineId} className={headlineClassName}>
+          {headlineText}
+        </Tag>
+      )}
       {sub && <p className={subClassName ?? defaultSubClass}>{sub}</p>}
     </div>
   );

@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 import type { CaseStudy } from "@/lib/content";
+import SectionHeader from "@/components/elements/SectionHeader";
 
 const SERVICE_COLORS: Record<string, string> = {
   "seo-aeo": "bg-emerald-50 text-emerald-700 border-emerald-200",
@@ -22,16 +23,16 @@ export default function CaseStudiesPage({ caseStudies }: Props) {
           aria-hidden="true"
           className="pointer-events-none absolute -z-10 left-1/2 -top-24 h-80 w-[700px] -translate-x-1/2 rounded-full bg-brand/8 blur-[100px]"
         />
-        <div className="container-1200 pb-20 pt-16 sm:pb-24 sm:pt-20 lg:pb-28 lg:pt-24 text-center">
-          <p className="text-xs font-semibold uppercase tracking-[0.18em] text-brand">
-            Proof of work
-          </p>
-          <h1 className="mt-4 text-4xl font-semibold tracking-tight text-foreground sm:text-5xl lg:text-6xl">
-            Real clients. Real results.
-          </h1>
-          <p className="mx-auto mt-5 max-w-2xl text-base leading-relaxed text-muted">
-            Every engagement starts with a clear brief and ends with numbers you can take to your stakeholders. Here&apos;s what we&apos;ve delivered.
-          </p>
+        <div className="container-1200 pb-20 pt-16 sm:pb-24 sm:pt-20 lg:pb-28 lg:pt-24">
+          <SectionHeader
+            eyebrow="Proof of work"
+            headlineText="Real clients. Real results."
+            as="h1"
+            headlineClassName="mt-4 text-4xl font-semibold tracking-tight text-foreground sm:text-5xl lg:text-6xl"
+            sub="Every engagement starts with a clear brief and ends with numbers you can take to your stakeholders. Here's what we've delivered."
+            subClassName="mx-auto mt-5 max-w-2xl text-base leading-relaxed text-muted"
+            align="center"
+          />
         </div>
       </section>
 
@@ -52,16 +53,15 @@ export default function CaseStudiesPage({ caseStudies }: Props) {
           aria-hidden="true"
           className="pointer-events-none absolute -z-10 left-1/2 top-0 h-72 w-150 -translate-x-1/2 rounded-full bg-brand/8 blur-[90px]"
         />
-        <div className="container-1200 py-24 text-center">
-          <p className="text-xs font-semibold uppercase tracking-[0.18em] text-brand">
-            Your turn
-          </p>
-          <h2 className="mt-4 text-4xl font-semibold tracking-tight text-foreground sm:text-5xl">
-            Ready to be the next case study?
-          </h2>
-          <p className="mx-auto mt-5 max-w-xl text-base text-muted">
-            Bring the brief. We&apos;ll bring the strategy, the team, and a proposal within 24 hours.
-          </p>
+        <div className="container-1200 py-24">
+          <SectionHeader
+            eyebrow="Your turn"
+            headlineText="Ready to be the next case study?"
+            headlineClassName="mt-4 text-4xl font-semibold tracking-tight text-foreground sm:text-5xl"
+            sub="Bring the brief. We'll bring the strategy, the team, and a proposal within 24 hours."
+            subClassName="mx-auto mt-5 max-w-xl text-base text-muted"
+            align="center"
+          />
           <div className="mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row">
             <Link
               href="#book"
