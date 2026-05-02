@@ -2,9 +2,8 @@
 
 import { useState, useRef } from "react";
 import Link from "next/link";
-import Headline from "@/components/elements/Headline";
+import SectionHeader from "@/components/elements/SectionHeader";
 import type { GrowthCalculatorContent } from "@/lib/content/types";
-import Eyebrow from "@/components/elements/Eyebrow";
 
 type GrowthCalculatorProps = {
   data: GrowthCalculatorContent;
@@ -30,19 +29,19 @@ export default function GrowthCalculatorClient({ data }: GrowthCalculatorProps) 
       <div className="pointer-events-none absolute inset-0 -z-10 bg-[linear-gradient(to_right,rgba(10,10,10,0.05)_1px,transparent_1px),linear-gradient(to_bottom,rgba(10,10,10,0.05)_1px,transparent_1px)] bg-size-[48px_48px] mask-[radial-gradient(ellipse_80%_70%_at_50%_30%,#000_20%,transparent_85%)]" />
 
       <div className="container-1200 relative py-24 sm:py-32 lg:py-40">
-        <div className="mx-auto max-w-3xl text-center">
-          <Eyebrow text={data.eyebrow} />
-          <Headline
-            id={`${data.id}-headline`}
-            parts={data.headline.parts}
-            as="h2"
-            className="mt-3 text-4xl font-semibold leading-tight tracking-tight text-foreground sm:text-5xl"
-            highlightClassName="bg-gradient-to-br from-brand to-[#059669] bg-clip-text text-transparent"
-            underlineHighlight={false}
-          />
-          <p className="mx-auto mt-4 max-w-2xl text-base text-muted">{data.sub}</p>
-          <p className="mx-auto mt-3 max-w-2xl text-sm text-muted">{data.description}</p>
-        </div>
+        <SectionHeader
+          eyebrow={data.eyebrow}
+          headline={data.headline.parts}
+          headlineId={`${data.id}-headline`}
+          sub={data.sub}
+          align="center"
+          headlineClassName="mt-3 text-4xl font-semibold leading-tight tracking-tight text-foreground sm:text-5xl"
+          highlightClassName="bg-gradient-to-br from-brand to-[#059669] bg-clip-text text-transparent"
+          underlineHighlight={false}
+        />
+        {data.description && (
+          <p className="mx-auto mt-3 max-w-2xl text-center text-sm text-muted">{data.description}</p>
+        )}
 
         <div
           ref={calculatorRef}

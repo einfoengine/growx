@@ -1,6 +1,5 @@
-import Headline from "@/components/elements/Headline";
+import SectionHeader from "@/components/elements/SectionHeader";
 import ScrollFadeIn from "@/components/elements/ScrollFadeIn";
-import Eyebrow from "@/components/elements/Eyebrow";
 import PainPointsCards from "./PainPointsCards";
 import { getPainPoints } from "@/lib/content";
 import type { PainPointsContent } from "@/lib/content";
@@ -29,21 +28,16 @@ export default async function PainPoints({ data }: { data?: PainPointsContent } 
 
       <div className="container-1200 relative py-24 sm:py-28 lg:py-32">
         <ScrollFadeIn delay={0.1}>
-          <div
-            id={`${painData.id}-intro`}
-            className="mx-auto max-w-2xl text-center"
-          >
-            <Eyebrow text={painData.eyebrow} />
-            <Headline
-              id={`${painData.id}-headline`}
-              parts={painData.headline.parts}
-              as="h2"
-              className="mt-4 text-4xl font-semibold tracking-tight sm:text-5xl lg:text-6xl"
-            />
-            <p className="mx-auto mt-5 max-w-xl text-base text-white/70 sm:text-lg">
-              {painData.sub}
-            </p>
-          </div>
+          <SectionHeader
+            eyebrow={painData.eyebrow}
+            headline={painData.headline.parts}
+            headlineId={`${painData.id}-headline`}
+            sub={painData.sub}
+            align="center"
+            maxWidth="max-w-2xl"
+            headlineClassName="mt-4 text-4xl font-semibold tracking-tight sm:text-5xl lg:text-6xl"
+            subClassName="mx-auto mt-5 max-w-xl text-base text-white/70 sm:text-lg"
+          />
         </ScrollFadeIn>
 
         <PainPointsCards cards={painData.cards} />

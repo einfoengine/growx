@@ -1,7 +1,6 @@
-import Headline from "@/components/elements/Headline";
+import SectionHeader from "@/components/elements/SectionHeader";
 import ScrollFadeIn from "@/components/elements/ScrollFadeIn";
 import { getProcess } from "@/lib/content";
-import Eyebrow from "@/components/elements/Eyebrow";
 
 export default async function Process({ noPaddingTop }: { noPaddingTop?: boolean }) {
   const data = await getProcess();
@@ -14,21 +13,15 @@ export default async function Process({ noPaddingTop }: { noPaddingTop?: boolean
     >
       <div className={`container-1200 ${noPaddingTop ? "pt-0 pb-24 sm:pb-28 lg:pb-32" : "py-24 sm:py-28 lg:py-32"}`}>
         <ScrollFadeIn delay={0.1}>
-          <div
-            id={`${data.id}-intro`}
-            className="mx-auto max-w-3xl text-center"
-          >
-            <Eyebrow text={data.eyebrow} />
-            <Headline
-              id={`${data.id}-headline`}
-              parts={data.headline.parts}
-              as="h2"
-              className="mt-4 text-4xl font-semibold tracking-tight text-foreground sm:text-5xl lg:text-6xl"
-            />
-            <p className="mx-auto mt-5 max-w-xl text-base text-muted sm:text-lg">
-              {data.sub}
-            </p>
-          </div>
+          <SectionHeader
+            eyebrow={data.eyebrow}
+            headline={data.headline.parts}
+            headlineId={`${data.id}-headline`}
+            sub={data.sub}
+            align="center"
+            headlineClassName="mt-4 text-4xl font-semibold tracking-tight text-foreground sm:text-5xl lg:text-6xl"
+            subClassName="mx-auto mt-5 max-w-xl text-base text-muted sm:text-lg"
+          />
         </ScrollFadeIn>
 
         <ol

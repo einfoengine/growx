@@ -1,9 +1,8 @@
 import { Quote, Star } from "lucide-react";
-import Headline from "@/components/elements/Headline";
+import SectionHeader from "@/components/elements/SectionHeader";
 import ScrollFadeIn from "@/components/elements/ScrollFadeIn";
 import { getTestimonials } from "@/lib/content";
 import type { Testimonial } from "@/lib/content";
-import Eyebrow from "@/components/elements/Eyebrow";
 
 function Stars() {
   return (
@@ -146,17 +145,14 @@ export default async function Testimonials() {
             id={`${data.id}-header`}
             className="grid gap-6 lg:grid-cols-2 lg:items-end"
           >
-            <div>
-              <Eyebrow text={data.eyebrow} />
-              <Headline
-                id={`${data.id}-headline`}
-                parts={data.headline.parts}
-                as="h2"
-                className="mt-4 text-4xl font-semibold tracking-tight text-foreground sm:text-5xl"
-                highlightClassName="bg-gradient-to-br from-brand to-[#059669] bg-clip-text text-transparent"
-                underlineHighlight={false}
-              />
-            </div>
+            <SectionHeader
+              eyebrow={data.eyebrow}
+              headline={data.headline.parts}
+              headlineId={`${data.id}-headline`}
+              headlineClassName="mt-4 text-4xl font-semibold tracking-tight text-foreground sm:text-5xl"
+              highlightClassName="bg-gradient-to-br from-brand to-[#059669] bg-clip-text text-transparent"
+              underlineHighlight={false}
+            />
             <p className="text-base text-muted lg:max-w-sm">
               {data.sub}
             </p>

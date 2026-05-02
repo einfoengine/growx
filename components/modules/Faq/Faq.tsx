@@ -1,9 +1,8 @@
 import { Plus } from "lucide-react";
-import Headline from "@/components/elements/Headline";
+import SectionHeader from "@/components/elements/SectionHeader";
 import ScrollFadeIn from "@/components/elements/ScrollFadeIn";
 import { getFaq } from "@/lib/content";
 import type { FaqContent } from "@/lib/content";
-import Eyebrow from "@/components/elements/Eyebrow";
 import FaqAccordion from "./FaqAccordion";
 
 export default async function Faq({ data }: { data?: FaqContent } = {}) {
@@ -21,15 +20,13 @@ export default async function Faq({ data }: { data?: FaqContent } = {}) {
             id={`${faqData.id}-intro`}
             className="grid gap-10 lg:grid-cols-12 lg:items-end"
           >
-            <div className="lg:col-span-7">
-              <Eyebrow text={faqData.eyebrow} />
-              <Headline
-                id={`${faqData.id}-headline`}
-                parts={faqData.headline.parts}
-                as="h2"
-                className="mt-4 text-4xl font-semibold tracking-tight text-foreground sm:text-5xl lg:text-6xl"
-              />
-            </div>
+            <SectionHeader
+              eyebrow={faqData.eyebrow}
+              headline={faqData.headline.parts}
+              headlineId={`${faqData.id}-headline`}
+              headlineClassName="mt-4 text-4xl font-semibold tracking-tight text-foreground sm:text-5xl lg:text-6xl"
+              className="lg:col-span-7"
+            />
             <p className="text-base text-muted lg:col-span-5 lg:max-w-md">
               {faqData.sub}
             </p>

@@ -1,8 +1,7 @@
 import { Check, X } from "lucide-react";
-import Headline from "@/components/elements/Headline";
+import SectionHeader from "@/components/elements/SectionHeader";
 import ScrollFadeIn from "@/components/elements/ScrollFadeIn";
 import { getComparison } from "@/lib/content";
-import Eyebrow from "@/components/elements/Eyebrow";
 
 function Cell({
   value,
@@ -48,18 +47,16 @@ export default async function Comparison({ noPaddingTop }: { noPaddingTop?: bool
 
       <div className={`container-1200 relative ${noPaddingTop ? "pb-24 pt-0 sm:pb-32 lg:pb-40" : "py-24 sm:py-32 lg:py-40"}`}>
         <ScrollFadeIn delay={0.1}>
-          <div className="mx-auto max-w-3xl text-center">
-            <Eyebrow text={data.eyebrow} />
-            <Headline
-              id={`${data.id}-headline`}
-              parts={data.headline.parts}
-              as="h2"
-              className="mt-3 text-4xl font-semibold leading-tight tracking-tight text-foreground sm:text-5xl"
-              highlightClassName="bg-gradient-to-br from-brand to-[#059669] bg-clip-text text-transparent"
-              underlineHighlight={false}
-            />
-            <p className="mx-auto mt-4 max-w-2xl text-base text-muted">{data.sub}</p>
-          </div>
+          <SectionHeader
+            eyebrow={data.eyebrow}
+            headline={data.headline.parts}
+            headlineId={`${data.id}-headline`}
+            sub={data.sub}
+            align="center"
+            headlineClassName="mt-3 text-4xl font-semibold leading-tight tracking-tight text-foreground sm:text-5xl"
+            highlightClassName="bg-gradient-to-br from-brand to-[#059669] bg-clip-text text-transparent"
+            underlineHighlight={false}
+          />
         </ScrollFadeIn>
 
         <ScrollFadeIn delay={0.3}>

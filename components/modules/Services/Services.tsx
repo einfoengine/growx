@@ -11,11 +11,10 @@ import {
   Target,
 } from "lucide-react";
 import type { ComponentType } from "react";
-import Headline from "@/components/elements/Headline";
+import SectionHeader from "@/components/elements/SectionHeader";
 import ScrollFadeIn from "@/components/elements/ScrollFadeIn";
 import { getServices } from "@/lib/content";
 import type { ServiceIcon, ServicesContent } from "@/lib/content";
-import Eyebrow from "@/components/elements/Eyebrow";
 
 type IconProps = { size?: number; className?: string };
 
@@ -46,15 +45,13 @@ export default async function Services({ data }: { data?: ServicesContent } = {}
             id={`${servicesData.id}-intro`}
             className="grid gap-10 lg:grid-cols-12 lg:items-end"
           >
-            <div className="lg:col-span-7">
-              <Eyebrow text={servicesData.eyebrow} />
-              <Headline
-                id={`${servicesData.id}-headline`}
-                parts={servicesData.headline.parts}
-                as="h2"
-                className="mt-4 text-4xl font-semibold tracking-tight text-foreground sm:text-5xl lg:text-6xl"
-              />
-            </div>
+            <SectionHeader
+              eyebrow={servicesData.eyebrow}
+              headline={servicesData.headline.parts}
+              headlineId={`${servicesData.id}-headline`}
+              headlineClassName="mt-4 text-4xl font-semibold tracking-tight text-foreground sm:text-5xl lg:text-6xl"
+              className="lg:col-span-7"
+            />
             <p className="text-base text-muted lg:col-span-5 lg:max-w-md">
               {servicesData.sub}
             </p>
