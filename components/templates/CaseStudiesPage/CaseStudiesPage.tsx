@@ -19,7 +19,7 @@ export default function CaseStudiesPage({ caseStudies }: Props) {
   return (
     <>
       {/* ── Hero ─────────────────────────────────────────────── */}
-      <section className="relative overflow-hidden bg-background">
+      <section id="case-studies-hero" className="relative overflow-hidden bg-background">
         <div
           aria-hidden="true"
           className="pointer-events-none absolute -z-10 left-1/2 -top-24 h-80 w-[700px] -translate-x-1/2 rounded-full bg-brand/8 blur-[100px]"
@@ -38,7 +38,7 @@ export default function CaseStudiesPage({ caseStudies }: Props) {
       </section>
 
       {/* ── Case Study Grid ──────────────────────────────────── */}
-      <section className="bg-surface">
+      <section id="case-studies-grid" className="bg-surface">
         <div className="container-1200 py-20 sm:py-24 lg:py-28">
           <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-2 xl:grid-cols-2">
             {caseStudies.map((cs, i) => (
@@ -49,7 +49,7 @@ export default function CaseStudiesPage({ caseStudies }: Props) {
       </section>
 
       {/* ── Bottom CTA ───────────────────────────────────────── */}
-      <section className="relative overflow-hidden bg-background">
+      <section id="case-studies-cta" className="relative overflow-hidden bg-background">
         <div
           aria-hidden="true"
           className="pointer-events-none absolute -z-10 left-1/2 top-0 h-72 w-150 -translate-x-1/2 rounded-full bg-brand/8 blur-[90px]"

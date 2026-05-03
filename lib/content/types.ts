@@ -248,6 +248,39 @@ export type ServicePageContent = {
 
 export type PageSlug = "home";
 
+export type PricingDuration = {
+  id: string;
+  label: string;
+  /** Weeks for one-off services, months for retainer services. */
+  value: number;
+  /** Price multiplier: <1 = discount, 1 = standard, >1 = rush premium. */
+  multiplier: number;
+};
+
+export type PricingServiceConfig = {
+  slug: string;
+  icon: ServiceIcon;
+  unitPrice: number;
+  unit: string;
+  unitLabel: string;
+  minQty: number;
+  maxQty: number;
+  qtyStep: number;
+  billing: "one-off" | "monthly";
+  durations: PricingDuration[];
+};
+
+export type PricingPageContent = {
+  id: string;
+  hero: {
+    eyebrow: string;
+    headline: { parts: HeadlinePart[] };
+    sub: string;
+  };
+  services: PricingServiceConfig[];
+  note: string;
+};
+
 export type PortfolioCategory = "web" | "social" | "video";
 
 export type PortfolioMedia = {

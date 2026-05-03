@@ -1,0 +1,117 @@
+{
+  "id": "pricing-page",
+  "hero": {
+    "eyebrow": "Build Your Package",
+    "headline": {
+      "parts": [
+        { "type": "text", "value": "Pricing that scales " },
+        { "type": "highlight", "value": "with you" }
+      ]
+    },
+    "sub": "Select a service, configure your scope, and get an instant estimate. Fixed pricing, no surprises — what you see is what we quote."
+  },
+  "note": "All estimates shown are starting points. Final pricing is locked in your proposal, which arrives within 24 hours of your discovery call. Volume discounts apply automatically.",
+  "services": [
+    {
+      "slug": "website",
+      "icon": "code",
+      "unitPrice": 750,
+      "unit": "page",
+      "unitLabel": "Pages",
+      "minQty": 3,
+      "maxQty": 20,
+      "qtyStep": 1,
+      "billing": "one-off",
+      "durations": [
+        { "id": "rush",     "label": "Rush — 2 weeks",     "value": 2,  "multiplier": 1.25 },
+        { "id": "standard", "label": "Standard — 4 weeks", "value": 4,  "multiplier": 1.0  },
+        { "id": "relaxed",  "label": "Relaxed — 6 weeks",  "value": 6,  "multiplier": 0.95 },
+        { "id": "extended", "label": "Extended — 8 weeks", "value": 8,  "multiplier": 0.9  }
+      ]
+    },
+    {
+      "slug": "seo-aeo",
+      "icon": "search",
+      "unitPrice": 400,
+      "unit": "keyword cluster",
+      "unitLabel": "Keyword Clusters",
+      "minQty": 1,
+      "maxQty": 10,
+      "qtyStep": 1,
+      "billing": "monthly",
+      "durations": [
+        { "id": "1m",  "label": "Month to month",       "value": 1,  "multiplier": 1.0  },
+        { "id": "3m",  "label": "3 months — 5% off",    "value": 3,  "multiplier": 0.95 },
+        { "id": "6m",  "label": "6 months — 10% off",   "value": 6,  "multiplier": 0.9  },
+        { "id": "12m", "label": "12 months — 15% off",  "value": 12, "multiplier": 0.85 }
+      ]
+    },
+    {
+      "slug": "social",
+      "icon": "share-2",
+      "unitPrice": 350,
+      "unit": "platform",
+      "unitLabel": "Platforms",
+      "minQty": 1,
+      "maxQty": 4,
+      "qtyStep": 1,
+      "billing": "monthly",
+      "durations": [
+        { "id": "1m",  "label": "Month to month",       "value": 1,  "multiplier": 1.0  },
+        { "id": "3m",  "label": "3 months — 5% off",    "value": 3,  "multiplier": 0.95 },
+        { "id": "6m",  "label": "6 months — 10% off",   "value": 6,  "multiplier": 0.9  },
+        { "id": "12m", "label": "12 months — 15% off",  "value": 12, "multiplier": 0.85 }
+      ]
+    },
+    {
+      "slug": "content",
+      "icon": "pen-tool",
+      "unitPrice": 250,
+      "unit": "piece",
+      "unitLabel": "Pieces",
+      "minQty": 1,
+      "maxQty": 20,
+      "qtyStep": 1,
+      "billing": "monthly",
+      "durations": [
+        { "id": "one-off", "label": "One-off batch",        "value": 1,  "multiplier": 1.0  },
+        { "id": "3m",      "label": "3 months — 5% off",    "value": 3,  "multiplier": 0.95 },
+        { "id": "6m",      "label": "6 months — 10% off",   "value": 6,  "multiplier": 0.9  },
+        { "id": "12m",     "label": "12 months — 15% off",  "value": 12, "multiplier": 0.85 }
+      ]
+    },
+    {
+      "slug": "ppc",
+      "icon": "target",
+      "unitPrice": 800,
+      "unit": "channel",
+      "unitLabel": "Ad Channels",
+      "minQty": 1,
+      "maxQty": 5,
+      "qtyStep": 1,
+      "billing": "monthly",
+      "durations": [
+        { "id": "1m",  "label": "Month to month",       "value": 1,  "multiplier": 1.0  },
+        { "id": "3m",  "label": "3 months — 5% off",    "value": 3,  "multiplier": 0.95 },
+        { "id": "6m",  "label": "6 months — 10% off",   "value": 6,  "multiplier": 0.9  },
+        { "id": "12m", "label": "12 months — 15% off",  "value": 12, "multiplier": 0.85 }
+      ]
+    },
+    {
+      "slug": "funnels",
+      "icon": "funnel",
+      "unitPrice": 1500,
+      "unit": "funnel",
+      "unitLabel": "Funnels",
+      "minQty": 1,
+      "maxQty": 5,
+      "qtyStep": 1,
+      "billing": "one-off",
+      "durations": [
+        { "id": "rush",     "label": "Rush — 3 weeks",     "value": 3, "multiplier": 1.2  },
+        { "id": "standard", "label": "Standard — 5 weeks", "value": 5, "multiplier": 1.0  },
+        { "id": "relaxed",  "label": "Relaxed — 8 weeks",  "value": 8, "multiplier": 0.92 }
+      ]
+    }
+  ]
+}

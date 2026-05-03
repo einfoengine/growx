@@ -16,7 +16,7 @@ export default function ProcessPage({ data }: Props) {
   return (
     <>
       {/* ── Hero ─────────────────────────────────────────────── */}
-      <section className="relative overflow-hidden bg-background">
+      <section id="process-hero" className="relative overflow-hidden bg-background">
         <div
           aria-hidden="true"
           className="pointer-events-none absolute -z-10 left-1/2 -top-24 h-80 w-[700px] -translate-x-1/2 rounded-full bg-brand/8 blur-[100px]"
@@ -38,7 +38,7 @@ export default function ProcessPage({ data }: Props) {
       </section>
 
       {/* ── Journey ──────────────────────────────────────────── */}
-      <section className="bg-surface">
+      <section id="process-journey" className="bg-surface">
         <div className="container-1200 py-20 sm:py-24 lg:py-28">
           <SectionHeader
             eyebrow={data.journey.eyebrow}
@@ -94,7 +94,7 @@ export default function ProcessPage({ data }: Props) {
       </section>
 
       {/* ── Communication ────────────────────────────────────── */}
-      <section className="relative isolate overflow-hidden bg-foreground text-background">
+      <section id="process-communication" className="relative isolate overflow-hidden bg-foreground text-background">
         <div
           aria-hidden="true"
           className="pointer-events-none absolute inset-0 -z-10 bg-[linear-gradient(to_right,rgba(255,255,255,0.04)_1px,transparent_1px),linear-gradient(to_bottom,rgba(255,255,255,0.04)_1px,transparent_1px)] bg-size-[64px_64px] mask-[radial-gradient(ellipse_70%_60%_at_50%_50%,#000,transparent_90%)]"
@@ -155,7 +155,7 @@ export default function ProcessPage({ data }: Props) {
       </section>
 
       {/* ── White-Label ───────────────────────────────────────── */}
-      <section className="bg-background">
+      <section id="process-white-label" className="bg-background">
         <div className="container-1200 py-20 sm:py-24 lg:py-28">
           <div className="grid gap-14 lg:grid-cols-2 lg:gap-20 lg:items-start">
             <div className="lg:sticky lg:top-28">
@@ -187,7 +187,7 @@ export default function ProcessPage({ data }: Props) {
       </section>
 
       {/* ── FAQ ──────────────────────────────────────────────── */}
-      <section className="bg-surface">
+      <section id="process-faq" className="bg-surface">
         <div className="container-1200 py-20 sm:py-24 lg:py-28">
           <SectionHeader
             eyebrow="Questions"
@@ -220,7 +220,7 @@ export default function ProcessPage({ data }: Props) {
       </section>
 
       {/* ── CTA ──────────────────────────────────────────────── */}
-      <section className="relative overflow-hidden bg-background">
+      <section id="process-cta" className="relative overflow-hidden bg-background">
         <div
           aria-hidden="true"
           className="pointer-events-none absolute -z-10 left-1/2 top-0 h-72 w-150 -translate-x-1/2 rounded-full bg-brand/8 blur-[90px]"

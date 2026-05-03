@@ -38,20 +38,26 @@ const PLANS: Record<string, {
   },
 };
 
+type PlanData = (typeof PLANS)[string];
+
+type OnboardingEventDetail = {
+  plan?: string;
+  customPlan?: PlanData;
+};
+
 type FormState = "idle" | "submitting" | "success";
 
 export default function OnboardingModal() {
-  const [planKey, setPlanKey] = useState<string | null>(null);
+  const [plan, setPlan] = useState<PlanData | null>(null);
   const [formState, setFormState] = useState<FormState>("idle");
 
-  const plan = planKey ? PLANS[planKey] : null;
-
-  // Listen for the custom event fired by PricingCTA buttons
+  // Listen for the custom event fired by PricingCTA buttons and the pricing calculator
   useEffect(() => {
     const handler = (e: Event) => {
-      const key = (e as CustomEvent<{ plan: string }>).detail?.plan;
-      if (key && PLANS[key]) {
-        setPlanKey(key);
+      const detail = (e as CustomEvent<OnboardingEventDetail>).detail;
+      const resolved = detail?.customPlan ?? (detail?.plan ? PLANS[detail.plan] : null);
+      if (resolved) {
+        setPlan(resolved);
         setFormState("idle");
         document.body.style.overflow = "hidden";
       }
@@ -69,7 +75,7 @@ export default function OnboardingModal() {
   }, [plan]);
 
   function close() {
-    setPlanKey(null);
+    setPlan(null);
     document.body.style.overflow = "unset";
   }
 
@@ -210,7 +216,7 @@ export default function OnboardingModal() {
                     disabled={formState === "submitting"}
                     className="w-full rounded-xl bg-brand px-4 py-3.5 text-sm font-semibold text-black transition-all hover:bg-[#059669] hover:scale-[1.01] disabled:opacity-60 disabled:cursor-not-allowed disabled:hover:scale-100"
                   >
-                    {formState === "submitting" ? "Sending…" : `Claim Your ${plan.name} Plan`}
+                    {formState === "submitting" ? "Sending…" : `Place Order — ${plan.name}`}
                   </button>
 
                   <p className="text-center text-xs text-muted">

@@ -34,7 +34,7 @@ export default function AboutPage({ data }: Props) {
   return (
     <>
       {/* ── Hero ─────────────────────────────────────────────── */}
-      <section className="relative overflow-hidden bg-background">
+      <section id="about-hero" className="relative overflow-hidden bg-background">
         <div
           aria-hidden="true"
           className="pointer-events-none absolute -z-10 left-1/2 -top-24 h-80 w-[700px] -translate-x-1/2 rounded-full bg-brand/8 blur-[100px]"
@@ -56,7 +56,7 @@ export default function AboutPage({ data }: Props) {
       </section>
 
       {/* ── Stats Bar ────────────────────────────────────────── */}
-      <section className="border-y border-border bg-surface">
+      <section id="about-stats" className="border-y border-border bg-surface">
         <div className="container-1200 py-12">
           <div className="grid grid-cols-2 gap-8 sm:grid-cols-4">
             {data.stats.map((s) => (
@@ -72,7 +72,7 @@ export default function AboutPage({ data }: Props) {
       </section>
 
       {/* ── Mission ──────────────────────────────────────────── */}
-      <section className="bg-background">
+      <section id="about-mission" className="bg-background">
         <div className="container-1200 py-20 sm:py-24 lg:py-28">
           <div className="grid gap-12 lg:grid-cols-2 lg:gap-20 lg:items-start">
             <SectionHeader
@@ -93,7 +93,7 @@ export default function AboutPage({ data }: Props) {
       </section>
 
       {/* ── Founders ─────────────────────────────────────────── */}
-      <section className="bg-surface">
+      <section id="about-founders" className="bg-surface">
         <div className="container-1200 py-20 sm:py-24 lg:py-28">
           <SectionHeader
             eyebrow="Leadership"
@@ -111,7 +111,7 @@ export default function AboutPage({ data }: Props) {
       </section>
 
       {/* ── Team ─────────────────────────────────────────────── */}
-      <section className="bg-background">
+      <section id="about-team" className="bg-background">
         <div className="container-1200 py-20 sm:py-24 lg:py-28">
           <SectionHeader
             eyebrow="The crew"
@@ -131,7 +131,7 @@ export default function AboutPage({ data }: Props) {
       </section>
 
       {/* ── Values ───────────────────────────────────────────── */}
-      <section className="bg-surface">
+      <section id="about-values" className="bg-surface">
         <div className="container-1200 py-20 sm:py-24 lg:py-28">
           <SectionHeader
             eyebrow="What we stand for"
@@ -160,7 +160,7 @@ export default function AboutPage({ data }: Props) {
       </section>
 
       {/* ── How We Work ──────────────────────────────────────── */}
-      <section className="bg-background">
+      <section id="about-approach" className="bg-background">
         <div className="container-1200 py-20 sm:py-24 lg:py-28">
           <div className="grid gap-12 lg:grid-cols-2 lg:gap-20 lg:items-start">
             <div className="lg:sticky lg:top-28">
@@ -192,7 +192,7 @@ export default function AboutPage({ data }: Props) {
       </section>
 
       {/* ── Featured Testimonial ─────────────────────────────── */}
-      <section className="bg-surface">
+      <section id="about-testimonial" className="bg-surface">
         <div className="container-1200 py-20 sm:py-24">
           <div className="mx-auto max-w-3xl">
             <div className="flex flex-col items-center text-center">
@@ -222,7 +222,7 @@ export default function AboutPage({ data }: Props) {
       </section>
 
       {/* ── CTA ──────────────────────────────────────────────── */}
-      <section className="relative overflow-hidden bg-background">
+      <section id="about-cta" className="relative overflow-hidden bg-background">
         <div
           aria-hidden="true"
           className="pointer-events-none absolute -z-10 left-1/2 top-0 h-72 w-150 -translate-x-1/2 rounded-full bg-brand/8 blur-[90px]"

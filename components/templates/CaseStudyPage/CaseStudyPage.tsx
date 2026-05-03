@@ -24,7 +24,7 @@ export default function CaseStudyPage({ caseStudy: cs, related }: Props) {
   return (
     <>
       {/* ── Hero ─────────────────────────────────────────────── */}
-      <section className="relative overflow-hidden bg-background">
+      <section id="case-study-hero" className="relative overflow-hidden bg-background">
         <div
           aria-hidden="true"
           className="pointer-events-none absolute -z-10 left-1/2 -top-20 h-80 w-[700px] -translate-x-1/2 rounded-full bg-brand/8 blur-[90px]"
@@ -67,7 +67,7 @@ export default function CaseStudyPage({ caseStudy: cs, related }: Props) {
       </section>
 
       {/* ── Results Bar ──────────────────────────────────────── */}
-      <section className="border-y border-border bg-surface">
+      <section id="case-study-results" className="border-y border-border bg-surface">
         <div className="container-1200 py-12">
           <div className="grid grid-cols-2 gap-8 sm:grid-cols-4">
             {cs.results.map((r) => (
@@ -83,7 +83,7 @@ export default function CaseStudyPage({ caseStudy: cs, related }: Props) {
       </section>
 
       {/* ── Challenge & Solution ─────────────────────────────── */}
-      <section className="bg-background">
+      <section id="case-study-challenge" className="bg-background">
         <div className="container-1200 py-20 sm:py-24 lg:py-28">
           <div className="grid gap-16 lg:grid-cols-2 lg:gap-20">
             <div>
@@ -107,7 +107,7 @@ export default function CaseStudyPage({ caseStudy: cs, related }: Props) {
       </section>
 
       {/* ── Services Used ────────────────────────────────────── */}
-      <section className="bg-surface">
+      <section id="case-study-scope" className="bg-surface">
         <div className="container-1200 py-16 sm:py-20">
           <div className="grid gap-10 lg:grid-cols-2 lg:items-center">
             <SectionHeader
@@ -133,7 +133,7 @@ export default function CaseStudyPage({ caseStudy: cs, related }: Props) {
 
       {/* ── Testimonial ──────────────────────────────────────── */}
       {cs.testimonial && (
-        <section className="bg-background">
+        <section id="case-study-testimonial" className="bg-background">
           <div className="container-1200 py-20 sm:py-24">
             <div className="mx-auto max-w-3xl text-center">
               <Quote size={36} className="mx-auto text-brand/30" />
@@ -153,7 +153,7 @@ export default function CaseStudyPage({ caseStudy: cs, related }: Props) {
 
       {/* ── Related Case Studies ─────────────────────────────── */}
       {related.length > 0 && (
-        <section className="bg-surface">
+        <section id="case-study-related" className="bg-surface">
           <div className="container-1200 py-20 sm:py-24">
             <div className="flex items-end justify-between gap-4">
               <SectionHeader
@@ -205,7 +205,7 @@ export default function CaseStudyPage({ caseStudy: cs, related }: Props) {
       )}
 
       {/* ── Bottom CTA ───────────────────────────────────────── */}
-      <section className="relative isolate overflow-hidden bg-foreground text-background">
+      <section id="case-study-cta" className="relative isolate overflow-hidden bg-foreground text-background">
         <div
           aria-hidden="true"
           className="pointer-events-none absolute inset-0 -z-10"

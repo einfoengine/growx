@@ -1,5 +1,6 @@
 import aboutData from "@/data/modules/about.json";
 import processPageData from "@/data/pages/process.json";
+import pricingPageData from "@/data/pages/pricing.json";
 import caseStudyNovaSaasData from "@/data/case-studies/novasaas-seo.json";
 import caseStudyMeridianData from "@/data/case-studies/meridian-ppc.json";
 import caseStudyStyleSphereData from "@/data/case-studies/stylesphere-social.json";
@@ -28,6 +29,7 @@ import portfolioData from "@/data/modules/portfolio.json";
 import type {
   AboutContent,
   CaseStudy,
+  PricingPageContent,
   ProcessPageContent,
   ServicePageContent,
   ComparisonContent,
@@ -59,6 +61,10 @@ export async function getAbout(): Promise<AboutContent> {
 
 export async function getProcessPage(): Promise<ProcessPageContent> {
   return processPageData as ProcessPageContent;
+}
+
+export async function getPricingPage(): Promise<PricingPageContent> {
+  return pricingPageData as PricingPageContent;
 }
 
 export async function getSite(): Promise<Site> {
@@ -144,6 +150,10 @@ export const SERVICE_SLUGS = Object.keys(SERVICE_PAGES);
 
 export async function getServicePage(slug: string): Promise<ServicePageContent | null> {
   return SERVICE_PAGES[slug] ?? null;
+}
+
+export async function getAllServices(): Promise<ServicePageContent[]> {
+  return Object.values(SERVICE_PAGES);
 }
 
 const CASE_STUDIES: Record<string, CaseStudy> = {
