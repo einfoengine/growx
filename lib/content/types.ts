@@ -257,6 +257,17 @@ export type PricingDuration = {
   multiplier: number;
 };
 
+export type PricingConfigField = {
+  id: string;
+  label: string;
+  /** select = single choice; multiselect = multiple; number = slider */
+  type: "select" | "multiselect" | "number";
+  options?: string[];
+  min?: number;
+  max?: number;
+  step?: number;
+};
+
 export type PricingServiceConfig = {
   slug: string;
   icon: ServiceIcon;
@@ -268,6 +279,7 @@ export type PricingServiceConfig = {
   qtyStep: number;
   billing: "one-off" | "monthly";
   durations: PricingDuration[];
+  configFields?: PricingConfigField[];
 };
 
 export type PricingPageContent = {

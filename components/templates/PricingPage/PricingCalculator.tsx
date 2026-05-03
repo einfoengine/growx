@@ -8,15 +8,14 @@ import {
   ShoppingCart, Target, Trash2, X,
 } from "lucide-react";
 import type { ComponentType } from "react";
-import type { PricingPageContent, ServicePageContent, ServiceIcon } from "@/lib/content";
+import type {
+  PricingPageContent, PricingConfigField,
+  ServicePageContent, ServiceIcon,
+} from "@/lib/content";
 
-type Props = {
-  pageData: PricingPageContent;
-  services: ServicePageContent[];
-};
-
+type Props = { pageData: PricingPageContent; services: ServicePageContent[] };
 type IconProps = { size?: number; className?: string };
-
+type ServiceCfgValues = Record<string, string | string[] | number>;
 type CartDeliverable = { id: string; title: string; description: string };
 
 type CartItem = {
@@ -36,10 +35,16 @@ type CartItem = {
   total: number;
   perMonth: number;
   notes: string;
+  serviceConfig: ServiceCfgValues;
   deliverables: CartDeliverable[];
 };
 
-type InlineEditState = { qty: number; durationId: string; notes: string };
+type InlineEditState = {
+  qty: number;
+  durationId: string;
+  notes: string;
+  serviceConfig: ServiceCfgValues;
+};
 
 const ICON_MAP: Record<ServiceIcon, ComponentType<IconProps>> = {
   code: Code, search: Search, bot: Bot,
@@ -55,7 +60,10 @@ function computePrice(
   qty: number,
   durationId: string
 ) {
-  const dur = cfg.durations.find((d) => d.id === durationId) ?? cfg.durations[1] ?? cfg.durations[0];
+  const dur =
+    cfg.durations.find((d) => d.id === durationId) ??
+    cfg.durations[1] ??
+    cfg.durations[0];
   if (!dur) return { total: 0, perMonth: 0, discountPct: 0, rushPct: 0, dur: cfg.durations[0] };
   const base = cfg.unitPrice * qty;
   const sub = cfg.billing === "monthly" ? base * dur.value : base;
@@ -66,78 +74,167 @@ function computePrice(
   return { total, perMonth, discountPct, rushPct, dur };
 }
 
-export default function PricingCalculator({ pageData, services }: Props) {
-  /* ── Configurator state ─────────────────────────────── */
-  const [selectedSlug, setSelectedSlug] = useState<string | null>(null);
-  const [qty, setQty] = useState(1);
-  const [durationId, setDurationId] = useState<string>("");
-  const [notes, setNotes] = useState("");
-  const [addedFeedback, setAddedFeedback] = useState(false);
+/* ── Renders a single config field ─────────────────────── */
+function ConfigField({
+  field,
+  value,
+  onChange,
+}: {
+  field: PricingConfigField;
+  value: string | string[] | number | undefined;
+  onChange: (v: string | string[] | number) => void;
+}) {
+  if (field.type === "select") {
+    const selected = (value as string) ?? "";
+    return (
+      <div>
+        <p className="text-sm font-medium text-foreground">{field.label}</p>
+        <div className="mt-2 flex flex-wrap gap-2">
+          {field.options?.map((opt) => (
+            <button
+              key={opt}
+              type="button"
+              onClick={() => onChange(opt)}
+              className={`rounded-full px-3 py-1.5 text-xs font-medium transition ${
+                selected === opt
+                  ? "bg-foreground text-background"
+                  : "border border-border text-foreground/70 hover:border-foreground/30 hover:text-foreground"
+              }`}
+            >
+              {opt}
+            </button>
+          ))}
+        </div>
+      </div>
+    );
+  }
 
-  /* ── Cart state ─────────────────────────────────────── */
+  if (field.type === "multiselect") {
+    const selected = (value as string[]) ?? [];
+    return (
+      <div>
+        <p className="text-sm font-medium text-foreground">{field.label}</p>
+        <div className="mt-2 flex flex-wrap gap-2">
+          {field.options?.map((opt) => {
+            const active = selected.includes(opt);
+            return (
+              <button
+                key={opt}
+                type="button"
+                onClick={() => {
+                  onChange(
+                    active ? selected.filter((v) => v !== opt) : [...selected, opt]
+                  );
+                }}
+                className={`flex items-center gap-1.5 rounded-full px-3 py-1.5 text-xs font-medium transition ${
+                  active
+                    ? "bg-foreground text-background"
+                    : "border border-border text-foreground/70 hover:border-foreground/30 hover:text-foreground"
+                }`}
+              >
+                {active && <Check size={9} strokeWidth={3} />}
+                {opt}
+              </button>
+            );
+          })}
+        </div>
+      </div>
+    );
+  }
+
+  if (field.type === "number") {
+    const min = field.min ?? 1;
+    const max = field.max ?? 10;
+    const step = field.step ?? 1;
+    const val = (value as number) ?? min;
+    return (
+      <div>
+        <p className="text-sm font-medium text-foreground">{field.label}</p>
+        <div className="mt-3 flex items-center gap-3">
+          <button
+            type="button"
+            onClick={() => onChange(Math.max(min, val - step))}
+            disabled={val <= min}
+            className="flex h-9 w-9 items-center justify-center rounded-full border border-border transition hover:bg-surface disabled:opacity-40"
+          >
+            <Minus size={13} />
+          </button>
+          <div className="flex-1">
+            <input
+              type="range"
+              min={min}
+              max={max}
+              step={step}
+              value={val}
+              onChange={(e) => onChange(Number(e.target.value))}
+              className="w-full accent-brand"
+            />
+            <div className="mt-1 flex justify-between text-[10px] text-muted">
+              <span>{min}</span>
+              <span className="font-semibold text-foreground">{val}</span>
+              <span>{max}</span>
+            </div>
+          </div>
+          <button
+            type="button"
+            onClick={() => onChange(Math.min(max, val + step))}
+            disabled={val >= max}
+            className="flex h-9 w-9 items-center justify-center rounded-full border border-border transition hover:bg-surface disabled:opacity-40"
+          >
+            <Plus size={13} />
+          </button>
+        </div>
+      </div>
+    );
+  }
+
+  return null;
+}
+
+/* ── Formats a service config value for display ─────────── */
+function fmtConfigValue(v: string | string[] | number | undefined): string {
+  if (v === undefined || v === "" || (Array.isArray(v) && v.length === 0)) return "—";
+  if (Array.isArray(v)) return v.join(", ");
+  return String(v);
+}
+
+export default function PricingCalculator({ pageData, services }: Props) {
   const [cartItems, setCartItems] = useState<CartItem[]>([]);
   const [expandedCartIds, setExpandedCartIds] = useState<Set<string>>(new Set());
   const [inlineEditCartId, setInlineEditCartId] = useState<string | null>(null);
   const [inlineEditState, setInlineEditState] = useState<InlineEditState | null>(null);
 
-  /* ── Leave-confirmation state ───────────────────────── */
+  /* ── Leave-confirmation ──────────────────────────────── */
   const [showLeaveModal, setShowLeaveModal] = useState(false);
   const [leaveHref, setLeaveHref] = useState<string | null>(null);
   const confirmedLeaveRef = useRef(false);
 
-  /* ── Refs for scrolling ─────────────────────────────── */
-  const cartRef = useRef<HTMLDivElement>(null);
+  const summaryRef = useRef<HTMLDivElement>(null);
+  const itemRefs = useRef<Record<string, HTMLDivElement | null>>({});
 
-  /* ── Derived configurator values ────────────────────── */
-  const config = useMemo(
-    () => pageData.services.find((s) => s.slug === selectedSlug) ?? null,
-    [selectedSlug, pageData.services]
-  );
-  const service = useMemo(
-    () => services.find((s) => s.slug === selectedSlug) ?? null,
-    [selectedSlug, services]
-  );
-  const duration = useMemo(
-    () => config?.durations.find((d) => d.id === durationId) ?? config?.durations[1] ?? config?.durations[0] ?? null,
-    [config, durationId]
-  );
-  const safeQty = config ? Math.min(Math.max(qty, config.minQty), config.maxQty) : qty;
-
-  const { total, perMonth, discountPct, rushPct } = useMemo(() => {
-    if (!config || !duration) return { total: 0, perMonth: 0, discountPct: 0, rushPct: 0 };
-    return computePrice(config, safeQty, duration.id);
-  }, [config, duration, safeQty]);
-
-  /* ── Leave-page protection ──────────────────────────── */
   const hasCart = cartItems.length > 0;
 
   useEffect(() => {
     if (!hasCart) return;
-
-    // Browser close / hard refresh
     const onBeforeUnload = (e: BeforeUnloadEvent) => {
       if (confirmedLeaveRef.current) return;
       e.preventDefault();
       e.returnValue = "";
     };
-    window.addEventListener("beforeunload", onBeforeUnload);
-
-    // Next.js soft-navigation link clicks
     const onLinkClick = (e: MouseEvent) => {
       if (confirmedLeaveRef.current) return;
       const anchor = (e.target as HTMLElement).closest("a[href]") as HTMLAnchorElement | null;
       if (!anchor) return;
       const href = anchor.getAttribute("href") ?? "";
       if (!href || href.startsWith("#")) return;
-      // External links: let browser handle naturally
       if (anchor.hostname && anchor.hostname !== window.location.hostname) return;
       e.preventDefault();
       e.stopImmediatePropagation();
       setLeaveHref(href);
       setShowLeaveModal(true);
     };
+    window.addEventListener("beforeunload", onBeforeUnload);
     document.addEventListener("click", onLinkClick, true);
-
     return () => {
       window.removeEventListener("beforeunload", onBeforeUnload);
       document.removeEventListener("click", onLinkClick, true);
@@ -150,52 +247,55 @@ export default function PricingCalculator({ pageData, services }: Props) {
     if (leaveHref) window.location.assign(leaveHref);
   }
 
-  function dismissLeave() {
-    setShowLeaveModal(false);
-    setLeaveHref(null);
-  }
-
-  /* ── Configurator actions ───────────────────────────── */
-  function selectService(slug: string) {
+  /* ── Add service → immediately to order ─────────────── */
+  function addService(slug: string) {
     const cfg = pageData.services.find((s) => s.slug === slug);
-    if (!cfg) return;
-    setSelectedSlug(slug);
-    setQty(cfg.minQty);
-    setDurationId(cfg.durations[1]?.id ?? cfg.durations[0]?.id ?? "");
-    setNotes("");
-  }
+    const svc = services.find((s) => s.slug === slug);
+    if (!cfg || !svc) return;
 
-  function addToCart() {
-    if (!config || !service || !duration) return;
-    const item: CartItem = {
-      cartId: `${Date.now()}-${config.slug}`,
-      slug: config.slug,
-      serviceName: service.name,
-      qty: safeQty,
-      unit: config.unit,
-      unitLabel: config.unitLabel,
-      unitPrice: config.unitPrice,
-      durationId: duration.id,
-      durationLabel: duration.label,
-      durationValue: duration.value,
-      billing: config.billing,
+    const defaultDur = cfg.durations[1] ?? cfg.durations[0];
+    const { total, perMonth, discountPct, rushPct, dur } = computePrice(cfg, cfg.minQty, defaultDur.id);
+
+    const cartId = `${Date.now()}-${cfg.slug}`;
+    const newItem: CartItem = {
+      cartId,
+      slug: cfg.slug,
+      serviceName: svc.name,
+      qty: cfg.minQty,
+      unit: cfg.unit,
+      unitLabel: cfg.unitLabel,
+      unitPrice: cfg.unitPrice,
+      durationId: dur.id,
+      durationLabel: dur.label,
+      durationValue: dur.value,
+      billing: cfg.billing,
       discountPct,
       rushPct,
       total,
       perMonth,
-      notes: notes.trim(),
-      deliverables: service.deliverables.map((d) => ({ id: d.id, title: d.title, description: d.description })),
+      notes: "",
+      serviceConfig: {},
+      deliverables: svc.deliverables.map((d) => ({
+        id: d.id,
+        title: d.title,
+        description: d.description,
+      })),
     };
-    setCartItems((prev) => [...prev, item]);
-    setNotes("");
-    setAddedFeedback(true);
+
+    setCartItems((prev) => [...prev, newItem]);
+    setInlineEditCartId(cartId);
+    setInlineEditState({ qty: cfg.minQty, durationId: dur.id, notes: "", serviceConfig: {} });
+
     setTimeout(() => {
-      setAddedFeedback(false);
-      cartRef.current?.scrollIntoView({ behavior: "smooth", block: "start" });
-    }, 800);
+      if (!hasCart) {
+        summaryRef.current?.scrollIntoView({ behavior: "smooth", block: "start" });
+      } else {
+        itemRefs.current[cartId]?.scrollIntoView({ behavior: "smooth", block: "center" });
+      }
+    }, 60);
   }
 
-  /* ── Cart actions ───────────────────────────────────── */
+  /* ── Cart mutations ──────────────────────────────────── */
   function removeFromCart(cartId: string) {
     setCartItems((prev) => prev.filter((i) => i.cartId !== cartId));
     setExpandedCartIds((prev) => { const n = new Set(prev); n.delete(cartId); return n; });
@@ -203,7 +303,7 @@ export default function PricingCalculator({ pageData, services }: Props) {
   }
 
   function toggleExpand(cartId: string) {
-    if (inlineEditCartId === cartId) return; // editing takes over
+    if (inlineEditCartId === cartId) return;
     setExpandedCartIds((prev) => {
       const n = new Set(prev);
       n.has(cartId) ? n.delete(cartId) : n.add(cartId);
@@ -214,7 +314,12 @@ export default function PricingCalculator({ pageData, services }: Props) {
   function startInlineEdit(item: CartItem) {
     setExpandedCartIds((prev) => { const n = new Set(prev); n.delete(item.cartId); return n; });
     setInlineEditCartId(item.cartId);
-    setInlineEditState({ qty: item.qty, durationId: item.durationId, notes: item.notes });
+    setInlineEditState({
+      qty: item.qty,
+      durationId: item.durationId,
+      notes: item.notes,
+      serviceConfig: { ...(item.serviceConfig ?? {}) },
+    });
   }
 
   function cancelInlineEdit() {
@@ -233,16 +338,11 @@ export default function PricingCalculator({ pageData, services }: Props) {
     setCartItems((prev) =>
       prev.map((i) =>
         i.cartId !== inlineEditCartId ? i : {
-          ...i,
-          qty: safeQ,
-          durationId: dur.id,
-          durationLabel: dur.label,
-          durationValue: dur.value,
-          discountPct,
-          rushPct,
-          total,
-          perMonth,
+          ...i, qty: safeQ,
+          durationId: dur.id, durationLabel: dur.label, durationValue: dur.value,
+          discountPct, rushPct, total, perMonth,
           notes: inlineEditState.notes.trim(),
+          serviceConfig: inlineEditState.serviceConfig,
         }
       )
     );
@@ -250,69 +350,89 @@ export default function PricingCalculator({ pageData, services }: Props) {
     setInlineEditState(null);
   }, [inlineEditCartId, inlineEditState, cartItems, pageData.services]);
 
-  /* ── Order totals ───────────────────────────────────── */
+  /* ── Inline edit helpers ─────────────────────────────── */
+  function setConfigField(fieldId: string, value: string | string[] | number) {
+    setInlineEditState((s) =>
+      s ? { ...s, serviceConfig: { ...s.serviceConfig, [fieldId]: value } } : s
+    );
+  }
+
+  /* ── Totals + order ──────────────────────────────────── */
   const oneOffTotal = cartItems.filter((i) => i.billing === "one-off").reduce((s, i) => s + i.total, 0);
   const monthlyTotal = cartItems.filter((i) => i.billing === "monthly").reduce((s, i) => s + i.perMonth, 0);
 
   function placeOrder() {
     if (!hasCart) return;
-    let priceDisplay =
+    const priceDisplay =
       monthlyTotal > 0 && oneOffTotal > 0 ? `${fmt(monthlyTotal)}/mo + ${fmt(oneOffTotal)} one-off`
       : monthlyTotal > 0 ? `${fmt(monthlyTotal)}/mo`
       : fmt(oneOffTotal);
+
     window.dispatchEvent(new CustomEvent("open-onboarding", {
       detail: {
         customPlan: {
           name: `Custom Package — ${cartItems.length} service${cartItems.length > 1 ? "s" : ""}`,
           price: priceDisplay,
           description: cartItems.map((i) => i.serviceName).join(" · "),
-          features: cartItems.map((i) => `${i.serviceName}: ${i.qty} ${i.qty === 1 ? i.unit : i.unitLabel.toLowerCase()} · ${i.durationLabel}`),
+          features: cartItems.map((i) => {
+            const cfgSummary = Object.entries(i.serviceConfig ?? {})
+              .filter(([, v]) => Array.isArray(v) ? (v as string[]).length > 0 : v !== "" && v !== undefined)
+              .map(([, v]) => Array.isArray(v) ? (v as string[]).join(", ") : String(v))
+              .join(" · ");
+            return `${i.serviceName}: ${i.qty} ${i.qty === 1 ? i.unit : i.unitLabel.toLowerCase()} · ${i.durationLabel}${cfgSummary ? ` — ${cfgSummary}` : ""}`;
+          }),
         },
       },
     }));
   }
 
-  const inCartSlugs = new Set(cartItems.map((i) => i.slug));
+  const cartCountBySlug = useMemo(() => {
+    const counts: Record<string, number> = {};
+    cartItems.forEach((i) => { counts[i.slug] = (counts[i.slug] ?? 0) + 1; });
+    return counts;
+  }, [cartItems]);
 
-  /* ── Render ─────────────────────────────────────────── */
+  /* ── Render ──────────────────────────────────────────── */
   return (
     <>
       <section id="pricing-calculator" className="bg-background">
         <div className="container-1200 py-16 sm:py-20">
 
-          {/* ── Step 1: Service selector ──────────────────── */}
+          {/* ── Service cards ──────────────────────────── */}
           <div>
-            <p className="text-xs font-semibold uppercase tracking-[0.18em] text-brand">Step 1</p>
+            <p className="text-xs font-semibold uppercase tracking-[0.18em] text-brand">Select services</p>
             <h2 className="mt-2 text-2xl font-semibold tracking-tight text-foreground sm:text-3xl">
-              Choose a service
+              What would you like to order?
             </h2>
-            <p className="mt-1 text-sm text-muted">Select one to configure — you can add multiple services to your order.</p>
+            <p className="mt-1 text-sm text-muted">
+              Click a service to add it — configure the details in the order summary below.
+            </p>
 
             <div className="mt-6 grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-6">
               {pageData.services.map((cfg) => {
                 const svc = services.find((s) => s.slug === cfg.slug);
                 const Icon = ICON_MAP[cfg.icon];
-                const active = selectedSlug === cfg.slug;
-                const inCart = inCartSlugs.has(cfg.slug);
+                const count = cartCountBySlug[cfg.slug] ?? 0;
                 return (
                   <button
                     key={cfg.slug}
                     type="button"
-                    onClick={() => selectService(cfg.slug)}
-                    className={`relative flex flex-col items-center gap-3 rounded-2xl border p-5 text-center transition-all duration-200 ${
-                      active ? "border-brand bg-surface shadow-[0_0_20px_rgba(16,185,129,0.08)]"
-                             : "border-border bg-background hover:border-brand/40 hover:bg-surface"
-                    }`}
+                    onClick={() => addService(cfg.slug)}
+                    className="group relative flex flex-col items-center gap-3 rounded-2xl border border-border bg-background p-5 text-center transition-all duration-200 hover:border-brand/40 hover:bg-surface hover:shadow-[0_0_20px_rgba(16,185,129,0.06)]"
                   >
-                    {inCart && (
-                      <span className="absolute right-2 top-2 flex h-5 w-5 items-center justify-center rounded-full bg-brand">
-                        <Check size={10} className="text-black" strokeWidth={3} />
+                    {count > 0 ? (
+                      <span className="absolute right-2 top-2 flex h-5 w-5 items-center justify-center rounded-full bg-brand text-[10px] font-bold text-black">
+                        {count}
+                      </span>
+                    ) : (
+                      <span className="absolute right-2 top-2 flex h-5 w-5 items-center justify-center rounded-full border border-border bg-background text-muted opacity-0 transition-opacity group-hover:opacity-100">
+                        <Plus size={10} />
                       </span>
                     )}
-                    <span className={`flex h-10 w-10 items-center justify-center rounded-xl transition-colors ${active ? "bg-brand/15 text-brand" : "bg-surface text-foreground/50"}`}>
+                    <span className="flex h-10 w-10 items-center justify-center rounded-xl bg-surface text-foreground/50 transition-colors group-hover:bg-brand/15 group-hover:text-brand">
                       <Icon size={18} />
                     </span>
-                    <span className={`text-xs font-semibold leading-tight ${active ? "text-foreground" : "text-muted"}`}>
+                    <span className="text-xs font-semibold leading-tight text-muted group-hover:text-foreground">
                       {svc?.name ?? cfg.slug}
                     </span>
                     <span className={`rounded-full px-2 py-0.5 text-[10px] font-medium ${cfg.billing === "one-off" ? "bg-amber-50 text-amber-700" : "bg-emerald-50 text-emerald-700"}`}>
@@ -324,130 +444,27 @@ export default function PricingCalculator({ pageData, services }: Props) {
             </div>
           </div>
 
-          {/* ── Steps 2–4 + price card ──────────────────── */}
-          {config && service && duration && (
-            <div className="mt-14 grid gap-8 lg:grid-cols-[1fr_360px] lg:items-start">
-              <div className="space-y-10">
-
-                {/* Step 2: Quantity */}
-                <div>
-                  <p className="text-xs font-semibold uppercase tracking-[0.18em] text-brand">Step 2</p>
-                  <h2 className="mt-2 text-2xl font-semibold tracking-tight text-foreground sm:text-3xl">
-                    How many {config.unitLabel.toLowerCase()}?
-                  </h2>
-                  <p className="mt-1 text-sm text-muted">{fmt(config.unitPrice)} per {config.unit}</p>
-                  <div className="mt-5 flex items-center gap-4">
-                    <button type="button" onClick={() => setQty((q) => Math.max(config.minQty, q - config.qtyStep))} disabled={safeQty <= config.minQty} className="flex h-10 w-10 items-center justify-center rounded-full border border-border transition hover:bg-surface disabled:opacity-40"><Minus size={14} /></button>
-                    <div className="flex-1">
-                      <input type="range" min={config.minQty} max={config.maxQty} step={config.qtyStep} value={safeQty} onChange={(e) => setQty(Number(e.target.value))} className="w-full accent-brand" />
-                      <div className="mt-1 flex justify-between text-[10px] text-muted">
-                        <span>{config.minQty}</span>
-                        <span className="font-semibold text-foreground">{safeQty} {safeQty === 1 ? config.unit : config.unitLabel.toLowerCase()}</span>
-                        <span>{config.maxQty}</span>
-                      </div>
-                    </div>
-                    <button type="button" onClick={() => setQty((q) => Math.min(config.maxQty, q + config.qtyStep))} disabled={safeQty >= config.maxQty} className="flex h-10 w-10 items-center justify-center rounded-full border border-border transition hover:bg-surface disabled:opacity-40"><Plus size={14} /></button>
-                  </div>
-                </div>
-
-                {/* Step 3: Duration */}
-                <div>
-                  <p className="text-xs font-semibold uppercase tracking-[0.18em] text-brand">Step 3</p>
-                  <h2 className="mt-2 text-2xl font-semibold tracking-tight text-foreground sm:text-3xl">
-                    {config.billing === "one-off" ? "Delivery timeline" : "Commitment length"}
-                  </h2>
-                  <div className="mt-5 flex flex-wrap gap-2">
-                    {config.durations.map((d) => (
-                      <button key={d.id} type="button" onClick={() => setDurationId(d.id)} className={`rounded-full px-4 py-2 text-sm font-medium transition ${duration.id === d.id ? "bg-foreground text-background" : "border border-border text-foreground/70 hover:border-foreground/30 hover:text-foreground"}`}>
-                        {d.label}
-                        {d.multiplier < 1 && <span className={`ml-1.5 text-xs ${duration.id === d.id ? "text-brand" : "text-emerald-600"}`}>−{Math.round((1 - d.multiplier) * 100)}%</span>}
-                        {d.multiplier > 1 && <span className={`ml-1.5 text-xs ${duration.id === d.id ? "text-amber-300" : "text-amber-600"}`}>+{Math.round((d.multiplier - 1) * 100)}%</span>}
-                      </button>
-                    ))}
-                  </div>
-                </div>
-
-                {/* Step 4: Notes */}
-                <div>
-                  <p className="text-xs font-semibold uppercase tracking-[0.18em] text-brand">Step 4</p>
-                  <h2 className="mt-2 text-2xl font-semibold tracking-tight text-foreground sm:text-3xl">Any notes for this service?</h2>
-                  <p className="mt-1 text-sm text-muted">Optional — specific requirements, preferred tools, target audience, deadlines, or anything else we should know.</p>
-                  <textarea value={notes} onChange={(e) => setNotes(e.target.value)} rows={3} placeholder={`e.g. "Mobile-first, Webflow preferred, deadline end of month…"`} className="mt-4 w-full resize-none rounded-xl border border-border bg-surface px-4 py-3 text-sm text-foreground placeholder:text-muted transition-colors focus:border-brand focus:outline-none focus:ring-1 focus:ring-brand" />
-                </div>
-
-                {/* Deliverables */}
-                <div>
-                  <p className="text-xs font-semibold uppercase tracking-[0.18em] text-brand">What&apos;s included</p>
-                  <h2 className="mt-2 text-2xl font-semibold tracking-tight text-foreground sm:text-3xl">{service.name} deliverables</h2>
-                  <p className="mt-1 text-sm text-muted">{service.tagline}</p>
-                  <ul className="mt-5 space-y-3">
-                    {service.deliverables.map((d) => (
-                      <li key={d.id} className="flex items-start gap-3">
-                        <span className="mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-brand/10"><Check size={11} className="text-brand" /></span>
-                        <div>
-                          <p className="text-sm font-semibold text-foreground">{d.title}</p>
-                          <p className="mt-0.5 text-xs leading-relaxed text-muted">{d.description}</p>
-                        </div>
-                      </li>
-                    ))}
-                  </ul>
-                  <Link href={`/services/${service.slug}`} className="mt-6 inline-flex items-center gap-1.5 text-sm font-medium text-brand transition hover:text-brand/80">
-                    View full service page <ExternalLink size={13} />
-                  </Link>
-                </div>
-              </div>
-
-              {/* Sticky price card */}
-              <div className="lg:sticky lg:top-24">
-                <div className="rounded-2xl border border-border bg-surface p-6">
-                  <p className="text-xs font-semibold uppercase tracking-[0.18em] text-brand">Your estimate</p>
-                  <p className="mt-2 text-lg font-semibold text-foreground">{service.name}</p>
-                  <div className="mt-5 space-y-2 border-t border-border pt-4 text-sm">
-                    <div className="flex justify-between text-muted"><span>{safeQty} {safeQty === 1 ? config.unit : config.unitLabel.toLowerCase()}</span><span>{fmt(config.unitPrice)} each</span></div>
-                    {config.billing === "monthly" && <div className="flex justify-between text-muted"><span>Duration</span><span>× {duration.value} months</span></div>}
-                    {discountPct > 0 && <div className="flex justify-between text-emerald-600"><span>Commitment discount</span><span>−{discountPct}%</span></div>}
-                    {rushPct > 0 && <div className="flex justify-between text-amber-600"><span>Rush premium</span><span>+{rushPct}%</span></div>}
-                  </div>
-                  <div className="mt-4 rounded-xl bg-background p-4">
-                    {config.billing === "monthly" ? (
-                      <>
-                        <div className="flex items-baseline justify-between"><span className="text-sm text-muted">Per month</span><span className="text-2xl font-bold tracking-tight text-foreground">{fmt(perMonth)}</span></div>
-                        <div className="mt-1 flex items-baseline justify-between"><span className="text-xs text-muted">Total commitment</span><span className="text-sm font-semibold text-muted">{fmt(total)}</span></div>
-                      </>
-                    ) : (
-                      <div className="flex items-baseline justify-between"><span className="text-sm text-muted">Project total</span><span className="text-2xl font-bold tracking-tight text-foreground">{fmt(total)}</span></div>
-                    )}
-                  </div>
-                  <button type="button" onClick={addToCart} className={`mt-5 w-full rounded-full px-6 py-3 text-sm font-medium transition ${addedFeedback ? "bg-brand text-black" : "bg-foreground text-background hover:opacity-90"}`}>
-                    {addedFeedback ? "✓ Added to order" : `Add to Order${cartItems.length > 0 ? ` (${cartItems.length})` : ""}`}
-                  </button>
-                  <Link href="#book" className="mt-2 block w-full rounded-full border border-border px-5 py-3 text-center text-sm font-medium text-foreground/70 transition hover:border-foreground/30 hover:text-foreground">
-                    Book a Discovery Call
-                  </Link>
-                  <p className="mt-4 text-center text-xs leading-relaxed text-muted">No payment now. We&apos;ll confirm and send a proposal within 24 hours.</p>
-                </div>
-              </div>
+          {/* Empty state */}
+          {!hasCart && (
+            <div className="mt-10 flex flex-col items-center rounded-2xl border border-dashed border-border py-14 text-center">
+              <ShoppingCart size={28} className="text-muted/40" />
+              <p className="mt-4 text-sm font-medium text-foreground">Your order is empty</p>
+              <p className="mt-1 text-sm text-muted">Click any service above to add it — configure details right here</p>
             </div>
           )}
 
-          {/* Placeholder */}
-          {!selectedSlug && !hasCart && (
-            <div className="mt-14 flex flex-col items-center rounded-2xl border border-dashed border-border py-16 text-center">
-              <p className="text-sm font-medium text-foreground">Select a service above to configure your package</p>
-              <p className="mt-1 text-sm text-muted">Pricing updates instantly — add multiple services to build a combined order</p>
-            </div>
-          )}
-
-          {/* ── Order summary ────────────────────────────────── */}
+          {/* ── Order summary ───────────────────────────── */}
           {hasCart && (
-            <div ref={cartRef} className="mt-16 scroll-mt-24">
+            <div ref={summaryRef} className="mt-12 scroll-mt-24">
               <div className="flex items-center gap-3">
                 <span className="flex h-8 w-8 items-center justify-center rounded-full bg-foreground text-background">
                   <ShoppingCart size={15} />
                 </span>
                 <h2 className="text-2xl font-semibold tracking-tight text-foreground sm:text-3xl">
                   Order summary
-                  <span className="ml-2 text-lg font-normal text-muted">({cartItems.length} {cartItems.length === 1 ? "service" : "services"})</span>
+                  <span className="ml-2 text-lg font-normal text-muted">
+                    ({cartItems.length} {cartItems.length === 1 ? "service" : "services"})
+                  </span>
                 </h2>
               </div>
 
@@ -456,19 +473,24 @@ export default function PricingCalculator({ pageData, services }: Props) {
                   const cfg = pageData.services.find((s) => s.slug === item.slug);
                   const Icon = cfg ? ICON_MAP[cfg.icon] : Code;
                   const isExpanded = expandedCartIds.has(item.cartId);
-                  const isInlineEditing = inlineEditCartId === item.cartId;
-
-                  /* Inline edit live price preview */
-                  const inlinePrice = isInlineEditing && inlineEditState && cfg
+                  const isEditing = inlineEditCartId === item.cartId;
+                  const inlinePrice = isEditing && inlineEditState && cfg
                     ? computePrice(cfg, Math.min(Math.max(inlineEditState.qty, cfg.minQty), cfg.maxQty), inlineEditState.durationId)
                     : null;
 
-                  return (
-                    <div key={item.cartId} className="overflow-hidden rounded-2xl border border-border bg-surface">
+                  /* Duration slider index for inline edit */
+                  const durIdx = cfg ? Math.max(0, cfg.durations.findIndex((d) => d.id === inlineEditState?.durationId)) : 0;
+                  const selectedDur = cfg?.durations[durIdx];
 
-                      {/* ── Item header (always visible) ── */}
+                  return (
+                    <div
+                      key={item.cartId}
+                      ref={(el) => { itemRefs.current[item.cartId] = el; }}
+                      className={`overflow-hidden rounded-2xl border bg-surface transition-all ${isEditing ? "border-brand/40 shadow-[0_0_24px_rgba(16,185,129,0.07)]" : "border-border"}`}
+                    >
+                      {/* ── Header ── */}
                       <div className="flex items-start gap-4 p-5">
-                        <span className="mt-0.5 flex h-9 w-9 shrink-0 items-center justify-center rounded-xl bg-brand/10 text-brand">
+                        <span className={`mt-0.5 flex h-9 w-9 shrink-0 items-center justify-center rounded-xl transition-colors ${isEditing ? "bg-brand/15 text-brand" : "bg-brand/10 text-brand"}`}>
                           <Icon size={16} />
                         </span>
 
@@ -484,13 +506,14 @@ export default function PricingCalculator({ pageData, services }: Props) {
                           </p>
                         </div>
 
-                        {/* Price + action buttons */}
                         <div className="flex shrink-0 items-center gap-2">
-                          {!isInlineEditing && (
-                            <div className="text-right mr-1">
+                          {!isEditing && (
+                            <div className="mr-1 text-right">
                               {item.billing === "monthly" ? (
                                 <>
-                                  <p className="text-base font-bold tracking-tight text-foreground">{fmt(item.perMonth)}<span className="text-xs font-normal text-muted">/mo</span></p>
+                                  <p className="text-base font-bold tracking-tight text-foreground">
+                                    {fmt(item.perMonth)}<span className="text-xs font-normal text-muted">/mo</span>
+                                  </p>
                                   <p className="text-xs text-muted">{fmt(item.total)} total</p>
                                 </>
                               ) : (
@@ -499,170 +522,262 @@ export default function PricingCalculator({ pageData, services }: Props) {
                             </div>
                           )}
 
-                          {/* Expand details toggle */}
-                          <button
-                            type="button"
-                            onClick={() => toggleExpand(item.cartId)}
-                            disabled={isInlineEditing}
-                            aria-label={isExpanded ? "Collapse details" : "Show details"}
-                            title={isExpanded ? "Hide details" : "Show details"}
-                            className={`flex h-8 w-8 items-center justify-center rounded-full border border-border transition hover:bg-background hover:text-foreground ${isInlineEditing ? "opacity-30 cursor-not-allowed" : "text-muted"}`}
-                          >
+                          {/* Expand */}
+                          <button type="button" onClick={() => toggleExpand(item.cartId)} disabled={isEditing} aria-label={isExpanded ? "Collapse" : "Show details"} title={isExpanded ? "Hide details" : "Show details"} className={`flex h-8 w-8 items-center justify-center rounded-full border border-border transition hover:bg-background hover:text-foreground ${isEditing ? "cursor-not-allowed opacity-30" : "text-muted"}`}>
                             <ChevronDown size={14} className={`transition-transform duration-200 ${isExpanded ? "rotate-180" : ""}`} />
                           </button>
-
-                          {/* Inline edit toggle */}
-                          <button
-                            type="button"
-                            onClick={() => isInlineEditing ? cancelInlineEdit() : startInlineEdit(item)}
-                            aria-label={isInlineEditing ? "Cancel edit" : "Edit this service"}
-                            title={isInlineEditing ? "Cancel edit" : "Edit"}
-                            className={`flex h-8 w-8 items-center justify-center rounded-full border transition ${isInlineEditing ? "border-brand bg-brand/10 text-brand" : "border-border text-muted hover:bg-background hover:text-foreground"}`}
-                          >
-                            {isInlineEditing ? <X size={13} /> : <Pencil size={13} />}
+                          {/* Edit / cancel */}
+                          <button type="button" onClick={() => isEditing ? cancelInlineEdit() : startInlineEdit(item)} aria-label={isEditing ? "Cancel" : "Edit"} title={isEditing ? "Cancel edit" : "Edit"} className={`flex h-8 w-8 items-center justify-center rounded-full border transition ${isEditing ? "border-brand bg-brand/10 text-brand" : "border-border text-muted hover:bg-background hover:text-foreground"}`}>
+                            {isEditing ? <X size={13} /> : <Pencil size={13} />}
                           </button>
-
                           {/* Remove */}
-                          <button
-                            type="button"
-                            onClick={() => removeFromCart(item.cartId)}
-                            aria-label={`Remove ${item.serviceName}`}
-                            title="Remove from order"
-                            className="flex h-8 w-8 items-center justify-center rounded-full text-muted transition hover:bg-red-50 hover:text-red-500"
-                          >
+                          <button type="button" onClick={() => removeFromCart(item.cartId)} aria-label="Remove" title="Remove" className="flex h-8 w-8 items-center justify-center rounded-full text-muted transition hover:bg-red-50 hover:text-red-500">
                             <Trash2 size={14} />
                           </button>
                         </div>
                       </div>
 
                       {/* ── Inline edit panel ── */}
-                      {isInlineEditing && inlineEditState && cfg && inlinePrice && (
-                        <div className="border-t border-border bg-background px-5 pb-6 pt-5">
-                          <p className="mb-4 text-xs font-semibold uppercase tracking-[0.14em] text-brand">Editing — {item.serviceName}</p>
+                      {isEditing && inlineEditState && cfg && inlinePrice && selectedDur && (
+                        <div className="border-t border-brand/20 bg-background px-5 pb-6 pt-6">
 
-                          <div className="grid gap-6 sm:grid-cols-2">
-                            {/* Quantity */}
-                            <div>
-                              <p className="text-sm font-medium text-foreground">Quantity</p>
-                              <p className="text-xs text-muted">{fmt(cfg.unitPrice)} per {cfg.unit}</p>
-                              <div className="mt-3 flex items-center gap-3">
-                                <button type="button" onClick={() => setInlineEditState((s) => s ? { ...s, qty: Math.max(cfg.minQty, s.qty - cfg.qtyStep) } : s)} disabled={inlineEditState.qty <= cfg.minQty} className="flex h-9 w-9 items-center justify-center rounded-full border border-border transition hover:bg-surface disabled:opacity-40"><Minus size={13} /></button>
-                                <div className="flex-1">
-                                  <input type="range" min={cfg.minQty} max={cfg.maxQty} step={cfg.qtyStep} value={Math.min(Math.max(inlineEditState.qty, cfg.minQty), cfg.maxQty)} onChange={(e) => setInlineEditState((s) => s ? { ...s, qty: Number(e.target.value) } : s)} className="w-full accent-brand" />
-                                  <p className="mt-1 text-center text-xs font-semibold text-foreground">
-                                    {Math.min(Math.max(inlineEditState.qty, cfg.minQty), cfg.maxQty)} {inlineEditState.qty === 1 ? cfg.unit : cfg.unitLabel.toLowerCase()}
-                                  </p>
-                                </div>
-                                <button type="button" onClick={() => setInlineEditState((s) => s ? { ...s, qty: Math.min(cfg.maxQty, s.qty + cfg.qtyStep) } : s)} disabled={inlineEditState.qty >= cfg.maxQty} className="flex h-9 w-9 items-center justify-center rounded-full border border-border transition hover:bg-surface disabled:opacity-40"><Plus size={13} /></button>
-                              </div>
-                            </div>
+                          {/* ── TOP: sliders (left) + deliverables (right) ── */}
+                          <div className="grid gap-8 lg:grid-cols-2">
 
-                            {/* Duration */}
-                            <div>
-                              <p className="text-sm font-medium text-foreground">{cfg.billing === "one-off" ? "Timeline" : "Commitment"}</p>
-                              <div className="mt-3 flex flex-wrap gap-2">
-                                {cfg.durations.map((d) => {
-                                  const active = inlineEditState.durationId === d.id;
-                                  return (
-                                    <button key={d.id} type="button" onClick={() => setInlineEditState((s) => s ? { ...s, durationId: d.id } : s)} className={`rounded-full px-3 py-1.5 text-xs font-medium transition ${active ? "bg-foreground text-background" : "border border-border text-foreground/70 hover:border-foreground/30 hover:text-foreground"}`}>
-                                      {d.label}
-                                      {d.multiplier < 1 && <span className={`ml-1 text-[10px] ${active ? "text-brand" : "text-emerald-600"}`}>−{Math.round((1 - d.multiplier) * 100)}%</span>}
-                                      {d.multiplier > 1 && <span className={`ml-1 text-[10px] ${active ? "text-amber-300" : "text-amber-600"}`}>+{Math.round((d.multiplier - 1) * 100)}%</span>}
-                                    </button>
-                                  );
-                                })}
-                              </div>
-                            </div>
-                          </div>
+                            {/* LEFT — all sliders */}
+                            <div className="space-y-6">
+                              <p className="text-xs font-semibold uppercase tracking-[0.14em] text-brand">Scope</p>
 
-                          {/* Notes */}
-                          <div className="mt-5">
-                            <p className="text-sm font-medium text-foreground">Notes</p>
-                            <textarea
-                              value={inlineEditState.notes}
-                              onChange={(e) => setInlineEditState((s) => s ? { ...s, notes: e.target.value } : s)}
-                              rows={2}
-                              placeholder="Any specific requirements or changes…"
-                              className="mt-2 w-full resize-none rounded-xl border border-border bg-surface px-4 py-2.5 text-sm text-foreground placeholder:text-muted transition-colors focus:border-brand focus:outline-none focus:ring-1 focus:ring-brand"
-                            />
-                          </div>
-
-                          {/* Live price preview + save/cancel */}
-                          <div className="mt-5 flex flex-col gap-3 rounded-xl border border-border bg-surface p-4 sm:flex-row sm:items-center sm:justify-between">
-                            <div>
-                              <p className="text-xs text-muted">Updated estimate</p>
-                              {cfg.billing === "monthly" ? (
-                                <p className="text-xl font-bold tracking-tight text-foreground">
-                                  {fmt(inlinePrice.perMonth)}<span className="text-sm font-normal text-muted">/mo</span>
-                                  <span className="ml-2 text-sm font-normal text-muted">({fmt(inlinePrice.total)} total)</span>
+                              {/* Quantity */}
+                              <div>
+                                <p className="text-sm font-medium text-foreground">
+                                  Quantity
+                                  <span className="ml-2 text-xs font-normal text-muted">{fmt(cfg.unitPrice)} per {cfg.unit}</span>
                                 </p>
-                              ) : (
-                                <p className="text-xl font-bold tracking-tight text-foreground">{fmt(inlinePrice.total)}</p>
-                              )}
+                                <div className="mt-3 flex items-center gap-3">
+                                  <button type="button" onClick={() => setInlineEditState((s) => s ? { ...s, qty: Math.max(cfg.minQty, s.qty - cfg.qtyStep) } : s)} disabled={inlineEditState.qty <= cfg.minQty} className="flex h-9 w-9 items-center justify-center rounded-full border border-border transition hover:bg-surface disabled:opacity-40">
+                                    <Minus size={13} />
+                                  </button>
+                                  <div className="flex-1">
+                                    <input type="range" min={cfg.minQty} max={cfg.maxQty} step={cfg.qtyStep} value={Math.min(Math.max(inlineEditState.qty, cfg.minQty), cfg.maxQty)} onChange={(e) => setInlineEditState((s) => s ? { ...s, qty: Number(e.target.value) } : s)} className="w-full accent-brand" />
+                                    <div className="mt-1 flex justify-between text-[10px] text-muted">
+                                      <span>{cfg.minQty}</span>
+                                      <span className="font-semibold text-foreground">
+                                        {Math.min(Math.max(inlineEditState.qty, cfg.minQty), cfg.maxQty)}{" "}
+                                        {inlineEditState.qty === 1 ? cfg.unit : cfg.unitLabel.toLowerCase()}
+                                      </span>
+                                      <span>{cfg.maxQty}</span>
+                                    </div>
+                                  </div>
+                                  <button type="button" onClick={() => setInlineEditState((s) => s ? { ...s, qty: Math.min(cfg.maxQty, s.qty + cfg.qtyStep) } : s)} disabled={inlineEditState.qty >= cfg.maxQty} className="flex h-9 w-9 items-center justify-center rounded-full border border-border transition hover:bg-surface disabled:opacity-40">
+                                    <Plus size={13} />
+                                  </button>
+                                </div>
+                              </div>
+
+                              {/* Duration */}
+                              <div>
+                                <p className="text-sm font-medium text-foreground">
+                                  {cfg.billing === "one-off" ? "Delivery timeline" : "Commitment length"}
+                                </p>
+                                <div className="mt-3 flex items-center gap-3">
+                                  <button type="button" onClick={() => { const i = Math.max(0, durIdx - 1); setInlineEditState((s) => s ? { ...s, durationId: cfg.durations[i].id } : s); }} disabled={durIdx === 0} className="flex h-9 w-9 items-center justify-center rounded-full border border-border transition hover:bg-surface disabled:opacity-40">
+                                    <Minus size={13} />
+                                  </button>
+                                  <div className="flex-1">
+                                    <input type="range" min={0} max={cfg.durations.length - 1} step={1} value={durIdx} onChange={(e) => { const i = Number(e.target.value); setInlineEditState((s) => s ? { ...s, durationId: cfg.durations[i].id } : s); }} className="w-full accent-brand" />
+                                    <div className="mt-1 flex justify-between text-[10px] text-muted">
+                                      <span>{cfg.durations[0].label.split(" — ")[0]}</span>
+                                      <span className="text-center font-semibold text-foreground">
+                                        {selectedDur.label}
+                                        {selectedDur.multiplier < 1 && <span className="ml-1 text-emerald-600">−{Math.round((1 - selectedDur.multiplier) * 100)}%</span>}
+                                        {selectedDur.multiplier > 1 && <span className="ml-1 text-amber-600">+{Math.round((selectedDur.multiplier - 1) * 100)}%</span>}
+                                      </span>
+                                      <span>{cfg.durations[cfg.durations.length - 1].label.split(" — ")[0]}</span>
+                                    </div>
+                                  </div>
+                                  <button type="button" onClick={() => { const i = Math.min(cfg.durations.length - 1, durIdx + 1); setInlineEditState((s) => s ? { ...s, durationId: cfg.durations[i].id } : s); }} disabled={durIdx === cfg.durations.length - 1} className="flex h-9 w-9 items-center justify-center rounded-full border border-border transition hover:bg-surface disabled:opacity-40">
+                                    <Plus size={13} />
+                                  </button>
+                                </div>
+                              </div>
+
+                              {/* Number-type config fields (also sliders) */}
+                              {cfg.configFields?.filter((f) => f.type === "number").map((field) => (
+                                <ConfigField
+                                  key={field.id}
+                                  field={field}
+                                  value={inlineEditState.serviceConfig[field.id]}
+                                  onChange={(v) => setConfigField(field.id, v)}
+                                />
+                              ))}
                             </div>
-                            <div className="flex gap-2">
-                              <button type="button" onClick={saveInlineEdit} className="rounded-full bg-brand px-5 py-2 text-sm font-semibold text-black transition hover:bg-brand/90">
-                                Save changes
-                              </button>
-                              <button type="button" onClick={cancelInlineEdit} className="rounded-full border border-border px-5 py-2 text-sm font-medium text-foreground/70 transition hover:border-foreground/30 hover:text-foreground">
-                                Cancel
-                              </button>
+
+                            {/* RIGHT — what's included */}
+                            <div>
+                              <p className="text-xs font-semibold uppercase tracking-[0.14em] text-brand">
+                                What&apos;s included ({item.deliverables.length})
+                              </p>
+                              <ul className="mt-3 space-y-2.5">
+                                {item.deliverables.map((d) => (
+                                  <li key={d.id} className="flex items-start gap-2.5">
+                                    <span className="mt-0.5 flex h-4 w-4 shrink-0 items-center justify-center rounded-full bg-brand/10">
+                                      <Check size={9} className="text-brand" strokeWidth={3} />
+                                    </span>
+                                    <div>
+                                      <p className="text-xs font-semibold text-foreground">{d.title}</p>
+                                      <p className="mt-0.5 text-xs leading-relaxed text-muted">{d.description}</p>
+                                    </div>
+                                  </li>
+                                ))}
+                              </ul>
+                              <Link href={`/services/${item.slug}`} className="mt-4 inline-flex items-center gap-1.5 text-xs font-medium text-brand transition hover:text-brand/80">
+                                View full service page <ExternalLink size={11} />
+                              </Link>
+                            </div>
+                          </div>
+
+                          {/* ── BOTTOM: select/multiselect options + notes + price ── */}
+                          <div className="mt-8 space-y-6 border-t border-border pt-6">
+
+                            {/* Select + multiselect config fields */}
+                            {cfg.configFields && cfg.configFields.filter((f) => f.type !== "number").length > 0 && (
+                              <div>
+                                <p className="mb-4 text-xs font-semibold uppercase tracking-[0.14em] text-brand">
+                                  Service options
+                                </p>
+                                <div className="grid gap-5 sm:grid-cols-2">
+                                  {cfg.configFields.filter((f) => f.type !== "number").map((field) => (
+                                    <div
+                                      key={field.id}
+                                      className={field.type === "multiselect" ? "sm:col-span-2" : ""}
+                                    >
+                                      <ConfigField
+                                        field={field}
+                                        value={inlineEditState.serviceConfig[field.id]}
+                                        onChange={(v) => setConfigField(field.id, v)}
+                                      />
+                                    </div>
+                                  ))}
+                                </div>
+                              </div>
+                            )}
+
+                            {/* Notes */}
+                            <div>
+                              <p className="text-sm font-medium text-foreground">
+                                Additional notes
+                                <span className="ml-2 text-xs font-normal text-muted">optional</span>
+                              </p>
+                              <textarea
+                                value={inlineEditState.notes}
+                                onChange={(e) => setInlineEditState((s) => s ? { ...s, notes: e.target.value } : s)}
+                                rows={2}
+                                placeholder="Anything else we should know — deadlines, brand guidelines, references, access details…"
+                                className="mt-2 w-full resize-none rounded-xl border border-border bg-surface px-4 py-2.5 text-sm text-foreground placeholder:text-muted transition-colors focus:border-brand focus:outline-none focus:ring-1 focus:ring-brand"
+                              />
+                            </div>
+
+                            {/* Price preview + Save / Cancel */}
+                            <div className="flex flex-col gap-3 rounded-xl border border-border bg-surface p-4 sm:flex-row sm:items-center sm:justify-between">
+                              <div>
+                                <p className="text-xs text-muted">Estimate</p>
+                                {cfg.billing === "monthly" ? (
+                                  <p className="text-xl font-bold tracking-tight text-foreground">
+                                    {fmt(inlinePrice.perMonth)}<span className="text-sm font-normal text-muted">/mo</span>
+                                    <span className="ml-2 text-sm font-normal text-muted">({fmt(inlinePrice.total)} total)</span>
+                                  </p>
+                                ) : (
+                                  <p className="text-xl font-bold tracking-tight text-foreground">{fmt(inlinePrice.total)}</p>
+                                )}
+                              </div>
+                              <div className="flex gap-2">
+                                <button type="button" onClick={saveInlineEdit} className="rounded-full bg-brand px-5 py-2 text-sm font-semibold text-black transition hover:bg-brand/90">
+                                  Save
+                                </button>
+                                <button type="button" onClick={cancelInlineEdit} className="rounded-full border border-border px-5 py-2 text-sm font-medium text-foreground/70 transition hover:border-foreground/30 hover:text-foreground">
+                                  Cancel
+                                </button>
+                              </div>
                             </div>
                           </div>
                         </div>
                       )}
 
-                      {/* ── Expanded details panel ── */}
-                      {isExpanded && !isInlineEditing && (
+                      {/* ── Expanded details ── */}
+                      {isExpanded && !isEditing && (
                         <div className="border-t border-border bg-background px-5 pb-6 pt-5">
                           <div className="grid gap-6 sm:grid-cols-2">
 
-                            {/* Price breakdown */}
-                            <div>
-                              <p className="text-xs font-semibold uppercase tracking-[0.14em] text-brand">Price breakdown</p>
-                              <div className="mt-3 space-y-1.5 text-sm">
-                                <div className="flex justify-between">
-                                  <span className="text-muted">{item.qty} {item.qty === 1 ? item.unit : item.unitLabel.toLowerCase()} × {fmt(item.unitPrice)}</span>
-                                  <span className="font-medium text-foreground">{fmt(item.qty * item.unitPrice)}</span>
-                                </div>
-                                {item.billing === "monthly" && (
+                            {/* Left: price breakdown + notes + config summary */}
+                            <div className="space-y-5">
+                              <div>
+                                <p className="text-xs font-semibold uppercase tracking-[0.14em] text-brand">Price breakdown</p>
+                                <div className="mt-3 space-y-1.5 text-sm">
                                   <div className="flex justify-between">
-                                    <span className="text-muted">× {item.durationValue} months</span>
-                                    <span className="font-medium text-foreground">{fmt(item.qty * item.unitPrice * item.durationValue)}</span>
+                                    <span className="text-muted">{item.qty} {item.qty === 1 ? item.unit : item.unitLabel.toLowerCase()} × {fmt(item.unitPrice)}</span>
+                                    <span className="font-medium text-foreground">{fmt(item.qty * item.unitPrice)}</span>
                                   </div>
-                                )}
-                                {item.discountPct > 0 && (
-                                  <div className="flex justify-between text-emerald-600">
-                                    <span>Discount −{item.discountPct}%</span>
-                                    <span>−{fmt(item.qty * item.unitPrice * (item.billing === "monthly" ? item.durationValue : 1) * (item.discountPct / 100))}</span>
+                                  {item.billing === "monthly" && (
+                                    <div className="flex justify-between">
+                                      <span className="text-muted">× {item.durationValue} months</span>
+                                      <span className="font-medium text-foreground">{fmt(item.qty * item.unitPrice * item.durationValue)}</span>
+                                    </div>
+                                  )}
+                                  {item.discountPct > 0 && (
+                                    <div className="flex justify-between text-emerald-600">
+                                      <span>Discount −{item.discountPct}%</span>
+                                      <span>−{fmt(item.qty * item.unitPrice * (item.billing === "monthly" ? item.durationValue : 1) * (item.discountPct / 100))}</span>
+                                    </div>
+                                  )}
+                                  {item.rushPct > 0 && (
+                                    <div className="flex justify-between text-amber-600">
+                                      <span>Rush +{item.rushPct}%</span>
+                                      <span>+{fmt(item.qty * item.unitPrice * (item.billing === "monthly" ? item.durationValue : 1) * (item.rushPct / 100))}</span>
+                                    </div>
+                                  )}
+                                  <div className="flex justify-between border-t border-border pt-1.5 font-semibold text-foreground">
+                                    <span>{item.billing === "monthly" ? "Total commitment" : "Project total"}</span>
+                                    <span>{fmt(item.total)}</span>
                                   </div>
-                                )}
-                                {item.rushPct > 0 && (
-                                  <div className="flex justify-between text-amber-600">
-                                    <span>Rush premium +{item.rushPct}%</span>
-                                    <span>+{fmt(item.qty * item.unitPrice * (item.billing === "monthly" ? item.durationValue : 1) * (item.rushPct / 100))}</span>
-                                  </div>
-                                )}
-                                <div className="flex justify-between border-t border-border pt-1.5 font-semibold text-foreground">
-                                  <span>{item.billing === "monthly" ? "Total commitment" : "Project total"}</span>
-                                  <span>{fmt(item.total)}</span>
+                                  {item.billing === "monthly" && (
+                                    <div className="flex justify-between text-muted">
+                                      <span>Per month</span>
+                                      <span className="font-semibold text-foreground">{fmt(item.perMonth)}/mo</span>
+                                    </div>
+                                  )}
                                 </div>
-                                {item.billing === "monthly" && (
-                                  <div className="flex justify-between text-muted">
-                                    <span>Per month</span>
-                                    <span className="font-semibold text-foreground">{fmt(item.perMonth)}/mo</span>
-                                  </div>
-                                )}
                               </div>
+
+                              {/* Service config summary */}
+                              {cfg?.configFields && cfg.configFields.some((f) => (item.serviceConfig ?? {})[f.id] !== undefined) && (
+                                <div>
+                                  <p className="text-xs font-semibold uppercase tracking-[0.14em] text-brand">Configuration</p>
+                                  <dl className="mt-2 space-y-1.5">
+                                    {cfg.configFields.map((f) => {
+                                      const v = (item.serviceConfig ?? {})[f.id];
+                                      if (v === undefined || v === "" || (Array.isArray(v) && v.length === 0)) return null;
+                                      return (
+                                        <div key={f.id} className="flex gap-2 text-xs">
+                                          <dt className="shrink-0 font-medium text-foreground">{f.label}:</dt>
+                                          <dd className="text-muted">{fmtConfigValue(v)}</dd>
+                                        </div>
+                                      );
+                                    })}
+                                  </dl>
+                                </div>
+                              )}
+
+                              {/* Notes */}
                               {item.notes && (
-                                <div className="mt-4">
+                                <div>
                                   <p className="text-xs font-semibold uppercase tracking-[0.14em] text-brand">Notes</p>
                                   <p className="mt-2 rounded-lg border border-border bg-surface px-3 py-2.5 text-sm leading-relaxed text-muted">{item.notes}</p>
                                 </div>
                               )}
                             </div>
 
-                            {/* Deliverables */}
+                            {/* Right: deliverables */}
                             <div>
                               <p className="text-xs font-semibold uppercase tracking-[0.14em] text-brand">
                                 What&apos;s included ({item.deliverables.length} deliverables)
@@ -680,6 +795,9 @@ export default function PricingCalculator({ pageData, services }: Props) {
                                   </li>
                                 ))}
                               </ul>
+                              <Link href={`/services/${item.slug}`} className="mt-4 inline-flex items-center gap-1.5 text-xs font-medium text-brand transition hover:text-brand/80">
+                                View full service page <ExternalLink size={11} />
+                              </Link>
                             </div>
                           </div>
                         </div>
@@ -689,7 +807,7 @@ export default function PricingCalculator({ pageData, services }: Props) {
                 })}
               </div>
 
-              {/* Totals + place order */}
+              {/* Totals + Place Order */}
               <div className="mt-5 rounded-2xl border border-border bg-foreground p-6 text-background">
                 <p className="text-xs font-semibold uppercase tracking-[0.18em] text-brand">Total</p>
                 <div className="mt-4 space-y-2 border-t border-white/10 pt-4 text-sm">
@@ -718,7 +836,7 @@ export default function PricingCalculator({ pageData, services }: Props) {
                   </button>
                 </div>
                 <p className="mt-4 text-center text-xs text-white/40">
-                  No payment required now. Your order goes directly to our team — proposal within 24 hours.
+                  No payment required now — proposal arrives within 24 hours.
                 </p>
               </div>
             </div>
@@ -726,38 +844,23 @@ export default function PricingCalculator({ pageData, services }: Props) {
         </div>
       </section>
 
-      {/* ── Leave-page confirmation modal ──────────────────── */}
+      {/* ── Leave modal ─────────────────────────────────── */}
       {showLeaveModal && (
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4">
-          {/* Backdrop */}
-          <div
-            className="absolute inset-0 bg-background/80 backdrop-blur-sm"
-            onClick={dismissLeave}
-          />
-          {/* Modal */}
+          <div className="absolute inset-0 bg-background/80 backdrop-blur-sm" onClick={() => setShowLeaveModal(false)} />
           <div className="relative z-10 w-full max-w-sm rounded-2xl border border-border bg-background p-6 shadow-2xl">
             <div className="flex h-12 w-12 items-center justify-center rounded-full bg-amber-50">
               <AlertTriangle size={22} className="text-amber-500" />
             </div>
-            <h3 className="mt-4 text-lg font-semibold text-foreground">
-              You have an unsaved order
-            </h3>
+            <h3 className="mt-4 text-lg font-semibold text-foreground">Unsaved order</h3>
             <p className="mt-2 text-sm leading-relaxed text-muted">
-              You&apos;ve configured {cartItems.length} service{cartItems.length > 1 ? "s" : ""} but haven&apos;t placed your order yet. If you leave now, your cart will be lost.
+              You have {cartItems.length} service{cartItems.length > 1 ? "s" : ""} in your order that haven&apos;t been placed. If you leave, your cart will be lost.
             </p>
             <div className="mt-6 flex flex-col gap-2">
-              <button
-                type="button"
-                onClick={dismissLeave}
-                className="w-full rounded-full bg-foreground px-6 py-3 text-sm font-semibold text-background transition hover:opacity-90"
-              >
-                Stay & complete order
+              <button type="button" onClick={() => setShowLeaveModal(false)} className="w-full rounded-full bg-foreground px-6 py-3 text-sm font-semibold text-background transition hover:opacity-90">
+                Stay &amp; complete order
               </button>
-              <button
-                type="button"
-                onClick={confirmLeave}
-                className="w-full rounded-full border border-border px-6 py-3 text-sm font-medium text-foreground/60 transition hover:border-foreground/30 hover:text-foreground"
-              >
+              <button type="button" onClick={confirmLeave} className="w-full rounded-full border border-border px-6 py-3 text-sm font-medium text-foreground/60 transition hover:border-foreground/30 hover:text-foreground">
                 Leave anyway
               </button>
             </div>
