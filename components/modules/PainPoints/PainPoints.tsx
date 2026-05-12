@@ -11,7 +11,7 @@ export default async function PainPoints({ data }: { data?: PainPointsContent } 
     <section
       id={painData.id}
       aria-labelledby={`${painData.id}-headline`}
-      className="relative isolate overflow-x-clip bg-foreground text-background"
+      className="relative isolate z-45 overflow-x-clip bg-foreground text-background"
     >
       <div
         id={`${painData.id}-bg-glow`}

@@ -17,7 +17,7 @@ export default function HomePage() {
   return (
     <>
       <Hero />
-      <ScrollReveal><LogoMarquee /></ScrollReveal>
+      <LogoMarquee />
       <PainPoints />
       <ScrollReveal><Services /></ScrollReveal>
       <ScrollReveal><PortfolioCarousel /></ScrollReveal>

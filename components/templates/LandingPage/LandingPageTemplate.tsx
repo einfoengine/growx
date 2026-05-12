@@ -112,7 +112,7 @@ export default async function LandingPageTemplate({ data }: Props) {
   return (
     <>
       <Hero data={heroData} />
-      <ScrollReveal><LogoMarquee /></ScrollReveal>
+      <LogoMarquee />
       <PainPoints data={whyUsData} />
       <ScrollReveal><Services data={deliverablesData} /></ScrollReveal>
       <TextMarquee />
