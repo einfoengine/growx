@@ -14,7 +14,7 @@ export default function PricingPage({ pageData, services }: Props) {
   return (
     <>
       {/* ── Hero ─────────────────────────────────────────────── */}
-      <section id="pricing-hero" className="relative overflow-hidden bg-background">
+      <section id="gw-pricing-hero" className="relative overflow-hidden bg-background">
         <div
           aria-hidden="true"
           className="pointer-events-none absolute -z-10 left-1/2 -top-24 h-80 w-175 -translate-x-1/2 rounded-full bg-brand/8 blur-[100px]"
@@ -36,7 +36,7 @@ export default function PricingPage({ pageData, services }: Props) {
       <PricingCalculator pageData={pageData} services={services} />
 
       {/* ── Disclaimer note ──────────────────────────────────── */}
-      <section id="pricing-note" className="bg-surface">
+      <section id="gw-pricing-note" className="bg-surface">
         <div className="container-1200 py-8">
           <div className="flex items-start gap-3 rounded-xl border border-border bg-background p-4">
             <Info size={15} className="mt-0.5 shrink-0 text-muted" />
@@ -49,7 +49,7 @@ export default function PricingPage({ pageData, services }: Props) {
       <Pricing noPaddingTop />
 
       {/* ── CTA ──────────────────────────────────────────────── */}
-      <section id="pricing-cta" className="relative overflow-hidden bg-background">
+      <section id="gw-pricing-cta" className="relative overflow-hidden bg-background">
         <div
           aria-hidden="true"
           className="pointer-events-none absolute -z-10 left-1/2 top-0 h-72 w-150 -translate-x-1/2 rounded-full bg-brand/8 blur-[90px]"

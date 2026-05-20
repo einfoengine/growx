@@ -26,7 +26,7 @@ export default function ServicePage({ data }: Props) {
     <>
       {/* ── Hero ─────────────────────────────────────────────── */}
       <section
-        id={`${data.id}-hero`}
+        id={`gw-${data.id}-hero`}
         className="relative overflow-hidden bg-background"
       >
         <div
@@ -36,7 +36,7 @@ export default function ServicePage({ data }: Props) {
         <div className="container-1200 pb-20 pt-12 sm:pb-24 sm:pt-16 lg:pb-28 lg:pt-20">
           {/* Breadcrumb */}
           <Link
-            href="/#mod-services"
+            href="/#gw-mod-services"
             className="inline-flex items-center gap-1.5 text-xs text-muted transition hover:text-foreground"
           >
             <ArrowLeft size={13} />
@@ -75,7 +75,7 @@ export default function ServicePage({ data }: Props) {
                 <Button
                   id={`${data.id}-cta-secondary`}
                   label="Explore all services"
-                  href="/#mod-services"
+                  href="/#gw-mod-services"
                   variant="ghost"
                   icon={<ArrowRight size={13} />}
                 />
@@ -105,7 +105,7 @@ export default function ServicePage({ data }: Props) {
 
       {/* ── Deliverables ─────────────────────────────────────── */}
       <section
-        id={`${data.id}-deliverables`}
+        id={`gw-${data.id}-deliverables`}
         aria-labelledby={`${data.id}-deliverables-heading`}
         className="bg-surface"
       >
@@ -140,7 +140,7 @@ export default function ServicePage({ data }: Props) {
 
       {/* ── Why growX ────────────────────────────────────────── */}
       <section
-        id={`${data.id}-why-us`}
+        id={`gw-${data.id}-why-us`}
         aria-labelledby={`${data.id}-why-heading`}
         className="bg-background"
       >
@@ -171,7 +171,7 @@ export default function ServicePage({ data }: Props) {
 
       {/* ── FAQ ──────────────────────────────────────────────── */}
       <section
-        id={`${data.id}-faq`}
+        id={`gw-${data.id}-faq`}
         aria-labelledby={`${data.id}-faq-heading`}
         className="bg-surface"
       >
@@ -217,7 +217,7 @@ export default function ServicePage({ data }: Props) {
 
       {/* ── Bottom CTA ───────────────────────────────────────── */}
       <section
-        id={`${data.id}-cta`}
+        id={`gw-${data.id}-cta`}
         className="relative isolate overflow-hidden bg-foreground text-background"
       >
         <div
@@ -238,7 +238,7 @@ export default function ServicePage({ data }: Props) {
           />
           <div className="mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row">
             <Button label="Book a Discovery Call" href="#book" icon={<ArrowRight size={15} />} darkBg />
-            <Button label="View all services" href="/#mod-services" variant="secondary" darkBg />
+            <Button label="View all services" href="/#gw-mod-services" variant="secondary" darkBg />
           </div>
         </div>
       </section>

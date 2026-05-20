@@ -9,7 +9,6 @@ import Comparison from "@/components/modules/Comparison";
 import Process from "@/components/modules/Process";
 import Faq from "@/components/modules/Faq";
 import CtaBanner from "@/components/modules/CtaBanner";
-import ScrollReveal from "@/components/elements/ScrollReveal";
 import type {
   FaqContent,
   HeroContent,
@@ -34,7 +33,7 @@ export default async function LandingPageTemplate({ data }: Props) {
   // ── Hero ─────────────────────────────────────────────────────────────────
   const heroData: HeroContent = {
     id: `${data.id}-hero`,
-    eyebrow: { label: "Our Services", href: "/#mod-services" },
+    eyebrow: { label: "Our Services", href: "/#gw-mod-services" },
     headline: { parts: [{ type: "text", value: data.tagline }] },
     tagline: data.name,
     sub: data.description,
@@ -111,17 +110,17 @@ export default async function LandingPageTemplate({ data }: Props) {
 
   return (
     <>
-      <Hero data={heroData} />
+      <Hero data={heroData} variant="inner" />
       <LogoMarquee />
       <PainPoints data={whyUsData} />
-      <ScrollReveal><Services data={deliverablesData} /></ScrollReveal>
+      <Services data={deliverablesData} />
       <TextMarquee />
-      <ScrollReveal><Testimonials /></ScrollReveal>
-      <ScrollReveal><Pricing noPaddingTop /></ScrollReveal>
-      <ScrollReveal><Comparison noPaddingTop /></ScrollReveal>
-      <ScrollReveal><Process noPaddingTop /></ScrollReveal>
-      <ScrollReveal><Faq data={faqData} /></ScrollReveal>
-      <ScrollReveal><CtaBanner /></ScrollReveal>
+      <Testimonials />
+      <Pricing noPaddingTop />
+      <Comparison noPaddingTop />
+      <Process noPaddingTop />
+      <Faq data={faqData} />
+      <CtaBanner />
     </>
   );
 }

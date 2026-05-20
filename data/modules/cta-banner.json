@@ -19,7 +19,7 @@
     {
       "id": "cta-banner-secondary",
       "label": "Explore services",
-      "href": "#mod-services",
+      "href": "#gw-mod-services",
       "variant": "ghost"
     }
   ]

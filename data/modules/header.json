@@ -4,7 +4,7 @@
     {
       "id": "nav-services",
       "label": "Services",
-      "href": "/#mod-services",
+      "href": "/#gw-mod-services",
       "children": [
         { "id": "nav-service-website", "label": "Web Design & Development", "href": "/services/website" },
         { "id": "nav-service-seo-aeo", "label": "SEO & AEO", "href": "/services/seo-aeo" },

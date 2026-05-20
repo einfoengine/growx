@@ -3,7 +3,7 @@ import { ArrowLeft, ArrowRight } from "lucide-react";
 
 export default function NotFound() {
   return (
-    <section className="relative flex min-h-[calc(100dvh-4rem)] items-center overflow-hidden bg-background">
+    <section id="gw-not-found" className="relative flex min-h-[calc(100dvh-4rem)] items-center overflow-hidden bg-background">
       {/* Glow */}
       <div
         aria-hidden="true"

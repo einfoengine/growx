@@ -39,7 +39,7 @@ export default async function Comparison({ noPaddingTop }: { noPaddingTop?: bool
 
   return (
     <section
-      id={data.id}
+      id={`gw-${data.id}`}
       aria-labelledby={`${data.id}-headline`}
       className="relative isolate overflow-hidden bg-background"
     >

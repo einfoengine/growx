@@ -2,7 +2,7 @@
   "id": "mod-hero",
   "eyebrow": {
     "label": "White-label or branded delivery, your choice",
-    "href": "#mod-services"
+    "href": "#gw-mod-services"
   },
   "headline": {
     "parts": [
@@ -23,7 +23,7 @@
     {
       "id": "mod-hero-cta-secondary",
       "label": "Explore services",
-      "href": "#mod-services",
+      "href": "#gw-mod-services",
       "variant": "ghost"
     }
   ],

@@ -10,7 +10,7 @@ export default function WorksPage({ data }: Props) {
   return (
     <>
       {/* ── Hero ─────────────────────────────────────────────── */}
-      <section id="works-hero" className="relative overflow-hidden bg-background">
+      <section id="gw-works-hero" className="relative overflow-hidden bg-background">
         <div
           aria-hidden="true"
           className="pointer-events-none absolute -z-10 left-1/2 -top-24 h-80 w-175 -translate-x-1/2 rounded-full bg-brand/8 blur-[100px]"
@@ -32,7 +32,7 @@ export default function WorksPage({ data }: Props) {
       <WorksGrid data={data} />
 
       {/* ── CTA ──────────────────────────────────────────────── */}
-      <section id="works-cta" className="relative overflow-hidden bg-background">
+      <section id="gw-works-cta" className="relative overflow-hidden bg-background">
         <div
           aria-hidden="true"
           className="pointer-events-none absolute -z-10 left-1/2 top-0 h-72 w-150 -translate-x-1/2 rounded-full bg-brand/8 blur-[90px]"

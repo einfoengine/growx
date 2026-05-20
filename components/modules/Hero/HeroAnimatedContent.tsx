@@ -5,10 +5,12 @@ import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 import Headline from "@/components/elements/Headline";
 import Button from "@/components/elements/Button";
+import { HERO_LAYOUT, type HeroVariant } from "@/components/modules/Hero/hero-variants";
 import type { HeroContent } from "@/lib/content/types";
 
 type HeroAnimatedContentProps = {
   data: HeroContent;
+  variant?: HeroVariant;
 };
 
 const containerVariants = {
@@ -58,10 +60,15 @@ const statsVariants = {
   },
 };
 
-export default function HeroAnimatedContent({ data }: HeroAnimatedContentProps) {
+export default function HeroAnimatedContent({
+  data,
+  variant = "home",
+}: HeroAnimatedContentProps) {
+  const L = HERO_LAYOUT[variant];
+
   return (
     <motion.div
-      className="container-1200 relative pt-24 pb-24 sm:pt-32 sm:pb-28 lg:pt-40 lg:pb-36"
+      className={L.shell}
       variants={containerVariants}
       initial="hidden"
       animate="visible"
@@ -79,7 +86,7 @@ export default function HeroAnimatedContent({ data }: HeroAnimatedContentProps) 
             </span>
             <span>{data.eyebrow.label}</span>
             <ArrowRight
-              size={12}
+              size={L.eyebrowArrow}
               className="opacity-50 transition-transform group-hover:translate-x-0.5 group-hover:opacity-90"
             />
           </Link>
@@ -90,7 +97,7 @@ export default function HeroAnimatedContent({ data }: HeroAnimatedContentProps) 
             id={`${data.id}-headline`}
             parts={data.headline.parts}
             as="h1"
-            className="mt-7 text-5xl font-semibold leading-none tracking-tight text-foreground sm:text-6xl lg:text-7xl xl:text-8xl"
+            className={L.headline}
             highlightClassName="bg-gradient-to-br from-brand to-[#059669] bg-clip-text text-transparent"
             underlineHighlight={false}
           />
@@ -99,7 +106,7 @@ export default function HeroAnimatedContent({ data }: HeroAnimatedContentProps) 
         {data.tagline && (
           <motion.p
             id={`${data.id}-tagline`}
-            className="mt-6 text-base font-semibold tracking-tight text-foreground/90 sm:text-lg"
+            className={L.tagline}
             variants={itemVariants}
           >
             {data.tagline}
@@ -108,7 +115,7 @@ export default function HeroAnimatedContent({ data }: HeroAnimatedContentProps) 
 
         <motion.p
           id={`${data.id}-sub`}
-          className="mx-auto mt-3 max-w-xl text-pretty text-sm text-muted sm:text-base"
+          className={L.sub}
           variants={itemVariants}
         >
           {data.sub}
@@ -116,7 +123,7 @@ export default function HeroAnimatedContent({ data }: HeroAnimatedContentProps) 
 
         <motion.div
           id={`${data.id}-ctas`}
-          className="mt-10 flex flex-col items-center justify-center gap-3 sm:flex-row"
+          className={L.ctas}
           variants={containerVariants}
         >
           {data.ctas.map((cta) => {
@@ -136,28 +143,30 @@ export default function HeroAnimatedContent({ data }: HeroAnimatedContentProps) 
           })}
         </motion.div>
 
-        <motion.div
-          id={`${data.id}-stats`}
-          className="mt-10 grid grid-cols-2 gap-2.5 sm:grid-cols-4"
-          variants={containerVariants}
-        >
-          {data.stats.map((s) => (
-            <motion.div
-              key={s.id}
-              id={s.id}
-              className="flex items-center gap-2 rounded-xl border border-border bg-background/70 px-3.5 py-3 backdrop-blur-sm"
-              variants={statsVariants}
-            >
-              <span
-                aria-hidden="true"
-                className="h-1.5 w-1.5 shrink-0 rounded-full bg-brand"
-              />
-              <span className="text-[11px] font-medium text-foreground/80 sm:text-xs">
-                {s.label}
-              </span>
-            </motion.div>
-          ))}
-        </motion.div>
+        {data.stats.length > 0 && (
+          <motion.div
+            id={`${data.id}-stats`}
+            className={L.stats}
+            variants={containerVariants}
+          >
+            {data.stats.map((s) => (
+              <motion.div
+                key={s.id}
+                id={s.id}
+                className="flex items-center gap-2 rounded-xl border border-border bg-background/70 px-3.5 py-3 backdrop-blur-sm"
+                variants={statsVariants}
+              >
+                <span
+                  aria-hidden="true"
+                  className="h-1.5 w-1.5 shrink-0 rounded-full bg-brand"
+                />
+                <span className="text-[11px] font-medium text-foreground/80 sm:text-xs">
+                  {s.label}
+                </span>
+              </motion.div>
+            ))}
+          </motion.div>
+        )}
       </div>
     </motion.div>
   );

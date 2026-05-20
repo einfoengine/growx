@@ -15,7 +15,7 @@ export default function WorksGrid({ data }: Props) {
     active === "all" ? data.items : data.items.filter((i) => i.category === active);
 
   return (
-    <section id="works-grid" className="bg-background">
+    <section id="gw-works-grid" className="bg-background">
       <div className="container-1200 py-16 sm:py-20">
 
         {/* Category tabs */}

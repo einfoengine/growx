@@ -29,7 +29,7 @@ export default function WorkItemPage({ item }: Props) {
   return (
     <>
       {/* ── Hero ─────────────────────────────────────────────── */}
-      <section id="work-hero" className="relative overflow-hidden bg-background">
+      <section id="gw-work-hero" className="relative overflow-hidden bg-background">
         <div
           aria-hidden="true"
           className="pointer-events-none absolute -z-10 left-1/2 -top-24 h-80 w-175 -translate-x-1/2 rounded-full bg-brand/8 blur-[100px]"
@@ -88,7 +88,7 @@ export default function WorkItemPage({ item }: Props) {
       </section>
 
       {/* ── Problem & Overview ───────────────────────────────── */}
-      <section id="work-problem" className="bg-surface">
+      <section id="gw-work-problem" className="bg-surface">
         <div className="container-1200 py-20 sm:py-24 lg:py-28">
           <div className="grid gap-12 lg:grid-cols-2 lg:gap-20">
 
@@ -134,7 +134,7 @@ export default function WorkItemPage({ item }: Props) {
 
       {/* ── Media Gallery ────────────────────────────────────── */}
       {item.media.length > 0 && (
-        <section id="work-media" className="bg-background">
+        <section id="gw-work-media" className="bg-background">
           <div className="container-1200 py-20 sm:py-24 lg:py-28">
             <p className="text-xs font-semibold uppercase tracking-[0.18em] text-brand">
               Project Media
@@ -177,7 +177,7 @@ export default function WorkItemPage({ item }: Props) {
       )}
 
       {/* ── Client Rating ────────────────────────────────────── */}
-      <section id="work-rating" className="bg-surface">
+      <section id="gw-work-rating" className="bg-surface">
         <div className="container-1200 py-20 sm:py-24">
           <div className="mx-auto max-w-2xl rounded-2xl border border-border bg-background p-10 text-center">
             <p className="text-xs font-semibold uppercase tracking-[0.18em] text-brand">
@@ -203,7 +203,7 @@ export default function WorkItemPage({ item }: Props) {
       </section>
 
       {/* ── CTA ──────────────────────────────────────────────── */}
-      <section id="work-cta" className="relative overflow-hidden bg-background">
+      <section id="gw-work-cta" className="relative overflow-hidden bg-background">
         <div
           aria-hidden="true"
           className="pointer-events-none absolute -z-10 left-1/2 top-0 h-72 w-150 -translate-x-1/2 rounded-full bg-brand/8 blur-[90px]"

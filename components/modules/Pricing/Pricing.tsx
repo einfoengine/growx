@@ -10,7 +10,7 @@ export default async function Pricing({ noPaddingTop }: { noPaddingTop?: boolean
 
   return (
     <section
-      id={data.id}
+      id={`gw-${data.id}`}
       aria-labelledby={`${data.id}-headline`}
       className="relative isolate overflow-hidden bg-background"
     >

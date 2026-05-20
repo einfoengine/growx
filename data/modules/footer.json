@@ -19,7 +19,7 @@
       "title": "Company",
       "links": [
         { "id": "footer-company-about", "label": "About", "href": "/about" },
-        { "id": "footer-company-process", "label": "Process", "href": "#mod-process" },
+        { "id": "footer-company-process", "label": "Process", "href": "#gw-mod-process" },
         { "id": "footer-company-case-studies", "label": "Case Studies", "href": "/case-studies" },
         { "id": "footer-company-careers", "label": "Careers", "href": "/careers" }
       ]
@@ -29,7 +29,7 @@
       "title": "Resources",
       "links": [
         { "id": "footer-resources-blog", "label": "Blog", "href": "/blog" },
-        { "id": "footer-resources-faq", "label": "FAQ", "href": "#mod-faq" },
+        { "id": "footer-resources-faq", "label": "FAQ", "href": "#gw-mod-faq" },
         { "id": "footer-resources-guides", "label": "Guides", "href": "/guides" }
       ]
     },

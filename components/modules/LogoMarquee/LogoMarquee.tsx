@@ -5,7 +5,7 @@ export default async function LogoMarquee() {
 
   return (
     <section
-      id={data.id}
+      id={`gw-${data.id}`}
       aria-label={data.label}
       className="relative border-y border-border bg-background"
     >

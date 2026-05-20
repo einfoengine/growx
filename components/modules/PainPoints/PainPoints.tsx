@@ -9,7 +9,7 @@ export default async function PainPoints({ data }: { data?: PainPointsContent } 
 
   return (
     <section
-      id={painData.id}
+      id={`gw-${painData.id}`}
       aria-labelledby={`${painData.id}-headline`}
       className="relative isolate z-45 overflow-x-clip bg-foreground text-background"
     >

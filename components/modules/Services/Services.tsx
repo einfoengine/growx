@@ -33,7 +33,7 @@ export default async function Services({ data }: { data?: ServicesContent } = {}
 
   return (
     <section
-      id={servicesData.id}
+      id={`gw-${servicesData.id}`}
       aria-labelledby={`${servicesData.id}-headline`}
       className="bg-surface"
       style={{ "--cg": "max(2rem, calc((100vw - 1400px) / 2 + 2rem))" } as React.CSSProperties}

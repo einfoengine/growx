@@ -395,7 +395,7 @@ export default function PricingCalculator({ pageData, services }: Props) {
   /* ── Render ──────────────────────────────────────────── */
   return (
     <>
-      <section id="pricing-calculator" className="bg-background">
+      <section id="gw-pricing-calculator" className="bg-background">
         <div className="container-1200 py-16 sm:py-20">
 
           {/* ── Service cards ──────────────────────────── */}

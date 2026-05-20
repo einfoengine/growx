@@ -2,6 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 import SectionHeader from "@/components/elements/SectionHeader";
+import ScrollFadeIn from "@/components/elements/ScrollFadeIn";
 
 const BLOG_POSTS = [
   {
@@ -32,49 +33,51 @@ const BLOG_POSTS = [
 
 export default function BlogSection() {
   return (
-    <section id="mod-blog" className="relative overflow-hidden bg-background py-24 sm:py-32">
-      <div className="container-1200">
-        <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-16">
-          <SectionHeader
-            eyebrow="Insights"
-            headlineText="Latest from the blog"
-            headlineClassName="mt-4 text-4xl font-semibold tracking-tight text-foreground sm:text-5xl"
-            className="max-w-2xl"
-          />
-          <Link href="#" className="inline-flex items-center gap-2 text-brand font-medium hover:text-[#059669] transition-colors">
-            View all posts <ArrowRight size={16} />
-          </Link>
-        </div>
+    <section id="gw-mod-blog" className="relative overflow-hidden bg-background py-24 sm:py-32">
+      <ScrollFadeIn>
+        <div className="container-1200">
+          <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-16">
+            <SectionHeader
+              eyebrow="Insights"
+              headlineText="Latest from the blog"
+              headlineClassName="mt-4 text-4xl font-semibold tracking-tight text-foreground sm:text-5xl"
+              className="max-w-2xl"
+            />
+            <Link href="#" className="inline-flex items-center gap-2 text-brand font-medium hover:text-[#059669] transition-colors">
+              View all posts <ArrowRight size={16} />
+            </Link>
+          </div>
 
-        <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
-          {BLOG_POSTS.map((post) => (
-            <article key={post.id} className="group relative flex flex-col items-start justify-between rounded-3xl border border-border bg-surface p-4 transition-colors hover:bg-surface/80">
-              <div className="relative w-full aspect-[4/3] overflow-hidden rounded-2xl mb-6 bg-muted">
-                <Image
-                  src={post.image}
-                  alt={post.title}
-                  fill
-                  className="object-cover transition-transform duration-500 group-hover:scale-105"
-                  unoptimized
-                />
-              </div>
-              <div className="flex items-center gap-4 text-xs text-muted mb-4 px-2">
-                <span className="font-semibold text-brand px-3 py-1 bg-brand/10 rounded-full">{post.category}</span>
-                <time>{post.date}</time>
-              </div>
-              <h3 className="text-xl font-semibold text-foreground mb-3 px-2 group-hover:text-brand transition-colors">
-                <Link href="#">
-                  <span className="absolute inset-0" />
-                  {post.title}
-                </Link>
-              </h3>
-              <p className="text-sm text-muted leading-relaxed line-clamp-3 px-2 pb-2">
-                {post.excerpt}
-              </p>
-            </article>
-          ))}
+          <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
+            {BLOG_POSTS.map((post) => (
+              <article key={post.id} className="group relative flex flex-col items-start justify-between rounded-3xl border border-border bg-surface p-4 transition-colors hover:bg-surface/80">
+                <div className="relative w-full aspect-[4/3] overflow-hidden rounded-2xl mb-6 bg-muted">
+                  <Image
+                    src={post.image}
+                    alt={post.title}
+                    fill
+                    className="object-cover transition-transform duration-500 group-hover:scale-105"
+                    unoptimized
+                  />
+                </div>
+                <div className="flex items-center gap-4 text-xs text-muted mb-4 px-2">
+                  <span className="font-semibold text-brand px-3 py-1 bg-brand/10 rounded-full">{post.category}</span>
+                  <time>{post.date}</time>
+                </div>
+                <h3 className="text-xl font-semibold text-foreground mb-3 px-2 group-hover:text-brand transition-colors">
+                  <Link href="#">
+                    <span className="absolute inset-0" />
+                    {post.title}
+                  </Link>
+                </h3>
+                <p className="text-sm text-muted leading-relaxed line-clamp-3 px-2 pb-2">
+                  {post.excerpt}
+                </p>
+              </article>
+            ))}
+          </div>
         </div>
-      </div>
+      </ScrollFadeIn>
     </section>
   );
 }

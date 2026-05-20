@@ -9,7 +9,7 @@ export default async function Faq({ data }: { data?: FaqContent } = {}) {
 
   return (
     <section
-      id={faqData.id}
+      id={`gw-${faqData.id}`}
       aria-labelledby={`${faqData.id}-headline`}
       className="relative bg-surface"
     >

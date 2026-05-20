@@ -128,7 +128,7 @@ export default async function Testimonials() {
 
   return (
     <section
-      id={data.id}
+      id={`gw-${data.id}`}
       aria-labelledby={`${data.id}-headline`}
       className="relative bg-background"
     >
