@@ -23,7 +23,7 @@ export default function HomePage() {
       <TextMarquee />
       <Testimonials />
       <Pricing noPaddingTop />
-      <Comparison noPaddingTop />
+      <Comparison />
       <Process noPaddingTop />
       <BlogSection />
       <Faq />
