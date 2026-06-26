@@ -1,4 +1,13 @@
+import type React from "react";
 import { getLogoMarquee } from "@/lib/content";
+
+const DARK_TOKENS = {
+  "--background": "#070707",
+  "--foreground": "#fafafa",
+  "--muted": "#a1a1aa",
+  "--border": "rgba(255,255,255,0.12)",
+  "--surface": "#101010",
+} as React.CSSProperties;
 
 export default async function LogoMarquee() {
   const data = await getLogoMarquee();
@@ -7,7 +16,9 @@ export default async function LogoMarquee() {
     <section
       id={`gw-${data.id}`}
       aria-label={data.label}
-      className="relative border-y border-border bg-background"
+      data-nav-theme="dark"
+      className="relative border-y border-border bg-background text-foreground"
+      style={DARK_TOKENS}
     >
       {/* Sticks under the fixed header (h-16); next section stacks above via z-index */}
       <div className="sticky top-16 z-40 border-b border-border bg-background/95 py-4 backdrop-blur-md supports-backdrop-filter:bg-background/80">

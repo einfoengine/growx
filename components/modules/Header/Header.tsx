@@ -3,17 +3,21 @@ import { ChevronDown } from "lucide-react";
 import Logo from "@/components/elements/Logo";
 import { getHeader } from "@/lib/content";
 import MobileMenu from "./MobileMenu";
+import HeaderShell from "./HeaderShell";
 
 export default async function Header() {
   const data = await getHeader();
 
   return (
-    <header
-      id={data.id}
-      className="sticky top-0 z-50 w-full border-b border-border bg-background/80 backdrop-blur-md"
-    >
-      <div className="container-1200 flex h-16 items-center justify-between gap-6">
-        <Logo id="el-logo-header" tone="dark" width={140} eager />
+    <HeaderShell>
+      <div id={data.id} className="container-1200 flex h-16 items-center justify-between gap-6">
+        {/* Two logo tones — only one shows per bar theme */}
+        <span className="group-data-[theme=dark]/nav:hidden">
+          <Logo id="el-logo-header" tone="dark" width={140} eager />
+        </span>
+        <span className="hidden group-data-[theme=dark]/nav:block">
+          <Logo id="el-logo-header-light" tone="light" width={140} eager />
+        </span>
 
         <nav
           id={`${data.id}-nav`}
@@ -87,6 +91,6 @@ export default async function Header() {
           cta={data.cta}
         />
       </div>
-    </header>
+    </HeaderShell>
   );
 }

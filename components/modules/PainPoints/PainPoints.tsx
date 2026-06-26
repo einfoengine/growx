@@ -11,6 +11,7 @@ export default async function PainPoints({ data }: { data?: PainPointsContent } 
     <section
       id={`gw-${painData.id}`}
       aria-labelledby={`${painData.id}-headline`}
+      data-nav-theme="dark"
       className="relative isolate z-45 overflow-x-clip bg-foreground text-background"
     >
       <div
