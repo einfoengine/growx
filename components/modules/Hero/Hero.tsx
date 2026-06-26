@@ -1,5 +1,6 @@
 import type React from "react";
 import HeroAnimatedContent from "@/components/modules/Hero/HeroAnimatedContent";
+import HeroGlobe from "@/components/modules/Hero/HeroGlobe";
 import type { HeroVariant } from "@/components/modules/Hero/hero-variants";
 import MouseGlow from "@/components/elements/MouseGlow";
 import { getHero } from "@/lib/content";
@@ -62,23 +63,13 @@ export default async function Hero({ data, variant = "home" }: HeroProps = {}) {
       className="relative isolate overflow-hidden bg-background text-foreground"
       style={DARK_TOKENS}
     >
-      {/* Background video */}
-      <video
-        aria-hidden="true"
-        autoPlay
-        loop
-        muted
-        playsInline
-        preload="auto"
-        className="absolute inset-0 -z-30 h-full w-full object-cover"
-      >
-        <source src="/hero-vdo.mp4" type="video/mp4" />
-      </video>
+      {/* Interactive dot globe (replaces the earth video) */}
+      <HeroGlobe />
 
-      {/* Readability scrim — darkens the footage so white text stays legible */}
+      {/* Readability scrim — keeps white text legible over the globe */}
       <div
         aria-hidden="true"
-        className="pointer-events-none absolute inset-0 -z-20 bg-background/55"
+        className="pointer-events-none absolute inset-0 -z-20 bg-background/35"
       />
       {/* Vignette — pulls focus to the center and softens the frame edges */}
       <div
@@ -102,7 +93,6 @@ export default async function Hero({ data, variant = "home" }: HeroProps = {}) {
         className="pointer-events-none absolute -z-10 left-1/2 -top-28 h-96 w-190 -translate-x-1/2 rounded-full bg-brand/15 blur-[100px]"
       />
 
-      <MouseGlow />
       <HeroAnimatedContent data={heroData} variant={variant} />
     </section>
   );

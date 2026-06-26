@@ -1,8 +1,17 @@
+import type React from "react";
 import { Quote, Star } from "lucide-react";
 import SectionHeader from "@/components/elements/SectionHeader";
 import ScrollFadeIn from "@/components/elements/ScrollFadeIn";
 import { getTestimonials } from "@/lib/content";
 import type { Testimonial } from "@/lib/content";
+
+const DARK_TOKENS = {
+  "--background": "#070707",
+  "--foreground": "#fafafa",
+  "--muted": "#a1a1aa",
+  "--border": "rgba(255,255,255,0.12)",
+  "--surface": "#121212",
+} as React.CSSProperties;
 
 function Stars() {
   return (
@@ -32,7 +41,7 @@ function FeaturedCard({ t }: { t: Testimonial }) {
   return (
     <div
       id={t.id}
-      className="h-full relative flex flex-col rounded-2xl bg-foreground p-8"
+      className="h-full relative flex flex-col rounded-2xl border border-border bg-surface p-8"
     >
       {/* Decorative grid overlay */}
       <div
@@ -82,7 +91,7 @@ function RegularCard({ t, wide }: { t: Testimonial; wide?: boolean }) {
   return (
     <div
       id={t.id}
-      className={`h-full flex flex-col rounded-2xl border border-border bg-background p-8`}
+      className={`h-full flex flex-col rounded-2xl border border-border bg-surface p-8`}
     >
       {/* Metric */}
       {t.metric && (
@@ -130,7 +139,9 @@ export default async function Testimonials() {
     <section
       id={`gw-${data.id}`}
       aria-labelledby={`${data.id}-headline`}
-      className="relative bg-background"
+      data-nav-theme="dark"
+      className="relative bg-background text-foreground"
+      style={DARK_TOKENS}
     >
       {/* Subtle brand glow */}
       <div

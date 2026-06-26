@@ -1,9 +1,18 @@
+import type React from "react";
 import Link from "next/link";
 import { Check } from "lucide-react";
 import PricingCTA from "./PricingCTA";
 import SectionHeader from "@/components/elements/SectionHeader";
 import ScrollFadeIn from "@/components/elements/ScrollFadeIn";
 import { getPricing } from "@/lib/content";
+
+const DARK_TOKENS = {
+  "--background": "#070707",
+  "--foreground": "#fafafa",
+  "--muted": "#a1a1aa",
+  "--border": "rgba(255,255,255,0.12)",
+  "--surface": "#121212",
+} as React.CSSProperties;
 
 export default async function Pricing({ noPaddingTop }: { noPaddingTop?: boolean }) {
   const data = await getPricing();
@@ -12,9 +21,11 @@ export default async function Pricing({ noPaddingTop }: { noPaddingTop?: boolean
     <section
       id={`gw-${data.id}`}
       aria-labelledby={`${data.id}-headline`}
-      className="relative isolate overflow-hidden bg-background"
+      data-nav-theme="dark"
+      className="relative isolate overflow-hidden bg-background text-foreground"
+      style={DARK_TOKENS}
     >
-      <div className="pointer-events-none absolute inset-0 -z-10 bg-[linear-gradient(to_right,rgba(10,10,10,0.05)_1px,transparent_1px),linear-gradient(to_bottom,rgba(10,10,10,0.05)_1px,transparent_1px)] bg-size-[48px_48px] mask-[radial-gradient(ellipse_80%_70%_at_50%_30%,#000_20%,transparent_85%)]" />
+      <div className="pointer-events-none absolute inset-0 -z-10 bg-[linear-gradient(to_right,rgba(255,255,255,0.05)_1px,transparent_1px),linear-gradient(to_bottom,rgba(255,255,255,0.05)_1px,transparent_1px)] bg-size-[48px_48px] mask-[radial-gradient(ellipse_80%_70%_at_50%_30%,#000_20%,transparent_85%)]" />
 
       <div className={`container-1200 relative ${noPaddingTop ? "pt-0 pb-24 sm:pb-32 lg:pb-40" : "py-24 sm:py-32 lg:py-40"}`}>
         <ScrollFadeIn delay={0.1}>

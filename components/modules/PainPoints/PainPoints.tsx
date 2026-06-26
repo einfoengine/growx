@@ -1,5 +1,6 @@
 import SectionHeader from "@/components/elements/SectionHeader";
 import ScrollFadeIn from "@/components/elements/ScrollFadeIn";
+import EvervaultBackground from "@/components/elements/EvervaultBackground";
 import PainPointsCards from "./PainPointsCards";
 import { getPainPoints } from "@/lib/content";
 import type { PainPointsContent } from "@/lib/content";
@@ -26,6 +27,9 @@ export default async function PainPoints({ data }: { data?: PainPointsContent } 
         aria-hidden="true"
         className="pointer-events-none absolute inset-0 -z-10 bg-[linear-gradient(to_right,rgba(255,255,255,0.04)_1px,transparent_1px),linear-gradient(to_bottom,rgba(255,255,255,0.04)_1px,transparent_1px)] bg-size-[64px_64px] mask-[radial-gradient(ellipse_70%_60%_at_50%_50%,#000,transparent_90%)]"
       />
+
+      {/* Evervault-style cursor reveal */}
+      <EvervaultBackground className="-z-10" />
 
       <div className="container-1200 relative py-24 sm:py-28 lg:py-32">
         <ScrollFadeIn delay={0.1}>

@@ -1,4 +1,5 @@
 import type { HeadlinePart } from "@/lib/content";
+import CanvasText from "@/components/elements/CanvasText";
 
 type HeadlineProps = {
   id?: string;
@@ -14,30 +15,26 @@ export default function Headline({
   parts,
   as = "h2",
   className = "",
-  underlineHighlight = true,
-  highlightClassName,
 }: HeadlineProps) {
   const Tag = as;
-  const hlClass = highlightClassName ?? "text-brand";
+  const text = parts.map((p) => p.value).join("");
 
   return (
     <Tag id={id} className={`whitespace-pre-line text-balance ${className}`}>
-      {parts.map((part, i) => {
-        if (part.type === "text") {
-          return <span key={i}>{part.value}</span>;
-        }
-        return (
-          <span key={i} className={`relative inline-block ${hlClass}`}>
-            {part.value}
-            {underlineHighlight && !highlightClassName && (
-              <span
-                aria-hidden="true"
-                className="absolute -bottom-1 left-0 right-0 h-1.5 rounded-full bg-(--brand-soft)"
-              />
-            )}
-          </span>
-        );
-      })}
+      {/* Real heading text for accessibility + SEO */}
+      <span className="sr-only">{text}</span>
+      {/* Visible heading — highlight parts get the animated canvas effect */}
+      <span aria-hidden="true">
+        {parts.map((part, i) =>
+          part.type === "text" ? (
+            <span key={i}>{part.value}</span>
+          ) : (
+            <span key={i} className="text-brand">
+              <CanvasText text={part.value} />
+            </span>
+          ),
+        )}
+      </span>
     </Tag>
   );
 }
