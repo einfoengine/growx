@@ -32,7 +32,7 @@ type Card = {
 
 /** Sticky-stack geometry. Each card rests STRIP px below the previous one so the
  *  icon + title of the card above stays readable above the covering card. */
-const STICKY_TOP = 128;
+const STICKY_TOP = 108;
 const STRIP = 132;
 
 /** Baked scatter so each pill sits on an irregular, hand-placed-looking cluster. */
