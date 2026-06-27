@@ -118,7 +118,7 @@ export default async function LandingPageTemplate({ data }: Props) {
       <Testimonials />
       <Pricing noPaddingTop />
       <Comparison noPaddingTop />
-      <Process noPaddingTop />
+      <Process />
       <Faq data={faqData} />
       <CtaBanner />
     </>
