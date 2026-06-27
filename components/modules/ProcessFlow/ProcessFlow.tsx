@@ -160,7 +160,7 @@ export default function ProcessFlow() {
         <div className="relative mt-14 space-y-8 lg:hidden">
           <div
             aria-hidden="true"
-            className="absolute bottom-8 left-8 top-8 -z-0 border-l-2 border-dotted border-brand/35"
+            className="absolute bottom-8 left-8 top-8 z-0 border-l-2 border-dotted border-brand/35"
           />
           {STEPS.map((step) => (
             <ScrollFadeIn key={step.n}>
