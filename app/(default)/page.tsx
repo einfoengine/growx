@@ -5,6 +5,7 @@ import LogoMarquee from "@/components/modules/LogoMarquee";
 import PainPoints from "@/components/modules/PainPoints";
 import Pricing from "@/components/modules/Pricing";
 import Process from "@/components/modules/Process";
+import ProcessFlow from "@/components/modules/ProcessFlow";
 import Services from "@/components/modules/Services";
 import PortfolioCarousel from "@/components/modules/PortfolioCarousel/PortfolioCarousel";
 import TextMarquee from "@/components/modules/TextMarquee/TextMarquee";
@@ -19,6 +20,7 @@ export default function HomePage() {
       <LogoMarquee />
       <PainPoints />
       <Services />
+      <ProcessFlow />
       <PortfolioCarousel />
       <TextMarquee />
       <Testimonials />
