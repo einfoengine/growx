@@ -18,12 +18,12 @@ export default function HomePage() {
       <Hero />
       <LogoMarquee />
       <PainPoints />
-      <Process />
       <Services />
+      <Process />
       <PortfolioCarousel />
       <TextMarquee />
       <Testimonials />
-      <Pricing noPaddingTop />
+      <Pricing noPaddingBottom />
       <Comparison />
       <BlogSection />
       <Faq />

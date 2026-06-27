@@ -1,5 +1,6 @@
 "use client";
 
+import type React from "react";
 import { useRef } from "react";
 import {
   motion,
@@ -7,13 +8,32 @@ import {
   useTransform,
   type MotionValue,
 } from "framer-motion";
+import { FileText, Hammer, PackageCheck, PhoneCall } from "lucide-react";
+import type { ComponentType } from "react";
 import SectionHeader from "@/components/elements/SectionHeader";
+import BinaryRain from "./BinaryRain";
 import type { ProcessContent } from "@/lib/content";
 
-type Step = ProcessContent["steps"][number];
+const DARK_TOKENS = {
+  "--background": "#070707",
+  "--foreground": "#fafafa",
+  "--muted": "#a1a1aa",
+  "--border": "rgba(255,255,255,0.12)",
+  "--surface": "#121212",
+} as React.CSSProperties;
 
-/** One process card — fades/slides in as the scroll crosses its threshold. */
-function Card({
+type Step = ProcessContent["steps"][number];
+type IconProps = { size?: number; className?: string };
+
+const ICONS: ComponentType<IconProps>[] = [
+  PhoneCall,
+  FileText,
+  Hammer,
+  PackageCheck,
+];
+
+/** A process card that fades/lifts in as the scroll crosses its threshold. */
+function StepCard({
   step,
   index,
   total,
@@ -24,74 +44,34 @@ function Card({
   total: number;
   progress: MotionValue<number>;
 }) {
+  const Icon = ICONS[index % ICONS.length];
   const start = index / total;
-  const end = start + 0.6 / total;
-  const opacity = useTransform(progress, [start, end], [0, 1]);
-  const y = useTransform(progress, [start, end], [48, 0]);
-  const scale = useTransform(progress, [start, end], [0.96, 1]);
+  const end = start + 0.55 / total;
+  const opacity = useTransform(progress, [start, end], [0.2, 1]);
+  const y = useTransform(progress, [start, end], [30, 0]);
 
   return (
     <motion.div
-      style={{ opacity, y, scale }}
-      className="group relative flex h-full flex-col rounded-2xl border border-border bg-surface p-6 sm:p-7"
+      style={{ opacity, y }}
+      className="group relative h-full overflow-hidden rounded-3xl border border-border bg-surface p-5 transition-[border-color,box-shadow] hover:border-brand/30 hover:shadow-xl hover:shadow-brand/5 sm:p-7"
     >
+      {/* Watermark number */}
       <span
         aria-hidden="true"
-        className="font-mono text-4xl font-semibold tracking-tight text-foreground/10 transition-colors group-hover:text-brand/40"
+        className="pointer-events-none absolute -right-1 -top-5 font-mono text-7xl font-bold leading-none text-brand/10 transition-colors group-hover:text-brand/20"
       >
         {step.number}
       </span>
-      <h3 className="mt-3 text-lg font-semibold tracking-tight text-foreground">
-        {step.title}
-      </h3>
-      <p className="mt-2 text-sm leading-relaxed text-muted">{step.blurb}</p>
-      <span
-        aria-hidden="true"
-        className="absolute left-6 top-6 h-1 w-8 rounded-full bg-brand opacity-0 transition-opacity group-hover:opacity-100"
-      />
+      <div className="relative">
+        <span className="inline-flex h-12 w-12 items-center justify-center rounded-2xl bg-brand/10 text-brand ring-1 ring-brand/15">
+          <Icon size={22} />
+        </span>
+        <h3 className="mt-5 text-lg font-semibold tracking-tight text-foreground">
+          {step.title}
+        </h3>
+        <p className="mt-2 text-sm leading-relaxed text-muted">{step.blurb}</p>
+      </div>
     </motion.div>
-  );
-}
-
-/** A single progress dot that fills when its card is revealed. */
-function Dot({
-  index,
-  total,
-  progress,
-}: {
-  index: number;
-  total: number;
-  progress: MotionValue<number>;
-}) {
-  const start = index / total;
-  const width = useTransform(progress, [start, start + 0.6 / total], [10, 28]);
-  const bg = useTransform(
-    progress,
-    [start, start + 0.6 / total],
-    ["rgba(10,10,10,0.12)", "var(--brand)"],
-  );
-  return (
-    <motion.span
-      style={{ width, backgroundColor: bg }}
-      className="h-1.5 rounded-full"
-    />
-  );
-}
-
-/** Progress dots that fill as each card is revealed. */
-function Dots({
-  total,
-  progress,
-}: {
-  total: number;
-  progress: MotionValue<number>;
-}) {
-  return (
-    <div className="mt-12 flex items-center justify-center gap-2">
-      {Array.from({ length: total }).map((_, i) => (
-        <Dot key={i} index={i} total={total} progress={progress} />
-      ))}
-    </div>
   );
 }
 
@@ -108,12 +88,16 @@ export default function ProcessReveal({ data }: { data: ProcessContent }) {
       id={`gw-${data.id}`}
       aria-labelledby={`${data.id}-headline`}
       ref={ref}
-      className="relative bg-background"
-      style={{ height: `${total * 60 + 20}vh` }}
+      data-nav-theme="dark"
+      className="relative bg-background text-foreground"
+      style={{ ...DARK_TOKENS, height: `${total * 55 + 20}vh` }}
     >
       {/* Pinned viewport — cards accumulate as you scroll */}
       <div className="sticky top-0 flex h-screen flex-col justify-center overflow-hidden">
-        <div className="container-1200">
+        {/* Binary rain background */}
+        <BinaryRain />
+
+        <div className="container-1200 relative z-10">
           <SectionHeader
             eyebrow={data.eyebrow}
             headline={data.headline.parts}
@@ -124,9 +108,10 @@ export default function ProcessReveal({ data }: { data: ProcessContent }) {
             subClassName="mx-auto mt-5 max-w-xl text-base text-muted sm:text-lg"
           />
 
-          <div className="mt-12 grid grid-cols-2 gap-5 lg:mt-16 lg:grid-cols-4">
+          {/* Cards */}
+          <div className="mt-12 grid grid-cols-2 gap-4 sm:gap-5 lg:mt-16 lg:grid-cols-4">
             {data.steps.map((step, i) => (
-              <Card
+              <StepCard
                 key={step.id}
                 step={step}
                 index={i}
@@ -135,8 +120,6 @@ export default function ProcessReveal({ data }: { data: ProcessContent }) {
               />
             ))}
           </div>
-
-          <Dots total={total} progress={scrollYProgress} />
         </div>
       </div>
     </section>
