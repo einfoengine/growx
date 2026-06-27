@@ -16,9 +16,9 @@ const DARK_TOKENS = {
 /** Sticky top bar that turns dark when a `[data-nav-theme="dark"]` section sits
  *  beneath it, and light when a normal (light) section scrolls up to meet it. */
 export default function HeaderShell({ children }: { children: React.ReactNode }) {
-  // Start dark so the bar is black on first paint (the home hero is dark);
-  // the first measurement corrects it instantly on pages with a light top.
-  const [dark, setDark] = useState(true);
+  // Start light (the home/inner heroes are light); the first measurement
+  // flips it instantly over any dark top section.
+  const [dark, setDark] = useState(false);
   const [animate, setAnimate] = useState(false);
 
   useEffect(() => {

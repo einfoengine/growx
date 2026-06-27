@@ -69,6 +69,8 @@ export default function CanvasText({
     const ro = new ResizeObserver(update);
     ro.observe(el);
     window.addEventListener("resize", update);
+    // Re-measure once web fonts (e.g. Chillax) finish loading.
+    document.fonts?.ready.then(update).catch(() => {});
     return () => {
       ro.disconnect();
       window.removeEventListener("resize", update);

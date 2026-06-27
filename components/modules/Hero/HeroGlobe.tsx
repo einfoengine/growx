@@ -92,10 +92,10 @@ export default function HeroGlobe() {
         const size = 0.5 + depth * 1.3;
         const alpha = 0.06 + depth * depth * 0.55;
 
-        // Mostly brand green, a sprinkle of cool-white highlights
+        // Brand green with a sprinkle of deeper-emerald accents (reads on white)
         ctx.fillStyle =
           i % 11 === 0
-            ? `rgba(220,255,240,${alpha})`
+            ? `rgba(4,120,87,${alpha})`
             : `rgba(16,185,129,${alpha})`;
         ctx.beginPath();
         ctx.arc(sx, sy, size, 0, Math.PI * 2);
