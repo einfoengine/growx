@@ -249,6 +249,11 @@ export default function PainPointsCards({ cards }: { cards: Card[] }) {
               </div>
             );
           })}
+
+          {/* Trailing space so the last card pins at its stop (the full stack
+              completes) before the section scrolls away — kept small to avoid a
+              large empty gap at the bottom. */}
+          <div aria-hidden="true" className="h-[18vh]" />
         </div>
       </div>
 

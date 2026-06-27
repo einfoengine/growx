@@ -3,11 +3,11 @@
   "eyebrow": "Why agencies come to growX",
   "headline": {
     "parts": [
-      { "type": "text", "value": "Your ultimate partner to " },
-      { "type": "highlight", "value": "keep you moving" }
+      { "type": "text", "value": "We resolve " },
+      { "type": "highlight", "value": "agency pain points" }
     ]
   },
-  "sub": "Five moments that send agency owners hunting for a reliable fulfillment partner.",
+  "sub": "Six essential services, delivered at the highest quality in the lowest possible time.",
   "cards": [
     {
       "id": "pain-fulfillment",
