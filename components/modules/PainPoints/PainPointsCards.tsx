@@ -32,7 +32,7 @@ type Card = {
 
 /** Sticky-stack geometry. Each card rests STRIP px below the previous one so the
  *  icon + title of the card above stays readable above the covering card. */
-const STICKY_TOP = 108;
+const STICKY_TOP = 100;
 const STRIP = 132;
 
 /** Baked scatter so each pill sits on an irregular, hand-placed-looking cluster. */
@@ -217,11 +217,11 @@ export default function PainPointsCards({ cards }: { cards: Card[] }) {
                   <span
                     className={`absolute left-1/2 z-10 inline-flex -translate-x-1/2 items-center justify-center rounded-2xl bg-brand text-black shadow-lg shadow-brand/30 ring-8 ring-foreground transition-all duration-300 ease-out ${
                       compact[index]
-                        ? "-top-5 h-10 w-10"
-                        : "-top-8 h-16 w-16"
+                        ? "-top-4 h-8 w-8"
+                        : "-top-6 h-10 w-10"
                     }`}
                   >
-                    <Icon size={compact[index] ? 20 : 30} />
+                    <Icon size={compact[index] ? 14 : 18} />
                   </span>
 
                   {/* Title + subtitle — kept in the top strip so it stays readable when stacked */}
@@ -233,7 +233,7 @@ export default function PainPointsCards({ cards }: { cards: Card[] }) {
                     >
                       Reason {String(index + 1).padStart(2, "0")}
                     </p>
-                    <h3 className="text-3xl font-semibold tracking-tight text-white sm:text-4xl lg:text-5xl">
+                    <h3 className="text-2xl font-semibold tracking-tight text-white sm:text-3xl lg:text-4xl">
                       {card.title}
                     </h3>
                     <p className="mx-auto mt-4 max-w-2xl text-base leading-relaxed text-white/65 sm:text-lg">

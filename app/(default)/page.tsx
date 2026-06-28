@@ -23,15 +23,8 @@ export default function HomePage() {
       <PortfolioCarousel />
       <TextMarquee />
       <Testimonials />
-      {/* Pricing pins while Comparison scrolls up and overlaps it */}
-      <div className="relative">
-        <div className="sticky top-0">
-          <Pricing noPaddingBottom />
-        </div>
-        <div className="relative z-10 shadow-[0_-24px_48px_-12px_rgba(0,0,0,0.12)]">
-          <Comparison />
-        </div>
-      </div>
+      <Pricing noPaddingBottom />
+      <Comparison />
       <BlogSection />
       <Faq />
       <Newsletter />
