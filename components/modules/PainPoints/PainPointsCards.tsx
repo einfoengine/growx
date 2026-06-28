@@ -33,7 +33,7 @@ type Card = {
 /** Sticky-stack geometry. Each card rests STRIP px below the previous one so the
  *  icon + title of the card above stays readable above the covering card. */
 const STICKY_TOP = 100;
-const STRIP = 132;
+const STRIP = 108;
 
 /** Baked scatter so each pill sits on an irregular, hand-placed-looking cluster. */
 const SCATTER: { x: number; y: number; rot: number }[] = [
@@ -149,11 +149,18 @@ export default function PainPointsCards({ cards }: { cards: Card[] }) {
     let raf = 0;
     const update = () => {
       const next = cards.map((_, i) => {
-        if (i >= cards.length - 1) return false;
         const cur = wrapperRefs.current[i];
-        const nxt = wrapperRefs.current[i + 1];
-        if (!cur || !nxt) return false;
+        if (!cur) return false;
         const curTop = cur.getBoundingClientRect().top;
+        // Last card: shrink once it has stacked over the previous card.
+        if (i >= cards.length - 1) {
+          const prev = wrapperRefs.current[i - 1];
+          if (!prev) return false;
+          const prevTop = prev.getBoundingClientRect().top;
+          return curTop - prevTop <= STRIP + 56;
+        }
+        const nxt = wrapperRefs.current[i + 1];
+        if (!nxt) return false;
         const nxtTop = nxt.getBoundingClientRect().top;
         return nxtTop - curTop <= STRIP + 56;
       });
@@ -203,7 +210,7 @@ export default function PainPointsCards({ cards }: { cards: Card[] }) {
                   viewport={{ once: true, margin: "-100px" }}
                   transition={{ duration: 0.5, delay: index * 0.08 }}
                   className={`relative mx-auto w-full max-w-5xl rounded-4xl border border-white/10 bg-foreground/95 px-8 pb-12 shadow-2xl backdrop-blur-xl transition-[padding] duration-300 ease-out sm:px-16 ${
-                    compact[index] ? "pt-9" : "pt-16"
+                    compact[index] ? "pt-6" : "pt-8"
                   }`}
                 >
                   {/* Timeline spine — extends past the card edges so stacked cards read as one continuous line through the icons */}
@@ -213,27 +220,25 @@ export default function PainPointsCards({ cards }: { cards: Card[] }) {
                     style={{ top: "-40px", bottom: "-40px" }}
                   />
 
-                  {/* Icon node sitting on the line, top-center — shrinks when the next card stacks over it */}
+                  {/* Icon node — straddles the top edge (50% out) so the box keeps more room for the title */}
                   <span
-                    className={`absolute left-1/2 z-10 inline-flex -translate-x-1/2 items-center justify-center rounded-2xl bg-brand text-black shadow-lg shadow-brand/30 ring-8 ring-foreground transition-all duration-300 ease-out ${
-                      compact[index]
-                        ? "-top-4 h-8 w-8"
-                        : "-top-6 h-10 w-10"
+                    className={`absolute left-1/2 top-0 z-10 inline-flex -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-2xl bg-brand text-black shadow-lg shadow-brand/30 ring-8 ring-foreground transition-all duration-300 ease-out ${
+                      compact[index] ? "h-7 w-7" : "h-10 w-10"
                     }`}
                   >
-                    <Icon size={compact[index] ? 14 : 18} />
+                    <Icon size={compact[index] ? 13 : 18} />
                   </span>
 
-                  {/* Title + subtitle — kept in the top strip so it stays readable when stacked */}
+                  {/* Title + subtitle */}
                   <div className="relative z-1 text-center">
                     <p
                       className={`font-semibold uppercase tracking-[0.16em] text-brand transition-all duration-300 ${
-                        compact[index] ? "mb-1 text-[10px]" : "mb-2 text-[11px]"
+                        compact[index] ? "text-[10px]" : "text-[11px]"
                       }`}
                     >
                       Reason {String(index + 1).padStart(2, "0")}
                     </p>
-                    <h3 className="text-2xl font-semibold tracking-tight text-white sm:text-3xl lg:text-4xl">
+                    <h3 className="mt-1 text-2xl font-semibold tracking-tight text-white sm:text-3xl lg:text-4xl">
                       {card.title}
                     </h3>
                     <p className="mx-auto mt-4 max-w-2xl text-base leading-relaxed text-white/65 sm:text-lg">

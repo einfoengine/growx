@@ -86,6 +86,23 @@ export default async function Footer() {
       <div
         className="pointer-events-none absolute inset-0 z-0 bg-[linear-gradient(to_right,rgba(255,255,255,0.03)_1px,transparent_1px),linear-gradient(to_bottom,rgba(255,255,255,0.03)_1px,transparent_1px)] bg-[size:48px_48px]"
       />
+      {/* Brand glow */}
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute -top-24 left-1/3 z-0 h-72 w-72 -translate-x-1/2 rounded-full bg-brand/10 blur-[130px]"
+      />
+      {/* Giant brand watermark bleeding off the bottom */}
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute inset-x-0 bottom-0 z-0 flex justify-center overflow-hidden"
+      >
+        <span
+          className="translate-y-[30%] select-none whitespace-nowrap text-[16vw] font-bold leading-none tracking-tighter text-white/[0.035]"
+          style={{ fontFamily: "var(--font-heading)" }}
+        >
+          {site.name}
+        </span>
+      </div>
       <div className="container-1200 py-16 relative z-10">
         <div
           id={`${data.id}-top`}
@@ -96,6 +113,13 @@ export default async function Footer() {
             <p className="mt-5 max-w-xs text-sm leading-relaxed text-(--footer-muted)">
               {data.brandBlurb}
             </p>
+            <span className="mt-6 inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-3 py-1.5 text-xs font-medium text-(--footer-fg)">
+              <span aria-hidden="true" className="relative flex h-2 w-2">
+                <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-brand opacity-70" />
+                <span className="relative inline-flex h-2 w-2 rounded-full bg-brand" />
+              </span>
+              Available for new partners
+            </span>
           </div>
 
           <nav
@@ -159,7 +183,7 @@ export default async function Footer() {
                     target="_blank"
                     rel="noopener noreferrer"
                     aria-label={s.label}
-                    className="inline-flex h-9 w-9 items-center justify-center rounded-full text-(--footer-muted) hover:bg-white/10 hover:text-white transition-colors"
+                    className="inline-flex h-9 w-9 items-center justify-center rounded-full border border-white/10 text-(--footer-muted) transition-all hover:-translate-y-0.5 hover:border-brand/40 hover:bg-brand/10 hover:text-brand"
                   >
                     <Glyph className="h-4 w-4" />
                   </a>
