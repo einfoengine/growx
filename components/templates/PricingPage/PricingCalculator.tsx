@@ -3,9 +3,9 @@
 import { useState, useMemo, useRef, useEffect, useCallback } from "react";
 import Link from "next/link";
 import {
-  AlertTriangle, Bot, Check, ChevronDown, Code, ExternalLink, Funnel,
-  Minus, Pencil, PenTool, Plus, Search, Share2,
-  ShoppingCart, Target, Trash2, X,
+  AlertTriangle, Bot, Check, ChevronDown, Clapperboard, Code, ExternalLink,
+  Film, Funnel, Headset, Minus, Pencil, PenTool, Plus, Search, Share2,
+  ShoppingCart, Target, Terminal, Trash2, UserPlus, X,
 } from "lucide-react";
 import type { ComponentType } from "react";
 import type {
@@ -49,6 +49,8 @@ type InlineEditState = {
 const ICON_MAP: Record<ServiceIcon, ComponentType<IconProps>> = {
   code: Code, search: Search, bot: Bot,
   "pen-tool": PenTool, "share-2": Share2, funnel: Funnel, target: Target,
+  clapperboard: Clapperboard, film: Film, "user-plus": UserPlus,
+  headset: Headset, terminal: Terminal,
 };
 
 function fmt(n: number) {

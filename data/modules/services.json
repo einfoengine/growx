@@ -3,12 +3,12 @@
   "eyebrow": "What we deliver",
   "headline": {
     "parts": [
-      { "type": "text", "value": "Six services. " },
-      { "type": "highlight", "value": "One powerhouse" },
+      { "type": "text", "value": "The one-stop solution for " },
+      { "type": "highlight", "value": "HighLevel agencies" },
       { "type": "text", "value": "." }
     ]
   },
-  "sub": "From day-one solos to 20-person studios. Pick your fulfillment lane and mix as your roster needs shift.",
+  "sub": "Websites, SEO, content, social, and funnels — plus video, client onboarding, admin, and custom HighLevel builds. Every service your agency sells, fulfilled under your brand.",
   "cards": [
     {
       "id": "service-website",
@@ -48,9 +48,44 @@
     {
       "id": "service-funnels",
       "title": "Funnel Building",
-      "blurb": "End-to-end sales and lead-gen funnels. Platform-flexible, scoped to your client's stack and built to convert.",
+      "blurb": "End-to-end sales and lead-gen funnels. HighLevel preferred but platform-flexible, scoped to your client's stack and built to convert.",
       "href": "/services/funnels",
       "icon": "funnel"
+    },
+    {
+      "id": "service-animated-video",
+      "title": "Animated Video Production",
+      "blurb": "Explainers, promos, and ad creatives animated end-to-end. Scripted, designed, and delivered under your brand.",
+      "href": "#book",
+      "icon": "clapperboard"
+    },
+    {
+      "id": "service-video-editing",
+      "title": "Video Editing",
+      "blurb": "Short-form reels, long-form edits, and ad cuts. Fast turnaround, on-brand, and ready to publish for your clients.",
+      "href": "#book",
+      "icon": "film"
+    },
+    {
+      "id": "service-hl-onboarding",
+      "title": "HighLevel Client Onboarding",
+      "blurb": "We onboard your clients into HighLevel — sub-accounts, snapshots, integrations, and training. Done right, the first time.",
+      "href": "#book",
+      "icon": "user-plus"
+    },
+    {
+      "id": "service-hl-admin",
+      "title": "HighLevel Admin Support",
+      "blurb": "Day-to-day HighLevel operations handled. Workflows, calendars, pipelines, and tickets — your back office, white-labeled.",
+      "href": "#book",
+      "icon": "headset"
+    },
+    {
+      "id": "service-hl-development",
+      "title": "Custom HighLevel Development",
+      "blurb": "Custom workflows, API integrations, and bespoke builds inside HighLevel. Engineering muscle for your toughest client asks.",
+      "href": "#book",
+      "icon": "terminal"
     }
   ]
 }

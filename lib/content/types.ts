@@ -80,7 +80,12 @@ export type ServiceIcon =
   | "pen-tool"
   | "share-2"
   | "funnel"
-  | "target";
+  | "target"
+  | "clapperboard"
+  | "film"
+  | "user-plus"
+  | "headset"
+  | "terminal";
 
 export type ServiceCard = {
   id: string;
