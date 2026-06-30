@@ -2,7 +2,7 @@
 
 import { useEffect, useRef } from "react";
 
-/** Matrix-style falling 0/1 rain — a subtle dark background texture. */
+/** Matrix-style falling 0/1 rain - a subtle dark background texture. */
 export default function BinaryRain() {
   const ref = useRef<HTMLCanvasElement>(null);
 

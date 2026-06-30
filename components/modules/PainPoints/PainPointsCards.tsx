@@ -213,14 +213,14 @@ export default function PainPointsCards({ cards }: { cards: Card[] }) {
                     compact[index] ? "pt-6" : "pt-8"
                   }`}
                 >
-                  {/* Timeline spine — extends past the card edges so stacked cards read as one continuous line through the icons */}
+                  {/* Timeline spine - extends past the card edges so stacked cards read as one continuous line through the icons */}
                   <span
                     aria-hidden="true"
                     className="pointer-events-none absolute left-1/2 w-px -translate-x-1/2 bg-white/12"
                     style={{ top: "-40px", bottom: "-40px" }}
                   />
 
-                  {/* Icon node — straddles the top edge (50% out) so the box keeps more room for the title */}
+                  {/* Icon node - straddles the top edge (50% out) so the box keeps more room for the title */}
                   <span
                     className={`absolute left-1/2 top-0 z-10 inline-flex -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-2xl bg-brand text-black shadow-lg shadow-brand/30 ring-8 ring-foreground transition-all duration-300 ease-out ${
                       compact[index] ? "h-7 w-7" : "h-10 w-10"
@@ -256,7 +256,7 @@ export default function PainPointsCards({ cards }: { cards: Card[] }) {
           })}
 
           {/* Trailing space so the last card pins at its stop (the full stack
-              completes) before the section scrolls away — kept small to avoid a
+              completes) before the section scrolls away - kept small to avoid a
               large empty gap at the bottom. */}
           <div aria-hidden="true" className="h-[18vh]" />
         </div>

@@ -3,7 +3,7 @@
 
   "hero": {
     "eyebrow": "How we work",
-    "headline": "From first call to final delivery — and everything in between.",
+    "headline": "From first call to final delivery - and everything in between.",
     "sub": "A transparent, repeatable process built for agency owners who need reliable execution without the coordination overhead. No guessing, no chasing, no surprises."
   },
 
@@ -22,7 +22,7 @@
           {
             "id": "jp1-s1",
             "title": "Book online in 60 seconds",
-            "body": "Pick a time that suits you from our calendar. You'll get a confirmation with a brief pre-call form — three questions, two minutes."
+            "body": "Pick a time that suits you from our calendar. You'll get a confirmation with a brief pre-call form - three questions, two minutes."
           },
           {
             "id": "jp1-s2",
@@ -32,7 +32,7 @@
           {
             "id": "jp1-s3",
             "title": "Proposal in your inbox within 24 hours",
-            "body": "Custom scope, fixed timeline, and a locked price. No hourly rates, no change order surprises. You approve or push back — we iterate until it's right."
+            "body": "Custom scope, fixed timeline, and a locked price. No hourly rates, no change order surprises. You approve or push back - we iterate until it's right."
           }
         ]
       },
@@ -46,12 +46,12 @@
           {
             "id": "jp2-s1",
             "title": "Team assignment",
-            "body": "Your project is assigned to a specialist team — not a generalist VA. The right people for the specific service, every time."
+            "body": "Your project is assigned to a specialist team - not a generalist VA. The right people for the specific service, every time."
           },
           {
             "id": "jp2-s2",
             "title": "Onboarding to your tools",
-            "body": "We join your Slack, your Notion, your Linear — whatever you already use. No new tools forced on your workflow unless you want them."
+            "body": "We join your Slack, your Notion, your Linear - whatever you already use. No new tools forced on your workflow unless you want them."
           },
           {
             "id": "jp2-s3",
@@ -80,7 +80,7 @@
           {
             "id": "jp3-s3",
             "title": "Structured revision rounds",
-            "body": "Feedback is collected in one round per milestone — not an open-ended back-and-forth. Unlimited revisions within scope, processed within 48 hours."
+            "body": "Feedback is collected in one round per milestone - not an open-ended back-and-forth. Unlimited revisions within scope, processed within 48 hours."
           }
         ]
       },
@@ -89,7 +89,7 @@
         "number": "04",
         "label": "Handoff",
         "title": "Clean delivery, ready to present",
-        "description": "Every project is handed off in a format that makes you look good — under your brand, with documentation your clients can actually use.",
+        "description": "Every project is handed off in a format that makes you look good - under your brand, with documentation your clients can actually use.",
         "steps": [
           {
             "id": "jp4-s1",
@@ -99,7 +99,7 @@
           {
             "id": "jp4-s2",
             "title": "Handoff documentation",
-            "body": "A plain-English handoff doc covers everything your client needs to know — structured so you can send it directly without editing."
+            "body": "A plain-English handoff doc covers everything your client needs to know - structured so you can send it directly without editing."
           },
           {
             "id": "jp4-s3",
@@ -129,7 +129,7 @@
       {
         "id": "ch-board",
         "name": "Project Board",
-        "description": "Live task tracking in your preferred tool — Notion, Linear, Asana, or ClickUp. Every task has a status, owner, and due date."
+        "description": "Live task tracking in your preferred tool - Notion, Linear, Asana, or ClickUp. Every task has a status, owner, and due date."
       },
       {
         "id": "ch-reports",
@@ -138,22 +138,22 @@
       }
     ],
     "cadence": [
-      { "id": "cad-daily", "period": "Daily", "action": "Async Slack update — done, doing, blocked" },
+      { "id": "cad-daily", "period": "Daily", "action": "Async Slack update - done, doing, blocked" },
       { "id": "cad-weekly", "period": "Weekly", "action": "20-min Friday demo + next week priorities confirmed" },
       { "id": "cad-monthly", "period": "Monthly", "action": "Performance report + retainer review call" },
-      { "id": "cad-quarterly", "period": "Quarterly", "action": "Strategic review — results, roadmap, and growth opportunities" }
+      { "id": "cad-quarterly", "period": "Quarterly", "action": "Strategic review - results, roadmap, and growth opportunities" }
     ]
   },
 
   "whiteLabel": {
     "eyebrow": "White-label partnership",
     "headline": "We stay invisible. You take the credit.",
-    "sub": "Your client never knows we exist. Every touchpoint — files, reports, communications, and deliverables — goes through you, under your brand.",
+    "sub": "Your client never knows we exist. Every touchpoint - files, reports, communications, and deliverables - goes through you, under your brand.",
     "promises": [
       {
         "id": "wl-1",
         "title": "We never contact your clients directly",
-        "description": "All client-facing communication is yours to own. We supply the updates, you pass them on. Your client relationship stays exactly that — yours."
+        "description": "All client-facing communication is yours to own. We supply the updates, you pass them on. Your client relationship stays exactly that - yours."
       },
       {
         "id": "wl-2",
@@ -187,7 +187,7 @@
     {
       "id": "pfaq-1",
       "question": "How quickly can you start after I sign the proposal?",
-      "answer": "Your project kicks off within 48 hours of proposal sign-off. The team is briefed, tools are set up, and a kickoff call is scheduled — all within two business days."
+      "answer": "Your project kicks off within 48 hours of proposal sign-off. The team is briefed, tools are set up, and a kickoff call is scheduled - all within two business days."
     },
     {
       "id": "pfaq-2",
@@ -207,12 +207,12 @@
     {
       "id": "pfaq-5",
       "question": "How are revisions handled?",
-      "answer": "Each milestone includes one structured revision round. Feedback is collected in a single session — not drip-fed over days. Revisions are processed within 48 hours. Unlimited revisions within the agreed scope."
+      "answer": "Each milestone includes one structured revision round. Feedback is collected in a single session - not drip-fed over days. Revisions are processed within 48 hours. Unlimited revisions within the agreed scope."
     },
     {
       "id": "pfaq-6",
       "question": "What happens if a deadline is missed?",
-      "answer": "We flag it before it happens — not after. If a milestone is at risk, you'll know 48 hours in advance with a revised timeline and clear reason. We don't hide delays."
+      "answer": "We flag it before it happens - not after. If a milestone is at risk, you'll know 48 hours in advance with a revised timeline and clear reason. We don't hide delays."
     }
   ]
 }

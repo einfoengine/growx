@@ -195,7 +195,7 @@ function ConfigField({
 
 /* ── Formats a service config value for display ─────────── */
 function fmtConfigValue(v: string | string[] | number | undefined): string {
-  if (v === undefined || v === "" || (Array.isArray(v) && v.length === 0)) return "—";
+  if (v === undefined || v === "" || (Array.isArray(v) && v.length === 0)) return "-";
   if (Array.isArray(v)) return v.join(", ");
   return String(v);
 }
@@ -373,7 +373,7 @@ export default function PricingCalculator({ pageData, services }: Props) {
     window.dispatchEvent(new CustomEvent("open-onboarding", {
       detail: {
         customPlan: {
-          name: `Custom Package — ${cartItems.length} service${cartItems.length > 1 ? "s" : ""}`,
+          name: `Custom Package - ${cartItems.length} service${cartItems.length > 1 ? "s" : ""}`,
           price: priceDisplay,
           description: cartItems.map((i) => i.serviceName).join(" · "),
           features: cartItems.map((i) => {
@@ -381,7 +381,7 @@ export default function PricingCalculator({ pageData, services }: Props) {
               .filter(([, v]) => Array.isArray(v) ? (v as string[]).length > 0 : v !== "" && v !== undefined)
               .map(([, v]) => Array.isArray(v) ? (v as string[]).join(", ") : String(v))
               .join(" · ");
-            return `${i.serviceName}: ${i.qty} ${i.qty === 1 ? i.unit : i.unitLabel.toLowerCase()} · ${i.durationLabel}${cfgSummary ? ` — ${cfgSummary}` : ""}`;
+            return `${i.serviceName}: ${i.qty} ${i.qty === 1 ? i.unit : i.unitLabel.toLowerCase()} · ${i.durationLabel}${cfgSummary ? ` - ${cfgSummary}` : ""}`;
           }),
         },
       },
@@ -407,7 +407,7 @@ export default function PricingCalculator({ pageData, services }: Props) {
               What would you like to order?
             </h2>
             <p className="mt-1 text-sm text-muted">
-              Click a service to add it — configure the details in the order summary below.
+              Click a service to add it - configure the details in the order summary below.
             </p>
 
             <div className="mt-6 grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-6">
@@ -451,7 +451,7 @@ export default function PricingCalculator({ pageData, services }: Props) {
             <div className="mt-10 flex flex-col items-center rounded-2xl border border-dashed border-border py-14 text-center">
               <ShoppingCart size={28} className="text-muted/40" />
               <p className="mt-4 text-sm font-medium text-foreground">Your order is empty</p>
-              <p className="mt-1 text-sm text-muted">Click any service above to add it — configure details right here</p>
+              <p className="mt-1 text-sm text-muted">Click any service above to add it - configure details right here</p>
             </div>
           )}
 
@@ -546,7 +546,7 @@ export default function PricingCalculator({ pageData, services }: Props) {
                           {/* ── TOP: sliders (left) + deliverables (right) ── */}
                           <div className="grid gap-8 lg:grid-cols-2">
 
-                            {/* LEFT — all sliders */}
+                            {/* LEFT - all sliders */}
                             <div className="space-y-6">
                               <p className="text-xs font-semibold uppercase tracking-[0.14em] text-brand">Scope</p>
 
@@ -589,13 +589,13 @@ export default function PricingCalculator({ pageData, services }: Props) {
                                   <div className="flex-1">
                                     <input type="range" min={0} max={cfg.durations.length - 1} step={1} value={durIdx} onChange={(e) => { const i = Number(e.target.value); setInlineEditState((s) => s ? { ...s, durationId: cfg.durations[i].id } : s); }} className="w-full accent-brand" />
                                     <div className="mt-1 flex justify-between text-[10px] text-muted">
-                                      <span>{cfg.durations[0].label.split(" — ")[0]}</span>
+                                      <span>{cfg.durations[0].label.split(" - ")[0]}</span>
                                       <span className="text-center font-semibold text-foreground">
                                         {selectedDur.label}
                                         {selectedDur.multiplier < 1 && <span className="ml-1 text-emerald-600">−{Math.round((1 - selectedDur.multiplier) * 100)}%</span>}
                                         {selectedDur.multiplier > 1 && <span className="ml-1 text-amber-600">+{Math.round((selectedDur.multiplier - 1) * 100)}%</span>}
                                       </span>
-                                      <span>{cfg.durations[cfg.durations.length - 1].label.split(" — ")[0]}</span>
+                                      <span>{cfg.durations[cfg.durations.length - 1].label.split(" - ")[0]}</span>
                                     </div>
                                   </div>
                                   <button type="button" onClick={() => { const i = Math.min(cfg.durations.length - 1, durIdx + 1); setInlineEditState((s) => s ? { ...s, durationId: cfg.durations[i].id } : s); }} disabled={durIdx === cfg.durations.length - 1} className="flex h-9 w-9 items-center justify-center rounded-full border border-border transition hover:bg-surface disabled:opacity-40">
@@ -615,7 +615,7 @@ export default function PricingCalculator({ pageData, services }: Props) {
                               ))}
                             </div>
 
-                            {/* RIGHT — what's included */}
+                            {/* RIGHT - what's included */}
                             <div>
                               <p className="text-xs font-semibold uppercase tracking-[0.14em] text-brand">
                                 What&apos;s included ({item.deliverables.length})
@@ -675,7 +675,7 @@ export default function PricingCalculator({ pageData, services }: Props) {
                                 value={inlineEditState.notes}
                                 onChange={(e) => setInlineEditState((s) => s ? { ...s, notes: e.target.value } : s)}
                                 rows={2}
-                                placeholder="Anything else we should know — deadlines, brand guidelines, references, access details…"
+                                placeholder="Anything else we should know - deadlines, brand guidelines, references, access details…"
                                 className="mt-2 w-full resize-none rounded-xl border border-border bg-surface px-4 py-2.5 text-sm text-foreground placeholder:text-muted transition-colors focus:border-brand focus:outline-none focus:ring-1 focus:ring-brand"
                               />
                             </div>
@@ -831,14 +831,14 @@ export default function PricingCalculator({ pageData, services }: Props) {
                 </div>
                 <div className="mt-4 flex flex-col gap-2 sm:flex-row">
                   <button type="button" onClick={placeOrder} className="flex-1 rounded-full bg-brand px-6 py-3 text-sm font-semibold text-black transition hover:bg-brand/90">
-                    Place Order — {cartItems.length} service{cartItems.length > 1 ? "s" : ""}
+                    Place Order - {cartItems.length} service{cartItems.length > 1 ? "s" : ""}
                   </button>
                   <button type="button" onClick={() => setCartItems([])} className="flex items-center justify-center gap-1.5 rounded-full border border-white/15 px-5 py-3 text-sm font-medium text-white/70 transition hover:border-white/30 hover:text-white">
                     <X size={13} /> Clear order
                   </button>
                 </div>
                 <p className="mt-4 text-center text-xs text-white/40">
-                  No payment required now — proposal arrives within 24 hours.
+                  No payment required now - proposal arrives within 24 hours.
                 </p>
               </div>
             </div>

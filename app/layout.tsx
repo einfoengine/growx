@@ -42,7 +42,7 @@ export default function RootLayout({
         className="min-h-full flex flex-col"
         suppressHydrationWarning
       >
-        {/* Chillax (headings) — hoisted to <head> by React */}
+        {/* Chillax (headings) - hoisted to <head> by React */}
         <link
           rel="stylesheet"
           href="https://api.fontshare.com/v2/css?f[]=chillax@400,500,600,700&display=swap"

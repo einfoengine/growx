@@ -3,12 +3,12 @@
   "hero": {
     "eyebrow": "Who we are",
     "headline": "The studio behind your agency's best work.",
-    "sub": "growX is a white-label fulfilment studio built specifically for agency owners and solopreneurs who want to deliver more — without the risk of hiring. We handle the execution. You own the relationship."
+    "sub": "growX is a white-label fulfilment studio built specifically for agency owners and solopreneurs who want to deliver more - without the risk of hiring. We handle the execution. You own the relationship."
   },
   "mission": {
     "eyebrow": "Why we exist",
     "headline": "Agencies shouldn't have to choose between growth and quality.",
-    "body": "Most agencies hit a ceiling. You win new business, then burn your team out delivering it. You can't hire fast enough, and contractors introduce more coordination overhead than they remove. So you start turning down work — or worse, delivering work that doesn't reflect your standard.\n\ngrowX exists to break that ceiling. We're a team of channel specialists — SEO strategists, media buyers, developers, content writers, social managers — who work under your brand or ours, at the quality level your clients expect. No compromise."
+    "body": "Most agencies hit a ceiling. You win new business, then burn your team out delivering it. You can't hire fast enough, and contractors introduce more coordination overhead than they remove. So you start turning down work - or worse, delivering work that doesn't reflect your standard.\n\ngrowX exists to break that ceiling. We're a team of channel specialists - SEO strategists, media buyers, developers, content writers, social managers - who work under your brand or ours, at the quality level your clients expect. No compromise."
   },
   "founders": [
     {
@@ -37,7 +37,7 @@
       "id": "founder-lena",
       "name": "Lena Park",
       "role": "Co-founder & Head of Delivery",
-      "bio": "Lena spent a decade building delivery frameworks for digital agencies and product teams before joining James to co-found growX. Her obsession is operational excellence — she architects the systems, review processes, and communication rhythms that let a lean specialist team consistently outperform much larger generalist agencies.",
+      "bio": "Lena spent a decade building delivery frameworks for digital agencies and product teams before joining James to co-found growX. Her obsession is operational excellence - she architects the systems, review processes, and communication rhythms that let a lean specialist team consistently outperform much larger generalist agencies.",
       "qualifications": [
         "BSc Computer Science, UCL",
         "PMP Certified (Project Management Professional)",
@@ -143,17 +143,17 @@
     {
       "id": "val-transparency",
       "title": "Radical transparency",
-      "description": "Daily Slack updates, weekly demos, honest timelines. You always know where the work is — no black box, no chasing for updates."
+      "description": "Daily Slack updates, weekly demos, honest timelines. You always know where the work is - no black box, no chasing for updates."
     },
     {
       "id": "val-speed",
       "title": "Speed without sloppiness",
-      "description": "Proposals in 24 hours. Kick-offs within 48. We move fast because your clients are watching the calendar — but we never cut corners to hit a date."
+      "description": "Proposals in 24 hours. Kick-offs within 48. We move fast because your clients are watching the calendar - but we never cut corners to hit a date."
     },
     {
       "id": "val-ownership",
       "title": "Outcome ownership",
-      "description": "We don't track hours, we track results. If something isn't working, we flag it and fix it — proactively, before you have to ask."
+      "description": "We don't track hours, we track results. If something isn't working, we flag it and fix it - proactively, before you have to ask."
     }
   ],
   "stats": [
@@ -165,7 +165,7 @@
   "approach": {
     "eyebrow": "How we work",
     "headline": "Specialists, not generalists.",
-    "body": "Every service at growX is handled by a dedicated specialist team — not a project manager juggling ten disciplines. Our SEO team lives and breathes search. Our media buyers manage seven-figure ad budgets. Our developers build exclusively in modern stacks.\n\nWe're async-first, which means we work across time zones without the coordination overhead that kills momentum. You get a single point of contact, Slack access to your team, and weekly reviews — not a game of email telephone.",
+    "body": "Every service at growX is handled by a dedicated specialist team - not a project manager juggling ten disciplines. Our SEO team lives and breathes search. Our media buyers manage seven-figure ad budgets. Our developers build exclusively in modern stacks.\n\nWe're async-first, which means we work across time zones without the coordination overhead that kills momentum. You get a single point of contact, Slack access to your team, and weekly reviews - not a game of email telephone.",
     "pillars": [
       { "id": "pillar-specialists", "label": "Dedicated channel specialists" },
       { "id": "pillar-async", "label": "Async-first, timezone-flexible" },

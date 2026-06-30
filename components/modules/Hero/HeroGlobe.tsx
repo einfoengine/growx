@@ -2,7 +2,7 @@
 
 import { useEffect, useRef } from "react";
 
-/** An interactive globe made of dots — a lightweight canvas stand-in for the
+/** An interactive globe made of dots - a lightweight canvas stand-in for the
  *  earth-from-space video. Spins on its own and parallaxes toward the cursor. */
 export default function HeroGlobe() {
   const canvasRef = useRef<HTMLCanvasElement>(null);
@@ -70,7 +70,7 @@ export default function HeroGlobe() {
 
       const cx = width / 2;
       // Center sits near the bottom, so only the top half of the globe is
-      // visible — the lower half is clipped below the section.
+      // visible - the lower half is clipped below the section.
       const cy = height - 100;
       const radius = Math.min(900, width); // ~1800px wide on desktop
 

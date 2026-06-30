@@ -216,7 +216,7 @@ export default function OnboardingModal() {
                     disabled={formState === "submitting"}
                     className="w-full rounded-xl bg-brand px-4 py-3.5 text-sm font-semibold text-black transition-all hover:bg-[#059669] hover:scale-[1.01] disabled:opacity-60 disabled:cursor-not-allowed disabled:hover:scale-100"
                   >
-                    {formState === "submitting" ? "Sending…" : `Place Order — ${plan.name}`}
+                    {formState === "submitting" ? "Sending…" : `Place Order - ${plan.name}`}
                   </button>
 
                   <p className="text-center text-xs text-muted">

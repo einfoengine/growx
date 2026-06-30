@@ -5,7 +5,7 @@ import PricingPage from "@/components/templates/PricingPage/PricingPage";
 export const metadata: Metadata = {
   title: "Pricing",
   description:
-    "Build your white-label package. Select a service, configure your scope and timeline, and get an instant fixed-price estimate — no hidden fees.",
+    "Build your white-label package. Select a service, configure your scope and timeline, and get an instant fixed-price estimate - no hidden fees.",
 };
 
 export default async function PricingRoute() {

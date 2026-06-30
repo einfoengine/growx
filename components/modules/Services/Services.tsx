@@ -69,7 +69,7 @@ export default async function Services({ data }: { data?: ServicesContent } = {}
         </ScrollFadeIn>
       </div>
 
-      {/* Full-width bordered grid — parent owns top + left edge */}
+      {/* Full-width bordered grid - parent owns top + left edge */}
       <div
         id={`${servicesData.id}-grid`}
         className="grid border-l border-t border-border sm:grid-cols-2 lg:grid-cols-3 lg:[&>*:nth-child(3n+1)]:pl-(--cg) lg:[&>*:nth-child(3n)]:pr-(--cg)"

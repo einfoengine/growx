@@ -3,7 +3,7 @@
 import type React from "react";
 import { useEffect, useState } from "react";
 
-/** Dark token overrides — scoped to the header so its token-based children
+/** Dark token overrides - scoped to the header so its token-based children
  *  (links, borders, CTA, dropdown) flip to a dark treatment automatically. */
 const DARK_TOKENS = {
   "--background": "#070707",

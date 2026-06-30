@@ -8,8 +8,8 @@ import type { HeroContent } from "@/lib/content";
 export type HeroProps = {
   data?: HeroContent;
   /**
-   * `home` — large headline and vertical rhythm (default).
-   * `inner` — compact hero for inner / marketing subpages.
+   * `home` - large headline and vertical rhythm (default).
+   * `inner` - compact hero for inner / marketing subpages.
    */
   variant?: HeroVariant;
 };
@@ -43,7 +43,7 @@ export default async function Hero({ data, variant = "home" }: HeroProps = {}) {
     );
   }
 
-  // ── Home hero — light, with the interactive dot globe ─────────────────────
+  // ── Home hero - light, with the interactive dot globe ─────────────────────
   return (
     <section
       id={`gw-${heroData.id}`}
@@ -63,7 +63,7 @@ export default async function Hero({ data, variant = "home" }: HeroProps = {}) {
         aria-hidden="true"
         className="pointer-events-none absolute -z-10 left-1/2 -top-24 h-96 w-190 -translate-x-1/2 rounded-full bg-brand/8 blur-[90px]"
       />
-      {/* Bottom fade — blends the globe into the section below */}
+      {/* Bottom fade - blends the globe into the section below */}
       <div
         aria-hidden="true"
         className="pointer-events-none absolute inset-x-0 bottom-0 -z-10 h-40 bg-linear-to-b from-transparent to-background"

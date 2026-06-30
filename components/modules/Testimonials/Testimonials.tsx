@@ -150,7 +150,7 @@ export default async function Testimonials() {
       />
 
       <div className="container-1200 py-24 sm:py-32 lg:py-40">
-        {/* Header — left-aligned with split layout */}
+        {/* Header - left-aligned with split layout */}
         <ScrollFadeIn delay={0.1}>
           <div
             id={`${data.id}-header`}
@@ -170,7 +170,7 @@ export default async function Testimonials() {
           </div>
         </ScrollFadeIn>
 
-        {/* Bento grid — zigzag on desktop */}
+        {/* Bento grid - zigzag on desktop */}
         <div
           id={`${data.id}-grid`}
           className="mt-12 grid grid-cols-1 gap-5 md:grid-cols-2 lg:grid-cols-3"

@@ -8,7 +8,7 @@
       { "type": "text", "value": "." }
     ]
   },
-  "sub": "Websites, SEO, content, social, and funnels — plus video, client onboarding, admin, and custom HighLevel builds. Every service your agency sells, fulfilled under your brand.",
+  "sub": "Websites, SEO, content, social, and funnels - plus video, client onboarding, admin, and custom HighLevel builds. Every service your agency sells, fulfilled under your brand.",
   "cards": [
     {
       "id": "service-website",
@@ -69,14 +69,14 @@
     {
       "id": "service-hl-onboarding",
       "title": "HighLevel Client Onboarding",
-      "blurb": "We onboard your clients into HighLevel — sub-accounts, snapshots, integrations, and training. Done right, the first time.",
+      "blurb": "We onboard your clients into HighLevel - sub-accounts, snapshots, integrations, and training. Done right, the first time.",
       "href": "#book",
       "icon": "user-plus"
     },
     {
       "id": "service-hl-admin",
       "title": "HighLevel Admin Support",
-      "blurb": "Day-to-day HighLevel operations handled. Workflows, calendars, pipelines, and tickets — your back office, white-labeled.",
+      "blurb": "Day-to-day HighLevel operations handled. Workflows, calendars, pipelines, and tickets - your back office, white-labeled.",
       "href": "#book",
       "icon": "headset"
     },

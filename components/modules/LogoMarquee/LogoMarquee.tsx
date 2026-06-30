@@ -9,7 +9,7 @@ const DARK_TOKENS = {
   "--surface": "#101010",
 } as React.CSSProperties;
 
-/** Demo brand colours — placeholders until the real logo images are uploaded. */
+/** Demo brand colours - placeholders until the real logo images are uploaded. */
 const BRAND_COLORS: Record<string, string> = {
   Vidiosa: "#8b5cf6",
   "GHL Video": "#ef4444",
@@ -34,7 +34,7 @@ export default async function LogoMarquee() {
           {data.label}
         </p>
 
-        {/* Colourful demo logos — replace each block with an <img src=… /> later */}
+        {/* Colourful demo logos - replace each block with an <img src=… /> later */}
         <div className="mt-9 flex flex-wrap items-center justify-center gap-x-10 gap-y-6 sm:mt-11 sm:gap-x-14">
           {data.items.map((name) => {
             const color = BRAND_COLORS[name] ?? "#10b981";

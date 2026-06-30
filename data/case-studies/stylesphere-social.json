@@ -6,9 +6,9 @@
   "service": "Social Media Management",
   "serviceSlug": "social",
   "duration": "3 months",
-  "tagline": "Zero to 45k followers — and a community that actually buys.",
+  "tagline": "Zero to 45k followers - and a community that actually buys.",
   "description": "StyleSphere launched with a great product and a 2,000-follower Instagram account that was gaining nothing. In 90 days we built an audience of 45,000 engaged followers and turned social into their second-largest revenue channel.",
-  "challenge": "StyleSphere had been posting inconsistently — three times a week on a good week — with no defined visual identity, no Reels strategy, and zero influencer infrastructure. Their engagement rate was below 1% and organic reach had cratered after a period of inactivity. The founder was spending 10+ hours a week on content that wasn't converting.",
+  "challenge": "StyleSphere had been posting inconsistently - three times a week on a good week - with no defined visual identity, no Reels strategy, and zero influencer infrastructure. Their engagement rate was below 1% and organic reach had cratered after a period of inactivity. The founder was spending 10+ hours a week on content that wasn't converting.",
   "solution": "We started with a brand voice and visual system audit, establishing a content OS that the team could maintain beyond the engagement. A Reels-first content calendar was built around three content pillars: styling education, behind-the-scenes brand story, and social proof. We executed a micro-influencer seeding campaign across 18 creators in the 10k–80k range, negotiating usage rights so the best-performing content could be repurposed as paid ads. Community management protocols were set up to respond to every comment within 2 hours during peak windows, tripling the engagement rate.",
   "results": [
     { "id": "r1", "value": "45k", "label": "Followers gained in 90 days" },
@@ -17,7 +17,7 @@
     { "id": "r4", "value": "2nd", "label": "Social became their #2 revenue channel" }
   ],
   "testimonial": {
-    "quote": "I was sceptical — everyone promises follower growth. growX delivered an audience that opens our DMs, leaves comments, and actually checks out. The revenue impact was real.",
+    "quote": "I was sceptical - everyone promises follower growth. growX delivered an audience that opens our DMs, leaves comments, and actually checks out. The revenue impact was real.",
     "author": "Amara Diallo",
     "title": "Creative Director, StyleSphere"
   },

@@ -8,7 +8,7 @@
   "duration": "4 months",
   "tagline": "Slashed cost-per-acquisition by 60% while scaling spend.",
   "description": "Meridian Commerce was burning budget on underperforming Google and Meta campaigns managed by a generalist freelancer. We restructured their entire paid media operation, rebuilt campaigns from creative to bidding strategy, and achieved a 4.2× ROAS within the first full billing cycle.",
-  "challenge": "Meridian's previous agency had set up broad-match campaigns with no audience segmentation, weak ad copy, and a flat bidding strategy. At a £12 CPA they couldn't afford to scale — every pound of additional spend returned diminishing results. Their product feed was also poorly structured, causing Shopping campaigns to surface irrelevant queries and waste 35% of budget on zero-intent clicks.",
+  "challenge": "Meridian's previous agency had set up broad-match campaigns with no audience segmentation, weak ad copy, and a flat bidding strategy. At a £12 CPA they couldn't afford to scale - every pound of additional spend returned diminishing results. Their product feed was also poorly structured, causing Shopping campaigns to surface irrelevant queries and waste 35% of budget on zero-intent clicks.",
   "solution": "We conducted a full account audit and rebuilt from scratch. Shopping campaigns were restructured around a tiered product priority system, separating hero SKUs from long-tail inventory. Search campaigns were restructured with tight single-theme ad groups, bespoke ad copy per intent level, and Performance Max experiments running in parallel. Audience segmentation layered first-party CRM data against Google's in-market signals. On Meta, we rebuilt the creative testing framework with a 3-2-2 structure, moving from static images to UGC-style video that outperformed brand creative by 3×.",
   "results": [
     { "id": "r1", "value": "4.2×", "label": "Return on ad spend (ROAS)" },
@@ -17,7 +17,7 @@
     { "id": "r4", "value": "35%", "label": "Budget waste eliminated" }
   ],
   "testimonial": {
-    "quote": "We'd tried two agencies before growX. The difference was night and day — they understood e-commerce media buying at a technical level most generalists simply don't have.",
+    "quote": "We'd tried two agencies before growX. The difference was night and day - they understood e-commerce media buying at a technical level most generalists simply don't have.",
     "author": "Daniel Osei",
     "title": "Founder & CEO, Meridian Commerce"
   },

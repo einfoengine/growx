@@ -99,7 +99,7 @@ export default function AboutPage({ data }: Props) {
             eyebrow="Leadership"
             headlineText="Meet the founders"
             headlineClassName="mt-4 text-3xl font-semibold tracking-tight text-foreground sm:text-4xl"
-            sub="Operators who've been on both sides of the agency relationship — and built growX to fix what frustrated them most."
+            sub="Operators who've been on both sides of the agency relationship - and built growX to fix what frustrated them most."
             subClassName="mt-3 text-base text-muted"
             className="max-w-xl"
           />
@@ -117,7 +117,7 @@ export default function AboutPage({ data }: Props) {
             eyebrow="The crew"
             headlineText="Specialists, not generalists"
             headlineClassName="mt-4 text-3xl font-semibold tracking-tight text-foreground sm:text-4xl"
-            sub="Each discipline is led by someone who has spent years doing exactly that — not a project manager wearing six hats."
+            sub="Each discipline is led by someone who has spent years doing exactly that - not a project manager wearing six hats."
             subClassName="mt-3 text-base text-muted"
             className="max-w-xl"
           />
@@ -252,7 +252,7 @@ function TeamMemberCard({ member: m }: { member: TeamMember }) {
   const deptClass = DEPT_COLORS[m.department] ?? "bg-gray-50 text-gray-700 border-gray-200";
   return (
     <div className="flex flex-col overflow-hidden border border-border bg-background">
-      {/* Photo — fills full width, no padding */}
+      {/* Photo - fills full width, no padding */}
       <div className={`relative w-full aspect-4/3 overflow-hidden ${avatarClass}`}>
         {m.image ? (
           <Image src={m.image} alt={m.name} fill className="object-cover object-top" />

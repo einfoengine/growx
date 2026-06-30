@@ -13,7 +13,7 @@ export type ButtonProps = {
   variant?: ButtonVariant;
   /** Renders as a Next.js Link when provided. */
   href?: string;
-  /** Click handler — renders as a <button> element. */
+  /** Click handler - renders as a <button> element. */
   onClick?: () => void;
   /** Icon element rendered alongside the label. */
   icon?: ReactNode;
@@ -25,7 +25,7 @@ export type ButtonProps = {
   fullWidth?: boolean;
   /** Disables interaction and dims the button. */
   disabled?: boolean;
-  /** HTML button type — only applies when no href is given. Default: "button". */
+  /** HTML button type - only applies when no href is given. Default: "button". */
   type?: "button" | "submit" | "reset";
   /** Escape hatch for one-off style overrides. */
   className?: string;
@@ -106,7 +106,7 @@ export default function Button({
       </button>
     );
 
-  // ── Magnetic wrapper — the button drifts toward the cursor, springs back ──
+  // ── Magnetic wrapper - the button drifts toward the cursor, springs back ──
   const wrapRef = useRef<HTMLDivElement>(null);
   const x = useMotionValue(0);
   const y = useMotionValue(0);

@@ -20,7 +20,7 @@ function StarRating({ rating }: { rating: number }) {
         ))}
       </div>
       <span className="text-sm font-semibold text-foreground">{rating}.0</span>
-      <span className="text-sm text-muted">/ 5 — {rating === 5 ? "Outstanding" : rating === 4 ? "Excellent" : "Great"}</span>
+      <span className="text-sm text-muted">/ 5 - {rating === 5 ? "Outstanding" : rating === 4 ? "Excellent" : "Great"}</span>
     </div>
   );
 }

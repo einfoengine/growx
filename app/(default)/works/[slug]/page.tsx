@@ -14,7 +14,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const item = await getWorkItem(slug);
   if (!item) return {};
   return {
-    title: `${item.title} — ${item.client}`,
+    title: `${item.title} - ${item.client}`,
     description: item.description,
   };
 }

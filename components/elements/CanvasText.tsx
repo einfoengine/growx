@@ -2,7 +2,7 @@
 
 import { useEffect, useRef, useState } from "react";
 
-/** Light shimmer palette — lines read as motion over the solid brand color. */
+/** Light shimmer palette - lines read as motion over the solid brand color. */
 const DEFAULT_COLORS = [
   "#6ee7b7",
   "#a7f3d0",

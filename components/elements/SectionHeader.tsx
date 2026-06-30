@@ -4,9 +4,9 @@ import Headline from "./Headline";
 
 type SectionHeaderProps = {
   eyebrow?: string;
-  /** Rich headline with highlight segments — use with the Headline component. */
+  /** Rich headline with highlight segments - use with the Headline component. */
   headline?: HeadlinePart[];
-  /** Plain string headline — renders a bare heading tag. */
+  /** Plain string headline - renders a bare heading tag. */
   headlineText?: string;
   headlineId?: string;
   as?: "h1" | "h2" | "h3";

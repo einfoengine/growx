@@ -73,7 +73,7 @@ export default function FoundersSection({ founders }: Props) {
                 <X size={18} />
               </button>
 
-              {/* Modal header — image strip */}
+              {/* Modal header - image strip */}
               <div className="flex items-center gap-0 border-b border-border">
                 <div className={`relative h-28 w-28 shrink-0 overflow-hidden ${AVATAR_BG[active.avatarColor] ?? "bg-gray-100 text-gray-600"}`}>
                   {active.image ? (
@@ -165,7 +165,7 @@ export default function FoundersSection({ founders }: Props) {
               onClick={() => setActive(f)}
               className="group flex flex-col w-full text-center cursor-pointer transition-colors hover:bg-surface"
             >
-              {/* Photo — fills full width of the card, no padding */}
+              {/* Photo - fills full width of the card, no padding */}
               <div className={`relative w-full aspect-4/3 overflow-hidden ${bgClass}`}>
                 {f.image ? (
                   <Image

@@ -57,7 +57,7 @@ export default function WorksGrid({ data }: Props) {
                   href={`/works/${item.slug}`}
                   className="group block overflow-hidden rounded-2xl border border-border bg-surface transition-all duration-300 hover:-translate-y-0.5 hover:border-brand/30 hover:shadow-xl hover:shadow-brand/5"
                 >
-                  {/* Image — featured items use a wider aspect ratio for height variety */}
+                  {/* Image - featured items use a wider aspect ratio for height variety */}
                   <div className={`relative w-full overflow-hidden ${item.featured ? "aspect-video" : "aspect-4/3"}`}>
                     <Image
                       src={item.image}
@@ -107,7 +107,7 @@ export default function WorksGrid({ data }: Props) {
                       </div>
                     )}
 
-                    {/* Footer strip — duration + rating + arrow */}
+                    {/* Footer strip - duration + rating + arrow */}
                     <div className="mt-4 flex items-center justify-between border-t border-border pt-4">
                       <div className="flex items-center gap-4">
                         <span className="flex items-center gap-1.5 text-xs text-muted">

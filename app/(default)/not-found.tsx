@@ -16,7 +16,7 @@ export default function NotFound() {
           404
         </p>
 
-        {/* Text — overlaid via negative margin */}
+        {/* Text - overlaid via negative margin */}
         <div className="-mt-8 sm:-mt-12 lg:-mt-16">
           <p className="text-xs font-semibold uppercase tracking-[0.18em] text-brand">
             Page not found
@@ -25,7 +25,7 @@ export default function NotFound() {
             Nothing to see here.
           </h1>
           <p className="mx-auto mt-4 max-w-md text-base text-muted">
-            The page you&apos;re looking for doesn&apos;t exist or has been moved. Head back home or book a call — we&apos;re always here.
+            The page you&apos;re looking for doesn&apos;t exist or has been moved. Head back home or book a call - we&apos;re always here.
           </p>
 
           <div className="mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row">

@@ -4,7 +4,7 @@
   "headline": {
     "parts": [
       { "type": "text", "value": "From discovery call to " },
-      { "type": "highlight", "value": "shipped" },
+      { "type": "highlight", "value": "shipping" },
       { "type": "text", "value": "." }
     ]
   },

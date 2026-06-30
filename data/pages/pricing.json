@@ -8,7 +8,7 @@
         { "type": "highlight", "value": "with you" }
       ]
     },
-    "sub": "Select a service, configure your scope, and get an instant estimate. Fixed pricing, no surprises — what you see is what we quote."
+    "sub": "Select a service, configure your scope, and get an instant estimate. Fixed pricing, no surprises - what you see is what we quote."
   },
   "note": "All estimates shown are starting points. Final pricing is locked in your proposal, which arrives within 24 hours of your discovery call. Volume discounts apply automatically.",
   "services": [
@@ -23,10 +23,10 @@
       "qtyStep": 1,
       "billing": "one-off",
       "durations": [
-        { "id": "rush",     "label": "Rush — 2 weeks",     "value": 2,  "multiplier": 1.25 },
-        { "id": "standard", "label": "Standard — 4 weeks", "value": 4,  "multiplier": 1.0  },
-        { "id": "relaxed",  "label": "Relaxed — 6 weeks",  "value": 6,  "multiplier": 0.95 },
-        { "id": "extended", "label": "Extended — 8 weeks", "value": 8,  "multiplier": 0.9  }
+        { "id": "rush",     "label": "Rush - 2 weeks",     "value": 2,  "multiplier": 1.25 },
+        { "id": "standard", "label": "Standard - 4 weeks", "value": 4,  "multiplier": 1.0  },
+        { "id": "relaxed",  "label": "Relaxed - 6 weeks",  "value": 6,  "multiplier": 0.95 },
+        { "id": "extended", "label": "Extended - 8 weeks", "value": 8,  "multiplier": 0.9  }
       ],
       "configFields": [
         {
@@ -67,9 +67,9 @@
       "billing": "monthly",
       "durations": [
         { "id": "1m",  "label": "Month to month",       "value": 1,  "multiplier": 1.0  },
-        { "id": "3m",  "label": "3 months — 5% off",    "value": 3,  "multiplier": 0.95 },
-        { "id": "6m",  "label": "6 months — 10% off",   "value": 6,  "multiplier": 0.9  },
-        { "id": "12m", "label": "12 months — 15% off",  "value": 12, "multiplier": 0.85 }
+        { "id": "3m",  "label": "3 months - 5% off",    "value": 3,  "multiplier": 0.95 },
+        { "id": "6m",  "label": "6 months - 10% off",   "value": 6,  "multiplier": 0.9  },
+        { "id": "12m", "label": "12 months - 15% off",  "value": 12, "multiplier": 0.85 }
       ],
       "configFields": [
         {
@@ -94,7 +94,7 @@
           "id": "currentRanking",
           "label": "Current SEO status",
           "type": "select",
-          "options": ["Brand new / no SEO done", "Some work done — needs improvement", "Ranking but want to scale", "Recovering from penalty"]
+          "options": ["Brand new / no SEO done", "Some work done - needs improvement", "Ranking but want to scale", "Recovering from penalty"]
         }
       ]
     },
@@ -110,9 +110,9 @@
       "billing": "monthly",
       "durations": [
         { "id": "1m",  "label": "Month to month",       "value": 1,  "multiplier": 1.0  },
-        { "id": "3m",  "label": "3 months — 5% off",    "value": 3,  "multiplier": 0.95 },
-        { "id": "6m",  "label": "6 months — 10% off",   "value": 6,  "multiplier": 0.9  },
-        { "id": "12m", "label": "12 months — 15% off",  "value": 12, "multiplier": 0.85 }
+        { "id": "3m",  "label": "3 months - 5% off",    "value": 3,  "multiplier": 0.95 },
+        { "id": "6m",  "label": "6 months - 10% off",   "value": 6,  "multiplier": 0.9  },
+        { "id": "12m", "label": "12 months - 15% off",  "value": 12, "multiplier": 0.85 }
       ],
       "configFields": [
         {
@@ -145,7 +145,7 @@
           "id": "contentSource",
           "label": "Content & assets",
           "type": "select",
-          "options": ["We provide all assets (photos, video)", "Mix — some assets, we create the rest", "Full creative — you create everything", "UGC / repurpose existing content"]
+          "options": ["We provide all assets (photos, video)", "Mix - some assets, we create the rest", "Full creative - you create everything", "UGC / repurpose existing content"]
         }
       ]
     },
@@ -161,9 +161,9 @@
       "billing": "monthly",
       "durations": [
         { "id": "one-off", "label": "One-off batch",        "value": 1,  "multiplier": 1.0  },
-        { "id": "3m",      "label": "3 months — 5% off",    "value": 3,  "multiplier": 0.95 },
-        { "id": "6m",      "label": "6 months — 10% off",   "value": 6,  "multiplier": 0.9  },
-        { "id": "12m",     "label": "12 months — 15% off",  "value": 12, "multiplier": 0.85 }
+        { "id": "3m",      "label": "3 months - 5% off",    "value": 3,  "multiplier": 0.95 },
+        { "id": "6m",      "label": "6 months - 10% off",   "value": 6,  "multiplier": 0.9  },
+        { "id": "12m",     "label": "12 months - 15% off",  "value": 12, "multiplier": 0.85 }
       ],
       "configFields": [
         {
@@ -188,7 +188,7 @@
           "id": "seoKeywords",
           "label": "SEO keyword targeting",
           "type": "select",
-          "options": ["Yes — we supply keywords", "Yes — you research keywords", "Light optimisation only", "No SEO requirement"]
+          "options": ["Yes - we supply keywords", "Yes - you research keywords", "Light optimisation only", "No SEO requirement"]
         }
       ]
     },
@@ -204,9 +204,9 @@
       "billing": "monthly",
       "durations": [
         { "id": "1m",  "label": "Month to month",       "value": 1,  "multiplier": 1.0  },
-        { "id": "3m",  "label": "3 months — 5% off",    "value": 3,  "multiplier": 0.95 },
-        { "id": "6m",  "label": "6 months — 10% off",   "value": 6,  "multiplier": 0.9  },
-        { "id": "12m", "label": "12 months — 15% off",  "value": 12, "multiplier": 0.85 }
+        { "id": "3m",  "label": "3 months - 5% off",    "value": 3,  "multiplier": 0.95 },
+        { "id": "6m",  "label": "6 months - 10% off",   "value": 6,  "multiplier": 0.9  },
+        { "id": "12m", "label": "12 months - 15% off",  "value": 12, "multiplier": 0.85 }
       ],
       "configFields": [
         {
@@ -246,9 +246,9 @@
       "qtyStep": 1,
       "billing": "one-off",
       "durations": [
-        { "id": "rush",     "label": "Rush — 3 weeks",     "value": 3, "multiplier": 1.2  },
-        { "id": "standard", "label": "Standard — 5 weeks", "value": 5, "multiplier": 1.0  },
-        { "id": "relaxed",  "label": "Relaxed — 8 weeks",  "value": 8, "multiplier": 0.92 }
+        { "id": "rush",     "label": "Rush - 3 weeks",     "value": 3, "multiplier": 1.2  },
+        { "id": "standard", "label": "Standard - 5 weeks", "value": 5, "multiplier": 1.0  },
+        { "id": "relaxed",  "label": "Relaxed - 8 weeks",  "value": 8, "multiplier": 0.92 }
       ],
       "configFields": [
         {
@@ -273,7 +273,7 @@
           "id": "copyStatus",
           "label": "Copywriting",
           "type": "select",
-          "options": ["Write everything from scratch", "Rough brief / notes provided", "Full copy ready — just build", "Need copy review / refinement"]
+          "options": ["Write everything from scratch", "Rough brief / notes provided", "Full copy ready - just build", "Need copy review / refinement"]
         },
         {
           "id": "integrations",

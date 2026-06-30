@@ -92,7 +92,7 @@ export default function ProcessReveal({ data }: { data: ProcessContent }) {
       className="relative bg-background text-foreground"
       style={{ ...DARK_TOKENS, height: `${total * 55 + 20}vh` }}
     >
-      {/* Pinned viewport — cards accumulate as you scroll */}
+      {/* Pinned viewport - cards accumulate as you scroll */}
       <div className="sticky top-0 flex h-screen flex-col justify-center overflow-hidden">
         {/* Binary rain background */}
         <BinaryRain />

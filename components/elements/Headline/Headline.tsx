@@ -23,7 +23,7 @@ export default function Headline({
     <Tag id={id} className={`whitespace-pre-line text-balance ${className}`}>
       {/* Real heading text for accessibility + SEO */}
       <span className="sr-only">{text}</span>
-      {/* Visible heading — highlight parts get the animated canvas effect */}
+      {/* Visible heading - highlight parts get the animated canvas effect */}
       <span aria-hidden="true">
         {parts.map((part, i) =>
           part.type === "text" ? (

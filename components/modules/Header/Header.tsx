@@ -11,7 +11,7 @@ export default async function Header() {
   return (
     <HeaderShell>
       <div id={data.id} className="container-1200 flex h-16 items-center justify-between gap-6">
-        {/* Two logo tones — only one shows per bar theme */}
+        {/* Two logo tones - only one shows per bar theme */}
         <span className="group-data-[theme=dark]/nav:hidden">
           <Logo id="el-logo-header" tone="dark" width={140} eager />
         </span>
