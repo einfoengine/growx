@@ -1,13 +1,4 @@
-import type React from "react";
 import { getLogoMarquee } from "@/lib/content";
-
-const DARK_TOKENS = {
-  "--background": "#070707",
-  "--foreground": "#fafafa",
-  "--muted": "#a1a1aa",
-  "--border": "rgba(255,255,255,0.12)",
-  "--surface": "#101010",
-} as React.CSSProperties;
 
 /** Demo brand colours - placeholders until the real logo images are uploaded. */
 const BRAND_COLORS: Record<string, string> = {
@@ -25,12 +16,10 @@ export default async function LogoMarquee() {
     <section
       id={`gw-${data.id}`}
       aria-label={data.label}
-      data-nav-theme="dark"
       className="relative overflow-hidden border-y border-border bg-background py-14 text-foreground sm:py-16"
-      style={DARK_TOKENS}
     >
       <div className="container-1200">
-        <p className="text-center text-xs font-medium uppercase tracking-[0.2em] text-white/40">
+        <p className="text-center text-xs font-medium uppercase tracking-[0.2em] text-foreground/40">
           {data.label}
         </p>
 

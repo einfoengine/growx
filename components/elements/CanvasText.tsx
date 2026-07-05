@@ -2,14 +2,14 @@
 
 import { useEffect, useRef, useState } from "react";
 
-/** Light shimmer palette - lines read as motion over the solid brand color. */
+/** Deep-green shimmer palette - lines read as motion over the solid brand color. */
 const DEFAULT_COLORS = [
-  "#6ee7b7",
-  "#a7f3d0",
-  "#5eead4",
-  "#34d399",
-  "#d1fae5",
-  "#2dd4bf",
+  "#047857",
+  "#065f46",
+  "#059669",
+  "#166534",
+  "#15803d",
+  "#0f766e",
 ];
 
 type Props = {
