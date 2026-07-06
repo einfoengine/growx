@@ -59,7 +59,7 @@ export default function CaseStudiesPage({ caseStudies }: Props) {
             eyebrow="Your turn"
             headlineText="Ready to be the next case study?"
             headlineClassName="mt-4 text-4xl font-semibold tracking-tight text-foreground sm:text-5xl"
-            sub="Bring the brief. We'll bring the strategy, the team, and a proposal within 24 hours."
+            sub="Bring the brief. We'll bring the strategy, the team, and deliver it 100% white-label."
             subClassName="mx-auto mt-5 max-w-xl text-base text-muted"
             align="center"
           />

@@ -151,7 +151,7 @@ export default function ProcessPage({ data }: Props) {
 
               <div className="mt-8 border-t border-white/10 pt-6">
                 <p className="text-xs text-white/50">
-                  All cadence items are included in every retainer plan. One-off projects follow the delivery phase rhythm only.
+                  Response times and pipeline calls scale with your tier. Free covers portal support, Standard adds a dedicated account manager, and VIP adds priority production and a quarterly strategy session.
                 </p>
               </div>
             </div>
@@ -171,7 +171,7 @@ export default function ProcessPage({ data }: Props) {
                 sub={data.whiteLabel.sub}
                 subClassName="mt-4 text-base leading-relaxed text-muted"
               />
-              <Button label="Become a partner" href="#book" icon={<ArrowRight size={15} />} className="mt-8" />
+              <Button label="Become a partner" href="/pricing" icon={<ArrowRight size={15} />} className="mt-8" />
             </div>
 
             <div className="space-y-0 divide-y divide-border border border-border">
@@ -235,12 +235,12 @@ export default function ProcessPage({ data }: Props) {
             eyebrow="Ready to start"
             headlineText="Let's put this into motion."
             headlineClassName="mt-4 text-4xl font-semibold tracking-tight text-foreground sm:text-5xl"
-            sub="Book a 30-minute discovery call. We'll scope the brief, confirm fit, and have a proposal in your inbox within 24 hours."
+            sub="Create your free partner account and place your first white-label order today. No commitment, no card, no sales call required."
             subClassName="mx-auto mt-5 max-w-xl text-base text-muted"
             align="center"
           />
           <div className="mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row">
-            <Button label="Book a Discovery Call" href="#book" icon={<ArrowRight size={15} />} />
+            <Button label="Become a partner" href="/pricing" icon={<ArrowRight size={15} />} />
             <Button label="See our results" href="/case-studies" variant="secondary" />
           </div>
         </div>

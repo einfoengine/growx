@@ -77,7 +77,7 @@ function FeaturedCard({ t }: { t: Testimonial }) {
           <div>
             <p className="text-sm font-semibold text-white">{t.name}</p>
             <p className="text-xs text-white/50">
-              {t.title} · {t.company}
+              {t.title}, {t.company}
             </p>
           </div>
         </div>
@@ -122,7 +122,7 @@ function RegularCard({ t, wide }: { t: Testimonial; wide?: boolean }) {
           <div>
             <p className="text-sm font-semibold text-foreground">{t.name}</p>
             <p className="text-xs text-muted">
-              {t.title} · {t.company}
+              {t.title}, {t.company}
             </p>
           </div>
         </div>

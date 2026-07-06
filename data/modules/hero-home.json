@@ -1,23 +1,23 @@
 {
   "id": "mod-hero",
   "eyebrow": {
-    "label": "White-label or branded delivery, your choice",
-    "href": "#gw-mod-services"
+    "label": "Now onboarding agency partners",
+    "href": "#gw-mod-pricing"
   },
   "headline": {
     "parts": [
-      { "type": "text", "value": "The agency behind the " },
-      { "type": "highlight", "value": "agencies" },
+      { "type": "text", "value": "The Agency behind the " },
+      { "type": "highlight", "value": "Agencies" },
       { "type": "text", "value": "." }
     ]
   },
   "tagline": "Deliver more. Close more. Scale without chaos.",
-  "sub": "The white-label fulfillment team for agency owners and solopreneurs. Website design, SEO, AEO, content, social, and funnels delivered under your brand or ours.",
+  "sub": "growX is the 100% white-label fulfillment partner for agency owners. Bring us the client work you already sell, and we deliver it all under your brand. You grow without hiring.",
   "ctas": [
     {
       "id": "mod-hero-cta-primary",
-      "label": "Book a Discovery Call",
-      "href": "#book",
+      "label": "Become a partner",
+      "href": "#gw-mod-pricing",
       "variant": "primary"
     },
     {
@@ -28,9 +28,9 @@
     }
   ],
   "stats": [
-    { "id": "mod-hero-stat-proposal", "label": "24-hour proposal turnaround" },
-    { "id": "mod-hero-stat-team", "label": "6 services, one team" },
-    { "id": "mod-hero-stat-mode", "label": "White-label or branded" },
-    { "id": "mod-hero-stat-reach", "label": "US · CA · UK · AU" }
+    { "id": "mod-hero-stat-services", "label": "12 services, one team" },
+    { "id": "mod-hero-stat-whitelabel", "label": "100% white-label" },
+    { "id": "mod-hero-stat-since", "label": "In-house team since 2019" },
+    { "id": "mod-hero-stat-reach", "label": "US, CA, UK, AU" }
   ]
 }

@@ -197,7 +197,7 @@ export default function WorkItemPage({ item }: Props) {
               {item.rating}.0 <span className="text-lg font-normal text-muted">/ 5</span>
             </p>
             <p className="mt-2 text-base font-semibold text-foreground">{item.client}</p>
-            <p className="mt-1 text-sm text-muted">{item.tag} · {item.duration} engagement</p>
+            <p className="mt-1 text-sm text-muted">{item.tag}, {item.duration} engagement</p>
           </div>
         </div>
       </section>
@@ -216,7 +216,7 @@ export default function WorkItemPage({ item }: Props) {
             Want work like this?
           </h2>
           <p className="mx-auto mt-5 max-w-xl text-base text-muted">
-            Bring the brief. We'll bring the team, the creative direction, and a proposal in 24 hours.
+            Bring the brief. We'll bring the team, the creative direction, and deliver it under your brand.
           </p>
           <div className="mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row">
             <Button label="Book a Discovery Call" href="#book" icon={<ArrowRight size={15} />} />

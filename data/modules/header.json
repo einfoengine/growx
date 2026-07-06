@@ -23,8 +23,8 @@
   ],
   "cta": {
     "id": "mod-header-cta",
-    "label": "Book a Discovery Call",
-    "href": "#book",
+    "label": "Become a partner",
+    "href": "/pricing",
     "variant": "primary"
   }
 }

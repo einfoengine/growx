@@ -8,37 +8,37 @@
       { "type": "text", "value": "." }
     ]
   },
-  "sub": "Six things every agency owner wants to know before bringing us into a client relationship.",
+  "sub": "The questions every agency owner asks before bringing us in.",
   "items": [
     {
       "id": "faq-trust",
       "question": "Can I trust you with my clients?",
-      "answer": "Your reputation rides on the work. We get it. We sign mutual NDAs, work invisibly under your brand if you want, and never communicate with your clients without you in the loop. Every project has a single point of contact on our side."
+      "answer": "Your reputation rides on the work, so we protect it. Every deliverable ships 100% white-label with full commercial rights. We stay completely invisible by default, and on the VIP tier we speak to your clients under your brand, as your team, never as growX."
     },
     {
-      "id": "faq-pricing",
-      "question": "Is this worth it vs. cheap freelancers?",
-      "answer": "Reliability has a cost, and missed deadlines have a bigger one. Our pricing buys predictable delivery, transparent timelines, and one team that doesn't ghost you mid-project. We don't compete on hourly rate. We replace the cost of a hire."
+      "id": "faq-difference",
+      "question": "How is this different from freelancers or a vendor?",
+      "answer": "Freelancers ghost and vendors take one-off orders. growX is a partnership: one accountable in-house team that knows your business, with fixed pricing, clear SLAs, and a named account manager from the Standard tier up. You are not managing contractors anymore."
     },
     {
       "id": "faq-quality",
       "question": "What if the quality isn't good enough?",
-      "answer": "Every project ships through internal QA before it touches your client. Weekly demos, written feedback, iteration until you sign off. If something isn't right, we fix it. That's the deal."
+      "answer": "Every project ships through internal QA before it reaches your client, produced by a team that has run fulfillment since 2019. You get status in the portal, revisions until it is right, and unlimited revision rounds on VIP. If something is off, we fix it."
     },
     {
-      "id": "faq-niche",
-      "question": "Will you understand my niche?",
-      "answer": "We work with agencies serving local businesses and SMBs. That's the lane. The discovery call is where we map your client's voice, vertical, and ICP. If we're not the right fit, we'll tell you on that call."
+      "id": "faq-who",
+      "question": "Which agencies do you work with?",
+      "answer": "Agency owners and solopreneurs across the US, Canada, UK, and Australia, from your first client to a full roster. Whatever you sell, from websites and funnels to SEO, content, social, video, and HighLevel operations, we likely fulfill it."
     },
     {
-      "id": "faq-turnaround",
-      "question": "What's the turnaround time?",
-      "answer": "Proposal in your inbox within 24 hours of the discovery call. Project kickoff inside one week. Most retainers run on weekly demos with same-day Slack response during business hours."
+      "id": "faq-highlevel",
+      "question": "Are you affiliated with HighLevel?",
+      "answer": "No. growX is HighLevel-fluent by expertise, not affiliated with or endorsed by HighLevel. We onboard, administer, and build inside the platform every day, so your HighLevel work is in experienced hands."
     },
     {
       "id": "faq-size",
       "question": "Am I too small to work with you?",
-      "answer": "If you have one client, you're the right size. Half our partners are solopreneurs scaling their first roster. The model works whether you're at $0/mo or $100k/mo MRR."
+      "answer": "If you have one client, you are the right size. Many of our partners are solopreneurs scaling their first roster. The model works whether you are at $0 or $100k per month, and the Free tier means you can start today at no cost."
     }
   ]
 }

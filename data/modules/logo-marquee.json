@@ -1,11 +1,9 @@
 {
   "id": "mod-logo-marquee",
-  "label": "growthX is a sister of",
+  "label": "Three brands. One mission.",
   "items": [
-    "Vidiosa",
+    "growX",
     "GHL Video",
-    "GHL Animation Studio",
-    "Biz-Topper",
-    "Social-X"
+    "socialX"
   ]
 }

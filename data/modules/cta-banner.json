@@ -8,18 +8,18 @@
       { "type": "text", "value": "." }
     ]
   },
-  "sub": "Bring the brief. We'll bring the team, the timeline, and the deliverables. Discovery call, then a proposal in 24 hours.",
+  "sub": "Join free, order what you already sell in one click, and deliver it under your brand. No hiring, no vendors, no chaos.",
   "ctas": [
     {
       "id": "cta-banner-primary",
-      "label": "Book a Discovery Call",
-      "href": "#book",
+      "label": "Become a partner",
+      "href": "/pricing",
       "variant": "primary"
     },
     {
       "id": "cta-banner-secondary",
-      "label": "Explore services",
-      "href": "#gw-mod-services",
+      "label": "Book a discovery call",
+      "href": "#book",
       "variant": "ghost"
     }
   ]

@@ -32,7 +32,10 @@ export default function PricingPage({ pageData, services }: Props) {
         </div>
       </section>
 
-      {/* ── Custom calculator ────────────────────────────────── */}
+      {/* ── Partnership tiers ────────────────────────────────── */}
+      <Pricing noPaddingTop />
+
+      {/* ── Estimate calculator ──────────────────────────────── */}
       <PricingCalculator pageData={pageData} services={services} />
 
       {/* ── Disclaimer note ──────────────────────────────────── */}
@@ -45,9 +48,6 @@ export default function PricingPage({ pageData, services }: Props) {
         </div>
       </section>
 
-      {/* ── Fixed-plan pricing module ────────────────────────── */}
-      <Pricing noPaddingTop />
-
       {/* ── CTA ──────────────────────────────────────────────── */}
       <section id="gw-pricing-cta" className="relative overflow-hidden bg-background">
         <div
@@ -57,15 +57,15 @@ export default function PricingPage({ pageData, services }: Props) {
         <div className="container-1200 py-24 text-center">
           <SectionHeader
             eyebrow="Not sure where to start?"
-            headlineText="Let us scope it for you."
+            headlineText="Start free, upgrade when you're ready."
             headlineClassName="mt-4 text-4xl font-semibold tracking-tight text-foreground sm:text-5xl"
-            sub="Book a free 30-minute discovery call. We'll map out the right services, quantities, and timeline for your client pipeline."
+            sub="Create a free partner account, browse the catalog, and place your first white-label order. Move up to Standard or VIP whenever you want more."
             subClassName="mx-auto mt-5 max-w-xl text-base text-muted"
             align="center"
           />
           <div className="mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row">
-            <Button label="Book a Discovery Call" href="#book" icon={<ArrowRight size={15} />} />
-            <Button label="View our work" href="/works" variant="secondary" />
+            <Button label="Choose your tier" href="#gw-mod-pricing" icon={<ArrowRight size={15} />} />
+            <Button label="Book a discovery call" href="#book" variant="secondary" />
           </div>
         </div>
       </section>

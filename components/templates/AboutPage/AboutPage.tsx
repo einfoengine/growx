@@ -1,29 +1,7 @@
-import Image from "next/image";
-import { Check, Quote } from "lucide-react";
-import { ArrowRight } from "lucide-react";
-import type { AboutContent, TeamMember } from "@/lib/content";
-import FoundersSection from "./FoundersSection";
+import { Check, Quote, ArrowRight } from "lucide-react";
+import type { AboutContent } from "@/lib/content";
 import SectionHeader from "@/components/elements/SectionHeader";
 import Button from "@/components/elements/Button";
-
-const AVATAR_COLORS: Record<string, string> = {
-  emerald: "bg-emerald-100 text-emerald-700",
-  violet:  "bg-violet-100 text-violet-700",
-  blue:    "bg-blue-100 text-blue-700",
-  rose:    "bg-rose-100 text-rose-700",
-  amber:   "bg-amber-100 text-amber-700",
-  cyan:    "bg-cyan-100 text-cyan-700",
-  indigo:  "bg-indigo-100 text-indigo-700",
-};
-
-const DEPT_COLORS: Record<string, string> = {
-  Search:       "bg-emerald-50 text-emerald-700 border-emerald-200",
-  "Paid Media": "bg-blue-50 text-blue-700 border-blue-200",
-  Social:       "bg-rose-50 text-rose-700 border-rose-200",
-  Content:      "bg-amber-50 text-amber-700 border-amber-200",
-  Development:  "bg-cyan-50 text-cyan-700 border-cyan-200",
-  Growth:       "bg-indigo-50 text-indigo-700 border-indigo-200",
-};
 
 type Props = { data: AboutContent };
 
@@ -49,7 +27,7 @@ export default function AboutPage({ data }: Props) {
             subClassName="mt-6 max-w-2xl text-base leading-relaxed text-muted sm:text-lg"
           />
           <div className="mt-8 flex flex-wrap gap-3">
-            <Button label="Work with us" href="#book" icon={<ArrowRight size={15} />} />
+            <Button label="Become a partner" href="/pricing" icon={<ArrowRight size={15} />} />
             <Button label="See our work" href="/case-studies" variant="secondary" />
           </div>
         </div>
@@ -92,51 +70,15 @@ export default function AboutPage({ data }: Props) {
         </div>
       </section>
 
-      {/* ── Founders ─────────────────────────────────────────── */}
-      <section id="gw-about-founders" className="bg-surface">
-        <div className="container-1200 py-20 sm:py-24 lg:py-28">
-          <SectionHeader
-            eyebrow="Leadership"
-            headlineText="Meet the founders"
-            headlineClassName="mt-4 text-3xl font-semibold tracking-tight text-foreground sm:text-4xl"
-            sub="Operators who've been on both sides of the agency relationship - and built growX to fix what frustrated them most."
-            subClassName="mt-3 text-base text-muted"
-            className="max-w-xl"
-          />
-
-          <div className="mt-14">
-            <FoundersSection founders={data.founders} />
-          </div>
-        </div>
-      </section>
-
-      {/* ── Team ─────────────────────────────────────────────── */}
-      <section id="gw-about-team" className="bg-background">
-        <div className="container-1200 py-20 sm:py-24 lg:py-28">
-          <SectionHeader
-            eyebrow="The crew"
-            headlineText="Specialists, not generalists"
-            headlineClassName="mt-4 text-3xl font-semibold tracking-tight text-foreground sm:text-4xl"
-            sub="Each discipline is led by someone who has spent years doing exactly that - not a project manager wearing six hats."
-            subClassName="mt-3 text-base text-muted"
-            className="max-w-xl"
-          />
-
-          <div className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-            {data.team.map((m) => (
-              <TeamMemberCard key={m.id} member={m} />
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* ── Values ───────────────────────────────────────────── */}
+      {/* ── What makes us different ──────────────────────────── */}
       <section id="gw-about-values" className="bg-surface">
         <div className="container-1200 py-20 sm:py-24 lg:py-28">
           <SectionHeader
-            eyebrow="What we stand for"
-            headlineText="Our values"
+            eyebrow="Why us"
+            headlineText="What makes us different"
             headlineClassName="mt-4 text-3xl font-semibold tracking-tight text-foreground sm:text-4xl"
+            sub="Six reasons agencies choose a partner over a patchwork of freelancers and vendors."
+            subClassName="mt-3 text-base text-muted"
             className="max-w-xl"
           />
 
@@ -230,15 +172,15 @@ export default function AboutPage({ data }: Props) {
         <div className="container-1200 py-24 text-center">
           <SectionHeader
             eyebrow="Ready to scale"
-            headlineText="Let's build something together."
+            headlineText="Become a growX partner."
             headlineClassName="mt-4 text-4xl font-semibold tracking-tight text-foreground sm:text-5xl"
-            sub="Book a free 30-minute discovery call. We'll scope the brief, confirm fit, and have a proposal in your inbox within 24 hours."
+            sub="Start free in minutes. Full portal access, the entire catalog, and 100% white-label delivery from day one. No commitment, no card."
             subClassName="mx-auto mt-5 max-w-xl text-base text-muted"
             align="center"
           />
           <div className="mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row">
-            <Button label="Book a Discovery Call" href="#book" icon={<ArrowRight size={15} />} />
-            <Button label="View case studies" href="/case-studies" variant="secondary" />
+            <Button label="Become a partner" href="/pricing" icon={<ArrowRight size={15} />} />
+            <Button label="Book a discovery call" href="#book" variant="secondary" />
           </div>
         </div>
       </section>
@@ -247,33 +189,3 @@ export default function AboutPage({ data }: Props) {
 }
 
 
-function TeamMemberCard({ member: m }: { member: TeamMember }) {
-  const avatarClass = AVATAR_COLORS[m.avatarColor] ?? "bg-gray-100 text-gray-700";
-  const deptClass = DEPT_COLORS[m.department] ?? "bg-gray-50 text-gray-700 border-gray-200";
-  return (
-    <div className="flex flex-col overflow-hidden border border-border bg-background">
-      {/* Photo - fills full width, no padding */}
-      <div className={`relative w-full aspect-4/3 overflow-hidden ${avatarClass}`}>
-        {m.image ? (
-          <Image src={m.image} alt={m.name} fill className="object-cover object-top" />
-        ) : (
-          <span className="absolute inset-0 flex items-center justify-center text-4xl font-bold">
-            {m.initials}
-          </span>
-        )}
-      </div>
-
-      {/* Info */}
-      <div className="flex flex-col gap-3 p-5">
-        <span className={`self-start inline-flex items-center rounded-full border px-2.5 py-0.5 text-xs font-medium ${deptClass}`}>
-          {m.department}
-        </span>
-        <div>
-          <p className="text-sm font-semibold text-foreground">{m.name}</p>
-          <p className="text-xs text-muted">{m.role}</p>
-        </div>
-        <p className="text-sm leading-relaxed text-muted">{m.bio}</p>
-      </div>
-    </div>
-  );
-}

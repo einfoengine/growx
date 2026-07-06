@@ -1,6 +1,6 @@
 {
   "id": "mod-footer",
-  "brandBlurb": "growX is the white-label fulfillment team for agency owners and solopreneurs. Website design, SEO, AEO, content, social, and funnels, delivered under your brand or ours.",
+  "brandBlurb": "growX is the 100% white-label fulfillment partner for agency owners. Every service you sell, delivered under your brand. Part of a family of brands, alongside GHL Video and socialX.",
   "columns": [
     {
       "id": "mod-footer-col-services",
@@ -37,7 +37,8 @@
       "id": "mod-footer-col-contact",
       "title": "Get in touch",
       "links": [
-        { "id": "footer-contact-book", "label": "Book a Discovery Call", "href": "#book" },
+        { "id": "footer-contact-partner", "label": "Become a partner", "href": "/pricing" },
+        { "id": "footer-contact-book", "label": "Book a discovery call", "href": "#book" },
         { "id": "footer-contact-email", "label": "hi@growx.studio", "href": "mailto:hi@growx.studio" }
       ]
     }

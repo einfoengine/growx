@@ -1,6 +1,6 @@
 {
   "id": "mod-growth-calculator",
-  "eyebrow": "See Your Potential",
+  "eyebrow": "See your upside",
   "headline": {
     "parts": [
       { "type": "text", "value": "How much revenue are you " },
@@ -8,11 +8,11 @@
       { "type": "text", "value": "?" }
     ]
   },
-  "sub": "Use our interactive calculator to see how scaling with Scalify could impact your bottom line.",
-  "description": "Enter your current traffic and conversion rate to see realistic revenue projections with Scalify. We'll show you the ROI in real time.",
+  "sub": "See how much more you could deliver, and earn, when fulfillment stops being your bottleneck.",
+  "description": "Plug in your numbers to see the capacity and margin you unlock when growX handles delivery under your brand, in real time.",
   "cta": {
     "id": "cta-calculator",
-    "label": "See Your Numbers",
+    "label": "See your numbers",
     "href": "#calculator",
     "variant": "primary"
   }

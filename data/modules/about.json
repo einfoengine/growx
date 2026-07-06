@@ -2,177 +2,65 @@
   "id": "mod-about",
   "hero": {
     "eyebrow": "Who we are",
-    "headline": "The studio behind your agency's best work.",
-    "sub": "growX is a white-label fulfilment studio built specifically for agency owners and solopreneurs who want to deliver more - without the risk of hiring. We handle the execution. You own the relationship."
+    "headline": "The production department behind your agency.",
+    "sub": "growX is the 100% white-label fulfillment partner for agency owners. You bring the client work you already sell. We deliver every service under your brand, through a long-term partnership, not one-off orders. You grow without hiring."
   },
   "mission": {
     "eyebrow": "Why we exist",
-    "headline": "Agencies shouldn't have to choose between growth and quality.",
-    "body": "Most agencies hit a ceiling. You win new business, then burn your team out delivering it. You can't hire fast enough, and contractors introduce more coordination overhead than they remove. So you start turning down work - or worse, delivering work that doesn't reflect your standard.\n\ngrowX exists to break that ceiling. We're a team of channel specialists - SEO strategists, media buyers, developers, content writers, social managers - who work under your brand or ours, at the quality level your clients expect. No compromise."
+    "headline": "Fulfillment shouldn't decide how big your agency can get.",
+    "body": "Agency owners rarely fail because they can't sell. They fail because fulfillment eats the founder. You win the work, then delivering it swallows your team, your margin, and your week. So you cap your roster, turn away clients, or ship work that isn't your standard.\n\ngrowX exists to break that ceiling. We are the production team you never had to build: one accountable, in-house group that has run fulfillment since 2019, delivering every service your clients buy, under your brand, so you can sell bigger, serve more, and scale without hiring."
   },
-  "founders": [
-    {
-      "id": "founder-james",
-      "name": "James Okafor",
-      "role": "Co-founder & CEO",
-      "bio": "James spent eight years leading growth at VC-backed SaaS companies before co-founding growX in 2021. He built demand-generation engines that scaled three companies from Series A to exit, and became convinced along the way that most agencies were leaving enormous leverage on the table by trying to hire every capability in-house. growX is his answer to that problem.",
-      "qualifications": [
-        "MBA, London Business School",
-        "Google Analytics & Ads Certified",
-        "Meta Blueprint Certified",
-        "HubSpot Inbound Marketing"
-      ],
-      "experience": [
-        { "id": "jexp-1", "role": "VP Growth EMEA", "company": "Notion", "period": "2019 – 2021" },
-        { "id": "jexp-2", "role": "Senior Growth Manager", "company": "Typeform", "period": "2017 – 2019" },
-        { "id": "jexp-3", "role": "Digital Strategy Lead", "company": "WPP Group", "period": "2014 – 2017" }
-      ],
-      "socials": [
-        { "platform": "linkedin", "url": "https://linkedin.com/in/jamesokafor" }
-      ],
-      "initials": "JO",
-      "avatarColor": "emerald"
-    },
-    {
-      "id": "founder-lena",
-      "name": "Lena Park",
-      "role": "Co-founder & Head of Delivery",
-      "bio": "Lena spent a decade building delivery frameworks for digital agencies and product teams before joining James to co-found growX. Her obsession is operational excellence - she architects the systems, review processes, and communication rhythms that let a lean specialist team consistently outperform much larger generalist agencies.",
-      "qualifications": [
-        "BSc Computer Science, UCL",
-        "PMP Certified (Project Management Professional)",
-        "AWS Cloud Practitioner",
-        "Scrum Master Certified (CSM)"
-      ],
-      "experience": [
-        { "id": "lexp-1", "role": "Engineering Manager", "company": "Shopify", "period": "2018 – 2021" },
-        { "id": "lexp-2", "role": "Delivery Lead", "company": "AKQA", "period": "2015 – 2018" },
-        { "id": "lexp-3", "role": "Solutions Architect", "company": "IBM", "period": "2012 – 2015" }
-      ],
-      "socials": [
-        { "platform": "linkedin", "url": "https://linkedin.com/in/lenapark" }
-      ],
-      "initials": "LP",
-      "avatarColor": "violet"
-    },
-    {
-      "id": "founder-placeholder",
-      "name": "Founder Name",
-      "role": "Co-founder & [Role]",
-      "bio": "A brief biography about this founder will go here. Describe their background, what led them to co-found growX, and what they bring to the team.",
-      "qualifications": [
-        "Qualification one",
-        "Qualification two",
-        "Qualification three"
-      ],
-      "experience": [
-        { "id": "pexp-1", "role": "Role Title", "company": "Company Name", "period": "Year – Year" },
-        { "id": "pexp-2", "role": "Role Title", "company": "Company Name", "period": "Year – Year" },
-        { "id": "pexp-3", "role": "Role Title", "company": "Company Name", "period": "Year – Year" }
-      ],
-      "socials": [
-        { "platform": "linkedin", "url": "https://linkedin.com/in/" }
-      ],
-      "initials": "??",
-      "avatarColor": "amber"
-    }
-  ],
-  "team": [
-
-    {
-      "id": "team-riya",
-      "name": "Riya Sharma",
-      "role": "SEO & AEO Lead",
-      "department": "Search",
-      "bio": "7 years in technical SEO and answer-engine optimisation across SaaS and e-commerce. Led organic growth at two Series B startups and specialises in high-intent keyword architecture.",
-      "initials": "RS",
-      "avatarColor": "emerald"
-    },
-    {
-      "id": "team-daniel",
-      "name": "Daniel Cruz",
-      "role": "PPC & Media Buying Lead",
-      "department": "Paid Media",
-      "bio": "Managed $14M+ in ad spend across Google, Meta, and TikTok. Former performance lead at a top-50 e-commerce brand, with a specialism in feed-based shopping and UGC creative strategy.",
-      "initials": "DC",
-      "avatarColor": "blue"
-    },
-    {
-      "id": "team-amara",
-      "name": "Amara Diallo",
-      "role": "Social Media Lead",
-      "department": "Social",
-      "bio": "Brand strategist turned social specialist. Previously at Ogilvy Social Lab managing accounts for FMCG and fashion clients. Runs influencer campaigns from seeding through to licensing.",
-      "initials": "AD",
-      "avatarColor": "rose"
-    },
-    {
-      "id": "team-kira",
-      "name": "Kira Müller",
-      "role": "Content Lead",
-      "department": "Content",
-      "bio": "Former editorial director with 200+ SEO-driven articles published across B2B SaaS and fintech verticals. Writes at C-suite level and manages a network of vetted specialist writers.",
-      "initials": "KM",
-      "avatarColor": "amber"
-    },
-    {
-      "id": "team-tariq",
-      "name": "Tariq Hassan",
-      "role": "Web & Dev Lead",
-      "department": "Development",
-      "bio": "Full-stack developer with 9 years building on Next.js, React, and headless CMS stacks. Lighthouse score perfectionist. Has shipped over 60 client websites without a single missed deadline.",
-      "initials": "TH",
-      "avatarColor": "cyan"
-    },
-    {
-      "id": "team-sofia",
-      "name": "Sofia Nguyen",
-      "role": "Funnel & CRO Lead",
-      "department": "Growth",
-      "bio": "Conversion strategist and former head of optimisation at Unbounce. Designs end-to-end funnel architectures and runs A/B programmes that consistently move the revenue needle.",
-      "initials": "SN",
-      "avatarColor": "indigo"
-    }
-  ],
+  "founders": [],
+  "team": [],
   "values": [
     {
-      "id": "val-quality",
-      "title": "Quality without compromise",
-      "description": "Every deliverable goes through a peer review before it leaves our hands. We'd rather push a deadline than ship something that doesn't meet the brief."
+      "id": "diff-partnership",
+      "title": "A partnership, not orders",
+      "description": "Long-term fulfillment relationships through structured partnership tiers, not a marketplace of one-off gigs. Continuity is the product."
     },
     {
-      "id": "val-transparency",
-      "title": "Radical transparency",
-      "description": "Daily Slack updates, weekly demos, honest timelines. You always know where the work is - no black box, no chasing for updates."
+      "id": "diff-client-pm",
+      "title": "White-label client PM",
+      "description": "On the VIP tier we talk to your end clients directly, under your brand. Requirements, revisions, updates. Nobody else in the space delivers this."
     },
     {
-      "id": "val-speed",
-      "title": "Speed without sloppiness",
-      "description": "Proposals in 24 hours. Kick-offs within 48. We move fast because your clients are watching the calendar - but we never cut corners to hit a date."
+      "id": "diff-fullstack",
+      "title": "Full-stack under one roof",
+      "description": "Every service an agency resells, from websites to video to CRM operations, delivered by one accountable team instead of a patchwork of vendors."
     },
     {
-      "id": "val-ownership",
-      "title": "Outcome ownership",
-      "description": "We don't track hours, we track results. If something isn't working, we flag it and fix it - proactively, before you have to ask."
+      "id": "diff-pricing",
+      "title": "Fixed, transparent pricing",
+      "description": "Every service is productized: fixed scope, fixed price, clear SLA, one-click ordering in the portal. No ambiguous retainers."
+    },
+    {
+      "id": "diff-team",
+      "title": "In-house team since 2019",
+      "description": "Established delivery teams and quality systems built over years of running fulfillment. Not aspirational. Proven."
+    },
+    {
+      "id": "diff-support",
+      "title": "US-hours support",
+      "description": "A dedicated support team aligned to US business hours, with response benchmarks that meet or beat US B2B standards."
     }
   ],
   "stats": [
-    { "id": "stat-projects", "value": "200+", "label": "Projects delivered" },
-    { "id": "stat-agencies", "value": "60+", "label": "Agency partners" },
-    { "id": "stat-services", "value": "6", "label": "Core services" },
-    { "id": "stat-turnaround", "value": "24h", "label": "Proposal turnaround" }
+    { "id": "stat-services", "value": "12", "label": "Services, one team" },
+    { "id": "stat-whitelabel", "value": "100%", "label": "White-label delivery" },
+    { "id": "stat-since", "value": "2019", "label": "Fulfilling since" },
+    { "id": "stat-markets", "value": "4", "label": "Markets served" }
   ],
   "approach": {
     "eyebrow": "How we work",
-    "headline": "Specialists, not generalists.",
-    "body": "Every service at growX is handled by a dedicated specialist team - not a project manager juggling ten disciplines. Our SEO team lives and breathes search. Our media buyers manage seven-figure ad budgets. Our developers build exclusively in modern stacks.\n\nWe're async-first, which means we work across time zones without the coordination overhead that kills momentum. You get a single point of contact, Slack access to your team, and weekly reviews - not a game of email telephone.",
+    "headline": "One team. One portal. Your brand.",
+    "body": "Every service is productized with fixed scope, fixed price, and a defined SLA, ordered in one click through the partner portal. No quotes to chase, no vendors to juggle. You see status the whole way through, and on Standard and VIP a dedicated account manager who knows your business drives it for you.\n\nThe partnership scales with you. Free gives you a reliable production line on demand. Standard gives you a team member. VIP removes you from fulfillment and client communication entirely, so you sell while we deliver. Every deliverable is 100% white-label with full commercial rights.",
     "pillars": [
-      { "id": "pillar-specialists", "label": "Dedicated channel specialists" },
-      { "id": "pillar-async", "label": "Async-first, timezone-flexible" },
-      { "id": "pillar-whitelabel", "label": "White-label by default" },
-      { "id": "pillar-poc", "label": "Single point of contact" },
-      { "id": "pillar-slack", "label": "Direct Slack access" },
-      { "id": "pillar-reviews", "label": "Weekly progress demos" }
+      { "id": "pillar-whitelabel", "label": "100% white-label by default" },
+      { "id": "pillar-fixed", "label": "Fixed pricing and clear SLAs" },
+      { "id": "pillar-portal", "label": "One-click portal ordering" },
+      { "id": "pillar-team", "label": "In-house team since 2019" },
+      { "id": "pillar-support", "label": "US-hours support" },
+      { "id": "pillar-am", "label": "Dedicated account manager" }
     ]
   },
   "featuredTestimonial": {

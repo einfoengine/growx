@@ -375,13 +375,13 @@ export default function PricingCalculator({ pageData, services }: Props) {
         customPlan: {
           name: `Custom Package - ${cartItems.length} service${cartItems.length > 1 ? "s" : ""}`,
           price: priceDisplay,
-          description: cartItems.map((i) => i.serviceName).join(" · "),
+          description: cartItems.map((i) => i.serviceName).join(", "),
           features: cartItems.map((i) => {
             const cfgSummary = Object.entries(i.serviceConfig ?? {})
               .filter(([, v]) => Array.isArray(v) ? (v as string[]).length > 0 : v !== "" && v !== undefined)
               .map(([, v]) => Array.isArray(v) ? (v as string[]).join(", ") : String(v))
-              .join(" · ");
-            return `${i.serviceName}: ${i.qty} ${i.qty === 1 ? i.unit : i.unitLabel.toLowerCase()} · ${i.durationLabel}${cfgSummary ? ` - ${cfgSummary}` : ""}`;
+              .join(", ");
+            return `${i.serviceName}: ${i.qty} ${i.qty === 1 ? i.unit : i.unitLabel.toLowerCase()}, ${i.durationLabel}${cfgSummary ? ` - ${cfgSummary}` : ""}`;
           }),
         },
       },
@@ -500,8 +500,8 @@ export default function PricingCalculator({ pageData, services }: Props) {
                           <p className="font-semibold text-foreground">{item.serviceName}</p>
                           <p className="mt-0.5 text-sm text-muted">
                             {item.qty} {item.qty === 1 ? item.unit : item.unitLabel.toLowerCase()}
-                            {" · "}{item.durationLabel}
-                            {" · "}
+                            {", "}{item.durationLabel}
+                            {", "}
                             <span className={`font-medium ${item.billing === "one-off" ? "text-amber-600" : "text-emerald-600"}`}>
                               {item.billing === "one-off" ? "One-off" : "Retainer"}
                             </span>
@@ -675,7 +675,7 @@ export default function PricingCalculator({ pageData, services }: Props) {
                                 value={inlineEditState.notes}
                                 onChange={(e) => setInlineEditState((s) => s ? { ...s, notes: e.target.value } : s)}
                                 rows={2}
-                                placeholder="Anything else we should know - deadlines, brand guidelines, references, access details…"
+                                placeholder="Anything else we should know - deadlines, brand guidelines, references, access details..."
                                 className="mt-2 w-full resize-none rounded-xl border border-border bg-surface px-4 py-2.5 text-sm text-foreground placeholder:text-muted transition-colors focus:border-brand focus:outline-none focus:ring-1 focus:ring-brand"
                               />
                             </div>
@@ -838,7 +838,7 @@ export default function PricingCalculator({ pageData, services }: Props) {
                   </button>
                 </div>
                 <p className="mt-4 text-center text-xs text-white/40">
-                  No payment required now - proposal arrives within 24 hours.
+                  No payment required now. Fixed prices are confirmed in the partner portal.
                 </p>
               </div>
             </div>

@@ -1,16 +1,17 @@
 {
   "id": "pricing-page",
   "hero": {
-    "eyebrow": "Build Your Package",
+    "eyebrow": "Pricing",
     "headline": {
       "parts": [
-        { "type": "text", "value": "Pricing that scales " },
-        { "type": "highlight", "value": "with you" }
+        { "type": "text", "value": "Fixed pricing that scales " },
+        { "type": "highlight", "value": "with you" },
+        { "type": "text", "value": "." }
       ]
     },
-    "sub": "Select a service, configure your scope, and get an instant estimate. Fixed pricing, no surprises - what you see is what we quote."
+    "sub": "Join free and order from a productized catalog with fixed prices and clear SLAs. Upgrade to a partnership tier for a dedicated team. Estimate a service below, or pick your tier."
   },
-  "note": "All estimates shown are starting points. Final pricing is locked in your proposal, which arrives within 24 hours of your discovery call. Volume discounts apply automatically.",
+  "note": "These figures are a guide to help you plan. Every service is productized with a fixed price and a clear SLA, confirmed in the partner portal when you order. No hourly rates, no change-order surprises.",
   "services": [
     {
       "slug": "website",
@@ -176,7 +177,7 @@
           "id": "wordCount",
           "label": "Target word count per piece",
           "type": "select",
-          "options": ["Short (under 500)", "Medium (500–1,000)", "Long-form (1,000–2,500)", "In-depth (2,500+)"]
+          "options": ["Short (under 500)", "Medium (500 to 1,000)", "Long-form (1,000 to 2,500)", "In-depth (2,500+)"]
         },
         {
           "id": "goal",
@@ -225,7 +226,7 @@
           "id": "adBudget",
           "label": "Monthly ad spend (managed)",
           "type": "select",
-          "options": ["Under $1,000", "$1,000 – $5,000", "$5,000 – $10,000", "$10,000 – $25,000", "$25,000+"]
+          "options": ["Under $1,000", "$1,000 to $5,000", "$5,000 to $10,000", "$10,000 to $25,000", "$25,000+"]
         },
         {
           "id": "campaignGoal",
@@ -261,7 +262,7 @@
           "id": "funnelSteps",
           "label": "Funnel complexity",
           "type": "select",
-          "options": ["Simple (3–4 steps)", "Standard (5–7 steps)", "Complex (8+ steps with upsells)"]
+          "options": ["Simple (3 to 4 steps)", "Standard (5 to 7 steps)", "Complex (8+ steps with upsells)"]
         },
         {
           "id": "platform",

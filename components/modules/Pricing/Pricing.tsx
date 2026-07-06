@@ -99,7 +99,7 @@ export default async function Pricing({
         </div>
 
         <p className="mx-auto mt-12 max-w-2xl text-center text-sm text-muted">
-          All plans include unlimited revisions, dedicated support, and a satisfaction guarantee. Not sure which plan is right for you?{" "}
+          Every tier is 100% white-label with full commercial rights and one-click portal ordering. Not sure which fits?{" "}
           <Link href="#book" className="font-semibold text-brand hover:text-brand/80">
             Let's talk.
           </Link>

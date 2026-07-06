@@ -42,7 +42,7 @@ export default function WorksPage({ data }: Props) {
             eyebrow="Want to see your brand here?"
             headlineText="Let's build something worth showcasing."
             headlineClassName="mt-4 text-4xl font-semibold tracking-tight text-foreground sm:text-5xl"
-            sub="Bring the brief. We'll bring the team, the creative, and a proposal in 24 hours."
+            sub="Bring the brief. We'll bring the team, the creative, and deliver it under your brand."
             subClassName="mx-auto mt-5 max-w-xl text-base text-muted"
             align="center"
           />

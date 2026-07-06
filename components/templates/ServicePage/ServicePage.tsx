@@ -146,7 +146,7 @@ export default function ServicePage({ data }: Props) {
       >
         <div className="container-1200 py-20 sm:py-24 lg:py-28">
           <SectionHeader
-            eyebrow="Why growX"
+            eyebrow="Why us"
             headlineText={`Why agencies choose us for ${data.name}`}
             headlineId={`${data.id}-why-heading`}
             headlineClassName="mt-3 text-3xl font-semibold tracking-tight text-foreground sm:text-4xl"
@@ -232,7 +232,7 @@ export default function ServicePage({ data }: Props) {
             eyebrow="Ready to start"
             headlineText={`Add ${data.name} to your roster.`}
             headlineClassName="mt-4 text-4xl font-semibold tracking-tight sm:text-5xl"
-            sub="Bring the brief. We'll bring the team, the timeline, and a proposal in 24 hours."
+            sub="Bring the brief. We'll bring the team, the timeline, and deliver it under your brand."
             subClassName="mx-auto mt-5 max-w-xl text-base text-white/70"
             align="center"
           />

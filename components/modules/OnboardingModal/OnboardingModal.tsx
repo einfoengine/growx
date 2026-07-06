@@ -11,30 +11,42 @@ const PLANS: Record<string, {
   features: string[];
   badge?: string;
 }> = {
-  starter: {
-    name: "Starter",
-    price: "$2,500 / mo",
-    description: "Perfect for agencies getting started with outsourcing.",
+  free: {
+    name: "Free",
+    price: "$0 / mo",
+    description: "The vendor relationship. Zero friction, zero commitment.",
     features: [
-      "1–3 projects per month",
-      "Website design (basic)",
-      "SEO audit & recommendations",
-      "Monthly check-in calls",
-      "Unlimited revisions",
+      "One-click portal ordering",
+      "Standard fixed pricing",
+      "100% white-label, full rights",
+      "First response in 4 business hours",
+      "Partner resource library",
     ],
   },
-  pro: {
-    name: "Pro",
-    price: "$6,500 / mo",
-    description: "Our most popular option for scaling agencies.",
+  standard: {
+    name: "Standard",
+    price: "$295 / mo",
+    description: "Your production team. A dedicated account manager plus partner pricing.",
     features: [
-      "4–8 projects per month",
-      "Full website design & development",
-      "SEO + content strategy",
-      "Weekly calls + Slack support",
-      "Priority scheduling",
+      "Everything in Free",
+      "Dedicated account manager",
+      "10% partner discount",
+      "2-hour response, priority queue",
+      "White-label sales enablement kit",
     ],
     badge: "Most Popular",
+  },
+  vip: {
+    name: "VIP",
+    price: "$495 / mo",
+    description: "The department. We run fulfillment and talk to your clients under your brand.",
+    features: [
+      "Everything in Standard",
+      "White-label client project manager",
+      "15% partner discount",
+      "1-hour response, front of queue",
+      "Guaranteed monthly capacity",
+    ],
   },
 };
 
@@ -206,7 +218,7 @@ export default function OnboardingModal() {
                       What do you most want to hand off?
                     </label>
                     <textarea rows={3}
-                      placeholder="e.g. We have 3 website builds queued and need them delivered within 6 weeks…"
+                      placeholder="e.g. We have 3 website builds queued and need them delivered within 6 weeks..."
                       className="w-full resize-none rounded-xl border border-border bg-surface px-4 py-2.5 text-sm text-foreground placeholder:text-muted focus:border-brand focus:outline-none focus:ring-1 focus:ring-brand transition-colors"
                     />
                   </div>
@@ -216,7 +228,7 @@ export default function OnboardingModal() {
                     disabled={formState === "submitting"}
                     className="w-full rounded-xl bg-brand px-4 py-3.5 text-sm font-semibold text-black transition-all hover:bg-[#059669] hover:scale-[1.01] disabled:opacity-60 disabled:cursor-not-allowed disabled:hover:scale-100"
                   >
-                    {formState === "submitting" ? "Sending…" : `Place Order - ${plan.name}`}
+                    {formState === "submitting" ? "Submitting..." : "Get Started"}
                   </button>
 
                   <p className="text-center text-xs text-muted">
@@ -257,9 +269,9 @@ function SuccessState({
         </p>
         <ol className="space-y-2.5">
           {[
-            "Our team reviews your submission and confirms fit",
-            "You receive a workspace invite and onboarding doc",
-            "First project kicks off within 48 hours",
+            "Our team reviews your details and confirms fit",
+            "You get a portal invite and onboarding walkthrough",
+            "Place your first white-label order",
           ].map((step, i) => (
             <li key={i} className="flex items-start gap-3 text-sm text-muted">
               <span className="flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-brand/10 text-xs font-bold text-brand">

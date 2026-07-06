@@ -76,7 +76,7 @@ export default async function LandingPageTemplate({ data }: Props) {
   // ── Why Us → PainPoints (dark section) ───────────────────────────────────
   const whyUsData: PainPointsContent = {
     id: `${data.id}-why-us`,
-    eyebrow: `Why growX for ${data.name}`,
+    eyebrow: `Why partner with us`,
     headline: {
       parts: [
         { type: "text", value: "Why agencies choose " },

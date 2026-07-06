@@ -1,74 +1,74 @@
 {
   "id": "mod-pricing",
-  "eyebrow": "Simple, Transparent Pricing",
+  "eyebrow": "Partnership tiers",
   "headline": {
     "parts": [
-      { "type": "text", "value": "Scale your delivery " },
-      { "type": "highlight", "value": "without scaling costs" },
+      { "type": "text", "value": "Vendor. Team member. " },
+      { "type": "highlight", "value": "Department" },
       { "type": "text", "value": "." }
     ]
   },
-  "sub": "Choose the package that fits your needs. All plans include dedicated support, 24-hour turnaround, and quality guarantees.",
+  "sub": "Three partnership levels. Each upgrade buys people and access, not just speed. Every service stays 100% white-label with full commercial rights.",
   "tiers": [
     {
-      "id": "pricing-tier-1",
-      "name": "Starter",
-      "price": "$2,500",
-      "description": "Perfect for agencies getting started with outsourcing.",
+      "id": "pricing-tier-free",
+      "name": "Free",
+      "price": "$0",
+      "description": "The vendor. A reliable production line, on demand.",
       "features": [
-        "1–3 projects per month",
-        "Website design (basic)",
-        "SEO audit & recommendations",
-        "Monthly check-in calls",
-        "Unlimited revisions",
-        "24-hour response time"
+        "Full portal access with one-click ordering across the catalog",
+        "Standard fixed pricing on every service",
+        "100% white-label deliverables with full commercial rights",
+        "First response within 4 business hours",
+        "Standard production queue and SLAs",
+        "Partner resource library to help you sell"
       ],
       "cta": {
-        "id": "cta-starter",
-        "label": "Get Started",
-        "href": "#onboard-starter",
+        "id": "cta-free",
+        "label": "Start free",
+        "href": "#onboard-free",
         "variant": "ghost"
       }
     },
     {
-      "id": "pricing-tier-2",
-      "name": "Pro",
-      "price": "$6,500",
-      "description": "Our most popular option for scaling agencies.",
+      "id": "pricing-tier-standard",
+      "name": "Standard",
+      "price": "$295",
+      "description": "The team member. A dedicated manager who knows your business.",
       "features": [
-        "4–8 projects per month",
-        "Full website design & development",
-        "SEO + content strategy",
-        "Weekly calls + Slack support",
-        "Unlimited revisions",
-        "12-hour response time",
-        "Priority scheduling"
+        "Everything in Free, plus:",
+        "Dedicated account manager who knows your clients and history",
+        "10% partner discount on all services",
+        "Priority queue and 2-hour first response",
+        "Direct Slack or WhatsApp channel to your manager",
+        "White-label sales enablement kit to close your clients",
+        "Monthly pipeline call and early access to new services"
       ],
       "cta": {
-        "id": "cta-pro",
-        "label": "Get Started",
-        "href": "#onboard-pro",
+        "id": "cta-standard",
+        "label": "Start Standard",
+        "href": "#onboard-standard",
         "variant": "primary"
       },
       "highlighted": true
     },
     {
-      "id": "pricing-tier-3",
-      "name": "Enterprise",
-      "price": "Custom",
-      "description": "For high-volume agencies needing dedicated capacity.",
+      "id": "pricing-tier-vip",
+      "name": "VIP",
+      "price": "$495",
+      "description": "The department. We handle fulfillment and your client comms.",
       "features": [
-        "8+ projects per month",
-        "All services (design, dev, SEO, content)",
-        "Dedicated project manager",
-        "Daily check-ins",
-        "Real-time Slack support",
-        "Custom SLAs",
-        "White-label only"
+        "Everything in Standard, plus:",
+        "White-label client project manager who talks to your clients as your team",
+        "15% partner discount on all services",
+        "Front-of-queue production, 20 to 30% faster delivery",
+        "1-hour first response with real-time availability",
+        "White-label client onboarding run under your brand",
+        "Unlimited revisions and guaranteed monthly capacity"
       ],
       "cta": {
-        "id": "cta-enterprise",
-        "label": "Talk to Sales",
+        "id": "cta-vip",
+        "label": "Book a VIP call",
         "href": "#book",
         "variant": "ghost"
       }

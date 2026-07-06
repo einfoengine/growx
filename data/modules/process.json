@@ -3,36 +3,36 @@
   "eyebrow": "How it works",
   "headline": {
     "parts": [
-      { "type": "text", "value": "From discovery call to " },
-      { "type": "highlight", "value": "shipping" },
+      { "type": "text", "value": "From one-click order to " },
+      { "type": "highlight", "value": "shipped" },
       { "type": "text", "value": "." }
     ]
   },
-  "sub": "A predictable rhythm tuned for agencies juggling multiple client timelines.",
+  "sub": "No quotes to chase, no vendors to manage. A productized workflow built for agencies juggling multiple client timelines.",
   "steps": [
     {
-      "id": "step-discovery",
+      "id": "step-join",
       "number": "01",
-      "title": "Discovery Call",
-      "blurb": "Book a 30-minute call. We scope the brief, confirm fit, and align on outcomes. No pricing pressure."
+      "title": "Join free",
+      "blurb": "Create your free partner account. Full portal access to the entire catalog, no commitment and no card."
     },
     {
-      "id": "step-proposal",
+      "id": "step-order",
       "number": "02",
-      "title": "24-hour Proposal",
-      "blurb": "Custom scope, timeline, and pricing in your inbox within one business day. No templates, no boilerplate."
+      "title": "Order in one click",
+      "blurb": "Pick a service from the catalog. Fixed scope, fixed price, clear SLA. No back-and-forth quotes."
     },
     {
-      "id": "step-build",
+      "id": "step-produce",
       "number": "03",
-      "title": "Build",
-      "blurb": "Daily Slack updates, weekly demos, single point of contact. You stay in control of every milestone."
+      "title": "We produce",
+      "blurb": "Our in-house team builds it to spec. Track every order in the portal, or let your account manager drive it."
     },
     {
-      "id": "step-handoff",
+      "id": "step-deliver",
       "number": "04",
-      "title": "Handoff",
-      "blurb": "White-label or branded delivery, your choice. Documentation, training, and post-launch support included."
+      "title": "Deliver under your brand",
+      "blurb": "Every deliverable ships 100% white-label with full commercial rights. Your client only ever sees you."
     }
   ]
 }

@@ -1,67 +1,68 @@
 {
   "id": "mod-pain-points",
-  "eyebrow": "Why agencies come to growX",
+  "eyebrow": "The fulfillment trap",
   "headline": {
     "parts": [
-      { "type": "text", "value": "We alleviate " },
-      { "type": "highlight", "value": "agency pain points" }
+      { "type": "text", "value": "You don't have a sales problem. You have a " },
+      { "type": "highlight", "value": "fulfillment" },
+      { "type": "text", "value": " problem." }
     ]
   },
-  "sub": "Six essential services, delivered at the highest quality in the least possible time.",
+  "sub": "Agency owners rarely fail because they can't sell. They fail because fulfillment eats the founder. growX takes it off your plate entirely, so you can sell bigger, serve more, and scale without hiring.",
   "cards": [
     {
       "id": "pain-fulfillment",
-      "title": "Fulfillment bottleneck",
-      "blurb": "You're winning clients faster than you can deliver. Capacity is killing growth.",
+      "title": "Capacity, not demand",
+      "blurb": "You win work faster than you can deliver it. Fulfillment, not sales, is what caps how big you get.",
       "icon": "triangle-alert",
       "points": [
-        "Turning away high-ticket clients due to lack of bandwidth",
-        "Rushed deliverables leading to client churn",
-        "Unable to scale beyond your current team's limits"
+        "Turning away clients you could easily close",
+        "Rushed delivery quietly churning the clients you have",
+        "No way to scale past your current team's ceiling"
       ]
     },
     {
       "id": "pain-freelancers",
-      "title": "Freelancer nightmare",
-      "blurb": "Underdelivery, missed deadlines, ghosting. Your name on every invoice.",
+      "title": "Freelancer roulette",
+      "blurb": "Underdelivery, missed deadlines, ghosting. And every freelancer is a crack in your white-label promise.",
       "icon": "user-x",
       "points": [
-        "Constantly hunting for reliable talent on Upwork/Fiverr",
-        "Varying quality and unpredictable delivery times",
-        "Wasting hours managing multiple disconnected freelancers"
+        "Forever hunting for reliable talent that sticks",
+        "Quality and turnaround you can never predict",
+        "Hours lost managing a patchwork of contractors"
       ]
     },
     {
       "id": "pain-services",
-      "title": "Limited service offering",
-      "blurb": "Clients ask for SEO, content, funnels, and you have to say no, or scramble.",
+      "title": "A menu you can't fulfill",
+      "blurb": "Clients ask for SEO, video, funnels, a CRM build. You say no, or scramble to learn it overnight.",
       "icon": "layers",
       "points": [
-        "Losing clients to full-service agencies",
-        "Leaving money on the table by not offering upsells",
-        "Struggling to learn new skills just to fulfill a single project"
+        "Losing accounts to full-service agencies",
+        "Leaving upsell revenue on the table",
+        "Learning a new skill just to ship one project"
       ]
     },
     {
       "id": "pain-margins",
-      "title": "Margin pressure",
-      "blurb": "Random vendors eat your margins. You need transparent, predictable delivery costs.",
+      "title": "Margins that leak",
+      "blurb": "Random vendors and scope creep eat your profit. You can't price with confidence when costs move every week.",
       "icon": "trending-down",
       "points": [
-        "Unpredictable freelancer costs shrinking your profit",
-        "Scope creep making projects unprofitable",
-        "Inability to confidently price your services"
+        "Unpredictable vendor costs shrinking every job",
+        "Scope creep turning profit into loss",
+        "No fixed cost base to price against"
       ]
     },
     {
       "id": "pain-time",
-      "title": "Time drain",
-      "blurb": "Sales, delivery, client management, ops, all on you. Something's about to break.",
+      "title": "Fulfillment eats the founder",
+      "blurb": "Sales, delivery, client comms, ops, all on you. Something is about to break, and it is usually you.",
       "icon": "clock",
       "points": [
-        "Working 80-hour weeks just to keep the lights on",
-        "Zero time spent on actually growing your agency",
-        "Burnout from wearing every hat in the business"
+        "80-hour weeks just to keep the lights on",
+        "Zero time left to actually grow the business",
+        "Burnout from wearing every hat you own"
       ]
     }
   ]

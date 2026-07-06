@@ -16,7 +16,7 @@ export default function GrowthCalculatorClient({ data }: GrowthCalculatorProps) 
   const calculatorRef = useRef<HTMLDivElement>(null);
 
   const currentRevenue = (monthlyTraffic * conversionRate) / 100 * avgOrderValue;
-  const projectedRevenue = currentRevenue * 2.5; // 2.5x growth with Scalify
+  const projectedRevenue = currentRevenue * 2.5; // 2.5x growth with growX
   const additionalRevenue = projectedRevenue - currentRevenue;
   const annualAdditional = additionalRevenue * 12;
 
@@ -106,7 +106,7 @@ export default function GrowthCalculatorClient({ data }: GrowthCalculatorProps) 
                   </p>
                 </div>
                 <div className="rounded-xl border border-brand/30 bg-brand/5 p-4">
-                  <p className="text-xs font-medium text-brand">Projected with Scalify</p>
+                  <p className="text-xs font-medium text-brand">Projected with growX</p>
                   <p className="mt-2 text-2xl font-bold text-brand">
                     ${projectedRevenue.toLocaleString("en-US", { maximumFractionDigits: 0 })}
                   </p>
@@ -118,7 +118,7 @@ export default function GrowthCalculatorClient({ data }: GrowthCalculatorProps) 
                 <p className="mt-2 text-4xl font-bold text-brand">
                   ${annualAdditional.toLocaleString("en-US", { maximumFractionDigits: 0 })}
                 </p>
-                <p className="mt-1 text-xs text-muted">From scaling delivery with Scalify</p>
+                <p className="mt-1 text-xs text-muted">From scaling delivery with growX</p>
               </div>
             </div>
           </div>
@@ -132,7 +132,7 @@ export default function GrowthCalculatorClient({ data }: GrowthCalculatorProps) 
         </div>
 
         <p className="mx-auto mt-8 max-w-2xl text-center text-xs text-muted">
-          *Projections based on historical data of agencies scaling with Scalify. Actual results may vary.
+          *Projections based on historical data of agencies scaling with growX. Actual results may vary.
         </p>
       </div>
     </section>

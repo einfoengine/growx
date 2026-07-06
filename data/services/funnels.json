@@ -56,7 +56,7 @@
     {
       "id": "w-funnels-3",
       "title": "Fast delivery without cutting corners",
-      "description": "Most funnels deliver in 1–3 weeks. We move quickly because we have a repeatable process, not because we skip QA."
+      "description": "Most funnels deliver in 1 to 3 weeks. We move quickly because we have a repeatable process, not because we skip QA."
     }
   ],
   "faq": [
@@ -73,12 +73,12 @@
     {
       "id": "faq-funnels-3",
       "question": "How long does a funnel build take?",
-      "answer": "A standard lead-gen funnel typically completes in 1–3 weeks. More complex multi-step funnels with extensive automation may take 3–5 weeks. Timeline is confirmed in the proposal."
+      "answer": "A standard lead-gen funnel typically completes in 1 to 3 weeks. More complex multi-step funnels with extensive automation may take 3 to 5 weeks. The exact SLA is confirmed on the order, up front."
     },
     {
       "id": "faq-funnels-4",
       "question": "Can you connect it to the client's existing tools?",
-      "answer": "Yes. We integrate with most major CRMs, email platforms, and booking tools. If you're unsure about a specific integration, flag it on the discovery call and we'll confirm."
+      "answer": "Yes. We integrate with most major CRMs, email platforms, and booking tools. If you're unsure about a specific integration, flag it when you order and we'll confirm."
     }
   ]
 }
