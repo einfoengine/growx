@@ -178,8 +178,12 @@ export default function CanvasText({
   }, [text, font, color, dims, align, colors, animationDuration, lineWidth, lineGap, curveIntensity]);
 
   return (
-    <span className={`relative inline-block align-baseline ${className}`}>
-      <span ref={measureRef} aria-hidden="true" className="invisible inline-block">
+    // leading-none keeps the measured box tight to the glyphs so the canvas
+    // aligns to the text baseline regardless of the heading's line-height.
+    <span className={`relative inline-block align-baseline leading-none ${className}`}>
+      {/* Real, accessible text (kept invisible via opacity so it still reads
+          to screen readers and SEO); the canvas paints the animated version. */}
+      <span ref={measureRef} className="inline-block leading-none opacity-0">
         {text}
       </span>
       <canvas

@@ -191,6 +191,8 @@ export type TestimonialsContent = {
 export type PricingTier = {
   id: string;
   name: string;
+  /** The rung this tier maps to, e.g. "The Vendor". */
+  persona?: string;
   price: string;
   description: string;
   features: string[];
@@ -198,11 +200,20 @@ export type PricingTier = {
   highlighted?: boolean;
 };
 
+/** One rung of the Vendor -> Team member -> Department partnership ladder. */
+export type PricingLadderRung = {
+  id: string;
+  tier: string;
+  name: string;
+  description: string;
+};
+
 export type PricingContent = {
   id: string;
   eyebrow: string;
   headline: { parts: HeadlinePart[] };
   sub: string;
+  ladder?: PricingLadderRung[];
   tiers: PricingTier[];
 };
 

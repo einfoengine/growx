@@ -38,6 +38,34 @@ export default async function Pricing({
           />
         </ScrollFadeIn>
 
+        {data.ladder && (
+          <ScrollFadeIn delay={0.2}>
+            <ol className="mx-auto mt-12 grid max-w-5xl gap-4 sm:grid-cols-3">
+              {data.ladder.map((rung, i) => (
+                <li
+                  key={rung.id}
+                  className="flex flex-col rounded-2xl border border-border bg-background/70 p-6 backdrop-blur-sm"
+                >
+                  <div className="flex items-center gap-3">
+                    <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-brand/10 font-label text-sm font-bold text-brand">
+                      {i + 1}
+                    </span>
+                    <span className="font-label text-[11px] font-semibold uppercase tracking-widest text-muted">
+                      {rung.tier}
+                    </span>
+                  </div>
+                  <p className="mt-4 text-lg font-bold tracking-tight text-foreground">
+                    {rung.name}
+                  </p>
+                  <p className="mt-1.5 text-sm leading-relaxed text-muted">
+                    {rung.description}
+                  </p>
+                </li>
+              ))}
+            </ol>
+          </ScrollFadeIn>
+        )}
+
         <div className="mx-auto mt-16 grid max-w-7xl grid-cols-1 gap-8 lg:grid-cols-3">
           {data.tiers.map((tier, idx) => (
             <ScrollFadeIn key={tier.id} delay={0.1 + (idx * 0.1)}>
@@ -57,6 +85,11 @@ export default async function Pricing({
                 )}
   
                 <h3 className="text-xl font-semibold text-foreground">{tier.name}</h3>
+                {tier.persona && (
+                  <p className="mt-1.5 font-label text-xs font-semibold uppercase tracking-widest text-brand">
+                    {tier.persona}
+                  </p>
+                )}
                 <p className="mt-2 text-sm text-muted">{tier.description}</p>
   
                 <div className="mt-6">

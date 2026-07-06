@@ -8,13 +8,34 @@
       { "type": "text", "value": "." }
     ]
   },
-  "sub": "Three partnership levels. Each upgrade buys people and access, not just speed. Every service stays 100% white-label with full commercial rights.",
+  "sub": "One simple idea: the more you commit, the more of your fulfillment we take off your plate. Each tier moves you up a rung, from a reliable vendor, to a dedicated team member, to a full production department.",
+  "ladder": [
+    {
+      "id": "rung-vendor",
+      "tier": "Free",
+      "name": "The Vendor",
+      "description": "Order any service, anytime, at standard pricing. Zero friction, zero commitment."
+    },
+    {
+      "id": "rung-team-member",
+      "tier": "Standard",
+      "name": "The Team Member",
+      "description": "A dedicated account manager who knows your business, plus partner pricing."
+    },
+    {
+      "id": "rung-department",
+      "tier": "VIP",
+      "name": "The Department",
+      "description": "We talk to your clients under your brand. You sell, we do everything else."
+    }
+  ],
   "tiers": [
     {
       "id": "pricing-tier-free",
       "name": "Free",
+      "persona": "The Vendor",
       "price": "$0",
-      "description": "The vendor. A reliable production line, on demand.",
+      "description": "A reliable production line, on demand.",
       "features": [
         "Full portal access with one-click ordering across the catalog",
         "Standard fixed pricing on every service",
@@ -33,8 +54,9 @@
     {
       "id": "pricing-tier-standard",
       "name": "Standard",
+      "persona": "The Team Member",
       "price": "$295",
-      "description": "The team member. A dedicated manager who knows your business.",
+      "description": "A dedicated manager who knows your business.",
       "features": [
         "Everything in Free, plus:",
         "Dedicated account manager who knows your clients and history",
@@ -55,8 +77,9 @@
     {
       "id": "pricing-tier-vip",
       "name": "VIP",
+      "persona": "The Department",
       "price": "$495",
-      "description": "The department. We handle fulfillment and your client comms.",
+      "description": "We handle fulfillment and your client comms.",
       "features": [
         "Everything in Standard, plus:",
         "White-label client project manager who talks to your clients as your team",

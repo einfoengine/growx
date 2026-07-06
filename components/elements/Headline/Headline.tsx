@@ -17,24 +17,21 @@ export default function Headline({
   className = "",
 }: HeadlineProps) {
   const Tag = as;
-  const text = parts.map((p) => p.value).join("");
 
+  // Parts render inline in the heading: plain text parts are real text; each
+  // highlight part carries its own real (invisible) text plus the canvas
+  // overlay, so the heading is fully accessible with no duplicated copy.
   return (
     <Tag id={id} className={`whitespace-pre-line text-balance ${className}`}>
-      {/* Real heading text for accessibility + SEO */}
-      <span className="sr-only">{text}</span>
-      {/* Visible heading - highlight parts get the animated canvas effect */}
-      <span aria-hidden="true">
-        {parts.map((part, i) =>
-          part.type === "text" ? (
-            <span key={i}>{part.value}</span>
-          ) : (
-            <span key={i} className="text-brand">
-              <CanvasText text={part.value} />
-            </span>
-          ),
-        )}
-      </span>
+      {parts.map((part, i) =>
+        part.type === "text" ? (
+          <span key={i}>{part.value}</span>
+        ) : (
+          <span key={i} className="text-brand">
+            <CanvasText text={part.value} />
+          </span>
+        ),
+      )}
     </Tag>
   );
 }
