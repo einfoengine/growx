@@ -17,7 +17,7 @@ export default async function LogoMarquee() {
       className="relative overflow-hidden border-y border-border bg-background py-14 text-foreground sm:py-16"
     >
       <div className="container-1200">
-        <p className="text-center text-xs font-medium uppercase tracking-[0.2em] text-foreground/40">
+        <p className="font-label text-center text-xs font-medium uppercase tracking-[0.2em] text-foreground/40">
           {data.label}
         </p>
 

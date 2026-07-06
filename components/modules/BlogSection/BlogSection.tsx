@@ -40,7 +40,7 @@ export default function BlogSection() {
             <SectionHeader
               eyebrow="Insights"
               headlineText="Latest from the blog"
-              headlineClassName="mt-4 text-4xl font-semibold tracking-tight text-foreground sm:text-5xl"
+              headlineClassName="mt-4 text-3xl font-bold leading-[1.15] tracking-tight text-foreground sm:text-4xl"
               className="max-w-2xl"
             />
             <Link href="#" className="inline-flex items-center gap-2 text-brand font-medium hover:text-[#059669] transition-colors">

@@ -403,7 +403,7 @@ export default function PricingCalculator({ pageData, services }: Props) {
           {/* ── Service cards ──────────────────────────── */}
           <div>
             <p className="text-xs font-semibold uppercase tracking-[0.18em] text-brand">Select services</p>
-            <h2 className="mt-2 text-2xl font-semibold tracking-tight text-foreground sm:text-3xl">
+            <h2 className="mt-2 text-2xl font-bold leading-[1.2] tracking-tight text-foreground sm:text-3xl">
               What would you like to order?
             </h2>
             <p className="mt-1 text-sm text-muted">
@@ -462,7 +462,7 @@ export default function PricingCalculator({ pageData, services }: Props) {
                 <span className="flex h-8 w-8 items-center justify-center rounded-full bg-foreground text-background">
                   <ShoppingCart size={15} />
                 </span>
-                <h2 className="text-2xl font-semibold tracking-tight text-foreground sm:text-3xl">
+                <h2 className="text-2xl font-bold leading-[1.2] tracking-tight text-foreground sm:text-3xl">
                   Order summary
                   <span className="ml-2 text-lg font-normal text-muted">
                     ({cartItems.length} {cartItems.length === 1 ? "service" : "services"})

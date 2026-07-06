@@ -24,7 +24,7 @@ export default function PricingPage({ pageData, services }: Props) {
             eyebrow={pageData.hero.eyebrow}
             headline={pageData.hero.headline.parts}
             as="h1"
-            headlineClassName="mt-4 max-w-3xl text-4xl font-semibold tracking-tight text-foreground sm:text-5xl lg:text-6xl"
+            headlineClassName="mt-4 max-w-3xl text-4xl font-bold leading-[1.15] tracking-tight text-foreground sm:text-5xl lg:text-6xl"
             sub={pageData.hero.sub}
             subClassName="mt-5 max-w-2xl text-base leading-relaxed text-muted sm:text-lg"
             align="center"
@@ -58,7 +58,7 @@ export default function PricingPage({ pageData, services }: Props) {
           <SectionHeader
             eyebrow="Not sure where to start?"
             headlineText="Start free, upgrade when you're ready."
-            headlineClassName="mt-4 text-4xl font-semibold tracking-tight text-foreground sm:text-5xl"
+            headlineClassName="mt-4 text-3xl font-bold leading-[1.15] tracking-tight text-foreground sm:text-4xl"
             sub="Create a free partner account, browse the catalog, and place your first white-label order. Move up to Standard or VIP whenever you want more."
             subClassName="mx-auto mt-5 max-w-xl text-base text-muted"
             align="center"

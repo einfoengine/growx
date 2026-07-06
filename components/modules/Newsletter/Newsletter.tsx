@@ -14,7 +14,7 @@ export default function Newsletter() {
             
             <div className="relative z-10 max-w-2xl mx-auto flex flex-col items-center">
               <Eyebrow text="Newsletter" />
-              <h2 className="mt-4 text-3xl font-semibold tracking-tight text-foreground sm:text-4xl md:text-5xl">
+              <h2 className="mt-4 text-3xl font-bold leading-[1.2] tracking-tight text-foreground sm:text-4xl md:text-5xl">
                 Get growth strategies delivered straight to your inbox.
               </h2>
               <p className="mt-4 text-base text-muted sm:text-lg">

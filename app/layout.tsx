@@ -1,11 +1,14 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Manrope, Geist_Mono } from "next/font/google";
 import { getSite } from "@/lib/content";
 import "./globals.css";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
+// Manrope - primary typeface for headings and body (brand guideline).
+const manrope = Manrope({
+  variable: "--font-manrope",
   subsets: ["latin"],
+  weight: ["400", "500", "600", "700", "800"],
+  display: "swap",
 });
 
 const geistMono = Geist_Mono({
@@ -36,13 +39,13 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
+      className={`${manrope.variable} ${geistMono.variable} h-full antialiased`}
     >
       <body
         className="min-h-full flex flex-col"
         suppressHydrationWarning
       >
-        {/* Chillax (headings) - hoisted to <head> by React */}
+        {/* Chillax - secondary typeface for labels and accents (hoisted to <head> by React) */}
         <link
           rel="stylesheet"
           href="https://api.fontshare.com/v2/css?f[]=chillax@400,500,600,700&display=swap"

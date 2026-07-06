@@ -78,7 +78,7 @@ export default function HeroAnimatedContent({
           <Link
             id={`${data.id}-eyebrow`}
             href={data.eyebrow.href}
-            className="group inline-flex items-center gap-2 rounded-full border border-border bg-background/80 px-4 py-1.5 text-xs font-medium text-foreground/80 backdrop-blur-md transition hover:border-brand/30 hover:bg-brand/4 hover:text-foreground"
+            className="group inline-flex items-center gap-2 rounded-full border border-border bg-background/80 px-4 py-1.5 font-label text-xs font-medium text-foreground/80 backdrop-blur-md transition hover:border-brand/30 hover:bg-brand/4 hover:text-foreground"
           >
             <span aria-hidden="true" className="relative flex h-2 w-2">
               <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-brand opacity-70" />
@@ -106,7 +106,7 @@ export default function HeroAnimatedContent({
         {data.tagline && (
           <motion.p
             id={`${data.id}-tagline`}
-            className={L.tagline}
+            className={`${L.tagline} font-label`}
             variants={itemVariants}
           >
             {data.tagline}
@@ -160,7 +160,7 @@ export default function HeroAnimatedContent({
                   aria-hidden="true"
                   className="h-1.5 w-1.5 shrink-0 rounded-full bg-brand"
                 />
-                <span className="text-[11px] font-medium text-foreground/80 sm:text-xs">
+                <span className="font-label text-[11px] font-medium text-foreground/80 sm:text-xs">
                   {s.label}
                 </span>
               </motion.div>

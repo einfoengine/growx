@@ -23,7 +23,7 @@ export default async function Faq({ data }: { data?: FaqContent } = {}) {
               eyebrow={faqData.eyebrow}
               headline={faqData.headline.parts}
               headlineId={`${faqData.id}-headline`}
-              headlineClassName="mt-4 text-4xl font-semibold tracking-tight text-foreground sm:text-5xl lg:text-6xl"
+              headlineClassName="mt-4 text-4xl font-bold leading-[1.15] tracking-tight text-foreground sm:text-5xl lg:text-6xl"
               className="lg:col-span-7"
             />
             <p className="text-base text-muted lg:col-span-5 lg:max-w-md">

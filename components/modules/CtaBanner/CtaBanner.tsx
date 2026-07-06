@@ -34,7 +34,7 @@ export default async function CtaBanner() {
             headlineId={`${data.id}-headline`}
             sub={data.sub}
             align="center"
-            headlineClassName="mt-4 text-4xl font-semibold tracking-tight sm:text-5xl lg:text-6xl"
+            headlineClassName="mt-4 text-4xl font-bold leading-[1.15] tracking-tight sm:text-5xl lg:text-6xl"
             subClassName="mx-auto mt-6 max-w-xl text-base text-white/70 sm:text-lg"
           />
         </ScrollFadeIn>

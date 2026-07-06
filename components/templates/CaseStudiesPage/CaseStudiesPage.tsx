@@ -29,7 +29,7 @@ export default function CaseStudiesPage({ caseStudies }: Props) {
             eyebrow="Proof of work"
             headlineText="Real clients. Real results."
             as="h1"
-            headlineClassName="mt-4 text-4xl font-semibold tracking-tight text-foreground sm:text-5xl lg:text-6xl"
+            headlineClassName="mt-4 text-4xl font-bold leading-[1.15] tracking-tight text-foreground sm:text-5xl lg:text-6xl"
             sub="Every engagement starts with a clear brief and ends with numbers you can take to your stakeholders. Here's what we've delivered."
             subClassName="mx-auto mt-5 max-w-2xl text-base leading-relaxed text-muted"
             align="center"
@@ -58,7 +58,7 @@ export default function CaseStudiesPage({ caseStudies }: Props) {
           <SectionHeader
             eyebrow="Your turn"
             headlineText="Ready to be the next case study?"
-            headlineClassName="mt-4 text-4xl font-semibold tracking-tight text-foreground sm:text-5xl"
+            headlineClassName="mt-4 text-3xl font-bold leading-[1.15] tracking-tight text-foreground sm:text-4xl"
             sub="Bring the brief. We'll bring the strategy, the team, and deliver it 100% white-label."
             subClassName="mx-auto mt-5 max-w-xl text-base text-muted"
             align="center"

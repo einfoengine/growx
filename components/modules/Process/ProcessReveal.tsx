@@ -104,7 +104,7 @@ export default function ProcessReveal({ data }: { data: ProcessContent }) {
             headlineId={`${data.id}-headline`}
             sub={data.sub}
             align="center"
-            headlineClassName="mt-4 text-4xl font-semibold tracking-tight text-foreground sm:text-5xl lg:text-6xl"
+            headlineClassName="mt-4 text-4xl font-bold leading-[1.15] tracking-tight text-foreground sm:text-5xl lg:text-6xl"
             subClassName="mx-auto mt-5 max-w-xl text-base text-muted sm:text-lg"
           />
 

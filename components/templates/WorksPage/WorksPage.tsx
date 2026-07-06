@@ -20,7 +20,7 @@ export default function WorksPage({ data }: Props) {
             eyebrow={data.eyebrow}
             headline={data.headline.parts}
             as="h1"
-            headlineClassName="mt-4 max-w-3xl text-4xl font-semibold tracking-tight text-foreground sm:text-5xl lg:text-6xl"
+            headlineClassName="mt-4 max-w-3xl text-4xl font-bold leading-[1.15] tracking-tight text-foreground sm:text-5xl lg:text-6xl"
             sub={data.sub}
             subClassName="mt-5 max-w-2xl text-base leading-relaxed text-muted sm:text-lg"
             align="center"
@@ -41,7 +41,7 @@ export default function WorksPage({ data }: Props) {
           <SectionHeader
             eyebrow="Want to see your brand here?"
             headlineText="Let's build something worth showcasing."
-            headlineClassName="mt-4 text-4xl font-semibold tracking-tight text-foreground sm:text-5xl"
+            headlineClassName="mt-4 text-3xl font-bold leading-[1.15] tracking-tight text-foreground sm:text-4xl"
             sub="Bring the brief. We'll bring the team, the creative, and deliver it under your brand."
             subClassName="mx-auto mt-5 max-w-xl text-base text-muted"
             align="center"

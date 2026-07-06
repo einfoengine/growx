@@ -52,7 +52,7 @@ export default function WorkItemPage({ item }: Props) {
                 {item.tag}
               </span>
 
-              <h1 className="mt-5 text-4xl font-semibold tracking-tight text-foreground sm:text-5xl lg:text-6xl">
+              <h1 className="mt-5 text-4xl font-bold leading-[1.15] tracking-tight text-foreground sm:text-5xl lg:text-6xl">
                 {item.title}
               </h1>
 
@@ -96,7 +96,7 @@ export default function WorkItemPage({ item }: Props) {
               <p className="text-xs font-semibold uppercase tracking-[0.18em] text-brand">
                 The Problem
               </p>
-              <h2 className="mt-4 text-2xl font-semibold tracking-tight text-foreground sm:text-3xl">
+              <h2 className="mt-4 text-2xl font-bold leading-[1.2] tracking-tight text-foreground sm:text-3xl">
                 What we were solving
               </h2>
               <p className="mt-5 text-base leading-relaxed text-muted">{item.problem}</p>
@@ -106,7 +106,7 @@ export default function WorkItemPage({ item }: Props) {
               <p className="text-xs font-semibold uppercase tracking-[0.18em] text-brand">
                 What We Built
               </p>
-              <h2 className="mt-4 text-2xl font-semibold tracking-tight text-foreground sm:text-3xl">
+              <h2 className="mt-4 text-2xl font-bold leading-[1.2] tracking-tight text-foreground sm:text-3xl">
                 Our approach
               </h2>
               <p className="mt-5 text-base leading-relaxed text-muted">{item.description}</p>
@@ -139,7 +139,7 @@ export default function WorkItemPage({ item }: Props) {
             <p className="text-xs font-semibold uppercase tracking-[0.18em] text-brand">
               Project Media
             </p>
-            <h2 className="mt-4 text-2xl font-semibold tracking-tight text-foreground sm:text-3xl">
+            <h2 className="mt-4 text-2xl font-bold leading-[1.2] tracking-tight text-foreground sm:text-3xl">
               From the work
             </h2>
 
@@ -212,7 +212,7 @@ export default function WorkItemPage({ item }: Props) {
           <p className="text-xs font-semibold uppercase tracking-[0.18em] text-brand">
             Start your project
           </p>
-          <h2 className="mt-4 text-4xl font-semibold tracking-tight text-foreground sm:text-5xl">
+          <h2 className="mt-4 text-3xl font-bold leading-[1.15] tracking-tight text-foreground sm:text-4xl">
             Want work like this?
           </h2>
           <p className="mx-auto mt-5 max-w-xl text-base text-muted">

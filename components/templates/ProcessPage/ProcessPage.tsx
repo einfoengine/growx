@@ -48,7 +48,7 @@ export default function ProcessPage({ data }: Props) {
           <SectionHeader
             eyebrow={data.journey.eyebrow}
             headlineText={data.journey.headline}
-            headlineClassName="mt-4 text-3xl font-semibold tracking-tight text-foreground sm:text-4xl"
+            headlineClassName="mt-4 text-3xl font-bold leading-[1.2] tracking-tight text-foreground sm:text-4xl"
             sub={data.journey.sub}
             subClassName="mt-3 text-base text-muted"
             className="max-w-2xl"
@@ -118,7 +118,7 @@ export default function ProcessPage({ data }: Props) {
               <SectionHeader
                 eyebrow={data.communication.eyebrow}
                 headlineText={data.communication.headline}
-                headlineClassName="mt-4 text-3xl font-semibold tracking-tight sm:text-4xl"
+                headlineClassName="mt-4 text-3xl font-bold leading-[1.2] tracking-tight sm:text-4xl"
                 sub={data.communication.sub}
                 subClassName="mt-4 text-base text-white/70"
               />
@@ -167,7 +167,7 @@ export default function ProcessPage({ data }: Props) {
               <SectionHeader
                 eyebrow={data.whiteLabel.eyebrow}
                 headlineText={data.whiteLabel.headline}
-                headlineClassName="mt-4 text-3xl font-semibold tracking-tight text-foreground sm:text-4xl"
+                headlineClassName="mt-4 text-3xl font-bold leading-[1.2] tracking-tight text-foreground sm:text-4xl"
                 sub={data.whiteLabel.sub}
                 subClassName="mt-4 text-base leading-relaxed text-muted"
               />
@@ -197,7 +197,7 @@ export default function ProcessPage({ data }: Props) {
           <SectionHeader
             eyebrow="Questions"
             headlineText="About how we work"
-            headlineClassName="mt-4 text-3xl font-semibold tracking-tight text-foreground sm:text-4xl"
+            headlineClassName="mt-4 text-3xl font-bold leading-[1.2] tracking-tight text-foreground sm:text-4xl"
             align="center"
             maxWidth="max-w-2xl"
           />
@@ -234,7 +234,7 @@ export default function ProcessPage({ data }: Props) {
           <SectionHeader
             eyebrow="Ready to start"
             headlineText="Let's put this into motion."
-            headlineClassName="mt-4 text-4xl font-semibold tracking-tight text-foreground sm:text-5xl"
+            headlineClassName="mt-4 text-3xl font-bold leading-[1.15] tracking-tight text-foreground sm:text-4xl"
             sub="Create your free partner account and place your first white-label order today. No commitment, no card, no sales call required."
             subClassName="mx-auto mt-5 max-w-xl text-base text-muted"
             align="center"

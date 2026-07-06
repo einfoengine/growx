@@ -30,7 +30,7 @@ export default function SectionHeader({
   sub,
   align = "left",
   maxWidth = "max-w-3xl",
-  headlineClassName = "mt-4 text-4xl font-semibold tracking-tight text-foreground sm:text-5xl",
+  headlineClassName = "mt-4 text-3xl font-bold leading-[1.15] tracking-tight text-foreground sm:text-4xl",
   subClassName,
   highlightClassName,
   underlineHighlight,

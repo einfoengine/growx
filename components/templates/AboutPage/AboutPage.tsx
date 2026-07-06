@@ -22,7 +22,7 @@ export default function AboutPage({ data }: Props) {
             eyebrow={data.hero.eyebrow}
             headlineText={data.hero.headline}
             as="h1"
-            headlineClassName="mt-4 max-w-3xl text-4xl font-semibold tracking-tight text-foreground sm:text-5xl lg:text-6xl"
+            headlineClassName="mt-4 max-w-3xl text-4xl font-bold leading-[1.15] tracking-tight text-foreground sm:text-5xl lg:text-6xl"
             sub={data.hero.sub}
             subClassName="mt-6 max-w-2xl text-base leading-relaxed text-muted sm:text-lg"
           />
@@ -56,7 +56,7 @@ export default function AboutPage({ data }: Props) {
             <SectionHeader
               eyebrow={data.mission.eyebrow}
               headlineText={data.mission.headline}
-              headlineClassName="mt-4 text-3xl font-semibold tracking-tight text-foreground sm:text-4xl"
+              headlineClassName="mt-4 text-3xl font-bold leading-[1.2] tracking-tight text-foreground sm:text-4xl"
               className="lg:sticky lg:top-28"
             />
             <div className="space-y-5">
@@ -76,7 +76,7 @@ export default function AboutPage({ data }: Props) {
           <SectionHeader
             eyebrow="Why us"
             headlineText="What makes us different"
-            headlineClassName="mt-4 text-3xl font-semibold tracking-tight text-foreground sm:text-4xl"
+            headlineClassName="mt-4 text-3xl font-bold leading-[1.2] tracking-tight text-foreground sm:text-4xl"
             sub="Six reasons agencies choose a partner over a patchwork of freelancers and vendors."
             subClassName="mt-3 text-base text-muted"
             className="max-w-xl"
@@ -109,7 +109,7 @@ export default function AboutPage({ data }: Props) {
               <SectionHeader
                 eyebrow={data.approach.eyebrow}
                 headlineText={data.approach.headline}
-                headlineClassName="mt-4 text-3xl font-semibold tracking-tight text-foreground sm:text-4xl"
+                headlineClassName="mt-4 text-3xl font-bold leading-[1.2] tracking-tight text-foreground sm:text-4xl"
               />
               <div className="mt-8 grid grid-cols-1 gap-3 sm:grid-cols-2">
                 {data.approach.pillars.map((p) => (
@@ -173,7 +173,7 @@ export default function AboutPage({ data }: Props) {
           <SectionHeader
             eyebrow="Ready to scale"
             headlineText="Become a growX partner."
-            headlineClassName="mt-4 text-4xl font-semibold tracking-tight text-foreground sm:text-5xl"
+            headlineClassName="mt-4 text-3xl font-bold leading-[1.15] tracking-tight text-foreground sm:text-4xl"
             sub="Start free in minutes. Full portal access, the entire catalog, and 100% white-label delivery from day one. No commitment, no card."
             subClassName="mx-auto mt-5 max-w-xl text-base text-muted"
             align="center"

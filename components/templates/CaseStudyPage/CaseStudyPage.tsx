@@ -57,7 +57,7 @@ export default function CaseStudyPage({ caseStudy: cs, related }: Props) {
               eyebrow={cs.client}
               headlineText={cs.tagline}
               as="h1"
-              headlineClassName="mt-3 text-3xl font-semibold tracking-tight text-foreground sm:text-4xl lg:text-5xl"
+              headlineClassName="mt-3 text-3xl font-bold leading-[1.2] tracking-tight text-foreground sm:text-4xl lg:text-5xl"
               sub={cs.description}
               subClassName="mt-5 text-base leading-relaxed text-muted max-w-2xl"
               className="mt-5"
@@ -90,7 +90,7 @@ export default function CaseStudyPage({ caseStudy: cs, related }: Props) {
               <SectionHeader
                 eyebrow="The challenge"
                 headlineText="What we were solving"
-                headlineClassName="mt-3 text-2xl font-semibold tracking-tight text-foreground sm:text-3xl"
+                headlineClassName="mt-3 text-2xl font-bold leading-[1.2] tracking-tight text-foreground sm:text-3xl"
               />
               <p className="mt-5 text-base leading-relaxed text-muted">{cs.challenge}</p>
             </div>
@@ -98,7 +98,7 @@ export default function CaseStudyPage({ caseStudy: cs, related }: Props) {
               <SectionHeader
                 eyebrow="The solution"
                 headlineText="How we approached it"
-                headlineClassName="mt-3 text-2xl font-semibold tracking-tight text-foreground sm:text-3xl"
+                headlineClassName="mt-3 text-2xl font-bold leading-[1.2] tracking-tight text-foreground sm:text-3xl"
               />
               <p className="mt-5 text-base leading-relaxed text-muted">{cs.solution}</p>
             </div>
@@ -113,7 +113,7 @@ export default function CaseStudyPage({ caseStudy: cs, related }: Props) {
             <SectionHeader
               eyebrow="Scope of work"
               headlineText="What we delivered"
-              headlineClassName="mt-3 text-2xl font-semibold tracking-tight text-foreground sm:text-3xl"
+              headlineClassName="mt-3 text-2xl font-bold leading-[1.2] tracking-tight text-foreground sm:text-3xl"
               sub="Every engagement is scoped and agreed upfront. Here's exactly what was included."
               subClassName="mt-3 text-sm text-muted"
             />
@@ -159,7 +159,7 @@ export default function CaseStudyPage({ caseStudy: cs, related }: Props) {
               <SectionHeader
                 eyebrow="More results"
                 headlineText="Other case studies"
-                headlineClassName="mt-2 text-2xl font-semibold tracking-tight text-foreground sm:text-3xl"
+                headlineClassName="mt-2 text-2xl font-bold leading-[1.2] tracking-tight text-foreground sm:text-3xl"
               />
               <Link
                 href="/case-studies"
@@ -216,7 +216,7 @@ export default function CaseStudyPage({ caseStudy: cs, related }: Props) {
           <SectionHeader
             eyebrow="Ready to start"
             headlineText="Want results like these?"
-            headlineClassName="mt-4 text-4xl font-semibold tracking-tight sm:text-5xl"
+            headlineClassName="mt-4 text-3xl font-bold leading-[1.15] tracking-tight sm:text-4xl"
             sub="Book a free discovery call and we'll scope out exactly what's possible for your business."
             subClassName="mx-auto mt-5 max-w-xl text-base text-white/70"
             align="center"

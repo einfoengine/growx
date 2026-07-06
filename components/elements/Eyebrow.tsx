@@ -49,7 +49,7 @@ export default function Eyebrow({ text, className = "" }: { text: string; classN
   }, [text, isInView]);
 
   return (
-    <p ref={ref} className={`text-xs font-semibold uppercase tracking-[0.18em] text-brand ${className}`}>
+    <p ref={ref} className={`font-label text-xs font-semibold uppercase tracking-[0.18em] text-brand ${className}`}>
       [ {displayText} ]
     </p>
   );

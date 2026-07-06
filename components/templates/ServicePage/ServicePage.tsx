@@ -53,7 +53,7 @@ export default function ServicePage({ data }: Props) {
 
               <h1
                 id={`${data.id}-name`}
-                className="mt-5 text-4xl font-semibold tracking-tight text-foreground sm:text-5xl lg:text-6xl"
+                className="mt-5 text-4xl font-bold leading-[1.15] tracking-tight text-foreground sm:text-5xl lg:text-6xl"
               >
                 {data.name}
               </h1>
@@ -114,7 +114,7 @@ export default function ServicePage({ data }: Props) {
             eyebrow="Full scope"
             headlineText="What's included"
             headlineId={`${data.id}-deliverables-heading`}
-            headlineClassName="mt-3 text-3xl font-semibold tracking-tight text-foreground sm:text-4xl"
+            headlineClassName="mt-3 text-3xl font-bold leading-[1.2] tracking-tight text-foreground sm:text-4xl"
             sub="Every deliverable scoped, priced, and agreed upfront. No surprises at handoff."
             subClassName="mt-3 text-base text-muted"
             className="max-w-xl"
@@ -149,7 +149,7 @@ export default function ServicePage({ data }: Props) {
             eyebrow="Why us"
             headlineText={`Why agencies choose us for ${data.name}`}
             headlineId={`${data.id}-why-heading`}
-            headlineClassName="mt-3 text-3xl font-semibold tracking-tight text-foreground sm:text-4xl"
+            headlineClassName="mt-3 text-3xl font-bold leading-[1.2] tracking-tight text-foreground sm:text-4xl"
             className="max-w-xl"
           />
 
@@ -180,7 +180,7 @@ export default function ServicePage({ data }: Props) {
             eyebrow="Questions"
             headlineText={`About ${data.name}`}
             headlineId={`${data.id}-faq-heading`}
-            headlineClassName="mt-3 text-3xl font-semibold tracking-tight text-foreground sm:text-4xl"
+            headlineClassName="mt-3 text-3xl font-bold leading-[1.2] tracking-tight text-foreground sm:text-4xl"
             align="center"
             maxWidth="max-w-2xl"
           />
@@ -231,7 +231,7 @@ export default function ServicePage({ data }: Props) {
           <SectionHeader
             eyebrow="Ready to start"
             headlineText={`Add ${data.name} to your roster.`}
-            headlineClassName="mt-4 text-4xl font-semibold tracking-tight sm:text-5xl"
+            headlineClassName="mt-4 text-3xl font-bold leading-[1.15] tracking-tight sm:text-4xl"
             sub="Bring the brief. We'll bring the team, the timeline, and deliver it under your brand."
             subClassName="mx-auto mt-5 max-w-xl text-base text-white/70"
             align="center"
