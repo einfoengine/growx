@@ -1,17 +1,9 @@
-import { ArrowUpRight, X } from "lucide-react";
-
-type Reason = {
-  n: string;
-  title: string;
-  desc: string;
-  image: string;
-  points: string[];
-};
+import ReasonCard, { type Reason } from "./ReasonCard";
 
 /** The four ways fulfillment quietly caps agency growth — the problem growX
- *  removes. Each is a flip card: front states the reason, back reveals the
- *  day-to-day cost. (Condensed from five — the freelancer and margin problems
- *  are the same freelancer/vendor patchwork, so they're merged.) */
+ *  removes. Each card tilts in 3D, its image zooms, and the copy pushes up to
+ *  reveal the day-to-day cost. (Condensed from five — the freelancer and margin
+ *  problems are the same freelancer/vendor patchwork, so they're merged.) */
 const REASONS: Reason[] = [
   {
     n: "01",
@@ -67,10 +59,25 @@ export default function FulfillmentReasons() {
       data-nav-theme="dark"
       className="relative isolate overflow-hidden bg-foreground text-background"
     >
+      {/* Ambient section background video, darkened so content stays legible. */}
+      <video
+        aria-hidden="true"
+        autoPlay
+        loop
+        muted
+        playsInline
+        className="pointer-events-none absolute inset-0 -z-20 h-full w-full object-cover"
+        src="/assets/gw-mod-fulfillment-reasons/299638.mov"
+      />
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute inset-0 -z-10 bg-foreground/80"
+      />
+
       {/* Soft brand glow to break up the dark field. */}
       <div
         aria-hidden="true"
-        className="pointer-events-none absolute -z-10 left-1/2 -top-24 h-72 w-[1200px] max-w-none -translate-x-1/2 bg-brand/8 blur-[130px]"
+        className="pointer-events-none absolute -z-10 left-1/2 -top-24 h-72 w-300 max-w-none -translate-x-1/2 bg-brand/8 blur-[130px]"
       />
 
       <div className="container-1200 py-24 sm:py-28 lg:py-32">
@@ -90,73 +97,7 @@ export default function FulfillmentReasons() {
 
         <ul className="mx-auto mt-16 grid max-w-5xl gap-5 sm:grid-cols-2">
           {REASONS.map((reason) => (
-            <li
-              key={reason.n}
-              tabIndex={0}
-              aria-label={`Reason ${reason.n}: ${reason.title}`}
-              className="group h-72 [perspective:1400px] focus:outline-none"
-            >
-              {/* Flip track — rotates on hover or keyboard focus. */}
-              <div className="relative h-full w-full transition-transform duration-500 transform-3d group-hover:transform-[rotateY(180deg)] group-focus-within:transform-[rotateY(180deg)]">
-                {/* Front — reason image as the backdrop, scrimmed for legibility. */}
-                <div
-                  className="absolute inset-0 flex flex-col justify-between overflow-hidden border border-white/10 bg-white/4 bg-cover bg-center p-8 backface-hidden"
-                  style={{ backgroundImage: `url(${reason.image})` }}
-                >
-                  <div
-                    aria-hidden="true"
-                    className="pointer-events-none absolute inset-0 bg-linear-to-t from-black/85 via-black/55 to-black/25"
-                  />
-                  <span className="relative font-label text-sm font-bold tracking-[0.2em] text-brand/80">
-                    Reason {reason.n}
-                  </span>
-                  <div className="relative">
-                    <h3 className="text-2xl font-bold tracking-tight sm:text-3xl">
-                      {reason.title}
-                    </h3>
-                    <p className="mt-3 text-sm text-white/80 sm:text-base">
-                      {reason.desc}
-                    </p>
-                  </div>
-                  <span className="relative flex items-center gap-1.5 text-xs font-semibold uppercase tracking-widest text-white/50">
-                    What it costs you
-                    <ArrowUpRight size={14} />
-                  </span>
-                </div>
-
-                {/* Back — same image, heavier scrim so the bullets stay readable. */}
-                <div
-                  className="absolute inset-0 flex flex-col justify-center overflow-hidden border border-brand/30 bg-cover bg-center p-8 backface-hidden transform-[rotateY(180deg)]"
-                  style={{ backgroundImage: `url(${reason.image})` }}
-                >
-                  <div
-                    aria-hidden="true"
-                    className="pointer-events-none absolute inset-0 bg-black/80"
-                  />
-                  <div
-                    aria-hidden="true"
-                    className="pointer-events-none absolute inset-0 bg-brand/10"
-                  />
-                  <span className="relative font-label text-sm font-bold tracking-[0.2em] text-brand/80">
-                    What it costs you
-                  </span>
-                  <ul className="relative mt-5 space-y-3">
-                    {reason.points.map((point, i) => (
-                      <li key={i} className="flex items-start gap-3">
-                        <X
-                          size={16}
-                          strokeWidth={3}
-                          className="mt-0.5 shrink-0 text-rose-400/80"
-                        />
-                        <span className="text-sm text-white/85 sm:text-base">
-                          {point}
-                        </span>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              </div>
-            </li>
+            <ReasonCard key={reason.n} reason={reason} />
           ))}
         </ul>
       </div>
