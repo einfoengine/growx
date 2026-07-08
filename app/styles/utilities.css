@@ -1,0 +1,58 @@
+/* ============================================================================
+   CUSTOM UTILITIES  (@utility)  ==  the v4 equivalent of a Sass @mixin
+   ----------------------------------------------------------------------------
+   Each @utility is a reusable, parameter-free bundle of declarations. Use it
+   two ways:
+     1. directly as a class            ->  class="text-gradient-brand"
+     2. composed into a component      ->  .foo { @apply text-gradient-brand; }
+   This is where "mixins" live. Add new reusable style bundles below.
+   ========================================================================== */
+
+@utility container-1200 {
+  margin-inline: auto;
+  width: 100%;
+  max-width: var(--container-max);
+  padding-inline: 2rem;
+}
+
+/* Brand gradient clipped to text. Replaces the repeated
+   `bg-linear-to-br from-brand to-brand-strong bg-clip-text text-transparent`. */
+@utility text-gradient-brand {
+  background-image: linear-gradient(
+    to bottom right,
+    var(--brand),
+    var(--brand-strong)
+  );
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+/* Horizontal marquee scroll */
+@keyframes marquee-x {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+@utility animate-marquee {
+  animation: marquee-x 40s linear infinite;
+}
+
+/* Soft brand pulse ring */
+@keyframes brand-pulse {
+  0%,
+  100% {
+    box-shadow: 0 0 0 0 var(--brand-soft);
+  }
+  50% {
+    box-shadow: 0 0 0 6px transparent;
+  }
+}
+
+@utility animate-brand-pulse {
+  animation: brand-pulse 2s ease-in-out infinite;
+}

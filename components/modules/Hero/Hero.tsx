@@ -1,5 +1,5 @@
-import Image from "next/image";
 import HeroAnimatedContent from "@/components/modules/Hero/HeroAnimatedContent";
+import HeroVideo from "@/components/modules/Hero/HeroVideo";
 import type { HeroVariant } from "@/components/modules/Hero/hero-variants";
 import MouseGlow from "@/components/elements/MouseGlow";
 import { getHero } from "@/lib/content";
@@ -8,8 +8,8 @@ import type { HeroContent } from "@/lib/content";
 export type HeroProps = {
   data?: HeroContent;
   /**
-   * `home` - large headline and vertical rhythm (default).
-   * `inner` - compact hero for inner / marketing subpages.
+   * `home` - split layout: text left, video right (default).
+   * `inner` - compact centered hero for inner / marketing subpages.
    */
   variant?: HeroVariant;
 };
@@ -43,25 +43,38 @@ export default async function Hero({ data, variant = "home" }: HeroProps = {}) {
     );
   }
 
-  // ── Home hero - full-bleed background photo ───────────────────────────────
+  // ── Home hero - centered copy, video below ────────────────────────────────
   return (
     <section
       id={`gw-${heroData.id}`}
       aria-labelledby={`${heroData.id}-headline`}
-      className="relative isolate flex min-h-svh flex-col justify-center overflow-hidden bg-background"
+      className="relative isolate flex items-center overflow-hidden bg-background py-16 sm:py-20 lg:min-h-[92vh] lg:py-24"
     >
-      {/* Full-bleed background photo */}
-      <Image
-        src="/hero.png"
-        alt=""
+      {/* Layered CSS background: brand wash + fine grid + soft glows.
+          Zero image payload, paints instantly, keeps the centered copy crisp. */}
+      <div
         aria-hidden="true"
-        fill
-        priority
-        sizes="100vw"
-        className="pointer-events-none -z-10 object-cover object-center select-none"
+        className="pointer-events-none absolute inset-0 -z-10 bg-[radial-gradient(ellipse_75%_55%_at_50%_-5%,var(--brand-soft),transparent_60%)]"
+      />
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute inset-0 -z-10 bg-[radial-gradient(circle,rgba(10,10,10,0.11)_1px,transparent_1.5px)] bg-size-[24px_24px] mask-[radial-gradient(ellipse_80%_70%_at_50%_30%,#000_15%,transparent_80%)]"
+      />
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute -z-10 left-1/2 -top-20 h-120 w-184 -translate-x-1/2 rounded-full bg-brand/10 blur-[120px]"
+      />
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute -z-10 right-0 bottom-0 h-80 w-96 translate-x-1/4 translate-y-1/4 rounded-full bg-(--brand-soft) blur-[120px]"
       />
 
-      <HeroAnimatedContent data={heroData} variant={variant} />
+      <div className="container-1200 flex w-full flex-col items-center">
+        <HeroAnimatedContent data={heroData} variant={variant} />
+        <div className="hero-video mt-12 sm:mt-14">
+          <HeroVideo videoId="oGKjh10TbK0" thumbnail="/growX-video-thumbnail.png" />
+        </div>
+      </div>
     </section>
   );
 }

@@ -1,8 +1,8 @@
 "use client";
 
 import { motion } from "framer-motion";
-import Link from "next/link";
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, Check } from "lucide-react";
+import Typewriter from "@/components/elements/Typewriter";
 import Headline from "@/components/elements/Headline";
 import Button from "@/components/elements/Button";
 import { HERO_LAYOUT, type HeroVariant } from "@/components/modules/Hero/hero-variants";
@@ -48,13 +48,13 @@ const ctaVariants = {
   },
 };
 
-const statsVariants = {
+const pointVariants = {
   hidden: { opacity: 0, y: 16 },
   visible: {
     opacity: 1,
     y: 0,
     transition: {
-      duration: 0.75,
+      duration: 0.6,
       ease: "easeOut",
     },
   },
@@ -65,32 +65,32 @@ export default function HeroAnimatedContent({
   variant = "home",
 }: HeroAnimatedContentProps) {
   const L = HERO_LAYOUT[variant];
+  const isHome = variant === "home";
+  const hasPoints = isHome && !!data.points && data.points.length > 0;
 
   return (
     <motion.div
-      className={L.shell}
+      className={isHome ? "mx-auto w-full max-w-2xl" : L.shell}
       variants={containerVariants}
       initial="hidden"
       animate="visible"
     >
-      <div className="mx-auto text-center">
-        <motion.div variants={itemVariants}>
-          <Link
-            id={`${data.id}-eyebrow`}
-            href={data.eyebrow.href}
-            className="group inline-flex items-center gap-2 rounded-full border border-border bg-background/80 px-4 py-1.5 font-label text-xs font-medium text-foreground/80 backdrop-blur-md transition hover:border-brand/30 hover:bg-brand/4 hover:text-foreground"
-          >
-            <span aria-hidden="true" className="relative flex h-2 w-2">
-              <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-brand opacity-70" />
-              <span className="relative inline-flex h-2 w-2 rounded-full bg-brand" />
-            </span>
-            <span>{data.eyebrow.label}</span>
-            <ArrowRight
-              size={L.eyebrowArrow}
-              className="opacity-50 transition-transform group-hover:translate-x-0.5 group-hover:opacity-90"
-            />
-          </Link>
-        </motion.div>
+      <div className={isHome ? "text-center" : "mx-auto text-center"}>
+        <motion.p
+          id={`${data.id}-eyebrow`}
+          className={
+            isHome
+              ? "hero-eyebrow"
+              : "font-label text-base font-bold tracking-tight text-foreground/70 sm:text-lg"
+          }
+          variants={itemVariants}
+        >
+          {data.eyebrow.label}{" "}
+          <Typewriter
+            words={["vendor", "team member", "department"]}
+            className="text-brand"
+          />
+        </motion.p>
 
         <motion.div variants={itemVariants}>
           <Headline
@@ -98,7 +98,7 @@ export default function HeroAnimatedContent({
             parts={data.headline.parts}
             as="h1"
             className={L.headline}
-            highlightClassName="bg-gradient-to-br from-brand to-[#059669] bg-clip-text text-transparent"
+            highlightClassName="text-gradient-brand"
             underlineHighlight={false}
           />
         </motion.div>
@@ -113,13 +113,32 @@ export default function HeroAnimatedContent({
           </motion.p>
         )}
 
-        <motion.p
-          id={`${data.id}-sub`}
-          className={L.sub}
-          variants={itemVariants}
-        >
-          {data.sub}
-        </motion.p>
+        {/* Inner variant keeps the descriptive sub; the home hero uses the
+            checkmark points below instead to avoid repeating the same copy. */}
+        {!hasPoints && (
+          <motion.p id={`${data.id}-sub`} className={L.sub} variants={itemVariants}>
+            {data.sub}
+          </motion.p>
+        )}
+
+        {hasPoints && (
+          <motion.ul
+            id={`${data.id}-points`}
+            className="mt-7 flex flex-wrap items-center justify-center gap-x-6 gap-y-2.5"
+            variants={containerVariants}
+          >
+            {data.points!.map((point, i) => (
+              <motion.li
+                key={i}
+                className="flex items-center gap-2"
+                variants={pointVariants}
+              >
+                <Check size={16} strokeWidth={3} className="shrink-0 text-brand" />
+                <span className="hero-point">{point}</span>
+              </motion.li>
+            ))}
+          </motion.ul>
+        )}
 
         <motion.div
           id={`${data.id}-ctas`}
@@ -142,31 +161,6 @@ export default function HeroAnimatedContent({
             );
           })}
         </motion.div>
-
-        {data.stats.length > 0 && (
-          <motion.div
-            id={`${data.id}-stats`}
-            className={L.stats}
-            variants={containerVariants}
-          >
-            {data.stats.map((s) => (
-              <motion.div
-                key={s.id}
-                id={s.id}
-                className="flex items-center gap-2 rounded-xl border border-border bg-background/70 px-3.5 py-3 backdrop-blur-sm"
-                variants={statsVariants}
-              >
-                <span
-                  aria-hidden="true"
-                  className="h-1.5 w-1.5 shrink-0 rounded-full bg-brand"
-                />
-                <span className="font-label text-[11px] font-medium text-foreground/80 sm:text-xs">
-                  {s.label}
-                </span>
-              </motion.div>
-            ))}
-          </motion.div>
-        )}
       </div>
     </motion.div>
   );

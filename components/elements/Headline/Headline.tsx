@@ -1,5 +1,4 @@
 import type { HeadlinePart } from "@/lib/content";
-import CanvasText from "@/components/elements/CanvasText";
 
 type HeadlineProps = {
   id?: string;
@@ -15,20 +14,20 @@ export default function Headline({
   parts,
   as = "h2",
   className = "",
+  highlightClassName = "text-brand",
 }: HeadlineProps) {
   const Tag = as;
 
-  // Parts render inline in the heading: plain text parts are real text; each
-  // highlight part carries its own real (invisible) text plus the canvas
-  // overlay, so the heading is fully accessible with no duplicated copy.
+  // Highlighted words render as plain (statically styled) text via
+  // highlightClassName - typically the brand gradient.
   return (
     <Tag id={id} className={`whitespace-pre-line text-balance ${className}`}>
       {parts.map((part, i) =>
         part.type === "text" ? (
           <span key={i}>{part.value}</span>
         ) : (
-          <span key={i} className="text-brand">
-            <CanvasText text={part.value} />
+          <span key={i} className={highlightClassName}>
+            {part.value}
           </span>
         ),
       )}

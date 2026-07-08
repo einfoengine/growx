@@ -241,7 +241,7 @@ export default function BookingModal() {
                 <button
                   type="submit"
                   disabled={!selectedDate || !selectedTime}
-                  className="w-full rounded-xl bg-brand px-4 py-4 text-sm font-semibold text-black transition-all hover:scale-[1.02] hover:bg-[#059669] disabled:opacity-40 disabled:cursor-not-allowed disabled:hover:scale-100"
+                  className="w-full rounded-xl bg-brand px-4 py-4 text-sm font-semibold text-black transition-all hover:scale-[1.02] hover:bg-brand-strong disabled:opacity-40 disabled:cursor-not-allowed disabled:hover:scale-100"
                 >
                   {selectedDate && selectedTime ? "Confirm Booking" : "Select a Date & Time to Continue"}
                 </button>

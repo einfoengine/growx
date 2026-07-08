@@ -161,7 +161,7 @@ export default async function Testimonials() {
               headline={data.headline.parts}
               headlineId={`${data.id}-headline`}
               headlineClassName="mt-4 text-3xl font-bold leading-[1.15] tracking-tight text-foreground sm:text-4xl"
-              highlightClassName="bg-gradient-to-br from-brand to-[#059669] bg-clip-text text-transparent"
+              highlightClassName="text-gradient-brand"
               underlineHighlight={false}
             />
             <p className="text-base text-muted lg:max-w-sm">

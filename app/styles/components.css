@@ -1,0 +1,156 @@
+/* ============================================================================
+   ELEMENT LIBRARY  (@layer components + @apply)
+   ----------------------------------------------------------------------------
+   Semantic classes for the common building blocks — titles, text, buttons,
+   cards, media, menus, badges. Styles live here once; markup just uses the
+   class. Values are grounded in the real design (Button, Header, section
+   headers), so swapping a utility stack for a class is a no-op visually.
+
+   Conventions:
+   - Compose base + modifier:   <button class="btn btn-primary">
+   - Pass one-off tweaks inline: <div class="card bg-black border-white/10">
+   - Kept in @layer components so plain utilities still override inline.
+   ========================================================================== */
+
+@layer components {
+  /* ---- Layout ------------------------------------------------------------ */
+  /* Standard section vertical rhythm. Pair with the container-1200 utility. */
+  .section {
+    @apply py-20 sm:py-24 lg:py-28;
+  }
+
+  /* ---- Typography -------------------------------------------------------- */
+  /* Overline / kicker above a title. Pair with a colour inline. */
+  .eyebrow {
+    @apply font-label text-xs font-medium uppercase tracking-[0.2em];
+  }
+  /* Hero headline — size driven by the --text-hero token. */
+  .title-hero {
+    @apply text-hero font-extrabold tracking-tight text-foreground;
+  }
+  /* Section heading (h2). */
+  .title {
+    @apply text-3xl font-bold leading-[1.15] tracking-tight text-foreground sm:text-4xl md:text-5xl;
+  }
+  /* Small heading — card titles, sub-sections. */
+  .title-sm {
+    @apply text-lg font-semibold tracking-tight text-foreground;
+  }
+  /* Intro paragraph under a title. Add max-w-* inline. */
+  .lead {
+    @apply text-base leading-relaxed text-muted sm:text-lg;
+  }
+  /* Body copy. */
+  .paragraph {
+    @apply text-base leading-relaxed text-muted;
+  }
+  /* Inline text link. */
+  .link {
+    @apply font-medium text-brand transition-colors hover:text-brand-strong;
+  }
+
+  /* ---- Hero (home) ------------------------------------------------------- */
+  /* Section-specific scale for the home hero. These are the dials — tweak the
+     sizes here rather than in the markup. */
+  .hero-eyebrow {
+    @apply font-label text-lg font-bold tracking-tight text-foreground/70 sm:text-xl;
+  }
+  .hero-headline {
+    @apply font-extrabold tracking-tight text-foreground;
+    font-size: clamp(3rem, 5vw + 1rem, 5.5rem);
+    line-height: 1.05;
+  }
+  .hero-tagline {
+    @apply font-label text-lg font-semibold tracking-tight text-foreground/90 sm:text-xl;
+  }
+  .hero-sub {
+    @apply text-base text-muted sm:text-lg;
+  }
+  .hero-point {
+    @apply text-base font-medium text-foreground/85;
+  }
+  /* Video frame — fixed max width, centered by the flex parent. */
+  .hero-video {
+    width: 100%;
+    max-width: 894px;
+  }
+
+  /* ---- Buttons ----------------------------------------------------------- */
+  /* Base — compose with a variant + optional size. */
+  .btn {
+    @apply inline-flex items-center justify-center gap-2 rounded-full font-medium transition;
+  }
+  .btn-primary {
+    @apply bg-foreground px-6 py-3 text-sm text-background hover:opacity-90;
+  }
+  .btn-secondary {
+    @apply border border-border px-5 py-3 text-sm text-foreground/80 hover:border-foreground/30 hover:text-foreground;
+  }
+  .btn-brand {
+    @apply bg-brand px-6 py-3 text-sm font-semibold text-black hover:bg-brand-strong;
+  }
+  .btn-ghost {
+    @apply text-sm text-brand hover:text-brand/80;
+  }
+  /* Dark-section variants (used via <Button darkBg>). */
+  .btn-primary-dark {
+    @apply bg-background px-6 py-3 text-sm text-foreground hover:opacity-90;
+  }
+  .btn-secondary-dark {
+    @apply border border-white/15 px-5 py-3 text-sm text-white/80 hover:border-white/30 hover:text-white;
+  }
+  .btn-lg {
+    @apply px-8 py-4 text-base;
+  }
+  .btn-sm {
+    @apply px-4 py-2 text-xs;
+  }
+
+  /* ---- Cards ------------------------------------------------------------- */
+  /* Neutral surface card. Override bg / border inline for variants. */
+  .card {
+    @apply rounded-2xl border border-border bg-background shadow-sm;
+  }
+  /* Muted surface variant. */
+  .card-surface {
+    @apply rounded-2xl border border-border bg-surface shadow-sm;
+  }
+  /* Add to any card for a subtle hover lift. */
+  .card-hover {
+    @apply transition-transform duration-300 hover:-translate-y-0.5;
+  }
+
+  /* ---- Media ------------------------------------------------------------- */
+  /* Rounded, clipped media frame (wrap an <img>/<video>/iframe). */
+  .frame {
+    @apply overflow-hidden rounded-2xl border border-border;
+  }
+  /* Fill + cover an image inside a sized/relative parent. */
+  .img-cover {
+    @apply h-full w-full object-cover;
+  }
+  /* Circular avatar image. */
+  .avatar {
+    @apply shrink-0 rounded-full object-cover;
+  }
+
+  /* ---- Navigation -------------------------------------------------------- */
+  .nav-link {
+    @apply text-sm font-medium text-foreground/80 transition-colors hover:text-foreground;
+  }
+  /* Dropdown / popover panel. */
+  .menu {
+    @apply min-w-56 rounded-xl border border-border bg-background p-1.5 shadow-lg shadow-black/5;
+  }
+  .menu-item {
+    @apply block rounded-lg px-3.5 py-2.5 text-sm text-foreground/70 transition-colors hover:bg-surface hover:text-foreground;
+  }
+
+  /* ---- Badges ------------------------------------------------------------ */
+  .badge {
+    @apply inline-flex items-center gap-1.5 rounded-full border border-border px-3 py-1 text-xs font-medium text-foreground/70;
+  }
+  .badge-brand {
+    @apply inline-flex items-center gap-1.5 rounded-full bg-brand/10 px-3 py-1 text-xs font-semibold text-brand;
+  }
+}

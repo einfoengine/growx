@@ -41,7 +41,7 @@ export default function SectionHeader({
     ? `mx-auto ${maxWidth} text-center ${className}`.trim()
     : className;
   const defaultSubClass = centered
-    ? "mx-auto mt-4 max-w-2xl text-base text-muted"
+    ? "mx-auto mt-4 text-base text-muted"
     : "mt-4 text-base text-muted";
 
   return (

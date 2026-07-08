@@ -32,23 +32,14 @@ export type ButtonProps = {
   id?: string;
 };
 
-const BASE =
-  "group inline-flex items-center gap-2 rounded-full font-medium transition";
-
-const STYLES: Record<ButtonVariant, { light: string; dark: string }> = {
-  primary: {
-    light: "bg-foreground px-6 py-3 text-sm text-background hover:opacity-90",
-    dark: "bg-background px-6 py-3 text-sm text-foreground hover:opacity-90",
-  },
-  secondary: {
-    light:
-      "border border-border px-5 py-3 text-sm text-foreground/80 hover:border-foreground/30 hover:text-foreground",
-    dark: "border border-white/15 px-5 py-3 text-sm text-white/80 hover:border-white/30 hover:text-white",
-  },
-  ghost: {
-    light: "text-sm text-brand hover:text-brand/80",
-    dark: "text-sm text-brand hover:text-brand/80",
-  },
+// Visual styling lives in the element library (app/styles/components.css).
+// This just maps each variant to its `.btn-*` class. `group` is kept on the
+// element (in `cls` below) because it drives the icon's group-hover nudge -
+// behaviour, not styling.
+const VARIANT: Record<ButtonVariant, { light: string; dark: string }> = {
+  primary: { light: "btn-primary", dark: "btn-primary-dark" },
+  secondary: { light: "btn-secondary", dark: "btn-secondary-dark" },
+  ghost: { light: "btn-ghost", dark: "btn-ghost" },
 };
 
 // Magnetic pull config (à la Aceternity's magnetic-button).
@@ -70,11 +61,10 @@ export default function Button({
   className = "",
   id,
 }: ButtonProps) {
-  const variantClass = STYLES[variant][darkBg ? "dark" : "light"];
   const cls = [
-    BASE,
-    variantClass,
-    fullWidth ? "w-full justify-center" : "",
+    "group btn",
+    VARIANT[variant][darkBg ? "dark" : "light"],
+    fullWidth ? "w-full" : "",
     disabled ? "cursor-not-allowed opacity-60" : "",
     className,
   ]

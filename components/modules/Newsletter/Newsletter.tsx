@@ -30,7 +30,7 @@ export default function Newsletter() {
                 />
                 <button
                   type="submit"
-                  className="inline-flex shrink-0 items-center justify-center gap-2 rounded-full bg-brand px-6 py-3.5 text-sm font-semibold text-black transition-all hover:bg-[#059669] hover:scale-105"
+                  className="inline-flex shrink-0 items-center justify-center gap-2 rounded-full bg-brand px-6 py-3.5 text-sm font-semibold text-black transition-all hover:bg-brand-strong hover:scale-105"
                 >
                   Subscribe <ArrowRight size={16} />
                 </button>

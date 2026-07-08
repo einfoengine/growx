@@ -1,10 +1,11 @@
 import { getLogoMarquee } from "@/lib/content";
 
-/** Sister-brand accent colours - placeholders until the real logo images are uploaded. */
-const BRAND_COLORS: Record<string, string> = {
-  growX: "#10b981",
-  "GHL Video": "#ef4444",
-  socialX: "#ec4899",
+/** Sister-brand logos. `dark` brands ship on a black background, so their card
+ *  is black too and the baked-in background blends seamlessly. */
+const LOGOS: Record<string, { src: string; alt: string; dark?: boolean }> = {
+  growX: { src: "/assets/growX-black-logo.svg", alt: "growX" },
+  "GHL Video": { src: "/assets/ghl-video.png", alt: "GHL Video", dark: true },
+  socialX: { src: "/assets/socialx.png", alt: "socialX" },
 };
 
 export default async function LogoMarquee() {
@@ -17,27 +18,25 @@ export default async function LogoMarquee() {
       className="relative overflow-hidden border-y border-border bg-background py-14 text-foreground sm:py-16"
     >
       <div className="container-1200">
-        <p className="font-label text-center text-xs font-medium uppercase tracking-[0.2em] text-foreground/40">
-          {data.label}
-        </p>
+        <p className="eyebrow text-center text-foreground/40">{data.label}</p>
 
-        {/* Colourful demo logos - replace each block with an <img src=... /> later */}
-        <div className="mt-9 flex flex-wrap items-center justify-center gap-x-10 gap-y-6 sm:mt-11 sm:gap-x-14">
+        <div className="mx-auto mt-8 grid max-w-4xl grid-cols-1 gap-4 sm:mt-10 sm:grid-cols-3 sm:gap-5">
           {data.items.map((name) => {
-            const color = BRAND_COLORS[name] ?? "#10b981";
+            const logo = LOGOS[name];
+            if (!logo) return null;
             return (
-              <div key={name} className="flex items-center gap-2.5">
-                <span
-                  aria-hidden="true"
-                  className="h-7 w-7 shrink-0 rounded-lg"
-                  style={{ backgroundColor: color }}
+              <div
+                key={name}
+                className={`card flex h-24 items-center justify-center px-8 transition-transform duration-300 hover:-translate-y-0.5 sm:h-28 ${
+                  logo.dark ? "border-white/10 bg-black" : ""
+                }`}
+              >
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img
+                  src={logo.src}
+                  alt={logo.alt}
+                  className="h-8 w-auto max-w-full object-contain sm:h-9"
                 />
-                <span
-                  className="whitespace-nowrap text-lg font-bold tracking-tight sm:text-xl"
-                  style={{ color }}
-                >
-                  {name}
-                </span>
               </div>
             );
           })}

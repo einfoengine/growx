@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 296 100" fill="none" role="img" aria-label="socialX">
+  <defs>
+    <linearGradient id="socialx-x" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#3f9df2"/>
+      <stop offset="1" stop-color="#12369c"/>
+    </linearGradient>
+  </defs>
+  <text x="2" y="72" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif" font-size="76" letter-spacing="-2">
+    <tspan font-weight="500" fill="#0a1a3d">social</tspan><tspan font-weight="800" fill="url(#socialx-x)">X</tspan>
+  </text>
+</svg>

@@ -69,6 +69,8 @@ export type HeroContent = {
   tagline?: string;
   sub: string;
   ctas: CTA[];
+  /** Checkmark bullets shown in the home (split) hero. */
+  points?: string[];
   rating?: HeroRating;
   stats: HeroStat[];
 };

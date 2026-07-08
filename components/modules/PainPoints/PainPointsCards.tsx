@@ -276,7 +276,7 @@ export default function PainPointsCards({ cards }: { cards: Card[] }) {
           viewport={{ once: true, margin: "-50px" }}
           transition={{ duration: 0.5, delay: 0.2 }}
           href="#book"
-          className="group mt-12 inline-flex items-center gap-2 rounded-full bg-brand px-8 py-4 text-sm font-semibold text-black transition-all hover:scale-105 hover:bg-[#059669] hover:shadow-[0_0_30px_rgba(16,185,129,0.4)]"
+          className="group mt-12 inline-flex items-center gap-2 rounded-full bg-brand px-8 py-4 text-sm font-semibold text-black transition-all hover:scale-105 hover:bg-brand-strong hover:shadow-[0_0_30px_rgba(16,185,129,0.4)]"
         >
           Lets engage in a meeting
           <svg

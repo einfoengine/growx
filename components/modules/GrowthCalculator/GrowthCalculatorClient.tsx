@@ -36,7 +36,7 @@ export default function GrowthCalculatorClient({ data }: GrowthCalculatorProps) 
           sub={data.sub}
           align="center"
           headlineClassName="mt-3 text-3xl font-bold leading-[1.15] tracking-tight text-foreground sm:text-4xl"
-          highlightClassName="bg-gradient-to-br from-brand to-[#059669] bg-clip-text text-transparent"
+          highlightClassName="text-gradient-brand"
           underlineHighlight={false}
         />
         {data.description && (

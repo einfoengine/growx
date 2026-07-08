@@ -43,7 +43,7 @@ export default function BlogSection() {
               headlineClassName="mt-4 text-3xl font-bold leading-[1.15] tracking-tight text-foreground sm:text-4xl"
               className="max-w-2xl"
             />
-            <Link href="#" className="inline-flex items-center gap-2 text-brand font-medium hover:text-[#059669] transition-colors">
+            <Link href="#" className="inline-flex items-center gap-2 text-brand font-medium hover:text-brand-strong transition-colors">
               View all posts <ArrowRight size={16} />
             </Link>
           </div>
