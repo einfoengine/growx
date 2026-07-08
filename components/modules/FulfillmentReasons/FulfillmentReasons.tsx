@@ -4,6 +4,7 @@ type Reason = {
   n: string;
   title: string;
   desc: string;
+  image: string;
   points: string[];
 };
 
@@ -16,6 +17,7 @@ const REASONS: Reason[] = [
     n: "01",
     title: "Capacity, not demand",
     desc: "You win work faster than you can deliver it. Fulfillment, not sales, is what caps how big you get.",
+    image: "/assets/gw-mod-fulfillment-reasons/1.png",
     points: [
       "Turning away clients you could easily close",
       "Rushed delivery churning the clients you have",
@@ -26,6 +28,7 @@ const REASONS: Reason[] = [
     n: "02",
     title: "The freelancer tax",
     desc: "Unreliable contractors and creeping costs eat your margin — and every freelancer is a crack in your white-label promise.",
+    image: "/assets/gw-mod-fulfillment-reasons/2.png",
     points: [
       "Quality and turnaround you can never predict",
       "Unpredictable vendor costs shrinking every job",
@@ -36,6 +39,7 @@ const REASONS: Reason[] = [
     n: "03",
     title: "A menu you can't fulfill",
     desc: "Clients ask for SEO, video, funnels, a CRM build. You say no, or scramble to learn it overnight.",
+    image: "/assets/gw-mod-fulfillment-reasons/3.png",
     points: [
       "Losing accounts to full-service agencies",
       "Leaving upsell revenue on the table",
@@ -46,6 +50,7 @@ const REASONS: Reason[] = [
     n: "04",
     title: "Fulfillment eats the founder",
     desc: "Sales, delivery, client comms, ops — all on you. Something is about to break, and it's usually you.",
+    image: "/assets/gw-mod-fulfillment-reasons/4.png",
     points: [
       "80-hour weeks just to keep the lights on",
       "Zero time left to actually grow the business",
@@ -92,40 +97,58 @@ export default function FulfillmentReasons() {
               className="group h-72 [perspective:1400px] focus:outline-none"
             >
               {/* Flip track — rotates on hover or keyboard focus. */}
-              <div className="relative h-full w-full transition-transform duration-500 [transform-style:preserve-3d] group-hover:transform-[rotateY(180deg)] group-focus-within:transform-[rotateY(180deg)]">
-                {/* Front */}
-                <div className="absolute inset-0 flex flex-col justify-between border border-white/10 bg-white/[0.04] p-8 [backface-visibility:hidden]">
-                  <span className="font-label text-sm font-bold tracking-[0.2em] text-brand/70">
+              <div className="relative h-full w-full transition-transform duration-500 transform-3d group-hover:transform-[rotateY(180deg)] group-focus-within:transform-[rotateY(180deg)]">
+                {/* Front — reason image as the backdrop, scrimmed for legibility. */}
+                <div
+                  className="absolute inset-0 flex flex-col justify-between overflow-hidden border border-white/10 bg-white/4 bg-cover bg-center p-8 backface-hidden"
+                  style={{ backgroundImage: `url(${reason.image})` }}
+                >
+                  <div
+                    aria-hidden="true"
+                    className="pointer-events-none absolute inset-0 bg-linear-to-t from-black/85 via-black/55 to-black/25"
+                  />
+                  <span className="relative font-label text-sm font-bold tracking-[0.2em] text-brand/80">
                     Reason {reason.n}
                   </span>
-                  <div>
+                  <div className="relative">
                     <h3 className="text-2xl font-bold tracking-tight sm:text-3xl">
                       {reason.title}
                     </h3>
-                    <p className="mt-3 text-sm text-white/70 sm:text-base">
+                    <p className="mt-3 text-sm text-white/80 sm:text-base">
                       {reason.desc}
                     </p>
                   </div>
-                  <span className="flex items-center gap-1.5 text-xs font-semibold uppercase tracking-widest text-white/40">
+                  <span className="relative flex items-center gap-1.5 text-xs font-semibold uppercase tracking-widest text-white/50">
                     What it costs you
                     <ArrowUpRight size={14} />
                   </span>
                 </div>
 
-                {/* Back */}
-                <div className="absolute inset-0 flex flex-col justify-center border border-brand/30 bg-brand/[0.06] p-8 [backface-visibility:hidden] transform-[rotateY(180deg)]">
-                  <span className="font-label text-sm font-bold tracking-[0.2em] text-brand/70">
+                {/* Back — same image, heavier scrim so the bullets stay readable. */}
+                <div
+                  className="absolute inset-0 flex flex-col justify-center overflow-hidden border border-brand/30 bg-cover bg-center p-8 backface-hidden transform-[rotateY(180deg)]"
+                  style={{ backgroundImage: `url(${reason.image})` }}
+                >
+                  <div
+                    aria-hidden="true"
+                    className="pointer-events-none absolute inset-0 bg-black/80"
+                  />
+                  <div
+                    aria-hidden="true"
+                    className="pointer-events-none absolute inset-0 bg-brand/10"
+                  />
+                  <span className="relative font-label text-sm font-bold tracking-[0.2em] text-brand/80">
                     What it costs you
                   </span>
-                  <ul className="mt-5 space-y-3">
+                  <ul className="relative mt-5 space-y-3">
                     {reason.points.map((point, i) => (
                       <li key={i} className="flex items-start gap-3">
                         <X
                           size={16}
                           strokeWidth={3}
-                          className="mt-0.5 shrink-0 text-rose-400/70"
+                          className="mt-0.5 shrink-0 text-rose-400/80"
                         />
-                        <span className="text-sm text-white/75 sm:text-base">
+                        <span className="text-sm text-white/85 sm:text-base">
                           {point}
                         </span>
                       </li>
