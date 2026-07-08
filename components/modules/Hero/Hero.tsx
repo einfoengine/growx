@@ -1,4 +1,5 @@
 import HeroAnimatedContent from "@/components/modules/Hero/HeroAnimatedContent";
+import HeroDots from "@/components/modules/Hero/HeroDots";
 import HeroVideo from "@/components/modules/Hero/HeroVideo";
 import type { HeroVariant } from "@/components/modules/Hero/hero-variants";
 import MouseGlow from "@/components/elements/MouseGlow";
@@ -48,7 +49,8 @@ export default async function Hero({ data, variant = "home" }: HeroProps = {}) {
     <section
       id={`gw-${heroData.id}`}
       aria-labelledby={`${heroData.id}-headline`}
-      className="relative isolate flex items-center overflow-hidden bg-background py-16 sm:py-20 lg:min-h-[92vh] lg:py-24"
+      data-nav-theme="dark"
+      className="relative isolate flex items-center overflow-hidden bg-foreground text-background py-16 sm:py-20 lg:min-h-[92vh] lg:py-24"
     >
       {/* Layered CSS background: brand wash + fine grid + soft glows.
           Zero image payload, paints instantly, keeps the centered copy crisp. */}
@@ -56,13 +58,11 @@ export default async function Hero({ data, variant = "home" }: HeroProps = {}) {
         aria-hidden="true"
         className="pointer-events-none absolute inset-0 -z-10 bg-[radial-gradient(ellipse_75%_55%_at_50%_-5%,var(--brand-soft),transparent_60%)]"
       />
+      {/* Interactive dot field: lights up under the cursor + random dim sparkles. */}
+      <HeroDots className="-z-10 mask-[radial-gradient(ellipse_80%_70%_at_50%_30%,#000_15%,transparent_80%)]" />
       <div
         aria-hidden="true"
-        className="pointer-events-none absolute inset-0 -z-10 bg-[radial-gradient(circle,rgba(10,10,10,0.11)_1px,transparent_1.5px)] bg-size-[24px_24px] mask-[radial-gradient(ellipse_80%_70%_at_50%_30%,#000_15%,transparent_80%)]"
-      />
-      <div
-        aria-hidden="true"
-        className="pointer-events-none absolute -z-10 left-1/2 -top-20 h-120 w-184 -translate-x-1/2 rounded-full bg-brand/10 blur-[120px]"
+        className="pointer-events-none absolute -z-10 left-1/2 -top-24 h-64 w-375 max-w-none animate-hero-glow bg-brand/12 blur-[130px]"
       />
       <div
         aria-hidden="true"
@@ -71,7 +71,7 @@ export default async function Hero({ data, variant = "home" }: HeroProps = {}) {
 
       <div className="container-1200 flex w-full flex-col items-center">
         <HeroAnimatedContent data={heroData} variant={variant} />
-        <div className="hero-video mt-12 sm:mt-14">
+        <div className="hero-video mt-20 sm:mt-28">
           <HeroVideo videoId="oGKjh10TbK0" thumbnail="/growX-video-thumbnail.png" />
         </div>
       </div>

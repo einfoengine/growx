@@ -32,7 +32,10 @@ export default function EvervaultBackground({
   const mouseX = useMotionValue(0);
   const mouseY = useMotionValue(0);
   const countRef = useRef(4000);
-  const [str, setStr] = useState(() => randomString(4000));
+  // Empty on the server; the mount effect measures and fills it. Generating a
+  // random string during render would differ between SSR and client → hydration
+  // mismatch (and it's a hover-only decorative layer, so nothing is lost).
+  const [str, setStr] = useState("");
   const [active, setActive] = useState(false);
 
   useEffect(() => {

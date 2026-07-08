@@ -29,7 +29,7 @@ export default function SectionHeader({
   as: Tag = "h2",
   sub,
   align = "left",
-  maxWidth = "max-w-3xl",
+  maxWidth = "max-w-4xl",
   headlineClassName = "mt-4 text-3xl font-bold leading-[1.15] tracking-tight text-foreground sm:text-4xl",
   subClassName,
   highlightClassName,
@@ -38,7 +38,7 @@ export default function SectionHeader({
 }: SectionHeaderProps) {
   const centered = align === "center";
   const wrapperClass = centered
-    ? `mx-auto ${maxWidth} text-center ${className}`.trim()
+    ? `mx-auto  text-center ${className}`.trim()
     : className;
   const defaultSubClass = centered
     ? "mx-auto mt-4 text-base text-muted"

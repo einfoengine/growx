@@ -20,3 +20,13 @@
     font-family: var(--font-heading);
   }
 }
+
+/* Site-wide preference: no rounded corners. Squares every element, including
+   ones that were circular (avatars, icon badges, pills, the video play button).
+   Sits outside @layer so it overrides Tailwind's rounded-* utilities. Delete
+   this block to restore the original radii. */
+*,
+*::before,
+*::after {
+  border-radius: 0 !important;
+}

@@ -1,8 +1,5 @@
-"use client";
-
 import Link from "next/link";
-import { useRef, type MouseEvent, type ReactNode } from "react";
-import { motion, useMotionValue, useSpring } from "framer-motion";
+import { type ReactNode } from "react";
 
 export type ButtonVariant = "primary" | "secondary" | "ghost";
 
@@ -41,11 +38,6 @@ const VARIANT: Record<ButtonVariant, { light: string; dark: string }> = {
   secondary: { light: "btn-secondary", dark: "btn-secondary-dark" },
   ghost: { light: "btn-ghost", dark: "btn-ghost" },
 };
-
-// Magnetic pull config (à la Aceternity's magnetic-button).
-const SPRING = { stiffness: 200, damping: 16, mass: 0.3 };
-const STRENGTH = 0.45;
-const MAX_DISTANCE = 48;
 
 export default function Button({
   label,
@@ -96,44 +88,5 @@ export default function Button({
       </button>
     );
 
-  // ── Magnetic wrapper - the button drifts toward the cursor, springs back ──
-  const wrapRef = useRef<HTMLDivElement>(null);
-  const x = useMotionValue(0);
-  const y = useMotionValue(0);
-  const sx = useSpring(x, SPRING);
-  const sy = useSpring(y, SPRING);
-
-  if (disabled) return inner;
-
-  const onMove = (e: MouseEvent<HTMLDivElement>) => {
-    const el = wrapRef.current;
-    if (!el) return;
-    const r = el.getBoundingClientRect();
-    let dx = (e.clientX - (r.left + r.width / 2)) * STRENGTH;
-    let dy = (e.clientY - (r.top + r.height / 2)) * STRENGTH;
-    const dist = Math.hypot(dx, dy);
-    if (dist > MAX_DISTANCE) {
-      const k = MAX_DISTANCE / dist;
-      dx *= k;
-      dy *= k;
-    }
-    x.set(dx);
-    y.set(dy);
-  };
-  const onLeave = () => {
-    x.set(0);
-    y.set(0);
-  };
-
-  return (
-    <motion.div
-      ref={wrapRef}
-      onMouseMove={onMove}
-      onMouseLeave={onLeave}
-      style={{ x: sx, y: sy }}
-      className={fullWidth ? "block w-full" : "inline-block"}
-    >
-      {inner}
-    </motion.div>
-  );
+  return inner;
 }

@@ -53,51 +53,51 @@
   /* Section-specific scale for the home hero. These are the dials — tweak the
      sizes here rather than in the markup. */
   .hero-eyebrow {
-    @apply font-label text-lg font-bold tracking-tight text-foreground/70 sm:text-xl;
+    @apply font-label text-lg font-bold tracking-tight text-background/70 sm:text-xl;
   }
   .hero-headline {
-    @apply font-extrabold tracking-tight text-foreground;
+    @apply font-extrabold tracking-tight text-background;
     font-size: clamp(3rem, 5vw + 1rem, 5.5rem);
     line-height: 1.05;
   }
   .hero-tagline {
-    @apply font-label text-lg font-semibold tracking-tight text-foreground/90 sm:text-xl;
+    @apply font-label text-lg font-semibold tracking-tight text-background/90 sm:text-xl;
   }
   .hero-sub {
-    @apply text-base text-muted sm:text-lg;
+    @apply text-base text-white/70 sm:text-lg;
   }
   .hero-point {
-    @apply text-base font-medium text-foreground/85;
+    @apply text-base font-medium text-background/85;
   }
-  /* Video frame — fixed max width, centered by the flex parent. */
+  /* Video frame — full container width, wrapped in a soft whitish-green stroke. */
   .hero-video {
     width: 100%;
-    max-width: 894px;
+    border: 20px solid rgba(209, 250, 229, 0.12);
   }
 
   /* ---- Buttons ----------------------------------------------------------- */
   /* Base — compose with a variant + optional size. */
   .btn {
-    @apply inline-flex items-center justify-center gap-2 rounded-full font-medium transition;
+    @apply inline-flex items-center justify-center gap-2 rounded-full font-bold transition;
   }
   .btn-primary {
-    @apply bg-foreground px-6 py-3 text-sm text-background hover:opacity-90;
+    @apply bg-foreground px-8 py-4 text-base text-background hover:opacity-90;
   }
   .btn-secondary {
-    @apply border border-border px-5 py-3 text-sm text-foreground/80 hover:border-foreground/30 hover:text-foreground;
+    @apply border border-border px-7 py-4 text-base text-foreground/80 hover:border-foreground/30 hover:text-foreground;
   }
   .btn-brand {
-    @apply bg-brand px-6 py-3 text-sm font-semibold text-black hover:bg-brand-strong;
+    @apply bg-brand px-8 py-4 text-base text-black hover:bg-brand-strong;
   }
   .btn-ghost {
-    @apply text-sm text-brand hover:text-brand/80;
+    @apply text-base text-brand hover:text-brand/80;
   }
   /* Dark-section variants (used via <Button darkBg>). */
   .btn-primary-dark {
-    @apply bg-background px-6 py-3 text-sm text-foreground hover:opacity-90;
+    @apply bg-background px-8 py-4 text-base text-foreground hover:opacity-90;
   }
   .btn-secondary-dark {
-    @apply border border-white/15 px-5 py-3 text-sm text-white/80 hover:border-white/30 hover:text-white;
+    @apply border border-white/15 px-7 py-4 text-base text-white/80 hover:border-white/30 hover:text-white;
   }
   .btn-lg {
     @apply px-8 py-4 text-base;

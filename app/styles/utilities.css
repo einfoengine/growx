@@ -42,6 +42,31 @@
   animation: marquee-x 40s linear infinite;
 }
 
+/* Hero top glow — a slow, subtle breathe. Keeps the -50% centering inside the
+   keyframes since it also drives transform. */
+@keyframes hero-glow {
+  0%,
+  100% {
+    opacity: 0.75;
+    transform: translateX(-50%) scaleX(1) scaleY(1);
+  }
+  50% {
+    opacity: 1;
+    transform: translateX(-50%) scaleX(1.12) scaleY(1.06);
+  }
+}
+
+@utility animate-hero-glow {
+  animation: hero-glow 7s ease-in-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-hero-glow {
+    animation: none;
+    transform: translateX(-50%);
+  }
+}
+
 /* Soft brand pulse ring */
 @keyframes brand-pulse {
   0%,

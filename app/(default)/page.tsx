@@ -1,33 +1,15 @@
-import Comparison from "@/components/modules/Comparison";
-import Faq from "@/components/modules/Faq";
+import FulfillmentReasons from "@/components/modules/FulfillmentReasons/FulfillmentReasons";
 import Hero from "@/components/modules/Hero";
-import LogoMarquee from "@/components/modules/LogoMarquee";
-import PainPoints from "@/components/modules/PainPoints";
-import Pricing from "@/components/modules/Pricing";
-import Process from "@/components/modules/Process";
-import Services from "@/components/modules/Services";
-import PortfolioCarousel from "@/components/modules/PortfolioCarousel/PortfolioCarousel";
-import TextMarquee from "@/components/modules/TextMarquee/TextMarquee";
-import Testimonials from "@/components/modules/Testimonials";
-import BlogSection from "@/components/modules/BlogSection/BlogSection";
-import Newsletter from "@/components/modules/Newsletter/Newsletter";
+import PartnerMarquee from "@/components/modules/PartnerMarquee/PartnerMarquee";
+import SisterBrands from "@/components/modules/SisterBrands/SisterBrands";
 
 export default function HomePage() {
   return (
     <>
       <Hero />
-      <LogoMarquee />
-      <PainPoints />
-      <Services />
-      <Process />
-      <PortfolioCarousel />
-      <TextMarquee />
-      <Testimonials />
-      <Pricing noPaddingBottom />
-      <Comparison />
-      <BlogSection />
-      <Faq />
-      <Newsletter />
+      <PartnerMarquee />
+      <SisterBrands />
+      <FulfillmentReasons />
     </>
   );
 }

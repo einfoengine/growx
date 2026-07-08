@@ -70,7 +70,7 @@ export default function HeroAnimatedContent({
 
   return (
     <motion.div
-      className={isHome ? "mx-auto w-full max-w-2xl" : L.shell}
+      className={isHome ? "mx-auto w-full" : L.shell}
       variants={containerVariants}
       initial="hidden"
       animate="visible"
@@ -154,6 +154,7 @@ export default function HeroAnimatedContent({
                   label={cta.label}
                   href={cta.href}
                   variant={isPrimary ? "primary" : "secondary"}
+                  darkBg={isHome}
                   icon={<ArrowRight size={isPrimary ? 16 : 14} />}
                   className={isPrimary ? "shadow-sm hover:shadow-[0_0_28px_rgba(16,185,129,0.35)]" : ""}
                 />
