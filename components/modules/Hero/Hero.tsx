@@ -72,7 +72,7 @@ export default async function Hero({ data, variant = "home" }: HeroProps = {}) {
       <div className="container-1200 flex w-full flex-col items-center">
         <HeroAnimatedContent data={heroData} variant={variant} />
         <div className="hero-video mt-20 sm:mt-28">
-          <HeroVideo videoId="oGKjh10TbK0" thumbnail="/growX-video-thumbnail.png" />
+          <HeroVideo videoId="oGKjh10TbK0" thumbnail="/assets/hero/hero-thumb.webp" />
         </div>
       </div>
     </section>

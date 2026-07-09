@@ -26,8 +26,12 @@ import pricingData from "@/data/modules/pricing.json";
 import comparisonData from "@/data/modules/comparison.json";
 import growthCalculatorData from "@/data/modules/growth-calculator.json";
 import portfolioData from "@/data/modules/portfolio.json";
+import newsletterData from "@/data/modules/newsletter.json";
+import blogData from "@/data/modules/blog.json";
 import type {
   AboutContent,
+  BlogContent,
+  BlogPost,
   CaseStudy,
   PricingPageContent,
   ProcessPageContent,
@@ -40,6 +44,7 @@ import type {
   HeaderContent,
   HeroContent,
   LogoMarqueeContent,
+  NewsletterContent,
   PageSlug,
   PainPointsContent,
   PortfolioContent,
@@ -125,6 +130,24 @@ export async function getGrowthCalculator(): Promise<GrowthCalculatorContent> {
 
 export async function getPortfolio(): Promise<PortfolioContent> {
   return portfolioData as PortfolioContent;
+}
+
+export async function getNewsletter(): Promise<NewsletterContent> {
+  return newsletterData as NewsletterContent;
+}
+
+export async function getBlog(): Promise<BlogContent> {
+  return blogData as BlogContent;
+}
+
+export const BLOG_POST_SLUGS = (blogData as BlogContent).posts.map((p) => p.slug);
+
+export async function getBlogPosts(): Promise<BlogPost[]> {
+  return (blogData as BlogContent).posts;
+}
+
+export async function getBlogPost(slug: string): Promise<BlogPost | null> {
+  return (blogData as BlogContent).posts.find((p) => p.slug === slug) ?? null;
 }
 
 export const WORK_ITEM_SLUGS = (portfolioData as PortfolioContent).items.map(

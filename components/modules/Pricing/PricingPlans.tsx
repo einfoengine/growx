@@ -35,7 +35,7 @@ const TIERS: Tier[] = [
     cta: { label: "Start Standard", planKey: "standard" },
     featured: true,
     features: [
-      "Everything in Free, plus:",
+      "Everything in Starter, plus:",
       "Dedicated account manager who knows your clients and history",
       "10% partner discount on all services",
       "Priority queue and 2-hour first response",
@@ -67,12 +67,12 @@ export default function PricingPlans() {
     <section
       id="gw-mod-pricing"
       aria-labelledby="pricing-headline"
-      className="relative isolate overflow-hidden border-b border-border bg-background py-16 text-foreground sm:py-20 lg:py-24"
+      className="relative isolate overflow-hidden border-b border-border bg-background py-14 text-foreground sm:py-16 lg:py-20"
     >
       {/* Faint grid + soft brand glow backdrop. */}
       <div
         aria-hidden="true"
-        className="pointer-events-none absolute inset-0 -z-10 bg-[linear-gradient(to_right,rgba(10,10,10,0.04)_1px,transparent_1px),linear-gradient(to_bottom,rgba(10,10,10,0.04)_1px,transparent_1px)] bg-size-[48px_48px] mask-[radial-gradient(ellipse_80%_60%_at_50%_20%,#000,transparent_80%)]"
+        className="pointer-events-none absolute inset-0 -z-10 bg-[linear-gradient(to_right,rgba(10,10,10,0.04)_1px,transparent_1px),linear-gradient(to_bottom,rgba(10,10,10,0.04)_1px,transparent_1px)] bg-size-[48px_48px] mask-[radial-gradient(ellipse_80%_55%_at_50%_15%,#000,transparent_80%)]"
       />
       <div
         aria-hidden="true"
@@ -95,104 +95,111 @@ export default function PricingPlans() {
           </p>
         </div>
 
-        {/* Tiers */}
-        <div className="mx-auto mt-10 grid max-w-7xl items-stretch gap-6 lg:mt-12 lg:grid-cols-3">
+        {/* Compact plan cards */}
+        <div className="mx-auto mt-10 grid max-w-6xl items-stretch gap-6 lg:grid-cols-3">
           {TIERS.map((tier) => {
             const featured = !!tier.featured;
             return (
               <div
                 key={tier.name}
-                className={`relative flex h-full flex-col border ${
+                className={`relative isolate flex h-full flex-col overflow-hidden border p-7 ${
                   featured
                     ? "border-foreground bg-foreground text-background shadow-[0_20px_60px_rgba(10,10,10,0.25)]"
-                    : "border-border bg-surface shadow-sm"
+                    : "border-border bg-background shadow-sm"
                 }`}
               >
+                {/* Brand aurora behind the featured header. */}
                 {featured && (
-                  <span className="absolute -top-3 left-1/2 z-10 -translate-x-1/2 bg-brand px-4 py-1.5 text-xs font-bold uppercase tracking-wide text-black">
-                    Most Popular
-                  </span>
+                  <div
+                    aria-hidden="true"
+                    className="pointer-events-none absolute inset-x-0 top-0 -z-10 h-48 bg-[radial-gradient(120%_90%_at_50%_-10%,rgba(16,185,129,0.45),transparent_62%)]"
+                  />
                 )}
 
-                {/* Header — inner box that contrasts its parent card. */}
-                <div
-                  className={`p-7 ${
-                    featured
-                      ? "bg-background text-foreground"
-                      : "bg-foreground text-background"
-                  }`}
-                >
-                  <div className="flex flex-wrap items-center gap-3">
-                    <h3 className="text-2xl font-bold tracking-tight">{tier.name}</h3>
+                {/* Name + tier pill, with a Popular tag on the featured plan. */}
+                <div className="flex items-center justify-between gap-3">
+                  <div className="flex items-center gap-2.5">
+                    <h3 className="text-xl font-bold tracking-tight">{tier.name}</h3>
                     <span className="badge-brand">{tier.pill}</span>
                   </div>
-                  <p
-                    className={`mt-4 text-sm sm:text-base ${
-                      featured ? "text-muted" : "text-white/60"
-                    }`}
-                  >
-                    {tier.tagline}
-                  </p>
-                  <div className="mt-6 flex items-baseline gap-1.5">
-                    <span className="text-4xl font-bold tracking-tight sm:text-5xl">
-                      {tier.price}
+                  {featured && (
+                    <span className="shrink-0 bg-brand px-2.5 py-1 text-[11px] font-bold uppercase tracking-wide text-black">
+                      Popular
                     </span>
-                    <span
-                      className={featured ? "text-sm text-muted" : "text-sm text-white/50"}
-                    >
-                      /month
-                    </span>
+                  )}
+                </div>
+
+                <p className={`mt-2.5 text-sm ${featured ? "text-white/60" : "text-muted"}`}>
+                  {tier.tagline}
+                </p>
+
+                <div className="mt-6 flex items-end gap-3">
+                  <span className="text-5xl font-bold leading-none tracking-tight">
+                    {tier.price}
+                  </span>
+                  <div className="pb-1 text-sm leading-snug">
+                    <div className={featured ? "text-white/70" : "text-foreground/70"}>
+                      per month
+                    </div>
+                    <div className={featured ? "text-white/45" : "text-muted"}>
+                      {tier.price === "$0" ? "free forever" : "billed monthly"}
+                    </div>
                   </div>
                 </div>
 
-                {/* Features + CTA pinned to the end. */}
-                <div className="flex flex-1 flex-col p-7">
-                  <ul className="space-y-3">
-                    {tier.features.map((feature, i) => {
-                      const isLead = i === 0 && feature.startsWith("Everything");
-                      const leadColor = featured ? "text-background" : "text-foreground";
-                      const bodyColor = featured
-                        ? "text-background/80"
-                        : "text-foreground/80";
-                      return (
-                        <li key={i} className="flex items-start gap-3">
-                          <Check
-                            size={18}
-                            strokeWidth={3}
-                            className="mt-0.5 shrink-0 text-brand"
-                          />
-                          <span
-                            className={`text-sm ${
-                              isLead ? `font-semibold ${leadColor}` : bodyColor
-                            }`}
-                          >
-                            {feature}
-                          </span>
-                        </li>
-                      );
-                    })}
-                  </ul>
-                  <div className="mt-auto pt-8">
-                    <PlanButton
-                      label={tier.cta.label}
-                      planKey={tier.cta.planKey}
-                      href={tier.cta.href}
-                      className={`btn w-full ${featured ? "btn-brand" : "btn-secondary"}`}
-                    />
-                  </div>
+                {/* Feature list */}
+                <ul
+                  className={`mt-7 space-y-3 border-t pt-7 ${
+                    featured ? "border-white/15" : "border-border"
+                  }`}
+                >
+                  {tier.features.map((feature, i) => {
+                    const isLead = i === 0 && feature.startsWith("Everything");
+                    const leadColor = featured ? "text-background" : "text-foreground";
+                    const bodyColor = featured
+                      ? "text-background/80"
+                      : "text-foreground/80";
+                    return (
+                      <li key={i} className="flex items-start gap-3">
+                        <Check
+                          size={18}
+                          strokeWidth={3}
+                          className="mt-0.5 shrink-0 text-brand"
+                        />
+                        <span
+                          className={`text-sm ${
+                            isLead ? `font-semibold ${leadColor}` : bodyColor
+                          }`}
+                        >
+                          {feature}
+                        </span>
+                      </li>
+                    );
+                  })}
+                </ul>
+
+                <div className="mt-auto pt-8">
+                  <PlanButton
+                    label={tier.cta.label}
+                    planKey={tier.cta.planKey}
+                    href={tier.cta.href}
+                    className={`btn w-full ${featured ? "btn-brand" : "btn-secondary"}`}
+                  />
+                  <a
+                    href="#book"
+                    className={`mt-4 block text-center text-sm transition-colors ${
+                      featured
+                        ? "text-white/50 hover:text-white"
+                        : "text-muted hover:text-foreground"
+                    }`}
+                  >
+                    Need higher limits?
+                  </a>
                 </div>
               </div>
             );
           })}
         </div>
-
-        <p className="mx-auto mt-10 max-w-2xl text-center text-sm text-muted">
-          Not sure which fits?{" "}
-          <a href="#book" className="font-semibold text-brand transition-colors hover:text-brand-strong">
-            Book a call
-          </a>{" "}
-          and we&apos;ll help you choose.
-        </p>
       </div>
     </section>
   );

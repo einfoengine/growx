@@ -134,6 +134,23 @@ export type CtaBannerContent = {
   ctas: CTA[];
 };
 
+export type NewsletterContent = {
+  id: string;
+  eyebrow: string;
+  headline: { parts: HeadlinePart[] };
+  sub: string;
+  /** Email input placeholder. */
+  placeholder: string;
+  /** Submit button label. */
+  cta: string;
+  /** Fine-print reassurance shown under the form. */
+  disclaimer: string;
+  /** Optional line of social proof (e.g. subscriber count). */
+  socialProof?: string;
+  /** Short benefit chips shown beneath the form. */
+  perks?: string[];
+};
+
 export type PainIcon =
   | "triangle-alert"
   | "user-x"
@@ -524,4 +541,48 @@ export type ProcessPageContent = {
     promises: ProcessPromise[];
   };
   faq: ProcessFaqItem[];
+};
+
+/** A single rendered block within a blog article body. */
+export type BlogBlock =
+  | { type: "heading"; text: string }
+  | { type: "paragraph"; text: string }
+  | { type: "list"; items: string[] }
+  | { type: "quote"; text: string; cite?: string };
+
+export type BlogAuthor = {
+  name: string;
+  role: string;
+  initials: string;
+};
+
+export type BlogPost = {
+  id: string;
+  slug: string;
+  title: string;
+  category: string;
+  /** One-sentence hook shown on cards and the index. */
+  excerpt: string;
+  /** Standfirst/subtitle shown under the title on the article page. */
+  deck: string;
+  /** ISO date (YYYY-MM-DD). */
+  date: string;
+  readMinutes: number;
+  author: BlogAuthor;
+  /** Cover image path under /public. */
+  cover: string;
+  coverAlt: string;
+  tags: string[];
+  keyTakeaways: string[];
+  /** Pins the post to the large slot in the homepage section + index. */
+  featured?: boolean;
+  body: BlogBlock[];
+};
+
+export type BlogContent = {
+  id: string;
+  eyebrow: string;
+  headline: { parts: HeadlinePart[] };
+  sub: string;
+  posts: BlogPost[];
 };

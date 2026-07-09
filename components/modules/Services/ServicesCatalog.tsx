@@ -1,91 +1,11 @@
 "use client";
 
-import { useEffect, useRef, useState, type ComponentType } from "react";
+import { useEffect, useRef, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import {
-  Clapperboard,
-  Code,
-  Film,
-  Funnel,
-  Globe,
-  Headset,
-  MessageSquare,
-  PenTool,
-  Search,
-  Settings2,
-  Share2,
-  Sparkles,
-  Target,
-  Terminal,
-  TrendingUp,
-  UserPlus,
-  Video,
-} from "lucide-react";
+import { ArrowUpRight, Check } from "lucide-react";
 import BinaryShower from "./BinaryShower";
-
-type IconProps = { size?: number; className?: string };
-
-type Service = {
-  n: string;
-  title: string;
-  desc: string;
-  Icon: ComponentType<IconProps>;
-  /** Optional real image; falls back to the icon tile when absent. */
-  image?: string;
-};
-
-type Group = { label: string; Icon: ComponentType<IconProps>; services: Service[] };
-
-const GROUPS: Group[] = [
-  {
-    label: "Web & Funnels",
-    Icon: Globe,
-    services: [
-      { n: "S01", title: "Website Design & Development", desc: "Full sites, redesigns, landing pages", Icon: Code },
-      { n: "S02", title: "Funnel Building", desc: "High-converting funnels and automations", Icon: Funnel },
-    ],
-  },
-  {
-    label: "Traffic & Visibility",
-    Icon: TrendingUp,
-    services: [
-      { n: "S03", title: "SEO & AEO", desc: "Search and answer-engine optimization", Icon: Search },
-      { n: "S04", title: "Media Buying & PPC", desc: "Meta, Google, paid acquisition", Icon: Target },
-    ],
-  },
-  {
-    label: "Content & Social",
-    Icon: MessageSquare,
-    services: [
-      { n: "S05", title: "Content & Copywriting", desc: "Web copy, blogs, email, ads", Icon: PenTool },
-      { n: "S06", title: "Social Media Management", desc: "Full-channel posting and engagement", Icon: Share2 },
-    ],
-  },
-  {
-    label: "Video",
-    Icon: Video,
-    services: [
-      { n: "S07", title: "Animated Video Production", desc: "Explainers, demos, promos", Icon: Clapperboard },
-      { n: "S08", title: "Video Editing", desc: "Long-form and short-form editing", Icon: Film },
-    ],
-  },
-  {
-    label: "HighLevel Operations",
-    Icon: Settings2,
-    services: [
-      { n: "S09", title: "HighLevel Client Onboarding", desc: "Done-for-you client setup", Icon: UserPlus },
-      { n: "S10", title: "HighLevel Admin Support", desc: "Ongoing platform administration", Icon: Headset },
-      { n: "S11", title: "Custom HighLevel Development", desc: "Custom builds and integrations", Icon: Terminal },
-    ],
-  },
-  {
-    label: "And Beyond",
-    Icon: Sparkles,
-    services: [
-      { n: "S12", title: "Expanding Catalog", desc: "Everything an agency needs to serve their clients, added on demand", Icon: Sparkles },
-    ],
-  },
-];
+import ServiceDetailModal from "./ServiceDetailModal";
+import { GROUPS, type Service } from "./servicesData";
 
 const NAV_H = 64; // sticky header height (h-16)
 const STEP_VH = 60; // scroll distance allotted per group while pinned
@@ -93,7 +13,10 @@ const STEP_VH = 60; // scroll distance allotted per group while pinned
 export default function ServicesCatalog() {
   const [active, setActive] = useState(0);
   const [isDesktop, setIsDesktop] = useState(false);
+  const [detailService, setDetailService] = useState<Service | null>(null);
   const pinRef = useRef<HTMLDivElement>(null);
+  // The element that opened the modal, so focus can return to it on close.
+  const triggerRef = useRef<HTMLElement | null>(null);
   const group = GROUPS[active];
 
   // Enable the scroll-jack only on large screens.
@@ -143,6 +66,17 @@ export default function ServicesCatalog() {
     window.scrollTo({ top: topPage - NAV_H + targetP * travel, behavior: "smooth" });
   };
 
+  const openService = (service: Service) => {
+    triggerRef.current = document.activeElement as HTMLElement | null;
+    setDetailService(service);
+  };
+  const closeDetail = () => {
+    setDetailService(null);
+    triggerRef.current?.focus();
+  };
+  // Booking: BookingModal owns the scroll lock from here, so don't restore focus.
+  const handleBook = () => setDetailService(null);
+
   const header = (
     <div className="mx-auto max-w-3xl text-center">
       <p className="eyebrow text-brand">[ Full-stack catalog ]</p>
@@ -189,6 +123,10 @@ export default function ServicesCatalog() {
     </div>
   );
 
+  // Cards are portrait (4:5) so the full image reads as the card background —
+  // subject up top, the image's clean lower area reserved for the overlaid
+  // copy. `flex-1 basis-0` shares the row width; `max-w-[400px]` keeps every
+  // card a sane size that fits the pinned stage on shorter screens too.
   const cards = (
     <AnimatePresence mode="wait">
       <motion.ul
@@ -197,34 +135,85 @@ export default function ServicesCatalog() {
         animate={{ opacity: 1, y: 0 }}
         exit={{ opacity: 0, y: -8 }}
         transition={{ duration: 0.3, ease: "easeOut" }}
-        className="flex flex-wrap justify-center gap-5"
+        className="mx-auto flex w-full flex-col items-center gap-4 sm:flex-row sm:items-center sm:justify-center sm:gap-5"
       >
-        {group.services.map((service) => (
-          <li key={service.n} className="w-full sm:w-80 lg:w-96">
-            <article className="card-surface group h-full overflow-hidden transition-transform duration-300 hover:-translate-y-1">
-              <div className="relative aspect-video overflow-hidden bg-linear-to-br from-brand/15 to-brand-strong/10">
+        {group.services.map((service) => {
+          const extra = service.checklist.length - 3;
+          return (
+            <li
+              key={service.n}
+              className="aspect-[7/9] w-full max-w-sm sm:w-auto sm:max-w-108 sm:flex-1 sm:basis-0"
+            >
+              <article className="group relative h-full w-full overflow-hidden rounded-2xl border border-border bg-surface transition-transform duration-300 hover:-translate-y-1">
+                {/* Full-bleed image acts as the card background. */}
                 {service.image ? (
                   // eslint-disable-next-line @next/next/no-img-element
                   <img
                     src={service.image}
                     alt=""
-                    className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
+                    className="absolute inset-0 h-full w-full object-cover transition-transform duration-500 group-hover:scale-[1.03]"
                   />
                 ) : (
-                  <service.Icon
-                    size={40}
-                    className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 text-brand transition-transform duration-500 group-hover:scale-110"
-                  />
+                  <div className="absolute inset-0 flex items-center justify-center bg-linear-to-br from-brand/15 to-brand-strong/10">
+                    <service.Icon size={48} className="text-brand" />
+                  </div>
                 )}
-              </div>
-              <div className="p-6 text-center">
-                <span className="font-mono text-xs font-bold text-brand">{service.n}</span>
-                <h3 className="mt-2 text-lg font-semibold tracking-tight">{service.title}</h3>
-                <p className="mt-1.5 text-sm text-muted">{service.desc}</p>
-              </div>
-            </article>
-          </li>
-        ))}
+
+                {/* Legibility scrim fading to the background over the lower area. */}
+                <div
+                  aria-hidden="true"
+                  className="absolute inset-x-0 bottom-0 h-2/3 bg-linear-to-t from-background from-25% via-background/85 to-transparent"
+                />
+
+                {/* Copy sits over the clean lower part of the image. */}
+                <div className="absolute inset-x-0 bottom-0 flex flex-col p-5 text-left">
+                  <span className="font-mono text-[11px] font-bold text-brand">{service.n}</span>
+
+                  <div className="mt-1 flex items-start justify-between gap-2">
+                    <h3 className="min-w-0 text-base font-semibold leading-snug tracking-tight text-foreground lg:text-[17px]">
+                      {service.title}
+                    </h3>
+                    <button
+                      type="button"
+                      onClick={() => openService(service)}
+                      aria-label={`View details for ${service.title}`}
+                      className="grid h-8 w-8 shrink-0 place-items-center rounded-lg border border-border bg-background/70 text-muted backdrop-blur transition-colors hover:border-brand hover:bg-brand/10 hover:text-brand focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand"
+                    >
+                      <ArrowUpRight
+                        size={16}
+                        className="transition-transform duration-200 group-hover:-translate-y-0.5"
+                        aria-hidden="true"
+                      />
+                    </button>
+                  </div>
+
+                  <p className="mt-1.5 line-clamp-2 text-xs leading-snug text-muted">
+                    {service.desc}
+                  </p>
+
+                  <ul className="mt-3 space-y-1.5">
+                    {service.checklist.slice(0, 3).map((item) => (
+                      <li key={item} className="flex items-start gap-2 text-[13px] leading-snug">
+                        <Check size={14} className="mt-0.5 shrink-0 text-brand" aria-hidden="true" />
+                        <span className="text-foreground/80">{item}</span>
+                      </li>
+                    ))}
+                  </ul>
+
+                  {extra > 0 && (
+                    <button
+                      type="button"
+                      onClick={() => openService(service)}
+                      className="mt-2 self-start rounded text-xs font-medium text-brand transition-colors hover:text-brand-strong focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand"
+                    >
+                      +{extra} more
+                    </button>
+                  )}
+                </div>
+              </article>
+            </li>
+          );
+        })}
       </motion.ul>
     </AnimatePresence>
   );
@@ -253,10 +242,11 @@ export default function ServicesCatalog() {
               <div className="relative z-10 bg-background/90 pt-4 backdrop-blur">
                 {tabs}
               </div>
-              {/* Cards fill the space below, centered, with the shower behind. */}
-              <div className="relative flex flex-1 items-center justify-center px-6">
+              {/* Cards sit in the shared container (aligned to the nav), with
+                  the shower spanning full-width behind. */}
+              <div className="relative flex flex-1 items-center">
                 <BinaryShower className="-z-10 opacity-60 mask-[radial-gradient(ellipse_75%_70%_at_50%_45%,#000,transparent_85%)]" />
-                {cards}
+                <div className="container-1200">{cards}</div>
               </div>
             </div>
           </div>
@@ -272,6 +262,12 @@ export default function ServicesCatalog() {
           <div className="mt-8">{cards}</div>
         </div>
       )}
+
+      <ServiceDetailModal
+        service={detailService}
+        onClose={closeDetail}
+        onBook={handleBook}
+      />
     </section>
   );
 }

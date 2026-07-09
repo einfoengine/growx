@@ -1,0 +1,17 @@
+{
+  "id": "mod-newsletter",
+  "eyebrow": "The growX letter",
+  "headline": {
+    "parts": [
+      { "type": "text", "value": "Growth playbooks, straight to your " },
+      { "type": "highlight", "value": "inbox" },
+      { "type": "text", "value": "." }
+    ]
+  },
+  "sub": "One email a week on scaling your agency without scaling your team — white-label systems, fulfillment tactics, and the offers that actually close.",
+  "placeholder": "you@agency.com",
+  "cta": "Subscribe",
+  "disclaimer": "No spam, ever. Unsubscribe in one click.",
+  "socialProof": "Join 4,000+ agency owners already reading.",
+  "perks": ["Weekly, not daily", "Actionable tactics", "Zero fluff"]
+}
