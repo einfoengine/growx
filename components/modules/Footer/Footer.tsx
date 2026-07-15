@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { ArrowUpRight, Mail } from "lucide-react";
 import Logo from "@/components/elements/Logo";
 import MouseGlow from "@/components/elements/MouseGlow";
 import CtaBanner from "@/components/modules/CtaBanner";
@@ -79,41 +80,58 @@ export default async function Footer() {
   return (
     <footer
       id={data.id}
-      className="mt-auto w-full bg-(--footer-bg) text-(--footer-fg) relative overflow-hidden"
+      // `overflow-clip` (not `hidden`) still clips the glow bleed but doesn't
+      // create a scroll container, which would break the sticky watermark below.
+      className="mt-auto w-full bg-(--footer-bg) text-(--footer-fg) relative overflow-clip"
     >
       <CtaBanner />
       <MouseGlow />
       <div
-        className="pointer-events-none absolute inset-0 z-0 bg-[linear-gradient(to_right,rgba(255,255,255,0.03)_1px,transparent_1px),linear-gradient(to_bottom,rgba(255,255,255,0.03)_1px,transparent_1px)] bg-[size:48px_48px]"
+        className="pointer-events-none absolute inset-0 z-0 bg-[linear-gradient(to_right,rgba(255,255,255,0.03)_1px,transparent_1px),linear-gradient(to_bottom,rgba(255,255,255,0.03)_1px,transparent_1px)] bg-size-[48px_48px]"
       />
       {/* Brand glow */}
       <div
         aria-hidden="true"
         className="pointer-events-none absolute -top-24 left-1/3 z-0 h-72 w-72 -translate-x-1/2 rounded-full bg-brand/10 blur-[130px]"
       />
-      {/* Giant brand watermark bleeding off the bottom */}
-      <div
-        aria-hidden="true"
-        className="pointer-events-none absolute inset-x-0 bottom-0 z-0 flex justify-center overflow-hidden"
-      >
-        <span
-          className="translate-y-[30%] select-none whitespace-nowrap text-[16vw] font-bold leading-none tracking-tighter text-white/[0.035]"
-          style={{ fontFamily: "var(--font-heading)" }}
-        >
-          {site.name}
-        </span>
-      </div>
-      <div className="container-1200 py-16 relative z-10">
+      {/* CtaBanner ends in ~128px of its own padding and this block opens with
+          64px more, on an identical near-black background — without a rule the
+          two zones read as one dead void. The divider matches the one under the
+          nav grid below. */}
+      <div className="container-1200 relative z-10 border-t border-white/10 pt-16 pb-10">
+        {/* Glass panel: the semi-transparent fill + backdrop blur read against
+            the grid, glow, and the sticky watermark sliding underneath. */}
         <div
           id={`${data.id}-top`}
-          className="grid gap-10 lg:grid-cols-12 lg:gap-12 pb-12 border-b border-white/10"
+          className="grid gap-10 rounded-2xl border border-white/10 bg-white/4 p-8 backdrop-blur-md sm:p-10 lg:grid-cols-12 lg:gap-12"
         >
           <div id={`${data.id}-brand`} className="lg:col-span-4">
             <Logo id="el-logo-footer" tone="light" width={150} />
             <p className="mt-5 max-w-xs text-sm leading-relaxed text-(--footer-muted)">
               {data.brandBlurb}
             </p>
-            <span className="mt-6 inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-3 py-1.5 text-xs font-medium text-(--footer-fg)">
+
+            {/* Email is the one contact channel that actually reaches a human
+                today, so it gets its own line rather than sitting third in a
+                link column at the same weight as a nav item. */}
+            <a
+              id={`${data.id}-email`}
+              href={`mailto:${site.email}`}
+              className="group mt-6 inline-flex items-center gap-2.5 text-base font-semibold text-white transition-colors hover:text-brand focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-brand sm:text-lg"
+            >
+              <Mail size={18} className="shrink-0 text-brand" aria-hidden="true" />
+              {site.email}
+              <ArrowUpRight
+                size={16}
+                aria-hidden="true"
+                className="shrink-0 text-(--footer-muted) transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-brand"
+              />
+            </a>
+            <p className="mt-2 text-xs text-(--footer-muted)">
+              We reply within one business day.
+            </p>
+
+            <span className="mt-6 flex w-fit items-center gap-2 rounded-full border border-white/10 bg-white/5 px-3 py-1.5 text-xs font-medium text-(--footer-fg)">
               <span aria-hidden="true" className="relative flex h-2 w-2">
                 <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-brand opacity-70" />
                 <span className="relative inline-flex h-2 w-2 rounded-full bg-brand" />
@@ -132,13 +150,15 @@ export default async function Footer() {
                 <h3 className="text-xs font-semibold uppercase tracking-wider text-white">
                   {col.title}
                 </h3>
-                <ul className="mt-4 space-y-3">
+                {/* py on the link (not the li) grows the tap target to ~28px
+                    without the looser rhythm that padding the row would give. */}
+                <ul className="mt-3 space-y-1">
                   {col.links.map((link) => (
                     <li key={link.id}>
                       <Link
                         id={link.id}
                         href={link.href}
-                        className="text-sm text-(--footer-muted) hover:text-white transition-colors"
+                        className="inline-block py-1 text-sm text-(--footer-muted) transition-colors hover:text-white focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand"
                       >
                         {link.label}
                       </Link>
@@ -184,8 +204,8 @@ export default async function Footer() {
                     href={s.href}
                     target="_blank"
                     rel="noopener noreferrer"
-                    aria-label={s.label}
-                    className="inline-flex h-9 w-9 items-center justify-center rounded-full border border-white/10 text-(--footer-muted) transition-all hover:-translate-y-0.5 hover:border-brand/40 hover:bg-brand/10 hover:text-brand"
+                    aria-label={`${s.label} (opens in a new tab)`}
+                    className="inline-flex h-11 w-11 items-center justify-center rounded-full border border-white/10 text-(--footer-muted) transition-all hover:-translate-y-0.5 hover:border-brand/40 hover:bg-brand/10 hover:text-brand focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand"
                   >
                     <Glyph className="h-4 w-4" />
                   </a>
@@ -194,6 +214,25 @@ export default async function Footer() {
             </div>
           </div>
         </div>
+      </div>
+
+      {/* Giant brand watermark. Sticky (not absolute): it pins to the viewport
+          bottom the moment the footer scrolls into view, so the rest of the
+          footer slides up over it — settling into place at the very end. Sits
+          at z-0 under the z-10 content; the footer's `overflow-clip` keeps
+          sticky working where `overflow-hidden` would kill it. */}
+      {/* h caps the strip at the visible crop (text is 16vw tall, bottom
+          bleeds off), so the strip adds no blank space above the wordmark. */}
+      <div
+        aria-hidden="true"
+        className="pointer-events-none sticky bottom-0 z-0 -mt-2 flex h-[11vw] items-start justify-center overflow-hidden"
+      >
+        <span
+          className="select-none whitespace-nowrap text-[16vw] font-bold leading-none tracking-tighter text-white/[0.035]"
+          style={{ fontFamily: "var(--font-heading)" }}
+        >
+          {site.name}
+        </span>
       </div>
     </footer>
   );

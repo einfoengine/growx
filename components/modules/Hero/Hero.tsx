@@ -1,6 +1,7 @@
 import HeroAnimatedContent from "@/components/modules/Hero/HeroAnimatedContent";
 import HeroDots from "@/components/modules/Hero/HeroDots";
 import HeroVideo from "@/components/modules/Hero/HeroVideo";
+import HeroVideoPerspective from "@/components/modules/Hero/HeroVideoPerspective";
 import type { HeroVariant } from "@/components/modules/Hero/hero-variants";
 import MouseGlow from "@/components/elements/MouseGlow";
 import { getHero } from "@/lib/content";
@@ -71,9 +72,9 @@ export default async function Hero({ data, variant = "home" }: HeroProps = {}) {
 
       <div className="container-1200 flex w-full flex-col items-center">
         <HeroAnimatedContent data={heroData} variant={variant} />
-        <div className="hero-video mt-20 sm:mt-28">
-          <HeroVideo videoId="oGKjh10TbK0" thumbnail="/assets/hero/hero-thumb.webp" />
-        </div>
+        <HeroVideoPerspective className="mt-20 w-full sm:mt-28">
+          <HeroVideo videoId="oGKjh10TbK0" thumbnail="/assets/hero/hero-thumb-connect.webp" />
+        </HeroVideoPerspective>
       </div>
     </section>
   );

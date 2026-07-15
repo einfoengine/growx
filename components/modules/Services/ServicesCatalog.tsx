@@ -3,7 +3,7 @@
 import { useEffect, useRef, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { ArrowUpRight, Check } from "lucide-react";
-import BinaryShower from "./BinaryShower";
+import MagneticTiltCard from "./MagneticTiltCard";
 import ServiceDetailModal from "./ServiceDetailModal";
 import { GROUPS, type Service } from "./servicesData";
 import { useActiveWhenVisible } from "@/lib/hooks/useActiveWhenVisible";
@@ -20,7 +20,11 @@ export default function ServicesCatalog() {
   // The element that opened the modal, so focus can return to it on close.
   const triggerRef = useRef<HTMLElement | null>(null);
   const group = GROUPS[active];
-  const trackActive = useActiveWhenVisible(pinRef);
+  // `enabled` must track isDesktop, not just gate on it: the pin track is only
+  // rendered on desktop, so on the first pass pinRef.current is null and there
+  // is nothing to observe. Threading isDesktop through `enabled` re-runs the
+  // observer effect once the track actually mounts.
+  const trackActive = useActiveWhenVisible(pinRef, { enabled: isDesktop });
 
   // Enable the scroll-jack only on large screens.
   useEffect(() => {
@@ -37,7 +41,8 @@ export default function ServicesCatalog() {
   // synchronous layout, so the loop is parked whenever the track is off-screen
   // or the tab is hidden — otherwise it thrashes layout for the whole page.
   useEffect(() => {
-    if (!isDesktop || !trackActive) return;
+    // trackActive already ANDs in isDesktop via `enabled`.
+    if (!trackActive) return;
 
     let raf = 0;
     const loop = () => {
@@ -55,7 +60,7 @@ export default function ServicesCatalog() {
     };
     raf = requestAnimationFrame(loop);
     return () => cancelAnimationFrame(raf);
-  }, [isDesktop, trackActive]);
+  }, [trackActive]);
 
   // Tab click: on desktop, scroll to that group's slice of the pin track.
   const select = (idx: number) => {
@@ -155,7 +160,8 @@ export default function ServicesCatalog() {
               key={service.n}
               className="aspect-[7/9] w-full max-w-sm sm:w-auto sm:max-w-108 sm:flex-1 sm:basis-0"
             >
-              <article className="group relative h-full w-full overflow-hidden rounded-2xl border border-border bg-surface transition-transform duration-300 hover:-translate-y-1">
+              <MagneticTiltCard className="h-full w-full">
+              <article className="group relative h-full w-full overflow-hidden rounded-2xl border border-border bg-surface">
                 {/* Full-bleed image acts as the card background. */}
                 {service.image ? (
                   // eslint-disable-next-line @next/next/no-img-element
@@ -222,6 +228,7 @@ export default function ServicesCatalog() {
                   )}
                 </div>
               </article>
+              </MagneticTiltCard>
             </li>
           );
         })}
@@ -256,7 +263,10 @@ export default function ServicesCatalog() {
               {/* Cards sit in the shared container (aligned to the nav), with
                   the shower spanning full-width behind. */}
               <div className="relative flex flex-1 items-center">
-                <BinaryShower className="-z-10 opacity-60 mask-[radial-gradient(ellipse_75%_70%_at_50%_45%,#000,transparent_85%)]" />
+                <div
+                  aria-hidden="true"
+                  className="pointer-events-none absolute inset-0 -z-10 bg-[linear-gradient(to_right,rgba(10,10,10,0.05)_1px,transparent_1px),linear-gradient(to_bottom,rgba(10,10,10,0.05)_1px,transparent_1px)] bg-size-[48px_48px] mask-[radial-gradient(ellipse_75%_70%_at_50%_45%,#000,transparent_85%)]"
+                />
                 <div className="container-1200">{cards}</div>
               </div>
             </div>
@@ -265,7 +275,10 @@ export default function ServicesCatalog() {
       ) : (
         // Mobile: normal flow with sticky tabs, click to switch.
         <div className="relative w-full px-6 py-24 sm:px-8 sm:py-28">
-          <BinaryShower className="-z-10 opacity-60 mask-[radial-gradient(ellipse_75%_65%_at_50%_40%,#000,transparent_85%)]" />
+          <div
+            aria-hidden="true"
+            className="pointer-events-none absolute inset-0 -z-10 bg-[linear-gradient(to_right,rgba(10,10,10,0.05)_1px,transparent_1px),linear-gradient(to_bottom,rgba(10,10,10,0.05)_1px,transparent_1px)] bg-size-[48px_48px] mask-[radial-gradient(ellipse_75%_65%_at_50%_40%,#000,transparent_85%)]"
+          />
           {header}
           <div className="sticky z-40 mt-12 -mx-6 bg-background/90 pt-3 backdrop-blur sm:-mx-8" style={{ top: NAV_H }}>
             {tabs}

@@ -1,4 +1,3 @@
-import { Check } from "lucide-react";
 import ScrollFadeIn from "@/components/elements/ScrollFadeIn";
 
 /** Benefits of becoming a growX partner, scrolled as an infinite marquee. */
@@ -29,11 +28,11 @@ export default function PartnerMarquee() {
             <div key={copy} className="flex shrink-0 items-center" aria-hidden={copy === 1}>
               {BENEFITS.map((benefit, i) => (
                 <div key={`${copy}-${i}`} className="flex items-center">
-                  <Check size={18} strokeWidth={3} className="shrink-0 text-brand" />
-                  <span className="mx-3 whitespace-nowrap text-sm font-bold uppercase tracking-widest text-foreground/70 sm:text-base">
+                  <span className="mx-6 whitespace-nowrap text-sm font-bold uppercase tracking-widest text-foreground/70 sm:mx-8 sm:text-base">
                     {benefit}
                   </span>
-                  <span className="mr-3 font-black text-brand/50">✦</span>
+                  {/* Divider rule between items. */}
+                  <span aria-hidden="true" className="h-5 w-px shrink-0 bg-border sm:h-6" />
                 </div>
               ))}
             </div>

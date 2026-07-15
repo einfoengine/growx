@@ -52,8 +52,11 @@
   /* ---- Hero (home) ------------------------------------------------------- */
   /* Section-specific scale for the home hero. These are the dials — tweak the
      sizes here rather than in the markup. */
+  /* A real eyebrow: small, wide-tracked, uppercase. At the old text-lg/xl bold it
+     read as a second tagline and flattened the hierarchy against .hero-tagline,
+     which is the same size. Keep it quiet so the headline carries the section. */
   .hero-eyebrow {
-    @apply font-label text-lg font-bold tracking-tight text-background/70 sm:text-xl;
+    @apply font-label text-xs font-semibold uppercase tracking-[0.18em] text-background/60 sm:text-sm;
   }
   .hero-headline {
     @apply font-extrabold tracking-tight text-background;
@@ -66,13 +69,25 @@
   .hero-sub {
     @apply text-base text-white/70 sm:text-lg;
   }
-  .hero-point {
-    @apply text-base font-medium text-background/85;
+  /* Proof chip under the hero CTA. */
+  .hero-stat {
+    @apply inline-flex w-full items-center justify-center gap-2 border border-white/10 bg-white/5 px-3 py-2.5 text-center text-xs font-medium text-background/85 backdrop-blur-sm sm:text-sm;
   }
-  /* Video frame — full container width, wrapped in a soft whitish-green stroke. */
+  /* Same chip on a light hero (inner variant). */
+  .hero-stat-light {
+    @apply border-border bg-surface text-foreground/80;
+  }
+  /* Video frame — full container width, wrapped in a soft whitish-green stroke.
+     The stroke scales down on small screens: at a fixed 20px it ate ~16% of a
+     320px viewport's usable width. */
   .hero-video {
     width: 100%;
-    border: 20px solid rgba(209, 250, 229, 0.12);
+    border: 8px solid rgba(209, 250, 229, 0.12);
+  }
+  @media (min-width: 640px) {
+    .hero-video {
+      border-width: 20px;
+    }
   }
 
   /* ---- Buttons ----------------------------------------------------------- */

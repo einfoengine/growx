@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { motion } from "framer-motion";
 import { ArrowRight, Check } from "lucide-react";
 import Typewriter from "@/components/elements/Typewriter";
@@ -48,7 +49,7 @@ const ctaVariants = {
   },
 };
 
-const pointVariants = {
+const statVariants = {
   hidden: { opacity: 0, y: 16 },
   visible: {
     opacity: 1,
@@ -66,7 +67,7 @@ export default function HeroAnimatedContent({
 }: HeroAnimatedContentProps) {
   const L = HERO_LAYOUT[variant];
   const isHome = variant === "home";
-  const hasPoints = isHome && !!data.points && data.points.length > 0;
+  const hasStats = data.stats.length > 0;
 
   return (
     <motion.div
@@ -76,20 +77,28 @@ export default function HeroAnimatedContent({
       animate="visible"
     >
       <div className={isHome ? "text-center" : "mx-auto text-center"}>
+        {/* The cycled words are the three partnership tiers by name (The Vendor /
+            The Team Member / The Department), so the eyebrow links to them —
+            `eyebrow.href` had been carried in the data but never wired up. */}
         <motion.p
           id={`${data.id}-eyebrow`}
           className={
             isHome
               ? "hero-eyebrow"
-              : "font-label text-base font-bold tracking-tight text-foreground/70 sm:text-lg"
+              : "font-label text-xs font-semibold uppercase tracking-[0.18em] text-muted sm:text-sm"
           }
           variants={itemVariants}
         >
-          {data.eyebrow.label}{" "}
-          <Typewriter
-            words={["vendor", "team member", "department"]}
-            className="text-brand"
-          />
+          <Link
+            href={data.eyebrow.href}
+            className="inline-flex items-baseline gap-1.5 transition-opacity hover:opacity-80 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-brand"
+          >
+            {data.eyebrow.label}{" "}
+            <Typewriter
+              words={["vendor", "team member", "department"]}
+              className="text-brand"
+            />
+          </Link>
         </motion.p>
 
         <motion.div variants={itemVariants}>
@@ -113,32 +122,12 @@ export default function HeroAnimatedContent({
           </motion.p>
         )}
 
-        {/* Inner variant keeps the descriptive sub; the home hero uses the
-            checkmark points below instead to avoid repeating the same copy. */}
-        {!hasPoints && (
-          <motion.p id={`${data.id}-sub`} className={L.sub} variants={itemVariants}>
-            {data.sub}
-          </motion.p>
-        )}
-
-        {hasPoints && (
-          <motion.ul
-            id={`${data.id}-points`}
-            className="mt-7 flex flex-wrap items-center justify-center gap-x-6 gap-y-2.5"
-            variants={containerVariants}
-          >
-            {data.points!.map((point, i) => (
-              <motion.li
-                key={i}
-                className="flex items-center gap-2"
-                variants={pointVariants}
-              >
-                <Check size={16} strokeWidth={3} className="shrink-0 text-brand" />
-                <span className="hero-point">{point}</span>
-              </motion.li>
-            ))}
-          </motion.ul>
-        )}
+        {/* The plain-English explanation of the business. Both variants show it:
+            a visitor who only reads the headline still needs to learn what growX
+            actually does. */}
+        <motion.p id={`${data.id}-sub`} className={L.sub} variants={itemVariants}>
+          {data.sub}
+        </motion.p>
 
         <motion.div
           id={`${data.id}-ctas`}
@@ -162,6 +151,21 @@ export default function HeroAnimatedContent({
             );
           })}
         </motion.div>
+
+        {/* Proof bar. Sits under the CTA so the last thing read before acting is
+            evidence, not another claim. */}
+        {hasStats && (
+          <motion.ul id={`${data.id}-stats`} className={L.stats} variants={containerVariants}>
+            {data.stats.map((stat) => (
+              <motion.li key={stat.id} id={stat.id} variants={statVariants}>
+                <span className={isHome ? "hero-stat" : "hero-stat hero-stat-light"}>
+                  <Check size={14} strokeWidth={3} className="shrink-0 text-brand" />
+                  {stat.label}
+                </span>
+              </motion.li>
+            ))}
+          </motion.ul>
+        )}
       </div>
     </motion.div>
   );

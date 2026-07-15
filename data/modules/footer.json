@@ -20,8 +20,7 @@
       "links": [
         { "id": "footer-company-about", "label": "About", "href": "/about" },
         { "id": "footer-company-process", "label": "Process", "href": "/process" },
-        { "id": "footer-company-works", "label": "Works", "href": "/works" },
-        { "id": "footer-company-contact", "label": "Contact", "href": "/contact" }
+        { "id": "footer-company-works", "label": "Works", "href": "/works" }
       ]
     },
     {
@@ -39,7 +38,7 @@
       "links": [
         { "id": "footer-contact-partner", "label": "Become a partner", "href": "/pricing" },
         { "id": "footer-contact-book", "label": "Book a discovery call", "href": "#book" },
-        { "id": "footer-contact-email", "label": "hi@growx.studio", "href": "mailto:hi@growx.studio" }
+        { "id": "footer-contact-contact", "label": "Contact us", "href": "/contact" }
       ]
     }
   ],

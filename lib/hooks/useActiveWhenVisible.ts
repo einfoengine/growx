@@ -33,7 +33,16 @@ export function usePrefersReducedMotion(): boolean {
 }
 
 type Options = {
-  /** Extra gate. Pass `false` to force inactive regardless of visibility. */
+  /**
+   * Extra gate. Pass `false` to force inactive regardless of visibility.
+   *
+   * IMPORTANT: if the observed element is conditionally rendered, `enabled`
+   * must carry that condition. The observer attaches in an effect keyed on
+   * `enabled`, so a ref that is still null on the first pass is only picked up
+   * when `enabled` changes. Gating the *consumer* on the condition instead
+   * (`if (!cond || !active)`) leaves the observer permanently unattached and
+   * the hook stuck at `false`.
+   */
   enabled?: boolean;
   /** Grows the observer box so work resumes just before the element scrolls in. */
   rootMargin?: string;
@@ -67,7 +76,18 @@ export function useActiveWhenVisible<T extends Element>(
     // so skipping the observer is enough and avoids a cascading render.
     if (!enabled) return;
     const el = ref.current;
-    if (!el) return;
+    if (!el) {
+      // Nothing to observe, so the hook would sit at `false` forever and the
+      // caller's loop would silently never run. Say so instead of dying quietly.
+      if (process.env.NODE_ENV !== "production") {
+        console.warn(
+          "[useActiveWhenVisible] ref was null when the observer attached, so it " +
+            "will stay inactive. If the element is conditionally rendered, pass " +
+            "that condition as `enabled` so the effect re-runs once it mounts.",
+        );
+      }
+      return;
+    }
     const io = new IntersectionObserver(
       ([entry]) => setOnScreen(entry.isIntersecting),
       { rootMargin },

@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { usePrefersReducedMotion } from "@/lib/hooks/useActiveWhenVisible";
 
 type Props = {
   words: string[];
@@ -26,8 +27,14 @@ export default function Typewriter({
   const [text, setText] = useState("");
   const [deleting, setDeleting] = useState(false);
 
+  // This is a setTimeout loop, so neither MotionConfig nor the global CSS
+  // reduced-motion rule reaches it — it needs its own check. Reduced-motion
+  // users get the first word, static, instead of perpetual typing.
+  const reduced = usePrefersReducedMotion();
+
   useEffect(() => {
     if (words.length === 0) return;
+    if (reduced) return;
     const current = words[index % words.length];
     let timer: ReturnType<typeof setTimeout> | undefined;
 
@@ -48,7 +55,11 @@ export default function Typewriter({
       );
     }
     return () => clearTimeout(timer);
-  }, [text, deleting, index, words, typeSpeed, deleteSpeed, holdTime]);
+  }, [text, deleting, index, words, typeSpeed, deleteSpeed, holdTime, reduced]);
+
+  if (reduced) {
+    return <span className={className}>{words[0] ?? ""}</span>;
+  }
 
   return (
     <span className={className}>
