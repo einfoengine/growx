@@ -2,53 +2,76 @@
 
 import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Check, X } from "lucide-react";
+import { Check, Mail, X } from "lucide-react";
+import { useModalA11y } from "@/lib/hooks/useModalA11y";
+import pricingData from "@/data/modules/pricing.json";
 
-const PLANS: Record<string, {
+type PlanShape = {
   name: string;
   price: string;
   description: string;
   features: string[];
   badge?: string;
-}> = {
-  free: {
-    name: "Free",
-    price: "$0 / mo",
-    description: "The vendor relationship. Zero friction, zero commitment.",
-    features: [
-      "One-click portal ordering",
-      "Standard fixed pricing",
-      "100% white-label, full rights",
-      "First response in 4 business hours",
-      "Partner resource library",
-    ],
-  },
-  standard: {
-    name: "Standard",
-    price: "$295 / mo",
-    description: "Your production team. A dedicated account manager plus partner pricing.",
-    features: [
-      "Everything in Free",
-      "Dedicated account manager",
-      "10% partner discount",
-      "2-hour response, priority queue",
-      "White-label sales enablement kit",
-    ],
-    badge: "Most Popular",
-  },
-  vip: {
-    name: "VIP",
-    price: "$495 / mo",
-    description: "The department. We run fulfillment and talk to your clients under your brand.",
-    features: [
-      "Everything in Standard",
-      "White-label client project manager",
-      "15% partner discount",
-      "1-hour response, front of queue",
-      "Guaranteed monthly capacity",
-    ],
-  },
 };
+
+/** Condensed feature lines for the modal — deliberately shorter than the full
+ *  list on the pricing cards, since this is a confirmation step and not the
+ *  place to re-sell the tier. Keyed by tier name, lowercased. */
+const PLAN_HIGHLIGHTS: Record<string, string[]> = {
+  free: [
+    "One-click portal ordering",
+    "Standard fixed pricing",
+    "100% white-label, full rights",
+    "First response in 4 business hours",
+    "Partner resource library",
+  ],
+  standard: [
+    "Everything in Free",
+    "Dedicated account manager",
+    "10% partner discount",
+    "2-hour response, priority queue",
+    "White-label sales enablement kit",
+  ],
+  vip: [
+    "Everything in Standard",
+    "White-label client project manager",
+    "15% partner discount",
+    "1-hour response, front of queue",
+    "Guaranteed monthly capacity",
+  ],
+};
+
+/** Names and prices come from data/modules/pricing.json — the same source the
+ *  pricing cards read — so a tier can never be renamed or repriced on the cards
+ *  while this modal keeps quoting the old value. */
+const PLANS: Record<string, PlanShape> = Object.fromEntries(
+  pricingData.tiers.map((tier) => {
+    const key = tier.name.toLowerCase();
+    return [
+      key,
+      {
+        name: tier.name,
+        price: `${tier.price} / mo`,
+        description: tier.description,
+        features: PLAN_HIGHLIGHTS[key] ?? tier.features,
+        badge: "highlighted" in tier && tier.highlighted ? "Most Popular" : undefined,
+      },
+    ];
+  }),
+);
+
+const FIELD_CLASS =
+  "w-full rounded-xl border border-border bg-surface px-4 py-2.5 text-sm text-foreground placeholder:text-muted transition-colors focus:border-brand focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-text";
+
+/** Visual asterisk for sighted users; screen readers get real words instead. */
+function RequiredMark() {
+  return (
+    <>
+      <span aria-hidden="true" className="text-brand">*</span>
+      <span className="sr-only">(required)</span>
+    </>
+  );
+}
 
 type PlanData = (typeof PLANS)[string];
 
@@ -57,11 +80,18 @@ type OnboardingEventDetail = {
   customPlan?: PlanData;
 };
 
-type FormState = "idle" | "submitting" | "success";
+/** "unavailable" is the honest end state: there's no intake backend to submit to. */
+type FormState = "idle" | "unavailable";
 
 export default function OnboardingModal() {
   const [plan, setPlan] = useState<PlanData | null>(null);
   const [formState, setFormState] = useState<FormState>("idle");
+
+  // Escape, Tab trap, focus move/restore and the body scroll lock all live here.
+  const panelRef = useModalA11y<HTMLDivElement>({
+    open: plan !== null,
+    onClose: close,
+  });
 
   // Listen for the custom event fired by PricingCTA buttons and the pricing calculator
   useEffect(() => {
@@ -71,31 +101,22 @@ export default function OnboardingModal() {
       if (resolved) {
         setPlan(resolved);
         setFormState("idle");
-        document.body.style.overflow = "hidden";
       }
     };
     window.addEventListener("open-onboarding", handler);
     return () => window.removeEventListener("open-onboarding", handler);
   }, []);
 
-  // Close on Escape
-  useEffect(() => {
-    if (!plan) return;
-    const onKey = (e: KeyboardEvent) => { if (e.key === "Escape") close(); };
-    document.addEventListener("keydown", onKey);
-    return () => document.removeEventListener("keydown", onKey);
-  }, [plan]);
-
   function close() {
     setPlan(null);
-    document.body.style.overflow = "unset";
   }
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    setFormState("submitting");
-    // Replace with real API call
-    setTimeout(() => setFormState("success"), 1200);
+    // TODO: POST the intake form to a real endpoint here, then surface a genuine
+    // confirmation. Until one exists there is nothing to submit to, so point the
+    // user at an inbox a human actually reads instead of faking a receipt.
+    setFormState("unavailable");
   };
 
   return (
@@ -116,22 +137,27 @@ export default function OnboardingModal() {
           {/* Modal */}
           <motion.div
             key="modal"
+            ref={panelRef}
+            role="dialog"
+            aria-modal="true"
+            aria-labelledby="onboarding-modal-title"
+            tabIndex={-1}
             initial={{ opacity: 0, scale: 0.96, y: 20 }}
             animate={{ opacity: 1, scale: 1, y: 0 }}
             exit={{ opacity: 0, scale: 0.96, y: 20 }}
             transition={{ type: "spring", duration: 0.4, bounce: 0 }}
-            className="relative z-10 w-full max-w-2xl max-h-[90dvh] overflow-y-auto rounded-2xl border border-border bg-background shadow-2xl"
+            className="relative z-10 w-full max-w-2xl max-h-[90dvh] overflow-y-auto rounded-2xl border border-border bg-background shadow-2xl focus:outline-none"
           >
             <button
               onClick={close}
               aria-label="Close"
-              className="absolute right-4 top-4 z-10 flex h-8 w-8 items-center justify-center rounded-full text-muted hover:bg-black/5 hover:text-foreground transition-colors"
+              className="absolute right-4 top-4 z-10 flex h-8 w-8 items-center justify-center rounded-full text-muted hover:bg-black/5 hover:text-foreground transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-text"
             >
               <X size={18} />
             </button>
 
-            {formState === "success" ? (
-              <SuccessState plan={plan} onClose={close} />
+            {formState === "unavailable" ? (
+              <UnavailableState plan={plan} onClose={close} />
             ) : (
               <>
                 {/* Plan header */}
@@ -167,72 +193,74 @@ export default function OnboardingModal() {
                 {/* Intake form */}
                 <form onSubmit={handleSubmit} className="space-y-5 px-8 py-7">
                   <div>
-                    <h2 className="text-lg font-semibold text-foreground">
+                    <h2
+                      id="onboarding-modal-title"
+                      className="text-lg font-semibold text-foreground"
+                    >
                       Let&apos;s get you set up
                     </h2>
                     <p className="mt-1 text-sm text-muted">
-                      Fill in your details and our team will reach out within 4 hours to kick things off.
+                      Tell us what you need and we&apos;ll take it from there.
                     </p>
                   </div>
 
                   <div className="grid gap-4 sm:grid-cols-2">
                     <div className="space-y-1.5">
-                      <label className="text-xs font-medium text-foreground">
-                        Full Name <span className="text-brand">*</span>
+                      <label htmlFor="onboarding-name" className="text-xs font-medium text-foreground">
+                        Full Name <RequiredMark />
                       </label>
-                      <input required type="text" placeholder="Jane Smith"
-                        className="w-full rounded-xl border border-border bg-surface px-4 py-2.5 text-sm text-foreground placeholder:text-muted focus:border-brand focus:outline-none focus:ring-1 focus:ring-brand transition-colors"
+                      <input required type="text" id="onboarding-name" name="name" placeholder="Jane Smith"
+                        className={FIELD_CLASS}
                       />
                     </div>
                     <div className="space-y-1.5">
-                      <label className="text-xs font-medium text-foreground">
-                        Email Address <span className="text-brand">*</span>
+                      <label htmlFor="onboarding-email" className="text-xs font-medium text-foreground">
+                        Email Address <RequiredMark />
                       </label>
-                      <input required type="email" placeholder="jane@youragency.com"
-                        className="w-full rounded-xl border border-border bg-surface px-4 py-2.5 text-sm text-foreground placeholder:text-muted focus:border-brand focus:outline-none focus:ring-1 focus:ring-brand transition-colors"
+                      <input required type="email" id="onboarding-email" name="email" placeholder="jane@youragency.com"
+                        className={FIELD_CLASS}
                       />
                     </div>
                   </div>
 
                   <div className="grid gap-4 sm:grid-cols-2">
                     <div className="space-y-1.5">
-                      <label className="text-xs font-medium text-foreground">
-                        Agency / Company <span className="text-brand">*</span>
+                      <label htmlFor="onboarding-company" className="text-xs font-medium text-foreground">
+                        Agency / Company <RequiredMark />
                       </label>
-                      <input required type="text" placeholder="Apex Digital"
-                        className="w-full rounded-xl border border-border bg-surface px-4 py-2.5 text-sm text-foreground placeholder:text-muted focus:border-brand focus:outline-none focus:ring-1 focus:ring-brand transition-colors"
+                      <input required type="text" id="onboarding-company" name="company" placeholder="Apex Digital"
+                        className={FIELD_CLASS}
                       />
                     </div>
                     <div className="space-y-1.5">
-                      <label className="text-xs font-medium text-foreground">
+                      <label htmlFor="onboarding-phone" className="text-xs font-medium text-foreground">
                         Phone Number
                       </label>
-                      <input type="tel" placeholder="+1 (555) 000-0000"
-                        className="w-full rounded-xl border border-border bg-surface px-4 py-2.5 text-sm text-foreground placeholder:text-muted focus:border-brand focus:outline-none focus:ring-1 focus:ring-brand transition-colors"
+                      <input type="tel" id="onboarding-phone" name="phone" placeholder="+1 (555) 000-0000"
+                        className={FIELD_CLASS}
                       />
                     </div>
                   </div>
 
                   <div className="space-y-1.5">
-                    <label className="text-xs font-medium text-foreground">
+                    <label htmlFor="onboarding-handoff" className="text-xs font-medium text-foreground">
                       What do you most want to hand off?
                     </label>
-                    <textarea rows={3}
+                    <textarea rows={3} id="onboarding-handoff" name="handoff"
                       placeholder="e.g. We have 3 website builds queued and need them delivered within 6 weeks..."
-                      className="w-full resize-none rounded-xl border border-border bg-surface px-4 py-2.5 text-sm text-foreground placeholder:text-muted focus:border-brand focus:outline-none focus:ring-1 focus:ring-brand transition-colors"
+                      className={`${FIELD_CLASS} resize-none`}
                     />
                   </div>
 
                   <button
                     type="submit"
-                    disabled={formState === "submitting"}
-                    className="w-full rounded-xl bg-brand px-4 py-3.5 text-sm font-semibold text-black transition-all hover:bg-brand-strong hover:scale-[1.01] disabled:opacity-60 disabled:cursor-not-allowed disabled:hover:scale-100"
+                    className="w-full rounded-xl bg-brand px-4 py-3.5 text-sm font-semibold text-black transition-all hover:bg-brand-strong hover:scale-[1.01] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-text"
                   >
-                    {formState === "submitting" ? "Submitting..." : "Get Started"}
+                    Get Started
                   </button>
 
                   <p className="text-center text-xs text-muted">
-                    No payment required now. Our team will contact you within 4 hours to confirm and set up your workspace.
+                    No payment required now.
                   </p>
                 </form>
               </>
@@ -244,7 +272,11 @@ export default function OnboardingModal() {
   );
 }
 
-function SuccessState({
+/**
+ * Shown instead of a fabricated receipt: nothing was submitted anywhere, so this
+ * says so plainly and hands the user a route that actually reaches a human.
+ */
+function UnavailableState({
   plan,
   onClose,
 }: {
@@ -252,29 +284,40 @@ function SuccessState({
   onClose: () => void;
 }) {
   return (
-    <div className="flex flex-col items-center gap-5 px-8 py-14 text-center">
+    <div
+      role="status"
+      className="flex flex-col items-center gap-5 px-8 py-14 text-center"
+    >
       <div className="flex h-16 w-16 items-center justify-center rounded-full bg-brand/10">
-        <Check size={28} className="text-brand" />
+        <Mail size={28} className="text-brand-text" aria-hidden="true" />
       </div>
       <div>
-        <h2 className="text-2xl font-semibold text-foreground">You&apos;re on the list!</h2>
+        <h2 id="onboarding-modal-title" className="text-2xl font-semibold text-foreground">
+          Let&apos;s do this over email
+        </h2>
         <p className="mx-auto mt-2 max-w-sm text-sm text-muted">
-          We&apos;ve received your {plan.name} plan request. Expect a message from our team
-          within 4 hours to confirm your workspace and kick off your first project.
+          Online signup isn&apos;t live yet, so nothing was sent. Email us at{" "}
+          <a
+            href={`mailto:hi@growx.studio?subject=${encodeURIComponent(`${plan.name} plan enquiry`)}`}
+            className="font-medium text-brand-text underline underline-offset-2 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-text"
+          >
+            hi@growx.studio
+          </a>{" "}
+          and mention the {plan.name} plan — we&apos;ll take it from there.
         </p>
       </div>
       <div className="w-full rounded-xl border border-border bg-surface px-6 py-4 text-left">
-        <p className="mb-3 text-xs font-semibold uppercase tracking-widest text-brand">
-          What happens next
+        <p className="mb-3 text-xs font-semibold uppercase tracking-widest text-brand-text">
+          What to include
         </p>
         <ol className="space-y-2.5">
           {[
-            "Our team reviews your details and confirms fit",
-            "You get a portal invite and onboarding walkthrough",
-            "Place your first white-label order",
+            "Your agency name and what you're looking to hand off",
+            "Rough volume and timelines you're working to",
+            "The plan you're interested in",
           ].map((step, i) => (
             <li key={i} className="flex items-start gap-3 text-sm text-muted">
-              <span className="flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-brand/10 text-xs font-bold text-brand">
+              <span className="flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-brand/10 text-xs font-bold text-brand-text">
                 {i + 1}
               </span>
               {step}
@@ -284,7 +327,7 @@ function SuccessState({
       </div>
       <button
         onClick={onClose}
-        className="rounded-full border border-border px-6 py-2.5 text-sm font-medium text-foreground transition hover:bg-surface"
+        className="rounded-full border border-border px-6 py-2.5 text-sm font-medium text-foreground transition hover:bg-surface focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-text"
       >
         Close
       </button>

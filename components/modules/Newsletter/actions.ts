@@ -19,8 +19,9 @@ const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
  * submitted email and returns the next form state. It runs on the server and is
  * progressively enhanced, so the form works even before JS hydrates.
  *
- * There's no mailing provider wired up yet — swap the marked block for a call to
- * your ESP (Resend Audiences, ConvertKit, Mailchimp, …) to go live.
+ * There's no mailing provider wired up yet, so this validates the address and
+ * then tells the user, honestly, that signup isn't live — it never claims to
+ * have stored or sent anything. See the TODO below to go live.
  */
 export async function subscribeToNewsletter(
   _prevState: NewsletterState,
@@ -36,19 +37,21 @@ export async function subscribeToNewsletter(
     return { status: "error", message: "That doesn't look like a valid email." };
   }
 
-  try {
-    // --- Wire your email provider here -----------------------------------
-    // await addSubscriber(email);
-    // ---------------------------------------------------------------------
-  } catch {
-    return {
-      status: "error",
-      message: "Something went wrong. Please try again in a moment.",
-    };
-  }
-
+  // TODO: Wire the ESP (Resend Audiences, ConvertKit, Mailchimp, …) here, then
+  // replace the `return` below with the real result:
+  //
+  //   try {
+  //     await addSubscriber(email);
+  //   } catch {
+  //     return { status: "error", message: "Something went wrong. Please try again in a moment." };
+  //   }
+  //   return { status: "success", message: "You're in — check your inbox to confirm your subscription." };
+  //
+  // Until that exists, nothing is stored and no email is sent — so don't claim
+  // otherwise. `status: "success"` stays in NewsletterState for the wiring above.
   return {
-    status: "success",
-    message: "You're in — check your inbox to confirm your subscription.",
+    status: "error",
+    message:
+      "Newsletter signup isn't live yet — email hi@growx.studio and we'll add you to the list.",
   };
 }

@@ -3,12 +3,10 @@ import LogoMarquee from "@/components/modules/LogoMarquee";
 import PainPoints from "@/components/modules/PainPoints";
 import Services from "@/components/modules/Services";
 import TextMarquee from "@/components/modules/TextMarquee/TextMarquee";
-import Testimonials from "@/components/modules/Testimonials";
 import Pricing from "@/components/modules/Pricing";
 import Comparison from "@/components/modules/Comparison";
 import Process from "@/components/modules/Process";
 import Faq from "@/components/modules/Faq";
-import CtaBanner from "@/components/modules/CtaBanner";
 import type {
   FaqContent,
   HeroContent,
@@ -40,14 +38,14 @@ export default async function LandingPageTemplate({ data }: Props) {
     ctas: [
       {
         id: `${data.id}-cta-book`,
-        label: "Book a Discovery Call",
+        label: "Book a discovery call",
         href: "#book",
         variant: "primary",
       },
       {
         id: `${data.id}-cta-work`,
         label: "See our work",
-        href: "/case-studies",
+        href: "/works",
       },
     ],
     stats: [],
@@ -115,12 +113,10 @@ export default async function LandingPageTemplate({ data }: Props) {
       <PainPoints data={whyUsData} />
       <Services data={deliverablesData} />
       <TextMarquee />
-      <Testimonials />
       <Pricing noPaddingTop />
       <Comparison noPaddingTop />
       <Process />
       <Faq data={faqData} />
-      <CtaBanner />
     </>
   );
 }

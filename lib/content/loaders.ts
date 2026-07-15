@@ -1,10 +1,6 @@
 import aboutData from "@/data/modules/about.json";
 import processPageData from "@/data/pages/process.json";
 import pricingPageData from "@/data/pages/pricing.json";
-import caseStudyNovaSaasData from "@/data/case-studies/novasaas-seo.json";
-import caseStudyMeridianData from "@/data/case-studies/meridian-ppc.json";
-import caseStudyStyleSphereData from "@/data/case-studies/stylesphere-social.json";
-import caseStudyApexData from "@/data/case-studies/apex-web.json";
 import serviceWebsiteData from "@/data/services/website.json";
 import serviceSeoAeoData from "@/data/services/seo-aeo.json";
 import servicePpcData from "@/data/services/ppc.json";
@@ -21,10 +17,8 @@ import processData from "@/data/modules/process.json";
 import ctaBannerData from "@/data/modules/cta-banner.json";
 import painPointsData from "@/data/modules/pain-points.json";
 import faqData from "@/data/modules/faq.json";
-import testimonialsData from "@/data/modules/testimonials.json";
 import pricingData from "@/data/modules/pricing.json";
 import comparisonData from "@/data/modules/comparison.json";
-import growthCalculatorData from "@/data/modules/growth-calculator.json";
 import portfolioData from "@/data/modules/portfolio.json";
 import newsletterData from "@/data/modules/newsletter.json";
 import blogData from "@/data/modules/blog.json";
@@ -32,7 +26,6 @@ import type {
   AboutContent,
   BlogContent,
   BlogPost,
-  CaseStudy,
   PricingPageContent,
   ProcessPageContent,
   ServicePageContent,
@@ -40,7 +33,6 @@ import type {
   CtaBannerContent,
   FaqContent,
   FooterContent,
-  GrowthCalculatorContent,
   HeaderContent,
   HeroContent,
   LogoMarqueeContent,
@@ -53,7 +45,6 @@ import type {
   ProcessContent,
   ServicesContent,
   Site,
-  TestimonialsContent,
 } from "./types";
 
 const HERO_BY_PAGE: Record<PageSlug, HeroContent> = {
@@ -112,20 +103,12 @@ export async function getFaq(): Promise<FaqContent> {
   return faqData as FaqContent;
 }
 
-export async function getTestimonials(): Promise<TestimonialsContent> {
-  return testimonialsData as TestimonialsContent;
-}
-
 export async function getPricing(): Promise<PricingContent> {
   return pricingData as PricingContent;
 }
 
 export async function getComparison(): Promise<ComparisonContent> {
   return comparisonData as ComparisonContent;
-}
-
-export async function getGrowthCalculator(): Promise<GrowthCalculatorContent> {
-  return growthCalculatorData as GrowthCalculatorContent;
 }
 
 export async function getPortfolio(): Promise<PortfolioContent> {
@@ -179,19 +162,3 @@ export async function getAllServices(): Promise<ServicePageContent[]> {
   return Object.values(SERVICE_PAGES);
 }
 
-const CASE_STUDIES: Record<string, CaseStudy> = {
-  "novasaas-seo": caseStudyNovaSaasData as CaseStudy,
-  "meridian-ppc": caseStudyMeridianData as CaseStudy,
-  "stylesphere-social": caseStudyStyleSphereData as CaseStudy,
-  "apex-web": caseStudyApexData as CaseStudy,
-};
-
-export const CASE_STUDY_SLUGS = Object.keys(CASE_STUDIES);
-
-export async function getCaseStudies(): Promise<CaseStudy[]> {
-  return Object.values(CASE_STUDIES);
-}
-
-export async function getCaseStudy(slug: string): Promise<CaseStudy | null> {
-  return CASE_STUDIES[slug] ?? null;
-}

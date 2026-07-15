@@ -6,6 +6,8 @@ import { ArrowUpRight, Check } from "lucide-react";
 import BinaryShower from "./BinaryShower";
 import ServiceDetailModal from "./ServiceDetailModal";
 import { GROUPS, type Service } from "./servicesData";
+import { useActiveWhenVisible } from "@/lib/hooks/useActiveWhenVisible";
+import ScrollFadeIn from "@/components/elements/ScrollFadeIn";
 
 const NAV_H = 64; // sticky header height (h-16)
 const STEP_VH = 60; // scroll distance allotted per group while pinned
@@ -18,6 +20,7 @@ export default function ServicesCatalog() {
   // The element that opened the modal, so focus can return to it on close.
   const triggerRef = useRef<HTMLElement | null>(null);
   const group = GROUPS[active];
+  const trackActive = useActiveWhenVisible(pinRef);
 
   // Enable the scroll-jack only on large screens.
   useEffect(() => {
@@ -30,9 +33,11 @@ export default function ServicesCatalog() {
 
   // Map the pin track's scroll position → active group index. A rAF loop reads
   // the track's rect every frame (independent of scroll events firing) and only
-  // commits state when the index actually changes.
+  // commits state when the index actually changes. The rect read forces a
+  // synchronous layout, so the loop is parked whenever the track is off-screen
+  // or the tab is hidden — otherwise it thrashes layout for the whole page.
   useEffect(() => {
-    if (!isDesktop) return;
+    if (!isDesktop || !trackActive) return;
 
     let raf = 0;
     const loop = () => {
@@ -50,7 +55,7 @@ export default function ServicesCatalog() {
     };
     raf = requestAnimationFrame(loop);
     return () => cancelAnimationFrame(raf);
-  }, [isDesktop]);
+  }, [isDesktop, trackActive]);
 
   // Tab click: on desktop, scroll to that group's slice of the pin track.
   const select = (idx: number) => {
@@ -77,7 +82,12 @@ export default function ServicesCatalog() {
   // Booking: BookingModal owns the scroll lock from here, so don't restore focus.
   const handleBook = () => setDetailService(null);
 
+  // Only the header reveals. The pin track below must NOT get an animating
+  // transform ancestor: its rAF loop derives the active group from
+  // `rect.top`, and a translateY would skew that for the whole reveal —
+  // and a transformed ancestor constrains the `sticky` stage inside it.
   const header = (
+    <ScrollFadeIn delay={0.1}>
     <div className="mx-auto max-w-3xl text-center">
       <p className="eyebrow text-brand">[ Full-stack catalog ]</p>
       <h2
@@ -92,6 +102,7 @@ export default function ServicesCatalog() {
         ordered in one click, delivered 100% white-label.
       </p>
     </div>
+    </ScrollFadeIn>
   );
 
   const tabs = (

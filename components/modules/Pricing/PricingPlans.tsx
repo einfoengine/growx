@@ -1,68 +1,14 @@
 import { Check } from "lucide-react";
+import { getPricing } from "@/lib/content";
+import ScrollFadeIn from "@/components/elements/ScrollFadeIn";
 import PlanButton from "./PlanButton";
 
-type Tier = {
-  name: string;
-  pill: string;
-  tagline: string;
-  price: string;
-  cta: { label: string; planKey?: string; href?: string };
-  featured?: boolean;
-  features: string[];
-};
+/** Homepage pricing cards. Tiers come from data/modules/pricing.json — the same
+ *  source the service-page <Pricing> module and the onboarding modal read, so
+ *  names and prices cannot drift apart across the funnel. */
+export default async function PricingPlans() {
+  const data = await getPricing();
 
-const TIERS: Tier[] = [
-  {
-    name: "The Vendor",
-    pill: "Starter",
-    tagline: "A reliable production line, on demand.",
-    price: "$0",
-    cta: { label: "Get started", planKey: "free" },
-    features: [
-      "Full portal access with one-click ordering across the catalog",
-      "Standard fixed pricing on every service",
-      "100% white-label deliverables with full commercial rights",
-      "First response within 4 business hours",
-      "Standard production queue and SLAs",
-      "Partner resource library to help you sell",
-    ],
-  },
-  {
-    name: "The Team Member",
-    pill: "Standard",
-    tagline: "A dedicated manager who knows your business.",
-    price: "$295",
-    cta: { label: "Start Standard", planKey: "standard" },
-    featured: true,
-    features: [
-      "Everything in Starter, plus:",
-      "Dedicated account manager who knows your clients and history",
-      "10% partner discount on all services",
-      "Priority queue and 2-hour first response",
-      "Direct Slack or WhatsApp channel to your manager",
-      "White-label sales enablement kit to close your clients",
-      "Monthly pipeline call and early access to new services",
-    ],
-  },
-  {
-    name: "The Department",
-    pill: "VIP",
-    tagline: "We handle fulfillment and your client comms.",
-    price: "$495",
-    cta: { label: "Book a VIP call", href: "#book" },
-    features: [
-      "Everything in Standard, plus:",
-      "White-label client project manager who talks to your clients as your team",
-      "15% partner discount on all services",
-      "Front-of-queue production, 20 to 30% faster delivery",
-      "1-hour first response with real-time availability",
-      "White-label client onboarding run under your brand",
-      "Unlimited revisions and guaranteed monthly capacity",
-    ],
-  },
-];
-
-export default function PricingPlans() {
   return (
     <section
       id="gw-mod-pricing"
@@ -81,6 +27,7 @@ export default function PricingPlans() {
 
       <div className="container-1200">
         {/* Header */}
+        <ScrollFadeIn delay={0.1}>
         <div className="mx-auto max-w-2xl text-center">
           <p className="eyebrow text-brand">[ Pricing ]</p>
           <h2
@@ -94,14 +41,16 @@ export default function PricingPlans() {
             white-label with full commercial rights and one-click portal ordering.
           </p>
         </div>
+        </ScrollFadeIn>
 
         {/* Compact plan cards */}
+        <ScrollFadeIn delay={0.2}>
         <div className="mx-auto mt-10 grid max-w-6xl items-stretch gap-6 lg:grid-cols-3">
-          {TIERS.map((tier) => {
-            const featured = !!tier.featured;
+          {data.tiers.map((tier) => {
+            const featured = !!tier.highlighted;
             return (
               <div
-                key={tier.name}
+                key={tier.id}
                 className={`relative isolate flex h-full flex-col overflow-hidden border p-7 ${
                   featured
                     ? "border-foreground bg-foreground text-background shadow-[0_20px_60px_rgba(10,10,10,0.25)]"
@@ -116,11 +65,13 @@ export default function PricingPlans() {
                   />
                 )}
 
-                {/* Name + tier pill, with a Popular tag on the featured plan. */}
+                {/* Persona + tier pill, with a Popular tag on the featured plan. */}
                 <div className="flex items-center justify-between gap-3">
                   <div className="flex items-center gap-2.5">
-                    <h3 className="text-xl font-bold tracking-tight">{tier.name}</h3>
-                    <span className="badge-brand">{tier.pill}</span>
+                    <h3 className="text-xl font-bold tracking-tight">
+                      {tier.persona ?? tier.name}
+                    </h3>
+                    <span className="badge-brand">{tier.name}</span>
                   </div>
                   {featured && (
                     <span className="shrink-0 bg-brand px-2.5 py-1 text-[11px] font-bold uppercase tracking-wide text-black">
@@ -130,7 +81,7 @@ export default function PricingPlans() {
                 </div>
 
                 <p className={`mt-2.5 text-sm ${featured ? "text-white/60" : "text-muted"}`}>
-                  {tier.tagline}
+                  {tier.description}
                 </p>
 
                 <div className="mt-6 flex items-end gap-3">
@@ -179,10 +130,20 @@ export default function PricingPlans() {
                 </ul>
 
                 <div className="mt-auto pt-8">
+                  {/* "#onboard-<plan>" opens the onboarding modal; anything else
+                      (e.g. "#book") renders as a plain link. */}
                   <PlanButton
                     label={tier.cta.label}
-                    planKey={tier.cta.planKey}
-                    href={tier.cta.href}
+                    planKey={
+                      tier.cta.href.startsWith("#onboard-")
+                        ? tier.cta.href.replace("#onboard-", "")
+                        : undefined
+                    }
+                    href={
+                      tier.cta.href.startsWith("#onboard-")
+                        ? undefined
+                        : tier.cta.href
+                    }
                     className={`btn w-full ${featured ? "btn-brand" : "btn-secondary"}`}
                   />
                   <a
@@ -200,6 +161,7 @@ export default function PricingPlans() {
             );
           })}
         </div>
+        </ScrollFadeIn>
       </div>
     </section>
   );

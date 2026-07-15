@@ -1,3 +1,5 @@
+import ScrollFadeIn from "@/components/elements/ScrollFadeIn";
+
 type Step = { n: string; title: string; desc: string };
 
 const STEPS: Step[] = [
@@ -39,6 +41,7 @@ export default function HowItWorks() {
 
       <div className="container-1200 py-24 sm:py-28 lg:py-32">
         {/* Header */}
+        <ScrollFadeIn delay={0.1}>
         <div className="mx-auto max-w-2xl text-center">
           <p className="eyebrow text-brand">[ How it works ]</p>
           <h2
@@ -52,8 +55,10 @@ export default function HowItWorks() {
             for agencies juggling multiple client timelines.
           </p>
         </div>
+        </ScrollFadeIn>
 
         {/* Steps */}
+        <ScrollFadeIn delay={0.2}>
         <ol className="relative mt-16 grid gap-y-12 lg:mt-20 lg:grid-cols-4 lg:gap-x-8">
           {/* Connector line through the number badges (desktop). */}
           <div
@@ -77,6 +82,7 @@ export default function HowItWorks() {
             </li>
           ))}
         </ol>
+        </ScrollFadeIn>
       </div>
     </section>
   );

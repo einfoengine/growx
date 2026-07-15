@@ -18,7 +18,7 @@ export default async function LogoMarquee() {
       className="relative overflow-hidden border-y border-border bg-background py-14 text-foreground sm:py-16"
     >
       <div className="container-1200">
-        <p className="eyebrow text-center text-foreground/40">{data.label}</p>
+        <p className="eyebrow text-center text-muted">{data.label}</p>
 
         <div className="mx-auto mt-8 grid max-w-4xl grid-cols-1 gap-4 sm:mt-10 sm:grid-cols-3 sm:gap-5">
           {data.items.map((name) => {

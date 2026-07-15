@@ -1,6 +1,10 @@
 "use client";
 
 import { useEffect, useRef } from "react";
+import {
+  useActiveWhenVisible,
+  usePrefersReducedMotion,
+} from "@/lib/hooks/useActiveWhenVisible";
 
 type Props = {
   /** Extra classes (e.g. z-index / mask) for the canvas layer. */
@@ -20,6 +24,11 @@ const BRAND = [16, 185, 129]; // emerald, matches --brand
 export default function HeroDots({ className = "" }: Props) {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const mouse = useRef({ x: -9999, y: -9999, on: false });
+
+  // A full redraw is ~2,300 arc()+fill() calls; left ungated it keeps running at
+  // 60fps while the reader is eight sections down the page, or on a hidden tab.
+  const reduced = usePrefersReducedMotion();
+  const active = useActiveWhenVisible(canvasRef, { enabled: !reduced });
 
   useEffect(() => {
     const canvas = canvasRef.current;
@@ -58,7 +67,37 @@ export default function HeroDots({ className = "" }: Props) {
         mouse.current.x <= width &&
         mouse.current.y <= height;
     };
+    /** The resting field: no cursor light, no sparkles. Used as the sole frame
+     *  for reduced-motion, and to paint something before the observer reports
+     *  the canvas on-screen. */
+    const drawResting = () => {
+      ctx.clearRect(0, 0, width, height);
+      ctx.fillStyle = `rgba(255,255,255,${BASE_ALPHA})`;
+      for (let r = 0; r <= rows; r++) {
+        for (let c = 0; c <= cols; c++) {
+          ctx.beginPath();
+          ctx.arc(c * SPACING, r * SPACING, DOT, 0, Math.PI * 2);
+          ctx.fill();
+        }
+      }
+    };
+
+    // Honor the OS setting: a static field, no cursor tracking, no loop.
+    // MotionConfig covers framer components but not canvas work like this.
+    if (reduced) {
+      drawResting();
+      return () => window.removeEventListener("resize", resize);
+    }
+
     window.addEventListener("pointermove", onMove);
+
+    if (!active) {
+      drawResting();
+      return () => {
+        window.removeEventListener("resize", resize);
+        window.removeEventListener("pointermove", onMove);
+      };
+    }
 
     let raf = 0;
     const render = () => {
@@ -126,7 +165,7 @@ export default function HeroDots({ className = "" }: Props) {
       window.removeEventListener("resize", resize);
       window.removeEventListener("pointermove", onMove);
     };
-  }, []);
+  }, [active, reduced]);
 
   return (
     <canvas

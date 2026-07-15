@@ -107,7 +107,7 @@ export default function BlogPage({ content }: { content: BlogContent }) {
             align="center"
           />
           <div className="mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row">
-            <Button label="Book a Discovery Call" href="#book" icon={<ArrowRight size={15} />} darkBg />
+            <Button label="Book a discovery call" href="#book" icon={<ArrowRight size={15} />} darkBg />
             <Button label="View pricing" href="/pricing" variant="secondary" darkBg />
           </div>
         </div>

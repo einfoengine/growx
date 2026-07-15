@@ -2,6 +2,10 @@
 
 import { motion, useMotionTemplate, useMotionValue } from "framer-motion";
 import { useEffect, useRef, useState } from "react";
+import {
+  usePointerFine,
+  usePrefersReducedMotion,
+} from "@/lib/hooks/useActiveWhenVisible";
 
 const CHARS =
   "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789<>/{}[]()=+-*$#";
@@ -38,7 +42,20 @@ export default function EvervaultBackground({
   const [str, setStr] = useState("");
   const [active, setActive] = useState(false);
 
+  // A cursor spotlight has no touch analogue: on a phone `pointermove` fires
+  // continuously while scrolling and `inside` stays true across this full-bleed
+  // layer, so every frame would rebuild a string of up to 32k characters and
+  // re-render it — for an effect that can never be seen. Reduced-motion users
+  // opt out of the scramble for the same reason.
+  // Both hooks are called unconditionally; `&&` in the declaration would make
+  // the second one conditional and break the rules of hooks.
+  const pointerFine = usePointerFine();
+  const reduced = usePrefersReducedMotion();
+  const enabled = pointerFine && !reduced;
+
   useEffect(() => {
+    if (!enabled) return;
+
     const measure = () => {
       const el = ref.current;
       if (!el) return;
@@ -79,9 +96,12 @@ export default function EvervaultBackground({
       window.removeEventListener("resize", measure);
       window.removeEventListener("pointermove", onMove);
     };
-  }, [mouseX, mouseY]);
+  }, [mouseX, mouseY, enabled]);
 
   const mask = useMotionTemplate`radial-gradient(${radius}px at ${mouseX}px ${mouseY}px, white, transparent)`;
+  // `active` is only ever set while enabled; AND it here so a device that flips
+  // to coarse-pointer mid-session hides the layer without a state write.
+  const show = enabled && active;
 
   return (
     <div
@@ -95,7 +115,7 @@ export default function EvervaultBackground({
         style={{
           maskImage: mask,
           WebkitMaskImage: mask,
-          opacity: active ? 0.6 : 0,
+          opacity: show ? 0.6 : 0,
         }}
       />
       {/* Scrambled characters, masked to the same spotlight */}
@@ -104,7 +124,7 @@ export default function EvervaultBackground({
         style={{
           maskImage: mask,
           WebkitMaskImage: mask,
-          opacity: active ? 0.4 : 0,
+          opacity: show ? 0.4 : 0,
         }}
       >
         <p className="absolute inset-0 wrap-break-word whitespace-pre-wrap p-2 font-mono text-[10px] font-bold leading-[1.1] text-emerald-300/40">

@@ -3,7 +3,7 @@
 import { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowRight, Clock, Star } from "lucide-react";
+import { ArrowRight, Clock } from "lucide-react";
 import type { PortfolioContent, PortfolioCategory } from "@/lib/content";
 
 type Props = { data: PortfolioContent };
@@ -107,16 +107,12 @@ export default function WorksGrid({ data }: Props) {
                       </div>
                     )}
 
-                    {/* Footer strip - duration + rating + arrow */}
+                    {/* Footer strip - duration + arrow */}
                     <div className="mt-4 flex items-center justify-between border-t border-border pt-4">
                       <div className="flex items-center gap-4">
                         <span className="flex items-center gap-1.5 text-xs text-muted">
                           <Clock size={11} className="shrink-0 text-brand" />
                           {item.duration}
-                        </span>
-                        <span className="flex items-center gap-1 text-xs text-muted">
-                          <Star size={11} className="fill-brand text-brand" strokeWidth={0} />
-                          <span className="font-medium text-foreground">{item.rating}.0</span>
                         </span>
                       </div>
                       <span className="flex items-center gap-1 text-xs font-semibold text-brand opacity-0 transition-opacity group-hover:opacity-100">

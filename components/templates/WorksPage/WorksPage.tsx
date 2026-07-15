@@ -47,8 +47,7 @@ export default function WorksPage({ data }: Props) {
             align="center"
           />
           <div className="mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row">
-            <Button label="Book a Discovery Call" href="#book" icon={<ArrowRight size={15} />} />
-            <Button label="View case studies" href="/case-studies" variant="secondary" />
+            <Button label="Book a discovery call" href="#book" icon={<ArrowRight size={15} />} />
           </div>
         </div>
       </section>

@@ -11,7 +11,9 @@ export default function DefaultLayout({
   return (
     <>
       <Header />
-      <main id="main" className="flex-1">
+      {/* tabIndex={-1} so the skip link in app/layout.tsx actually moves focus
+          here, not just the viewport — without it the next Tab returns to the nav. */}
+      <main id="main" tabIndex={-1} className="flex-1 outline-none">
         {children}
       </main>
       <Footer />

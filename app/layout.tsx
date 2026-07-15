@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Manrope, Geist_Mono } from "next/font/google";
 import { getSite } from "@/lib/content";
+import MotionProvider from "@/components/elements/MotionProvider";
 import "./globals.css";
 
 // Manrope - primary typeface for headings and body (brand guideline).
@@ -45,13 +46,24 @@ export default function RootLayout({
         className="min-h-full flex flex-col"
         suppressHydrationWarning
       >
+        {/* Skip link — must stay the first focusable thing in the body so the
+            first Tab on any page offers a jump past the logo + nav + dropdowns
+            + CTA straight to <main id="main"> (WCAG 2.4.1). Visually hidden
+            until focused. */}
+        <a
+          href="#main"
+          className="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-[200] focus:rounded-lg focus:bg-foreground focus:px-4 focus:py-2 focus:text-background"
+        >
+          Skip to main content
+        </a>
+
         {/* Chillax - secondary typeface for labels and accents (hoisted to <head> by React) */}
         <link
           rel="stylesheet"
           href="https://api.fontshare.com/v2/css?f[]=chillax@400,500,600,700&display=swap"
           precedence="default"
         />
-        {children}
+        <MotionProvider>{children}</MotionProvider>
       </body>
     </html>
   );

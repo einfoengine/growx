@@ -2,10 +2,12 @@
 
 import { ChevronDown, Menu, X } from "lucide-react";
 import Link from "next/link";
-import { useEffect, useRef, useState } from "react";
+import { usePathname } from "next/navigation";
+import { useCallback, useEffect, useState } from "react";
 import { createPortal } from "react-dom";
 import { AnimatePresence, motion } from "framer-motion";
 import type { CTA, Link as LinkType } from "@/lib/content";
+import { useModalA11y } from "@/lib/hooks/useModalA11y";
 
 type MobileMenuProps = {
   id?: string;
@@ -21,30 +23,30 @@ export default function MobileMenu({
   const [open, setOpen] = useState(false);
   const [expandedId, setExpandedId] = useState<string | null>(null);
   const [mounted, setMounted] = useState(false);
-  const menuRef = useRef<HTMLDivElement>(null);
+  const pathname = usePathname();
 
   useEffect(() => { setMounted(true); }, []);
 
-  useEffect(() => {
-    if (!open) return;
-    const prev = document.body.style.overflow;
-    document.body.style.overflow = "hidden";
-
-    const onKey = (e: KeyboardEvent) => {
-      if (e.key === "Escape") closeAll();
-    };
-    document.addEventListener("keydown", onKey);
-
-    return () => {
-      document.body.style.overflow = prev;
-      document.removeEventListener("keydown", onKey);
-    };
-  }, [open]);
-
-  function closeAll() {
+  const closeAll = useCallback(() => {
     setOpen(false);
     setExpandedId(null);
+  }, []);
+
+  // Close on route change. Clicking a link in the drawer calls closeAll(), but
+  // browser back/forward never does — without this the drawer stays mounted over
+  // the new page with the scroll lock still applied.
+  // Adjusted during render (React's documented "reset state when a value
+  // changes" pattern) rather than in an effect, so the drawer is already gone in
+  // the same commit that paints the new route — no flash of an open drawer.
+  const [lastPathname, setLastPathname] = useState(pathname);
+  if (pathname !== lastPathname) {
+    setLastPathname(pathname);
+    if (open) closeAll();
   }
+
+  // Focus move on open, Tab trap, Escape, focus restore to the hamburger, and
+  // the (iOS-safe) body scroll lock all come from the shared dialog hook.
+  const menuRef = useModalA11y<HTMLDivElement>({ open, onClose: closeAll });
 
   const panel = (
     <AnimatePresence>
@@ -69,6 +71,9 @@ export default function MobileMenu({
             role="dialog"
             aria-modal="true"
             aria-label="Mobile navigation"
+            // -1 so the open effect can move focus here (announcing the dialog
+            // label) without adding the panel itself to the tab order.
+            tabIndex={-1}
             initial={{ x: "100%" }}
             animate={{ x: 0 }}
             exit={{ x: "100%" }}
@@ -99,6 +104,8 @@ export default function MobileMenu({
                     <li key={item.id}>
                       <button
                         type="button"
+                        aria-expanded={expandedId === item.id}
+                        aria-controls={`${item.id}-mobile-submenu`}
                         onClick={() =>
                           setExpandedId((v) => (v === item.id ? null : item.id))
                         }
@@ -107,6 +114,7 @@ export default function MobileMenu({
                         {item.label}
                         <ChevronDown
                           size={16}
+                          aria-hidden="true"
                           className={`text-gray-400 transition-transform duration-200 ${
                             expandedId === item.id ? "rotate-180" : ""
                           }`}
@@ -117,6 +125,7 @@ export default function MobileMenu({
                         {expandedId === item.id && (
                           <motion.ul
                             key="children"
+                            id={`${item.id}-mobile-submenu`}
                             initial={{ height: 0, opacity: 0 }}
                             animate={{ height: "auto", opacity: 1 }}
                             exit={{ height: 0, opacity: 0 }}

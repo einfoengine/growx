@@ -227,7 +227,7 @@ export default function BlogPostPage({ post, related }: Props) {
             align="center"
           />
           <div className="mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row">
-            <Button label="Book a Discovery Call" href="#book" icon={<ArrowRight size={15} />} darkBg />
+            <Button label="Book a discovery call" href="#book" icon={<ArrowRight size={15} />} darkBg />
             <Button label="Explore services" href="/#gw-mod-services" variant="secondary" darkBg />
           </div>
         </div>

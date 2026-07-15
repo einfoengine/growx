@@ -11,6 +11,11 @@ import {
 } from "lucide-react";
 import type { ComponentType } from "react";
 import type { PainIcon } from "@/lib/content";
+import {
+  useActiveWhenVisible,
+  useMediaQuery,
+  usePointerFine,
+} from "@/lib/hooks/useActiveWhenVisible";
 
 type IconProps = { size?: number; className?: string };
 
@@ -31,9 +36,14 @@ type Card = {
 };
 
 /** Sticky-stack geometry. Each card rests STRIP px below the previous one so the
- *  icon + title of the card above stays readable above the covering card. */
+ *  icon + title of the card above stays readable above the covering card.
+ *
+ *  This only holds on large screens: with 5 cards the last one pins at
+ *  100 + 4*108 = 532px, which leaves ~135px of a 667px iPhone SE viewport for a
+ *  full card. Below `lg` the stack is dropped for a normal scrolling flow. */
 const STICKY_TOP = 100;
 const STRIP = 108;
+const DESKTOP_QUERY = "(min-width: 1024px)";
 
 /** Baked scatter so each pill sits on an irregular, hand-placed-looking cluster. */
 const SCATTER: { x: number; y: number; rot: number }[] = [
@@ -49,13 +59,28 @@ const REPEL_STRENGTH = 46;
 
 /** A cluster of point-pills that drift away from the cursor when it comes near. */
 function MagneticPills({ points }: { points: string[] }) {
+  const wrapRef = useRef<HTMLDivElement>(null);
   const pillsRef = useRef<(HTMLSpanElement | null)[]>([]);
   const mouse = useRef({ x: -9999, y: -9999, active: false });
 
+  // Cursor-repulsion has no touch analogue, and the loop does a
+  // getBoundingClientRect() per pill per frame — only run it on pointer devices
+  // while the cluster is actually on-screen.
+  const pointerFine = usePointerFine();
+  const active = useActiveWhenVisible(wrapRef, { enabled: pointerFine });
+
   useEffect(() => {
+    if (!active) return;
+
     const pills = pillsRef.current;
     const cur = pills.map(() => ({ x: 0, y: 0 }));
     let raf = 0;
+
+    let running = false;
+
+    /** Every offset has effectively lerped back to its resting place. */
+    const settled = () =>
+      cur.every((c) => Math.abs(c.x) < 0.05 && Math.abs(c.y) < 0.05);
 
     const tick = () => {
       for (let i = 0; i < pills.length; i++) {
@@ -85,26 +110,41 @@ function MagneticPills({ points }: { points: string[] }) {
         const base = SCATTER[i % SCATTER.length];
         pill.style.transform = `translate3d(${base.x + cur[i].x}px, ${base.y + cur[i].y}px, 0) rotate(${base.rot}deg)`;
       }
+
+      // Park the loop once the cursor is gone and everything has drifted home,
+      // so an idle cluster costs nothing. A pointermove wakes it back up.
+      if (!mouse.current.active && settled()) {
+        running = false;
+        return;
+      }
+      raf = requestAnimationFrame(tick);
+    };
+
+    const start = () => {
+      if (running) return;
+      running = true;
       raf = requestAnimationFrame(tick);
     };
 
     const onMove = (e: PointerEvent) => {
       mouse.current = { x: e.clientX, y: e.clientY, active: true };
+      start();
     };
     const onLeave = () => {
       mouse.current.active = false;
+      start(); // let the pills lerp back, then the loop parks itself.
     };
 
     window.addEventListener("pointermove", onMove);
     window.addEventListener("pointerleave", onLeave);
-    raf = requestAnimationFrame(tick);
 
     return () => {
       cancelAnimationFrame(raf);
+      running = false;
       window.removeEventListener("pointermove", onMove);
       window.removeEventListener("pointerleave", onLeave);
     };
-  }, []);
+  }, [active]);
 
   return (
     <div className="relative z-1 mt-10 flex flex-wrap items-center justify-center gap-3 sm:flex-nowrap">
@@ -131,6 +171,9 @@ function MagneticPills({ points }: { points: string[] }) {
 }
 
 export default function PainPointsCards({ cards }: { cards: Card[] }) {
+  // The sticky stack is desktop-only geometry — see STICKY_TOP. Starts false on
+  // the server, so SSR emits the plain scrolling flow and hydration is clean.
+  const stacked = useMediaQuery(DESKTOP_QUERY);
   const ctaRef = useRef<HTMLDivElement>(null);
   const { scrollYProgress } = useScroll({
     target: ctaRef,
@@ -146,6 +189,11 @@ export default function PainPointsCards({ cards }: { cards: Card[] }) {
   const [compact, setCompact] = useState<boolean[]>(() => cards.map(() => false));
 
   useEffect(() => {
+    // Nothing stacks in the plain mobile flow, so no card is ever covered and
+    // the per-scroll measuring is pure waste. Reads of `compact` are ANDed with
+    // `stacked` below, so there's no stale state to clear here.
+    if (!stacked) return;
+
     let raf = 0;
     const update = () => {
       const next = cards.map((_, i) => {
@@ -182,7 +230,7 @@ export default function PainPointsCards({ cards }: { cards: Card[] }) {
       window.removeEventListener("scroll", onScroll);
       window.removeEventListener("resize", onScroll);
     };
-  }, [cards.length]);
+  }, [cards, stacked]);
 
   return (
     <>
@@ -191,6 +239,9 @@ export default function PainPointsCards({ cards }: { cards: Card[] }) {
         <div className="flex flex-col gap-10">
           {cards.map((card, index) => {
             const Icon = ICON_BY_KEY[card.icon];
+            // Only meaningful while the stack is on: nothing covers a card in
+            // the mobile flow, so it never compacts.
+            const isCompact = stacked && compact[index];
 
             return (
               <div
@@ -198,11 +249,12 @@ export default function PainPointsCards({ cards }: { cards: Card[] }) {
                 ref={(el) => {
                   wrapperRefs.current[index] = el;
                 }}
-                className="sticky"
-                style={{
-                  top: `${STICKY_TOP + index * STRIP}px`,
-                  zIndex: index + 1,
-                }}
+                className={stacked ? "sticky" : undefined}
+                style={
+                  stacked
+                    ? { top: `${STICKY_TOP + index * STRIP}px`, zIndex: index + 1 }
+                    : undefined
+                }
               >
                 <motion.div
                   initial={{ opacity: 0, y: 40 }}
@@ -210,7 +262,7 @@ export default function PainPointsCards({ cards }: { cards: Card[] }) {
                   viewport={{ once: true, margin: "-100px" }}
                   transition={{ duration: 0.5, delay: index * 0.08 }}
                   className={`relative mx-auto w-full max-w-5xl rounded-4xl border border-white/10 bg-foreground/95 px-8 pb-12 shadow-2xl backdrop-blur-xl transition-[padding] duration-300 ease-out sm:px-16 ${
-                    compact[index] ? "pt-6" : "pt-8"
+                    isCompact ? "pt-6" : "pt-8"
                   }`}
                 >
                   {/* Timeline spine - extends past the card edges so stacked cards read as one continuous line through the icons */}
@@ -223,17 +275,17 @@ export default function PainPointsCards({ cards }: { cards: Card[] }) {
                   {/* Icon node - straddles the top edge (50% out) so the box keeps more room for the title */}
                   <span
                     className={`absolute left-1/2 top-0 z-10 inline-flex -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-2xl bg-brand text-black shadow-lg shadow-brand/30 ring-8 ring-foreground transition-all duration-300 ease-out ${
-                      compact[index] ? "h-7 w-7" : "h-10 w-10"
+                      isCompact ? "h-7 w-7" : "h-10 w-10"
                     }`}
                   >
-                    <Icon size={compact[index] ? 13 : 18} />
+                    <Icon size={isCompact ? 13 : 18} />
                   </span>
 
                   {/* Title + subtitle */}
                   <div className="relative z-1 text-center">
                     <p
                       className={`font-semibold uppercase tracking-[0.16em] text-brand transition-all duration-300 ${
-                        compact[index] ? "text-[10px]" : "text-[11px]"
+                        isCompact ? "text-[10px]" : "text-[11px]"
                       }`}
                     >
                       Reason {String(index + 1).padStart(2, "0")}

@@ -25,6 +25,10 @@ export default function FaqAccordion({ items }: { items: FaqItem[] }) {
         return (
           <div key={item.id} className={`group ${i > 0 ? "border-t border-border" : ""}`}>
             <button
+              type="button"
+              id={`${item.id}-trigger`}
+              aria-expanded={isOpen}
+              aria-controls={`${item.id}-panel`}
               onClick={() => toggle(item.id)}
               className="flex w-full cursor-pointer items-start justify-between gap-6 px-6 py-5 text-left text-base font-medium text-foreground transition-colors sm:px-8 sm:py-6 sm:text-lg"
             >
@@ -41,6 +45,9 @@ export default function FaqAccordion({ items }: { items: FaqItem[] }) {
             <AnimatePresence initial={false}>
               {isOpen && (
                 <motion.div
+                  id={`${item.id}-panel`}
+                  role="region"
+                  aria-labelledby={`${item.id}-trigger`}
                   initial={{ height: 0, opacity: 0 }}
                   animate={{ height: "auto", opacity: 1 }}
                   exit={{ height: 0, opacity: 0 }}

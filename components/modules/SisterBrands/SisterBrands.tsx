@@ -1,3 +1,5 @@
+import ScrollFadeIn from "@/components/elements/ScrollFadeIn";
+
 /** Our family of brands. growX sits alongside its sister brands — one partner,
  *  a whole ecosystem. Logos live in /public/assets. */
 const BRANDS: { name: string; src: string; alt: string; tagline: string }[] = [
@@ -29,6 +31,7 @@ export default function SisterBrands() {
       className="relative overflow-hidden border-b border-border bg-background py-20 text-foreground sm:py-24"
     >
       <div className="container-1200">
+        <ScrollFadeIn delay={0.1}>
         <div className="mx-auto max-w-2xl text-center">
           <p className="eyebrow text-brand">Our family of brands</p>
           <h2
@@ -42,7 +45,9 @@ export default function SisterBrands() {
             with one, and tap into all of them.
           </p>
         </div>
+        </ScrollFadeIn>
 
+        <ScrollFadeIn delay={0.2}>
         <ul className="mx-auto mt-14 grid max-w-4xl grid-cols-1 gap-5 sm:mt-16 sm:grid-cols-3">
           {BRANDS.map((brand) => (
             <li
@@ -61,6 +66,7 @@ export default function SisterBrands() {
             </li>
           ))}
         </ul>
+        </ScrollFadeIn>
       </div>
     </section>
   );

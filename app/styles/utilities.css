@@ -67,6 +67,26 @@
   }
 }
 
+/* ----------------------------------------------------------------------------
+   REDUCED-MOTION SAFETY NET
+   Global kill-switch for CSS-driven motion: the marquees (40s/25s infinite),
+   animate-pulse, and every `transition-*`. Deliberately blunt — it is the floor,
+   not a substitute for per-component handling.
+   Does NOT cover: framer-motion (JS-driven — see <MotionProvider> /
+   MotionConfig reducedMotion="user" in app/layout.tsx) or canvas/rAF loops
+   (HeroDots, BinaryShower, EvervaultBackground), which handle it themselves.
+   ---------------------------------------------------------------------------- */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
 /* Soft brand pulse ring */
 @keyframes brand-pulse {
   0%,

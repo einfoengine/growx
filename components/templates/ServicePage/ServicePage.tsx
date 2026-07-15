@@ -67,7 +67,7 @@ export default function ServicePage({ data }: Props) {
               <div className="mt-8 flex flex-wrap items-center gap-3">
                 <Button
                   id={`${data.id}-cta-primary`}
-                  label="Book a Discovery Call"
+                  label="Book a discovery call"
                   href="#book"
                   icon={<ArrowRight size={15} />}
                   className="hover:shadow-[0_0_28px_rgba(16,185,129,0.3)]"
@@ -237,7 +237,7 @@ export default function ServicePage({ data }: Props) {
             align="center"
           />
           <div className="mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row">
-            <Button label="Book a Discovery Call" href="#book" icon={<ArrowRight size={15} />} darkBg />
+            <Button label="Book a discovery call" href="#book" icon={<ArrowRight size={15} />} darkBg />
             <Button label="View all services" href="/#gw-mod-services" variant="secondary" darkBg />
           </div>
         </div>

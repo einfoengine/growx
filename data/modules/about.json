@@ -45,7 +45,7 @@
     }
   ],
   "stats": [
-    { "id": "stat-services", "value": "12", "label": "Services, one team" },
+    { "id": "stat-services", "value": "11", "label": "Services, one team" },
     { "id": "stat-whitelabel", "value": "100%", "label": "White-label delivery" },
     { "id": "stat-since", "value": "2019", "label": "Fulfilling since" },
     { "id": "stat-markets", "value": "4", "label": "Markets served" }
@@ -62,12 +62,5 @@
       { "id": "pillar-support", "label": "US-hours support" },
       { "id": "pillar-am", "label": "Dedicated account manager" }
     ]
-  },
-  "featuredTestimonial": {
-    "quote": "We went from turning away projects to delivering three times more work without a single hire. The quality is indistinguishable from what we'd do in-house. Our clients have no idea.",
-    "author": "Sarah Chen",
-    "title": "Founder & CEO, Peak Digital",
-    "metric": "3×",
-    "metricLabel": "more output, zero new hires"
   }
 }

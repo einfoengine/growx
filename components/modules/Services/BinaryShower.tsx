@@ -1,6 +1,10 @@
 "use client";
 
 import { useEffect, useRef } from "react";
+import {
+  useActiveWhenVisible,
+  usePrefersReducedMotion,
+} from "@/lib/hooks/useActiveWhenVisible";
 
 type Props = {
   /** Extra classes (z-index / mask / opacity) for the canvas layer. */
@@ -18,7 +22,15 @@ const BRAND = "16,185,129"; // --brand rgb
 export default function BinaryShower({ className = "" }: Props) {
   const canvasRef = useRef<HTMLCanvasElement>(null);
 
+  // ~1,440 fillText() per frame. Falling streaks are exactly the kind of motion
+  // reduced-motion users opt out of, and there is no reason to animate them
+  // while the section is off-screen or the tab is hidden.
+  const reduced = usePrefersReducedMotion();
+  const active = useActiveWhenVisible(canvasRef, { enabled: !reduced });
+
   useEffect(() => {
+    if (!active) return;
+
     const canvas = canvasRef.current;
     if (!canvas) return;
     const ctx = canvas.getContext("2d");
@@ -78,7 +90,7 @@ export default function BinaryShower({ className = "" }: Props) {
       cancelAnimationFrame(raf);
       window.removeEventListener("resize", resize);
     };
-  }, []);
+  }, [active]);
 
   return (
     <canvas

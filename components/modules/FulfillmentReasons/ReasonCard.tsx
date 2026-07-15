@@ -1,6 +1,7 @@
 "use client";
 
-import { useRef, type MouseEvent } from "react";
+import { useRef, useState, type MouseEvent } from "react";
+import Image from "next/image";
 import { ArrowUpRight, X } from "lucide-react";
 
 export type Reason = {
@@ -14,11 +15,18 @@ export type Reason = {
 const MAX_TILT = 9; // degrees
 
 /** Reason card with an Aceternity-style 3D tilt: the card leans toward the
- *  cursor. The image zooms and the copy pushes up to reveal the cost bullets. */
+ *  cursor. The image zooms and the copy pushes up to reveal the cost bullets.
+ *
+ *  The card is a real <button>: iOS Safari does not focus a tabindex'd non-form
+ *  element on tap, so a focus-within-driven reveal left the cost copy
+ *  unreachable on touch. Tap/Enter/Space now toggle `open`. Pointer devices keep
+ *  the hover reveal — Tailwind v4 compiles `group-hover:` inside
+ *  `@media (hover: hover)`, so it never sticks on touch. */
 export default function ReasonCard({ reason }: { reason: Reason }) {
-  const ref = useRef<HTMLDivElement>(null);
+  const ref = useRef<HTMLButtonElement>(null);
+  const [open, setOpen] = useState(false);
 
-  const handleMove = (e: MouseEvent<HTMLDivElement>) => {
+  const handleMove = (e: MouseEvent<HTMLButtonElement>) => {
     const el = ref.current;
     if (!el) return;
     const r = el.getBoundingClientRect();
@@ -33,28 +41,43 @@ export default function ReasonCard({ reason }: { reason: Reason }) {
 
   return (
     <li className="group [perspective:1200px]">
-      <div
+      <button
         ref={ref}
-        tabIndex={0}
-        aria-label={`Reason ${reason.n}: ${reason.title}`}
+        type="button"
+        aria-expanded={open}
+        aria-label={`Reason ${reason.n}: ${reason.title}. Show what it costs you.`}
+        onClick={() => setOpen((v) => !v)}
         onMouseMove={handleMove}
         onMouseLeave={reset}
         onBlur={reset}
-        className="relative h-72 overflow-hidden border border-[rgba(209,250,229,0.18)] transition-transform duration-200 ease-out [transform-style:preserve-3d] focus:outline-none focus-visible:border-brand/40"
+        className="relative block h-72 w-full overflow-hidden border border-[rgba(209,250,229,0.18)] text-left transition-transform duration-200 ease-out [transform-style:preserve-3d] focus:outline-none focus-visible:border-brand/40"
       >
-        {/* Fixed image backdrop — stays put, only zooms on hover. */}
+        {/* Fixed image backdrop — stays put, only zooms on hover/open. */}
         <div
           aria-hidden="true"
-          className="absolute inset-0 bg-cover bg-center transition-transform duration-500 ease-out group-hover:scale-110"
-          style={{ backgroundImage: `url(${reason.image})` }}
-        />
+          className={`absolute inset-0 transition-transform duration-500 ease-out group-hover:scale-110 ${
+            open ? "scale-110" : ""
+          }`}
+        >
+          <Image
+            src={reason.image}
+            alt=""
+            fill
+            sizes="(min-width: 640px) 50vw, 100vw"
+            className="object-cover object-center"
+          />
+        </div>
         <div
           aria-hidden="true"
           className="pointer-events-none absolute inset-0 bg-linear-to-t from-black/90 via-black/60 to-black/40"
         />
 
         {/* Text track — slides up over the fixed image. */}
-        <div className="relative flex h-[200%] flex-col transition-transform duration-500 ease-out group-hover:-translate-y-1/2 group-focus-within:-translate-y-1/2">
+        <div
+          className={`relative flex h-[200%] flex-col transition-transform duration-500 ease-out group-hover:-translate-y-1/2 ${
+            open ? "-translate-y-1/2" : ""
+          }`}
+        >
           {/* Primary — reason at the bottom. */}
           <div className="flex h-1/2 shrink-0 flex-col justify-end p-8">
             <span className="font-label text-sm font-bold tracking-[0.2em] text-brand/80">
@@ -93,7 +116,7 @@ export default function ReasonCard({ reason }: { reason: Reason }) {
             </ul>
           </div>
         </div>
-      </div>
+      </button>
     </li>
   );
 }

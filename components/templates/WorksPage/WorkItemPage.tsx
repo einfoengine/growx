@@ -1,29 +1,10 @@
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowLeft, ArrowRight, Clock, Star } from "lucide-react";
+import { ArrowLeft, ArrowRight, Clock } from "lucide-react";
 import type { PortfolioItem } from "@/lib/content";
 import Button from "@/components/elements/Button";
 
 type Props = { item: PortfolioItem };
-
-function StarRating({ rating }: { rating: number }) {
-  return (
-    <div className="flex items-center gap-1.5">
-      <div className="flex items-center gap-0.5">
-        {Array.from({ length: 5 }).map((_, i) => (
-          <Star
-            key={i}
-            size={14}
-            className={i < rating ? "fill-brand text-brand" : "fill-border text-border"}
-            strokeWidth={0}
-          />
-        ))}
-      </div>
-      <span className="text-sm font-semibold text-foreground">{rating}.0</span>
-      <span className="text-sm text-muted">/ 5 - {rating === 5 ? "Outstanding" : rating === 4 ? "Excellent" : "Great"}</span>
-    </div>
-  );
-}
 
 export default function WorkItemPage({ item }: Props) {
   return (
@@ -69,7 +50,6 @@ export default function WorkItemPage({ item }: Props) {
                   <span className="font-medium text-foreground">{item.duration}</span>
                   <span>delivery</span>
                 </div>
-                <StarRating rating={item.rating} />
               </div>
             </div>
 
@@ -176,32 +156,6 @@ export default function WorkItemPage({ item }: Props) {
         </section>
       )}
 
-      {/* ── Client Rating ────────────────────────────────────── */}
-      <section id="gw-work-rating" className="bg-surface">
-        <div className="container-1200 py-20 sm:py-24">
-          <div className="mx-auto max-w-2xl rounded-2xl border border-border bg-background p-10 text-center">
-            <p className="text-xs font-semibold uppercase tracking-[0.18em] text-brand">
-              Client Feedback
-            </p>
-            <div className="mt-5 flex items-center justify-center gap-1">
-              {Array.from({ length: 5 }).map((_, i) => (
-                <Star
-                  key={i}
-                  size={28}
-                  className={i < item.rating ? "fill-brand text-brand" : "fill-border text-border"}
-                  strokeWidth={0}
-                />
-              ))}
-            </div>
-            <p className="mt-3 text-4xl font-bold tracking-tight text-foreground">
-              {item.rating}.0 <span className="text-lg font-normal text-muted">/ 5</span>
-            </p>
-            <p className="mt-2 text-base font-semibold text-foreground">{item.client}</p>
-            <p className="mt-1 text-sm text-muted">{item.tag}, {item.duration} engagement</p>
-          </div>
-        </div>
-      </section>
-
       {/* ── CTA ──────────────────────────────────────────────── */}
       <section id="gw-work-cta" className="relative overflow-hidden bg-background">
         <div
@@ -219,7 +173,7 @@ export default function WorkItemPage({ item }: Props) {
             Bring the brief. We'll bring the team, the creative direction, and deliver it under your brand.
           </p>
           <div className="mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row">
-            <Button label="Book a Discovery Call" href="#book" icon={<ArrowRight size={15} />} />
+            <Button label="Book a discovery call" href="#book" icon={<ArrowRight size={15} />} />
             <Button label="View all work" href="/works" variant="secondary" />
           </div>
         </div>

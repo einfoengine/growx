@@ -159,18 +159,20 @@ export default async function Footer() {
           </p>
 
           <div className="flex items-center gap-6">
-            <div id={`${data.id}-legal`} className="flex items-center gap-5 text-xs">
-              {data.legal.map((link) => (
-                <Link
-                  key={link.id}
-                  id={link.id}
-                  href={link.href}
-                  className="text-(--footer-muted) hover:text-white transition-colors"
-                >
-                  {link.label}
-                </Link>
-              ))}
-            </div>
+            {data.legal.length > 0 && (
+              <div id={`${data.id}-legal`} className="flex items-center gap-5 text-xs">
+                {data.legal.map((link) => (
+                  <Link
+                    key={link.id}
+                    id={link.id}
+                    href={link.href}
+                    className="text-(--footer-muted) hover:text-white transition-colors"
+                  >
+                    {link.label}
+                  </Link>
+                ))}
+              </div>
+            )}
 
             <div id={`${data.id}-social`} className="flex items-center gap-3">
               {site.social.map((s) => {

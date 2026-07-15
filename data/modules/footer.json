@@ -19,9 +19,9 @@
       "title": "Company",
       "links": [
         { "id": "footer-company-about", "label": "About", "href": "/about" },
-        { "id": "footer-company-process", "label": "Process", "href": "#gw-mod-process" },
-        { "id": "footer-company-case-studies", "label": "Case Studies", "href": "/case-studies" },
-        { "id": "footer-company-careers", "label": "Careers", "href": "/careers" }
+        { "id": "footer-company-process", "label": "Process", "href": "/process" },
+        { "id": "footer-company-works", "label": "Works", "href": "/works" },
+        { "id": "footer-company-contact", "label": "Contact", "href": "/contact" }
       ]
     },
     {
@@ -29,8 +29,8 @@
       "title": "Resources",
       "links": [
         { "id": "footer-resources-blog", "label": "Blog", "href": "/blog" },
-        { "id": "footer-resources-faq", "label": "FAQ", "href": "#gw-mod-faq" },
-        { "id": "footer-resources-guides", "label": "Guides", "href": "/guides" }
+        { "id": "footer-resources-faq", "label": "FAQ", "href": "/#gw-mod-faq" },
+        { "id": "footer-resources-pricing", "label": "Pricing", "href": "/pricing" }
       ]
     },
     {
@@ -43,8 +43,5 @@
       ]
     }
   ],
-  "legal": [
-    { "id": "footer-legal-privacy", "label": "Privacy", "href": "/privacy" },
-    { "id": "footer-legal-terms", "label": "Terms", "href": "/terms" }
-  ]
+  "legal": []
 }

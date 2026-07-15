@@ -1,4 +1,5 @@
 import { Check } from "lucide-react";
+import ScrollFadeIn from "@/components/elements/ScrollFadeIn";
 
 /** Benefits of becoming a growX partner, scrolled as an infinite marquee. */
 const BENEFITS = [
@@ -21,6 +22,7 @@ export default function PartnerMarquee() {
       aria-label="Benefits of becoming a partner"
       className="relative overflow-hidden border-y border-border bg-background py-6 sm:py-7"
     >
+      <ScrollFadeIn delay={0.1}>
       <div className="relative flex w-full overflow-hidden mask-[linear-gradient(to_right,transparent,#000_8%,#000_92%,transparent)]">
         <div className="flex w-fit animate-marquee hover:[animation-play-state:paused]">
           {[0, 1].map((copy) => (
@@ -38,6 +40,7 @@ export default function PartnerMarquee() {
           ))}
         </div>
       </div>
+      </ScrollFadeIn>
     </section>
   );
 }

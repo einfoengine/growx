@@ -11,17 +11,32 @@ const ITEMS = [
 
 export default function TextMarquee() {
   return (
-    <section id="gw-mod-text-marquee" className="relative overflow-hidden border-y border-border bg-background sm:py-12">
+    <section
+      id="gw-mod-text-marquee"
+      aria-label="What we do"
+      className="relative overflow-hidden border-y border-border bg-background py-6 sm:py-12"
+    >
       <div className="relative flex w-full overflow-hidden mask-[linear-gradient(to_right,transparent,#000_8%,#000_92%,transparent)]">
         <div className="flex w-fit animate-[marquee_25s_linear_infinite] hover:[animation-play-state:paused]">
           {[...Array(4)].map((_, groupIndex) => (
-            <div key={groupIndex} className="flex shrink-0 items-center">
+            // The track renders the list 4× purely so it can loop seamlessly.
+            // Only the first copy is exposed; the rest are duplicates and would
+            // otherwise make a screen reader announce every service 4 times.
+            <div
+              key={groupIndex}
+              aria-hidden={groupIndex > 0 ? "true" : undefined}
+              className="flex shrink-0 items-center"
+            >
               {ITEMS.map((item, index) => (
                 <div key={`${groupIndex}-${index}`} className="flex items-center">
-                  <span className="mx-8 whitespace-nowrap font-semibold uppercase tracking-widest text-foreground/40">
+                  <span className="mx-8 whitespace-nowrap font-semibold uppercase tracking-widest text-muted">
                     {item}
                   </span>
-                  <span className="text-foreground/20 font-black">✦</span>
+                  {/* Decorative separator — without aria-hidden this is
+                      announced as "black four-pointed star" between every item. */}
+                  <span aria-hidden="true" className="text-foreground/20 font-black">
+                    ✦
+                  </span>
                 </div>
               ))}
             </div>

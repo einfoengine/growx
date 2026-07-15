@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 import Headline from "@/components/elements/Headline";
+import ScrollFadeIn from "@/components/elements/ScrollFadeIn";
 import { getPortfolio } from "@/lib/content";
 
 export default async function Portfolio() {
@@ -13,6 +14,7 @@ export default async function Portfolio() {
       className="relative overflow-hidden border-b border-border bg-background py-24 text-foreground sm:py-28 lg:py-32"
     >
       <div className="container-1200">
+        <ScrollFadeIn delay={0.1}>
         <div className="mx-auto max-w-2xl text-center">
           <p className="eyebrow text-brand">[ {data.eyebrow} ]</p>
           <Headline
@@ -24,10 +26,12 @@ export default async function Portfolio() {
           />
           <p className="mt-5 text-base text-muted sm:text-lg">{data.sub}</p>
         </div>
+        </ScrollFadeIn>
       </div>
 
       {/* Boxed marquee of work tiles, inside the container. */}
       <div className="container-1200 mt-14 sm:mt-16">
+        <ScrollFadeIn delay={0.2}>
         <div className="relative border border-white/10 bg-foreground p-5">
           <div className="overflow-hidden">
             <div className="flex w-max animate-marquee hover:[animation-play-state:paused]">
@@ -71,9 +75,11 @@ export default async function Portfolio() {
             </div>
           </div>
         </div>
+        </ScrollFadeIn>
       </div>
 
       <div className="container-1200 mt-12 flex justify-center">
+        <ScrollFadeIn delay={0.3}>
         <Link href="/works" className="btn btn-secondary group">
           View full portfolio
           <ArrowRight
@@ -81,6 +87,7 @@ export default async function Portfolio() {
             className="transition-transform group-hover:translate-x-0.5"
           />
         </Link>
+        </ScrollFadeIn>
       </div>
     </section>
   );

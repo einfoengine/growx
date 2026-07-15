@@ -52,7 +52,7 @@ export default function NewsletterForm({
           placeholder={placeholder}
           aria-invalid={invalid}
           aria-describedby={invalid ? "newsletter-error" : undefined}
-          className="w-full min-w-0 flex-auto rounded-full border border-white/15 bg-white/5 px-5 py-3.5 text-base text-white placeholder:text-white/40 transition-colors focus:border-brand focus:outline-none focus:ring-1 focus:ring-brand"
+          className="w-full min-w-0 flex-auto rounded-full border border-white/15 bg-white/5 px-5 py-3.5 text-base text-white placeholder:text-white/40 transition-colors focus:border-brand focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-text"
         />
         <button
           type="submit"

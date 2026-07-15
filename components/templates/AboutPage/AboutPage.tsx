@@ -1,4 +1,4 @@
-import { Check, Quote, ArrowRight } from "lucide-react";
+import { Check, ArrowRight } from "lucide-react";
 import type { AboutContent } from "@/lib/content";
 import SectionHeader from "@/components/elements/SectionHeader";
 import Button from "@/components/elements/Button";
@@ -28,7 +28,7 @@ export default function AboutPage({ data }: Props) {
           />
           <div className="mt-8 flex flex-wrap gap-3">
             <Button label="Become a partner" href="/pricing" icon={<ArrowRight size={15} />} />
-            <Button label="See our work" href="/case-studies" variant="secondary" />
+            <Button label="See our work" href="/works" variant="secondary" />
           </div>
         </div>
       </section>
@@ -128,36 +128,6 @@ export default function AboutPage({ data }: Props) {
                   {p}
                 </p>
               ))}
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* ── Featured Testimonial ─────────────────────────────── */}
-      <section id="gw-about-testimonial" className="bg-surface">
-        <div className="container-1200 py-20 sm:py-24">
-          <div className="mx-auto max-w-3xl">
-            <div className="flex flex-col items-center text-center">
-              <Quote size={36} className="text-brand/30" />
-              <blockquote className="mt-6 text-xl font-medium leading-relaxed text-foreground sm:text-2xl">
-                &ldquo;{data.featuredTestimonial.quote}&rdquo;
-              </blockquote>
-              <div className="mt-8">
-                <p className="text-sm font-semibold text-foreground">
-                  {data.featuredTestimonial.author}
-                </p>
-                <p className="mt-0.5 text-sm text-muted">
-                  {data.featuredTestimonial.title}
-                </p>
-              </div>
-              <div className="mt-8 flex items-center gap-4 rounded-2xl border border-border bg-background px-8 py-5">
-                <p className="text-3xl font-bold tracking-tight text-foreground">
-                  {data.featuredTestimonial.metric}
-                </p>
-                <p className="text-left text-sm text-muted">
-                  {data.featuredTestimonial.metricLabel}
-                </p>
-              </div>
             </div>
           </div>
         </div>

@@ -188,25 +188,6 @@ export type FaqContent = {
   items: FaqItem[];
 };
 
-export type Testimonial = {
-  id: string;
-  name: string;
-  title: string;
-  company: string;
-  quote: string;
-  metric?: string;
-  metricLabel?: string;
-  image?: string;
-};
-
-export type TestimonialsContent = {
-  id: string;
-  eyebrow: string;
-  headline: { parts: HeadlinePart[] };
-  sub: string;
-  testimonials: Testimonial[];
-};
-
 export type PricingTier = {
   id: string;
   name: string;
@@ -250,15 +231,6 @@ export type ComparisonContent = {
   headline: { parts: HeadlinePart[] };
   sub: string;
   rows: ComparisonRow[];
-};
-
-export type GrowthCalculatorContent = {
-  id: string;
-  eyebrow: string;
-  headline: { parts: HeadlinePart[] };
-  sub: string;
-  description: string;
-  cta: CTA;
 };
 
 export type ServiceDeliverable = {
@@ -349,7 +321,6 @@ export type PortfolioItem = {
   problem: string;
   technologies: string[];
   duration: string;
-  rating: number;
   media: PortfolioMedia[];
 };
 
@@ -437,42 +408,13 @@ export type AboutContent = {
     body: string;
     pillars: AboutPillar[];
   };
-  featuredTestimonial: {
+  featuredTestimonial?: {
     quote: string;
     author: string;
     title: string;
     metric: string;
     metricLabel: string;
   };
-};
-
-export type CaseStudyResult = {
-  id: string;
-  value: string;
-  label: string;
-};
-
-export type CaseStudyTestimonial = {
-  quote: string;
-  author: string;
-  title: string;
-};
-
-export type CaseStudy = {
-  id: string;
-  slug: string;
-  client: string;
-  industry: string;
-  service: string;
-  serviceSlug: string;
-  duration: string;
-  tagline: string;
-  description: string;
-  challenge: string;
-  solution: string;
-  results: CaseStudyResult[];
-  testimonial?: CaseStudyTestimonial;
-  services: string[];
 };
 
 export type ProcessJourneyStep = {

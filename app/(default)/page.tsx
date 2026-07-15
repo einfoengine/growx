@@ -10,7 +10,6 @@ import Portfolio from "@/components/modules/Portfolio/Portfolio";
 import PricingPlans from "@/components/modules/Pricing/PricingPlans";
 import ServicesCatalog from "@/components/modules/Services/ServicesCatalog";
 import SisterBrands from "@/components/modules/SisterBrands/SisterBrands";
-import TestimonialSpotlight from "@/components/modules/Testimonials/TestimonialSpotlight";
 
 export default function HomePage() {
   return (
@@ -24,7 +23,6 @@ export default function HomePage() {
       <Portfolio />
       <PricingPlans />
       <Comparison />
-      <TestimonialSpotlight />
       <Faq />
       <BlogSection />
       <Newsletter />
