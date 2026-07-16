@@ -1,11 +1,12 @@
 import ScrollFadeIn from "@/components/elements/ScrollFadeIn";
+import Eyebrow from "@/components/elements/Eyebrow";
 
 /** Our family of brands. growX sits alongside its sister brands — one partner,
  *  a whole ecosystem. Logos live in /public/assets. */
 const BRANDS: { name: string; src: string; alt: string; tagline: string }[] = [
   {
     name: "growX",
-    src: "/assets/growX-black-logo.svg",
+    src: "/assets/logo-black.png",
     alt: "growX",
     tagline: "Growth marketing & partnerships",
   },
@@ -33,7 +34,7 @@ export default function SisterBrands() {
       <div className="container-1200">
         <ScrollFadeIn delay={0.1}>
         <div className="mx-auto max-w-2xl text-center">
-          <p className="eyebrow text-brand">Our family of brands</p>
+          <Eyebrow text="Our family of brands" />
           <h2
             id="sister-brands-headline"
             className="mt-4 text-3xl font-bold tracking-tight sm:text-4xl md:text-5xl"

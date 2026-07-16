@@ -36,7 +36,7 @@ export default function FaqAccordion({ items }: { items: FaqItem[] }) {
               <span
                 aria-hidden="true"
                 className={`mt-1 inline-flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-(--brand-soft) text-brand transition-transform duration-300 ${
-                  isOpen ? "rotate-45 bg-brand text-black" : ""
+                  isOpen ? "rotate-45 bg-gradient-brand text-black" : ""
                 }`}
               >
                 <Plus size={14} />

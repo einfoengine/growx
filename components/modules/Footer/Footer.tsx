@@ -133,8 +133,8 @@ export default async function Footer() {
 
             <span className="mt-6 flex w-fit items-center gap-2 rounded-full border border-white/10 bg-white/5 px-3 py-1.5 text-xs font-medium text-(--footer-fg)">
               <span aria-hidden="true" className="relative flex h-2 w-2">
-                <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-brand opacity-70" />
-                <span className="relative inline-flex h-2 w-2 rounded-full bg-brand" />
+                <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-gradient-brand opacity-70" />
+                <span className="relative inline-flex h-2 w-2 rounded-full bg-gradient-brand" />
               </span>
               Available for new partners
             </span>
@@ -158,7 +158,7 @@ export default async function Footer() {
                       <Link
                         id={link.id}
                         href={link.href}
-                        className="inline-block py-1 text-sm text-(--footer-muted) transition-colors hover:text-white focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand"
+                        className="link-underline inline-block py-1 text-sm text-(--footer-muted) transition-colors hover:text-white focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand"
                       >
                         {link.label}
                       </Link>
@@ -186,7 +186,7 @@ export default async function Footer() {
                     key={link.id}
                     id={link.id}
                     href={link.href}
-                    className="text-(--footer-muted) hover:text-white transition-colors"
+                    className="link-underline text-(--footer-muted) hover:text-white transition-colors"
                   >
                     {link.label}
                   </Link>

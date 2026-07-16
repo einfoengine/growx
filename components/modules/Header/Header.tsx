@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { ChevronDown } from "lucide-react";
+import { ArrowRight, ChevronDown } from "lucide-react";
 import Logo from "@/components/elements/Logo";
 import { getHeader } from "@/lib/content";
 import MobileMenu from "./MobileMenu";
@@ -19,6 +19,8 @@ export default async function Header() {
           <Logo id="el-logo-header-light" tone="light" width={140} eager />
         </span>
 
+        {/* The menu floats bare; the glass treatment lives on the whole bar
+            (HeaderShell) and only appears once the page is scrolled. */}
         <nav
           id={`${data.id}-nav`}
           aria-label="Primary"
@@ -74,7 +76,7 @@ export default async function Header() {
                   <Link
                     id={item.id}
                     href={item.href}
-                    className="text-sm font-medium text-foreground/80 hover:text-foreground transition-colors"
+                    className="link-underline text-sm font-medium text-foreground/80 hover:text-foreground transition-colors"
                   >
                     {item.label}
                   </Link>
@@ -88,9 +90,16 @@ export default async function Header() {
           <Link
             id={data.cta.id}
             href={data.cta.href}
-            className="inline-flex items-center rounded-full bg-foreground px-5 py-2.5 text-sm font-medium text-background hover:opacity-90 transition-opacity"
+            // Logo-gradient fill: outside the pill this is the one
+            // brand-colored anchor at the top right, legible over any section.
+            className="group inline-flex items-center gap-1.5 rounded-full bg-gradient-brand px-5 py-2.5 text-sm font-semibold text-black shadow-lg shadow-black/10 transition-[filter] hover:brightness-110"
           >
             {data.cta.label}
+            <ArrowRight
+              size={15}
+              aria-hidden="true"
+              className="transition-transform group-hover:translate-x-0.5"
+            />
           </Link>
         </div>
 

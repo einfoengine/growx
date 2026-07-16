@@ -78,7 +78,7 @@ export default async function Pricing({
               >
                 {tier.highlighted && (
                   <div className="absolute -top-4 left-1/2 -translate-x-1/2">
-                    <span className="rounded-full bg-brand px-3 py-1 text-xs font-semibold text-background">
+                    <span className="rounded-full bg-gradient-brand px-3 py-1 text-xs font-semibold text-background">
                       Most Popular
                     </span>
                   </div>
@@ -110,7 +110,7 @@ export default async function Pricing({
                     href={tier.cta.href}
                     className={`mt-8 block rounded-full py-3 text-center text-sm font-medium transition ${
                       tier.highlighted
-                        ? "bg-brand text-background hover:bg-brand/90"
+                        ? "bg-gradient-brand text-background hover:bg-brand/90"
                         : "border border-border text-foreground hover:border-foreground/20 hover:bg-black/5"
                     }`}
                   >

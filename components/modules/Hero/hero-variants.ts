@@ -17,7 +17,9 @@ export const HERO_LAYOUT: Record<
     shell: "container-1200 relative pt-24 pb-24 sm:pt-32 sm:pb-28 lg:pt-40 lg:pb-36",
     headline: "mt-5 hero-headline",
     tagline: "mt-5 hero-tagline",
-    sub: "mt-3 text-pretty hero-sub",
+    // ~740px measure keeps the sub at a readable line length under the wide
+    // centered headline.
+    sub: "mx-auto mt-6 max-w-185 text-pretty hero-sub",
     ctas: "mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row",
     stats: "mt-10 grid grid-cols-2 gap-2.5 sm:grid-cols-4",
     eyebrowArrow: 12,

@@ -1,6 +1,6 @@
 "use client";
 
-import { ChevronDown, Menu, X } from "lucide-react";
+import { ArrowRight, ChevronDown, Menu, X } from "lucide-react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useCallback, useEffect, useState } from "react";
@@ -84,7 +84,7 @@ export default function MobileMenu({
             <div className="flex h-16 shrink-0 items-center justify-between border-b border-black/8 px-5">
               <Link href="/" onClick={closeAll} aria-label="growX.studio home" className="inline-flex items-center">
                 {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img src="/assets/growX-black-logo.svg" alt="growX.studio" width={120} height={28} />
+                <img src="/assets/logo-black.png" alt="growX" width={120} height={36} />
               </Link>
               <button
                 type="button"
@@ -172,9 +172,10 @@ export default function MobileMenu({
                 id={`${cta.id}-mobile`}
                 href={cta.href}
                 onClick={closeAll}
-                className="inline-flex w-full items-center justify-center rounded-full bg-gray-900 px-6 py-3.5 text-sm font-semibold text-white transition-opacity hover:opacity-90"
+                className="inline-flex w-full items-center justify-center gap-1.5 rounded-full bg-gray-900 px-6 py-3.5 text-sm font-semibold text-white transition-opacity hover:opacity-90"
               >
                 {cta.label}
+                <ArrowRight size={15} aria-hidden="true" />
               </Link>
             </div>
           </motion.div>

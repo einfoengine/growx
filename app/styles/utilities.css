@@ -15,17 +15,104 @@
   padding-inline: 2rem;
 }
 
-/* Brand gradient clipped to text. Replaces the repeated
-   `bg-linear-to-br from-brand to-brand-strong bg-clip-text text-transparent`. */
+/* Brand gradient clipped to text. Diagonal, not top-to-bottom, so the sheen
+   runs across the letters. */
 @utility text-gradient-brand {
   background-image: linear-gradient(
-    to bottom right,
-    var(--brand),
-    var(--brand-strong)
+    120deg,
+    var(--brand-grad-from),
+    var(--brand-grad-to)
   );
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
+}
+
+/* Brand gradient text with a light "shine" sweeping across it — a bright glint
+   pans back and forth over the letters. A brighter mint→white highlight sits
+   mid-gradient; the oversized background-size gives it room to travel. Frozen
+   by the reduced-motion safety net below. */
+@keyframes text-shine {
+  0%,
+  100% {
+    background-position: 130% 50%;
+  }
+  50% {
+    background-position: -30% 50%;
+  }
+}
+
+@utility text-gradient-brand-shine {
+  background-image: linear-gradient(
+    110deg,
+    var(--brand-grad-to) 0%,
+    var(--brand-grad-from) 30%,
+    #eafff5 48%,
+    var(--brand-grad-from) 66%,
+    var(--brand-grad-to) 100%
+  );
+  background-size: 250% 100%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  animation: text-shine 7s ease-in-out infinite;
+}
+
+/* Film grain: an inline fractal-noise SVG at low opacity, overlay-blended.
+   Adds a subtle cinematic texture over a dark scene. Cover the whole layer. */
+@utility bg-film-grain {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='g'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='160' height='160' filter='url(%23g)'/%3E%3C/svg%3E");
+  mix-blend-mode: overlay;
+}
+
+/* Brand fill with dimension: a diagonal emerald base lit by a soft radial
+   sheen in the top-left, so the surface reads as catching light rather than a
+   flat top-to-bottom band. Pair with text-black like bg-brand; on hover use
+   brightness, not a background-color swap (the gradient image paints over
+   background-color, so hover:bg-* is a silent no-op). */
+@utility bg-gradient-brand {
+  background-image:
+    radial-gradient(
+      135% 120% at 18% 12%,
+      rgba(255, 255, 255, 0.24) 0%,
+      rgba(255, 255, 255, 0) 46%
+    ),
+    linear-gradient(
+      125deg,
+      var(--brand-grad-from) 0%,
+      var(--brand-strong) 52%,
+      var(--brand-grad-to) 100%
+    );
+}
+
+/* Site-wide brand-primary surface: a slowly panning emerald gradient. This is
+   the standard treatment for brand-colored backgrounds. The oversized
+   background-size gives the pan room to travel; the reduced-motion safety net
+   below freezes it. Pair with dark text (text-black) — brand green is a
+   background colour, not a text colour. */
+@keyframes brand-gradient-pan {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+@utility bg-brand-animated {
+  background-image: linear-gradient(
+    110deg,
+    var(--brand-grad-to),
+    var(--brand-grad-from),
+    var(--brand),
+    var(--brand-grad-from),
+    var(--brand-grad-to)
+  );
+  background-size: 300% 300%;
+  animation: brand-gradient-pan 16s ease-in-out infinite;
 }
 
 /* Horizontal marquee scroll */
@@ -84,6 +171,22 @@
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
     scroll-behavior: auto !important;
+  }
+}
+
+/* Editorial underline: a 1px currentColor rule that draws in from the left on
+   hover/focus. Awwwards-style link treatment — works on any inline element,
+   inherits the text color, never adds color of its own. */
+@utility link-underline {
+  background-image: linear-gradient(currentColor, currentColor);
+  background-size: 0% 1px;
+  background-position: 0 100%;
+  background-repeat: no-repeat;
+  transition: background-size 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+
+  &:hover,
+  &:focus-visible {
+    background-size: 100% 1px;
   }
 }
 

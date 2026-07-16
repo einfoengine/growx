@@ -2,19 +2,23 @@
 
 import { useRef, type ReactNode } from "react";
 import { motion, useReducedMotion, useScroll, useTransform } from "framer-motion";
+import { useMediaQuery } from "@/lib/hooks/useActiveWhenVisible";
 
 type Props = {
   children: ReactNode;
   className?: string;
 };
 
-/** Perspective stage for the hero VSL. At rest the frame lies tilted back
- *  into the page (top edge receding, like a presentation screen); scrolling
- *  it up the viewport straightens it to flat. Scroll-linked, not triggered,
- *  so it tracks in both directions and never plays "at" the user. */
+/** Presentation stage for the hero VSL. At rest the frame is narrow and lies
+ *  tilted back into the page; scrolling it up the viewport straightens it to
+ *  flat while it grows to the full container width. Scroll-linked, not
+ *  triggered, so it tracks in both directions and never plays "at" the user. */
 export default function HeroVideoPerspective({ children, className }: Props) {
   const ref = useRef<HTMLDivElement>(null);
   const reduceMotion = useReducedMotion();
+  // The narrow start only reads on screens with room to spare; on phones the
+  // frame stays full width and just untilts.
+  const wide = useMediaQuery("(min-width: 640px)");
   const { scrollYProgress } = useScroll({
     target: ref,
     // Fully tilted while the frame is at the fold, flat once its top reaches
@@ -24,9 +28,11 @@ export default function HeroVideoPerspective({ children, className }: Props) {
   });
 
   const rotateX = useTransform(scrollYProgress, [0, 1], [26, 0]);
-  // The tilt's bottom half swings toward the viewer and reads wider than the
-  // column; the slight scale-down keeps it inside the container until flat.
-  const scale = useTransform(scrollYProgress, [0, 1], [0.94, 1]);
+  // Scale, NOT width: width is a layout property, so animating it reflowed
+  // the whole page every frame — content below shifted while scrolling, and
+  // the header's section probe crossed boundaries repeatedly and flickered.
+  // A transform stays on the compositor and moves nothing else.
+  const scale = useTransform(scrollYProgress, [0, 1], wide ? [0.62, 1] : [1, 1]);
 
   if (reduceMotion) {
     return (
@@ -39,8 +45,13 @@ export default function HeroVideoPerspective({ children, className }: Props) {
   return (
     <div ref={ref} className={className}>
       <motion.div
-        className="hero-video"
-        style={{ rotateX, scale, transformPerspective: 1100 }}
+        className="hero-video mx-auto"
+        style={{
+          scale,
+          rotateX,
+          transformPerspective: 1100,
+          transformOrigin: "center top",
+        }}
       >
         {children}
       </motion.div>

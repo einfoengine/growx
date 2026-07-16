@@ -334,7 +334,7 @@ export default function BookingModal() {
                 <button
                   type="submit"
                   disabled={!selectedDate || !selectedTime}
-                  className="w-full rounded-xl bg-brand px-4 py-4 text-sm font-semibold text-black transition-all hover:scale-[1.02] hover:bg-brand-strong focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-text disabled:opacity-40 disabled:cursor-not-allowed disabled:hover:scale-100"
+                  className="w-full rounded-xl bg-gradient-brand px-4 py-4 text-sm font-semibold text-black transition-all hover:scale-[1.02] hover:brightness-110 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-text disabled:opacity-40 disabled:cursor-not-allowed disabled:hover:scale-100"
                 >
                   {selectedDate && selectedTime ? "Request This Time" : "Select a Date & Time to Continue"}
                 </button>
@@ -398,7 +398,7 @@ export default function BookingModal() {
                         "relative mx-auto flex h-10 w-10 items-center justify-center rounded-full text-sm font-medium transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-text",
                         !cell.current ? "opacity-20 cursor-default" :
                         past ? "text-muted/40 cursor-not-allowed" :
-                        sel ? "bg-brand text-black shadow-md scale-105" :
+                        sel ? "bg-gradient-brand text-black shadow-md scale-105" :
                         tod ? "border border-brand/50 text-brand hover:bg-brand/10" :
                         "text-foreground hover:bg-white/8"
                       ].join(" ")}
@@ -438,7 +438,7 @@ export default function BookingModal() {
                             className={[
                               "rounded-xl border px-2 py-2.5 text-sm font-medium transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-text",
                               sel
-                                ? "border-brand bg-brand text-black shadow-md scale-105"
+                                ? "border-brand bg-gradient-brand text-black shadow-md scale-105"
                                 : "border-border bg-background text-muted hover:border-white/20 hover:text-foreground",
                             ].join(" ")}
                           >

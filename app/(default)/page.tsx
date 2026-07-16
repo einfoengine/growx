@@ -16,9 +16,9 @@ export default function HomePage() {
     <>
       <Hero />
       <PartnerMarquee />
+      <ServicesCatalog />
       <SisterBrands />
       <FulfillmentReasons />
-      <ServicesCatalog />
       <HowItWorks />
       <Portfolio />
       <PricingPlans />

@@ -57,7 +57,7 @@ export default function NewsletterForm({
         <button
           type="submit"
           disabled={pending}
-          className="group inline-flex shrink-0 items-center justify-center gap-2 rounded-full bg-brand px-6 py-3.5 text-sm font-semibold text-black transition-all hover:bg-brand-strong disabled:cursor-not-allowed disabled:opacity-70"
+          className="group inline-flex shrink-0 items-center justify-center gap-2 rounded-full bg-gradient-brand px-6 py-3.5 text-sm font-semibold text-black transition-all hover:brightness-110 disabled:cursor-not-allowed disabled:opacity-70"
         >
           {pending ? (
             <>

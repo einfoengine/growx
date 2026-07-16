@@ -28,9 +28,10 @@
   .title-hero {
     @apply text-hero font-extrabold tracking-tight text-foreground;
   }
-  /* Section heading (h2). */
+  /* Section heading (h2). Editorial scale: headings carry the page, so the
+     jump from body copy to title is deliberately steep. */
   .title {
-    @apply text-3xl font-bold leading-[1.15] tracking-tight text-foreground sm:text-4xl md:text-5xl;
+    @apply text-4xl font-bold leading-[1.06] tracking-tight text-foreground sm:text-5xl md:text-6xl;
   }
   /* Small heading — card titles, sub-sections. */
   .title-sm {
@@ -44,9 +45,9 @@
   .paragraph {
     @apply text-base leading-relaxed text-muted;
   }
-  /* Inline text link. */
+  /* Inline text link. Color shift + drawn underline on hover. */
   .link {
-    @apply font-medium text-brand transition-colors hover:text-brand-strong;
+    @apply link-underline font-medium text-brand transition-colors hover:text-brand-strong;
   }
 
   /* ---- Hero (home) ------------------------------------------------------- */
@@ -67,11 +68,12 @@
     @apply font-label text-lg font-semibold tracking-tight text-background/90 sm:text-xl;
   }
   .hero-sub {
-    @apply text-base text-white/70 sm:text-lg;
+    @apply text-base text-white/70 sm:text-lg lg:text-xl lg:leading-relaxed;
   }
-  /* Proof chip under the hero CTA. */
+  /* Proof chip under the hero CTA. Flat hairline treatment: the border alone
+     defines the chip, no fill or blur — surfaces stay flat and editorial. */
   .hero-stat {
-    @apply inline-flex w-full items-center justify-center gap-2 border border-white/10 bg-white/5 px-3 py-2.5 text-center text-xs font-medium text-background/85 backdrop-blur-sm sm:text-sm;
+    @apply inline-flex w-full items-center justify-center gap-2 rounded-lg border border-white/12 px-3 py-2.5 text-center text-xs font-medium text-background/85 sm:text-sm;
   }
   /* Same chip on a light hero (inner variant). */
   .hero-stat-light {
@@ -83,10 +85,14 @@
   .hero-video {
     width: 100%;
     border: 8px solid rgba(209, 250, 229, 0.12);
+    /* Concentric with the rounded-2xl (1rem) frame inside: outer radius =
+       inner radius + stroke width, so the corner bands stay even. */
+    border-radius: calc(1rem + 8px);
   }
   @media (min-width: 640px) {
     .hero-video {
       border-width: 20px;
+      border-radius: calc(1rem + 20px);
     }
   }
 
@@ -102,7 +108,7 @@
     @apply border border-border px-7 py-4 text-base text-foreground/80 hover:border-foreground/30 hover:text-foreground;
   }
   .btn-brand {
-    @apply bg-brand px-8 py-4 text-base text-black hover:bg-brand-strong;
+    @apply bg-gradient-brand px-8 py-4 text-base text-black hover:brightness-110;
   }
   .btn-ghost {
     @apply text-base text-brand hover:text-brand/80;
@@ -120,15 +126,37 @@
   .btn-sm {
     @apply px-4 py-2 text-xs;
   }
+  /* Slide-up label hover (see Button.tsx): the label exits through the top of
+     a clipped wrapper while an aria-hidden duplicate rises from below. */
+  .btn-label-wrap {
+    position: relative;
+    display: inline-block;
+    overflow: hidden;
+  }
+  .btn-label {
+    display: block;
+    transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  .btn-label-hover {
+    position: absolute;
+    inset: 0;
+    transform: translateY(110%);
+  }
+  .btn:hover .btn-label {
+    transform: translateY(-110%);
+  }
+  .btn:hover .btn-label-hover {
+    transform: translateY(0);
+  }
 
   /* ---- Cards ------------------------------------------------------------- */
-  /* Neutral surface card. Override bg / border inline for variants. */
+  /* Flat by default: a 1px hairline defines the card, not elevation. */
   .card {
-    @apply rounded-2xl border border-border bg-background shadow-sm;
+    @apply rounded-2xl border border-border bg-background;
   }
   /* Muted surface variant. */
   .card-surface {
-    @apply rounded-2xl border border-border bg-surface shadow-sm;
+    @apply rounded-2xl border border-border bg-surface;
   }
   /* Add to any card for a subtle hover lift. */
   .card-hover {
@@ -151,7 +179,7 @@
 
   /* ---- Navigation -------------------------------------------------------- */
   .nav-link {
-    @apply text-sm font-medium text-foreground/80 transition-colors hover:text-foreground;
+    @apply link-underline text-sm font-medium text-foreground/80 transition-colors hover:text-foreground;
   }
   /* Dropdown / popover panel. */
   .menu {

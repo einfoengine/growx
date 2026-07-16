@@ -1,5 +1,6 @@
 import HeroAnimatedContent from "@/components/modules/Hero/HeroAnimatedContent";
 import HeroDots from "@/components/modules/Hero/HeroDots";
+import HeroScene from "@/components/modules/Hero/HeroScene";
 import HeroVideo from "@/components/modules/Hero/HeroVideo";
 import HeroVideoPerspective from "@/components/modules/Hero/HeroVideoPerspective";
 import type { HeroVariant } from "@/components/modules/Hero/hero-variants";
@@ -51,10 +52,12 @@ export default async function Hero({ data, variant = "home" }: HeroProps = {}) {
       id={`gw-${heroData.id}`}
       aria-labelledby={`${heroData.id}-headline`}
       data-nav-theme="dark"
-      className="relative isolate flex items-center overflow-hidden bg-foreground text-background py-16 sm:py-20 lg:min-h-[92vh] lg:py-24"
+      className="relative isolate overflow-hidden bg-foreground text-background"
     >
-      {/* Layered CSS background: brand wash + fine grid + soft glows.
-          Zero image payload, paints instantly, keeps the centered copy crisp. */}
+      {/* Cinematic backdrop: darkened emerald aurora photo + film grain,
+          drifting slowly on scroll. Sits at the very back. */}
+      <HeroScene className="-z-20" />
+      {/* Brand wash over the scene. */}
       <div
         aria-hidden="true"
         className="pointer-events-none absolute inset-0 -z-10 bg-[radial-gradient(ellipse_75%_55%_at_50%_-5%,var(--brand-soft),transparent_60%)]"
@@ -71,9 +74,16 @@ export default async function Hero({ data, variant = "home" }: HeroProps = {}) {
       />
 
       <div className="container-1200 flex w-full flex-col items-center">
-        <HeroAnimatedContent data={heroData} variant={variant} />
-        <HeroVideoPerspective className="mt-20 w-full sm:mt-28">
-          <HeroVideo videoId="oGKjh10TbK0" thumbnail="/assets/hero/hero-thumb-connect.webp" />
+        {/* The copy centers in most of the first screen — short of a full
+            viewport so the VSL peeks above the fold instead of sitting a
+            whole screen away from the copy. */}
+        {/* Top padding clears the fixed glass bar (72px zone) with real air
+            to spare, so the eyebrow never crowds it. */}
+        <div className="flex w-full items-center justify-center pt-36 pb-10 sm:pt-40 lg:min-h-[82svh] lg:pb-16 lg:pt-32">
+          <HeroAnimatedContent data={heroData} variant={variant} />
+        </div>
+        <HeroVideoPerspective className="w-full pb-16 sm:pb-24">
+          <HeroVideo videoId="oGKjh10TbK0" />
         </HeroVideoPerspective>
       </div>
     </section>

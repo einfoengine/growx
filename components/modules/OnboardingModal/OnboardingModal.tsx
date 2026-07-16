@@ -169,7 +169,7 @@ export default function OnboardingModal() {
                           {plan.name} Plan
                         </span>
                         {plan.badge && (
-                          <span className="rounded-full bg-brand px-2.5 py-0.5 text-xs font-semibold text-black">
+                          <span className="rounded-full bg-gradient-brand px-2.5 py-0.5 text-xs font-semibold text-black">
                             {plan.badge}
                           </span>
                         )}
@@ -254,7 +254,7 @@ export default function OnboardingModal() {
 
                   <button
                     type="submit"
-                    className="w-full rounded-xl bg-brand px-4 py-3.5 text-sm font-semibold text-black transition-all hover:bg-brand-strong hover:scale-[1.01] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-text"
+                    className="w-full rounded-xl bg-gradient-brand px-4 py-3.5 text-sm font-semibold text-black transition-all hover:brightness-110 hover:scale-[1.01] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-text"
                   >
                     Get Started
                   </button>

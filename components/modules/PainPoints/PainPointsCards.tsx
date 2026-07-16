@@ -274,7 +274,7 @@ export default function PainPointsCards({ cards }: { cards: Card[] }) {
 
                   {/* Icon node - straddles the top edge (50% out) so the box keeps more room for the title */}
                   <span
-                    className={`absolute left-1/2 top-0 z-10 inline-flex -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-2xl bg-brand text-black shadow-lg shadow-brand/30 ring-8 ring-foreground transition-all duration-300 ease-out ${
+                    className={`absolute left-1/2 top-0 z-10 inline-flex -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-2xl bg-gradient-brand text-black shadow-lg shadow-brand/30 ring-8 ring-foreground transition-all duration-300 ease-out ${
                       isCompact ? "h-7 w-7" : "h-10 w-10"
                     }`}
                   >
@@ -328,7 +328,7 @@ export default function PainPointsCards({ cards }: { cards: Card[] }) {
           viewport={{ once: true, margin: "-50px" }}
           transition={{ duration: 0.5, delay: 0.2 }}
           href="#book"
-          className="group mt-12 inline-flex items-center gap-2 rounded-full bg-brand px-8 py-4 text-sm font-semibold text-black transition-all hover:scale-105 hover:bg-brand-strong hover:shadow-[0_0_30px_rgba(16,185,129,0.4)]"
+          className="group mt-12 inline-flex items-center gap-2 rounded-full bg-gradient-brand px-8 py-4 text-sm font-semibold text-black transition-all hover:scale-105 hover:brightness-110 hover:shadow-[0_0_30px_rgba(16,185,129,0.4)]"
         >
           Lets engage in a meeting
           <svg

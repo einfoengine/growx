@@ -58,7 +58,7 @@ export default function ProcessPage({ data }: Props) {
             {data.journey.phases.map((phase) => (
               <div
                 key={phase.id}
-                className="grid gap-0 overflow-hidden border border-border bg-background lg:grid-cols-[280px_1fr]"
+                className="grid gap-0 overflow-hidden rounded-2xl border border-border bg-background lg:grid-cols-[280px_1fr]"
               >
                 {/* Phase label column */}
                 <div className="flex flex-col justify-between border-b border-border bg-surface p-8 lg:border-b-0 lg:border-r">

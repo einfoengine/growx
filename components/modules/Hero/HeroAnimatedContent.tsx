@@ -5,6 +5,7 @@ import { motion } from "framer-motion";
 import { ArrowRight, Check } from "lucide-react";
 import Typewriter from "@/components/elements/Typewriter";
 import Headline from "@/components/elements/Headline";
+import HeroHeadlineWords from "@/components/modules/Hero/HeroHeadlineWords";
 import Button from "@/components/elements/Button";
 import { HERO_LAYOUT, type HeroVariant } from "@/components/modules/Hero/hero-variants";
 import type { HeroContent } from "@/lib/content/types";
@@ -89,30 +90,55 @@ export default function HeroAnimatedContent({
           }
           variants={itemVariants}
         >
+          {/* Home: pill badge with a brand status dot. Inner pages keep the
+              plain kicker. */}
           <Link
             href={data.eyebrow.href}
-            className="inline-flex items-baseline gap-1.5 transition-opacity hover:opacity-80 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-brand"
+            className={
+              isHome
+                ? "inline-flex items-center gap-2.5 rounded-full bg-white/10 px-4 py-2 transition-colors hover:bg-white/15 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-brand"
+                : "inline-flex items-baseline gap-1.5 transition-opacity hover:opacity-80 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-brand"
+            }
           >
-            {data.eyebrow.label}{" "}
-            <Typewriter
-              words={["vendor", "team member", "department"]}
-              className="text-brand"
-            />
+            {isHome && (
+              <span
+                aria-hidden="true"
+                className="h-2.5 w-2.5 shrink-0 rounded-full bg-gradient-brand"
+              />
+            )}
+            <span className="inline-flex items-baseline gap-1.5">
+              {data.eyebrow.label}{" "}
+              <Typewriter
+                words={["vendor", "team member", "department"]}
+                className="text-brand"
+              />
+            </span>
           </Link>
         </motion.p>
 
-        <motion.div variants={itemVariants}>
-          <Headline
+        {/* Home headline rises word by word out of clipped wrappers; inner
+            pages keep the block reveal from the shared Headline element. */}
+        {isHome ? (
+          <HeroHeadlineWords
             id={`${data.id}-headline`}
             parts={data.headline.parts}
-            as="h1"
-            className={L.headline}
-            highlightClassName="text-gradient-brand"
-            underlineHighlight={false}
+            className={`${L.headline} text-balance`}
+            highlightClassName="text-gradient-brand-shine"
           />
-        </motion.div>
+        ) : (
+          <motion.div variants={itemVariants}>
+            <Headline
+              id={`${data.id}-headline`}
+              parts={data.headline.parts}
+              as="h1"
+              className={L.headline}
+              highlightClassName="text-gradient-brand"
+              underlineHighlight={false}
+            />
+          </motion.div>
+        )}
 
-        {data.tagline && (
+        {data.tagline && !isHome && (
           <motion.p
             id={`${data.id}-tagline`}
             className={`${L.tagline} font-label`}
@@ -154,7 +180,7 @@ export default function HeroAnimatedContent({
 
         {/* Proof bar. Sits under the CTA so the last thing read before acting is
             evidence, not another claim. */}
-        {hasStats && (
+        {hasStats && !isHome && (
           <motion.ul id={`${data.id}-stats`} className={L.stats} variants={containerVariants}>
             {data.stats.map((stat) => (
               <motion.li key={stat.id} id={stat.id} variants={statVariants}>

@@ -423,7 +423,7 @@ export default function PricingCalculator({ pageData, services }: Props) {
                     className="group relative flex flex-col items-center gap-3 rounded-2xl border border-border bg-background p-5 text-center transition-all duration-200 hover:border-brand/40 hover:bg-surface hover:shadow-[0_0_20px_rgba(16,185,129,0.06)]"
                   >
                     {count > 0 ? (
-                      <span className="absolute right-2 top-2 flex h-5 w-5 items-center justify-center rounded-full bg-brand text-[10px] font-bold text-black">
+                      <span className="absolute right-2 top-2 flex h-5 w-5 items-center justify-center rounded-full bg-gradient-brand text-[10px] font-bold text-black">
                         {count}
                       </span>
                     ) : (
@@ -694,7 +694,7 @@ export default function PricingCalculator({ pageData, services }: Props) {
                                 )}
                               </div>
                               <div className="flex gap-2">
-                                <button type="button" onClick={saveInlineEdit} className="rounded-full bg-brand px-5 py-2 text-sm font-semibold text-black transition hover:bg-brand/90">
+                                <button type="button" onClick={saveInlineEdit} className="rounded-full bg-gradient-brand px-5 py-2 text-sm font-semibold text-black transition hover:bg-brand/90">
                                   Save
                                 </button>
                                 <button type="button" onClick={cancelInlineEdit} className="rounded-full border border-border px-5 py-2 text-sm font-medium text-foreground/70 transition hover:border-foreground/30 hover:text-foreground">
@@ -830,7 +830,7 @@ export default function PricingCalculator({ pageData, services }: Props) {
                   )}
                 </div>
                 <div className="mt-4 flex flex-col gap-2 sm:flex-row">
-                  <button type="button" onClick={placeOrder} className="flex-1 rounded-full bg-brand px-6 py-3 text-sm font-semibold text-black transition hover:bg-brand/90">
+                  <button type="button" onClick={placeOrder} className="flex-1 rounded-full bg-gradient-brand px-6 py-3 text-sm font-semibold text-black transition hover:bg-brand/90">
                     Place Order - {cartItems.length} service{cartItems.length > 1 ? "s" : ""}
                   </button>
                   <button type="button" onClick={() => setCartItems([])} className="flex items-center justify-center gap-1.5 rounded-full border border-white/15 px-5 py-3 text-sm font-medium text-white/70 transition hover:border-white/30 hover:text-white">

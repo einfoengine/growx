@@ -30,7 +30,8 @@ export default function SectionHeader({
   sub,
   align = "left",
   maxWidth = "max-w-4xl",
-  headlineClassName = "mt-4 text-3xl font-bold leading-[1.15] tracking-tight text-foreground sm:text-4xl",
+  // Editorial default: steep jump from eyebrow to title, tight leading.
+  headlineClassName = "mt-4 text-4xl font-bold leading-[1.06] tracking-tight text-foreground sm:text-5xl",
   subClassName,
   highlightClassName,
   underlineHighlight,

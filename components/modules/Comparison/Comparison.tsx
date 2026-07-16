@@ -70,7 +70,7 @@ export default async function Comparison({ noPaddingTop }: { noPaddingTop?: bool
                       Feature
                     </th>
                     <th className="w-[18%] border-x border-brand/25 bg-brand/10 px-6 py-5 text-center">
-                      <span className="inline-flex items-center rounded-full bg-brand px-3 py-1 text-xs font-bold text-white">
+                      <span className="inline-flex items-center rounded-full bg-gradient-brand px-3 py-1 text-xs font-bold text-white">
                         growX
                       </span>
                     </th>

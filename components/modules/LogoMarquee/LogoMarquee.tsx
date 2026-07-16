@@ -3,7 +3,7 @@ import { getLogoMarquee } from "@/lib/content";
 /** Sister-brand logos. `dark` brands ship on a black background, so their card
  *  is black too and the baked-in background blends seamlessly. */
 const LOGOS: Record<string, { src: string; alt: string; dark?: boolean }> = {
-  growX: { src: "/assets/growX-black-logo.svg", alt: "growX" },
+  growX: { src: "/assets/logo-black.png", alt: "growX" },
   "GHL Video": { src: "/assets/ghl-video.png", alt: "GHL Video", dark: true },
   socialX: { src: "/assets/socialx.png", alt: "socialX" },
 };

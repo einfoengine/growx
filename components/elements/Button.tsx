@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { ArrowRight } from "lucide-react";
 import { type ReactNode } from "react";
 
 export type ButtonVariant = "primary" | "secondary" | "ghost";
@@ -12,8 +13,9 @@ export type ButtonProps = {
   href?: string;
   /** Click handler - renders as a <button> element. */
   onClick?: () => void;
-  /** Icon element rendered alongside the label. */
-  icon?: ReactNode;
+  /** Icon element rendered alongside the label. Every button ships with an
+   *  arrow by default; pass `icon={null}` to render none. */
+  icon?: ReactNode | null;
   /** Side the icon appears on. Default: "right". */
   iconPosition?: "left" | "right";
   /** Switches to the dark-background color scheme. */
@@ -63,16 +65,26 @@ export default function Button({
     .filter(Boolean)
     .join(" ");
 
-  const iconEl = icon ? (
+  // undefined = caller didn't choose → default arrow. Explicit null opts out.
+  const resolvedIcon = icon === undefined ? <ArrowRight size={16} /> : icon;
+  const iconEl = resolvedIcon ? (
     <span aria-hidden="true" className="transition-transform group-hover:translate-x-0.5">
-      {icon}
+      {resolvedIcon}
     </span>
   ) : null;
 
+  // Slide-up label: two stacked copies in a clipped wrapper; hover slides the
+  // visible one out the top while the duplicate rises in from below. The
+  // duplicate is aria-hidden so the accessible name stays a single label.
   const content = (
     <>
       {iconPosition === "left" && iconEl}
-      {label}
+      <span className="btn-label-wrap">
+        <span className="btn-label">{label}</span>
+        <span className="btn-label btn-label-hover" aria-hidden="true">
+          {label}
+        </span>
+      </span>
       {iconPosition === "right" && iconEl}
     </>
   );

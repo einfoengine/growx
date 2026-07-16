@@ -1,4 +1,5 @@
 import ScrollFadeIn from "@/components/elements/ScrollFadeIn";
+import Eyebrow from "@/components/elements/Eyebrow";
 
 type Step = { n: string; title: string; desc: string };
 
@@ -43,7 +44,7 @@ export default function HowItWorks() {
         {/* Header */}
         <ScrollFadeIn delay={0.1}>
         <div className="mx-auto max-w-2xl text-center">
-          <p className="eyebrow text-brand">[ How it works ]</p>
+          <Eyebrow text="How it works" />
           <h2
             id="how-it-works-headline"
             className="mt-4 text-3xl font-bold tracking-tight sm:text-4xl md:text-5xl"

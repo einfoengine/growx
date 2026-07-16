@@ -268,7 +268,7 @@ export default function ServiceDetailModal({
               <a
                 href="#book"
                 onClick={handleBook}
-                className="flex w-full items-center justify-center gap-2 rounded-xl bg-brand px-4 py-3.5 text-sm font-semibold text-black transition-all hover:scale-[1.01] hover:bg-brand-strong focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand"
+                className="flex w-full items-center justify-center gap-2 rounded-xl bg-gradient-brand px-4 py-3.5 text-sm font-semibold text-black transition-all hover:scale-[1.01] hover:brightness-110 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand"
               >
                 Book a meeting
                 <ArrowUpRight size={16} aria-hidden="true" />

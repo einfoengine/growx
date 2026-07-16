@@ -10,12 +10,12 @@ type LogoProps = {
 };
 
 const SRC_BY_TONE = {
-  dark: "/assets/growX-black-logo.svg",
-  light: "/assets/growX-logo.svg",
+  dark: "/assets/logo-black.png",
+  light: "/assets/logo-white.png",
 } as const;
 
-const NATURAL_WIDTH = 441;
-const NATURAL_HEIGHT = 104;
+const NATURAL_WIDTH = 830;
+const NATURAL_HEIGHT = 251;
 
 export default function Logo({
   id = "el-logo",

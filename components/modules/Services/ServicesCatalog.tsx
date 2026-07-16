@@ -8,8 +8,9 @@ import ServiceDetailModal from "./ServiceDetailModal";
 import { GROUPS, type Service } from "./servicesData";
 import { useActiveWhenVisible } from "@/lib/hooks/useActiveWhenVisible";
 import ScrollFadeIn from "@/components/elements/ScrollFadeIn";
+import Eyebrow from "@/components/elements/Eyebrow";
 
-const NAV_H = 64; // sticky header height (h-16)
+const NAV_H = 72; // floating header: 8px top gap + h-16 bar
 const STEP_VH = 60; // scroll distance allotted per group while pinned
 
 export default function ServicesCatalog() {
@@ -94,10 +95,10 @@ export default function ServicesCatalog() {
   const header = (
     <ScrollFadeIn delay={0.1}>
     <div className="mx-auto max-w-3xl text-center">
-      <p className="eyebrow text-brand">[ Full-stack catalog ]</p>
+      <Eyebrow text="Full-stack catalog" />
       <h2
         id="services-headline"
-        className="mt-4 text-3xl font-bold tracking-tight sm:text-4xl md:text-5xl"
+        className="mt-4 text-4xl font-bold leading-[1.06] tracking-tight sm:text-5xl md:text-6xl"
       >
         Every service you sell, delivered under your brand.
       </h2>

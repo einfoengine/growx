@@ -20,12 +20,16 @@ export default function HeaderShell({ children }: { children: React.ReactNode })
   // flips it instantly over any dark top section.
   const [dark, setDark] = useState(false);
   const [animate, setAnimate] = useState(false);
+  // Condensed state: once the page scrolls, the bar narrows from the section
+  // container's outer box to its padded content width.
+  const [scrolled, setScrolled] = useState(false);
 
   useEffect(() => {
     let raf = 0;
     const compute = () => {
-      // Sample just below the bar (h-16 = 64px) to read the section beneath it.
-      const probe = 72;
+      // Sample just below the bar (8px top gap + h-16) to read the section
+      // beneath it.
+      const probe = 80;
       let isDark = false;
       for (const el of document.querySelectorAll('[data-nav-theme="dark"]')) {
         const r = el.getBoundingClientRect();
@@ -35,6 +39,10 @@ export default function HeaderShell({ children }: { children: React.ReactNode })
         }
       }
       setDark(isDark);
+      // Hysteresis: engage past 32px, release under 8px. A single threshold
+      // made the bar's width toggle back and forth when the page idled right
+      // at the boundary (or shifted a pixel from late-loading content).
+      setScrolled((prev) => (prev ? window.scrollY > 8 : window.scrollY > 32));
     };
     const onScroll = () => {
       cancelAnimationFrame(raf);
@@ -59,11 +67,29 @@ export default function HeaderShell({ children }: { children: React.ReactNode })
     <header
       data-theme={dark ? "dark" : "light"}
       style={dark ? DARK_TOKENS : undefined}
-      className={`group/nav sticky top-0 z-50 w-full border-b border-border bg-background ${
-        animate ? "transition-colors duration-300 ease-out" : ""
-      }`}
+      // Fixed, not sticky: the bar occupies zero flow space, so the page
+      // (and the hero's dark background) starts at the very top of the
+      // viewport with no background strip above it.
+      className="group/nav fixed inset-x-0 top-2 z-50 px-3 sm:px-4"
     >
-      {children}
+      {/* Header row: logo at the left, menu centered, CTA at the right. At
+          the top of the page the bar is fully transparent and spans the
+          section container's outer box; once scrolled it condenses to the
+          container's padded content width AND gains the glass pill treatment
+          so it stays legible over passing content. */}
+      <div
+        className={`mx-auto rounded-full ${
+          scrolled
+            ? "max-w-[calc(var(--container-max)-4rem)] border border-border/60 bg-background/65 shadow-lg shadow-black/5 backdrop-blur-xl"
+            : "max-w-(--container-max) border border-transparent"
+        } ${
+          animate
+            ? "transition-[max-width,background-color,border-color,box-shadow] duration-300 ease-out"
+            : ""
+        }`}
+      >
+        {children}
+      </div>
     </header>
   );
 }

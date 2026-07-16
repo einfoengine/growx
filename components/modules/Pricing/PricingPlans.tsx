@@ -1,4 +1,5 @@
 import { Check } from "lucide-react";
+import Eyebrow from "@/components/elements/Eyebrow";
 import { getPricing } from "@/lib/content";
 import ScrollFadeIn from "@/components/elements/ScrollFadeIn";
 import PlanButton from "./PlanButton";
@@ -29,7 +30,7 @@ export default async function PricingPlans() {
         {/* Header */}
         <ScrollFadeIn delay={0.1}>
         <div className="mx-auto max-w-2xl text-center">
-          <p className="eyebrow text-brand">[ Pricing ]</p>
+          <Eyebrow text="Pricing" />
           <h2
             id="pricing-headline"
             className="mt-4 text-3xl font-bold tracking-tight sm:text-4xl md:text-5xl"
@@ -51,7 +52,7 @@ export default async function PricingPlans() {
             return (
               <div
                 key={tier.id}
-                className={`relative isolate flex h-full flex-col overflow-hidden border p-7 ${
+                className={`relative isolate flex h-full flex-col overflow-hidden rounded-2xl border p-7 ${
                   featured
                     ? "border-foreground bg-foreground text-background shadow-[0_20px_60px_rgba(10,10,10,0.25)]"
                     : "border-border bg-background shadow-sm"
@@ -74,7 +75,7 @@ export default async function PricingPlans() {
                     <span className="badge-brand">{tier.name}</span>
                   </div>
                   {featured && (
-                    <span className="shrink-0 bg-brand px-2.5 py-1 text-[11px] font-bold uppercase tracking-wide text-black">
+                    <span className="shrink-0 rounded-full bg-gradient-brand px-2.5 py-1 text-[11px] font-bold uppercase tracking-wide text-black">
                       Popular
                     </span>
                   )}

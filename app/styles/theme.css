@@ -23,6 +23,9 @@
   /* Brand */
   --brand: #10b981;
   --brand-strong: #059669;
+  /* Logo-derived gradient (the X fades top to bottom through these stops). */
+  --brand-grad-from: #10b981;
+  --brand-grad-to: #047857;
   --brand-soft: rgba(16, 185, 129, 0.18);
   /* Accessible brand for SMALL text on light surfaces. --brand itself is only
      2.54:1 on --background and 2.36:1 on --surface — fine as a *background*
