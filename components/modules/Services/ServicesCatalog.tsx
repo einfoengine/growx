@@ -11,23 +11,39 @@ import ScrollFadeIn from "@/components/elements/ScrollFadeIn";
 import Eyebrow from "@/components/elements/Eyebrow";
 
 const NAV_H = 72; // floating header: 8px top gap + h-16 bar
-// 48vh per group (was 60): trims ~50vh of forced scroll off the pin — the
-// visitor reaches proof and pricing sooner without losing the step-through.
 const STEP_VH = 48; // scroll distance allotted per group while pinned
+
+// Vertical slide: the incoming group rises in from below while the outgoing
+// one exits upward (reversed when stepping backwards), so the whole
+// full-width content area slides up on every tab change.
+const slideVariants = {
+  enter: (dir: number) => ({ y: dir * 90, opacity: 0 }),
+  center: { y: 0, opacity: 1 },
+  exit: (dir: number) => ({ y: dir * -90, opacity: 0 }),
+};
 
 export default function ServicesCatalog() {
   const [active, setActive] = useState(0);
+  const [direction, setDirection] = useState(1);
   const [isDesktop, setIsDesktop] = useState(false);
   const [detailService, setDetailService] = useState<Service | null>(null);
   const pinRef = useRef<HTMLDivElement>(null);
+  // Mirror of `active` for the rAF loop, so it can derive direction without
+  // re-subscribing every index change.
+  const activeRef = useRef(0);
   // The element that opened the modal, so focus can return to it on close.
   const triggerRef = useRef<HTMLElement | null>(null);
   const group = GROUPS[active];
-  // `enabled` must track isDesktop, not just gate on it: the pin track is only
-  // rendered on desktop, so on the first pass pinRef.current is null and there
-  // is nothing to observe. Threading isDesktop through `enabled` re-runs the
-  // observer effect once the track actually mounts.
+  // `enabled` must track isDesktop: the pin track only renders on desktop, so
+  // on the first pass pinRef.current is null with nothing to observe.
   const trackActive = useActiveWhenVisible(pinRef, { enabled: isDesktop });
+
+  const commit = (idx: number) => {
+    if (idx === activeRef.current) return;
+    setDirection(idx > activeRef.current ? 1 : -1);
+    activeRef.current = idx;
+    setActive(idx);
+  };
 
   // Enable the scroll-jack only on large screens.
   useEffect(() => {
@@ -38,13 +54,9 @@ export default function ServicesCatalog() {
     return () => mq.removeEventListener("change", sync);
   }, []);
 
-  // Map the pin track's scroll position → active group index. A rAF loop reads
-  // the track's rect every frame (independent of scroll events firing) and only
-  // commits state when the index actually changes. The rect read forces a
-  // synchronous layout, so the loop is parked whenever the track is off-screen
-  // or the tab is hidden — otherwise it thrashes layout for the whole page.
+  // Map the pin track's scroll position → active group index. The rAF loop is
+  // parked whenever the track is off-screen or the tab is hidden.
   useEffect(() => {
-    // trackActive already ANDs in isDesktop via `enabled`.
     if (!trackActive) return;
 
     let raf = 0;
@@ -57,7 +69,7 @@ export default function ServicesCatalog() {
         const p = travel > 0 ? (NAV_H - rect.top) / travel : 0;
         const clamped = Math.min(1, Math.max(0, p));
         const idx = Math.min(GROUPS.length - 1, Math.floor(clamped * GROUPS.length));
-        setActive((prev) => (prev === idx ? prev : idx));
+        commit(idx);
       }
       raf = requestAnimationFrame(loop);
     };
@@ -69,7 +81,7 @@ export default function ServicesCatalog() {
   const select = (idx: number) => {
     const el = pinRef.current;
     if (!isDesktop || !el) {
-      setActive(idx);
+      commit(idx);
       return;
     }
     const stage = window.innerHeight - NAV_H;
@@ -91,9 +103,8 @@ export default function ServicesCatalog() {
   const handleBook = () => setDetailService(null);
 
   // Only the header reveals. The pin track below must NOT get an animating
-  // transform ancestor: its rAF loop derives the active group from
-  // `rect.top`, and a translateY would skew that for the whole reveal —
-  // and a transformed ancestor constrains the `sticky` stage inside it.
+  // transform ancestor: a translateY would skew the rAF loop's rect reads and
+  // constrain the sticky stage.
   const header = (
     <ScrollFadeIn delay={0.1}>
     <div className="mx-auto max-w-3xl text-center">
@@ -113,6 +124,8 @@ export default function ServicesCatalog() {
     </ScrollFadeIn>
   );
 
+  // Pinned tab bar. Stays on the section's light background as a fixed anchor
+  // regardless of the card-area color below it, so it never loses contrast.
   const tabs = (
     <div
       role="tablist"
@@ -142,18 +155,16 @@ export default function ServicesCatalog() {
     </div>
   );
 
-  // Cards are portrait (4:5) so the full image reads as the card background —
-  // subject up top, the image's clean lower area reserved for the overlaid
-  // copy. `flex-1 basis-0` shares the row width; `max-w-[400px]` keeps every
-  // card a sane size that fits the pinned stage on shorter screens too.
   const cards = (
-    <AnimatePresence mode="wait">
+    <AnimatePresence mode="wait" custom={direction} initial={false}>
       <motion.ul
         key={group.label}
-        initial={{ opacity: 0, y: 16 }}
-        animate={{ opacity: 1, y: 0 }}
-        exit={{ opacity: 0, y: -8 }}
-        transition={{ duration: 0.3, ease: "easeOut" }}
+        custom={direction}
+        variants={slideVariants}
+        initial="enter"
+        animate="center"
+        exit="exit"
+        transition={{ duration: 0.35, ease: "easeOut" }}
         className="mx-auto flex w-full flex-col items-center gap-4 sm:flex-row sm:items-center sm:justify-center sm:gap-5"
       >
         {group.services.map((service) => {
@@ -164,10 +175,8 @@ export default function ServicesCatalog() {
               className="aspect-7/9 w-full max-w-sm sm:w-auto sm:max-w-108 sm:flex-1 sm:basis-0"
             >
               <MagneticTiltCard className="h-full w-full">
-              {/* The whole card opens the detail modal — the 32px arrow was
-                  the only way in, and most visitors never found it. Clicks on
-                  the inner buttons are theirs (they already open the modal),
-                  so bubbling is filtered to avoid double-fires. */}
+              {/* The whole card opens the detail modal — clicks on the inner
+                  buttons are theirs, so bubbling is filtered. */}
               <article
                 onClick={(e) => {
                   if ((e.target as HTMLElement).closest("button")) return;
@@ -249,15 +258,25 @@ export default function ServicesCatalog() {
     </AnimatePresence>
   );
 
+  // Dual grid backdrops crossfade with the stage: black hairlines on the
+  // light stops, white hairlines on the dark ones.
+  const grid = (
+    <div
+      aria-hidden="true"
+      className="pointer-events-none absolute inset-0 -z-10 bg-[linear-gradient(to_right,rgba(10,10,10,0.05)_1px,transparent_1px),linear-gradient(to_bottom,rgba(10,10,10,0.05)_1px,transparent_1px)] bg-size-[48px_48px] mask-[radial-gradient(ellipse_75%_70%_at_50%_45%,#000,transparent_85%)]"
+    />
+  );
+
   return (
     <section
       id="gw-mod-services"
       aria-labelledby="services-headline"
       className="relative isolate border-b border-border bg-background text-foreground"
     >
+      {grid}
       {isDesktop ? (
         // Desktop: header scrolls in, then the tabs pin under the nav and the
-        // cards step through groups on scroll.
+        // groups step through on scroll, each slide rising up into place.
         <>
           <div className="w-full px-6 pt-24 pb-14 sm:px-8 lg:px-12">{header}</div>
           <div
@@ -269,17 +288,9 @@ export default function ServicesCatalog() {
               className="sticky flex flex-col overflow-hidden"
               style={{ top: NAV_H, height: `calc(100vh - ${NAV_H}px)` }}
             >
-              {/* Pinned tab bar with full-width underline. */}
-              <div className="relative z-10 bg-background/90 pt-4 backdrop-blur">
-                {tabs}
-              </div>
-              {/* Cards sit in the shared container (aligned to the nav), with
-                  the shower spanning full-width behind. */}
-              <div className="relative flex flex-1 items-center">
-                <div
-                  aria-hidden="true"
-                  className="pointer-events-none absolute inset-0 -z-10 bg-[linear-gradient(to_right,rgba(10,10,10,0.05)_1px,transparent_1px),linear-gradient(to_bottom,rgba(10,10,10,0.05)_1px,transparent_1px)] bg-size-[48px_48px] mask-[radial-gradient(ellipse_75%_70%_at_50%_45%,#000,transparent_85%)]"
-                />
+              {/* Pinned tab bar. */}
+              <div className="relative z-10 bg-background/90 pt-4 backdrop-blur">{tabs}</div>
+              <div className="relative flex flex-1 items-center overflow-hidden">
                 <div className="container-1200">{cards}</div>
               </div>
             </div>
@@ -288,15 +299,14 @@ export default function ServicesCatalog() {
       ) : (
         // Mobile: normal flow with sticky tabs, click to switch.
         <div className="relative w-full px-6 py-24 sm:px-8 sm:py-28">
-          <div
-            aria-hidden="true"
-            className="pointer-events-none absolute inset-0 -z-10 bg-[linear-gradient(to_right,rgba(10,10,10,0.05)_1px,transparent_1px),linear-gradient(to_bottom,rgba(10,10,10,0.05)_1px,transparent_1px)] bg-size-[48px_48px] mask-[radial-gradient(ellipse_75%_65%_at_50%_40%,#000,transparent_85%)]"
-          />
           {header}
-          <div className="sticky z-40 mt-12 -mx-6 bg-background/90 pt-3 backdrop-blur sm:-mx-8" style={{ top: NAV_H }}>
+          <div
+            className="sticky z-40 mt-12 -mx-6 bg-background/90 pt-3 backdrop-blur sm:-mx-8"
+            style={{ top: NAV_H }}
+          >
             {tabs}
           </div>
-          <div className="mt-8">{cards}</div>
+          <div className="mt-8 overflow-hidden">{cards}</div>
         </div>
       )}
 
