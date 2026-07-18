@@ -98,7 +98,7 @@ export default function ReasonCard({ reason }: { reason: Reason }) {
           {/* Reveal — the "flip side", pushed up into view. */}
           <div className="flex h-1/2 shrink-0 flex-col justify-center p-8">
             <span className="font-label text-sm font-bold tracking-[0.2em] text-brand/80">
-              Reason {reason.n} — what it costs you
+              Reason {reason.n}: what it costs you
             </span>
             <ul className="mt-5 space-y-3">
               {reason.points.map((point, i) => (

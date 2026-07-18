@@ -71,7 +71,7 @@ export default function HowItWorks() {
               key={step.n}
               className="relative flex flex-col items-center text-center"
             >
-              <div className="relative z-10 flex h-16 w-16 items-center justify-center border border-brand/40 bg-foreground text-2xl font-bold text-brand">
+              <div className="relative z-10 flex h-16 w-16 items-center justify-center rounded-full border border-brand/40 bg-foreground text-2xl font-bold text-brand">
                 {step.n}
               </div>
               <h3 className="mt-6 text-xl font-bold tracking-tight">

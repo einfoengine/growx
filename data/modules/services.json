@@ -8,7 +8,7 @@
       { "type": "text", "value": "." }
     ]
   },
-  "sub": "Web, funnels, search, paid media, content, social, and video, plus full HighLevel operations. Productized with fixed pricing and clear SLAs, ordered in one click, delivered 100% white-label.",
+  "sub": "Web, funnels, search, paid media, content, social, and video, plus full HighLevel services. Productized with fixed pricing and clear SLAs, ordered in one click, delivered 100% white-label.",
   "cards": [
     {
       "id": "service-website",
@@ -76,7 +76,7 @@
     {
       "id": "service-hl-admin",
       "title": "HighLevel Admin Support",
-      "blurb": "Day-to-day HighLevel operations handled. Workflows, calendars, pipelines, and tickets. Your back office, white-labeled.",
+      "blurb": "Day-to-day HighLevel admin handled. Workflows, calendars, pipelines, and tickets. Your back office, white-labeled.",
       "href": "#book",
       "icon": "headset"
     },

@@ -46,7 +46,7 @@ const REASONS: Reason[] = [
   {
     n: "02",
     title: "The freelancer tax",
-    desc: "Unreliable contractors and creeping costs eat your margin — and every freelancer is a crack in your white-label promise.",
+    desc: "Unreliable contractors and creeping costs eat your margin, and every freelancer is a crack in your white-label promise.",
     image: "/assets/gw-mod-fulfillment-reasons/2.webp",
     points: [
       "Quality and turnaround you can never predict",
@@ -68,7 +68,7 @@ const REASONS: Reason[] = [
   {
     n: "04",
     title: "Fulfillment eats the founder",
-    desc: "Sales, delivery, client comms, ops — all on you. Something is about to break, and it's usually you.",
+    desc: "Sales, delivery, client comms, ops. All on you. Something is about to break, and it's usually you.",
     image: "/assets/gw-mod-fulfillment-reasons/4.webp",
     points: [
       "80-hour weeks just to keep the lights on",

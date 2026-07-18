@@ -1,5 +1,6 @@
 import { Check } from "lucide-react";
 import Eyebrow from "@/components/elements/Eyebrow";
+import Headline from "@/components/elements/Headline";
 import { getPricing } from "@/lib/content";
 import ScrollFadeIn from "@/components/elements/ScrollFadeIn";
 import PlanButton from "./PlanButton";
@@ -29,18 +30,19 @@ export default async function PricingPlans() {
       <div className="container-1200">
         {/* Header */}
         <ScrollFadeIn delay={0.1}>
+        {/* The ladder narrative from pricing.json — "Vendor. Team member.
+            Department." — pays off the hero typewriter (we are your vendor /
+            team member / department) instead of generic SaaS boilerplate. */}
         <div className="mx-auto max-w-2xl text-center">
-          <Eyebrow text="Pricing" />
-          <h2
+          <Eyebrow text={data.eyebrow} />
+          <Headline
             id="pricing-headline"
+            parts={data.headline.parts}
+            as="h2"
             className="mt-4 text-3xl font-bold tracking-tight sm:text-4xl md:text-5xl"
-          >
-            Plans that scale with your agency.
-          </h2>
-          <p className="mt-5 text-base text-muted sm:text-lg">
-            Start free and upgrade when you&apos;re ready. Every tier is 100%
-            white-label with full commercial rights and one-click portal ordering.
-          </p>
+            highlightClassName="text-gradient-brand"
+          />
+          <p className="mt-5 text-base text-muted sm:text-lg">{data.sub}</p>
         </div>
         </ScrollFadeIn>
 

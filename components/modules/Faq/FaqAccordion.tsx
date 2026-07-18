@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { Plus } from "lucide-react";
+import { ArrowDown } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 
 type FaqItem = {
@@ -18,30 +18,49 @@ export default function FaqAccordion({ items }: { items: FaqItem[] }) {
   };
 
   return (
-    <div className="mt-12 overflow-hidden rounded-3xl border border-border bg-background">
+    <div className="mx-auto mt-12 max-w-4xl space-y-4">
       {items.map((item, i) => {
         const isOpen = openId === item.id;
-        
+        const num = String(i + 1).padStart(2, "0");
+
         return (
-          <div key={item.id} className={`group ${i > 0 ? "border-t border-border" : ""}`}>
+          <div
+            key={item.id}
+            className={`group overflow-hidden rounded-2xl border bg-background transition-colors ${
+              isOpen ? "border-brand/50" : "border-border hover:border-foreground/25"
+            }`}
+          >
             <button
               type="button"
               id={`${item.id}-trigger`}
               aria-expanded={isOpen}
               aria-controls={`${item.id}-panel`}
               onClick={() => toggle(item.id)}
-              className="flex w-full cursor-pointer items-start justify-between gap-6 px-6 py-5 text-left text-base font-medium text-foreground transition-colors sm:px-8 sm:py-6 sm:text-lg"
+              className="flex w-full cursor-pointer items-center gap-4 px-5 py-5 text-left sm:gap-5 sm:px-6 sm:py-6"
             >
-              <span>{item.question}</span>
+              {/* Number, in its own bordered box, inline with the title. */}
               <span
                 aria-hidden="true"
-                className={`mt-1 inline-flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-(--brand-soft) text-brand transition-transform duration-300 ${
-                  isOpen ? "rotate-45 bg-gradient-brand text-black" : ""
+                className="shrink-0 rounded-lg border border-border px-2.5 py-1.5 font-mono text-xs font-semibold text-muted"
+              >
+                {num}
+              </span>
+              <span className="flex-1 text-lg font-semibold tracking-tight text-foreground sm:text-xl">
+                {item.question}
+              </span>
+              {/* Arrow, in its own bordered box. */}
+              <span
+                aria-hidden="true"
+                className={`inline-flex h-10 w-10 shrink-0 items-center justify-center rounded-full border transition-all duration-300 ${
+                  isOpen
+                    ? "rotate-180 border-brand text-brand"
+                    : "border-border text-foreground/70 group-hover:border-foreground/30"
                 }`}
               >
-                <Plus size={14} />
+                <ArrowDown size={18} />
               </span>
             </button>
+
             <AnimatePresence initial={false}>
               {isOpen && (
                 <motion.div
@@ -54,8 +73,8 @@ export default function FaqAccordion({ items }: { items: FaqItem[] }) {
                   transition={{ duration: 0.3, ease: "easeInOut" }}
                   className="overflow-hidden"
                 >
-                  <div className="px-6 pb-6 pt-2 sm:px-8 sm:pb-7">
-                    <p className="max-w-3xl text-sm leading-relaxed text-muted sm:text-base">
+                  <div className="px-5 pb-6 sm:px-6 sm:pb-7">
+                    <p className="max-w-3xl border-t border-border pt-5 text-sm leading-relaxed text-muted sm:text-base">
                       {item.answer}
                     </p>
                   </div>

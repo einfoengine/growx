@@ -6,8 +6,8 @@
   },
   "headline": {
     "parts": [
-      { "type": "text", "value": "The Agency behind the " },
-      { "type": "highlight", "value": "Agencies" },
+      { "type": "text", "value": "The team behind " },
+      { "type": "highlight", "value": "your team" },
       { "type": "text", "value": "." }
     ]
   },

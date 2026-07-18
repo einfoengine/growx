@@ -42,7 +42,7 @@ export default function SisterBrands() {
             One partner, a whole ecosystem
           </h2>
           <p className="mt-5 text-base text-muted sm:text-lg">
-            growX is part of a family of {BRANDS.length} specialist brands — partner
+            growX is part of a family of {BRANDS.length} specialist brands. Partner
             with one, and tap into all of them.
           </p>
         </div>

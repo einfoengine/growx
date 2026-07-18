@@ -5,7 +5,7 @@ import BlogPage from "@/components/templates/BlogPage/BlogPage";
 export const metadata: Metadata = {
   title: "Blog",
   description:
-    "Playbooks on white-label fulfillment, agency margins, and scaling delivery without hiring — from the team that ships it every day.",
+    "Playbooks on white-label fulfillment, agency margins, and scaling delivery without hiring, from the team that ships it every day.",
 };
 
 export default async function BlogRoute() {

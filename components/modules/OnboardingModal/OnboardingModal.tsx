@@ -303,7 +303,7 @@ function UnavailableState({
           >
             hi@growx.studio
           </a>{" "}
-          and mention the {plan.name} plan — we&apos;ll take it from there.
+          and mention the {plan.name} plan. We&apos;ll take it from there.
         </p>
       </div>
       <div className="w-full rounded-xl border border-border bg-surface px-6 py-4 text-left">

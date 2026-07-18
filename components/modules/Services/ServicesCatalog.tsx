@@ -104,7 +104,7 @@ export default function ServicesCatalog() {
       </h2>
       <p className="mt-5 text-base text-muted sm:text-lg">
         Web, funnels, search, paid media, content, social, and video, plus full
-        HighLevel operations. Productized with fixed pricing and clear SLAs,
+        HighLevel services. Productized with fixed pricing and clear SLAs,
         ordered in one click, delivered 100% white-label.
       </p>
     </div>

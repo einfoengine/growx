@@ -60,7 +60,7 @@ function Block({ block }: { block: BlogBlock }) {
           <p className="text-xl font-medium leading-relaxed text-foreground sm:text-2xl">
             &ldquo;{block.text}&rdquo;
           </p>
-          {block.cite && <cite className="mt-3 block text-sm not-italic text-muted">— {block.cite}</cite>}
+          {block.cite && <cite className="mt-3 block text-sm not-italic text-muted">{block.cite}</cite>}
         </blockquote>
       );
     default:
@@ -92,7 +92,7 @@ export default function BlogPostPage({ post, related }: Props) {
               <time dateTime={post.date} className="text-muted">
                 {formatBlogDate(post.date)}
               </time>
-              <span aria-hidden="true" className="text-muted">·</span>
+              <span aria-hidden="true" className="inline-block h-1 w-1 rounded-full bg-current opacity-40" />
               <span className="text-muted">{post.readMinutes} min read</span>
             </div>
             <h1 className="mt-5 text-3xl font-bold leading-[1.15] tracking-tight text-foreground sm:text-4xl lg:text-5xl">
@@ -177,7 +177,7 @@ export default function BlogPostPage({ post, related }: Props) {
               <div>
                 <p className="text-sm font-semibold text-foreground">{post.author.name}</p>
                 <p className="text-sm text-muted">
-                  {post.author.role} at growX — the white-label team behind the agencies.
+                  {post.author.role} at growX, the white-label fulfillment partner behind growing agencies.
                 </p>
               </div>
             </div>
@@ -222,7 +222,7 @@ export default function BlogPostPage({ post, related }: Props) {
             eyebrow="Put it into practice"
             headlineText="Deliver more without hiring"
             headlineClassName="mt-4 text-3xl font-bold leading-[1.15] tracking-tight sm:text-4xl"
-            sub="growX fulfills web, SEO & AEO, PPC, content, social, and funnels under your brand — so you can scale delivery without adding payroll."
+            sub="growX fulfills web, SEO & AEO, PPC, content, social, and funnels under your brand, so you can scale delivery without adding payroll."
             subClassName="mx-auto mt-5 max-w-xl text-base text-white/70"
             align="center"
           />

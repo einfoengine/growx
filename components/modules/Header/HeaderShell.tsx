@@ -77,8 +77,12 @@ export default function HeaderShell({ children }: { children: React.ReactNode })
           section container's outer box; once scrolled it condenses to the
           container's padded content width AND gains the glass pill treatment
           so it stays legible over passing content. */}
+      {/* transform-gpu + backface-hidden promote the pill to its own
+          compositor layer so the backdrop-blur samples a stable buffer while
+          content (incl. the parallax hero scene) repaints behind it — without
+          this the blur shimmers/flickers on scroll. */}
       <div
-        className={`mx-auto rounded-full ${
+        className={`mx-auto transform-gpu rounded-full [backface-visibility:hidden] ${
           scrolled
             ? "max-w-[calc(var(--container-max)-4rem)] border border-border/60 bg-background/65 shadow-lg shadow-black/5 backdrop-blur-xl"
             : "max-w-(--container-max) border border-transparent"

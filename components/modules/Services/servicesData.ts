@@ -102,7 +102,7 @@ export const GROUPS: Group[] = [
         ],
         long: "We design, build, and launch complete lead-generation funnels for your clients under your brand, from strategy and landing pages through CRM integration, email automation, and conversion tracking. Every build starts with offer positioning and funnel mapping, then ships fully QA'd and live. Platform-flexible and scoped to whatever stack your client already runs.",
         highlights: [
-          { title: "Platform-flexible builds", body: "GoHighLevel, Webflow, ClickFunnels, Systeme.io, or custom — we build in whatever your client's stack requires instead of forcing a tool that doesn't fit." },
+          { title: "Platform-flexible builds", body: "GoHighLevel, Webflow, ClickFunnels, Systeme.io, or custom: we build in whatever your client's stack requires instead of forcing a tool that doesn't fit." },
           { title: "Strategy before build", body: "We scope the offer, audience, and conversion goal before writing a line, because funnels built on clear strategy convert and ones built on assumptions don't." },
           { title: "Fast delivery, full QA", body: "Most funnels go live in 1 to 3 weeks off a repeatable process, and we run real leads through every step before launch." },
         ],
@@ -128,11 +128,11 @@ export const GROUPS: Group[] = [
           "Schema & entity markup",
           "Client-ready monthly reports",
         ],
-        long: "Traditional SEO and Answer Engine Optimization in a single retainer, delivered 100% under your brand. We rank your clients in Google while positioning them as the source AI tools like ChatGPT, Perplexity, and Google AI Overviews cite — then hand you clean, client-ready reports that prove the value. It's a compounding, forward-ready service that grows your MRR month over month.",
+        long: "Traditional SEO and Answer Engine Optimization in a single retainer, delivered 100% under your brand. We rank your clients in Google while positioning them as the source AI tools like ChatGPT, Perplexity, and Google AI Overviews cite, then hand you clean, client-ready reports that prove the value. It's a compounding, forward-ready service that grows your MRR month over month.",
         highlights: [
-          { title: "SEO and AEO in one team", body: "Most agencies do one or the other — we cover both, because search is splitting between traditional engines and AI answers." },
+          { title: "SEO and AEO in one team", body: "Most agencies do one or the other. We cover both, because search is splitting between traditional engines and AI answers." },
           { title: "A retainer that compounds", body: "We build month over month instead of shipping one-off audits, so results stack up and your client's renewals stay locked in." },
-          { title: "Reports clients actually trust", body: "Clean, white-label reporting explains what moved, why, and what's next — so your client sees the value and keeps paying." },
+          { title: "Reports clients actually trust", body: "Clean, white-label reporting explains what moved, why, and what's next, so your client sees the value and keeps paying." },
         ],
       },
       {
@@ -150,10 +150,10 @@ export const GROUPS: Group[] = [
           "Weekly optimization",
           "White-labeled reporting",
         ],
-        long: "We run Google, Meta, and beyond for your clients — fully managed, performance-focused, and reported in a way that makes you look like the expert. Every campaign starts with a clear revenue goal, then we build the account structure, creative, and tracking to hit it. Your client gets conversions and ROAS they can bank on; you get monthly reports in your brand, ready to send.",
+        long: "We run Google, Meta, and beyond for your clients: fully managed, performance-focused, and reported in a way that makes you look like the expert. Every campaign starts with a clear revenue goal, then we build the account structure, creative, and tracking to hit it. Your client gets conversions and ROAS they can bank on; you get monthly reports in your brand, ready to send.",
         highlights: [
           { title: "Revenue, not vanity metrics", body: "We optimize for conversions and cost-per-acquisition, not impressions and click-through rates that don't pay your client's rent." },
-          { title: "Platform-flexible by design", body: "Google, Meta, LinkedIn, TikTok — wherever your client's audience lives. We never push a channel just because it's our preferred tool." },
+          { title: "Platform-flexible by design", body: "Google, Meta, LinkedIn, TikTok: wherever your client's audience lives. We never push a channel just because it's our preferred tool." },
           { title: "No markup on ad spend", body: "Our fee is for management alone. Every dollar of your client's budget goes to the platform, never into our margin." },
         ],
       },
@@ -179,7 +179,7 @@ export const GROUPS: Group[] = [
           "Voice reference doc",
           "Two revision rounds",
         ],
-        long: "Blog posts, landing pages, email sequences, and ad copy — SEO-informed, written to produce business outcomes, and delivered 100% under your brand. We absorb each client's tone before writing a single word, so the output reads like they wrote it themselves. Every engagement includes two revision rounds and a reusable voice reference doc your client can keep.",
+        long: "Blog posts, landing pages, email sequences, and ad copy: SEO-informed, written to produce business outcomes, and delivered 100% under your brand. We absorb each client's tone before writing a single word, so the output reads like they wrote it themselves. Every engagement includes two revision rounds and a reusable voice reference doc your client can keep.",
         highlights: [
           { title: "SEO built in, not bolted on", body: "Every piece is written to keyword intent from the brief up, so it ranks instead of just reading well." },
           { title: "Voice matching that holds up", body: "A discovery brief and tone audit let us match each client's voice close enough that they read it back to you." },
@@ -202,9 +202,9 @@ export const GROUPS: Group[] = [
         ],
         long: "A fully managed social retainer delivered under your brand: monthly content calendars, on-brand graphics, native captions, and optimized scheduling across LinkedIn, Instagram, Facebook, Twitter/X, and TikTok. Your client stays consistently active and on-brand while you approve the plan once a month and spend zero hours on production. Every post is client-approved before it goes live, and each month closes with a white-labelled performance report you can forward as your own.",
         highlights: [
-          { title: "Completely hands-off for you", body: "You approve the calendar once a month and we handle design, copy, scheduling, and reporting — your bandwidth stays free." },
+          { title: "Completely hands-off for you", body: "You approve the calendar once a month and we handle design, copy, scheduling, and reporting. Your bandwidth stays free." },
           { title: "Retainer revenue that compounds", body: "Every client needs social every month, making it a natural, predictable retainer that grows your MRR." },
-          { title: "Platform-native execution", body: "We never just repost everywhere — each platform gets content built for its format, audience, and algorithm." },
+          { title: "Platform-native execution", body: "We never just repost everywhere. Each platform gets content built for its format, audience, and algorithm." },
         ],
       },
     ],
@@ -228,7 +228,7 @@ export const GROUPS: Group[] = [
           "On-brand visual style",
           "Multi-platform cutdowns",
         ],
-        long: "Give your clients broadcast-quality animated videos — explainers, product demos, launch promos, and social spots — produced end to end by our motion team and shipped 100% under your brand. You hand off the brief; we handle script, storyboard, design, animation, voiceover, and sound, then deliver a finished cut you present as your own. Every frame is styled to your client's brand and exported for every platform they run on, source files included.",
+        long: "Give your clients broadcast-quality animated videos: explainers, product demos, launch promos, and social spots, produced end to end by our motion team and shipped 100% under your brand. You hand off the brief; we handle script, storyboard, design, animation, voiceover, and sound, then deliver a finished cut you present as your own. Every frame is styled to your client's brand and exported for every platform they run on, source files included.",
         highlights: [
           { title: "One team, full production", body: "Script, storyboard, design, animation, voiceover, and sound are all handled in-house, so you brief once and receive a finished video." },
           { title: "Styled to their brand", body: "Every video matches your client's colors, fonts, and tone, and ships without a trace of growX anywhere on it." },
@@ -255,13 +255,13 @@ export const GROUPS: Group[] = [
         highlights: [
           { title: "Edited to keep viewers watching", body: "Our editors build hooks, tighten pacing, and cut the dead air so videos hold attention and drive action." },
           { title: "One upload, every aspect ratio", body: "Send footage once and get back 16:9, 9:16, and 1:1 versions, so a single shoot feeds YouTube, Reels, Shorts, and TikTok." },
-          { title: "Delivered 100% under your brand", body: "No watermarks, no logos, no trace of us — you receive the finished exports and source files to hand off as your own." },
+          { title: "Delivered 100% under your brand", body: "No watermarks, no logos, no trace of us. You receive the finished exports and source files to hand off as your own." },
         ],
       },
     ],
   },
   {
-    label: "HighLevel Operations",
+    label: "HighLevel Services",
     Icon: Settings2,
     services: [
       {
@@ -302,11 +302,11 @@ export const GROUPS: Group[] = [
           "Automation & campaign edits",
           "Monthly account health report",
         ],
-        long: "Ongoing, day-to-day administration of your clients' HighLevel accounts, run entirely under your brand. We handle the workflow tweaks, calendar and pipeline upkeep, data cleanups, and support requests that pile up after launch — so accounts stay healthy and clients stay happy without pulling you off billable work. You get a dependable back office; your client only ever sees your logo.",
+        long: "Ongoing, day-to-day administration of your clients' HighLevel accounts, run entirely under your brand. We handle the workflow tweaks, calendar and pipeline upkeep, data cleanups, and support requests that pile up after launch, so accounts stay healthy and clients stay happy without pulling you off billable work. You get a dependable back office; your client only ever sees your logo.",
         highlights: [
           { title: "HighLevel specialists, not generalists", body: "Our team lives inside the platform every day, so fixes land fast and best practices are baked in." },
           { title: "Predictable SLAs on every request", body: "Each ticket is triaged and resolved within a fixed window you can confidently promise your clients." },
-          { title: "Invisible under your brand", body: "Every login, reply, and report carries your name — your client never knows growX is behind it." },
+          { title: "Invisible under your brand", body: "Every login, reply, and report carries your name. Your client never knows growX is behind it." },
         ],
       },
       {
@@ -325,7 +325,7 @@ export const GROUPS: Group[] = [
           "QA-tested deployment",
           "Build documentation & handoff",
         ],
-        long: "When off-the-shelf HighLevel hits a wall, our developers build past it — wiring up custom API integrations, engineering multi-branch automations, and connecting the third-party tools the client's business actually runs on. Every build is QA-tested, documented, and deployed 100% under your brand. You hand the client a platform that works exactly how they need, and they never see us.",
+        long: "When off-the-shelf HighLevel hits a wall, our developers build past it, wiring up custom API integrations, engineering multi-branch automations, and connecting the third-party tools the client's business actually runs on. Every build is QA-tested, documented, and deployed 100% under your brand. You hand the client a platform that works exactly how they need, and they never see us.",
         highlights: [
           { title: "HighLevel specialists, not generalists", body: "Developers who live in the platform daily and know its API, rate limits, and workarounds cold." },
           { title: "Built to survive updates", body: "Clean, documented builds that hold up when HighLevel ships changes, so nothing breaks silently." },
@@ -353,9 +353,9 @@ export const GROUPS: Group[] = [
           "Branding & identity kits",
           "Custom scoped projects",
         ],
-        long: "growX is built to grow with you. Beyond the core catalog, we take on the new and emerging services your clients keep asking for — AI automation, chatbots, e-commerce, podcasts, dashboards, and whatever comes next — scoped, built, and delivered 100% under your brand. When a request lands outside your current offering, it becomes a new line on your menu instead of a referral to a competitor.",
+        long: "growX is built to grow with you. Beyond the core catalog, we take on the new and emerging services your clients keep asking for: AI automation, chatbots, e-commerce, podcasts, dashboards, and whatever comes next, scoped, built, and delivered 100% under your brand. When a request lands outside your current offering, it becomes a new line on your menu instead of a referral to a competitor.",
         highlights: [
-          { title: "Say yes to every brief", body: "When a client asks for something new, you win the work instead of turning it away — we scope and build it under your brand." },
+          { title: "Say yes to every brief", body: "When a client asks for something new, you win the work instead of turning it away. We scope and build it under your brand." },
           { title: "New capabilities, no new hires", body: "Every emerging service is delivered by a vetted team you never have to recruit, train, or keep on payroll." },
           { title: "One partner, one white-label invoice", body: "As your menu expands, it all stays under a single relationship with fixed pricing and clear SLAs." },
         ],

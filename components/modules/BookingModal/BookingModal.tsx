@@ -316,7 +316,7 @@ export default function BookingModal() {
                       <Mail size={16} className="mt-0.5 shrink-0 text-brand-text" aria-hidden="true" />
                       <p className="text-sm text-muted">
                         <span className="font-medium text-foreground">
-                          Online booking isn&apos;t live yet — nothing has been sent.
+                          Online booking isn&apos;t live yet. Nothing has been sent.
                         </span>{" "}
                         Email{" "}
                         <a

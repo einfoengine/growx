@@ -59,7 +59,7 @@ export default function BlogPage({ content }: { content: BlogContent }) {
                 <div className="flex items-center gap-2 text-xs text-muted">
                   <span className="badge-brand">Featured</span>
                   <time dateTime={featured.date}>{formatBlogDate(featured.date)}</time>
-                  <span aria-hidden="true">·</span>
+                  <span aria-hidden="true" className="inline-block h-1 w-1 rounded-full bg-current opacity-40" />
                   <span>{featured.readMinutes} min read</span>
                 </div>
                 <h2 className="mt-4 text-2xl font-bold tracking-tight text-foreground transition-colors group-hover:text-brand sm:text-3xl">

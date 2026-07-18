@@ -52,6 +52,6 @@ export async function subscribeToNewsletter(
   return {
     status: "error",
     message:
-      "Newsletter signup isn't live yet — email hi@growx.studio and we'll add you to the list.",
+      "Newsletter signup isn't live yet. Email hi@growx.studio and we'll add you to the list.",
   };
 }

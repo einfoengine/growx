@@ -28,7 +28,7 @@ function MetaLine({ post, className = "" }: { post: BlogPost; className?: string
   return (
     <div className={`flex items-center gap-2 text-xs text-muted ${className}`}>
       <time dateTime={post.date}>{formatBlogDate(post.date)}</time>
-      <span aria-hidden="true">·</span>
+      <span aria-hidden="true" className="inline-block h-1 w-1 rounded-full bg-current opacity-40" />
       <span>{post.readMinutes} min read</span>
     </div>
   );
@@ -93,7 +93,7 @@ export function BlogListItem({ post }: { post: BlogPost }) {
       <div className="min-w-0">
         <div className="flex items-center gap-2 text-xs text-muted">
           <span className="font-semibold text-brand">{post.category}</span>
-          <span aria-hidden="true">·</span>
+          <span aria-hidden="true" className="inline-block h-1 w-1 rounded-full bg-current opacity-40" />
           <span>{post.readMinutes} min</span>
         </div>
         <h3 className="mt-1.5 line-clamp-2 text-sm font-semibold leading-snug text-foreground transition-colors group-hover:text-brand sm:text-base">
