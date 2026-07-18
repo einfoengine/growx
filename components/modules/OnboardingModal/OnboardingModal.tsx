@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Check, Mail, X } from "lucide-react";
+import { Calendar, Check, X } from "lucide-react";
 import { useModalA11y } from "@/lib/hooks/useModalA11y";
 import pricingData from "@/data/modules/pricing.json";
 
@@ -273,8 +273,12 @@ export default function OnboardingModal() {
 }
 
 /**
- * Shown instead of a fabricated receipt: nothing was submitted anywhere, so this
- * says so plainly and hands the user a route that actually reaches a human.
+ * Post-submit step: routes the signup into the LIVE booking calendar (the
+ * `#book` link is caught by BookingModal's global listener, which opens the
+ * embedded HighLevel calendar) — so the flow ends in a real CRM booking, not a
+ * dead end. Email stays as the fallback for people who hate calendars.
+ * TODO(launch): once the portal is live, submit paid tiers straight to
+ * PORTAL_SIGNUP_URL (lib/config/conversion.ts) instead of the call.
  */
 function UnavailableState({
   plan,
@@ -289,48 +293,36 @@ function UnavailableState({
       className="flex flex-col items-center gap-5 px-8 py-14 text-center"
     >
       <div className="flex h-16 w-16 items-center justify-center rounded-full bg-brand/10">
-        <Mail size={28} className="text-brand-text" aria-hidden="true" />
+        <Calendar size={28} className="text-brand-text" aria-hidden="true" />
       </div>
       <div>
         <h2 id="onboarding-modal-title" className="text-2xl font-semibold text-foreground">
-          Let&apos;s do this over email
+          One step left: pick your onboarding time
         </h2>
         <p className="mx-auto mt-2 max-w-sm text-sm text-muted">
-          Online signup isn&apos;t live yet, so nothing was sent. Email us at{" "}
-          <a
-            href={`mailto:hi@growx.studio?subject=${encodeURIComponent(`${plan.name} plan enquiry`)}`}
-            className="font-medium text-brand-text underline underline-offset-2 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-text"
-          >
-            hi@growx.studio
-          </a>{" "}
-          and mention the {plan.name} plan. We&apos;ll take it from there.
+          Lock in a 30-minute call with our founding team and mention the{" "}
+          {plan.name} plan. We set up your account on the call, so you leave
+          with everything running.
         </p>
       </div>
-      <div className="w-full rounded-xl border border-border bg-surface px-6 py-4 text-left">
-        <p className="mb-3 text-xs font-semibold uppercase tracking-widest text-brand-text">
-          What to include
-        </p>
-        <ol className="space-y-2.5">
-          {[
-            "Your agency name and what you're looking to hand off",
-            "Rough volume and timelines you're working to",
-            "The plan you're interested in",
-          ].map((step, i) => (
-            <li key={i} className="flex items-start gap-3 text-sm text-muted">
-              <span className="flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-brand/10 text-xs font-bold text-brand-text">
-                {i + 1}
-              </span>
-              {step}
-            </li>
-          ))}
-        </ol>
-      </div>
-      <button
+      <a
+        href="#book"
         onClick={onClose}
-        className="rounded-full border border-border px-6 py-2.5 text-sm font-medium text-foreground transition hover:bg-surface focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-text"
+        className="inline-flex items-center gap-2 rounded-full bg-gradient-brand px-7 py-3 text-sm font-semibold text-black transition-[filter] hover:brightness-110 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-text"
       >
-        Close
-      </button>
+        <Calendar size={16} aria-hidden="true" />
+        Book your onboarding call
+      </a>
+      <p className="text-xs text-muted">
+        Prefer email?{" "}
+        <a
+          href={`mailto:hi@growx.studio?subject=${encodeURIComponent(`${plan.name} plan enquiry`)}`}
+          className="font-medium text-brand-text underline underline-offset-2 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-text"
+        >
+          hi@growx.studio
+        </a>{" "}
+        reaches the same team.
+      </p>
     </div>
   );
 }

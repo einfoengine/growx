@@ -178,6 +178,18 @@ export default function HeroAnimatedContent({
           })}
         </motion.div>
 
+        {/* Expectation-setter under the CTAs: what clicking actually costs
+            the visitor (30 minutes, no pressure) — lowers the ask. */}
+        {isHome && data.ctaNote && (
+          <motion.p
+            id={`${data.id}-cta-note`}
+            className="mt-3 text-xs text-white/50"
+            variants={statVariants}
+          >
+            {data.ctaNote}
+          </motion.p>
+        )}
+
         {/* Proof bar. Sits under the CTA so the last thing read before acting is
             evidence, not another claim. */}
         {hasStats && !isHome && (

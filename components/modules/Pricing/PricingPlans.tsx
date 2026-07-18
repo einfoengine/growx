@@ -43,6 +43,13 @@ export default async function PricingPlans() {
             highlightClassName="text-gradient-brand"
           />
           <p className="mt-5 text-base text-muted sm:text-lg">{data.sub}</p>
+          {/* Kills the "$295 covers fulfillment" misread before the sales
+              call has to: membership buys the team, services are per-project. */}
+          {data.clarifier && (
+            <p className="mx-auto mt-4 max-w-xl rounded-full border border-border bg-surface px-5 py-2.5 text-xs leading-relaxed text-foreground/70 sm:text-sm">
+              {data.clarifier}
+            </p>
+          )}
         </div>
         </ScrollFadeIn>
 

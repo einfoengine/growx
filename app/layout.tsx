@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Manrope, Geist_Mono } from "next/font/google";
 import { getSite } from "@/lib/content";
 import MotionProvider from "@/components/elements/MotionProvider";
+import Analytics from "@/components/elements/Analytics";
 import "./globals.css";
 
 // Manrope - primary typeface for headings and body (brand guideline).
@@ -52,7 +53,7 @@ export default function RootLayout({
             until focused. */}
         <a
           href="#main"
-          className="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-[200] focus:rounded-lg focus:bg-foreground focus:px-4 focus:py-2 focus:text-background"
+          className="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-200 focus:rounded-lg focus:bg-foreground focus:px-4 focus:py-2 focus:text-background"
         >
           Skip to main content
         </a>
@@ -64,6 +65,8 @@ export default function RootLayout({
           precedence="default"
         />
         <MotionProvider>{children}</MotionProvider>
+        {/* Consent-gated GA4 + Meta pixel; inert until env IDs are set. */}
+        <Analytics />
       </body>
     </html>
   );

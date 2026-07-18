@@ -1,11 +1,20 @@
 {
   "id": "mod-testimonials",
-  "eyebrow": "Real results from real partners",
+  "eyebrow": "Partner outcomes",
   "headline": {
     "parts": [
-      { "type": "text", "value": "What agencies say about " },
-      { "type": "highlight", "value": "growX" },
-      { "type": "text", "value": "." }
+      {
+        "type": "text",
+        "value": "What agencies say about "
+      },
+      {
+        "type": "highlight",
+        "value": "growX"
+      },
+      {
+        "type": "text",
+        "value": "."
+      }
     ]
   },
   "sub": "Agency owners who were juggling freelancers, turning down projects, and capping their own growth. Here's what changed.",

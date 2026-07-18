@@ -3,12 +3,22 @@
   "eyebrow": "Partnership tiers",
   "headline": {
     "parts": [
-      { "type": "text", "value": "Vendor. Team member. " },
-      { "type": "highlight", "value": "Department" },
-      { "type": "text", "value": "." }
+      {
+        "type": "text",
+        "value": "Vendor. Team member. "
+      },
+      {
+        "type": "highlight",
+        "value": "Department"
+      },
+      {
+        "type": "text",
+        "value": "."
+      }
     ]
   },
   "sub": "One simple idea: the more you commit, the more of your fulfillment we take off your plate. Each tier moves you up a rung, from a reliable vendor, to a dedicated team member, to a full production department.",
+  "clarifier": "Your membership buys the team: account management, partner pricing, and priority. The work itself is ordered per project from the portal, at fixed prices with clear SLAs.",
   "ladder": [
     {
       "id": "rung-vendor",

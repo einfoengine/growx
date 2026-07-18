@@ -120,6 +120,13 @@ export default async function Comparison({ noPaddingTop }: { noPaddingTop?: bool
             <p className="mt-3 text-lg font-semibold text-foreground">
               growX is the production department behind your agency, without the payroll, the vendors, or the overhead.
             </p>
+            {/* Peak persuasion should end in an action, not a dead stop. */}
+            <a
+              href="#book"
+              className="mt-6 inline-flex items-center gap-2 rounded-full bg-gradient-brand px-7 py-3 text-sm font-semibold text-black transition-[filter] hover:brightness-110 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-text"
+            >
+              Book a partnership call
+            </a>
           </div>
         </ScrollFadeIn>
       </div>

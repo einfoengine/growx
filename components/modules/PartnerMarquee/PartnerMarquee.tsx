@@ -21,7 +21,10 @@ const BENEFITS: { label: string; Icon: LucideIcon }[] = [
   { label: "Clear SLAs", Icon: Clock },
   { label: "One-Click Ordering", Icon: MousePointerClick },
   { label: "Full Commercial Rights", Icon: ShieldCheck },
-  { label: "Dedicated Account Manager", Icon: Headset },
+  // "Dedicated Account Manager" was here, but it only exists from the $295
+  // tier — an unqualified claim the pricing table contradicts. This one is
+  // true at every tier.
+  { label: "One Accountable Team", Icon: Headset },
 ];
 
 /** Marquee band under the hero listing partner benefits. Content is duplicated
@@ -31,7 +34,10 @@ export default function PartnerMarquee() {
     <section
       id="gw-mod-partner-marquee"
       aria-label="Benefits of becoming a partner"
-      className="relative overflow-hidden bg-brand-animated py-5 text-black sm:py-6"
+      // Glass strip riding the hero: the negative margin pulls it up over the
+      // hero's bottom padding, so the backdrop-blur frosts the cinematic
+      // scene behind it instead of sitting on a solid band.
+      className="relative z-10 -mt-14 overflow-hidden border-y border-white/10 bg-white/5 py-5 text-white backdrop-blur-md sm:-mt-16 sm:py-6"
     >
       <ScrollFadeIn delay={0.1}>
       <div className="relative flex w-full overflow-hidden mask-[linear-gradient(to_right,transparent,#000_8%,#000_92%,transparent)]">
@@ -44,15 +50,15 @@ export default function PartnerMarquee() {
                     size={18}
                     strokeWidth={2.5}
                     aria-hidden="true"
-                    className="shrink-0"
+                    className="shrink-0 text-brand"
                   />
-                  <span className="mx-2.5 whitespace-nowrap text-sm font-bold uppercase tracking-wider sm:mx-3 sm:text-base">
+                  <span className="mx-2.5 whitespace-nowrap text-sm font-bold uppercase tracking-wider text-white/85 sm:mx-3 sm:text-base">
                     {label}
                   </span>
                   {/* Dot separator between items. */}
                   <span
                     aria-hidden="true"
-                    className="mr-2.5 h-1.5 w-1.5 shrink-0 rounded-full bg-black/30 sm:mr-3"
+                    className="mr-2.5 h-1.5 w-1.5 shrink-0 rounded-full bg-brand/60 sm:mr-3"
                   />
                 </div>
               ))}

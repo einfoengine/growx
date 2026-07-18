@@ -11,7 +11,9 @@ import ScrollFadeIn from "@/components/elements/ScrollFadeIn";
 import Eyebrow from "@/components/elements/Eyebrow";
 
 const NAV_H = 72; // floating header: 8px top gap + h-16 bar
-const STEP_VH = 60; // scroll distance allotted per group while pinned
+// 48vh per group (was 60): trims ~50vh of forced scroll off the pin — the
+// visitor reaches proof and pricing sooner without losing the step-through.
+const STEP_VH = 48; // scroll distance allotted per group while pinned
 
 export default function ServicesCatalog() {
   const [active, setActive] = useState(0);
@@ -159,10 +161,20 @@ export default function ServicesCatalog() {
           return (
             <li
               key={service.n}
-              className="aspect-[7/9] w-full max-w-sm sm:w-auto sm:max-w-108 sm:flex-1 sm:basis-0"
+              className="aspect-7/9 w-full max-w-sm sm:w-auto sm:max-w-108 sm:flex-1 sm:basis-0"
             >
               <MagneticTiltCard className="h-full w-full">
-              <article className="group relative h-full w-full overflow-hidden rounded-2xl border border-border bg-surface">
+              {/* The whole card opens the detail modal — the 32px arrow was
+                  the only way in, and most visitors never found it. Clicks on
+                  the inner buttons are theirs (they already open the modal),
+                  so bubbling is filtered to avoid double-fires. */}
+              <article
+                onClick={(e) => {
+                  if ((e.target as HTMLElement).closest("button")) return;
+                  openService(service);
+                }}
+                className="group relative h-full w-full cursor-pointer overflow-hidden rounded-2xl border border-border bg-surface"
+              >
                 {/* Full-bleed image acts as the card background. */}
                 {service.image ? (
                   // eslint-disable-next-line @next/next/no-img-element

@@ -10,15 +10,18 @@ import Portfolio from "@/components/modules/Portfolio/Portfolio";
 import PricingPlans from "@/components/modules/Pricing/PricingPlans";
 import ServicesCatalog from "@/components/modules/Services/ServicesCatalog";
 import SisterBrands from "@/components/modules/SisterBrands/SisterBrands";
+import Testimonials from "@/components/modules/Testimonials/Testimonials";
+import TrustBar from "@/components/modules/TrustBar/TrustBar";
 
 export default function HomePage() {
   return (
     <>
       <Hero />
       <PartnerMarquee />
+      <TrustBar />
       <ServicesCatalog />
-      <SisterBrands />
       <FulfillmentReasons />
+      <Testimonials />
       <HowItWorks />
       <Portfolio />
       <PricingPlans />
@@ -26,6 +29,9 @@ export default function HomePage() {
       <Faq />
       <BlogSection />
       <Newsletter />
+      {/* Closing reassurance before the footer CTA: growX as lineage, not a
+          new agency. */}
+      <SisterBrands />
     </>
   );
 }

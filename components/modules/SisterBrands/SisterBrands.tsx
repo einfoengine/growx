@@ -1,14 +1,16 @@
 import ScrollFadeIn from "@/components/elements/ScrollFadeIn";
 import Eyebrow from "@/components/elements/Eyebrow";
 
-/** Our family of brands. growX sits alongside its sister brands — one partner,
- *  a whole ecosystem. Logos live in /public/assets. */
+/** Our family of brands, framed as lineage: growX is the newest name from the
+ *  operators already running GHL Video and socialX — a legacy, not a cold
+ *  start. Closes the page as the final reassurance before the footer CTA.
+ *  Logos live in /public/assets. */
 const BRANDS: { name: string; src: string; alt: string; tagline: string }[] = [
   {
     name: "growX",
     src: "/assets/logo-black.png",
     alt: "growX",
-    tagline: "Growth marketing & partnerships",
+    tagline: "White-label fulfillment for agencies",
   },
   {
     name: "GHL Video",
@@ -34,16 +36,18 @@ export default function SisterBrands() {
       <div className="container-1200">
         <ScrollFadeIn delay={0.1}>
         <div className="mx-auto max-w-2xl text-center">
-          <Eyebrow text="Our family of brands" />
+          <Eyebrow text="Three brands. One mission." />
           <h2
             id="sister-brands-headline"
             className="mt-4 text-3xl font-bold tracking-tight sm:text-4xl md:text-5xl"
           >
-            One partner, a whole ecosystem
+            A new name. The same team since 2019.
           </h2>
           <p className="mt-5 text-base text-muted sm:text-lg">
-            growX is part of a family of {BRANDS.length} specialist brands. Partner
-            with one, and tap into all of them.
+            growX was built by the operators behind GHL Video and socialX: one
+            in-house team that has been fulfilling agency work for years, now
+            under one roof. Partner with one brand and you tap into all of
+            them.
           </p>
         </div>
         </ScrollFadeIn>

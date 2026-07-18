@@ -22,6 +22,7 @@ import comparisonData from "@/data/modules/comparison.json";
 import portfolioData from "@/data/modules/portfolio.json";
 import newsletterData from "@/data/modules/newsletter.json";
 import blogData from "@/data/modules/blog.json";
+import testimonialsData from "@/data/modules/testimonials.json";
 import type {
   AboutContent,
   BlogContent,
@@ -38,6 +39,7 @@ import type {
   LogoMarqueeContent,
   NewsletterContent,
   PageSlug,
+  TestimonialsContent,
   PainPointsContent,
   PortfolioContent,
   PortfolioItem,
@@ -97,6 +99,10 @@ export async function getCtaBanner(): Promise<CtaBannerContent> {
 
 export async function getPainPoints(): Promise<PainPointsContent> {
   return painPointsData as PainPointsContent;
+}
+
+export async function getTestimonials(): Promise<TestimonialsContent> {
+  return testimonialsData as TestimonialsContent;
 }
 
 export async function getFaq(): Promise<FaqContent> {

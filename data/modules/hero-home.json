@@ -6,9 +6,18 @@
   },
   "headline": {
     "parts": [
-      { "type": "text", "value": "The team behind " },
-      { "type": "highlight", "value": "your team" },
-      { "type": "text", "value": "." }
+      {
+        "type": "text",
+        "value": "The team behind\n"
+      },
+      {
+        "type": "highlight",
+        "value": "your team"
+      },
+      {
+        "type": "text",
+        "value": "."
+      }
     ]
   },
   "tagline": "We make sure you fulfill your promise to your clients.",
@@ -28,9 +37,22 @@
     }
   ],
   "stats": [
-    { "id": "mod-hero-stat-services", "label": "11 services, one team" },
-    { "id": "mod-hero-stat-whitelabel", "label": "100% white-label" },
-    { "id": "mod-hero-stat-since", "label": "In-house team since 2019" },
-    { "id": "mod-hero-stat-reach", "label": "US, CA, UK, AU" }
-  ]
+    {
+      "id": "mod-hero-stat-services",
+      "label": "11 services, one team"
+    },
+    {
+      "id": "mod-hero-stat-whitelabel",
+      "label": "100% white-label"
+    },
+    {
+      "id": "mod-hero-stat-since",
+      "label": "In-house team since 2019"
+    },
+    {
+      "id": "mod-hero-stat-reach",
+      "label": "US, CA, UK, AU"
+    }
+  ],
+  "ctaNote": "30 minutes with our founding team. No pitch deck, no pressure."
 }

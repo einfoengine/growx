@@ -69,8 +69,29 @@ export type HeroContent = {
   tagline?: string;
   sub: string;
   ctas: CTA[];
+  /** Expectation-setting microcopy under the primary CTA (home hero). */
+  ctaNote?: string;
   rating?: HeroRating;
   stats: HeroStat[];
+};
+
+export type Testimonial = {
+  id: string;
+  name: string;
+  title: string;
+  company: string;
+  /** Headline number for the card, e.g. "3x" or "10 days". */
+  metric: string;
+  metricLabel: string;
+  quote: string;
+};
+
+export type TestimonialsContent = {
+  id: string;
+  eyebrow: string;
+  headline: { parts: HeadlinePart[] };
+  sub: string;
+  testimonials: Testimonial[];
 };
 
 export type ServiceIcon =
@@ -211,6 +232,8 @@ export type PricingContent = {
   eyebrow: string;
   headline: { parts: HeadlinePart[] };
   sub: string;
+  /** One line separating the membership fee from per-project service pricing. */
+  clarifier?: string;
   ladder?: PricingLadderRung[];
   tiers: PricingTier[];
 };
