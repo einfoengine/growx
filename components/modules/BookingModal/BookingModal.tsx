@@ -37,13 +37,15 @@ export default function BookingModal() {
     const handleGlobalClick = (e: MouseEvent) => {
       const target = e.target as HTMLElement;
       const link = target.closest("a");
-      if (link) {
-        const href = link.getAttribute("href");
-        if (href === "#book" || href === "/#book") {
-          e.preventDefault();
-          window.history.pushState(null, "", "#book");
-          window.dispatchEvent(new Event(HASH_EVENT));
-        }
+      // Match on the resolved hash, not the raw href string: Next resolves a
+      // `#book` Link against the current path, so on inner pages the anchor's
+      // href becomes `/process#book`, `/about#book`, etc. `link.hash` is
+      // `#book` regardless of page, so every "Book"/"Become a partner" CTA
+      // opens the modal, not just the ones on the home route.
+      if (link && link.hash === "#book" && link.origin === window.location.origin) {
+        e.preventDefault();
+        window.history.pushState(null, "", "#book");
+        window.dispatchEvent(new Event(HASH_EVENT));
       }
     };
 
@@ -83,58 +85,74 @@ export default function BookingModal() {
     <AnimatePresence>
       {isOpen && (
         <motion.div
-          ref={panelRef}
-          role="dialog"
-          aria-modal="true"
-          aria-labelledby="booking-modal-title"
-          tabIndex={-1}
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
-          className="fixed inset-0 z-100 flex flex-col bg-background focus:outline-none"
+          transition={{ duration: 0.2 }}
+          onClick={close}
+          className="fixed inset-0 z-100 flex items-center justify-center overflow-y-auto bg-black/60 p-4 backdrop-blur-sm sm:p-6"
         >
-          {/* Top bar */}
-          <div className="flex items-center justify-between border-b border-border px-6 py-4 shrink-0">
-            <div>
-              <h2
-                id="booking-modal-title"
-                className="text-xl font-bold tracking-tight text-foreground sm:text-2xl"
+          <motion.div
+            ref={panelRef}
+            role="dialog"
+            aria-modal="true"
+            aria-labelledby="booking-modal-title"
+            tabIndex={-1}
+            initial={{ opacity: 0, scale: 0.96, y: 12 }}
+            animate={{ opacity: 1, scale: 1, y: 0 }}
+            exit={{ opacity: 0, scale: 0.98, y: 8 }}
+            transition={{ duration: 0.22, ease: [0.16, 1, 0.3, 1] }}
+            onClick={(e) => e.stopPropagation()}
+            data-nav-theme="dark"
+            className="relative flex max-h-[90vh] w-full max-w-293.5 flex-col overflow-hidden rounded-2xl border border-white/10 bg-foreground text-background shadow-2xl shadow-black/50 focus:outline-none"
+          >
+            {/* Top bar */}
+            <div className="flex items-start justify-between gap-4 border-b border-white/10 px-6 py-4 shrink-0">
+              <div>
+                <h2
+                  id="booking-modal-title"
+                  className="text-xl font-bold tracking-tight text-background"
+                >
+                  Book a partnership call
+                </h2>
+                <p className="mt-0.5 text-sm text-white/60">
+                  30 minutes with our founding team. No pitch deck, no pressure.
+                </p>
+              </div>
+              <button
+                onClick={close}
+                className="-mr-1.5 -mt-0.5 shrink-0 rounded-full p-2 text-white/60 hover:bg-white/10 hover:text-white transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-text"
+                aria-label="Close"
               >
-                Book a partnership call
-              </h2>
-              <p className="mt-0.5 text-sm text-muted">
-                30 minutes with our founding team. No pitch deck, no pressure.
-              </p>
+                <X size={20} />
+              </button>
             </div>
-            <button
-              onClick={close}
-              className="rounded-full p-2 text-muted hover:bg-white/10 hover:text-foreground transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-text"
-              aria-label="Close"
-            >
-              <X size={22} />
-            </button>
-          </div>
 
-          {/* Body: the live HighLevel calendar. Picking a slot books it — the
-              calendar sends the confirmation and reminders itself. */}
-          <div className="flex-1 overflow-y-auto bg-surface">
-            <iframe
-              src={GHL_BOOKING_URL}
-              title="growX Partnership Call booking calendar"
-              id="gx-booking-calendar"
-              className="h-full min-h-160 w-full border-0"
-              scrolling="auto"
-            />
-          </div>
+            {/* Body: the live HighLevel calendar. Picking a slot books it — the
+                calendar sends the confirmation and reminders itself. The
+                cross-origin widget can't be themed directly, so its rendered
+                pixels are inverted (hue-rotate keeps brand hues intact) to
+                match the dark chrome — same trick as the home booking section. */}
+            <div className="min-h-0 flex-1 overflow-y-auto bg-white/5">
+              <iframe
+                src={GHL_BOOKING_URL}
+                title="growX Partnership Call booking calendar"
+                id="gx-booking-calendar"
+                className="block min-h-150 w-full border-0"
+                scrolling="auto"
+                style={{ filter: "invert(1) hue-rotate(180deg)" }}
+              />
+            </div>
 
-          {/* Fallback for anyone the widget fails for. */}
-          <div className="flex items-center justify-center gap-2 border-t border-border px-6 py-3 text-sm text-muted shrink-0">
-            <Mail size={15} aria-hidden="true" className="text-brand" />
-            Trouble booking? Email{" "}
-            <a href="mailto:hi@growx.studio" className="link">
-              hi@growx.studio
-            </a>
-          </div>
+            {/* Fallback for anyone the widget fails for. */}
+            <div className="flex flex-wrap items-center justify-center gap-x-2 gap-y-1 border-t border-white/10 px-6 py-3 text-sm text-white/60 shrink-0">
+              <Mail size={15} aria-hidden="true" className="text-brand" />
+              Trouble booking? Email{" "}
+              <a href="mailto:hi@growx.studio" className="link">
+                hi@growx.studio
+              </a>
+            </div>
+          </motion.div>
         </motion.div>
       )}
     </AnimatePresence>

@@ -4,9 +4,18 @@
     "eyebrow": "Pricing",
     "headline": {
       "parts": [
-        { "type": "text", "value": "Fixed pricing that scales " },
-        { "type": "highlight", "value": "with you" },
-        { "type": "text", "value": "." }
+        {
+          "type": "text",
+          "value": "Fixed pricing that scales "
+        },
+        {
+          "type": "highlight",
+          "value": "with you"
+        },
+        {
+          "type": "text",
+          "value": "."
+        }
       ]
     },
     "sub": "Join free and order from a productized catalog with fixed prices and clear SLAs. Upgrade to a partnership tier for a dedicated team. Estimate a service below, or pick your tier."
@@ -24,35 +33,83 @@
       "qtyStep": 1,
       "billing": "one-off",
       "durations": [
-        { "id": "rush",     "label": "Rush - 2 weeks",     "value": 2,  "multiplier": 1.25 },
-        { "id": "standard", "label": "Standard - 4 weeks", "value": 4,  "multiplier": 1.0  },
-        { "id": "relaxed",  "label": "Relaxed - 6 weeks",  "value": 6,  "multiplier": 0.95 },
-        { "id": "extended", "label": "Extended - 8 weeks", "value": 8,  "multiplier": 0.9  }
+        {
+          "id": "rush",
+          "label": "Rush - 2 weeks",
+          "value": 2,
+          "multiplier": 1.25
+        },
+        {
+          "id": "standard",
+          "label": "Standard - 4 weeks",
+          "value": 4,
+          "multiplier": 1.0
+        },
+        {
+          "id": "relaxed",
+          "label": "Relaxed - 6 weeks",
+          "value": 6,
+          "multiplier": 0.95
+        },
+        {
+          "id": "extended",
+          "label": "Extended - 8 weeks",
+          "value": 8,
+          "multiplier": 0.9
+        }
       ],
       "configFields": [
         {
           "id": "pageTypes",
           "label": "Page types needed",
           "type": "multiselect",
-          "options": ["Home", "About", "Services / Features", "Portfolio / Work", "Blog", "Contact", "Landing page", "E-commerce / Shop"]
+          "options": [
+            "Home",
+            "About",
+            "Services / Features",
+            "Portfolio / Work",
+            "Blog",
+            "Contact",
+            "Landing page",
+            "E-commerce / Shop"
+          ]
         },
         {
           "id": "cms",
           "label": "CMS preference",
           "type": "select",
-          "options": ["Webflow", "WordPress", "Framer", "Headless / Custom", "No CMS needed"]
+          "options": [
+            "Webflow",
+            "WordPress",
+            "Framer",
+            "Headless / Custom",
+            "No CMS needed"
+          ]
         },
         {
           "id": "designAssets",
           "label": "Existing design assets",
           "type": "select",
-          "options": ["Brand guidelines only", "Partial designs / wireframes", "Full designs ready", "Starting from scratch"]
+          "options": [
+            "Brand guidelines only",
+            "Partial designs / wireframes",
+            "Full designs ready",
+            "Starting from scratch"
+          ]
         },
         {
           "id": "integrations",
           "label": "Integrations required",
           "type": "multiselect",
-          "options": ["Booking / calendar", "Payment processing", "CRM / HubSpot", "Analytics", "Live chat", "Email signup", "None"]
+          "options": [
+            "Booking / calendar",
+            "Payment processing",
+            "CRM / HubSpot",
+            "Analytics",
+            "Live chat",
+            "Email signup",
+            "None"
+          ]
         }
       ]
     },
@@ -67,35 +124,77 @@
       "qtyStep": 1,
       "billing": "monthly",
       "durations": [
-        { "id": "1m",  "label": "Month to month",       "value": 1,  "multiplier": 1.0  },
-        { "id": "3m",  "label": "3 months - 5% off",    "value": 3,  "multiplier": 0.95 },
-        { "id": "6m",  "label": "6 months - 10% off",   "value": 6,  "multiplier": 0.9  },
-        { "id": "12m", "label": "12 months - 15% off",  "value": 12, "multiplier": 0.85 }
+        {
+          "id": "1m",
+          "label": "Month to month",
+          "value": 1,
+          "multiplier": 1.0
+        },
+        {
+          "id": "3m",
+          "label": "3 months - 5% off",
+          "value": 3,
+          "multiplier": 0.95
+        },
+        {
+          "id": "6m",
+          "label": "6 months - 10% off",
+          "value": 6,
+          "multiplier": 0.9
+        },
+        {
+          "id": "12m",
+          "label": "12 months - 15% off",
+          "value": 12,
+          "multiplier": 0.85
+        }
       ],
       "configFields": [
         {
           "id": "targetArea",
           "label": "Target area",
           "type": "select",
-          "options": ["Local (city / region)", "National", "International / Multi-market"]
+          "options": [
+            "Local (city / region)",
+            "National",
+            "International / Multi-market"
+          ]
         },
         {
           "id": "goals",
           "label": "Primary goals",
           "type": "multiselect",
-          "options": ["Organic traffic growth", "First-page rankings", "Featured snippets (AEO)", "Local search visibility", "Technical SEO fixes", "Content strategy"]
+          "options": [
+            "Organic traffic growth",
+            "First-page rankings",
+            "Featured snippets (AEO)",
+            "Local search visibility",
+            "Technical SEO fixes",
+            "Content strategy"
+          ]
         },
         {
           "id": "platform",
           "label": "Website platform",
           "type": "select",
-          "options": ["WordPress", "Webflow", "Shopify", "Wix / Squarespace", "Custom / Other"]
+          "options": [
+            "WordPress",
+            "Webflow",
+            "Shopify",
+            "Wix / Squarespace",
+            "Custom / Other"
+          ]
         },
         {
           "id": "currentRanking",
           "label": "Current SEO status",
           "type": "select",
-          "options": ["Brand new / no SEO done", "Some work done - needs improvement", "Ranking but want to scale", "Recovering from penalty"]
+          "options": [
+            "Brand new / no SEO done",
+            "Some work done - needs improvement",
+            "Ranking but want to scale",
+            "Recovering from penalty"
+          ]
         }
       ]
     },
@@ -110,23 +209,58 @@
       "qtyStep": 1,
       "billing": "monthly",
       "durations": [
-        { "id": "1m",  "label": "Month to month",       "value": 1,  "multiplier": 1.0  },
-        { "id": "3m",  "label": "3 months - 5% off",    "value": 3,  "multiplier": 0.95 },
-        { "id": "6m",  "label": "6 months - 10% off",   "value": 6,  "multiplier": 0.9  },
-        { "id": "12m", "label": "12 months - 15% off",  "value": 12, "multiplier": 0.85 }
+        {
+          "id": "1m",
+          "label": "Month to month",
+          "value": 1,
+          "multiplier": 1.0
+        },
+        {
+          "id": "3m",
+          "label": "3 months - 5% off",
+          "value": 3,
+          "multiplier": 0.95
+        },
+        {
+          "id": "6m",
+          "label": "6 months - 10% off",
+          "value": 6,
+          "multiplier": 0.9
+        },
+        {
+          "id": "12m",
+          "label": "12 months - 15% off",
+          "value": 12,
+          "multiplier": 0.85
+        }
       ],
       "configFields": [
         {
           "id": "platforms",
           "label": "Platforms",
           "type": "multiselect",
-          "options": ["Instagram", "TikTok", "LinkedIn", "Facebook", "YouTube Shorts", "Pinterest", "X (Twitter)"]
+          "options": [
+            "Instagram",
+            "TikTok",
+            "LinkedIn",
+            "Facebook",
+            "YouTube Shorts",
+            "Pinterest",
+            "X (Twitter)"
+          ]
         },
         {
           "id": "postFormats",
           "label": "Post formats",
           "type": "multiselect",
-          "options": ["Static images", "Carousels", "Reels / Short-form video", "Stories", "Long-form video", "Infographics"]
+          "options": [
+            "Static images",
+            "Carousels",
+            "Reels / Short-form video",
+            "Stories",
+            "Long-form video",
+            "Infographics"
+          ]
         },
         {
           "id": "postsPerWeek",
@@ -140,13 +274,24 @@
           "id": "tone",
           "label": "Brand tone",
           "type": "select",
-          "options": ["Professional / B2B", "Casual & Friendly", "Educational / Thought leadership", "Promotional / Sales-focused", "Lifestyle / Aspirational"]
+          "options": [
+            "Professional / B2B",
+            "Casual & Friendly",
+            "Educational / Thought leadership",
+            "Promotional / Sales-focused",
+            "Lifestyle / Aspirational"
+          ]
         },
         {
           "id": "contentSource",
           "label": "Content & assets",
           "type": "select",
-          "options": ["We provide all assets (photos, video)", "Mix - some assets, we create the rest", "Full creative - you create everything", "UGC / repurpose existing content"]
+          "options": [
+            "We provide all assets (photos, video)",
+            "Mix - some assets, we create the rest",
+            "Full creative - you create everything",
+            "UGC / repurpose existing content"
+          ]
         }
       ]
     },
@@ -161,35 +306,80 @@
       "qtyStep": 1,
       "billing": "monthly",
       "durations": [
-        { "id": "one-off", "label": "One-off batch",        "value": 1,  "multiplier": 1.0  },
-        { "id": "3m",      "label": "3 months - 5% off",    "value": 3,  "multiplier": 0.95 },
-        { "id": "6m",      "label": "6 months - 10% off",   "value": 6,  "multiplier": 0.9  },
-        { "id": "12m",     "label": "12 months - 15% off",  "value": 12, "multiplier": 0.85 }
+        {
+          "id": "one-off",
+          "label": "One-off batch",
+          "value": 1,
+          "multiplier": 1.0
+        },
+        {
+          "id": "3m",
+          "label": "3 months - 5% off",
+          "value": 3,
+          "multiplier": 0.95
+        },
+        {
+          "id": "6m",
+          "label": "6 months - 10% off",
+          "value": 6,
+          "multiplier": 0.9
+        },
+        {
+          "id": "12m",
+          "label": "12 months - 15% off",
+          "value": 12,
+          "multiplier": 0.85
+        }
       ],
       "configFields": [
         {
           "id": "contentTypes",
           "label": "Content types",
           "type": "multiselect",
-          "options": ["Blog posts / articles", "Landing page copy", "Email sequences", "Product descriptions", "Social captions", "Case studies", "White papers / guides", "Ad copy"]
+          "options": [
+            "Blog posts / articles",
+            "Landing page copy",
+            "Email sequences",
+            "Product descriptions",
+            "Social captions",
+            "Case studies",
+            "White papers / guides",
+            "Ad copy"
+          ]
         },
         {
           "id": "wordCount",
           "label": "Target word count per piece",
           "type": "select",
-          "options": ["Short (under 500)", "Medium (500 to 1,000)", "Long-form (1,000 to 2,500)", "In-depth (2,500+)"]
+          "options": [
+            "Short (under 500)",
+            "Medium (500 to 1,000)",
+            "Long-form (1,000 to 2,500)",
+            "In-depth (2,500+)"
+          ]
         },
         {
           "id": "goal",
           "label": "Primary goal",
           "type": "select",
-          "options": ["SEO & organic traffic", "Lead generation", "Sales conversion", "Brand awareness / engagement", "Customer retention / nurture"]
+          "options": [
+            "SEO & organic traffic",
+            "Lead generation",
+            "Sales conversion",
+            "Brand awareness / engagement",
+            "Customer retention / nurture"
+          ]
         },
         {
           "id": "seoKeywords",
           "label": "SEO keyword targeting",
           "type": "select",
-          "options": ["Yes - we supply keywords", "Yes - you research keywords", "Light optimisation only", "No SEO requirement"]
+          "options": [
+            "Yes - we supply keywords",
+            "Yes - you research keywords",
+            "Light optimisation only",
+            "No SEO requirement"
+          ]
         }
       ]
     },
@@ -204,35 +394,83 @@
       "qtyStep": 1,
       "billing": "monthly",
       "durations": [
-        { "id": "1m",  "label": "Month to month",       "value": 1,  "multiplier": 1.0  },
-        { "id": "3m",  "label": "3 months - 5% off",    "value": 3,  "multiplier": 0.95 },
-        { "id": "6m",  "label": "6 months - 10% off",   "value": 6,  "multiplier": 0.9  },
-        { "id": "12m", "label": "12 months - 15% off",  "value": 12, "multiplier": 0.85 }
+        {
+          "id": "1m",
+          "label": "Month to month",
+          "value": 1,
+          "multiplier": 1.0
+        },
+        {
+          "id": "3m",
+          "label": "3 months - 5% off",
+          "value": 3,
+          "multiplier": 0.95
+        },
+        {
+          "id": "6m",
+          "label": "6 months - 10% off",
+          "value": 6,
+          "multiplier": 0.9
+        },
+        {
+          "id": "12m",
+          "label": "12 months - 15% off",
+          "value": 12,
+          "multiplier": 0.85
+        }
       ],
       "configFields": [
         {
           "id": "adPlatforms",
           "label": "Ad platforms",
           "type": "multiselect",
-          "options": ["Google Search", "Google Display / GDN", "Meta (Facebook & Instagram)", "LinkedIn Ads", "TikTok Ads", "YouTube Ads", "Microsoft / Bing Ads"]
+          "options": [
+            "Google Search",
+            "Google Display / GDN",
+            "Meta (Facebook & Instagram)",
+            "LinkedIn Ads",
+            "TikTok Ads",
+            "YouTube Ads",
+            "Microsoft / Bing Ads"
+          ]
         },
         {
           "id": "adFormats",
           "label": "Ad formats",
           "type": "multiselect",
-          "options": ["Search text ads", "Display / banner ads", "Video ads", "Shopping / product listings", "Retargeting / remarketing", "Lead gen forms"]
+          "options": [
+            "Search text ads",
+            "Display / banner ads",
+            "Video ads",
+            "Shopping / product listings",
+            "Retargeting / remarketing",
+            "Lead gen forms"
+          ]
         },
         {
           "id": "adBudget",
           "label": "Monthly ad spend (managed)",
           "type": "select",
-          "options": ["Under $1,000", "$1,000 to $5,000", "$5,000 to $10,000", "$10,000 to $25,000", "$25,000+"]
+          "options": [
+            "Under $1,000",
+            "$1,000 to $5,000",
+            "$5,000 to $10,000",
+            "$10,000 to $25,000",
+            "$25,000+"
+          ]
         },
         {
           "id": "campaignGoal",
           "label": "Campaign objective",
           "type": "select",
-          "options": ["Lead generation", "E-commerce / direct sales", "Brand awareness", "App installs", "Event registrations", "Website traffic"]
+          "options": [
+            "Lead generation",
+            "E-commerce / direct sales",
+            "Brand awareness",
+            "App installs",
+            "Event registrations",
+            "Website traffic"
+          ]
         }
       ]
     },
@@ -247,40 +485,336 @@
       "qtyStep": 1,
       "billing": "one-off",
       "durations": [
-        { "id": "rush",     "label": "Rush - 3 weeks",     "value": 3, "multiplier": 1.2  },
-        { "id": "standard", "label": "Standard - 5 weeks", "value": 5, "multiplier": 1.0  },
-        { "id": "relaxed",  "label": "Relaxed - 8 weeks",  "value": 8, "multiplier": 0.92 }
+        {
+          "id": "rush",
+          "label": "Rush - 3 weeks",
+          "value": 3,
+          "multiplier": 1.2
+        },
+        {
+          "id": "standard",
+          "label": "Standard - 5 weeks",
+          "value": 5,
+          "multiplier": 1.0
+        },
+        {
+          "id": "relaxed",
+          "label": "Relaxed - 8 weeks",
+          "value": 8,
+          "multiplier": 0.92
+        }
       ],
       "configFields": [
         {
           "id": "funnelType",
           "label": "Funnel type",
           "type": "multiselect",
-          "options": ["Lead generation / opt-in", "Webinar / event registration", "Low-ticket / tripwire offer", "High-ticket / VSL", "E-commerce / product", "Membership / subscription"]
+          "options": [
+            "Lead generation / opt-in",
+            "Webinar / event registration",
+            "Low-ticket / tripwire offer",
+            "High-ticket / VSL",
+            "E-commerce / product",
+            "Membership / subscription"
+          ]
         },
         {
           "id": "funnelSteps",
           "label": "Funnel complexity",
           "type": "select",
-          "options": ["Simple (3 to 4 steps)", "Standard (5 to 7 steps)", "Complex (8+ steps with upsells)"]
+          "options": [
+            "Simple (3 to 4 steps)",
+            "Standard (5 to 7 steps)",
+            "Complex (8+ steps with upsells)"
+          ]
         },
         {
           "id": "platform",
           "label": "Preferred platform",
           "type": "select",
-          "options": ["GoHighLevel", "ClickFunnels", "Webflow + Stripe", "WordPress / WooCommerce", "Kajabi / Teachable", "Custom build"]
+          "options": [
+            "GoHighLevel",
+            "ClickFunnels",
+            "Webflow + Stripe",
+            "WordPress / WooCommerce",
+            "Kajabi / Teachable",
+            "Custom build"
+          ]
         },
         {
           "id": "copyStatus",
           "label": "Copywriting",
           "type": "select",
-          "options": ["Write everything from scratch", "Rough brief / notes provided", "Full copy ready - just build", "Need copy review / refinement"]
+          "options": [
+            "Write everything from scratch",
+            "Rough brief / notes provided",
+            "Full copy ready - just build",
+            "Need copy review / refinement"
+          ]
         },
         {
           "id": "integrations",
           "label": "Integrations needed",
           "type": "multiselect",
-          "options": ["Payment gateway", "Email marketing / CRM", "Webinar platform", "Booking / calendar", "Analytics / tracking", "SMS / WhatsApp"]
+          "options": [
+            "Payment gateway",
+            "Email marketing / CRM",
+            "Webinar platform",
+            "Booking / calendar",
+            "Analytics / tracking",
+            "SMS / WhatsApp"
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "video-production",
+      "icon": "clapperboard",
+      "unitPrice": 1200,
+      "unit": "video",
+      "unitLabel": "Videos",
+      "minQty": 1,
+      "maxQty": 6,
+      "qtyStep": 1,
+      "billing": "one-off",
+      "durations": [
+        {
+          "id": "rush",
+          "label": "Rush - 2 weeks",
+          "value": 2,
+          "multiplier": 1.25
+        },
+        {
+          "id": "standard",
+          "label": "Standard - 4 weeks",
+          "value": 4,
+          "multiplier": 1.0
+        },
+        {
+          "id": "relaxed",
+          "label": "Relaxed - 6 weeks",
+          "value": 6,
+          "multiplier": 0.92
+        }
+      ],
+      "configFields": [
+        {
+          "id": "videoType",
+          "label": "Video type",
+          "type": "multiselect",
+          "options": [
+            "Animated explainer",
+            "Product demo",
+            "Launch promo",
+            "Social spot",
+            "Brand story"
+          ]
+        },
+        {
+          "id": "length",
+          "label": "Length per video",
+          "type": "select",
+          "options": [
+            "Under 30s",
+            "30 to 60s",
+            "1 to 2 min",
+            "2 to 3 min",
+            "3 min+"
+          ]
+        },
+        {
+          "id": "style",
+          "label": "Visual style",
+          "type": "select",
+          "options": [
+            "2D motion graphics",
+            "3D animation",
+            "Mixed media",
+            "Kinetic typography",
+            "Match our brand"
+          ]
+        },
+        {
+          "id": "extras",
+          "label": "Add-ons",
+          "type": "multiselect",
+          "options": [
+            "Scriptwriting",
+            "Professional voiceover",
+            "Licensed music",
+            "Multi-platform cutdowns",
+            "Source files"
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "video-editing",
+      "icon": "film",
+      "unitPrice": 150,
+      "unit": "video",
+      "unitLabel": "Videos / month",
+      "minQty": 4,
+      "maxQty": 40,
+      "qtyStep": 2,
+      "billing": "monthly",
+      "durations": [
+        {
+          "id": "1m",
+          "label": "Month to month",
+          "value": 1,
+          "multiplier": 1.0
+        },
+        {
+          "id": "3m",
+          "label": "3 months - 5% off",
+          "value": 3,
+          "multiplier": 0.95
+        },
+        {
+          "id": "6m",
+          "label": "6 months - 10% off",
+          "value": 6,
+          "multiplier": 0.9
+        },
+        {
+          "id": "12m",
+          "label": "12 months - 15% off",
+          "value": 12,
+          "multiplier": 0.85
+        }
+      ],
+      "configFields": [
+        {
+          "id": "footage",
+          "label": "Footage source",
+          "type": "multiselect",
+          "options": [
+            "Camera footage",
+            "Screen recordings",
+            "Webinars",
+            "Podcasts",
+            "Existing clips"
+          ]
+        },
+        {
+          "id": "formats",
+          "label": "Output formats",
+          "type": "multiselect",
+          "options": [
+            "Short-form (Reels / Shorts / TikTok)",
+            "Long-form (YouTube)",
+            "Square (feed)",
+            "All aspect ratios"
+          ]
+        },
+        {
+          "id": "editExtras",
+          "label": "Included",
+          "type": "multiselect",
+          "options": [
+            "Captions / subtitles",
+            "Color grading",
+            "Audio cleanup",
+            "Motion graphics / lower thirds",
+            "Licensed music"
+          ]
+        },
+        {
+          "id": "turnaround",
+          "label": "Typical turnaround",
+          "type": "select",
+          "options": [
+            "48 hours",
+            "3 to 5 days",
+            "1 week",
+            "Flexible"
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "highlevel",
+      "icon": "terminal",
+      "unitPrice": 500,
+      "unit": "account",
+      "unitLabel": "Client accounts",
+      "minQty": 1,
+      "maxQty": 10,
+      "qtyStep": 1,
+      "billing": "monthly",
+      "durations": [
+        {
+          "id": "1m",
+          "label": "Month to month",
+          "value": 1,
+          "multiplier": 1.0
+        },
+        {
+          "id": "3m",
+          "label": "3 months - 5% off",
+          "value": 3,
+          "multiplier": 0.95
+        },
+        {
+          "id": "6m",
+          "label": "6 months - 10% off",
+          "value": 6,
+          "multiplier": 0.9
+        },
+        {
+          "id": "12m",
+          "label": "12 months - 15% off",
+          "value": 12,
+          "multiplier": 0.85
+        }
+      ],
+      "configFields": [
+        {
+          "id": "scope",
+          "label": "What you need",
+          "type": "multiselect",
+          "options": [
+            "Client onboarding / setup",
+            "Ongoing admin support",
+            "Automation & workflow builds",
+            "Custom development / integrations",
+            "Snapshot builds",
+            "Monthly reporting"
+          ]
+        },
+        {
+          "id": "volume",
+          "label": "Support volume",
+          "type": "select",
+          "options": [
+            "Light (a few requests / month)",
+            "Standard (weekly requests)",
+            "Heavy (near-daily requests)"
+          ]
+        },
+        {
+          "id": "channels",
+          "label": "Channels set up",
+          "type": "multiselect",
+          "options": [
+            "Email deliverability",
+            "SMS",
+            "WhatsApp",
+            "Calendars",
+            "Pipelines / CRM",
+            "Membership / courses"
+          ]
+        },
+        {
+          "id": "sla",
+          "label": "Response SLA needed",
+          "type": "select",
+          "options": [
+            "Standard (business hours)",
+            "Priority (same day)",
+            "Dedicated (rapid)"
+          ]
         }
       ]
     }

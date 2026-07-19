@@ -3,7 +3,7 @@
 import { useState, useMemo, useRef, useEffect, useCallback } from "react";
 import Link from "next/link";
 import {
-  AlertTriangle, Bot, Check, ChevronDown, Clapperboard, Code, ExternalLink,
+  Bot, Check, ChevronDown, Clapperboard, Code, ExternalLink,
   Film, Funnel, Headset, Minus, Pencil, PenTool, Plus, Search, Share2,
   ShoppingCart, Target, Terminal, Trash2, UserPlus, X,
 } from "lucide-react";
@@ -12,6 +12,7 @@ import type {
   PricingPageContent, PricingConfigField,
   ServicePageContent, ServiceIcon,
 } from "@/lib/content";
+import Eyebrow from "@/components/elements/Eyebrow";
 
 type Props = { pageData: PricingPageContent; services: ServicePageContent[] };
 type IconProps = { size?: number; className?: string };
@@ -206,48 +207,25 @@ export default function PricingCalculator({ pageData, services }: Props) {
   const [inlineEditCartId, setInlineEditCartId] = useState<string | null>(null);
   const [inlineEditState, setInlineEditState] = useState<InlineEditState | null>(null);
 
-  /* ── Leave-confirmation ──────────────────────────────── */
-  const [showLeaveModal, setShowLeaveModal] = useState(false);
-  const [leaveHref, setLeaveHref] = useState<string | null>(null);
-  const confirmedLeaveRef = useRef(false);
-
   const summaryRef = useRef<HTMLDivElement>(null);
   const itemRefs = useRef<Record<string, HTMLDivElement | null>>({});
+  // Monotonic, stable cart-item id source (no Date.now/random in render path).
+  const cartIdCounter = useRef(0);
 
   const hasCart = cartItems.length > 0;
 
+  // Native guard against losing an unsaved estimate on tab close / reload.
+  // In-app navigation is intentionally NOT trapped — the estimate is ephemeral,
+  // and a confirm modal on every nav/footer click was more friction than value.
   useEffect(() => {
     if (!hasCart) return;
     const onBeforeUnload = (e: BeforeUnloadEvent) => {
-      if (confirmedLeaveRef.current) return;
       e.preventDefault();
       e.returnValue = "";
     };
-    const onLinkClick = (e: MouseEvent) => {
-      if (confirmedLeaveRef.current) return;
-      const anchor = (e.target as HTMLElement).closest("a[href]") as HTMLAnchorElement | null;
-      if (!anchor) return;
-      const href = anchor.getAttribute("href") ?? "";
-      if (!href || href.startsWith("#")) return;
-      if (anchor.hostname && anchor.hostname !== window.location.hostname) return;
-      e.preventDefault();
-      e.stopImmediatePropagation();
-      setLeaveHref(href);
-      setShowLeaveModal(true);
-    };
     window.addEventListener("beforeunload", onBeforeUnload);
-    document.addEventListener("click", onLinkClick, true);
-    return () => {
-      window.removeEventListener("beforeunload", onBeforeUnload);
-      document.removeEventListener("click", onLinkClick, true);
-    };
+    return () => window.removeEventListener("beforeunload", onBeforeUnload);
   }, [hasCart]);
-
-  function confirmLeave() {
-    confirmedLeaveRef.current = true;
-    setShowLeaveModal(false);
-    if (leaveHref) window.location.assign(leaveHref);
-  }
 
   /* ── Add service → immediately to order ─────────────── */
   function addService(slug: string) {
@@ -258,7 +236,7 @@ export default function PricingCalculator({ pageData, services }: Props) {
     const defaultDur = cfg.durations[1] ?? cfg.durations[0];
     const { total, perMonth, discountPct, rushPct, dur } = computePrice(cfg, cfg.minQty, defaultDur.id);
 
-    const cartId = `${Date.now()}-${cfg.slug}`;
+    const cartId = `${cfg.slug}-${(cartIdCounter.current += 1)}`;
     const newItem: CartItem = {
       cartId,
       slug: cfg.slug,
@@ -308,7 +286,8 @@ export default function PricingCalculator({ pageData, services }: Props) {
     if (inlineEditCartId === cartId) return;
     setExpandedCartIds((prev) => {
       const n = new Set(prev);
-      n.has(cartId) ? n.delete(cartId) : n.add(cartId);
+      if (n.has(cartId)) n.delete(cartId);
+      else n.add(cartId);
       return n;
     });
   }
@@ -402,7 +381,7 @@ export default function PricingCalculator({ pageData, services }: Props) {
 
           {/* ── Service cards ──────────────────────────── */}
           <div>
-            <p className="text-xs font-semibold uppercase tracking-[0.18em] text-brand">Select services</p>
+            <Eyebrow text="Select services" />
             <h2 className="mt-2 text-2xl font-bold leading-[1.2] tracking-tight text-foreground sm:text-3xl">
               What would you like to order?
             </h2>
@@ -437,7 +416,7 @@ export default function PricingCalculator({ pageData, services }: Props) {
                     <span className="text-xs font-semibold leading-tight text-muted group-hover:text-foreground">
                       {svc?.name ?? cfg.slug}
                     </span>
-                    <span className={`rounded-full px-2 py-0.5 text-[10px] font-medium ${cfg.billing === "one-off" ? "bg-amber-50 text-amber-700" : "bg-emerald-50 text-emerald-700"}`}>
+                    <span className={`rounded-full px-2 py-0.5 text-[10px] font-medium ${cfg.billing === "one-off" ? "bg-foreground/5 text-foreground/60" : "bg-brand/10 text-brand"}`}>
                       {cfg.billing === "one-off" ? "One-off" : "Retainer"}
                     </span>
                   </button>
@@ -502,7 +481,7 @@ export default function PricingCalculator({ pageData, services }: Props) {
                             {item.qty} {item.qty === 1 ? item.unit : item.unitLabel.toLowerCase()}
                             {", "}{item.durationLabel}
                             {", "}
-                            <span className={`font-medium ${item.billing === "one-off" ? "text-amber-600" : "text-emerald-600"}`}>
+                            <span className={`font-medium ${item.billing === "one-off" ? "text-foreground/50" : "text-brand"}`}>
                               {item.billing === "one-off" ? "One-off" : "Retainer"}
                             </span>
                           </p>
@@ -533,7 +512,7 @@ export default function PricingCalculator({ pageData, services }: Props) {
                             {isEditing ? <X size={13} /> : <Pencil size={13} />}
                           </button>
                           {/* Remove */}
-                          <button type="button" onClick={() => removeFromCart(item.cartId)} aria-label="Remove" title="Remove" className="flex h-8 w-8 items-center justify-center rounded-full text-muted transition hover:bg-red-50 hover:text-red-500">
+                          <button type="button" onClick={() => removeFromCart(item.cartId)} aria-label="Remove" title="Remove" className="flex h-8 w-8 items-center justify-center rounded-full text-muted transition hover:bg-red-500/10 hover:text-red-500">
                             <Trash2 size={14} />
                           </button>
                         </div>
@@ -592,8 +571,8 @@ export default function PricingCalculator({ pageData, services }: Props) {
                                       <span>{cfg.durations[0].label.split(" - ")[0]}</span>
                                       <span className="text-center font-semibold text-foreground">
                                         {selectedDur.label}
-                                        {selectedDur.multiplier < 1 && <span className="ml-1 text-emerald-600">−{Math.round((1 - selectedDur.multiplier) * 100)}%</span>}
-                                        {selectedDur.multiplier > 1 && <span className="ml-1 text-amber-600">+{Math.round((selectedDur.multiplier - 1) * 100)}%</span>}
+                                        {selectedDur.multiplier < 1 && <span className="ml-1 text-brand">−{Math.round((1 - selectedDur.multiplier) * 100)}%</span>}
+                                        {selectedDur.multiplier > 1 && <span className="ml-1 text-foreground/60">+{Math.round((selectedDur.multiplier - 1) * 100)}%</span>}
                                       </span>
                                       <span>{cfg.durations[cfg.durations.length - 1].label.split(" - ")[0]}</span>
                                     </div>
@@ -727,13 +706,13 @@ export default function PricingCalculator({ pageData, services }: Props) {
                                     </div>
                                   )}
                                   {item.discountPct > 0 && (
-                                    <div className="flex justify-between text-emerald-600">
+                                    <div className="flex justify-between text-brand">
                                       <span>Discount −{item.discountPct}%</span>
                                       <span>−{fmt(item.qty * item.unitPrice * (item.billing === "monthly" ? item.durationValue : 1) * (item.discountPct / 100))}</span>
                                     </div>
                                   )}
                                   {item.rushPct > 0 && (
-                                    <div className="flex justify-between text-amber-600">
+                                    <div className="flex justify-between text-foreground/60">
                                       <span>Rush +{item.rushPct}%</span>
                                       <span>+{fmt(item.qty * item.unitPrice * (item.billing === "monthly" ? item.durationValue : 1) * (item.rushPct / 100))}</span>
                                     </div>
@@ -845,30 +824,6 @@ export default function PricingCalculator({ pageData, services }: Props) {
           )}
         </div>
       </section>
-
-      {/* ── Leave modal ─────────────────────────────────── */}
-      {showLeaveModal && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center p-4">
-          <div className="absolute inset-0 bg-background/80 backdrop-blur-sm" onClick={() => setShowLeaveModal(false)} />
-          <div className="relative z-10 w-full max-w-sm rounded-2xl border border-border bg-background p-6 shadow-2xl">
-            <div className="flex h-12 w-12 items-center justify-center rounded-full bg-amber-50">
-              <AlertTriangle size={22} className="text-amber-500" />
-            </div>
-            <h3 className="mt-4 text-lg font-semibold text-foreground">Unsaved order</h3>
-            <p className="mt-2 text-sm leading-relaxed text-muted">
-              You have {cartItems.length} service{cartItems.length > 1 ? "s" : ""} in your order that haven&apos;t been placed. If you leave, your cart will be lost.
-            </p>
-            <div className="mt-6 flex flex-col gap-2">
-              <button type="button" onClick={() => setShowLeaveModal(false)} className="w-full rounded-full bg-foreground px-6 py-3 text-sm font-semibold text-background transition hover:opacity-90">
-                Stay &amp; complete order
-              </button>
-              <button type="button" onClick={confirmLeave} className="w-full rounded-full border border-border px-6 py-3 text-sm font-medium text-foreground/60 transition hover:border-foreground/30 hover:text-foreground">
-                Leave anyway
-              </button>
-            </div>
-          </div>
-        </div>
-      )}
     </>
   );
 }

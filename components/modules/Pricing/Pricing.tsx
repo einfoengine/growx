@@ -94,7 +94,7 @@ export default async function Pricing({
   
                 <div className="mt-6">
                   <p className="text-4xl font-bold text-foreground">{tier.price}</p>
-                  {tier.price !== "Custom" && (
+                  {tier.price !== "Custom" && tier.price !== "$0" && (
                     <p className="text-xs text-muted">/month</p>
                   )}
                 </div>
@@ -134,7 +134,7 @@ export default async function Pricing({
         <p className="mx-auto mt-12 max-w-2xl text-center text-sm text-muted">
           Every tier is 100% white-label with full commercial rights and one-click portal ordering. Not sure which fits?{" "}
           <Link href="#book" className="font-semibold text-brand hover:text-brand/80">
-            Let's talk.
+            Let&apos;s talk.
           </Link>
         </p>
       </div>
