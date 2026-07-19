@@ -3,6 +3,7 @@ import { Manrope, Geist_Mono } from "next/font/google";
 import { getSite } from "@/lib/content";
 import MotionProvider from "@/components/elements/MotionProvider";
 import Analytics from "@/components/elements/Analytics";
+import ChatWidget from "@/components/elements/ChatWidget";
 import "./globals.css";
 
 // Manrope - primary typeface for headings and body (brand guideline).
@@ -67,6 +68,8 @@ export default function RootLayout({
         <MotionProvider>{children}</MotionProvider>
         {/* Consent-gated GA4 + Meta pixel; inert until env IDs are set. */}
         <Analytics />
+        {/* HighLevel chat widget (floating support bubble), lazy-loaded. */}
+        <ChatWidget />
       </body>
     </html>
   );

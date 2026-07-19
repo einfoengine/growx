@@ -19,3 +19,10 @@ export const PORTAL_SIGNUP_URL: string | null = null;
 // quality). Until it is set, the /webinar page's CTA falls back to the
 // partnership booking call so the page never dead-ends.
 export const WEBINAR_REGISTRATION_URL: string | null = null;
+
+/** HighLevel chat widget — the floating support bubble loaded site-wide. */
+export const GHL_CHAT_WIDGET = {
+  loaderSrc: "https://widgets.leadconnectorhq.com/loader.js",
+  resourcesUrl: "https://widgets.leadconnectorhq.com/chat-widget/loader.js",
+  widgetId: "6a5ca681c6e06ac8e8987565",
+};
