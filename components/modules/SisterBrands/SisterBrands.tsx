@@ -31,7 +31,7 @@ export default function SisterBrands() {
     <section
       id="gw-mod-sister-brands"
       aria-labelledby="sister-brands-headline"
-      className="relative overflow-hidden border-b border-border bg-background py-20 text-foreground sm:py-24"
+      className="relative overflow-hidden border-b border-border bg-background py-24 text-foreground sm:py-28 lg:py-32"
     >
       <div className="container-1200">
         <ScrollFadeIn delay={0.1}>
@@ -39,7 +39,7 @@ export default function SisterBrands() {
           <Eyebrow text="Three brands. One mission." />
           <h2
             id="sister-brands-headline"
-            className="mt-4 text-3xl font-bold tracking-tight sm:text-4xl md:text-5xl"
+            className="mt-4 text-3xl font-bold leading-[1.15] tracking-tight sm:text-4xl md:text-5xl"
           >
             A new name. The same team since 2019.
           </h2>

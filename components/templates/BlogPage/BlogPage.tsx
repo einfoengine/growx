@@ -4,6 +4,7 @@ import { ArrowRight } from "lucide-react";
 import type { BlogContent } from "@/lib/content";
 import SectionHeader from "@/components/elements/SectionHeader";
 import Button from "@/components/elements/Button";
+import InnerHeroBackdrop from "@/components/modules/Hero/InnerHeroBackdrop";
 import { AuthorAvatar, BlogCard, formatBlogDate } from "@/components/modules/BlogSection/BlogCard";
 
 export default function BlogPage({ content }: { content: BlogContent }) {
@@ -13,21 +14,22 @@ export default function BlogPage({ content }: { content: BlogContent }) {
 
   return (
     <>
-      {/* ── Hero ─────────────────────────────────────────────── */}
-      <section id="gw-blog-hero" className="relative overflow-hidden bg-background">
-        <div
-          aria-hidden="true"
-          className="pointer-events-none absolute -z-10 left-1/2 -top-24 h-80 w-[700px] -translate-x-1/2 rounded-full bg-brand/8 blur-[100px]"
-        />
-        <div className="container-1200 pb-16 pt-16 sm:pb-20 sm:pt-20 lg:pt-24">
+      {/* ── Hero (dark, emerald-lit — same family as the home hero) ────── */}
+      <section
+        id="gw-blog-hero"
+        data-nav-theme="dark"
+        className="relative isolate overflow-hidden bg-foreground text-background"
+      >
+        <InnerHeroBackdrop />
+        <div className="container-1200 pb-20 pt-28 sm:pb-24 sm:pt-32 lg:pt-36">
           <SectionHeader
             eyebrow={eyebrow}
             headline={headline.parts}
             as="h1"
-            headlineClassName="mt-4 text-4xl font-bold leading-[1.12] tracking-tight text-foreground sm:text-5xl lg:text-6xl"
+            headlineClassName="mt-4 text-4xl font-bold leading-[1.12] tracking-tight sm:text-5xl lg:text-6xl"
             highlightClassName="text-gradient-brand"
             sub={sub}
-            subClassName="mx-auto mt-5 max-w-2xl text-base leading-relaxed text-muted"
+            subClassName="mx-auto mt-5 max-w-2xl text-base leading-relaxed text-white/70"
             align="center"
           />
         </div>

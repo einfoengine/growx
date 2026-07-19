@@ -1,0 +1,71 @@
+{
+  "id": "webinar",
+  "startsAt": "2026-07-22T12:00:00-04:00",
+  "dateLabel": "July 22, 2026 at 12:00 PM ET",
+  "durationLabel": "60 minutes, live on Zoom",
+  "hero": {
+    "eyebrow": "Live webinar",
+    "headline": {
+      "parts": [
+        { "type": "text", "value": "Scale Without " },
+        { "type": "highlight", "value": "Hiring" }
+      ]
+    },
+    "sub": "The playbook for agency owners who want to sell more services and deliver them without adding headcount, freelancers, or overhead. Bring your questions. Leave with a plan."
+  },
+  "agenda": [
+    {
+      "id": "wb-a1",
+      "title": "Why hiring is the wrong first move",
+      "description": "The real cost of building an in-house delivery team, and why it caps your margin instead of growing it."
+    },
+    {
+      "id": "wb-a2",
+      "title": "The white-label fulfillment model",
+      "description": "How to add services to your roster and deliver them under your own brand, with a team that stays invisible to your clients."
+    },
+    {
+      "id": "wb-a3",
+      "title": "Pricing and packaging for margin",
+      "description": "How to price productized services so every project you resell protects your margin instead of eating it."
+    },
+    {
+      "id": "wb-a4",
+      "title": "A live walkthrough of the partner portal",
+      "description": "See how an order goes from one click to delivered, with fixed pricing and clear SLAs on every service."
+    }
+  ],
+  "audience": [
+    "Agency owners who turn work away because they cannot deliver it",
+    "Freelancers and consultants ready to sell like an agency without becoming one",
+    "Teams tired of chasing unreliable freelancers for client work"
+  ],
+  "host": {
+    "name": "Maruf",
+    "role": "Founder, growX",
+    "bio": "Maruf has spent years building fulfillment operations behind agencies. He runs the founding team that delivers growX partner work, and he is hosting this session live to answer your questions directly.",
+    "initials": "M"
+  },
+  "faq": [
+    {
+      "id": "wb-f1",
+      "question": "How much does it cost to attend?",
+      "answer": "Nothing. The session is free to attend live. Seats are limited so the room stays useful for real questions."
+    },
+    {
+      "id": "wb-f2",
+      "question": "Will there be a replay?",
+      "answer": "The value is in the live Q&A, so we recommend attending in person. Register and we will let you know how to catch anything you miss."
+    },
+    {
+      "id": "wb-f3",
+      "question": "Is this a pitch?",
+      "answer": "It is a working session, not a pitch deck. You will leave with a model you can apply whether or not you ever partner with growX."
+    },
+    {
+      "id": "wb-f4",
+      "question": "Do I need to be a growX partner already?",
+      "answer": "No. This session is built for agency owners and freelancers deciding how to scale delivery. Current partners are welcome too."
+    }
+  ]
+}

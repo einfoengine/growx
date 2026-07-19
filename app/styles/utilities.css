@@ -190,6 +190,22 @@
   }
 }
 
+/* Gentle float — for decorative characters (the hero mascot). Covered by the
+   reduced-motion safety net above. */
+@keyframes float {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-16px);
+  }
+}
+
+@utility animate-float {
+  animation: float 5s ease-in-out infinite;
+}
+
 /* Soft brand pulse ring */
 @keyframes brand-pulse {
   0%,

@@ -57,7 +57,7 @@
      read as a second tagline and flattened the hierarchy against .hero-tagline,
      which is the same size. Keep it quiet so the headline carries the section. */
   .hero-eyebrow {
-    @apply font-label text-xs font-semibold uppercase tracking-[0.18em] text-background/60 sm:text-sm;
+    @apply font-label text-xs font-semibold uppercase tracking-[0.18em] text-background/80 sm:text-sm;
   }
   .hero-headline {
     @apply font-extrabold tracking-tight text-background;

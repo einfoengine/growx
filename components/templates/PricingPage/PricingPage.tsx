@@ -3,6 +3,7 @@ import type { PricingPageContent, ServicePageContent } from "@/lib/content";
 import SectionHeader from "@/components/elements/SectionHeader";
 import Button from "@/components/elements/Button";
 import Pricing from "@/components/modules/Pricing";
+import InnerHeroBackdrop from "@/components/modules/Hero/InnerHeroBackdrop";
 import PricingCalculator from "./PricingCalculator";
 
 type Props = {
@@ -13,20 +14,22 @@ type Props = {
 export default function PricingPage({ pageData, services }: Props) {
   return (
     <>
-      {/* ── Hero ─────────────────────────────────────────────── */}
-      <section id="gw-pricing-hero" className="relative overflow-hidden bg-background">
-        <div
-          aria-hidden="true"
-          className="pointer-events-none absolute -z-10 left-1/2 -top-24 h-80 w-175 -translate-x-1/2 rounded-full bg-brand/8 blur-[100px]"
-        />
-        <div className="container-1200 pb-16 pt-16 sm:pb-20 sm:pt-20 lg:pb-24 lg:pt-24">
+      {/* ── Hero (dark, emerald-lit — same family as the home hero) ────── */}
+      <section
+        id="gw-pricing-hero"
+        data-nav-theme="dark"
+        className="relative isolate overflow-hidden bg-foreground text-background"
+      >
+        <InnerHeroBackdrop />
+        <div className="container-1200 pb-20 pt-28 text-center sm:pb-24 sm:pt-32 lg:pt-36">
           <SectionHeader
             eyebrow={pageData.hero.eyebrow}
             headline={pageData.hero.headline.parts}
             as="h1"
-            headlineClassName="mt-4 max-w-3xl text-4xl font-bold leading-[1.15] tracking-tight text-foreground sm:text-5xl lg:text-6xl"
+            headlineClassName="mx-auto mt-4 max-w-3xl text-4xl font-bold leading-[1.15] tracking-tight sm:text-5xl lg:text-6xl"
+            highlightClassName="text-gradient-brand"
             sub={pageData.hero.sub}
-            subClassName="mt-5 max-w-2xl text-base leading-relaxed text-muted sm:text-lg"
+            subClassName="mx-auto mt-5 max-w-2xl text-base leading-relaxed text-white/70 sm:text-lg"
             align="center"
           />
         </div>

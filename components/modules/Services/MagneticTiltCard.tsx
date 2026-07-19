@@ -54,7 +54,17 @@ export default function MagneticTiltCard({ children, className }: Props) {
       ref={ref}
       onPointerMove={onPointerMove}
       onPointerLeave={reset}
-      style={{ rotateX, rotateY, x, y, transformPerspective: 900 }}
+      // backfaceVisibility + translateZ promote the card to its own layer so
+      // its 3D tilt does not flicker while the tab-slide transform moves it.
+      style={{
+        rotateX,
+        rotateY,
+        x,
+        y,
+        z: 0,
+        transformPerspective: 900,
+        backfaceVisibility: "hidden",
+      }}
       className={className}
     >
       {children}

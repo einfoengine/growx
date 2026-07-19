@@ -13,3 +13,9 @@ export const GHL_EMBED_SCRIPT = "https://link.msgsndr.com/js/form_embed.js";
 // TODO(launch): portal signup URL for the paid tiers once app.growx.studio is
 // live — OnboardingModal falls back to the booking call until then.
 export const PORTAL_SIGNUP_URL: string | null = null;
+
+// TODO(launch): the HighLevel "Scale Without Hiring" webinar registration
+// form/funnel URL. Registration is HighLevel-owned (tag-gated for room
+// quality). Until it is set, the /webinar page's CTA falls back to the
+// partnership booking call so the page never dead-ends.
+export const WEBINAR_REGISTRATION_URL: string | null = null;

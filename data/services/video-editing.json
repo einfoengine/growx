@@ -1,0 +1,94 @@
+{
+  "id": "svc-video-editing",
+  "slug": "video-editing",
+  "name": "Video Editing",
+  "tagline": "Raw footage in, publish-ready video out, under your name.",
+  "description": "Send us footage from any shoot, screen recording, webinar, or podcast, and we return video cut for the exact platform it is headed to, with captions, clean audio, color, and on-brand graphics. Delivered under your agency's name with revision rounds built in, so your client only ever sees your brand.",
+  "pricingModel": "both",
+  "deliverables": [
+    {
+      "id": "ve-d1",
+      "title": "Short-form social cuts",
+      "description": "Scroll-stopping clips cut from long footage for Reels, Shorts, and TikTok, hooks and pacing included."
+    },
+    {
+      "id": "ve-d2",
+      "title": "Long-form video edits",
+      "description": "Full edits of webinars, interviews, and YouTube videos, tightened so viewers stay to the end."
+    },
+    {
+      "id": "ve-d3",
+      "title": "Captions and subtitles",
+      "description": "Accurate, styled captions that keep videos watchable on mute, where most feeds play."
+    },
+    {
+      "id": "ve-d4",
+      "title": "Color grading and correction",
+      "description": "Consistent, professional color across every clip, even when the source footage is uneven."
+    },
+    {
+      "id": "ve-d5",
+      "title": "Audio mixing and cleanup",
+      "description": "Levelled voices, reduced noise, and balanced music, so the audio sounds intentional."
+    },
+    {
+      "id": "ve-d6",
+      "title": "Motion graphics and titles",
+      "description": "On-brand lower thirds, titles, and callouts that lift the production value."
+    },
+    {
+      "id": "ve-d7",
+      "title": "Multi-platform export versions",
+      "description": "One upload comes back as 16:9, 9:16, and 1:1, so a single shoot feeds every channel."
+    },
+    {
+      "id": "ve-d8",
+      "title": "Licensed music and SFX",
+      "description": "Properly licensed tracks and sound effects, so nothing gets flagged after posting."
+    }
+  ],
+  "whyUs": [
+    {
+      "id": "ve-w1",
+      "title": "Edited to keep viewers watching",
+      "description": "Our editors build hooks, tighten pacing, and cut the dead air so videos hold attention and drive action."
+    },
+    {
+      "id": "ve-w2",
+      "title": "One upload, every aspect ratio",
+      "description": "Send footage once and get back 16:9, 9:16, and 1:1 versions, so a single shoot feeds YouTube, Reels, Shorts, and TikTok."
+    },
+    {
+      "id": "ve-w3",
+      "title": "Delivered 100% under your brand",
+      "description": "No watermarks, no logos, no trace of us. You receive the finished exports and source files to hand off as your own."
+    }
+  ],
+  "faq": [
+    {
+      "id": "ve-f1",
+      "question": "What footage can we send?",
+      "answer": "Anything: camera footage, screen recordings, webinars, podcasts, or existing clips. We work from whatever the client has and cut it for the target platform."
+    },
+    {
+      "id": "ve-f2",
+      "question": "Can you match our client's brand?",
+      "answer": "Yes. Titles, captions, colors, and graphics all follow the client's brand kit, and the finished video ships with no reference to growX."
+    },
+    {
+      "id": "ve-f3",
+      "question": "Do you offer ongoing editing?",
+      "answer": "Yes. You can order editing per project or set up a monthly retainer for a steady volume of clips, which is how most content-heavy partners run it."
+    },
+    {
+      "id": "ve-f4",
+      "question": "How fast is turnaround?",
+      "answer": "Every order carries a fixed delivery SLA you can see before you place it, so you can promise your client a real date."
+    },
+    {
+      "id": "ve-f5",
+      "question": "How is it priced?",
+      "answer": "Fixed pricing per deliverable or per monthly retainer, ordered in one click from the partner portal with revision rounds included."
+    }
+  ]
+}

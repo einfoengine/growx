@@ -86,7 +86,7 @@ export default function HeroAnimatedContent({
           className={
             isHome
               ? "hero-eyebrow"
-              : "font-label text-xs font-semibold uppercase tracking-[0.18em] text-muted sm:text-sm"
+              : "font-label text-xs font-semibold uppercase tracking-[0.18em] text-background/70 sm:text-sm"
           }
           variants={itemVariants}
         >
@@ -169,7 +169,7 @@ export default function HeroAnimatedContent({
                   label={cta.label}
                   href={cta.href}
                   variant={isPrimary ? "primary" : "secondary"}
-                  darkBg={isHome}
+                  darkBg
                   icon={<ArrowRight size={isPrimary ? 16 : 14} />}
                   className={isPrimary ? "shadow-sm hover:shadow-[0_0_28px_rgba(16,185,129,0.35)]" : ""}
                 />
@@ -196,7 +196,7 @@ export default function HeroAnimatedContent({
           <motion.ul id={`${data.id}-stats`} className={L.stats} variants={containerVariants}>
             {data.stats.map((stat) => (
               <motion.li key={stat.id} id={stat.id} variants={statVariants}>
-                <span className={isHome ? "hero-stat" : "hero-stat hero-stat-light"}>
+                <span className="hero-stat">
                   <Check size={14} strokeWidth={3} className="shrink-0 text-brand" />
                   {stat.label}
                 </span>

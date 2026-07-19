@@ -111,7 +111,7 @@ export default function ServicesCatalog() {
       <Eyebrow text="Full-stack catalog" />
       <h2
         id="services-headline"
-        className="mt-4 text-4xl font-bold leading-[1.06] tracking-tight sm:text-5xl md:text-6xl"
+        className="mt-4 text-3xl font-bold leading-[1.15] tracking-tight sm:text-4xl md:text-5xl"
       >
         Every service you sell, delivered under your brand.
       </h2>
@@ -288,8 +288,9 @@ export default function ServicesCatalog() {
               className="sticky flex flex-col overflow-hidden"
               style={{ top: NAV_H, height: `calc(100vh - ${NAV_H}px)` }}
             >
-              {/* Pinned tab bar. */}
-              <div className="relative z-10 bg-background/90 pt-4 backdrop-blur">{tabs}</div>
+              {/* Pinned tab bar. transform-gpu isolates its backdrop-blur so
+                  it does not shimmer while cards slide behind it. */}
+              <div className="relative z-10 transform-gpu bg-background/90 pt-4 backdrop-blur backface-hidden">{tabs}</div>
               <div className="relative flex flex-1 items-center overflow-hidden">
                 <div className="container-1200">{cards}</div>
               </div>
@@ -301,7 +302,7 @@ export default function ServicesCatalog() {
         <div className="relative w-full px-6 py-24 sm:px-8 sm:py-28">
           {header}
           <div
-            className="sticky z-40 mt-12 -mx-6 bg-background/90 pt-3 backdrop-blur sm:-mx-8"
+            className="sticky z-40 mt-12 -mx-6 transform-gpu bg-background/90 pt-3 backdrop-blur backface-hidden sm:-mx-8"
             style={{ top: NAV_H }}
           >
             {tabs}

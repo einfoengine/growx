@@ -3,6 +3,7 @@ import { ArrowUpRight, Mail } from "lucide-react";
 import Logo from "@/components/elements/Logo";
 import MouseGlow from "@/components/elements/MouseGlow";
 import CtaBanner from "@/components/modules/CtaBanner";
+import FooterWatermark from "./FooterWatermark";
 import { getFooter, getSite } from "@/lib/content";
 import type { SocialIcon } from "@/lib/content";
 
@@ -216,24 +217,9 @@ export default async function Footer() {
         </div>
       </div>
 
-      {/* Giant brand watermark. Sticky (not absolute): it pins to the viewport
-          bottom the moment the footer scrolls into view, so the rest of the
-          footer slides up over it — settling into place at the very end. Sits
-          at z-0 under the z-10 content; the footer's `overflow-clip` keeps
-          sticky working where `overflow-hidden` would kill it. */}
-      {/* h caps the strip at the visible crop (text is 16vw tall, bottom
-          bleeds off), so the strip adds no blank space above the wordmark. */}
-      <div
-        aria-hidden="true"
-        className="pointer-events-none sticky bottom-0 z-0 -mt-2 flex h-[11vw] items-start justify-center overflow-hidden"
-      >
-        <span
-          className="select-none whitespace-nowrap text-[16vw] font-bold leading-none tracking-tighter text-white/[0.035]"
-          style={{ fontFamily: "var(--font-heading)" }}
-        >
-          {site.name}
-        </span>
-      </div>
+      {/* Giant brand watermark, revealed with a slow parallax as you reach the
+          end of the page (see FooterWatermark). */}
+      <FooterWatermark name={site.name} />
     </footer>
   );
 }

@@ -2,6 +2,7 @@ import { Check, ArrowRight } from "lucide-react";
 import type { AboutContent } from "@/lib/content";
 import SectionHeader from "@/components/elements/SectionHeader";
 import Button from "@/components/elements/Button";
+import InnerHeroBackdrop from "@/components/modules/Hero/InnerHeroBackdrop";
 
 type Props = { data: AboutContent };
 
@@ -11,24 +12,25 @@ export default function AboutPage({ data }: Props) {
 
   return (
     <>
-      {/* ── Hero ─────────────────────────────────────────────── */}
-      <section id="gw-about-hero" className="relative overflow-hidden bg-background">
-        <div
-          aria-hidden="true"
-          className="pointer-events-none absolute -z-10 left-1/2 -top-24 h-80 w-[700px] -translate-x-1/2 rounded-full bg-brand/8 blur-[100px]"
-        />
-        <div className="container-1200 pb-20 pt-16 sm:pb-24 sm:pt-20 lg:pb-28 lg:pt-24">
+      {/* ── Hero (dark, emerald-lit — same family as the home hero) ────── */}
+      <section
+        id="gw-about-hero"
+        data-nav-theme="dark"
+        className="relative isolate overflow-hidden bg-foreground text-background"
+      >
+        <InnerHeroBackdrop />
+        <div className="container-1200 pb-20 pt-28 sm:pb-24 sm:pt-32 lg:pb-28 lg:pt-36">
           <SectionHeader
             eyebrow={data.hero.eyebrow}
             headlineText={data.hero.headline}
             as="h1"
-            headlineClassName="mt-4 max-w-3xl text-4xl font-bold leading-[1.15] tracking-tight text-foreground sm:text-5xl lg:text-6xl"
+            headlineClassName="mt-4 max-w-3xl text-4xl font-bold leading-[1.15] tracking-tight sm:text-5xl lg:text-6xl"
             sub={data.hero.sub}
-            subClassName="mt-6 max-w-2xl text-base leading-relaxed text-muted sm:text-lg"
+            subClassName="mt-6 max-w-2xl text-base leading-relaxed text-white/70 sm:text-lg"
           />
           <div className="mt-8 flex flex-wrap gap-3">
-            <Button label="Become a partner" href="/pricing" icon={<ArrowRight size={15} />} />
-            <Button label="See our work" href="/works" variant="secondary" />
+            <Button label="Become a partner" href="#book" icon={<ArrowRight size={15} />} darkBg />
+            <Button label="See our work" href="/works" variant="secondary" darkBg />
           </div>
         </div>
       </section>
@@ -149,7 +151,7 @@ export default function AboutPage({ data }: Props) {
             align="center"
           />
           <div className="mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row">
-            <Button label="Become a partner" href="/pricing" icon={<ArrowRight size={15} />} />
+            <Button label="Become a partner" href="#book" icon={<ArrowRight size={15} />} />
             <Button label="Book a discovery call" href="#book" variant="secondary" />
           </div>
         </div>

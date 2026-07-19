@@ -11,7 +11,7 @@ export default async function Newsletter() {
     <section
       id={`gw-${data.id}`}
       aria-labelledby={`${data.id}-headline`}
-      className="relative bg-background py-24 sm:py-32"
+      className="relative bg-background py-24 sm:py-28 lg:py-32"
     >
       <div className="container-1200">
         <ScrollFadeIn>

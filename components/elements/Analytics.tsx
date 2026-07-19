@@ -79,7 +79,11 @@ export default function Analytics() {
           <p className="text-sm text-foreground">Cookies, briefly</p>
           <p className="mt-1.5 text-xs leading-relaxed text-muted">
             We use cookies to measure what works and to reach you with relevant
-            content. No tracking runs until you accept.
+            content. No tracking runs until you accept. See our{" "}
+            <a href="/privacy" className="text-brand underline underline-offset-2 hover:text-brand-strong">
+              Privacy Policy
+            </a>
+            .
           </p>
           <div className="mt-4 flex items-center gap-3">
             <button

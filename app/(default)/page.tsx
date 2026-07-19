@@ -1,4 +1,5 @@
 import BlogSection from "@/components/modules/BlogSection/BlogSection";
+import BookingSection from "@/components/modules/BookingSection/BookingSection";
 import Comparison from "@/components/modules/Comparison";
 import Faq from "@/components/modules/Faq";
 import FulfillmentReasons from "@/components/modules/FulfillmentReasons/FulfillmentReasons";
@@ -27,6 +28,7 @@ export default function HomePage() {
       <PricingPlans />
       <Comparison />
       <Faq />
+      <BookingSection />
       <BlogSection />
       <Newsletter />
       {/* Closing reassurance before the footer CTA: growX as lineage, not a

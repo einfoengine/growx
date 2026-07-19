@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useRef, useState } from "react";
 import { Volume2, VolumeX } from "lucide-react";
 import { useActiveWhenVisible } from "@/lib/hooks/useActiveWhenVisible";
 
@@ -25,10 +25,11 @@ export default function HeroVideo({ videoId, title = "growX" }: Props) {
   const [muted, setMuted] = useState(true);
   const [loaded, setLoaded] = useState(false);
 
+  // Mount the iframe the first time the frame nears the viewport, and keep it
+  // mounted after (adjusting state during render, per React's "store info from
+  // previous renders" pattern — no effect, so no cascading-render lint).
   const active = useActiveWhenVisible(frameRef);
-  useEffect(() => {
-    if (active) setLoaded(true);
-  }, [active]);
+  if (active && !loaded) setLoaded(true);
 
   const toggleSound = () => {
     const win = iframeRef.current?.contentWindow;

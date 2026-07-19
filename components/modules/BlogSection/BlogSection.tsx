@@ -13,7 +13,7 @@ export default async function BlogSection() {
     <section
       id="gw-mod-blog"
       aria-labelledby="blog-headline"
-      className="relative overflow-hidden bg-surface py-20 sm:py-24 lg:py-28"
+      className="relative overflow-hidden bg-surface py-24 sm:py-28 lg:py-32"
     >
       <div className="container-1200">
         <ScrollFadeIn>

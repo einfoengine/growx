@@ -1,14 +1,52 @@
-import { ArrowRight, Check, MessageSquare, BarChart3, Layout, FileText } from "lucide-react";
-import type { HeroContent, ProcessPageContent, ProcessChannel } from "@/lib/content";
+import {
+  ArrowRight,
+  Check,
+  MessageSquare,
+  BarChart3,
+  Layout,
+  FileText,
+  UserPlus,
+  MousePointerClick,
+  Cog,
+  PackageCheck,
+  KeyRound,
+  CircleCheckBig,
+  ShieldCheck,
+  RefreshCw,
+  UserCheck,
+  Wrench,
+  type LucideIcon,
+} from "lucide-react";
+import type {
+  HeroContent,
+  ProcessPageContent,
+  ProcessChannel,
+} from "@/lib/content";
 import SectionHeader from "@/components/elements/SectionHeader";
 import Button from "@/components/elements/Button";
 import Hero from "@/components/modules/Hero";
+import Faq from "@/components/modules/Faq";
+import WhiteLabelWall from "./WhiteLabelWall";
 
 const CHANNEL_ICONS: Record<string, typeof Check> = {
   Slack: MessageSquare,
   "Weekly Demos": BarChart3,
   "Project Board": Layout,
   "Monthly Reports": FileText,
+};
+
+// One icon per journey phase, in order (Join, Order, Produce, Deliver).
+const PHASE_ICONS: LucideIcon[] = [UserPlus, MousePointerClick, Cog, PackageCheck];
+
+// Icon keys used by the "your part" and "quality" data sections.
+const INFO_ICONS: Record<string, LucideIcon> = {
+  "file-text": FileText,
+  "key-round": KeyRound,
+  "circle-check-big": CircleCheckBig,
+  "shield-check": ShieldCheck,
+  "refresh-cw": RefreshCw,
+  "user-check": UserCheck,
+  wrench: Wrench,
 };
 
 type Props = { data: ProcessPageContent };
@@ -54,47 +92,113 @@ export default function ProcessPage({ data }: Props) {
             className="max-w-2xl"
           />
 
-          <div className="mt-14 space-y-6">
-            {data.journey.phases.map((phase) => (
+          {/* Phases stack as you scroll: each card pins under the last, so its
+              number + label strip stays visible as the next slides over it. */}
+          <div className="mt-14">
+            {data.journey.phases.map((phase, i) => {
+              const PhaseIcon = PHASE_ICONS[i % PHASE_ICONS.length];
+              return (
               <div
                 key={phase.id}
-                className="grid gap-0 overflow-hidden rounded-2xl border border-border bg-background lg:grid-cols-[280px_1fr]"
+                className="mb-6 lg:sticky"
+                style={{ top: `calc(5.5rem + ${i} * 5rem)` }}
               >
-                {/* Phase label column */}
-                <div className="flex flex-col justify-between border-b border-border bg-surface p-8 lg:border-b-0 lg:border-r">
-                  <div>
-                    <span className="font-mono text-5xl font-bold text-foreground/8">
+                <div className="overflow-hidden rounded-2xl border border-border bg-background shadow-sm">
+                  {/* Header strip — what remains visible when the card is stacked. */}
+                  <div className="flex items-center gap-5 border-b border-border bg-surface px-6 py-5 sm:px-8">
+                    <span className="text-gradient-brand font-mono text-3xl font-bold sm:text-4xl">
                       {phase.number}
                     </span>
-                    <p className="mt-3 text-xs font-semibold uppercase tracking-widest text-brand">
-                      {phase.label}
-                    </p>
-                    <h3 className="mt-2 text-xl font-semibold tracking-tight text-foreground">
-                      {phase.title}
-                    </h3>
-                    <p className="mt-2 text-sm leading-relaxed text-muted">
+                    <div className="min-w-0 flex-1">
+                      <p className="text-xs font-semibold uppercase tracking-widest text-brand">
+                        {phase.label}
+                      </p>
+                      <h3 className="mt-0.5 text-lg font-semibold tracking-tight text-foreground sm:text-xl lg:truncate">
+                        {phase.title}
+                      </h3>
+                    </div>
+                    <span
+                      aria-hidden="true"
+                      className="hidden h-12 w-12 shrink-0 place-items-center rounded-xl bg-brand/10 sm:grid"
+                    >
+                      <PhaseIcon size={22} className="text-brand" />
+                    </span>
+                  </div>
+
+                  {/* Body: description + the three steps. */}
+                  <div className="p-6 sm:p-8">
+                    <p className="max-w-2xl text-sm leading-relaxed text-muted">
                       {phase.description}
                     </p>
+                    <div className="mt-6 grid gap-4 sm:grid-cols-3">
+                      {phase.steps.map((step, si) => (
+                        <div
+                          key={step.id}
+                          className="rounded-xl border border-brand/15 bg-brand/5 p-5"
+                        >
+                          <span className="flex h-7 w-7 items-center justify-center rounded-full bg-gradient-brand text-xs font-bold text-black">
+                            {si + 1}
+                          </span>
+                          <p className="mt-3 text-sm font-semibold text-foreground">{step.title}</p>
+                          <p className="mt-1.5 text-sm leading-relaxed text-muted">{step.body}</p>
+                        </div>
+                      ))}
+                    </div>
                   </div>
                 </div>
-
-                {/* Steps column */}
-                <div className="divide-y divide-border">
-                  {phase.steps.map((step, i) => (
-                    <div key={step.id} className="flex gap-5 p-8">
-                      <div className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full border border-brand/30 bg-brand/5 text-xs font-bold text-brand">
-                        {i + 1}
-                      </div>
-                      <div>
-                        <p className="text-sm font-semibold text-foreground">{step.title}</p>
-                        <p className="mt-1.5 text-sm leading-relaxed text-muted">{step.body}</p>
-                      </div>
-                    </div>
-                  ))}
-                </div>
               </div>
-            ))}
+              );
+            })}
+            {/* Trailing room so the LAST phase can settle at its stacked
+                position instead of being carried to the top — it's the last
+                child, so without this the container ends the moment it sticks.
+                Desktop only (mobile has no sticky). */}
+            <div aria-hidden="true" className="hidden h-[46vh] lg:block" />
           </div>
+        </div>
+      </section>
+
+      {/* ── Your part (what we need from you) ─────────────────── */}
+      <section id="gw-process-your-part" className="bg-background">
+        <div className="container-1200 py-20 sm:py-24 lg:py-28">
+          <SectionHeader
+            eyebrow={data.yourPart.eyebrow}
+            headlineText={data.yourPart.headline}
+            headlineClassName="mt-4 text-3xl font-bold leading-[1.2] tracking-tight text-foreground sm:text-4xl"
+            sub={data.yourPart.sub}
+            subClassName="mt-3 text-base text-muted"
+            className="max-w-2xl"
+          />
+
+          <ol className="mt-12 grid gap-5 sm:grid-cols-3">
+            {data.yourPart.steps.map((step, i) => {
+              const Icon = INFO_ICONS[step.icon] ?? Check;
+              return (
+                <li
+                  key={step.id}
+                  className="relative rounded-2xl border border-border bg-surface p-6 sm:p-7"
+                >
+                  <div className="flex items-center justify-between">
+                    <span className="grid h-11 w-11 place-items-center rounded-xl bg-brand/10">
+                      <Icon size={20} className="text-brand" aria-hidden="true" />
+                    </span>
+                    <span
+                      aria-hidden="true"
+                      className="font-mono text-sm font-semibold text-muted"
+                    >
+                      0{i + 1}
+                    </span>
+                  </div>
+                  <p className="mt-5 text-base font-semibold text-foreground">
+                    {step.title}
+                  </p>
+                  <p className="mt-2 text-sm leading-relaxed text-muted">
+                    {step.description}
+                  </p>
+                </li>
+              );
+            })}
+          </ol>
         </div>
       </section>
 
@@ -112,25 +216,24 @@ export default function ProcessPage({ data }: Props) {
         </div>
 
         <div className="container-1200 py-20 sm:py-24 lg:py-28">
-          <div className="grid gap-14 lg:grid-cols-2 lg:gap-20 lg:items-start">
-            {/* Left: copy + channels */}
-            <div>
-              <SectionHeader
-                eyebrow={data.communication.eyebrow}
-                headlineText={data.communication.headline}
-                headlineClassName="mt-4 text-3xl font-bold leading-[1.2] tracking-tight sm:text-4xl"
-                sub={data.communication.sub}
-                subClassName="mt-4 text-base text-white/70"
-              />
+          {/* Header spans the full content width so the two content columns
+              below start at the same top edge. */}
+          <SectionHeader
+            eyebrow={data.communication.eyebrow}
+            headlineText={data.communication.headline}
+            headlineClassName="mt-4 text-3xl font-bold leading-[1.2] tracking-tight sm:text-4xl"
+            sub={data.communication.sub}
+            subClassName="mt-4 max-w-2xl text-base text-white/70"
+            className="max-w-2xl"
+          />
 
-              <div className="mt-10 grid gap-5 sm:grid-cols-2">
-                {data.communication.channels.map((ch) => {
-                  const Icon = CHANNEL_ICONS[ch.name] ?? Check;
-                  return (
-                    <ChannelCard key={ch.id} channel={ch} Icon={Icon} />
-                  );
-                })}
-              </div>
+          <div className="mt-12 grid gap-14 lg:grid-cols-2 lg:gap-20 lg:items-start">
+            {/* Left: channels */}
+            <div className="grid gap-5 sm:grid-cols-2">
+              {data.communication.channels.map((ch) => {
+                const Icon = CHANNEL_ICONS[ch.name] ?? Check;
+                return <ChannelCard key={ch.id} channel={ch} Icon={Icon} />;
+              })}
             </div>
 
             {/* Right: cadence table */}
@@ -159,70 +262,54 @@ export default function ProcessPage({ data }: Props) {
         </div>
       </section>
 
-      {/* ── White-Label ───────────────────────────────────────── */}
-      <section id="gw-process-white-label" className="bg-background">
-        <div className="container-1200 py-20 sm:py-24 lg:py-28">
-          <div className="grid gap-14 lg:grid-cols-2 lg:gap-20 lg:items-start">
-            <div className="lg:sticky lg:top-28">
-              <SectionHeader
-                eyebrow={data.whiteLabel.eyebrow}
-                headlineText={data.whiteLabel.headline}
-                headlineClassName="mt-4 text-3xl font-bold leading-[1.2] tracking-tight text-foreground sm:text-4xl"
-                sub={data.whiteLabel.sub}
-                subClassName="mt-4 text-base leading-relaxed text-muted"
-              />
-              <Button label="Become a partner" href="/pricing" icon={<ArrowRight size={15} />} className="mt-8" />
-            </div>
-
-            <div className="space-y-0 divide-y divide-border border border-border">
-              {data.whiteLabel.promises.map((promise) => (
-                <div key={promise.id} className="flex gap-5 p-7">
-                  <span className="mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-brand/10">
-                    <Check size={11} className="text-brand" />
-                  </span>
-                  <div>
-                    <p className="text-sm font-semibold text-foreground">{promise.title}</p>
-                    <p className="mt-1 text-sm leading-relaxed text-muted">{promise.description}</p>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* ── FAQ ──────────────────────────────────────────────── */}
-      <section id="gw-process-faq" className="bg-surface">
+      {/* ── Quality & revisions (execution risk-reversal) ────── */}
+      <section id="gw-process-quality" className="bg-surface">
         <div className="container-1200 py-20 sm:py-24 lg:py-28">
           <SectionHeader
-            eyebrow="Questions"
-            headlineText="About how we work"
+            eyebrow={data.quality.eyebrow}
+            headlineText={data.quality.headline}
             headlineClassName="mt-4 text-3xl font-bold leading-[1.2] tracking-tight text-foreground sm:text-4xl"
-            align="center"
-            maxWidth="max-w-2xl"
+            sub={data.quality.sub}
+            subClassName="mt-3 text-base text-muted"
+            className="max-w-2xl"
           />
 
-          <dl className="mx-auto mt-10 max-w-2xl divide-y divide-border">
-            {data.faq.map((item) => (
-              <details
-                key={item.id}
-                className="group py-5 marker:content-none"
-              >
-                <summary className="flex cursor-pointer list-none items-center justify-between gap-4">
-                  <dt className="text-sm font-semibold text-foreground">{item.question}</dt>
-                  <span
-                    aria-hidden="true"
-                    className="shrink-0 text-lg text-muted transition-transform group-open:rotate-45"
-                  >
-                    +
+          <ul className="mt-12 grid gap-5 sm:grid-cols-2">
+            {data.quality.items.map((item) => {
+              const Icon = INFO_ICONS[item.icon] ?? Check;
+              return (
+                <li
+                  key={item.id}
+                  className="flex gap-5 rounded-2xl border border-border bg-background p-6 sm:p-7"
+                >
+                  <span className="grid h-11 w-11 shrink-0 place-items-center rounded-xl bg-brand/10">
+                    <Icon size={20} className="text-brand" aria-hidden="true" />
                   </span>
-                </summary>
-                <dd className="mt-3 text-sm leading-relaxed text-muted">{item.answer}</dd>
-              </details>
-            ))}
-          </dl>
+                  <div>
+                    <p className="text-base font-semibold text-foreground">
+                      {item.title}
+                    </p>
+                    <p className="mt-1.5 text-sm leading-relaxed text-muted">
+                      {item.description}
+                    </p>
+                  </div>
+                </li>
+              );
+            })}
+          </ul>
         </div>
       </section>
+
+      {/* ── White-Label (pinned horizontal card scroll) ───────── */}
+      <WhiteLabelWall
+        eyebrow={data.whiteLabel.eyebrow}
+        headline={data.whiteLabel.headline}
+        sub={data.whiteLabel.sub}
+        promises={data.whiteLabel.promises}
+      />
+
+      {/* ── FAQ (shared module, same as the home page) ────────── */}
+      <Faq data={data.faq} />
 
       {/* ── CTA ──────────────────────────────────────────────── */}
       <section id="gw-process-cta" className="relative overflow-hidden bg-background">
@@ -240,7 +327,7 @@ export default function ProcessPage({ data }: Props) {
             align="center"
           />
           <div className="mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row">
-            <Button label="Become a partner" href="/pricing" icon={<ArrowRight size={15} />} />
+            <Button label="Become a partner" href="#book" icon={<ArrowRight size={15} />} />
             <Button label="See our work" href="/works" variant="secondary" />
           </div>
         </div>

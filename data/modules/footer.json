@@ -6,41 +6,132 @@
       "id": "mod-footer-col-services",
       "title": "Services",
       "links": [
-        { "id": "footer-services-website", "label": "Website Design & Development", "href": "/services/website" },
-        { "id": "footer-services-seo-aeo", "label": "SEO & AEO", "href": "/services/seo-aeo" },
-        { "id": "footer-services-ppc", "label": "Media Buying & PPC", "href": "/services/ppc" },
-        { "id": "footer-services-content", "label": "Content & Copywriting", "href": "/services/content" },
-        { "id": "footer-services-social", "label": "Social Media Management", "href": "/services/social" },
-        { "id": "footer-services-funnels", "label": "Funnel Building", "href": "/services/funnels" }
+        {
+          "id": "footer-services-website",
+          "label": "Website Design & Development",
+          "href": "/services/website"
+        },
+        {
+          "id": "footer-services-seo-aeo",
+          "label": "SEO & AEO",
+          "href": "/services/seo-aeo"
+        },
+        {
+          "id": "footer-services-ppc",
+          "label": "Media Buying & PPC",
+          "href": "/services/ppc"
+        },
+        {
+          "id": "footer-services-content",
+          "label": "Content & Copywriting",
+          "href": "/services/content"
+        },
+        {
+          "id": "footer-services-social",
+          "label": "Social Media Management",
+          "href": "/services/social"
+        },
+        {
+          "id": "footer-services-funnels",
+          "label": "Funnel Building",
+          "href": "/services/funnels"
+        },
+        {
+          "id": "footer-svc-video",
+          "label": "Video Production",
+          "href": "/services/video-production"
+        },
+        {
+          "id": "footer-svc-editing",
+          "label": "Video Editing",
+          "href": "/services/video-editing"
+        },
+        {
+          "id": "footer-svc-highlevel",
+          "label": "HighLevel Services",
+          "href": "/services/highlevel"
+        }
       ]
     },
     {
       "id": "mod-footer-col-company",
       "title": "Company",
       "links": [
-        { "id": "footer-company-about", "label": "About", "href": "/about" },
-        { "id": "footer-company-process", "label": "Process", "href": "/process" },
-        { "id": "footer-company-works", "label": "Works", "href": "/works" }
+        {
+          "id": "footer-company-about",
+          "label": "About",
+          "href": "/about"
+        },
+        {
+          "id": "footer-company-process",
+          "label": "Process",
+          "href": "/process"
+        },
+        {
+          "id": "footer-company-works",
+          "label": "Works",
+          "href": "/works"
+        }
       ]
     },
     {
       "id": "mod-footer-col-resources",
       "title": "Resources",
       "links": [
-        { "id": "footer-resources-blog", "label": "Blog", "href": "/blog" },
-        { "id": "footer-resources-faq", "label": "FAQ", "href": "/#gw-mod-faq" },
-        { "id": "footer-resources-pricing", "label": "Pricing", "href": "/pricing" }
+        {
+          "id": "footer-resources-webinar",
+          "label": "Live webinar",
+          "href": "/webinar"
+        },
+        {
+          "id": "footer-resources-blog",
+          "label": "Blog",
+          "href": "/blog"
+        },
+        {
+          "id": "footer-resources-faq",
+          "label": "FAQ",
+          "href": "/#gw-mod-faq"
+        },
+        {
+          "id": "footer-resources-pricing",
+          "label": "Pricing",
+          "href": "/pricing"
+        }
       ]
     },
     {
       "id": "mod-footer-col-contact",
       "title": "Get in touch",
       "links": [
-        { "id": "footer-contact-partner", "label": "Become a partner", "href": "/pricing" },
-        { "id": "footer-contact-book", "label": "Book a discovery call", "href": "#book" },
-        { "id": "footer-contact-contact", "label": "Contact us", "href": "/contact" }
+        {
+          "id": "footer-contact-partner",
+          "label": "Become a partner",
+          "href": "#book"
+        },
+        {
+          "id": "footer-contact-book",
+          "label": "Book a discovery call",
+          "href": "#book"
+        },
+        {
+          "id": "footer-contact-contact",
+          "label": "Contact us",
+          "href": "/contact"
+        }
       ]
     }
   ],
-  "legal": []
+  "legal": [
+    {
+      "id": "footer-legal-privacy",
+      "label": "Privacy Policy",
+      "href": "/privacy"
+    },
+    {
+      "id": "footer-legal-terms",
+      "label": "Terms of Use",
+      "href": "/terms"
+    }
+  ]
 }

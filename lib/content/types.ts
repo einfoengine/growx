@@ -274,6 +274,38 @@ export type ServicePageContent = {
   faq: FaqItem[];
 };
 
+export type WebinarAgendaItem = {
+  id: string;
+  title: string;
+  description: string;
+};
+
+export type WebinarPageContent = {
+  id: string;
+  /** ISO 8601 with timezone offset, e.g. "2026-07-22T12:00:00-04:00". Drives the countdown. */
+  startsAt: string;
+  /** Human-readable date/time, e.g. "July 22, 2026 at 12:00 PM EST". */
+  dateLabel: string;
+  /** Duration/format line, e.g. "60 minutes, live on Zoom". */
+  durationLabel: string;
+  hero: {
+    eyebrow: string;
+    headline: { parts: HeadlinePart[] };
+    sub: string;
+  };
+  /** "What you'll learn" agenda points. */
+  agenda: WebinarAgendaItem[];
+  /** "Who this is for" lines. */
+  audience: string[];
+  host: {
+    name: string;
+    role: string;
+    bio: string;
+    initials: string;
+  };
+  faq: FaqItem[];
+};
+
 export type PageSlug = "home";
 
 export type PricingDuration = {
@@ -471,10 +503,13 @@ export type ProcessPromise = {
   description: string;
 };
 
-export type ProcessFaqItem = {
+/** One item in the "what we need from you" and "quality & revisions" sections.
+ *  `icon` is a key resolved to a lucide icon in the ProcessPage template. */
+export type ProcessInfoItem = {
   id: string;
-  question: string;
-  answer: string;
+  icon: string;
+  title: string;
+  description: string;
 };
 
 export type ProcessPageContent = {
@@ -497,13 +532,28 @@ export type ProcessPageContent = {
     channels: ProcessChannel[];
     cadence: ProcessCadenceItem[];
   };
+  /** The buyer's own (minimal) involvement — answers "how much of my time?" */
+  yourPart: {
+    eyebrow: string;
+    headline: string;
+    sub: string;
+    steps: ProcessInfoItem[];
+  };
+  /** Execution risk-reversal: QA, revisions, approval control, and remedy. */
+  quality: {
+    eyebrow: string;
+    headline: string;
+    sub: string;
+    items: ProcessInfoItem[];
+  };
   whiteLabel: {
     eyebrow: string;
     headline: string;
     sub: string;
     promises: ProcessPromise[];
   };
-  faq: ProcessFaqItem[];
+  /** Reuses the shared FAQ module — same component as the home page. */
+  faq: FaqContent;
 };
 
 /** A single rendered block within a blog article body. */

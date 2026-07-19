@@ -1,7 +1,9 @@
+import Eyebrow from "@/components/elements/Eyebrow";
+
 /** Capability strip under the hero: the platforms our team ships client work
  *  on every week. These are factual tool claims presented as quiet wordmarks,
- *  not endorsements — deliberately grayscale so they read as credentials, not
- *  partnerships.
+ *  not endorsements — deliberately monochrome so they read as credentials, not
+ *  partnerships. Black band, continuing the dark top zone of the page.
  *
  *  TODO(content): when real endorsements exist (client logos with permission,
  *  press mentions, certification badges), swap these text wordmarks for those
@@ -22,17 +24,16 @@ export default function TrustBar() {
     <section
       id="gw-mod-trust-bar"
       aria-label="Platforms we fulfill on"
-      className="border-b border-border bg-background py-10 sm:py-12"
+      data-nav-theme="dark"
+      className="border-b border-white/10 bg-foreground py-12 text-background sm:py-14"
     >
-      <div className="container-1200">
-        <p className="text-center font-label text-[11px] font-semibold uppercase tracking-[0.2em] text-muted">
-          Fulfilling client work every week across
-        </p>
-        <ul className="mx-auto mt-6 flex max-w-4xl flex-wrap items-center justify-center gap-x-10 gap-y-4">
+      <div className="container-1200 text-center">
+        <Eyebrow text="Fulfilling client work every week across" />
+        <ul className="mx-auto mt-7 flex max-w-4xl flex-wrap items-center justify-center gap-x-10 gap-y-4">
           {PLATFORMS.map((name) => (
             <li
               key={name}
-              className="text-lg font-bold tracking-tight text-foreground/30 transition-colors hover:text-foreground/60 sm:text-xl"
+              className="text-lg font-bold tracking-tight text-white/25 transition-colors hover:text-white/60 sm:text-xl"
             >
               {name}
             </li>

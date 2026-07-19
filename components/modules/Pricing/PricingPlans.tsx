@@ -15,7 +15,7 @@ export default async function PricingPlans() {
     <section
       id="gw-mod-pricing"
       aria-labelledby="pricing-headline"
-      className="relative isolate overflow-hidden border-b border-border bg-background py-14 text-foreground sm:py-16 lg:py-20"
+      className="relative isolate overflow-hidden border-b border-border bg-background py-24 text-foreground sm:py-28 lg:py-32"
     >
       {/* Faint grid + soft brand glow backdrop. */}
       <div
@@ -39,7 +39,7 @@ export default async function PricingPlans() {
             id="pricing-headline"
             parts={data.headline.parts}
             as="h2"
-            className="mt-4 text-3xl font-bold tracking-tight sm:text-4xl md:text-5xl"
+            className="mt-4 text-3xl font-bold leading-[1.15] tracking-tight sm:text-4xl md:text-5xl"
             highlightClassName="text-gradient-brand"
           />
           <p className="mt-5 text-base text-muted sm:text-lg">{data.sub}</p>

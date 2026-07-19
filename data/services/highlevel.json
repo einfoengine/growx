@@ -1,0 +1,94 @@
+{
+  "id": "svc-highlevel",
+  "slug": "highlevel",
+  "name": "HighLevel Services",
+  "tagline": "Your HighLevel department, run entirely under your brand.",
+  "description": "From onboarding new clients to day-to-day administration and custom development, growX runs the HighLevel work your agency sells, 100% white-label. We live inside the platform every day, so setups are clean, requests are fast, and your client never knows another team is behind it.",
+  "pricingModel": "both",
+  "deliverables": [
+    {
+      "id": "hl-d1",
+      "title": "Client onboarding, done for you",
+      "description": "We take a new client from an empty sub-account to a fully configured, on-brand system: dashboard, calendars, channels, deliverability, data migration, and core automations, plus a guided walkthrough."
+    },
+    {
+      "id": "hl-d2",
+      "title": "White-labeled dashboards",
+      "description": "Every dashboard, domain, and login carries your logo, so the platform feels like it came from your in-house team."
+    },
+    {
+      "id": "hl-d3",
+      "title": "Verified email and SMS sending",
+      "description": "Deliverability set up properly, so campaigns land in the inbox instead of spam."
+    },
+    {
+      "id": "hl-d4",
+      "title": "Ongoing admin support",
+      "description": "Workflow builds and fixes, calendar and pipeline upkeep, list hygiene, and support tickets handled on a predictable SLA."
+    },
+    {
+      "id": "hl-d5",
+      "title": "Automation and campaign builds",
+      "description": "Reliable workflows and campaigns built and maintained, so the account keeps working after launch."
+    },
+    {
+      "id": "hl-d6",
+      "title": "Custom development and integrations",
+      "description": "When off-the-shelf HighLevel hits a wall, our developers wire up custom API integrations, advanced automations, and third-party connections."
+    },
+    {
+      "id": "hl-d7",
+      "title": "Reusable snapshot builds",
+      "description": "Snapshots you can deploy across clients, so your best setup becomes repeatable instead of rebuilt each time."
+    },
+    {
+      "id": "hl-d8",
+      "title": "Monthly account health reports",
+      "description": "Clear, white-label reporting on each account, so you always know what is running and what needs attention."
+    }
+  ],
+  "whyUs": [
+    {
+      "id": "hl-w1",
+      "title": "HighLevel is our home turf",
+      "description": "A team that builds sub-accounts every day catches the deliverability and automation gaps that trip up generalists."
+    },
+    {
+      "id": "hl-w2",
+      "title": "Predictable SLAs on every request",
+      "description": "Each ticket is triaged and resolved within a fixed window you can confidently promise your clients."
+    },
+    {
+      "id": "hl-w3",
+      "title": "Invisible under your brand",
+      "description": "Every login, reply, report, and integration carries your name. Your client never knows growX is behind it."
+    }
+  ],
+  "faq": [
+    {
+      "id": "hl-f1",
+      "question": "Do you work inside our HighLevel account?",
+      "answer": "Yes. We work as a user inside your agency's HighLevel, on the client sub-accounts you assign, entirely under your brand."
+    },
+    {
+      "id": "hl-f2",
+      "question": "Can you cover both setup and ongoing work?",
+      "answer": "Yes. Order onboarding as a one-off to launch a client, then add monthly admin support to keep the account healthy, or take on custom development when you need to build past the platform's defaults."
+    },
+    {
+      "id": "hl-f3",
+      "question": "Will our clients know it is outsourced?",
+      "answer": "No. Every dashboard, email, reply, and handoff is white-label. The work reads as your in-house team throughout."
+    },
+    {
+      "id": "hl-f4",
+      "question": "How fast are support requests handled?",
+      "answer": "Admin requests are triaged and resolved within a fixed SLA window, which is faster on the paid partnership tiers, so you can make real promises to your clients."
+    },
+    {
+      "id": "hl-f5",
+      "question": "How is it priced?",
+      "answer": "Onboarding and custom builds are fixed-price per project; ongoing admin is a monthly retainer. Everything is ordered in one click from the partner portal."
+    }
+  ]
+}

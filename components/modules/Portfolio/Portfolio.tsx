@@ -23,7 +23,7 @@ export default async function Portfolio() {
             id="portfolio-headline"
             parts={data.headline.parts}
             as="h2"
-            className="mt-4 text-3xl font-bold tracking-tight sm:text-4xl md:text-5xl"
+            className="mt-4 text-3xl font-bold leading-[1.15] tracking-tight sm:text-4xl md:text-5xl"
             highlightClassName="text-gradient-brand"
           />
           <p className="mt-5 text-base text-muted sm:text-lg">{data.sub}</p>

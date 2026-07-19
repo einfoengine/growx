@@ -34,10 +34,12 @@ export default function PartnerMarquee() {
     <section
       id="gw-mod-partner-marquee"
       aria-label="Benefits of becoming a partner"
-      // Glass strip riding the hero: the negative margin pulls it up over the
-      // hero's bottom padding, so the backdrop-blur frosts the cinematic
-      // scene behind it instead of sitting on a solid band.
-      className="relative z-10 -mt-14 overflow-hidden border-y border-white/10 bg-white/5 py-5 text-white backdrop-blur-md sm:-mt-16 sm:py-6"
+      data-nav-theme="dark"
+      // Solid dark band, same near-black as the hero above and the trust bar
+      // below, so the whole top of the page reads as one continuous dark zone.
+      // (The earlier glass overlay straddled the hero/next-section seam and
+      // looked half-frosted; a solid band is clean and seamless.)
+      className="relative z-10 overflow-hidden border-y border-white/10 bg-foreground py-6 text-white sm:py-7"
     >
       <ScrollFadeIn delay={0.1}>
       <div className="relative flex w-full overflow-hidden mask-[linear-gradient(to_right,transparent,#000_8%,#000_92%,transparent)]">

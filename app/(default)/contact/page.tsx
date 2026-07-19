@@ -3,6 +3,7 @@ import Link from "next/link";
 import { ArrowRight, Mail } from "lucide-react";
 import { getSite } from "@/lib/content";
 import Eyebrow from "@/components/elements/Eyebrow";
+import InnerHeroBackdrop from "@/components/modules/Hero/InnerHeroBackdrop";
 
 export const metadata: Metadata = {
   title: "Contact",
@@ -14,26 +15,33 @@ export default async function ContactRoute() {
   const site = await getSite();
 
   return (
-    <section id="gw-contact" className="relative overflow-hidden bg-background">
-      <div
-        aria-hidden="true"
-        className="pointer-events-none absolute -z-10 left-1/2 -top-24 h-[420px] w-[720px] -translate-x-1/2 bg-brand/6 blur-[120px]"
-      />
-
-      <div className="container-1200 py-20 sm:py-24 lg:py-28">
-        <div className="mx-auto max-w-2xl text-center">
-          <Eyebrow text="Contact" />
-          <h1 className="mt-4 text-3xl font-bold leading-[1.15] tracking-tight text-foreground sm:text-4xl md:text-5xl">
-            Let&apos;s talk about your fulfillment.
-          </h1>
-          <p className="mt-5 text-base text-muted sm:text-lg">
-            Tell us what you sell and where delivery is hurting. We&apos;ll come
-            back to you within one business day with a straight answer on
-            whether we&apos;re a fit.
-          </p>
+    <>
+      {/* ── Hero (dark, emerald-lit — same family as the home hero) ────── */}
+      <section
+        id="gw-contact-hero"
+        data-nav-theme="dark"
+        className="relative isolate overflow-hidden bg-foreground text-background"
+      >
+        <InnerHeroBackdrop />
+        <div className="container-1200 pb-20 pt-28 text-center sm:pb-24 sm:pt-32 lg:pt-36">
+          <div className="mx-auto max-w-2xl">
+            <Eyebrow text="Contact" />
+            <h1 className="mt-4 text-4xl font-bold leading-[1.15] tracking-tight sm:text-5xl lg:text-6xl">
+              Let&apos;s talk about your fulfillment.
+            </h1>
+            <p className="mt-5 text-base text-white/70 sm:text-lg">
+              Tell us what you sell and where delivery is hurting. We&apos;ll come
+              back to you within one business day with a straight answer on
+              whether we&apos;re a fit.
+            </p>
+          </div>
         </div>
+      </section>
 
-        <div className="mx-auto mt-12 grid max-w-4xl gap-6 sm:grid-cols-2">
+      {/* ── Contact methods ──────────────────────────────────── */}
+      <section id="gw-contact" className="bg-background">
+        <div className="container-1200 py-20 sm:py-24 lg:py-28">
+          <div className="mx-auto grid max-w-4xl gap-6 sm:grid-cols-2">
           <div className="flex flex-col border border-border bg-surface p-8">
             <Mail size={20} className="text-brand" aria-hidden="true" />
             <h2 className="mt-4 text-xl font-bold tracking-tight text-foreground">
@@ -86,7 +94,8 @@ export default async function ContactRoute() {
             ))}
           </div>
         </div>
-      </div>
-    </section>
+        </div>
+      </section>
+    </>
   );
 }

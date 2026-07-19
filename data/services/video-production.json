@@ -1,0 +1,94 @@
+{
+  "id": "svc-video-production",
+  "slug": "video-production",
+  "name": "Animated Video Production",
+  "tagline": "Broadcast-quality animated video, made under your brand.",
+  "description": "Explainers, product demos, launch promos, and social spots, produced end to end by our in-house motion team and delivered 100% white-label. You hand off the brief; we handle script, storyboard, design, animation, voiceover, and sound, then return a finished cut your client believes you made.",
+  "pricingModel": "one-off",
+  "deliverables": [
+    {
+      "id": "vp-d1",
+      "title": "Animated explainer videos",
+      "description": "Clear, on-brand explainers that turn a complex offer into something a prospect understands in under two minutes."
+    },
+    {
+      "id": "vp-d2",
+      "title": "Product demo animations",
+      "description": "Motion walkthroughs that show a product or feature working, without the cost of a live shoot."
+    },
+    {
+      "id": "vp-d3",
+      "title": "Scripts and storyboards",
+      "description": "We write the script and board every scene before a frame is animated, so the direction is approved up front."
+    },
+    {
+      "id": "vp-d4",
+      "title": "Custom motion graphics",
+      "description": "Bespoke animation and graphics built to the client's brand, not dropped from a template library."
+    },
+    {
+      "id": "vp-d5",
+      "title": "Voiceover and sound design",
+      "description": "Professional voiceover, music, and sound mixed in, so the finished video sounds as polished as it looks."
+    },
+    {
+      "id": "vp-d6",
+      "title": "On-brand visual style",
+      "description": "Every frame is styled to the client's colors, fonts, and tone, and ships without a trace of growX."
+    },
+    {
+      "id": "vp-d7",
+      "title": "Multi-platform cutdowns",
+      "description": "One production comes back as landscape, square, and vertical versions sized for the web, ads, and social feeds."
+    },
+    {
+      "id": "vp-d8",
+      "title": "Source files included",
+      "description": "You receive the finished exports and the project files, so the work is fully yours to hand off."
+    }
+  ],
+  "whyUs": [
+    {
+      "id": "vp-w1",
+      "title": "One team, full production",
+      "description": "Script, storyboard, design, animation, voiceover, and sound are all handled in-house, so you brief once and receive a finished video."
+    },
+    {
+      "id": "vp-w2",
+      "title": "Styled to their brand",
+      "description": "Every video matches your client's colors, fonts, and tone, and ships without a trace of growX anywhere on it."
+    },
+    {
+      "id": "vp-w3",
+      "title": "Ready for every platform",
+      "description": "One production comes back as landscape, square, and vertical cutdowns sized for the web, ads, and social feeds."
+    }
+  ],
+  "faq": [
+    {
+      "id": "vp-f1",
+      "question": "Is the video really unbranded?",
+      "answer": "Yes. There are no watermarks, credits, or metadata pointing back to growX. You deliver it as your studio's work."
+    },
+    {
+      "id": "vp-f2",
+      "question": "What do you need from us to start?",
+      "answer": "A short brief and the client's brand assets. We handle scripting and storyboarding from there and get your sign-off before animating."
+    },
+    {
+      "id": "vp-f3",
+      "question": "How many revision rounds are included?",
+      "answer": "Every project ships with defined revision rounds at the script, storyboard, and final-cut stages, so feedback is structured rather than open-ended. The exact number is listed on the order in the portal."
+    },
+    {
+      "id": "vp-f4",
+      "question": "What formats do we get back?",
+      "answer": "The final video in the aspect ratios your client needs, plus source files. You can hand off a web version, a square feed cut, and a vertical Reels or Shorts cut from a single production."
+    },
+    {
+      "id": "vp-f5",
+      "question": "How is it priced?",
+      "answer": "Fixed price per production with a clear scope and delivery SLA, ordered in one click from the partner portal."
+    }
+  ]
+}

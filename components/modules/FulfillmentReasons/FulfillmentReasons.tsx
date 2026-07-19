@@ -314,7 +314,7 @@ export default function FulfillmentReasons() {
         <Eyebrow text="Grow limitless" />
         <h2
           id="fulfillment-reasons-headline"
-          className="mt-4 text-3xl font-bold tracking-tight sm:text-4xl md:text-5xl"
+          className="mt-4 text-3xl font-bold leading-[1.15] tracking-tight sm:text-4xl md:text-5xl"
         >
           Fulfillment is no longer a challenge
         </h2>
@@ -336,7 +336,7 @@ export default function FulfillmentReasons() {
         <PinnedReasons background={background} header={header} />
       ) : (
         // Mobile / reduced motion: plain vertical flow of the same cards.
-        <div className="relative py-24 sm:py-28">
+        <div className="relative py-24 sm:py-28 lg:py-32">
           {background}
           <div className="container-1200">
             {header}

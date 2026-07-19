@@ -45,7 +45,7 @@ export default async function Comparison({ noPaddingTop }: { noPaddingTop?: bool
     >
       <div className="pointer-events-none absolute inset-0 -z-10 bg-[linear-gradient(to_right,rgba(10,10,10,0.05)_1px,transparent_1px),linear-gradient(to_bottom,rgba(10,10,10,0.05)_1px,transparent_1px)] bg-size-[48px_48px] mask-[radial-gradient(ellipse_80%_70%_at_50%_30%,#000_20%,transparent_85%)]" />
 
-      <div className={`container-1200 relative ${noPaddingTop ? "pb-24 pt-0 sm:pb-32 lg:pb-40" : "py-24 sm:py-32 lg:py-40"}`}>
+      <div className={`container-1200 relative ${noPaddingTop ? "pb-24 pt-0 sm:pb-28 lg:pb-32" : "py-24 sm:py-28 lg:py-32"}`}>
         <ScrollFadeIn delay={0.1}>
           <SectionHeader
             eyebrow={data.eyebrow}
@@ -53,7 +53,7 @@ export default async function Comparison({ noPaddingTop }: { noPaddingTop?: bool
             headlineId={`${data.id}-headline`}
             sub={data.sub}
             align="center"
-            headlineClassName="mt-3 text-3xl font-bold leading-[1.15] tracking-tight text-foreground sm:text-4xl"
+            headlineClassName="mt-4 text-3xl font-bold leading-[1.15] tracking-tight text-foreground sm:text-4xl md:text-5xl"
             highlightClassName="text-gradient-brand"
             underlineHighlight={false}
           />

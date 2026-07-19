@@ -1,12 +1,16 @@
 import aboutData from "@/data/modules/about.json";
 import processPageData from "@/data/pages/process.json";
 import pricingPageData from "@/data/pages/pricing.json";
+import webinarPageData from "@/data/pages/webinar.json";
 import serviceWebsiteData from "@/data/services/website.json";
 import serviceSeoAeoData from "@/data/services/seo-aeo.json";
 import servicePpcData from "@/data/services/ppc.json";
 import serviceContentData from "@/data/services/content.json";
 import serviceSocialData from "@/data/services/social.json";
 import serviceFunnelsData from "@/data/services/funnels.json";
+import serviceVideoProductionData from "@/data/services/video-production.json";
+import serviceVideoEditingData from "@/data/services/video-editing.json";
+import serviceHighLevelData from "@/data/services/highlevel.json";
 import siteData from "@/data/site.json";
 import headerData from "@/data/modules/header.json";
 import footerData from "@/data/modules/footer.json";
@@ -30,6 +34,7 @@ import type {
   PricingPageContent,
   ProcessPageContent,
   ServicePageContent,
+  WebinarPageContent,
   ComparisonContent,
   CtaBannerContent,
   FaqContent,
@@ -63,6 +68,10 @@ export async function getProcessPage(): Promise<ProcessPageContent> {
 
 export async function getPricingPage(): Promise<PricingPageContent> {
   return pricingPageData as PricingPageContent;
+}
+
+export async function getWebinarPage(): Promise<WebinarPageContent> {
+  return webinarPageData as WebinarPageContent;
 }
 
 export async function getSite(): Promise<Site> {
@@ -156,6 +165,9 @@ const SERVICE_PAGES: Record<string, ServicePageContent> = {
   content: serviceContentData as ServicePageContent,
   social: serviceSocialData as ServicePageContent,
   funnels: serviceFunnelsData as ServicePageContent,
+  "video-production": serviceVideoProductionData as ServicePageContent,
+  "video-editing": serviceVideoEditingData as ServicePageContent,
+  highlevel: serviceHighLevelData as ServicePageContent,
 };
 
 export const SERVICE_SLUGS = Object.keys(SERVICE_PAGES);

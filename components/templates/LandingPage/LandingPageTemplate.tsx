@@ -31,7 +31,7 @@ export default async function LandingPageTemplate({ data }: Props) {
   // ── Hero ─────────────────────────────────────────────────────────────────
   const heroData: HeroContent = {
     id: `${data.id}-hero`,
-    eyebrow: { label: "Our Services", href: "/#gw-mod-services" },
+    eyebrow: { label: "Our Services", href: "/services" },
     headline: { parts: [{ type: "text", value: data.tagline }] },
     tagline: data.name,
     sub: data.description,

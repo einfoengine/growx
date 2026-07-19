@@ -1,12 +1,10 @@
 {
   "id": "page-process",
-
   "hero": {
     "eyebrow": "How it works",
     "headline": "Join free, order in one click, deliver under your brand.",
     "sub": "A productized workflow built for agency owners who need reliable execution without the coordination overhead. No quotes to chase, no vendors to manage, no surprises."
   },
-
   "journey": {
     "eyebrow": "The partnership journey",
     "headline": "What happens, and when.",
@@ -110,7 +108,6 @@
       }
     ]
   },
-
   "communication": {
     "eyebrow": "Inside the partnership",
     "headline": "You're always in the loop.",
@@ -138,13 +135,84 @@
       }
     ],
     "cadence": [
-      { "id": "cad-order", "period": "Per order", "action": "Instant acknowledgment plus order-level status in the portal" },
-      { "id": "cad-response", "period": "First response", "action": "4 hours on Free, 2 hours on Standard, 1 hour on VIP" },
-      { "id": "cad-monthly", "period": "Monthly", "action": "Pipeline call: active work, upcoming needs, capacity" },
-      { "id": "cad-quarterly", "period": "Quarterly", "action": "VIP growth strategy session with senior leadership" }
+      {
+        "id": "cad-order",
+        "period": "Per order",
+        "action": "Instant acknowledgment plus order-level status in the portal"
+      },
+      {
+        "id": "cad-response",
+        "period": "First response",
+        "action": "4 hours on Free, 2 hours on Standard, 1 hour on VIP"
+      },
+      {
+        "id": "cad-monthly",
+        "period": "Monthly",
+        "action": "Pipeline call: active work, upcoming needs, capacity"
+      },
+      {
+        "id": "cad-quarterly",
+        "period": "Quarterly",
+        "action": "VIP growth strategy session with senior leadership"
+      }
     ]
   },
-
+  "yourPart": {
+    "eyebrow": "Your side of the work",
+    "headline": "Three inputs. That's all we need from you.",
+    "sub": "You stay in your zone of genius. The production, coordination, and project management are ours. Here is the entire ask on your end.",
+    "steps": [
+      {
+        "id": "part-brief",
+        "icon": "file-text",
+        "title": "Send a short brief",
+        "description": "A short brief and your client's brand assets. That is the whole input. We handle scoping, strategy, scripting, and production from there."
+      },
+      {
+        "id": "part-access",
+        "icon": "key-round",
+        "title": "Share access where it's needed",
+        "description": "For build and operations work, grant access to the platform the job runs on, such as GoHighLevel, a CRM, or an ad account. You stay the account owner throughout."
+      },
+      {
+        "id": "part-approve",
+        "icon": "circle-check-big",
+        "title": "Approve before it ships",
+        "description": "You review and sign off before anything reaches your client. Nothing goes live without your approval. You are always the last checkpoint."
+      }
+    ]
+  },
+  "quality": {
+    "eyebrow": "If something's not right",
+    "headline": "You forward the work. You don't fix it first.",
+    "sub": "The point of a fulfillment partner is that the output is client-ready, not a first draft you have to clean up. Here is what stands behind every deliverable.",
+    "items": [
+      {
+        "id": "qa-gate",
+        "icon": "shield-check",
+        "title": "QA before you ever see it",
+        "description": "Every order runs through internal QA before it reaches you, so what lands in your inbox is ready to forward under your brand, not a rough cut to review."
+      },
+      {
+        "id": "qa-revisions",
+        "icon": "refresh-cw",
+        "title": "Revisions until it's right",
+        "description": "Structured revision rounds on every deliverable, staged at natural checkpoints like script, draft, and final, so feedback is focused rather than open-ended. Unlimited rounds on VIP."
+      },
+      {
+        "id": "qa-control",
+        "icon": "user-check",
+        "title": "You approve before your client does",
+        "description": "Nothing reaches your client without your sign-off. You see status the whole way through in the portal, and you decide when a deliverable is ready to hand over."
+      },
+      {
+        "id": "qa-fix",
+        "icon": "wrench",
+        "title": "If it's off, we make it right",
+        "description": "Miss the mark and we fix it. The partnership is built on repeat delivery, not one-off orders, so getting it right is how we keep your business, not an exception."
+      }
+    ]
+  },
   "whiteLabel": {
     "eyebrow": "White-label partnership",
     "headline": "We stay invisible. You take the credit.",
@@ -182,37 +250,53 @@
       }
     ]
   },
-
-  "faq": [
-    {
-      "id": "pfaq-1",
-      "question": "How quickly can I start?",
-      "answer": "Immediately. Create a free partner account, get full portal access, and place your first order the same day. There is no onboarding fee and no card required to join."
+  "faq": {
+    "id": "process-faq",
+    "eyebrow": "Questions",
+    "headline": {
+      "parts": [
+        {
+          "type": "text",
+          "value": "About "
+        },
+        {
+          "type": "highlight",
+          "value": "how we work"
+        }
+      ]
     },
-    {
-      "id": "pfaq-2",
-      "question": "Can I cancel or downgrade a tier?",
-      "answer": "Yes. Standard and VIP run month-to-month with no lock-in. Downgrade or cancel anytime and you drop back to the Free tier, keeping full portal access and standard pricing."
-    },
-    {
-      "id": "pfaq-3",
-      "question": "How does ordering actually work?",
-      "answer": "Pick a service from the catalog, confirm the scope, and place the order in one click. You see the fixed price and SLA up front. From Standard, your account manager can place and manage orders for you."
-    },
-    {
-      "id": "pfaq-4",
-      "question": "Do I get a single point of contact?",
-      "answer": "From the Standard tier, yes: one named account manager who knows your business, fields your Slack or WhatsApp messages, and runs your monthly pipeline call. On Free, support answers within 4 business hours."
-    },
-    {
-      "id": "pfaq-5",
-      "question": "How are revisions handled?",
-      "answer": "Every service includes revision rounds within its defined scope and SLA. On the VIP tier, revision rounds are unlimited on all deliverables, so you can iterate until your client signs off."
-    },
-    {
-      "id": "pfaq-6",
-      "question": "What if a deadline is at risk?",
-      "answer": "We flag it before it happens, not after. If an order is at risk of missing its SLA, you will know in advance with a revised timeline and a clear reason. We do not hide delays."
-    }
-  ]
+    "sub": "Everything worth knowing before you place your first white-label order.",
+    "items": [
+      {
+        "id": "pfaq-1",
+        "question": "How quickly can I start?",
+        "answer": "Immediately. Create a free partner account, get full portal access, and place your first order the same day. There is no onboarding fee and no card required to join."
+      },
+      {
+        "id": "pfaq-2",
+        "question": "Can I cancel or downgrade a tier?",
+        "answer": "Yes. Standard and VIP run month-to-month with no lock-in. Downgrade or cancel anytime and you drop back to the Free tier, keeping full portal access and standard pricing."
+      },
+      {
+        "id": "pfaq-3",
+        "question": "How does ordering actually work?",
+        "answer": "Pick a service from the catalog, confirm the scope, and place the order in one click. You see the fixed price and SLA up front. From Standard, your account manager can place and manage orders for you."
+      },
+      {
+        "id": "pfaq-4",
+        "question": "Do I get a single point of contact?",
+        "answer": "From the Standard tier, yes: one named account manager who knows your business, fields your Slack or WhatsApp messages, and runs your monthly pipeline call. On Free, support answers within 4 business hours."
+      },
+      {
+        "id": "pfaq-5",
+        "question": "How are revisions handled?",
+        "answer": "Every service includes revision rounds within its defined scope and SLA. On the VIP tier, revision rounds are unlimited on all deliverables, so you can iterate until your client signs off."
+      },
+      {
+        "id": "pfaq-6",
+        "question": "What if a deadline is at risk?",
+        "answer": "We flag it before it happens, not after. If an order is at risk of missing its SLA, you will know in advance with a revised timeline and a clear reason. We do not hide delays."
+      }
+    ]
+  }
 }
