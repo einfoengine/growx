@@ -24,12 +24,14 @@ export default async function Header() {
 
         {/* The menu floats bare; the glass treatment lives on the whole bar
             (HeaderShell) and only appears once the page is scrolled. */}
+        {/* gap tightens at lg so the 8-item nav + login + CTA fit a 1024px
+            viewport without wrapping; roomier again from xl up. */}
         <nav
           id={`${data.id}-nav`}
           aria-label="Primary"
-          className="hidden lg:flex items-center gap-8"
+          className="hidden lg:flex items-center gap-5 xl:gap-8"
         >
-          <ul className="flex items-center gap-8">
+          <ul className="flex items-center gap-5 xl:gap-8">
             {data.nav.map((item) =>
               item.children ? (
                 <ServicesMegaMenu key={item.id} item={item} services={services} />
@@ -52,8 +54,11 @@ export default async function Header() {
             the mobile menu trigger. */}
         <div className="flex items-center gap-1.5 sm:gap-3">
           <CartIcon />
-          <div className="hidden lg:flex items-center gap-5">
-            <PortalLoginLink />
+          <div className="hidden lg:flex items-center gap-4 xl:gap-5">
+            {/* xl-only: at lg the 8-item nav + CTA already fill the bar, so
+                the portal link yields (it lives in the mobile menu below lg;
+                the lg-to-xl band goes without it, acceptable pre-launch). */}
+            <PortalLoginLink className="hidden xl:inline-flex items-center gap-1.5 text-sm font-medium text-foreground/80 transition-colors hover:text-foreground" />
             <Link
               id={data.cta.id}
               href={data.cta.href}

@@ -63,11 +63,13 @@ export default function HowItWorksModal() {
   const go = (next: number) =>
     setStep(([cur]) => (next < 0 || next >= STEPS.length ? [cur, dir] : [next, next > cur ? 1 : -1]));
 
-  // Last step hands off to the free signup (onboarding modal, which falls back
-  // to the booking call while the portal is stubbed).
-  const startFree = () => {
+  // Last step hands off to the partner call — the journey's real first step
+  // (accounts are activated on the call while portal signup is pre-launch).
+  // Setting location.hash fires hashchange, which closes this modal (its hash
+  // no longer matches) and opens BookingModal in the same gesture.
+  const bookCall = () => {
     close();
-    window.dispatchEvent(new CustomEvent("open-onboarding", { detail: { plan: "free" } }));
+    window.location.hash = "#book";
   };
 
   const step = STEPS[idx];
@@ -158,8 +160,8 @@ export default function HowItWorksModal() {
                 <ArrowLeft size={16} aria-hidden="true" /> Back
               </button>
               {isLast ? (
-                <button onClick={startFree} className="btn btn-brand">
-                  Join free
+                <button onClick={bookCall} className="btn btn-brand">
+                  Book your partner call
                   <ArrowRight size={16} className="ml-1.5" aria-hidden="true" />
                 </button>
               ) : (

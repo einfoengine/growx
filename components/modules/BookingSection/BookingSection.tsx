@@ -69,9 +69,9 @@ export default function BookingSection() {
       />
 
       <div className="container-1200 py-24 sm:py-28 lg:py-32">
-        <div className="grid gap-12 lg:grid-cols-[0.9fr_1.1fr] lg:items-center lg:gap-16">
-          {/* Left: the pitch */}
-          <ScrollFadeIn delay={0.1}>
+        {/* Top: the pitch, centered */}
+        <ScrollFadeIn delay={0.1}>
+          <div className="mx-auto max-w-2xl text-center">
             <SectionHeader
               eyebrow="Book a partner call"
               headline={[
@@ -82,12 +82,12 @@ export default function BookingSection() {
               headlineClassName="mt-4 text-4xl font-bold leading-[1.12] tracking-tight sm:text-5xl"
               highlightClassName="text-gradient-brand"
               sub="Grab 30 minutes with our founding team, on your schedule. No pressure, just a straight answer on whether we're a fit."
-              subClassName="mt-5 max-w-md text-base leading-relaxed text-white/70 sm:text-lg"
-              align="left"
+              subClassName="mx-auto mt-5 max-w-md text-base leading-relaxed text-white/70 sm:text-lg"
+              align="center"
             />
-            <ul className="mt-8 space-y-3.5">
+            <ul className="mx-auto mt-8 flex max-w-3xl flex-wrap items-start justify-center gap-x-8 gap-y-3">
               {POINTS.map((point) => (
-                <li key={point} className="flex items-start gap-3">
+                <li key={point} className="flex items-start gap-2.5">
                   <span className="mt-0.5 grid h-5 w-5 shrink-0 place-items-center rounded-full bg-brand/15">
                     <Check size={12} strokeWidth={3} className="text-brand" aria-hidden="true" />
                   </span>
@@ -97,34 +97,34 @@ export default function BookingSection() {
                 </li>
               ))}
             </ul>
-          </ScrollFadeIn>
+          </div>
+        </ScrollFadeIn>
 
-          {/* Right: the live calendar, framed */}
-          <ScrollFadeIn delay={0.25}>
-            <div
-              ref={sentinelRef}
-              className="overflow-hidden rounded-2xl border border-white/10 bg-white/5 shadow-2xl shadow-black/40"
-            >
-              {loaded ? (
-                <iframe
-                  src={GHL_BOOKING_URL}
-                  title="growX Partnership Call booking calendar"
-                  id="gw-home-booking-calendar"
-                  className="h-168 w-full border-0"
-                  scrolling="auto"
-                  // Cross-origin widget can't be styled directly; invert its
-                  // rendered pixels to fake a dark theme, hue-rotate to keep
-                  // colors roughly true.
-                  style={{ filter: "invert(1) hue-rotate(180deg)" }}
-                />
-              ) : (
-                <div className="grid h-168 place-items-center text-sm text-white/50">
-                  Loading the calendar…
-                </div>
-              )}
-            </div>
-          </ScrollFadeIn>
-        </div>
+        {/* Bottom: the live calendar, framed */}
+        <ScrollFadeIn delay={0.25}>
+          <div
+            ref={sentinelRef}
+            className="mx-auto mt-12 max-w-4xl overflow-hidden rounded-2xl border border-white/10 bg-white/5 shadow-2xl shadow-black/40 sm:mt-14"
+          >
+            {loaded ? (
+              <iframe
+                src={GHL_BOOKING_URL}
+                title="growX Partnership Call booking calendar"
+                id="gw-home-booking-calendar"
+                className="h-168 w-full border-0"
+                scrolling="auto"
+                // Cross-origin widget can't be styled directly; invert its
+                // rendered pixels to fake a dark theme, hue-rotate to keep
+                // colors roughly true.
+                style={{ filter: "invert(1) hue-rotate(180deg)" }}
+              />
+            ) : (
+              <div className="grid h-168 place-items-center text-sm text-white/50">
+                Loading the calendar…
+              </div>
+            )}
+          </div>
+        </ScrollFadeIn>
       </div>
     </section>
   );

@@ -191,8 +191,9 @@ export default function HeroAnimatedContent({
         )}
 
         {/* Proof bar. Sits under the CTA so the last thing read before acting is
-            evidence, not another claim. */}
-        {hasStats && !isHome && (
+            evidence, not another claim. Rendered on every variant including
+            home — the first screen must carry proof, not just claims. */}
+        {hasStats && (
           <motion.ul id={`${data.id}-stats`} className={L.stats} variants={containerVariants}>
             {data.stats.map((stat) => (
               <motion.li key={stat.id} id={stat.id} variants={statVariants}>

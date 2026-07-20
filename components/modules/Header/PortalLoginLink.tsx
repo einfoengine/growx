@@ -18,9 +18,14 @@ export default function PortalLoginLink({ className }: { className?: string }) {
   );
 
   if (!PORTAL_LOGIN_URL) {
+    // Pre-launch: visibly labeled, not a silent dead control. A tooltip-only
+    // disabled state reads as broken, especially on touch devices.
     return (
-      <span className={cls} aria-disabled="true" title="Client portal opens at launch">
+      <span className={`${cls} cursor-default opacity-70`} aria-disabled="true">
         {content}
+        <span className="rounded-full bg-brand/10 px-1.5 py-0.5 text-[10px] font-bold uppercase tracking-wide text-brand">
+          Soon
+        </span>
       </span>
     );
   }

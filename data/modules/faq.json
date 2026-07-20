@@ -3,9 +3,18 @@
   "eyebrow": "Common questions",
   "headline": {
     "parts": [
-      { "type": "text", "value": "Before you " },
-      { "type": "highlight", "value": "ask" },
-      { "type": "text", "value": "." }
+      {
+        "type": "text",
+        "value": "Before you "
+      },
+      {
+        "type": "highlight",
+        "value": "ask"
+      },
+      {
+        "type": "text",
+        "value": "."
+      }
     ]
   },
   "sub": "The questions every agency owner asks before bringing us in.",
@@ -38,7 +47,7 @@
     {
       "id": "faq-size",
       "question": "Am I too small to work with you?",
-      "answer": "If you have one client, you are the right size. Many of our partners are solopreneurs scaling their first roster. The model works whether you are at $0 or $100k per month, and the Free tier means you can start today at no cost."
+      "answer": "If you have one client, you are the right size. The model works whether you are at $0 or $100k per month, and the Free tier means you can start today at no cost."
     }
   ]
 }

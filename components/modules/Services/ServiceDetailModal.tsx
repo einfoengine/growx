@@ -262,15 +262,24 @@ export default function ServiceDetailModal({
               </div>
             </div>
 
-            {/* Footer */}
-            <div className="border-t border-border bg-background/95 px-6 py-4 shrink-0 backdrop-blur">
+            {/* Footer: book the call, or go straight to the priced catalog —
+                the visitor who opened a specific service is the most
+                stage-4-ready person on the page. */}
+            <div className="flex flex-col gap-2 border-t border-border bg-background/95 px-6 py-4 shrink-0 backdrop-blur sm:flex-row">
               {/* Anchor (not button) so BookingModal's capture-phase handler fires. */}
               <a
                 href="#book"
                 onClick={handleBook}
-                className="flex w-full items-center justify-center gap-2 rounded-xl bg-gradient-brand px-4 py-3.5 text-sm font-semibold text-black transition-all hover:scale-[1.01] hover:brightness-110 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand"
+                className="flex flex-1 items-center justify-center gap-2 rounded-xl bg-gradient-brand px-4 py-3.5 text-sm font-semibold text-black transition-all hover:scale-[1.01] hover:brightness-110 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand"
               >
                 Book a meeting
+                <ArrowUpRight size={16} aria-hidden="true" />
+              </a>
+              <a
+                href="/pricing"
+                className="flex flex-1 items-center justify-center gap-2 rounded-xl border border-border px-4 py-3.5 text-sm font-semibold text-foreground transition-colors hover:border-brand hover:text-brand focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand"
+              >
+                See pricing &amp; order
                 <ArrowUpRight size={16} aria-hidden="true" />
               </a>
             </div>

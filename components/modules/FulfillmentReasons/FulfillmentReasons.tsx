@@ -311,15 +311,20 @@ export default function FulfillmentReasons() {
   const header = (
     <ScrollFadeIn delay={0.1}>
       <div className="mx-auto max-w-3xl text-center">
-        <Eyebrow text="Grow limitless" />
+        <Eyebrow text="The real bottleneck" />
+        {/* Problem framing (the signature hook) followed by the one-line
+            resolution turn, so nobody leaves the headline without the answer. */}
         <h2
           id="fulfillment-reasons-headline"
           className="mt-4 text-3xl font-bold leading-[1.15] tracking-tight sm:text-4xl md:text-5xl"
         >
-          Fulfillment is no longer a challenge
+          Fulfillment eats the founders.
         </h2>
-        <p className="mt-5 text-base text-white/70 sm:text-lg">
-          Four reasons fulfillment quietly caps how big you can get.
+        <p className="mt-4 text-lg font-semibold text-gradient-brand sm:text-xl">
+          We take it off your plate and make it the reason you thrive.
+        </p>
+        <p className="mt-4 text-base text-white/70 sm:text-lg">
+          Now sale more, close more, grow more.
         </p>
       </div>
     </ScrollFadeIn>

@@ -21,7 +21,18 @@ export default function CheckoutClient({ plans }: { plans: PlanInfo[] }) {
   const planInfo = plans.find((p) => p.key === activePlan);
 
   const complete = () => {
-    window.dispatchEvent(new CustomEvent("open-onboarding", { detail: { plan: activePlan } }));
+    // Carry the assembled order into the onboarding flow so the highest-intent
+    // data on the site survives the handoff (it feeds the email fallback).
+    const context = [
+      `${TIERS[activePlan].name} membership`,
+      ...est.lines.map(
+        ({ service, ourPrice }) =>
+          `${service.title} (${usd(ourPrice)}${service.billing === "monthly" ? "/mo" : ""})`,
+      ),
+    ].join(", ");
+    window.dispatchEvent(
+      new CustomEvent("open-onboarding", { detail: { plan: activePlan, context } }),
+    );
   };
 
   return (

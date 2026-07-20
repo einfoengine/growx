@@ -6,9 +6,10 @@ import InnerHeroBackdrop from "@/components/modules/Hero/InnerHeroBackdrop";
 import PricingPlans from "@/components/modules/Pricing";
 import PlanButton from "@/components/modules/Pricing/PlanButton";
 import BookingSection from "@/components/modules/BookingSection/BookingSection";
+import Faq from "@/components/modules/Faq";
 import ServiceCatalog from "./ServiceCatalog";
 import EstimateCalculator, { type PlanInfo } from "./EstimateCalculator";
-import JoinCta from "./JoinCta";
+import JoinCta from "@/components/modules/JoinCta/JoinCta";
 
 type Props = {
   pageData: PricingPageContent;
@@ -62,6 +63,9 @@ export default async function PricingPage({ pageData }: Props) {
 
       {/* Estimate, savings, and checkout */}
       <EstimateCalculator plans={plans} />
+
+      {/* Purchase-mechanics objections, answered before the ask */}
+      <Faq data={pageData.faq} />
 
       {/* Book a call */}
       <BookingSection />

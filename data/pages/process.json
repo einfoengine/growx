@@ -2,7 +2,7 @@
   "id": "page-process",
   "hero": {
     "eyebrow": "How it works",
-    "headline": "Join free, order in one click, deliver under your brand.",
+    "headline": "Book a call, order at fixed prices, deliver under your brand.",
     "sub": "A productized workflow built for agency owners who need reliable execution without the coordination overhead. No quotes to chase, no vendors to manage, no surprises."
   },
   "journey": {
@@ -14,12 +14,12 @@
         "id": "journey-phase-1",
         "number": "01",
         "label": "Join",
-        "title": "Create your free partner account",
-        "description": "Start in minutes with full portal access to the entire catalog. No commitment, no card, no sales call required.",
+        "title": "Book your 30-minute partner call",
+        "description": "Start with a 30-minute partner call. We map your fulfillment and set up your account on the call. No commitment and no card.",
         "steps": [
           {
             "id": "jp1-s1",
-            "title": "Sign up in 60 seconds",
+            "title": "Book your partner call",
             "body": "Create your free account and you are in. Full portal access, the entire service catalog, and standard fixed pricing from the first minute."
           },
           {
@@ -270,7 +270,7 @@
       {
         "id": "pfaq-1",
         "question": "How quickly can I start?",
-        "answer": "Immediately. Create a free partner account, get full portal access, and place your first order the same day. There is no onboarding fee and no card required to join."
+        "answer": "Fast. Book a partner call, and we set up your account on the call itself, so you can place your first order the same day. There is no onboarding fee and no card required to join."
       },
       {
         "id": "pfaq-2",

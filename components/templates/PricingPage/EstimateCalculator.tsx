@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { ArrowRight, Check, X } from "lucide-react";
 import Eyebrow from "@/components/elements/Eyebrow";
-import { TIERS, TIER_ORDER, buildEstimate, type TierKey } from "@/lib/config/pricing";
+import { TIERS, TIER_ORDER, buildEstimate, breakEven, type TierKey } from "@/lib/config/pricing";
 import { useCart } from "@/lib/cart/useCart";
 
 export type PlanInfo = { key: TierKey; name: string; features: string[] };
@@ -69,6 +69,12 @@ export default function EstimateCalculator({ plans }: { plans: PlanInfo[] }) {
                 );
               })}
             </div>
+            {/* Break-even, from the shared pricing math: the single line that
+                answers "when does the fee pay for itself?" */}
+            <p className="mt-3 text-xs leading-relaxed text-muted">
+              Standard pays for itself at {usd(breakEven("standard"))} a month of
+              orders. VIP at {usd(breakEven("vip"))}.
+            </p>
 
             <p className="mt-8 font-label text-xs font-semibold uppercase tracking-widest text-muted">
               2. Your services
@@ -152,7 +158,8 @@ export default function EstimateCalculator({ plans }: { plans: PlanInfo[] }) {
                   <ArrowRight size={16} className="ml-1.5" aria-hidden="true" />
                 </Link>
                 <p className="mt-3 text-center text-xs text-white/45">
-                  Figures are a guide. Final pricing is confirmed at checkout.
+                  Figures are a guide. You confirm and pay for each order inside
+                  the partner portal, never before.
                 </p>
               </div>
             </div>

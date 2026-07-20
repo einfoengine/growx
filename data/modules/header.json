@@ -18,7 +18,7 @@
         },
         {
           "id": "nav-service-ppc",
-          "label": "Media Buying & PPC",
+          "label": "Meta Ads & PPC",
           "href": "/services/ppc"
         },
         {
@@ -37,9 +37,24 @@
           "href": "/services/funnels"
         },
         {
+          "id": "nav-svc-video-production",
+          "label": "Video Production",
+          "href": "/services/video-production"
+        },
+        {
+          "id": "nav-svc-video-editing",
+          "label": "Video Editing",
+          "href": "/services/video-editing"
+        },
+        {
+          "id": "nav-svc-highlevel",
+          "label": "HighLevel Services",
+          "href": "/services/highlevel"
+        },
+        {
           "id": "nav-service-all",
           "label": "All services",
-          "href": "/#gw-mod-services"
+          "href": "/services"
         }
       ]
     },
@@ -62,6 +77,11 @@
       "id": "nav-blog",
       "label": "Blog",
       "href": "/blog"
+    },
+    {
+      "id": "nav-webinar",
+      "label": "Webinar",
+      "href": "/webinar"
     },
     {
       "id": "nav-pricing",

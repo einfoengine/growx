@@ -9,6 +9,7 @@ import { GROUPS, type Service } from "./servicesData";
 import { useActiveWhenVisible } from "@/lib/hooks/useActiveWhenVisible";
 import ScrollFadeIn from "@/components/elements/ScrollFadeIn";
 import Eyebrow from "@/components/elements/Eyebrow";
+import Button from "@/components/elements/Button";
 
 const NAV_H = 72; // floating header: 8px top gap + h-16 bar
 const STEP_VH = 48; // scroll distance allotted per group while pinned
@@ -118,7 +119,8 @@ export default function ServicesCatalog() {
       <p className="mt-5 text-base text-muted sm:text-lg">
         Web, funnels, search, paid media, content, social, and video, plus full
         HighLevel services. Productized with fixed pricing and clear SLAs,
-        ordered in one click, delivered 100% white-label.
+        ordered in one click, delivered 100% white-label. One accountable
+        in-house team, not a marketplace of gigs.
       </p>
     </div>
     </ScrollFadeIn>
@@ -310,6 +312,12 @@ export default function ServicesCatalog() {
           <div className="mt-8 overflow-hidden">{cards}</div>
         </div>
       )}
+
+      {/* Route the price-motivated visitor to the working buy flow — the
+          "fixed pricing" claim above is demonstrated on /pricing, not here. */}
+      <div className="relative pb-20 pt-2 text-center sm:pb-24">
+        <Button label="See fixed prices in the catalog" href="/pricing" variant="secondary" />
+      </div>
 
       <ServiceDetailModal
         service={detailService}

@@ -18,7 +18,7 @@
         }
       ]
     },
-    "sub": "Join free and order any service at a fixed price you see before you commit. Add a membership tier for a dedicated team and a standing discount. You sell and scale. We handle fulfillment."
+    "sub": "Every service has one fixed price you see before you commit. Add a membership tier for a dedicated team and a standing discount. You sell and scale. We handle fulfillment."
   },
   "note": "These figures are a guide to help you plan. Every service is productized with a fixed price and a clear SLA, confirmed in the partner portal when you order. No hourly rates, no change-order surprises.",
   "faq": {
@@ -26,9 +26,18 @@
     "eyebrow": "Pricing questions",
     "headline": {
       "parts": [
-        { "type": "text", "value": "The fine print, " },
-        { "type": "highlight", "value": "upfront" },
-        { "type": "text", "value": "." }
+        {
+          "type": "text",
+          "value": "The fine print, "
+        },
+        {
+          "type": "highlight",
+          "value": "upfront"
+        },
+        {
+          "type": "text",
+          "value": "."
+        }
       ]
     },
     "sub": "The questions agency owners ask before they join.",
@@ -56,12 +65,12 @@
       {
         "id": "pricing-faq-discount",
         "question": "How does the discount actually work?",
-        "answer": "Standard takes 10% off every service order and VIP takes 15%, applied automatically for the life of your membership. At regular volume the discount can cover the membership fee on its own, which is exactly what the calculator above shows."
+        "answer": "Standard takes 10% off every service order and VIP takes 15%, applied automatically for the life of your membership. At regular volume the discount can cover the membership fee on its own, which is exactly what the estimate above shows."
       },
       {
         "id": "pricing-faq-signup",
         "question": "What happens the moment I sign up?",
-        "answer": "You get a free partner account with the full catalog and its fixed pricing in front of you. Browse, order your first white-label project in one click, and we handle fulfillment under your brand. No call required to begin."
+        "answer": "You get a free partner account with the full catalog and its fixed pricing in front of you. Your account is activated on a short onboarding call with our founding team, so you leave with everything set up and ready to order under your brand."
       }
     ]
   },
@@ -70,15 +79,34 @@
     "eyebrow": "Start now",
     "headline": {
       "parts": [
-        { "type": "text", "value": "Join free. Order when you have " },
-        { "type": "highlight", "value": "work" },
-        { "type": "text", "value": "." }
+        {
+          "type": "text",
+          "value": "Join free. Order when you have "
+        },
+        {
+          "type": "highlight",
+          "value": "work"
+        },
+        {
+          "type": "text",
+          "value": "."
+        }
       ]
     },
     "sub": "Signing up costs nothing and commits you to nothing. Order when a client says yes, and cancel the moment you do not. You sell and scale. We handle fulfillment.",
     "ctas": [
-      { "id": "pricing-close-join", "label": "Join free", "href": "#onboard-free", "variant": "primary" },
-      { "id": "pricing-close-call", "label": "Book a call", "href": "#book", "variant": "secondary" }
+      {
+        "id": "pricing-close-join",
+        "label": "Join free",
+        "href": "#onboard-free",
+        "variant": "primary"
+      },
+      {
+        "id": "pricing-close-call",
+        "label": "Book a call",
+        "href": "#book",
+        "variant": "secondary"
+      }
     ]
   },
   "services": [

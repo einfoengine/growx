@@ -3,9 +3,18 @@
   "eyebrow": "How it works",
   "headline": {
     "parts": [
-      { "type": "text", "value": "From one-click order to " },
-      { "type": "highlight", "value": "shipped" },
-      { "type": "text", "value": "." }
+      {
+        "type": "text",
+        "value": "From partner call to "
+      },
+      {
+        "type": "highlight",
+        "value": "shipped"
+      },
+      {
+        "type": "text",
+        "value": "."
+      }
     ]
   },
   "sub": "No quotes to chase, no vendors to manage. A productized workflow built for agencies juggling multiple client timelines.",
@@ -13,13 +22,13 @@
     {
       "id": "step-join",
       "number": "01",
-      "title": "Join free",
-      "blurb": "Create your free partner account. Full portal access to the entire catalog, no commitment and no card."
+      "title": "Book a partner call",
+      "blurb": "30 minutes with our founding team. We map what you are fulfilling today and set up your partner account on the call."
     },
     {
       "id": "step-order",
       "number": "02",
-      "title": "Order in one click",
+      "title": "Order at fixed prices",
       "blurb": "Pick a service from the catalog. Fixed scope, fixed price, clear SLA. No back-and-forth quotes."
     },
     {

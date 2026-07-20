@@ -67,11 +67,11 @@ export default function HowItWorks() {
               id="how-it-works-headline"
               className="mt-4 text-3xl font-bold leading-[1.15] tracking-tight sm:text-4xl md:text-5xl"
             >
-              From one-click order to shipped.
+              From partner call to shipped.
             </h2>
             <p className="mt-5 text-base text-white/70 sm:text-lg">
-              No quotes to chase, no vendors to manage. A productized workflow built
-              for agencies juggling multiple client timelines.
+              You sell it, we produce it, your client only ever sees you. No
+              quotes to chase, no vendors to manage.
             </p>
           </div>
         </ScrollFadeIn>

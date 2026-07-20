@@ -21,7 +21,7 @@
     ]
   },
   "tagline": "We make sure you fulfill your promise to your clients.",
-  "sub": "growX is the 100% white-label fulfillment partner for agency owners. Bring us the client work you already sell, and we deliver it all under your brand. You grow without hiring.",
+  "sub": "Agencies now sell without limits. We have your back. Scale fast, close more deals, and leave the fulfillment chaos to us (your 100% white-label partner).",
   "ctas": [
     {
       "id": "mod-hero-cta-primary",
@@ -39,7 +39,7 @@
   "stats": [
     {
       "id": "mod-hero-stat-services",
-      "label": "11 services, one team"
+      "label": "Every service, one team"
     },
     {
       "id": "mod-hero-stat-whitelabel",

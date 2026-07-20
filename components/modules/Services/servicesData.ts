@@ -137,7 +137,7 @@ export const GROUPS: Group[] = [
       },
       {
         n: "S04",
-        title: "Media Buying & PPC",
+        title: "Meta Ads & PPC",
         desc: "Meta, Google, paid acquisition",
         Icon: Target,
         image: "/assets/services/s04.jpg",
@@ -215,7 +215,7 @@ export const GROUPS: Group[] = [
     services: [
       {
         n: "S07",
-        title: "Animated Video Production",
+        title: "Video Production",
         desc: "Explainers, demos, promos",
         Icon: Clapperboard,
         image: "/assets/services/s07.jpg",

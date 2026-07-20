@@ -2,17 +2,20 @@ import Link from "next/link";
 import {
   ArrowRight,
   ChevronDown,
+  Clapperboard,
   Code,
+  Film,
   Funnel,
   PenTool,
   Search,
   Share2,
   Target,
+  Terminal,
   type LucideIcon,
 } from "lucide-react";
 import type { Link as NavLink, ServicesContent, ServiceIcon } from "@/lib/content";
 
-/** Only the icons the six real service pages use. Keeping this local (rather
+/** Only the icons the nine real service pages use. Keeping this local (rather
  *  than importing the Services module's larger map) keeps the header lean. */
 const ICON_BY_KEY: Partial<Record<ServiceIcon, LucideIcon>> = {
   code: Code,
@@ -21,6 +24,9 @@ const ICON_BY_KEY: Partial<Record<ServiceIcon, LucideIcon>> = {
   "pen-tool": PenTool,
   "share-2": Share2,
   funnel: Funnel,
+  clapperboard: Clapperboard,
+  film: Film,
+  terminal: Terminal,
 };
 
 type Props = {
@@ -80,7 +86,7 @@ export default function ServicesMegaMenu({ item, services }: Props) {
                   key={child.id}
                   id={child.id}
                   href={child.href}
-                  className="group/card flex gap-3 rounded-xl p-3 transition-colors hover:bg-surface focus-visible:bg-surface focus-visible:outline-2 focus-visible:outline-offset-[-2px] focus-visible:outline-brand"
+                  className="group/card flex gap-3 rounded-xl p-3 transition-colors hover:bg-surface focus-visible:bg-surface focus-visible:outline-2 focus-visible:-outline-offset-2 focus-visible:outline-brand"
                 >
                   <span className="mt-0.5 inline-flex h-9 w-9 shrink-0 items-center justify-center rounded-lg border border-border bg-surface text-brand transition-colors group-hover/card:border-brand/40 group-hover/card:bg-brand/10">
                     {Icon ? <Icon size={17} aria-hidden="true" /> : null}
@@ -106,7 +112,7 @@ export default function ServicesMegaMenu({ item, services }: Props) {
           {extras.length > 0 && (
             <div className="flex items-center justify-between gap-4 border-t border-border bg-surface/50 px-5 py-3.5">
               <p className="text-xs text-muted">
-                Video, HighLevel operations, and more in the full catalog.
+                Every service, fixed pricing, in the full catalog.
               </p>
               <div className="flex shrink-0 items-center gap-4">
                 {extras.map((extra) => (
