@@ -4,6 +4,16 @@ import { motion, type Variants } from "framer-motion";
 import { ArrowRight, Check } from "lucide-react";
 import ScrollFadeIn from "@/components/elements/ScrollFadeIn";
 import Eyebrow from "@/components/elements/Eyebrow";
+import MagneticTiltCard from "@/components/modules/Services/MagneticTiltCard";
+
+/** Cursor-following emerald spotlight: the card tracks the pointer via CSS
+ *  vars, and a radial glow rides them (revealed by group-hover). */
+function setSpotlight(e: React.MouseEvent<HTMLElement>) {
+  const el = e.currentTarget;
+  const r = el.getBoundingClientRect();
+  el.style.setProperty("--sx", `${e.clientX - r.left}px`);
+  el.style.setProperty("--sy", `${e.clientY - r.top}px`);
+}
 
 /** The four ceilings fulfillment puts on an agency, each told as the solution:
  *  what growX takes off the founder's plate and what that buys them.
@@ -55,7 +65,7 @@ function ArtSvg({ children }: { children: React.ReactNode }) {
       initial="hidden"
       whileInView="visible"
       viewport={{ once: true, margin: "-80px" }}
-      className="h-24 w-full transition-[filter] duration-300 group-hover:[filter:drop-shadow(0_0_10px_rgba(16,185,129,0.45))] sm:h-28"
+      className="h-20 w-full transition-[filter] duration-300 group-hover:filter-[drop-shadow(0_0_10px_rgba(16,185,129,0.45))] sm:h-24"
     >
       {children}
     </motion.svg>
@@ -159,62 +169,63 @@ const OffYourPlateArt = (
 
 type Solution = {
   n: string;
+  /** The ceiling, phrased as the pain — rendered struck-through above the
+   *  solution title, so every card performs the removal typographically. */
+  pain: string;
   title: string;
   body: string;
   points: string[];
   art: React.ReactNode;
-  /** Bento span + orientation: wide cards lay art beside the copy. */
-  wide: boolean;
 };
 
 const SOLUTIONS: Solution[] = [
   {
     n: "01",
+    pain: "Capacity caps your growth",
     title: "Capacity that scales with your sales",
-    body: "You close it, we deliver it. Our in-house production line grows with your pipeline, so demand is your only ceiling.",
+    body: "You close it, we deliver it. Demand becomes your only ceiling.",
     points: [
       "Take every deal you can win",
       "No hiring to add delivery muscle",
       "Rushed work never churns a client again",
     ],
     art: CapacityArt,
-    wide: true,
   },
   {
     n: "02",
+    pain: "The freelancer tax",
     title: "One team, not a freelancer patchwork",
-    body: "A specialist team that has run fulfillment since 2019 replaces the contractor roulette, with fixed prices and internal QA on every order.",
+    body: "One in-house team, running fulfillment since 2019, replaces the contractor roulette.",
     points: [
       "Fixed prices protect your margin",
       "Consistent quality and turnaround",
       "Zero hours lost managing vendors",
     ],
     art: OneTeamArt,
-    wide: false,
   },
   {
     n: "03",
+    pain: "A menu you cannot fulfill",
     title: "Say yes to the whole menu",
-    body: "Websites, SEO, ads, content, social, video, and HighLevel. Whatever your client asks for, you sell it and we produce it under your brand.",
+    body: "Whatever your client asks for, you sell it and we produce it under your brand.",
     points: [
       "Never lose an account to a bigger agency",
       "Every upsell becomes revenue, not a scramble",
       "New services without learning them overnight",
     ],
     art: FullMenuArt,
-    wide: false,
   },
   {
     n: "04",
+    pain: "Fulfillment eats your week",
     title: "You sell. We carry the rest.",
-    body: "Sales, strategy, and relationships stay yours. Production, deadlines, and delivery become ours. Fulfillment stops eating you and starts feeding you.",
+    body: "Sales and relationships stay yours. Production and deadlines become ours.",
     points: [
       "Your week goes to growth, not delivery",
       "A business that runs without burning you out",
       "Your client only ever sees you",
     ],
     art: OffYourPlateArt,
-    wide: true,
   },
 ];
 
@@ -227,15 +238,22 @@ export default function FulfillmentReasons() {
       // Deep Pine, the brand's dark green — the one green section on home.
       className="relative isolate overflow-clip bg-[#07533a] text-background"
     >
-      {/* Emerald bloom + faint white hairline grid, the site's dark-section
-          language carried onto the green. */}
-      <div
-        aria-hidden="true"
-        className="pointer-events-none absolute -z-10 left-1/2 -top-24 h-72 w-300 max-w-none -translate-x-1/2 bg-brand/20 blur-[130px]"
-      />
+      {/* Living backdrop: three oversized aurora blobs drifting on their own
+          clocks over the Deep Pine, so the glass cards always have motion
+          behind them to refract. */}
+      <div aria-hidden="true" className="pointer-events-none absolute inset-0 -z-10 overflow-hidden">
+        <div className="animate-aurora absolute -top-32 left-[12%] h-96 w-120 rounded-full bg-brand/25 blur-[110px]" />
+        <div className="animate-aurora absolute right-[8%] top-1/4 h-80 w-96 rounded-full bg-[#6ee7b7]/15 blur-[120px] [animation-delay:-9s] [animation-duration:26s]" />
+        <div className="animate-aurora absolute -bottom-24 left-1/3 h-96 w-140 rounded-full bg-[#022c22]/60 blur-[130px] [animation-delay:-16s] [animation-duration:32s]" />
+      </div>
       <div
         aria-hidden="true"
         className="pointer-events-none absolute inset-0 -z-10 bg-[linear-gradient(to_right,rgba(255,255,255,0.05)_1px,transparent_1px),linear-gradient(to_bottom,rgba(255,255,255,0.05)_1px,transparent_1px)] bg-size-[56px_56px] mask-[radial-gradient(ellipse_70%_60%_at_50%_40%,#000,transparent_85%)]"
+      />
+      {/* Film grain for a cinematic finish on the green. */}
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute inset-0 -z-10 bg-film-grain opacity-30"
       />
 
       <div className="container-1200 py-24 sm:py-28 lg:py-32">
@@ -262,41 +280,67 @@ export default function FulfillmentReasons() {
           </div>
         </ScrollFadeIn>
 
-        {/* Bento: wide + narrow, then narrow + wide, so the grid reads as a
-            composition instead of a template. */}
-        <div className="mt-14 grid gap-5 lg:grid-cols-12">
+        {/* All four at a glance: one row on desktop, 2x2 on tablet. */}
+        <div className="mt-14 grid gap-4 sm:grid-cols-2 lg:grid-cols-4 lg:gap-5">
           {SOLUTIONS.map((s, i) => (
-            <div key={s.n} className={s.wide ? "lg:col-span-7" : "lg:col-span-5"}>
+            <div key={s.n}>
               <ScrollFadeIn delay={0.1 + i * 0.08} className="h-full">
+                <MagneticTiltCard className="h-full">
                 <article
                   aria-labelledby={`fulfillment-solution-${s.n}-title`}
-                  className="group relative flex h-full flex-col overflow-hidden rounded-3xl border border-white/10 bg-white/5 p-7 transition-all duration-300 hover:-translate-y-1 hover:border-brand/40 hover:bg-white/[0.08] hover:shadow-[0_16px_40px_-12px_rgba(0,0,0,0.4)] sm:p-8"
+                  onMouseMove={setSpotlight}
+                  // Glass: frosted blur over the drifting aurora, a hairline
+                  // top highlight (inset shadow) and a soft drop into the green.
+                  className="group relative flex h-full flex-col overflow-hidden rounded-3xl border border-white/15 bg-white/8 p-6 shadow-[inset_0_1px_0_rgba(255,255,255,0.18),0_12px_40px_-12px_rgba(1,32,23,0.5)] backdrop-blur-xl transition-colors duration-300 hover:border-brand/40 hover:bg-white/12"
                 >
+                  {/* Cursor-following emerald spotlight. */}
+                  <div
+                    aria-hidden="true"
+                    className="pointer-events-none absolute inset-0 opacity-0 transition-opacity duration-300 group-hover:opacity-100"
+                    style={{
+                      background:
+                        "radial-gradient(260px circle at var(--sx, 50%) var(--sy, 50%), rgba(16,185,129,0.16), transparent 70%)",
+                    }}
+                  />
+
                   {/* Oversized outlined numeral, a watermark not content. */}
                   <span
                     aria-hidden="true"
-                    className="pointer-events-none absolute -top-3 right-4 text-7xl font-extrabold leading-none text-transparent [-webkit-text-stroke:1.5px_rgba(255,255,255,0.14)] sm:text-8xl"
+                    className="pointer-events-none absolute -top-3 right-4 text-6xl font-extrabold leading-none text-transparent [-webkit-text-stroke:1.5px_rgba(255,255,255,0.14)]"
                   >
                     {s.n}
                   </span>
 
-                  <div className={s.wide ? "flex h-full flex-col gap-6 lg:flex-row-reverse lg:items-center" : "flex h-full flex-col"}>
-                    <div className={s.wide ? "lg:w-2/5 lg:shrink-0" : ""}>{s.art}</div>
-                    <div className={s.wide ? "lg:flex-1" : ""}>
+                  <div className="flex h-full flex-col">
+                    <div>{s.art}</div>
+                    <div>
+                      {/* The pain, struck through as the card enters — the
+                          removal happens in type before the title answers. */}
+                      <p className="mt-5 font-mono text-[11px] font-semibold uppercase tracking-widest text-white/45">
+                        <span className="relative inline-block">
+                          {s.pain}
+                          <motion.span
+                            aria-hidden="true"
+                            initial={{ scaleX: 0 }}
+                            whileInView={{ scaleX: 1 }}
+                            viewport={{ once: true, margin: "-80px" }}
+                            transition={{ delay: 0.55, duration: 0.4, ease: "easeInOut" }}
+                            className="absolute inset-x-0 top-1/2 h-0.5 origin-left bg-[#d1fae5]/80"
+                          />
+                        </span>
+                      </p>
                       <h3
                         id={`fulfillment-solution-${s.n}-title`}
-                        // Wide cards space art/copy via the wrapper's gap; the
-                        // stacked narrow cards need the margin themselves.
-                        className={`text-xl font-bold tracking-tight sm:text-2xl ${s.wide ? "" : "mt-6"}`}
+                        className="mt-2 text-lg font-bold leading-snug tracking-tight sm:text-xl"
                       >
                         {s.title}
                       </h3>
-                      <p className="mt-3 text-[15px] leading-relaxed text-white/70 sm:text-base">
+                      <p className="mt-2.5 text-sm leading-relaxed text-white/70">
                         {s.body}
                       </p>
-                      <ul className="mt-5 space-y-2">
+                      <ul className="mt-4 space-y-1.5">
                         {s.points.map((point) => (
-                          <li key={point} className="flex items-start gap-2.5 text-sm">
+                          <li key={point} className="flex items-start gap-2 text-[13px] leading-snug">
                             <Check
                               size={15}
                               strokeWidth={3}
@@ -310,6 +354,7 @@ export default function FulfillmentReasons() {
                     </div>
                   </div>
                 </article>
+                </MagneticTiltCard>
               </ScrollFadeIn>
             </div>
           ))}

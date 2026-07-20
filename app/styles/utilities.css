@@ -92,6 +92,27 @@
   animation: text-gradient-rotate 8s linear infinite;
 }
 
+/* Slow aurora drift for oversized blurred glow blobs behind dark sections.
+   Vary duration/delay per blob (e.g. [animation-duration:26s]
+   [animation-delay:-8s]) so the field never visibly repeats. Frozen by the
+   reduced-motion safety net below. */
+@keyframes aurora-drift {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+  33% {
+    transform: translate3d(70px, -45px, 0) scale(1.15);
+  }
+  66% {
+    transform: translate3d(-60px, 35px, 0) scale(0.9);
+  }
+}
+
+@utility animate-aurora {
+  animation: aurora-drift 18s ease-in-out infinite;
+}
+
 /* Film grain: an inline fractal-noise SVG at low opacity, overlay-blended.
    Adds a subtle cinematic texture over a dark scene. Cover the whole layer. */
 @utility bg-film-grain {
