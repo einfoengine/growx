@@ -1,20 +1,31 @@
-import { ArrowRight, Info } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 import type { PricingPageContent, ServicePageContent } from "@/lib/content";
 import SectionHeader from "@/components/elements/SectionHeader";
 import Button from "@/components/elements/Button";
-import Pricing from "@/components/modules/Pricing";
+import PricingPlans from "@/components/modules/Pricing";
+import HowItWorks from "@/components/modules/HowItWorks/HowItWorks";
+import Testimonials from "@/components/modules/Testimonials/Testimonials";
+import CtaBanner from "@/components/modules/CtaBanner/CtaBanner";
+import Faq from "@/components/modules/Faq";
 import InnerHeroBackdrop from "@/components/modules/Hero/InnerHeroBackdrop";
-import PricingCalculator from "./PricingCalculator";
+import PricingBand from "./PricingBand";
+import SavingsCalculator from "./SavingsCalculator";
+import TierMatrix from "./TierMatrix";
+import ServicePreview from "./ServicePreview";
 
 type Props = {
   pageData: PricingPageContent;
   services: ServicePageContent[];
 };
 
-export default function PricingPage({ pageData, services }: Props) {
+/** /pricing, built to convert: credibility and reframe up top, the offer high,
+ *  the savings calculator doing the persuading, then completeness, proof, and a
+ *  free-signup close. Every block reuses a shared module so the page can never
+ *  drift from the rest of the site. */
+export default function PricingPage({ pageData }: Props) {
   return (
     <>
-      {/* ── Hero (dark, emerald-lit — same family as the home hero) ────── */}
+      {/* 01 ── Hero: the reframe thesis, primary CTA is Join free ──────── */}
       <section
         id="gw-pricing-hero"
         data-nav-theme="dark"
@@ -32,46 +43,54 @@ export default function PricingPage({ pageData, services }: Props) {
             subClassName="mx-auto mt-5 max-w-2xl text-base leading-relaxed text-white/70 sm:text-lg"
             align="center"
           />
-        </div>
-      </section>
-
-      {/* ── Partnership tiers ────────────────────────────────── */}
-      <Pricing noPaddingTop />
-
-      {/* ── Estimate calculator ──────────────────────────────── */}
-      <PricingCalculator pageData={pageData} services={services} />
-
-      {/* ── Disclaimer note ──────────────────────────────────── */}
-      <section id="gw-pricing-note" className="bg-surface">
-        <div className="container-1200 py-8">
-          <div className="flex items-start gap-3 rounded-xl border border-border bg-background p-4">
-            <Info size={15} className="mt-0.5 shrink-0 text-muted" />
-            <p className="text-sm leading-relaxed text-muted">{pageData.note}</p>
+          <div className="mt-9 flex flex-col items-center justify-center gap-3 sm:flex-row">
+            <Button label="Join free" href="#onboard-free" icon={<ArrowRight size={16} />} darkBg />
+            <Button label="Compare tiers" href="#gw-mod-pricing" variant="secondary" darkBg />
           </div>
         </div>
       </section>
 
-      {/* ── CTA ──────────────────────────────────────────────── */}
-      <section id="gw-pricing-cta" className="relative overflow-hidden bg-background">
-        <div
-          aria-hidden="true"
-          className="pointer-events-none absolute -z-10 left-1/2 top-0 h-72 w-150 -translate-x-1/2 rounded-full bg-brand/8 blur-[90px]"
-        />
-        <div className="container-1200 py-24 text-center">
-          <SectionHeader
-            eyebrow="Not sure where to start?"
-            headlineText="Start free, upgrade when you're ready."
-            headlineClassName="mt-4 text-3xl font-bold leading-[1.15] tracking-tight text-foreground sm:text-4xl"
-            sub="Create a free partner account, browse the catalog, and place your first white-label order. Move up to Standard or VIP whenever you want more."
-            subClassName="mx-auto mt-5 max-w-xl text-base text-muted"
-            align="center"
-          />
-          <div className="mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row">
-            <Button label="Choose your tier" href="#gw-mod-pricing" icon={<ArrowRight size={15} />} />
-            <Button label="Book a discovery call" href="#book" variant="secondary" />
-          </div>
-        </div>
-      </section>
+      {/* 02 ── Reframe strip: three objections, killed before they form ── */}
+      <PricingBand
+        dark
+        items={[
+          { label: "$0 to join" },
+          { label: "Fixed price per service" },
+          { label: "Cancel anytime" },
+        ]}
+      />
+
+      {/* 03 ── Tier module (same component as home, no manufactured badge) ─ */}
+      <PricingPlans hidePopularBadge />
+
+      {/* 04 ── Savings calculator: the page's most persuasive element ───── */}
+      <SavingsCalculator />
+
+      {/* 05 ── Comparison matrix: where completeness lives ──────────────── */}
+      <TierMatrix />
+
+      {/* 06 ── Per-service preview: proves fixed pricing is real ────────── */}
+      <ServicePreview />
+
+      {/* 07 ── How it works (shared component, already tells this story) ── */}
+      <HowItWorks />
+
+      {/* 08 ── Proof and guarantees ─────────────────────────────────────── */}
+      <Testimonials />
+      <PricingBand
+        withChecks
+        items={[
+          { label: "100% white-label", sub: "Full commercial rights, your brand on everything" },
+          { label: "We stay invisible", sub: "Your client never learns growX exists" },
+          { label: "Cancel anytime", sub: "Month to month, no lock-in" },
+        ]}
+      />
+
+      {/* 09 ── FAQ (shared component, pricing-specific data) ────────────── */}
+      <Faq data={pageData.faq} />
+
+      {/* 10 ── Closing CTA (shared banner, pricing-specific data) ───────── */}
+      <CtaBanner data={pageData.closingCta} />
     </>
   );
 }

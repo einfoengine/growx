@@ -19,26 +19,6 @@
   },
   "sub": "One simple idea: the more you commit, the more of your fulfillment we take off your plate. Each tier moves you up a rung, from a reliable vendor, to a dedicated team member, to a full production department.",
   "clarifier": "Your membership buys the team: account management, partner pricing, and priority. The work itself is ordered per project from the portal, at fixed prices with clear SLAs.",
-  "ladder": [
-    {
-      "id": "rung-vendor",
-      "tier": "Free",
-      "name": "The Vendor",
-      "description": "Order any service, anytime, at standard pricing. Zero friction, zero commitment."
-    },
-    {
-      "id": "rung-team-member",
-      "tier": "Standard",
-      "name": "The Team Member",
-      "description": "A dedicated account manager who knows your business, plus partner pricing."
-    },
-    {
-      "id": "rung-department",
-      "tier": "VIP",
-      "name": "The Department",
-      "description": "We talk to your clients under your brand. You sell, we do everything else."
-    }
-  ],
   "tiers": [
     {
       "id": "pricing-tier-free",
@@ -56,7 +36,7 @@
       ],
       "cta": {
         "id": "cta-free",
-        "label": "Start free",
+        "label": "Join free",
         "href": "#onboard-free",
         "variant": "ghost"
       }
@@ -78,7 +58,7 @@
       ],
       "cta": {
         "id": "cta-standard",
-        "label": "Start Standard",
+        "label": "Choose Standard",
         "href": "#onboard-standard",
         "variant": "primary"
       },
@@ -101,8 +81,8 @@
       ],
       "cta": {
         "id": "cta-vip",
-        "label": "Book a VIP call",
-        "href": "#book",
+        "label": "Choose VIP",
+        "href": "#onboard-vip",
         "variant": "ghost"
       }
     }

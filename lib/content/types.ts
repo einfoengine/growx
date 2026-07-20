@@ -351,6 +351,8 @@ export type PricingPageContent = {
   };
   services: PricingServiceConfig[];
   note: string;
+  faq: FaqContent;
+  closingCta: CtaBannerContent;
 };
 
 export type PortfolioCategory = "web" | "social" | "video";

@@ -8,14 +8,27 @@ import PlanButton from "./PlanButton";
 /** Homepage pricing cards. Tiers come from data/modules/pricing.json — the same
  *  source the service-page <Pricing> module and the onboarding modal read, so
  *  names and prices cannot drift apart across the funnel. */
-export default async function PricingPlans() {
+export default async function PricingPlans({
+  noPaddingTop,
+  noPaddingBottom,
+  hidePopularBadge,
+}: {
+  noPaddingTop?: boolean;
+  noPaddingBottom?: boolean;
+  /** Suppress the "Popular" tag but keep the featured card's emerald lift.
+   *  Used on /pricing, where the savings calculator recommends a tier so the
+   *  page never has to stamp a manufactured badge on a new program. */
+  hidePopularBadge?: boolean;
+} = {}) {
   const data = await getPricing();
+  const pt = noPaddingTop ? "pt-0" : "pt-24 sm:pt-28 lg:pt-32";
+  const pb = noPaddingBottom ? "pb-0" : "pb-24 sm:pb-28 lg:pb-32";
 
   return (
     <section
       id="gw-mod-pricing"
       aria-labelledby="pricing-headline"
-      className="relative isolate overflow-hidden border-b border-border bg-background py-24 text-foreground sm:py-28 lg:py-32"
+      className={`relative isolate overflow-hidden border-b border-border bg-background text-foreground ${pt} ${pb}`}
     >
       {/* Faint grid + soft brand glow backdrop. */}
       <div
@@ -83,7 +96,7 @@ export default async function PricingPlans() {
                     </h3>
                     <span className="badge-brand">{tier.name}</span>
                   </div>
-                  {featured && (
+                  {featured && !hidePopularBadge && (
                     <span className="shrink-0 rounded-full bg-gradient-brand px-2.5 py-1 text-[11px] font-bold uppercase tracking-wide text-black">
                       Popular
                     </span>

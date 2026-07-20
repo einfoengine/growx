@@ -132,13 +132,17 @@ export default function BookingModal() {
                 calendar sends the confirmation and reminders itself. The
                 cross-origin widget can't be themed directly, so its rendered
                 pixels are inverted (hue-rotate keeps brand hues intact) to
-                match the dark chrome — same trick as the home booking section. */}
-            <div className="min-h-0 flex-1 overflow-y-auto bg-white/5">
+                match the dark chrome — same trick as the home booking section.
+                The widget also ships a chunk of empty top padding we can't
+                reach from out here; the negative margin pulls it up so the
+                overflow clips that dead band, and the wrapper's own small
+                top padding gives the calendar clean room under the header. */}
+            <div className="min-h-0 flex-1 overflow-y-auto bg-white/5 pt-6">
               <iframe
                 src={GHL_BOOKING_URL}
                 title="growX Partnership Call booking calendar"
                 id="gx-booking-calendar"
-                className="block min-h-150 w-full border-0"
+                className="-mt-28 block min-h-150 w-full border-0"
                 scrolling="auto"
                 style={{ filter: "invert(1) hue-rotate(180deg)" }}
               />

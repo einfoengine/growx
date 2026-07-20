@@ -6,11 +6,11 @@
       "parts": [
         {
           "type": "text",
-          "value": "Fixed pricing that scales "
+          "value": "Your fulfillment, priced "
         },
         {
           "type": "highlight",
-          "value": "with you"
+          "value": "in the open"
         },
         {
           "type": "text",
@@ -18,9 +18,69 @@
         }
       ]
     },
-    "sub": "Join free and order from a productized catalog with fixed prices and clear SLAs. Upgrade to a partnership tier for a dedicated team. Estimate a service below, or pick your tier."
+    "sub": "Join free and order any service at a fixed price you see before you commit. Add a membership tier for a dedicated team and a standing discount. You sell and scale. We handle fulfillment."
   },
   "note": "These figures are a guide to help you plan. Every service is productized with a fixed price and a clear SLA, confirmed in the partner portal when you order. No hourly rates, no change-order surprises.",
+  "faq": {
+    "id": "pricing-faq",
+    "eyebrow": "Pricing questions",
+    "headline": {
+      "parts": [
+        { "type": "text", "value": "The fine print, " },
+        { "type": "highlight", "value": "upfront" },
+        { "type": "text", "value": "." }
+      ]
+    },
+    "sub": "The questions agency owners ask before they join.",
+    "items": [
+      {
+        "id": "pricing-faq-single-service",
+        "question": "Can I order a single service without a paid membership?",
+        "answer": "Yes. The Free tier gives you full portal access at standard fixed pricing with no monthly fee. Order a single service whenever you have the work. Paid tiers add a dedicated team and a standing discount, not permission to order."
+      },
+      {
+        "id": "pricing-faq-cancellation",
+        "question": "How does cancellation work?",
+        "answer": "Membership is month to month with no lock-in. Cancel anytime from the portal and the change takes effect on your next billing cycle. Your white-label rights on any work already delivered never expire."
+      },
+      {
+        "id": "pricing-faq-delivery",
+        "question": "What are your delivery times?",
+        "answer": "Every service carries a fixed SLA that you see before you order, so the timeline is set upfront rather than quoted after. Most work turns around in days, and higher tiers move to the front of the queue with reserved capacity."
+      },
+      {
+        "id": "pricing-faq-highlevel",
+        "question": "Are you affiliated with HighLevel or GoHighLevel?",
+        "answer": "No. growX is an independent white-label fulfillment partner. HighLevel is one of the platforms we build and operate on for you, alongside the rest of the catalog. We are not owned by, or a reseller of, HighLevel."
+      },
+      {
+        "id": "pricing-faq-discount",
+        "question": "How does the discount actually work?",
+        "answer": "Standard takes 10% off every service order and VIP takes 15%, applied automatically for the life of your membership. At regular volume the discount can cover the membership fee on its own, which is exactly what the calculator above shows."
+      },
+      {
+        "id": "pricing-faq-signup",
+        "question": "What happens the moment I sign up?",
+        "answer": "You get a free partner account with the full catalog and its fixed pricing in front of you. Browse, order your first white-label project in one click, and we handle fulfillment under your brand. No call required to begin."
+      }
+    ]
+  },
+  "closingCta": {
+    "id": "pricing-close",
+    "eyebrow": "Start now",
+    "headline": {
+      "parts": [
+        { "type": "text", "value": "Join free. Order when you have " },
+        { "type": "highlight", "value": "work" },
+        { "type": "text", "value": "." }
+      ]
+    },
+    "sub": "Signing up costs nothing and commits you to nothing. Order when a client says yes, and cancel the moment you do not. You sell and scale. We handle fulfillment.",
+    "ctas": [
+      { "id": "pricing-close-join", "label": "Join free", "href": "#onboard-free", "variant": "primary" },
+      { "id": "pricing-close-call", "label": "Book a call", "href": "#book", "variant": "secondary" }
+    ]
+  },
   "services": [
     {
       "slug": "website",

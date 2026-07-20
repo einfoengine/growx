@@ -3,7 +3,7 @@ import LogoMarquee from "@/components/modules/LogoMarquee";
 import PainPoints from "@/components/modules/PainPoints";
 import Services from "@/components/modules/Services";
 import TextMarquee from "@/components/modules/TextMarquee/TextMarquee";
-import Pricing from "@/components/modules/Pricing";
+import PricingPlans from "@/components/modules/Pricing";
 import Comparison from "@/components/modules/Comparison";
 import Process from "@/components/modules/Process";
 import Faq from "@/components/modules/Faq";
@@ -113,7 +113,7 @@ export default async function LandingPageTemplate({ data }: Props) {
       <PainPoints data={whyUsData} />
       <Services data={deliverablesData} />
       <TextMarquee />
-      <Pricing noPaddingTop />
+      <PricingPlans noPaddingTop />
       <Comparison noPaddingTop />
       <Process />
       <Faq data={faqData} />
