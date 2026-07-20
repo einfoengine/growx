@@ -58,6 +58,40 @@
   animation: text-shine 7s ease-in-out infinite;
 }
 
+/* The button gradient (bg-gradient-brand's linear layer: from -> strong -> to
+   at 125deg), clipped to text, with the gradient's DIRECTION slowly rotating.
+   The angle is a registered custom property so keyframes can animate it; a
+   full 360deg turn makes the loop seamless. Browsers without @property show
+   the static 125deg gradient (the var() fallback). Frozen by the
+   reduced-motion safety net below. */
+@property --gw-text-grad-angle {
+  syntax: "<angle>";
+  inherits: false;
+  initial-value: 125deg;
+}
+
+@keyframes text-gradient-rotate {
+  to {
+    --gw-text-grad-angle: 485deg;
+  }
+}
+
+@utility text-gradient-brand-rotate {
+  /* Same ramp as the buttons, but the light end starts near-white mint
+     (#d1fae5) so the rotating gradient reads light-to-deep on text. */
+  background-image: linear-gradient(
+    var(--gw-text-grad-angle, 125deg),
+    #d1fae5 0%,
+    var(--brand-grad-from) 42%,
+    var(--brand-strong) 70%,
+    var(--brand-grad-to) 100%
+  );
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  animation: text-gradient-rotate 8s linear infinite;
+}
+
 /* Film grain: an inline fractal-noise SVG at low opacity, overlay-blended.
    Adds a subtle cinematic texture over a dark scene. Cover the whole layer. */
 @utility bg-film-grain {

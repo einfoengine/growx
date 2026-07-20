@@ -1,360 +1,333 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
-import Image from "next/image";
-import {
-  motion,
-  useScroll,
-  useTransform,
-  type MotionValue,
-} from "framer-motion";
-import { Check } from "lucide-react";
-import {
-  useActiveWhenVisible,
-  useMediaQuery,
-  usePrefersReducedMotion,
-} from "@/lib/hooks/useActiveWhenVisible";
+import { motion, type Variants } from "framer-motion";
+import { ArrowRight, Check } from "lucide-react";
 import ScrollFadeIn from "@/components/elements/ScrollFadeIn";
 import Eyebrow from "@/components/elements/Eyebrow";
 
-type Reason = {
-  n: string;
-  title: string;
-  desc: string;
-  image: string;
-  points: string[];
+/** The four ceilings fulfillment puts on an agency, each told as the solution:
+ *  what growX takes off the founder's plate and what that buys them.
+ *
+ *  Creative treatment: a bento grid (wide, narrow / narrow, wide) on Deep
+ *  Pine, and self-drawing line art. Each illustration sketches its white
+ *  "problem" strokes first, then the emerald "growX" strokes complete the
+ *  picture as the card scrolls into view, so the drawing itself performs the
+ *  before-to-after turn the copy is making. */
+
+const ART_STROKE = {
+  fill: "none",
+  strokeWidth: 2,
+  strokeLinecap: "round",
+  strokeLinejoin: "round",
+} as const;
+
+/* Stroke draw-on, staggered by a per-shape delay. Dashed shapes fade instead:
+   animating pathLength overrides strokeDasharray, which would erase the dash. */
+const draw: Variants = {
+  hidden: { pathLength: 0, opacity: 0 },
+  visible: (delay: number) => ({
+    pathLength: 1,
+    opacity: 1,
+    transition: {
+      pathLength: { delay, duration: 0.6, ease: "easeInOut" },
+      opacity: { delay, duration: 0.01 },
+    },
+  }),
+};
+const fade: Variants = {
+  hidden: { opacity: 0 },
+  visible: (delay: number) => ({
+    opacity: 1,
+    transition: { delay, duration: 0.5, ease: "easeOut" },
+  }),
 };
 
-/** The four ways fulfillment quietly caps agency growth — the problem growX
- *  removes. Presented as a pinned horizontal walk-through: the section holds
- *  the screen while scroll slides the numbered cards in one after another,
- *  with a progress bar tracking the run. (Condensed from five — the
- *  freelancer and margin problems are the same freelancer/vendor patchwork,
- *  so they're merged.) */
-const REASONS: Reason[] = [
+/* The problem sketches in first (white), the growX answer draws second
+   (emerald) — shared phase offsets keep all four cards on one rhythm. */
+const PROBLEM = 0.15;
+const SOLUTION = 0.75;
+
+function ArtSvg({ children }: { children: React.ReactNode }) {
+  return (
+    <motion.svg
+      viewBox="0 0 220 110"
+      aria-hidden="true"
+      initial="hidden"
+      whileInView="visible"
+      viewport={{ once: true, margin: "-80px" }}
+      className="h-24 w-full transition-[filter] duration-300 group-hover:[filter:drop-shadow(0_0_10px_rgba(16,185,129,0.45))] sm:h-28"
+    >
+      {children}
+    </motion.svg>
+  );
+}
+
+/** Rising bars breaking through a dashed ceiling. */
+const CapacityArt = (
+  <ArtSvg>
+    <g {...ART_STROKE} className="stroke-white/35">
+      <motion.line variants={draw} custom={PROBLEM} x1="24" y1="92" x2="196" y2="92" />
+      <motion.line variants={draw} custom={PROBLEM + 0.1} x1="44" y1="92" x2="44" y2="72" />
+      <motion.line variants={draw} custom={PROBLEM + 0.1} x1="52" y1="92" x2="52" y2="72" />
+      <motion.line variants={draw} custom={PROBLEM + 0.2} x1="76" y1="92" x2="76" y2="58" />
+      <motion.line variants={draw} custom={PROBLEM + 0.2} x1="84" y1="92" x2="84" y2="58" />
+      <motion.line variants={draw} custom={PROBLEM + 0.3} x1="108" y1="92" x2="108" y2="44" />
+      <motion.line variants={draw} custom={PROBLEM + 0.3} x1="116" y1="92" x2="116" y2="44" />
+      {/* the ceiling */}
+      <motion.line
+        variants={fade}
+        custom={PROBLEM + 0.35}
+        x1="24"
+        y1="34"
+        x2="196"
+        y2="34"
+        strokeDasharray="6 6"
+      />
+    </g>
+    {/* growX: the bar that keeps going */}
+    <g {...ART_STROKE} className="stroke-brand">
+      <motion.line variants={draw} custom={SOLUTION} x1="140" y1="92" x2="140" y2="20" />
+      <motion.line variants={draw} custom={SOLUTION + 0.08} x1="148" y1="92" x2="148" y2="20" />
+      <motion.polyline variants={draw} custom={SOLUTION + 0.2} points="40,78 72,64 104,50 168,16" />
+      <motion.polyline variants={draw} custom={SOLUTION + 0.55} points="156,18 168,16 166,28" />
+    </g>
+  </ArtSvg>
+);
+
+/** Scattered freelancer dots converging into one accountable team. */
+const OneTeamArt = (
+  <ArtSvg>
+    <g {...ART_STROKE} className="stroke-white/35">
+      <motion.circle variants={fade} custom={PROBLEM} cx="38" cy="30" r="10" strokeDasharray="4 5" />
+      <motion.circle variants={fade} custom={PROBLEM + 0.1} cx="30" cy="72" r="8" strokeDasharray="4 5" />
+      <motion.circle variants={fade} custom={PROBLEM + 0.2} cx="66" cy="52" r="9" strokeDasharray="4 5" />
+      <motion.circle variants={fade} custom={PROBLEM + 0.3} cx="58" cy="90" r="7" strokeDasharray="4 5" />
+      <motion.line variants={draw} custom={PROBLEM + 0.35} x1="50" y1="34" x2="126" y2="50" />
+      <motion.line variants={draw} custom={PROBLEM + 0.4} x1="40" y1="70" x2="126" y2="58" />
+      <motion.line variants={draw} custom={PROBLEM + 0.45} x1="76" y1="54" x2="126" y2="54" />
+    </g>
+    <g {...ART_STROKE} className="stroke-brand">
+      <motion.circle variants={draw} custom={SOLUTION} cx="156" cy="54" r="26" />
+      <motion.polyline variants={draw} custom={SOLUTION + 0.35} points="144,54 152,62 168,44" />
+    </g>
+  </ArtSvg>
+);
+
+/** The full menu: every line item checked off. */
+const FullMenuArt = (
+  <ArtSvg>
+    <g {...ART_STROKE} className="stroke-white/35">
+      <motion.path
+        variants={draw}
+        custom={PROBLEM}
+        d="M62 12 h96 a10 10 0 0 1 10 10 v66 a10 10 0 0 1 -10 10 h-96 a10 10 0 0 1 -10 -10 v-66 a10 10 0 0 1 10 -10 Z"
+      />
+      <motion.line variants={draw} custom={PROBLEM + 0.15} x1="70" y1="34" x2="122" y2="34" />
+      <motion.line variants={draw} custom={PROBLEM + 0.25} x1="70" y1="55" x2="122" y2="55" />
+      <motion.line variants={draw} custom={PROBLEM + 0.35} x1="70" y1="76" x2="122" y2="76" />
+    </g>
+    <g {...ART_STROKE} className="stroke-brand">
+      <motion.polyline variants={draw} custom={SOLUTION} points="136,32 141,37 150,27" />
+      <motion.polyline variants={draw} custom={SOLUTION + 0.15} points="136,53 141,58 150,48" />
+      <motion.polyline variants={draw} custom={SOLUTION + 0.3} points="136,74 141,79 150,69" />
+    </g>
+  </ArtSvg>
+);
+
+/** The handoff: the box lifts off the founder's plate and away. */
+const OffYourPlateArt = (
+  <ArtSvg>
+    <g {...ART_STROKE} className="stroke-white/35">
+      <motion.circle variants={draw} custom={PROBLEM} cx="52" cy="38" r="12" />
+      <motion.path variants={draw} custom={PROBLEM + 0.15} d="M32 92 Q32 64 52 64 Q72 64 72 92" />
+      {/* the plate */}
+      <motion.line variants={draw} custom={PROBLEM + 0.3} x1="92" y1="78" x2="150" y2="78" />
+      <motion.path variants={draw} custom={PROBLEM + 0.4} d="M100 78 Q121 96 142 78" />
+    </g>
+    {/* the work, lifted off and carried away */}
+    <g {...ART_STROKE} className="stroke-brand">
+      <motion.path
+        variants={draw}
+        custom={SOLUTION}
+        d="M112 64 v-14 a4 4 0 0 1 4 -4 h18 a4 4 0 0 1 4 4 v14 a4 4 0 0 1 -4 4 h-18 a4 4 0 0 1 -4 -4 Z"
+      />
+      <motion.polyline variants={draw} custom={SOLUTION + 0.25} points="146,50 178,28" />
+      <motion.polyline variants={draw} custom={SOLUTION + 0.5} points="166,28 178,28 176,40" />
+    </g>
+  </ArtSvg>
+);
+
+type Solution = {
+  n: string;
+  title: string;
+  body: string;
+  points: string[];
+  art: React.ReactNode;
+  /** Bento span + orientation: wide cards lay art beside the copy. */
+  wide: boolean;
+};
+
+const SOLUTIONS: Solution[] = [
   {
     n: "01",
-    title: "Capacity, not demand",
-    desc: "You win work faster than you can deliver it. Fulfillment, not sales, is what caps how big you get.",
-    image: "/assets/gw-mod-fulfillment-reasons/1.webp",
+    title: "Capacity that scales with your sales",
+    body: "You close it, we deliver it. Our in-house production line grows with your pipeline, so demand is your only ceiling.",
     points: [
-      "Turning away clients you could easily close",
-      "Rushed delivery churning the clients you have",
-      "No way to scale past your team's ceiling",
+      "Take every deal you can win",
+      "No hiring to add delivery muscle",
+      "Rushed work never churns a client again",
     ],
+    art: CapacityArt,
+    wide: true,
   },
   {
     n: "02",
-    title: "The freelancer tax",
-    desc: "Unreliable contractors and creeping costs eat your margin, and every freelancer is a crack in your white-label promise.",
-    image: "/assets/gw-mod-fulfillment-reasons/2.webp",
+    title: "One team, not a freelancer patchwork",
+    body: "A specialist team that has run fulfillment since 2019 replaces the contractor roulette, with fixed prices and internal QA on every order.",
     points: [
-      "Quality and turnaround you can never predict",
-      "Unpredictable vendor costs shrinking every job",
-      "Hours lost managing a patchwork of contractors",
+      "Fixed prices protect your margin",
+      "Consistent quality and turnaround",
+      "Zero hours lost managing vendors",
     ],
+    art: OneTeamArt,
+    wide: false,
   },
   {
     n: "03",
-    title: "A menu you can't fulfill",
-    desc: "Clients ask for SEO, video, funnels, a CRM build. You say no, or scramble to learn it overnight.",
-    image: "/assets/gw-mod-fulfillment-reasons/3.webp",
+    title: "Say yes to the whole menu",
+    body: "Websites, SEO, ads, content, social, video, and HighLevel. Whatever your client asks for, you sell it and we produce it under your brand.",
     points: [
-      "Losing accounts to full-service agencies",
-      "Leaving upsell revenue on the table",
-      "Learning a new skill just to ship one project",
+      "Never lose an account to a bigger agency",
+      "Every upsell becomes revenue, not a scramble",
+      "New services without learning them overnight",
     ],
+    art: FullMenuArt,
+    wide: false,
   },
   {
     n: "04",
-    title: "Fulfillment eats the founder",
-    desc: "Sales, delivery, client comms, ops. All on you. Something is about to break, and it's usually you.",
-    image: "/assets/gw-mod-fulfillment-reasons/4.webp",
+    title: "You sell. We carry the rest.",
+    body: "Sales, strategy, and relationships stay yours. Production, deadlines, and delivery become ours. Fulfillment stops eating you and starts feeding you.",
     points: [
-      "80-hour weeks just to keep the lights on",
-      "Zero time left to actually grow the business",
-      "Burnout from wearing every hat you own",
+      "Your week goes to growth, not delivery",
+      "A business that runs without burning you out",
+      "Your client only ever sees you",
     ],
+    art: OffYourPlateArt,
+    wide: true,
   },
 ];
 
-function ReasonSlide({ reason }: { reason: Reason }) {
-  return (
-    <article
-      aria-labelledby={`fulfillment-reason-${reason.n}-title`}
-      className="relative flex w-[min(85vw,540px)] shrink-0 flex-col overflow-hidden rounded-3xl border border-white/10 p-7 sm:p-9"
-    >
-      {/* The reason's image works as the card's dimmed backdrop, with a scrim
-          keeping the copy legible over it. */}
-      <Image
-        src={reason.image}
-        alt=""
-        fill
-        sizes="540px"
-        className="-z-20 object-cover opacity-20"
-      />
-      <div
-        aria-hidden="true"
-        className="absolute inset-0 -z-10 bg-linear-to-t from-foreground/90 via-foreground/55 to-foreground/25"
-      />
-
-      {/* Decorative oversized numeral — the card's index, not content. */}
-      <span
-        aria-hidden="true"
-        className="block text-6xl font-extrabold leading-none tracking-tight text-white sm:text-7xl"
-      >
-        {reason.n}
-      </span>
-      <h3
-        id={`fulfillment-reason-${reason.n}-title`}
-        className="mt-6 text-2xl font-bold tracking-tight sm:text-3xl"
-      >
-        {reason.title}
-      </h3>
-      <p className="mt-3 text-base text-white/70 sm:text-lg">{reason.desc}</p>
-      <ul className="mt-8 space-y-2.5">
-        {reason.points.map((point) => (
-          <li key={point} className="flex items-start gap-2.5 text-sm sm:text-base">
-            <Check
-              size={16}
-              strokeWidth={3}
-              aria-hidden="true"
-              className="mt-1 shrink-0 text-brand"
-            />
-            <span className="text-white/80">{point}</span>
-          </li>
-        ))}
-      </ul>
-    </article>
-  );
-}
-
-type Geom = {
-  travel: number;
-  windowWidth: number;
-  cardWidth: number;
-  stride: number;
-};
-
-/** One card in the pinned row, revealed by its real position: it fades, rises,
- *  and scales up as its left edge slides in from the right window edge, so the
- *  entrance stays locked to the horizontal scroll rather than a timer. */
-function PinnedCard({
-  reason,
-  index,
-  progress,
-  geom,
-}: {
-  reason: Reason;
-  index: number;
-  progress: MotionValue<number>;
-  geom: Geom;
-}) {
-  const { travel, windowWidth, cardWidth, stride } = geom;
-  // Symmetric visibility across a card's whole pass. `enter` keys to the right
-  // window edge (fades in as the card slides in); `exit` keys to the left
-  // window edge (fades out the same way as it slides off). The card is only
-  // fully shown when both are satisfied, so entrance and departure mirror.
-  // Before geometry is measured, treat as fully shown.
-  const fraction = (p: number) => {
-    if (travel <= 0 || windowWidth <= 0 || cardWidth <= 0) return 1;
-    const screenLeft = index * stride - p * travel;
-    const span = cardWidth * 0.7;
-    const enter = (windowWidth - screenLeft) / span;
-    const exit = (span + screenLeft) / span;
-    return Math.min(1, Math.max(0, Math.min(enter, exit)));
-  };
-  const opacity = useTransform(progress, (p) => 0.15 + 0.85 * fraction(p));
-  const scale = useTransform(progress, (p) => 0.9 + 0.1 * fraction(p));
-  const y = useTransform(progress, (p) => (1 - fraction(p)) * 48);
-
-  return (
-    <motion.div style={{ opacity, scale, y }} className="shrink-0">
-      <ReasonSlide reason={reason} />
-    </motion.div>
-  );
-}
-
-/** Desktop pinned stage. Lives in its own component so it only MOUNTS when
- *  the pinned branch renders: framer's useScroll binds its target ref once on
- *  mount, so setting it up in the parent (which first renders the mobile
- *  branch while the media query hydrates) left it tracking a null target and
- *  the slide never mapped to the runway. */
-function PinnedReasons({
-  background,
-  header,
-}: {
-  background: React.ReactNode;
-  header: React.ReactNode;
-}) {
-  const trackRef = useRef<HTMLDivElement>(null); // tall scroll runway
-  const rowRef = useRef<HTMLDivElement>(null); // horizontal card row
-  const [geom, setGeom] = useState<Geom>({
-    travel: 0,
-    windowWidth: 0,
-    cardWidth: 0,
-    stride: 0,
-  });
-
-  // Slide distance = the row's hidden overflow (measured on the row itself so
-  // the container padding is already accounted for). Card width + gap give
-  // each card's position, used for its scroll-linked reveal.
-  useEffect(() => {
-    const measure = () => {
-      const row = rowRef.current;
-      if (!row) return;
-      const first = row.children[0] as HTMLElement | undefined;
-      const cardWidth = first?.offsetWidth ?? 0;
-      const gap = 24; // gap-6
-      setGeom({
-        travel: Math.max(0, row.scrollWidth - row.clientWidth),
-        windowWidth: row.clientWidth,
-        cardWidth,
-        stride: cardWidth + gap,
-      });
-    };
-    measure();
-    window.addEventListener("resize", measure);
-    return () => window.removeEventListener("resize", measure);
-  }, []);
-
-  const { scrollYProgress } = useScroll({
-    target: trackRef,
-    offset: ["start start", "end end"],
-  });
-  // Transform-only slide: layout never changes, so nothing below the section
-  // shifts while scrolling (see the header-flicker fix in HeroVideoPerspective).
-  const x = useTransform(scrollYProgress, [0, 1], [0, -geom.travel]);
-
-  return (
-    // Runway = one viewport plus the horizontal distance, so scroll and
-    // slide move 1:1 from the first card to the last.
-    <div
-      ref={trackRef}
-      className="relative"
-      style={{ height: `calc(100vh + ${geom.travel}px)` }}
-    >
-      <div className="sticky top-0 flex h-screen flex-col justify-center overflow-hidden">
-        {background}
-        <div className="container-1200 w-full">{header}</div>
-        {/* Padded container defines the content edges; the inner div does the
-            clipping so the row starts and clips at the padded content edge
-            (not the padding box), keeping cards inside the container. */}
-        <div className="container-1200 mt-12 w-full">
-          <div className="overflow-hidden">
-            <motion.div ref={rowRef} style={{ x }} className="flex gap-6">
-              {REASONS.map((reason, i) => (
-                <PinnedCard
-                  key={reason.n}
-                  reason={reason}
-                  index={i}
-                  progress={scrollYProgress}
-                  geom={geom}
-                />
-              ))}
-            </motion.div>
-          </div>
-        </div>
-      </div>
-    </div>
-  );
-}
-
 export default function FulfillmentReasons() {
-  const videoRef = useRef<HTMLVideoElement>(null);
-  // Only decode while the section is actually on-screen and the tab is active.
-  const active = useActiveWhenVisible(videoRef);
-
-  const isDesktop = useMediaQuery("(min-width: 1024px)");
-  const reduceMotion = usePrefersReducedMotion();
-  // The pin is desktop-only geometry; reduced-motion users get the plain flow.
-  const pinned = isDesktop && !reduceMotion;
-
-  useEffect(() => {
-    const video = videoRef.current;
-    if (!video) return;
-    if (active) {
-      // Autoplay can reject (e.g. Low Power Mode); it's decorative, so ignore.
-      void video.play().catch(() => {});
-    } else {
-      video.pause();
-    }
-  }, [active]);
-
-  // Shared background: ambient video, darkening overlay, brand glow.
-  const background = (
-    <>
-      <video
-        ref={videoRef}
-        aria-hidden="true"
-        loop
-        muted
-        playsInline
-        preload="none"
-        poster="/assets/gw-mod-fulfillment-reasons/amb-poster.webp"
-        className="pointer-events-none absolute inset-0 -z-20 h-full w-full object-cover"
-      >
-        <source src="/assets/gw-mod-fulfillment-reasons/amb.webm" type="video/webm" />
-        <source src="/assets/gw-mod-fulfillment-reasons/amb.mp4" type="video/mp4" />
-      </video>
-      <div
-        aria-hidden="true"
-        className="pointer-events-none absolute inset-0 -z-10 bg-foreground/80"
-      />
-      <div
-        aria-hidden="true"
-        className="pointer-events-none absolute -z-10 left-1/2 -top-24 h-72 w-300 max-w-none -translate-x-1/2 bg-brand/8 blur-[130px]"
-      />
-    </>
-  );
-
-  const header = (
-    <ScrollFadeIn delay={0.1}>
-      <div className="mx-auto max-w-3xl text-center">
-        <Eyebrow text="The real bottleneck" />
-        {/* Problem framing (the signature hook) followed by the one-line
-            resolution turn, so nobody leaves the headline without the answer. */}
-        <h2
-          id="fulfillment-reasons-headline"
-          className="mt-4 text-3xl font-bold leading-[1.15] tracking-tight sm:text-4xl md:text-5xl"
-        >
-          Fulfillment eats the founders.
-        </h2>
-        <p className="mt-4 text-lg font-semibold text-gradient-brand sm:text-xl">
-          We take it off your plate and make it the reason you thrive.
-        </p>
-        <p className="mt-4 text-base text-white/70 sm:text-lg">
-          Now sale more, close more, grow more.
-        </p>
-      </div>
-    </ScrollFadeIn>
-  );
-
   return (
     <section
       id="gw-mod-fulfillment-reasons"
       aria-labelledby="fulfillment-reasons-headline"
       data-nav-theme="dark"
-      className="relative isolate overflow-clip bg-foreground text-background"
+      // Deep Pine, the brand's dark green — the one green section on home.
+      className="relative isolate overflow-clip bg-[#07533a] text-background"
     >
-      {pinned ? (
-        <PinnedReasons background={background} header={header} />
-      ) : (
-        // Mobile / reduced motion: plain vertical flow of the same cards.
-        <div className="relative py-24 sm:py-28 lg:py-32">
-          {background}
-          <div className="container-1200">
-            {header}
-            <div className="mt-14 flex flex-col items-center gap-6">
-              {REASONS.map((reason, i) => (
-                <ScrollFadeIn key={reason.n} delay={0.1 + i * 0.05}>
-                  <ReasonSlide reason={reason} />
-                </ScrollFadeIn>
-              ))}
-            </div>
+      {/* Emerald bloom + faint white hairline grid, the site's dark-section
+          language carried onto the green. */}
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute -z-10 left-1/2 -top-24 h-72 w-300 max-w-none -translate-x-1/2 bg-brand/20 blur-[130px]"
+      />
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute inset-0 -z-10 bg-[linear-gradient(to_right,rgba(255,255,255,0.05)_1px,transparent_1px),linear-gradient(to_bottom,rgba(255,255,255,0.05)_1px,transparent_1px)] bg-size-[56px_56px] mask-[radial-gradient(ellipse_70%_60%_at_50%_40%,#000,transparent_85%)]"
+      />
+
+      <div className="container-1200 py-24 sm:py-28 lg:py-32">
+        <ScrollFadeIn delay={0.1}>
+          <div className="mx-auto max-w-3xl text-center">
+            <Eyebrow text="The real bottleneck" />
+            {/* Problem framing (the signature hook) followed by the one-line
+                resolution turn, so nobody leaves the headline without the answer. */}
+            <h2
+              id="fulfillment-reasons-headline"
+              className="mt-4 text-3xl font-bold leading-[1.15] tracking-tight sm:text-4xl md:text-5xl"
+            >
+              Fulfillment eats the founders.
+            </h2>
+            {/* Light mint instead of the emerald gradient: emerald-on-green
+                would sink into the Deep Pine background. */}
+            <p className="mt-4 text-lg font-semibold text-[#d1fae5] sm:text-xl">
+              We take it off your plate and make it the reason you thrive.
+            </p>
+            <p className="mt-4 text-base text-white/70 sm:text-lg">
+              Agencies do not fail because they cannot sell. Here is how we
+              remove the four ceilings that cap how big you can get.
+            </p>
           </div>
+        </ScrollFadeIn>
+
+        {/* Bento: wide + narrow, then narrow + wide, so the grid reads as a
+            composition instead of a template. */}
+        <div className="mt-14 grid gap-5 lg:grid-cols-12">
+          {SOLUTIONS.map((s, i) => (
+            <div key={s.n} className={s.wide ? "lg:col-span-7" : "lg:col-span-5"}>
+              <ScrollFadeIn delay={0.1 + i * 0.08} className="h-full">
+                <article
+                  aria-labelledby={`fulfillment-solution-${s.n}-title`}
+                  className="group relative flex h-full flex-col overflow-hidden rounded-3xl border border-white/10 bg-white/5 p-7 transition-all duration-300 hover:-translate-y-1 hover:border-brand/40 hover:bg-white/[0.08] hover:shadow-[0_16px_40px_-12px_rgba(0,0,0,0.4)] sm:p-8"
+                >
+                  {/* Oversized outlined numeral, a watermark not content. */}
+                  <span
+                    aria-hidden="true"
+                    className="pointer-events-none absolute -top-3 right-4 text-7xl font-extrabold leading-none text-transparent [-webkit-text-stroke:1.5px_rgba(255,255,255,0.14)] sm:text-8xl"
+                  >
+                    {s.n}
+                  </span>
+
+                  <div className={s.wide ? "flex h-full flex-col gap-6 lg:flex-row-reverse lg:items-center" : "flex h-full flex-col"}>
+                    <div className={s.wide ? "lg:w-2/5 lg:shrink-0" : ""}>{s.art}</div>
+                    <div className={s.wide ? "lg:flex-1" : ""}>
+                      <h3
+                        id={`fulfillment-solution-${s.n}-title`}
+                        // Wide cards space art/copy via the wrapper's gap; the
+                        // stacked narrow cards need the margin themselves.
+                        className={`text-xl font-bold tracking-tight sm:text-2xl ${s.wide ? "" : "mt-6"}`}
+                      >
+                        {s.title}
+                      </h3>
+                      <p className="mt-3 text-[15px] leading-relaxed text-white/70 sm:text-base">
+                        {s.body}
+                      </p>
+                      <ul className="mt-5 space-y-2">
+                        {s.points.map((point) => (
+                          <li key={point} className="flex items-start gap-2.5 text-sm">
+                            <Check
+                              size={15}
+                              strokeWidth={3}
+                              aria-hidden="true"
+                              className="mt-0.5 shrink-0 text-brand"
+                            />
+                            <span className="text-white/80">{point}</span>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                  </div>
+                </article>
+              </ScrollFadeIn>
+            </div>
+          ))}
         </div>
-      )}
+
+        {/* Segue into the catalog the cards just argued for. */}
+        <ScrollFadeIn delay={0.2}>
+          <p className="mt-10 text-center">
+            <a
+              href="#gw-mod-services"
+              className="inline-flex items-center gap-2 text-sm font-semibold text-[#d1fae5] transition-colors hover:text-white"
+            >
+              See everything we deliver under your brand
+              <ArrowRight size={15} aria-hidden="true" />
+            </a>
+          </p>
+        </ScrollFadeIn>
+      </div>
     </section>
   );
 }

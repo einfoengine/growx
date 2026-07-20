@@ -37,6 +37,21 @@ function tokenize(parts: HeadlinePart[]): Token[] {
 
   for (const part of parts) {
     const highlight = part.type === "highlight";
+    if (highlight) {
+      // A highlighted phrase stays ONE token (spaces and all) so a single
+      // continuous gradient spans it — split per word, each word would carry
+      // its own background and the roaming light would render once per word.
+      for (const chunk of part.value.split(/(\n)/)) {
+        if (!chunk) continue;
+        if (chunk === "\n") {
+          flush();
+          tokens.push({ kind: "break" });
+        } else {
+          current.push({ text: chunk, highlight });
+        }
+      }
+      continue;
+    }
     // Keep the whitespace chunks: they close the current token.
     for (const chunk of part.value.split(/(\s+)/)) {
       if (!chunk) continue;

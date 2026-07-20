@@ -123,7 +123,7 @@ export default function HeroAnimatedContent({
             id={`${data.id}-headline`}
             parts={data.headline.parts}
             className={`${L.headline} text-balance`}
-            highlightClassName="text-gradient-brand-shine"
+            highlightClassName="text-gradient-brand-rotate"
           />
         ) : (
           <motion.div variants={itemVariants}>
