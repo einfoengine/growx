@@ -90,7 +90,7 @@ export default function BookingModal() {
           exit={{ opacity: 0 }}
           transition={{ duration: 0.2 }}
           onClick={close}
-          className="fixed inset-0 z-100 flex items-center justify-center overflow-y-auto bg-black/60 p-4 backdrop-blur-sm sm:p-6"
+          className="fixed inset-0 z-100 flex items-center justify-center bg-black/60 p-7.5 backdrop-blur-sm"
         >
           <motion.div
             ref={panelRef}
@@ -104,7 +104,7 @@ export default function BookingModal() {
             transition={{ duration: 0.22, ease: [0.16, 1, 0.3, 1] }}
             onClick={(e) => e.stopPropagation()}
             data-nav-theme="dark"
-            className="relative flex max-h-[90vh] w-full max-w-293.5 flex-col overflow-hidden rounded-2xl border border-white/10 bg-foreground text-background shadow-2xl shadow-black/50 focus:outline-none"
+            className="relative flex max-h-full w-full flex-col overflow-hidden rounded-2xl border border-white/10 bg-foreground text-background shadow-2xl shadow-black/50 focus:outline-none"
           >
             {/* Top bar */}
             <div className="flex items-start justify-between gap-4 border-b border-white/10 px-6 py-4 shrink-0">

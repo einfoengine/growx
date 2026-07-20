@@ -8,6 +8,7 @@ import { createPortal } from "react-dom";
 import { AnimatePresence, motion } from "framer-motion";
 import type { CTA, Link as LinkType } from "@/lib/content";
 import { useModalA11y } from "@/lib/hooks/useModalA11y";
+import PortalLoginLink from "./PortalLoginLink";
 
 type MobileMenuProps = {
   id?: string;
@@ -177,6 +178,7 @@ export default function MobileMenu({
                 {cta.label}
                 <ArrowRight size={15} aria-hidden="true" />
               </Link>
+              <PortalLoginLink className="mt-3 inline-flex w-full items-center justify-center gap-1.5 rounded-full border border-black/10 px-6 py-3.5 text-sm font-semibold text-gray-900 transition-colors hover:bg-black/5" />
             </div>
           </motion.div>
         </>

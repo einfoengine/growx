@@ -5,31 +5,7 @@ import { motion, useReducedMotion } from "framer-motion";
 import ScrollFadeIn from "@/components/elements/ScrollFadeIn";
 import Eyebrow from "@/components/elements/Eyebrow";
 import { useMediaQuery } from "@/lib/hooks/useActiveWhenVisible";
-
-type Step = { n: string; title: string; desc: string };
-
-const STEPS: Step[] = [
-  {
-    n: "01",
-    title: "Join free",
-    desc: "Create your free partner account. Full portal access to the entire catalog, no commitment and no card.",
-  },
-  {
-    n: "02",
-    title: "Order in one click",
-    desc: "Pick a service from the catalog. Fixed scope, fixed price, clear SLA. No back-and-forth quotes.",
-  },
-  {
-    n: "03",
-    title: "We produce",
-    desc: "Our in-house team builds it to spec. Track every order in the portal, or let your account manager drive it.",
-  },
-  {
-    n: "04",
-    title: "Deliver under your brand",
-    desc: "Every deliverable ships 100% white-label with full commercial rights. Your client only ever sees you.",
-  },
-];
+import { HOW_IT_WORKS_STEPS as STEPS } from "./steps";
 
 // Badge centres as % of the connector line (which spans badge-0 to badge-3).
 const POS = ["0%", "33.333%", "66.667%", "100%"];

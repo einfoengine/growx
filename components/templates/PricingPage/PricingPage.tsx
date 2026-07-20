@@ -1,31 +1,35 @@
-import { ArrowRight } from "lucide-react";
 import type { PricingPageContent, ServicePageContent } from "@/lib/content";
+import { getPricing } from "@/lib/content";
+import type { TierKey } from "@/lib/config/pricing";
 import SectionHeader from "@/components/elements/SectionHeader";
-import Button from "@/components/elements/Button";
-import PricingPlans from "@/components/modules/Pricing";
-import HowItWorks from "@/components/modules/HowItWorks/HowItWorks";
-import Testimonials from "@/components/modules/Testimonials/Testimonials";
-import CtaBanner from "@/components/modules/CtaBanner/CtaBanner";
-import Faq from "@/components/modules/Faq";
 import InnerHeroBackdrop from "@/components/modules/Hero/InnerHeroBackdrop";
-import PricingBand from "./PricingBand";
-import SavingsCalculator from "./SavingsCalculator";
-import TierMatrix from "./TierMatrix";
-import ServicePreview from "./ServicePreview";
+import PricingPlans from "@/components/modules/Pricing";
+import PlanButton from "@/components/modules/Pricing/PlanButton";
+import BookingSection from "@/components/modules/BookingSection/BookingSection";
+import ServiceCatalog from "./ServiceCatalog";
+import EstimateCalculator, { type PlanInfo } from "./EstimateCalculator";
+import JoinCta from "./JoinCta";
 
 type Props = {
   pageData: PricingPageContent;
   services: ServicePageContent[];
 };
 
-/** /pricing, built to convert: credibility and reframe up top, the offer high,
- *  the savings calculator doing the persuading, then completeness, proof, and a
- *  free-signup close. Every block reuses a shared module so the page can never
- *  drift from the rest of the site. */
-export default function PricingPage({ pageData }: Props) {
+const TIER_KEY: Record<string, TierKey> = { Free: "free", Standard: "standard", VIP: "vip" };
+
+/** /pricing, focused on the transaction: the plans, the service catalog with
+ *  add-to-cart, an estimate-and-savings calculator, a booking calendar, and a
+ *  free-signup close. Non-pricing sections (how it works, testimonials, etc.)
+ *  live on other pages. */
+export default async function PricingPage({ pageData }: Props) {
+  const pricing = await getPricing();
+  const plans: PlanInfo[] = pricing.tiers
+    .map((t) => ({ key: TIER_KEY[t.name], name: t.name, features: t.features }))
+    .filter((p): p is PlanInfo => Boolean(p.key));
+
   return (
     <>
-      {/* 01 ── Hero: the reframe thesis, primary CTA is Join free ──────── */}
+      {/* Hero */}
       <section
         id="gw-pricing-hero"
         data-nav-theme="dark"
@@ -44,53 +48,26 @@ export default function PricingPage({ pageData }: Props) {
             align="center"
           />
           <div className="mt-9 flex flex-col items-center justify-center gap-3 sm:flex-row">
-            <Button label="Join free" href="#onboard-free" icon={<ArrowRight size={16} />} darkBg />
-            <Button label="Compare tiers" href="#gw-mod-pricing" variant="secondary" darkBg />
+            <PlanButton label="Join free" planKey="free" className="btn btn-brand" />
+            <PlanButton label="How it works" href="#how-it-works" className="btn btn-secondary-dark" />
           </div>
         </div>
       </section>
 
-      {/* 02 ── Reframe strip: three objections, killed before they form ── */}
-      <PricingBand
-        dark
-        items={[
-          { label: "$0 to join" },
-          { label: "Fixed price per service" },
-          { label: "Cancel anytime" },
-        ]}
-      />
-
-      {/* 03 ── Tier module (same component as home, no manufactured badge) ─ */}
+      {/* Membership plans */}
       <PricingPlans hidePopularBadge />
 
-      {/* 04 ── Savings calculator: the page's most persuasive element ───── */}
-      <SavingsCalculator />
+      {/* Service catalog with add-to-cart */}
+      <ServiceCatalog />
 
-      {/* 05 ── Comparison matrix: where completeness lives ──────────────── */}
-      <TierMatrix />
+      {/* Estimate, savings, and checkout */}
+      <EstimateCalculator plans={plans} />
 
-      {/* 06 ── Per-service preview: proves fixed pricing is real ────────── */}
-      <ServicePreview />
+      {/* Book a call */}
+      <BookingSection />
 
-      {/* 07 ── How it works (shared component, already tells this story) ── */}
-      <HowItWorks />
-
-      {/* 08 ── Proof and guarantees ─────────────────────────────────────── */}
-      <Testimonials />
-      <PricingBand
-        withChecks
-        items={[
-          { label: "100% white-label", sub: "Full commercial rights, your brand on everything" },
-          { label: "We stay invisible", sub: "Your client never learns growX exists" },
-          { label: "Cancel anytime", sub: "Month to month, no lock-in" },
-        ]}
-      />
-
-      {/* 09 ── FAQ (shared component, pricing-specific data) ────────────── */}
-      <Faq data={pageData.faq} />
-
-      {/* 10 ── Closing CTA (shared banner, pricing-specific data) ───────── */}
-      <CtaBanner data={pageData.closingCta} />
+      {/* Join / do-not-miss close */}
+      <JoinCta />
     </>
   );
 }

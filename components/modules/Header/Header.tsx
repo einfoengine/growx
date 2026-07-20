@@ -5,6 +5,8 @@ import { getHeader, getServices } from "@/lib/content";
 import MobileMenu from "./MobileMenu";
 import HeaderShell from "./HeaderShell";
 import ServicesMegaMenu from "./ServicesMegaMenu";
+import PortalLoginLink from "./PortalLoginLink";
+import CartIcon from "@/components/modules/Cart/CartIcon";
 
 export default async function Header() {
   const [data, services] = await Promise.all([getHeader(), getServices()]);
@@ -46,28 +48,34 @@ export default async function Header() {
           </ul>
         </nav>
 
-        <div className="hidden lg:flex">
-          <Link
-            id={data.cta.id}
-            href={data.cta.href}
-            // Logo-gradient fill: outside the pill this is the one
-            // brand-colored anchor at the top right, legible over any section.
-            className="group inline-flex items-center gap-1.5 rounded-full bg-gradient-brand px-5 py-2.5 text-sm font-semibold text-black shadow-lg shadow-black/10 transition-[filter] hover:brightness-110"
-          >
-            {data.cta.label}
-            <ArrowRight
-              size={15}
-              aria-hidden="true"
-              className="transition-transform group-hover:translate-x-0.5"
-            />
-          </Link>
-        </div>
+        {/* Right side: cart (always visible), then desktop login + CTA, then
+            the mobile menu trigger. */}
+        <div className="flex items-center gap-1.5 sm:gap-3">
+          <CartIcon />
+          <div className="hidden lg:flex items-center gap-5">
+            <PortalLoginLink />
+            <Link
+              id={data.cta.id}
+              href={data.cta.href}
+              // Logo-gradient fill: outside the pill this is the one
+              // brand-colored anchor at the top right, legible over any section.
+              className="group inline-flex items-center gap-1.5 rounded-full bg-gradient-brand px-5 py-2.5 text-sm font-semibold text-black shadow-lg shadow-black/10 transition-[filter] hover:brightness-110"
+            >
+              {data.cta.label}
+              <ArrowRight
+                size={15}
+                aria-hidden="true"
+                className="transition-transform group-hover:translate-x-0.5"
+              />
+            </Link>
+          </div>
 
-        <MobileMenu
-          id={`${data.id}-mobile`}
-          nav={data.nav}
-          cta={data.cta}
-        />
+          <MobileMenu
+            id={`${data.id}-mobile`}
+            nav={data.nav}
+            cta={data.cta}
+          />
+        </div>
       </div>
     </HeaderShell>
   );
