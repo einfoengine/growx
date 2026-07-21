@@ -36,6 +36,9 @@ yarn-error.log*
 # vercel
 .vercel
 
+# local design reference (not shipped)
+WEBSITE-MANIFEST.md
+
 # typescript
 *.tsbuildinfo
 next-env.d.ts

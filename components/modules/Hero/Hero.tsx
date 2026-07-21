@@ -43,7 +43,7 @@ export default async function Hero({ data, variant = "home" }: HeroProps = {}) {
       id={`gw-${heroData.id}`}
       aria-labelledby={`${heroData.id}-headline`}
       data-nav-theme="dark"
-      className="relative isolate overflow-hidden bg-foreground text-background"
+      className="relative isolate overflow-hidden bg-foreground pb-100 text-background"
     >
       {/* Cinematic backdrop: darkened emerald aurora photo + film grain,
           drifting slowly on scroll. Sits at the very back. */}
@@ -73,7 +73,7 @@ export default async function Hero({ data, variant = "home" }: HeroProps = {}) {
         <div className="flex w-full items-center justify-center pt-36 pb-10 sm:pt-40 lg:min-h-[82svh] lg:pb-16 lg:pt-32">
           <HeroAnimatedContent data={heroData} variant={variant} />
         </div>
-        <HeroVideoPerspective className="w-full pb-16 sm:pb-24">
+        <HeroVideoPerspective className="w-full">
           <HeroVideo videoId="oGKjh10TbK0" />
         </HeroVideoPerspective>
       </div>

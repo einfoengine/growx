@@ -85,14 +85,15 @@
   .hero-video {
     width: 100%;
     border: 8px solid rgba(209, 250, 229, 0.12);
-    /* Concentric with the rounded-2xl (1rem) frame inside: outer radius =
-       inner radius + stroke width, so the corner bands stay even. */
-    border-radius: calc(1rem + 8px);
+    /* Concentric with the rounded-2xl frame inside: outer radius = inner
+       radius + stroke width, so the corner bands stay even. References the
+       token (not a literal) so it stays concentric if the ceiling ever moves. */
+    border-radius: calc(var(--radius-xl) + 8px);
   }
   @media (min-width: 640px) {
     .hero-video {
       border-width: 20px;
-      border-radius: calc(1rem + 20px);
+      border-radius: calc(var(--radius-xl) + 20px);
     }
   }
 

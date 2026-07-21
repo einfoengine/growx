@@ -10,7 +10,7 @@ import { GHL_CHAT_WIDGET } from "@/lib/config/conversion";
 // simply no-ops and their default launcher shows — nothing breaks.
 const LAUNCHER_STYLE = `
 .lc_text-widget--bubble{
-  border-radius:16px !important;
+  border-radius:10px !important;
   background:linear-gradient(135deg,#10b981 0%,#059669 100%) !important;
   box-shadow:0 12px 28px -8px rgba(16,185,129,.55) !important;
   border:none !important;

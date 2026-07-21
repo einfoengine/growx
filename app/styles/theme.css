@@ -68,3 +68,23 @@
   --text-hero: clamp(2.5rem, 4vw + 1rem, 4.5rem);
   --text-hero--line-height: 1.05;
 }
+
+/* Corner-radius scale — overrides Tailwind's built-in --radius-* tokens so
+   every rounded-{lg,xl,2xl,3xl,4xl} utility in the app resolves through one
+   ceiling: 10px. Brand rule is "rounded, not soft" — corners crisp with just
+   enough ease to feel modern, never a pill. 2xl/3xl/4xl clamp flat to the
+   ceiling instead of continuing to grow, so any existing rounded-2xl/3xl/4xl
+   markup is automatically brought into line without touching every file.
+   rounded-full (pills/badges/avatars) is a separate shape choice and is
+   intentionally NOT covered by this scale. Non-inline so --radius-* is also
+   emitted to :root and usable in calc() (see .hero-video in components.css). */
+@theme {
+  --radius-xs: 3px;
+  --radius-sm: 4px;
+  --radius-md: 6px;
+  --radius-lg: 8px;
+  --radius-xl: 10px;
+  --radius-2xl: 10px;
+  --radius-3xl: 10px;
+  --radius-4xl: 10px;
+}

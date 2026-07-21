@@ -15,7 +15,7 @@ export default async function Newsletter() {
     >
       <div className="container-1200">
         <ScrollFadeIn>
-          <div className="relative isolate overflow-hidden rounded-[2.5rem] border border-white/10 bg-foreground px-6 py-16 text-background sm:px-14 sm:py-20 lg:py-24">
+          <div className="relative isolate overflow-hidden rounded-xl border border-white/10 bg-foreground px-6 py-16 text-background sm:px-14 sm:py-20 lg:py-24">
             {/* Grid + brand glow, mirroring the CtaBanner treatment. */}
             <div
               aria-hidden="true"

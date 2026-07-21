@@ -28,47 +28,59 @@ const BENEFITS: { label: string; Icon: LucideIcon }[] = [
 ];
 
 /** Marquee band under the hero listing partner benefits. Content is duplicated
- *  once so the -50% translate loops seamlessly. Pauses on hover. */
+ *  once so the -50% translate loops seamlessly. Pauses on hover.
+ *
+ *  Glassmorphism: a frosted band (bg-white/8 + backdrop-blur-xl) floats over a
+ *  pair of soft brand-coloured aurora blobs (same animate-aurora treatment as
+ *  FulfillmentReasons) rendered as an earlier sibling in the same section, so
+ *  the blur has something colourful behind it to sample. The blobs sit on the
+ *  section's own bg-foreground canvas — same near-black as the hero above —
+ *  so the zone still reads as one continuous dark band, just glassy instead
+ *  of flat. Self-contained (its own blur source), so it doesn't straddle the
+ *  hero/next-section seam the way an earlier glass experiment here did. */
 export default function PartnerMarquee() {
   return (
     <section
       id="gw-mod-partner-marquee"
       aria-label="Benefits of becoming a partner"
       data-nav-theme="dark"
-      // Solid dark band, same near-black as the hero above and the trust bar
-      // below, so the whole top of the page reads as one continuous dark zone.
-      // (The earlier glass overlay straddled the hero/next-section seam and
-      // looked half-frosted; a solid band is clean and seamless.)
-      className="relative z-10 overflow-hidden border-y border-white/10 bg-foreground py-6 text-white sm:py-7"
+      className="relative isolate overflow-hidden bg-foreground text-white"
     >
-      <ScrollFadeIn delay={0.1}>
-      <div className="relative flex w-full overflow-hidden mask-[linear-gradient(to_right,transparent,#000_8%,#000_92%,transparent)]">
-        <div className="flex w-fit animate-marquee hover:[animation-play-state:paused]">
-          {[0, 1].map((copy) => (
-            <div key={copy} className="flex shrink-0 items-center" aria-hidden={copy === 1}>
-              {BENEFITS.map(({ label, Icon }, i) => (
-                <div key={`${copy}-${i}`} className="flex items-center">
-                  <Icon
-                    size={18}
-                    strokeWidth={2.5}
-                    aria-hidden="true"
-                    className="shrink-0 text-brand"
-                  />
-                  <span className="mx-2.5 whitespace-nowrap text-sm font-bold uppercase tracking-wider text-white/85 sm:mx-3 sm:text-base">
-                    {label}
-                  </span>
-                  {/* Dot separator between items. */}
-                  <span
-                    aria-hidden="true"
-                    className="mr-2.5 h-1.5 w-1.5 shrink-0 rounded-full bg-brand/60 sm:mr-3"
-                  />
-                </div>
-              ))}
-            </div>
-          ))}
-        </div>
+      <div aria-hidden="true" className="pointer-events-none absolute inset-0 -z-10 overflow-hidden">
+        <div className="animate-aurora absolute -top-20 left-[12%] h-48 w-80 rounded-full bg-brand/30 blur-[90px]" />
+        <div className="animate-aurora absolute -bottom-20 right-[12%] h-48 w-80 rounded-full bg-brand-strong/25 blur-[90px] [animation-delay:-9s] [animation-duration:22s]" />
       </div>
-      </ScrollFadeIn>
+
+      <div className="relative border-y border-white/15 bg-white/8 py-6 backdrop-blur-xl sm:py-7">
+        <ScrollFadeIn delay={0.1}>
+        <div className="relative flex w-full overflow-hidden mask-[linear-gradient(to_right,transparent,#000_8%,#000_92%,transparent)]">
+          <div className="flex w-fit animate-marquee hover:[animation-play-state:paused]">
+            {[0, 1].map((copy) => (
+              <div key={copy} className="flex shrink-0 items-center" aria-hidden={copy === 1}>
+                {BENEFITS.map(({ label, Icon }, i) => (
+                  <div key={`${copy}-${i}`} className="flex items-center">
+                    <Icon
+                      size={18}
+                      strokeWidth={2.5}
+                      aria-hidden="true"
+                      className="shrink-0 text-brand"
+                    />
+                    <span className="mx-2.5 whitespace-nowrap text-sm font-bold uppercase tracking-wider text-white/85 sm:mx-3 sm:text-base">
+                      {label}
+                    </span>
+                    {/* Dot separator between items. */}
+                    <span
+                      aria-hidden="true"
+                      className="mr-2.5 h-1.5 w-1.5 shrink-0 rounded-full bg-brand/60 sm:mr-3"
+                    />
+                  </div>
+                ))}
+              </div>
+            ))}
+          </div>
+        </div>
+        </ScrollFadeIn>
+      </div>
     </section>
   );
 }
