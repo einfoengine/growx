@@ -8,7 +8,11 @@
 
 @layer base {
   body {
-    background: var(--background);
+    /* Dark page canvas — matches the hero/footer (#0a0a0a) so the area around
+       and below the sections reads dark instead of white. Section-level
+       `bg-background`/`bg-surface` still paint their own light surfaces on top,
+       so this only changes the exposed body backdrop, not the components. */
+    background: var(--foreground);
     color: var(--foreground);
     font-family: var(--font-sans), Arial, Helvetica, sans-serif;
   }
