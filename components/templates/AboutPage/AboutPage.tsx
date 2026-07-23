@@ -15,7 +15,7 @@ export default function AboutPage({ data }: Props) {
       {/* ── Hero (dark, emerald-lit — same family as the home hero) ────── */}
       <section
         id="gw-about-hero"
-        data-nav-theme="dark"
+        data-nav-theme="dark" data-dark-surface
         className="relative isolate overflow-hidden bg-foreground text-background"
       >
         <InnerHeroBackdrop />
@@ -30,7 +30,7 @@ export default function AboutPage({ data }: Props) {
           />
           <div className="mt-8 flex flex-wrap gap-3">
             <Button label="Become a partner" href="#book" icon={<ArrowRight size={15} />} darkBg />
-            <Button label="See our work" href="/works" variant="secondary" darkBg />
+            <Button label="See our work" href="/services" variant="secondary" darkBg />
           </div>
         </div>
       </section>

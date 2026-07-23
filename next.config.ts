@@ -12,6 +12,11 @@ const nextConfig: NextConfig = {
   experimental: {
     optimizePackageImports: ["lucide-react"],
   },
+  images: {
+    // Next 16 requires an explicit quality allowlist. 75 is the default used
+    // across the site; 90 is the hero backdrop (quality={90} in HeroScene).
+    qualities: [75, 90],
+  },
 };
 
 export default nextConfig;

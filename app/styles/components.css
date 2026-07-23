@@ -96,6 +96,11 @@
       border-radius: calc(var(--radius-xl) + 20px);
     }
   }
+  /* Light theme: the whitish stroke disappears against the white hero, so the
+     frame flips to a soft emerald band that reads on a light background. */
+  [data-theme="light"] .hero-video {
+    border-color: rgba(16, 185, 129, 0.22);
+  }
 
   /* ---- Buttons ----------------------------------------------------------- */
   /* Base — compose with a variant + optional size. */
@@ -119,7 +124,9 @@
     @apply bg-background px-8 py-4 text-base text-foreground hover:opacity-90;
   }
   .btn-secondary-dark {
-    @apply border border-white/15 px-7 py-4 text-base text-white/80 hover:border-white/30 hover:text-white;
+    /* Glass, not fully transparent: a faint white fill + blur so the button
+       reads as a surface over the dark hero scene. */
+    @apply border border-white/15 bg-white/8 backdrop-blur-md px-7 py-4 text-base text-white/80 hover:border-white/30 hover:bg-white/12 hover:text-white;
   }
   .btn-lg {
     @apply px-8 py-4 text-base;

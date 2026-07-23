@@ -33,7 +33,7 @@ export default async function PricingPage({ pageData }: Props) {
       {/* Hero */}
       <section
         id="gw-pricing-hero"
-        data-nav-theme="dark"
+        data-nav-theme="dark" data-dark-surface
         className="relative isolate overflow-hidden bg-foreground text-background"
       >
         <InnerHeroBackdrop />

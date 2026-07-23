@@ -27,7 +27,9 @@ export default async function Testimonials() {
     <section
       id={`gw-${data.id}`}
       aria-labelledby="testimonials-headline"
-      className="relative overflow-hidden border-b border-border bg-surface py-24 text-foreground sm:py-28 lg:py-32"
+      // White, so it alternates against ProcessJourney's surface above and
+      // TrustedBy's surface below.
+      className="relative overflow-hidden border-b border-border bg-background py-24 text-foreground sm:py-28 lg:py-32"
     >
       <div className="container-1200">
         <ScrollFadeIn delay={0.1}>

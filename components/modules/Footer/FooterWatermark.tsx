@@ -29,7 +29,7 @@ export default function FooterWatermark({ name }: { name: string }) {
           y: reduceMotion ? "-4%" : y,
           fontFamily: "var(--font-heading)",
         }}
-        className="select-none whitespace-nowrap text-[15vw] font-bold leading-none tracking-tighter text-white/[0.06]"
+        className="select-none whitespace-nowrap text-[15vw] font-bold leading-none tracking-tighter text-white/6 light:text-black/5"
       >
         {name}
       </motion.span>

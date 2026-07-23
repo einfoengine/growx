@@ -15,6 +15,9 @@ export default async function CtaBanner({ data }: { data?: CtaBannerContent } = 
     <section
       id={`gw-${banner.id}`}
       aria-labelledby={`${banner.id}-headline`}
+      // Stays black in BOTH themes: the final close should be the strongest
+      // contrast band on the page (and it separates the tail from the light
+      // footer in light mode).
       className="relative isolate overflow-hidden bg-foreground text-background"
     >
       <div

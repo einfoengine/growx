@@ -27,6 +27,13 @@ export default function HeaderShell({ children }: { children: React.ReactNode })
   useEffect(() => {
     let raf = 0;
     const compute = () => {
+      // Global light theme repaints every dark band white, so the bar must
+      // read those sections as light too — skip dark detection entirely.
+      if (document.documentElement.dataset.theme === "light") {
+        setDark(false);
+        setScrolled((prev) => (prev ? window.scrollY > 8 : window.scrollY > 32));
+        return;
+      }
       // Sample just below the bar (8px top gap + h-16) to read the section
       // beneath it.
       const probe = 80;
@@ -56,10 +63,13 @@ export default function HeaderShell({ children }: { children: React.ReactNode })
 
     window.addEventListener("scroll", onScroll, { passive: true });
     window.addEventListener("resize", onScroll);
+    // Re-read immediately when the theme toggle flips <html data-theme>.
+    window.addEventListener("growx-themechange", onScroll);
     return () => {
       cancelAnimationFrame(raf);
       window.removeEventListener("scroll", onScroll);
       window.removeEventListener("resize", onScroll);
+      window.removeEventListener("growx-themechange", onScroll);
     };
   }, []);
 
@@ -82,7 +92,7 @@ export default function HeaderShell({ children }: { children: React.ReactNode })
           content (incl. the parallax hero scene) repaints behind it — without
           this the blur shimmers/flickers on scroll. */}
       <div
-        className={`mx-auto transform-gpu rounded-full [backface-visibility:hidden] ${
+        className={`mx-auto transform-gpu rounded-2xl [backface-visibility:hidden] ${
           scrolled
             ? "max-w-[calc(var(--container-max)-4rem)] border border-border/60 bg-background/65 shadow-lg shadow-black/5 backdrop-blur-xl"
             : "max-w-(--container-max) border border-transparent"

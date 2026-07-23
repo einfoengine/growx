@@ -24,7 +24,7 @@ export default function TrustBar() {
     <section
       id="gw-mod-trust-bar"
       aria-label="Platforms we fulfill on"
-      data-nav-theme="dark"
+      data-nav-theme="dark" data-dark-surface
       className="border-b border-white/10 bg-foreground py-12 text-background sm:py-14"
     >
       <div className="container-1200 text-center">

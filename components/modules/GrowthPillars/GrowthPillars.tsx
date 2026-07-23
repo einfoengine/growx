@@ -1,6 +1,11 @@
 import type { ReactNode } from "react";
+import { ArrowRight } from "lucide-react";
 import SectionHeader from "@/components/elements/SectionHeader";
 import ScrollFadeIn from "@/components/elements/ScrollFadeIn";
+import Button from "@/components/elements/Button";
+
+/** Full-bleed background image for the problem section. */
+const PROBLEM_BG = "/problem-bg-1.png";
 
 /** The three problems growX removes for a growing agency, framed as the areas
  *  we take over: fulfillment (delivery capacity), client management (the
@@ -201,6 +206,29 @@ function GrowthArt() {
   );
 }
 
+/** Full-bleed background: the image is pinned to the viewport (background
+ *  attachment: fixed), so the section scrolls over it for a parallax reveal.
+ *  A whitish wash mutes it for readability, and the signature grid adds texture.
+ *  (iOS Safari ignores fixed attachment and falls back to a static background.) */
+function ProblemBackground() {
+  return (
+    <div aria-hidden="true" className="pointer-events-none absolute inset-0 -z-10 overflow-hidden">
+      {/* Parallax image layer. */}
+      <div
+        className="absolute inset-0 bg-cover bg-center bg-no-repeat bg-fixed"
+        style={{ backgroundImage: `url('${PROBLEM_BG}')` }}
+      />
+
+      {/* Whitish wash — mutes the image so the copy reads; a touch heavier toward
+          the cards at the bottom. Tune the two alpha stops to taste. */}
+      <div className="absolute inset-0 bg-[linear-gradient(to_bottom,rgba(255,255,255,0.7),rgba(255,255,255,0.86))]" />
+
+      {/* Signature grid texture, softly masked so it has no hard edges. */}
+      <div className="absolute inset-0 bg-[linear-gradient(to_right,rgba(10,10,10,0.05)_1px,transparent_1px),linear-gradient(to_bottom,rgba(10,10,10,0.05)_1px,transparent_1px)] bg-size-[48px_48px] mask-[radial-gradient(ellipse_80%_75%_at_50%_40%,#000,transparent_88%)]" />
+    </div>
+  );
+}
+
 const PILLARS: Pillar[] = [
   {
     n: "01",
@@ -232,11 +260,8 @@ export default function GrowthPillars() {
       aria-labelledby="growth-pillars-headline"
       className="relative isolate border-b border-border bg-surface text-foreground"
     >
-      {/* Signature grid backdrop — same family as the services catalog band. */}
-      <div
-        aria-hidden="true"
-        className="pointer-events-none absolute inset-0 -z-10 bg-[linear-gradient(to_right,rgba(10,10,10,0.05)_1px,transparent_1px),linear-gradient(to_bottom,rgba(10,10,10,0.05)_1px,transparent_1px)] bg-size-[48px_48px] mask-[radial-gradient(ellipse_75%_70%_at_50%_45%,#000,transparent_85%)]"
-      />
+      {/* Background image. */}
+      <ProblemBackground />
 
       <div className="container-1200 px-6 py-20 sm:px-8 sm:py-24">
         <ScrollFadeIn delay={0.1}>
@@ -284,6 +309,49 @@ export default function GrowthPillars() {
             </ScrollFadeIn>
           ))}
         </div>
+
+        {/* Dark CTA band under the three pillars — turns the "we handle it"
+            argument into a conversation. Same dark treatment as the site's
+            CtaBanner (bg-foreground + brand glow + faint grid), but a
+            self-contained rounded box inside this light section. */}
+        <ScrollFadeIn delay={0.2}>
+          {/* Stays black in both themes (deliberate contrast card). */}
+          <div className="relative isolate mt-8 overflow-hidden rounded-xl border border-white/10 bg-foreground px-6 py-10 text-background sm:mt-10 sm:px-12 sm:py-12">
+            {/* Brand glow, top-center. */}
+            <div
+              aria-hidden="true"
+              className="pointer-events-none absolute -top-28 left-1/2 -z-10 h-72 w-170 max-w-none -translate-x-1/2 rounded-full bg-(--brand-soft) blur-[130px]"
+            />
+            {/* Faint grid, masked to fade out toward the edges. */}
+            <div
+              aria-hidden="true"
+              className="pointer-events-none absolute inset-0 -z-10 bg-[linear-gradient(to_right,rgba(255,255,255,0.05)_1px,transparent_1px),linear-gradient(to_bottom,rgba(255,255,255,0.05)_1px,transparent_1px)] bg-size-[56px_56px] mask-[radial-gradient(ellipse_70%_80%_at_50%_0%,#000,transparent_82%)]"
+            />
+
+            <div className="relative z-10 flex flex-col items-center gap-7 text-center lg:flex-row lg:items-center lg:justify-between lg:gap-10 lg:text-left">
+              <div className="max-w-2xl">
+                <h3 className="text-2xl font-bold leading-[1.15] tracking-tight sm:text-3xl md:text-4xl">
+                  Let&apos;s talk about how much more you could{" "}
+                  <span className="text-gradient-brand">grow and close</span>.
+                </h3>
+                <p className="mt-3 text-base text-white/70 sm:text-lg">
+                  Book a partner call and we&apos;ll map how growX takes
+                  fulfillment, client management, and scale off your plate — so
+                  you take on more work and close bigger deals.
+                </p>
+              </div>
+              <div className="shrink-0">
+                <Button
+                  id="gw-growth-pillars-cta"
+                  label="Book a partner call"
+                  href="#book"
+                  icon={<ArrowRight size={16} />}
+                  darkBg
+                />
+              </div>
+            </div>
+          </div>
+        </ScrollFadeIn>
       </div>
     </section>
   );

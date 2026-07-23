@@ -19,7 +19,7 @@ export default async function ContactRoute() {
       {/* ── Hero (dark, emerald-lit — same family as the home hero) ────── */}
       <section
         id="gw-contact-hero"
-        data-nav-theme="dark"
+        data-nav-theme="dark" data-dark-surface
         className="relative isolate overflow-hidden bg-foreground text-background"
       >
         <InnerHeroBackdrop />

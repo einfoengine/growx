@@ -15,8 +15,9 @@ export default function InnerHeroBackdrop() {
         aria-hidden="true"
         className="pointer-events-none absolute inset-0 -z-10 bg-[radial-gradient(ellipse_75%_55%_at_50%_-5%,var(--brand-soft),transparent_60%)]"
       />
-      {/* Interactive dot field: brightens under the cursor, random sparkles. */}
-      <HeroDots className="-z-10 mask-[radial-gradient(ellipse_80%_70%_at_50%_30%,#000_15%,transparent_80%)]" />
+      {/* Interactive dot field: brightens under the cursor, random sparkles.
+          White dots — invisible on the light hero, so hidden there. */}
+      <HeroDots className="-z-10 mask-[radial-gradient(ellipse_80%_70%_at_50%_30%,#000_15%,transparent_80%)] light:hidden" />
       {/* Slow-pulsing wide glow behind the copy. */}
       <div
         aria-hidden="true"

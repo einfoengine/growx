@@ -45,6 +45,110 @@
   --container-max: 1400px;
 }
 
+/* ============================================================================
+   LIGHT THEME  ( <html data-theme="light"> )
+   ----------------------------------------------------------------------------
+   The site's default is the dark-canvas look (no attribute needed / data-theme
+   "dark"). The toggle (<ThemeToggle>) sets data-theme="light" on <html> for the
+   all-white variant. Two mechanisms:
+
+   1. Global surfaces — the body canvas and footer tokens flip to light here.
+
+   2. Dark bands — any element carrying `data-dark-surface` (the hero, the
+      partner marquee, inner dark cards, etc.) is repainted light by the scoped
+      block below. It remaps the handful of dark-on utilities those regions use
+      (bg-foreground, text-white/background, and the white/xx alpha borders &
+      fills) in ONE place, so individual components don't each need a `light:`
+      rewrite. Unlayered on purpose: unlayered rules win over Tailwind's layered
+      utilities, so no !important is required.
+
+   The `light:` custom variant is available for the cases the scoped remap can't
+   reach (swapping an image, hiding a dark-only glow, etc.). */
+@custom-variant light (&:where([data-theme="light"], [data-theme="light"] *));
+
+:root {
+  color-scheme: dark;
+}
+
+[data-theme="light"] {
+  color-scheme: light;
+
+  /* Footer flips from near-black to white. */
+  --footer-bg: #ffffff;
+  --footer-fg: #0a0a0a;
+  --footer-muted: #6b7280;
+}
+
+/* Body canvas: dark by default (base.css), light here. */
+[data-theme="light"] body {
+  background: var(--background);
+  color: var(--foreground);
+}
+
+/* Dark bands → light. Scoped to [data-dark-surface] so intentionally-dark
+   controls elsewhere (buttons, the skip link) are untouched. */
+[data-theme="light"] [data-dark-surface] {
+  background-color: var(--background);
+  color: var(--foreground);
+}
+[data-theme="light"] [data-dark-surface] .bg-foreground {
+  background-color: var(--background);
+}
+[data-theme="light"] [data-dark-surface] .text-background,
+[data-theme="light"] [data-dark-surface] .text-white {
+  color: var(--foreground);
+}
+/* Any text-white/NN or text-background/NN opacity → muted; any border/bg
+   white/NN → the light-mode border / surface tint. */
+[data-theme="light"] [data-dark-surface] [class*="text-white/"],
+[data-theme="light"] [data-dark-surface] [class*="text-background/"] {
+  color: var(--muted);
+}
+[data-theme="light"] [data-dark-surface] [class*="border-white/"] {
+  border-color: var(--border);
+}
+[data-theme="light"] [data-dark-surface] [class*="bg-white/"] {
+  background-color: var(--surface);
+}
+/* Component classes (components.css) bake their colors in via @apply, so the
+   attribute remaps above never see them — they need explicit overrides. */
+[data-theme="light"] [data-dark-surface] .hero-headline,
+[data-theme="light"] [data-dark-surface] .hero-tagline {
+  color: var(--foreground);
+}
+[data-theme="light"] [data-dark-surface] .hero-eyebrow,
+[data-theme="light"] [data-dark-surface] .hero-sub {
+  color: var(--muted);
+}
+[data-theme="light"] [data-dark-surface] .hero-stat {
+  border-color: var(--border);
+  color: var(--muted);
+}
+/* Dark-section button variants: on a repainted-light band, "primary on dark"
+   (white fill) must flip to the light-section primary (dark fill) and the
+   ghost outline must use the light border/text. */
+[data-theme="light"] [data-dark-surface] .btn-primary-dark {
+  background-color: var(--foreground);
+  color: var(--background);
+}
+[data-theme="light"] [data-dark-surface] .btn-secondary-dark {
+  border-color: var(--border);
+  color: var(--foreground);
+  /* Glass reads dark-tinted over the light hero (bg-white/8 would vanish). */
+  background-color: rgba(10, 10, 10, 0.04);
+}
+
+/* Footer uses the same white/xx internals. */
+[data-theme="light"] footer [class*="border-white/"] {
+  border-color: var(--border);
+}
+[data-theme="light"] footer [class*="bg-white/"] {
+  background-color: var(--surface);
+}
+[data-theme="light"] footer .hover\:text-white:hover {
+  color: var(--foreground);
+}
+
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);

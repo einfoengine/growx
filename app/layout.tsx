@@ -4,6 +4,7 @@ import { getSite } from "@/lib/content";
 import MotionProvider from "@/components/elements/MotionProvider";
 import Analytics from "@/components/elements/Analytics";
 import ChatWidget from "@/components/elements/ChatWidget";
+import ThemeScript from "@/components/elements/ThemeScript";
 import "./globals.css";
 
 // Manrope - primary typeface for headings and body (brand guideline).
@@ -43,11 +44,15 @@ export default function RootLayout({
     <html
       lang="en"
       className={`${manrope.variable} ${geistMono.variable} h-full antialiased`}
+      suppressHydrationWarning
     >
       <body
         className="min-h-full flex flex-col"
         suppressHydrationWarning
       >
+        {/* Sets <html data-theme> before paint — must be the first thing in the
+            body so there's no flash of the wrong theme. */}
+        <ThemeScript />
         {/* Skip link — must stay the first focusable thing in the body so the
             first Tab on any page offers a jump past the logo + nav + dropdowns
             + CTA straight to <main id="main"> (WCAG 2.4.1). Visually hidden

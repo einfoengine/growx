@@ -64,11 +64,6 @@
       "href": "/process"
     },
     {
-      "id": "nav-works",
-      "label": "Works",
-      "href": "/works"
-    },
-    {
       "id": "nav-about",
       "label": "About",
       "href": "/about"
@@ -77,11 +72,6 @@
       "id": "nav-blog",
       "label": "Blog",
       "href": "/blog"
-    },
-    {
-      "id": "nav-webinar",
-      "label": "Webinar",
-      "href": "/webinar"
     },
     {
       "id": "nav-pricing",

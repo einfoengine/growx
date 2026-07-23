@@ -45,7 +45,7 @@ export default async function LandingPageTemplate({ data }: Props) {
       {
         id: `${data.id}-cta-work`,
         label: "See our work",
-        href: "/works",
+        href: "/services",
       },
     ],
     stats: [],

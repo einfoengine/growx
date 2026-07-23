@@ -49,7 +49,7 @@ export default function HowItWorks() {
     <section
       id="gw-mod-how-it-works"
       aria-labelledby="how-it-works-headline"
-      data-nav-theme="dark"
+      data-nav-theme="dark" data-dark-surface
       className="relative isolate overflow-hidden bg-foreground text-background"
     >
       {/* Soft brand glow. */}

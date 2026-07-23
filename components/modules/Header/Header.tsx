@@ -1,12 +1,12 @@
 import Link from "next/link";
-import { ArrowRight } from "lucide-react";
+import { Handshake } from "lucide-react";
 import Logo from "@/components/elements/Logo";
 import { getHeader, getServices } from "@/lib/content";
 import MobileMenu from "./MobileMenu";
 import HeaderShell from "./HeaderShell";
 import ServicesMegaMenu from "./ServicesMegaMenu";
 import PortalLoginLink from "./PortalLoginLink";
-import CartIcon from "@/components/modules/Cart/CartIcon";
+import ThemeToggle from "@/components/elements/ThemeToggle";
 
 export default async function Header() {
   const [data, services] = await Promise.all([getHeader(), getServices()]);
@@ -52,26 +52,26 @@ export default async function Header() {
 
         {/* Right side: cart (always visible), then desktop login + CTA, then
             the mobile menu trigger. */}
-        <div className="flex items-center gap-1.5 sm:gap-3">
-          <CartIcon />
-          <div className="hidden lg:flex items-center gap-4 xl:gap-5">
-            {/* xl-only: at lg the 8-item nav + CTA already fill the bar, so
-                the portal link yields (it lives in the mobile menu below lg;
-                the lg-to-xl band goes without it, acceptable pre-launch). */}
-            <PortalLoginLink className="hidden xl:inline-flex items-center gap-1.5 text-sm font-medium text-foreground/80 transition-colors hover:text-foreground" />
+        <div className="flex items-center gap-1.5 sm:gap-2">
+          {/* Glass icon controls (theme + portal) and the labeled partner CTA.
+              Theme toggle stays visible everywhere; portal + partner join from
+              lg up (below lg they live in the mobile drawer). */}
+          <ThemeToggle />
+          <div className="hidden lg:flex items-center gap-2">
+            <PortalLoginLink iconOnly />
             <Link
               id={data.cta.id}
               href={data.cta.href}
-              // Logo-gradient fill: outside the pill this is the one
-              // brand-colored anchor at the top right, legible over any section.
-              className="group inline-flex items-center gap-1.5 rounded-full bg-gradient-brand px-5 py-2.5 text-sm font-semibold text-black shadow-lg shadow-black/10 transition-[filter] hover:brightness-110"
+              // "Become a partner": the one brand-colored control at the top
+              // right — solid logo-gradient fill, handshake glyph + label.
+              className="group inline-flex h-10 items-center gap-2 rounded-full border border-border/60 bg-gradient-brand px-4 text-sm font-semibold text-black shadow-lg shadow-black/10 transition-[filter] hover:brightness-110"
             >
-              {data.cta.label}
-              <ArrowRight
-                size={15}
+              <Handshake
+                size={17}
                 aria-hidden="true"
-                className="transition-transform group-hover:translate-x-0.5"
+                className="transition-transform group-hover:scale-110"
               />
+              {data.cta.label}
             </Link>
           </div>
 

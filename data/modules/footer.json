@@ -66,11 +66,6 @@
           "id": "footer-company-process",
           "label": "Process",
           "href": "/process"
-        },
-        {
-          "id": "footer-company-works",
-          "label": "Works",
-          "href": "/works"
         }
       ]
     },
@@ -78,11 +73,6 @@
       "id": "mod-footer-col-resources",
       "title": "Resources",
       "links": [
-        {
-          "id": "footer-resources-webinar",
-          "label": "Live webinar",
-          "href": "/webinar"
-        },
         {
           "id": "footer-resources-blog",
           "label": "Blog",

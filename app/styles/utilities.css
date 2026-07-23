@@ -184,6 +184,20 @@
   animation: marquee-x 40s linear infinite;
 }
 
+/* Left-to-right fill for the active step's progress bar in ProcessJourney.
+   Duration must match STEP_MS in ProcessJourneyClient.tsx (4600ms). */
+@keyframes process-progress {
+  from {
+    transform: scaleX(0);
+  }
+  to {
+    transform: scaleX(1);
+  }
+}
+@utility animate-process-progress {
+  animation: process-progress 4600ms linear both;
+}
+
 /* Hero top glow — a slow, subtle breathe. Keeps the -50% centering inside the
    keyframes since it also drives transform. */
 @keyframes hero-glow {
@@ -206,6 +220,31 @@
   .animate-hero-glow {
     animation: none;
     transform: translateX(-50%);
+  }
+}
+
+/* Twinkling star in the dark hero sky (HeroScene). Per-star delay/duration
+   come from inline styles so the field never pulses in unison. */
+@keyframes star-twinkle {
+  0%,
+  100% {
+    opacity: 0.1;
+    transform: scale(0.75);
+  }
+  50% {
+    opacity: 0.9;
+    transform: scale(1);
+  }
+}
+
+@utility animate-star-twinkle {
+  animation: star-twinkle 3.4s ease-in-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-star-twinkle {
+    animation: none;
+    opacity: 0.35;
   }
 }
 

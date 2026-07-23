@@ -14,7 +14,7 @@ export default function JoinCta() {
   return (
     <section
       id="gw-pricing-join"
-      data-nav-theme="dark"
+      data-nav-theme="dark" data-dark-surface
       className="relative isolate overflow-hidden bg-foreground text-background"
     >
       <div aria-hidden="true" className="pointer-events-none absolute inset-0 -z-10">

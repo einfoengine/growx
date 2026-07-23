@@ -95,7 +95,7 @@ export default async function ServicesOverviewRoute() {
       <section
         id="gw-services-hero"
         aria-labelledby="gw-services-headline"
-        data-nav-theme="dark"
+        data-nav-theme="dark" data-dark-surface
         className="relative isolate overflow-hidden bg-foreground text-background"
       >
         <InnerHeroBackdrop />
@@ -156,7 +156,7 @@ export default async function ServicesOverviewRoute() {
       <section
         id="gw-services-cta"
         aria-labelledby="gw-services-cta-headline"
-        data-nav-theme="dark"
+        data-nav-theme="dark" data-dark-surface
         className="relative isolate overflow-hidden bg-foreground text-background"
       >
         <div

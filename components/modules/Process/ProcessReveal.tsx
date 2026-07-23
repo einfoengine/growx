@@ -88,7 +88,7 @@ export default function ProcessReveal({ data }: { data: ProcessContent }) {
       id={`gw-${data.id}`}
       aria-labelledby={`${data.id}-headline`}
       ref={ref}
-      data-nav-theme="dark"
+      data-nav-theme="dark" data-dark-surface
       className="relative bg-background text-foreground"
       style={{ ...DARK_TOKENS, height: `${total * 55 + 20}vh` }}
     >

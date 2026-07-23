@@ -29,6 +29,7 @@ export default async function Hero({ data, variant = "home" }: HeroProps = {}) {
         id={`gw-${heroData.id}`}
         aria-labelledby={`${heroData.id}-headline`}
         data-nav-theme="dark"
+        data-dark-surface
         className="relative isolate overflow-hidden bg-foreground text-background"
       >
         <InnerHeroBackdrop />
@@ -43,7 +44,8 @@ export default async function Hero({ data, variant = "home" }: HeroProps = {}) {
       id={`gw-${heroData.id}`}
       aria-labelledby={`${heroData.id}-headline`}
       data-nav-theme="dark"
-      className="relative isolate overflow-hidden bg-foreground pb-100 text-background"
+      data-dark-surface
+      className="relative isolate overflow-hidden bg-foreground pb-24 text-background sm:pb-28 lg:pb-32"
     >
       {/* Cinematic backdrop: darkened emerald aurora photo + film grain,
           drifting slowly on scroll. Sits at the very back. */}
@@ -53,8 +55,9 @@ export default async function Hero({ data, variant = "home" }: HeroProps = {}) {
         aria-hidden="true"
         className="pointer-events-none absolute inset-0 -z-10 bg-[radial-gradient(ellipse_75%_55%_at_50%_-5%,var(--brand-soft),transparent_60%)]"
       />
-      {/* Interactive dot field: lights up under the cursor + random dim sparkles. */}
-      <HeroDots className="-z-10 mask-[radial-gradient(ellipse_80%_70%_at_50%_30%,#000_15%,transparent_80%)]" />
+      {/* Interactive dot field: lights up under the cursor + random dim
+          sparkles. White dots — invisible on the light hero, so hidden there. */}
+      <HeroDots className="-z-10 mask-[radial-gradient(ellipse_80%_70%_at_50%_30%,#000_15%,transparent_80%)] light:hidden" />
       <div
         aria-hidden="true"
         className="pointer-events-none absolute -z-10 left-1/2 -top-24 h-64 w-375 max-w-none animate-hero-glow bg-brand/12 blur-[130px]"

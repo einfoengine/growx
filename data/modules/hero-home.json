@@ -8,11 +8,11 @@
     "parts": [
       {
         "type": "text",
-        "value": "The team behind\n"
+        "value": "The team\n"
       },
       {
         "type": "highlight",
-        "value": "your team"
+        "value": "behind your team"
       },
       {
         "type": "text",

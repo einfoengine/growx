@@ -84,7 +84,7 @@ export default function FulfillmentReasons() {
     <section
       id="gw-mod-fulfillment-reasons"
       aria-labelledby="fulfillment-reasons-headline"
-      data-nav-theme="dark"
+      data-nav-theme="dark" data-dark-surface
       // Deep Pine, the brand's dark green — the one green section on home.
       className="relative isolate overflow-clip bg-[#07533a] text-background"
     >

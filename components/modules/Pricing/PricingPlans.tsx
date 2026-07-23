@@ -28,7 +28,9 @@ export default async function PricingPlans({
     <section
       id="gw-mod-pricing"
       aria-labelledby="pricing-headline"
-      className={`relative isolate overflow-hidden border-b border-border bg-background text-foreground ${pt} ${pb}`}
+      // Surface, so the offer band separates from white SisterBrands above and
+      // white Comparison below (the tier cards pop on the tinted ground).
+      className={`relative isolate overflow-hidden border-b border-border bg-surface text-foreground ${pt} ${pb}`}
     >
       {/* Faint grid + soft brand glow backdrop. */}
       <div

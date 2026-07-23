@@ -43,6 +43,8 @@ export default function PartnerMarquee() {
     <section
       id="gw-mod-partner-marquee"
       aria-label="Benefits of becoming a partner"
+      // Stays black in BOTH themes (deliberate contrast band) — no
+      // data-dark-surface here.
       data-nav-theme="dark"
       className="relative isolate overflow-hidden bg-foreground text-white"
     >

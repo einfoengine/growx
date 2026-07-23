@@ -107,7 +107,13 @@ export default async function Footer() {
           className="grid gap-10 rounded-2xl border border-white/10 bg-white/4 p-8 backdrop-blur-md sm:p-10 lg:grid-cols-12 lg:gap-12"
         >
           <div id={`${data.id}-brand`} className="lg:col-span-4">
-            <Logo id="el-logo-footer" tone="light" width={150} />
+            {/* Theme pair: white logo on the dark footer, black on the light one. */}
+            <span className="light:hidden">
+              <Logo id="el-logo-footer" tone="light" width={150} />
+            </span>
+            <span className="hidden light:block">
+              <Logo id="el-logo-footer-dark" tone="dark" width={150} />
+            </span>
             <p className="mt-5 max-w-xs text-sm leading-relaxed text-(--footer-muted)">
               {data.brandBlurb}
             </p>
@@ -118,7 +124,7 @@ export default async function Footer() {
             <a
               id={`${data.id}-email`}
               href={`mailto:${site.email}`}
-              className="group mt-6 inline-flex items-center gap-2.5 text-base font-semibold text-white transition-colors hover:text-brand focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-brand sm:text-lg"
+              className="group mt-6 inline-flex items-center gap-2.5 text-base font-semibold text-(--footer-fg) transition-colors hover:text-brand focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-brand sm:text-lg"
             >
               <Mail size={18} className="shrink-0 text-brand" aria-hidden="true" />
               {site.email}
@@ -148,7 +154,7 @@ export default async function Footer() {
           >
             {data.columns.map((col) => (
               <div key={col.id} id={col.id}>
-                <h3 className="text-xs font-semibold uppercase tracking-wider text-white">
+                <h3 className="text-xs font-semibold uppercase tracking-wider text-(--footer-fg)">
                   {col.title}
                 </h3>
                 {/* py on the link (not the li) grows the tap target to ~28px
@@ -159,7 +165,7 @@ export default async function Footer() {
                       <Link
                         id={link.id}
                         href={link.href}
-                        className="link-underline inline-block py-1 text-sm text-(--footer-muted) transition-colors hover:text-white focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand"
+                        className="link-underline inline-block py-1 text-sm text-(--footer-muted) transition-colors hover:text-(--footer-fg) focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand"
                       >
                         {link.label}
                       </Link>
@@ -187,7 +193,7 @@ export default async function Footer() {
                     key={link.id}
                     id={link.id}
                     href={link.href}
-                    className="link-underline text-(--footer-muted) hover:text-white transition-colors"
+                    className="link-underline text-(--footer-muted) hover:text-(--footer-fg) transition-colors"
                   >
                     {link.label}
                   </Link>

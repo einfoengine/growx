@@ -97,7 +97,7 @@ export default function HowItWorksModal() {
             exit={{ opacity: 0, scale: 0.98, y: 8 }}
             transition={{ duration: 0.22, ease: [0.16, 1, 0.3, 1] }}
             onClick={(e) => e.stopPropagation()}
-            data-nav-theme="dark"
+            data-nav-theme="dark" data-dark-surface
             className="relative flex w-full max-w-lg flex-col overflow-hidden rounded-2xl border border-white/10 bg-foreground text-background shadow-2xl shadow-black/50 focus:outline-none"
           >
             {/* Header */}

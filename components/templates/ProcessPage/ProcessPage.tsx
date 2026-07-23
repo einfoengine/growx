@@ -67,7 +67,7 @@ function processHeroToHeroContent(page: ProcessPageContent): HeroContent {
       {
         id: `${page.id}-hero-cta-work`,
         label: "See our work",
-        href: "/works",
+        href: "/services",
         variant: "secondary",
       },
     ],
@@ -328,7 +328,7 @@ export default function ProcessPage({ data }: Props) {
           />
           <div className="mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row">
             <Button label="Become a partner" href="#book" icon={<ArrowRight size={15} />} />
-            <Button label="See our work" href="/works" variant="secondary" />
+            <Button label="See our work" href="/services" variant="secondary" />
           </div>
         </div>
       </section>
