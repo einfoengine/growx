@@ -210,7 +210,7 @@ function GrowthArt() {
  *  attachment: fixed), so the section scrolls over it for a parallax reveal.
  *  A whitish wash mutes it for readability, and the signature grid adds texture.
  *  (iOS Safari ignores fixed attachment and falls back to a static background.) */
-function ProblemBackground() {
+export function ProblemBackground() {
   return (
     <div aria-hidden="true" className="pointer-events-none absolute inset-0 -z-10 overflow-hidden">
       {/* Parallax image layer. */}

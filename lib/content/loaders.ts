@@ -32,6 +32,7 @@ import type {
   BlogContent,
   BlogPost,
   PricingPageContent,
+  PricingServiceConfig,
   ProcessPageContent,
   ServicePageContent,
   WebinarPageContent,
@@ -174,6 +175,17 @@ export const SERVICE_SLUGS = Object.keys(SERVICE_PAGES);
 
 export async function getServicePage(slug: string): Promise<ServicePageContent | null> {
   return SERVICE_PAGES[slug] ?? null;
+}
+
+/** The single source of truth for a service's rates (unit price, minimums,
+ *  duration multipliers) — the same entry the pricing page and checkout use,
+ *  so a rich service landing page can never drift from them. */
+export async function getServicePricingConfig(
+  slug: string
+): Promise<PricingServiceConfig | null> {
+  return (
+    (pricingPageData as PricingPageContent).services.find((s) => s.slug === slug) ?? null
+  );
 }
 
 export async function getAllServices(): Promise<ServicePageContent[]> {

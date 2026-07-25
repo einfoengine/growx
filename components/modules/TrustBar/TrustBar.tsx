@@ -24,7 +24,9 @@ export default function TrustBar() {
     <section
       id="gw-mod-trust-bar"
       aria-label="Platforms we fulfill on"
-      data-nav-theme="dark" data-dark-surface
+      // Stays black in BOTH themes (contrast band, same standard as the home
+      // marquee) — no data-dark-surface here.
+      data-nav-theme="dark"
       className="border-b border-white/10 bg-foreground py-12 text-background sm:py-14"
     >
       <div className="container-1200 text-center">

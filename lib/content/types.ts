@@ -262,6 +262,64 @@ export type ServiceDeliverable = {
 
 export type ServicePricingModel = "one-off" | "retainer" | "both";
 
+/** Copy for the transparent rate-card + margin-calculator section of a rich
+ *  service landing page. Copy ONLY — the numbers ($/unit, durations) come from
+ *  data/pages/pricing.json via getServicePricingConfig, so this page, /pricing,
+ *  and checkout can never drift apart. */
+export type ServiceLandingPricing = {
+  eyebrow: string;
+  headline: { parts: HeadlinePart[] };
+  sub: string;
+  /** Markup presets for the margin calculator, e.g. [1.5, 2, 3]. */
+  markupOptions: number[];
+  defaultMarkup: number;
+  /** Risk-reversal bullets rendered under the calculator. */
+  guarantees: ServiceDeliverable[];
+  /** Soft alternative for the not-ready (e.g. the free-portal line). */
+  note?: string;
+};
+
+/** Optional rich-landing content: its presence on a service JSON switches the
+ *  route from the shared classic layout to the high-converting rich layout.
+ *  Every block is optional so a service can adopt the rich page piecemeal. */
+export type ServiceLandingFeatureGroup = {
+  id: string;
+  title: string;
+  /** Icon key rendered as the group's black sticker chip. */
+  icon: "palette" | "code" | "gauge" | "shield" | "wrench" | "headset";
+  items: string[];
+};
+
+export type ServiceLandingContent = {
+  hero?: { stats?: HeroStat[]; ctaNote?: string; secondaryCta?: CTA };
+  /** VSL under the hero (same treatment as the home hero's video). */
+  vsl?: { videoId: string };
+  pains?: PainPointsContent;
+  /** The complete feature list: design, stack, performance, security,
+   *  maintenance, support — grouped checklists. */
+  features?: {
+    eyebrow: string;
+    headline: { parts: HeadlinePart[] };
+    sub: string;
+    groups: ServiceLandingFeatureGroup[];
+  };
+  work?: {
+    category: PortfolioCategory;
+    eyebrow: string;
+    headline: { parts: HeadlinePart[] };
+    sub: string;
+  };
+  pricing?: ServiceLandingPricing;
+  /** Header over the whyUs trio + comparison table. */
+  differentiators?: {
+    eyebrow: string;
+    headline: { parts: HeadlinePart[] };
+    sub: string;
+  };
+  /** Appended to the base faq list. */
+  faqExtra?: FaqItem[];
+};
+
 export type ServicePageContent = {
   id: string;
   slug: string;
@@ -272,6 +330,8 @@ export type ServicePageContent = {
   deliverables: ServiceDeliverable[];
   whyUs: ServiceDeliverable[];
   faq: FaqItem[];
+  /** Presence switches the route to the rich landing layout. */
+  landing?: ServiceLandingContent;
 };
 
 export type WebinarAgendaItem = {

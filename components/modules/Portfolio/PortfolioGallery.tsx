@@ -8,6 +8,11 @@ import type { PortfolioContent, PortfolioItem } from "@/lib/content";
 type Props = {
   categories: PortfolioContent["categories"];
   items: PortfolioItem[];
+  /** Hide the category filter pills (single-category embeds). */
+  hideFilters?: boolean;
+  /** Render tiles as plain images instead of links — the /works case-study
+   *  route is gone, so pages opt out of dead links with this. */
+  linkItems?: boolean;
 };
 
 const ALL = "all";
@@ -37,7 +42,12 @@ const tileVariants = {
  *  tiles; the grid re-staggers on every filter change (the motion container is
  *  keyed by the active filter, so it remounts and replays). CSS multi-column
  *  gives the masonry flow. */
-export default function PortfolioGallery({ categories, items }: Props) {
+export default function PortfolioGallery({
+  categories,
+  items,
+  hideFilters = false,
+  linkItems = true,
+}: Props) {
   const [active, setActive] = useState<string>(ALL);
 
   const filters = useMemo(
@@ -56,7 +66,7 @@ export default function PortfolioGallery({ categories, items }: Props) {
       <div
         role="tablist"
         aria-label="Filter work by category"
-        className="flex flex-wrap items-center justify-center gap-2.5"
+        className={`flex flex-wrap items-center justify-center gap-2.5 ${hideFilters ? "hidden" : ""}`}
       >
         {filters.map((f) => {
           const isActive = f.key === active;
@@ -87,42 +97,50 @@ export default function PortfolioGallery({ categories, items }: Props) {
         animate="visible"
         className="mt-10 gap-5 [column-fill:_balance] sm:columns-2 lg:columns-3"
       >
-        {visible.map((item, i) => (
-          <motion.div
-            key={item.id}
-            variants={tileVariants}
-            className="mb-5 break-inside-avoid"
-          >
-            <Link
-              href={`/works/${item.slug}`}
-              className="group relative block overflow-hidden rounded-2xl border border-white/10 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand"
-            >
-              <div className={`relative w-full overflow-hidden ${ASPECTS[i % ASPECTS.length]}`}>
-                {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img
-                  src={item.image}
-                  alt={item.title}
-                  className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
-                />
-                <div
-                  aria-hidden="true"
-                  className="pointer-events-none absolute inset-0 bg-linear-to-t from-black/85 via-black/15 to-transparent"
-                />
-                <div className="absolute inset-x-0 bottom-0 p-6">
-                  <span className="text-xs font-semibold uppercase tracking-widest text-brand">
-                    {item.tag}
-                  </span>
-                  <h3 className="mt-1.5 text-xl font-bold tracking-tight text-white lg:text-2xl">
-                    {item.title}
-                  </h3>
-                  <p className="mt-0.5 text-sm text-white/70 lg:text-base">
-                    {item.client}
-                  </p>
-                </div>
+        {visible.map((item, i) => {
+          const tile = (
+            <div className={`relative w-full overflow-hidden ${ASPECTS[i % ASPECTS.length]}`}>
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
+                src={item.image}
+                alt={item.title}
+                className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
+              />
+              <div
+                aria-hidden="true"
+                className="pointer-events-none absolute inset-0 bg-linear-to-t from-black/85 via-black/15 to-transparent"
+              />
+              <div className="absolute inset-x-0 bottom-0 p-6">
+                <span className="text-xs font-semibold uppercase tracking-widest text-brand">
+                  {item.tag}
+                </span>
+                <h3 className="mt-1.5 text-xl font-bold tracking-tight text-white lg:text-2xl">
+                  {item.title}
+                </h3>
+                <p className="mt-0.5 text-sm text-white/70 lg:text-base">
+                  {item.client}
+                </p>
               </div>
-            </Link>
-          </motion.div>
-        ))}
+            </div>
+          );
+          const frame =
+            "group relative block overflow-hidden rounded-2xl border border-white/10 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand";
+          return (
+            <motion.div
+              key={item.id}
+              variants={tileVariants}
+              className="mb-5 break-inside-avoid"
+            >
+              {linkItems ? (
+                <Link href={`/works/${item.slug}`} className={frame}>
+                  {tile}
+                </Link>
+              ) : (
+                <div className={frame}>{tile}</div>
+              )}
+            </motion.div>
+          );
+        })}
       </motion.div>
     </div>
   );

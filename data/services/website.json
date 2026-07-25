@@ -90,5 +90,235 @@
       "question": "Can I mark up the price however I like?",
       "answer": "Yes. Our pricing is your cost. What you charge your client is entirely your call. Most partners mark up 30 to 100%."
     }
-  ]
+  ],
+  "landing": {
+    "hero": {
+      "stats": [
+        { "id": "st-website-1", "label": "$750 per page, flat" },
+        { "id": "st-website-2", "label": "Shipped in 2–8 weeks" },
+        { "id": "st-website-3", "label": "100% white-label" },
+        { "id": "st-website-4", "label": "14-day fix window" }
+      ],
+      "ctaNote": "30 minutes with our founding team. No pitch deck, no pressure.",
+      "secondaryCta": {
+        "id": "service-page-website-cta-work",
+        "label": "See real builds",
+        "href": "#gw-mod-website-work"
+      }
+    },
+    "vsl": { "videoId": "oGKjh10TbK0" },
+    "features": {
+      "eyebrow": "The full feature list",
+      "headline": {
+        "parts": [
+          { "type": "text", "value": "Every build ships " },
+          { "type": "highlight", "value": "complete." }
+        ]
+      },
+      "sub": "Design, stack, performance, security, maintenance, and support — nothing is an upsell surprise. This is what a growX website means.",
+      "groups": [
+        {
+          "id": "feat-design",
+          "title": "Unique design — never AI templates",
+          "icon": "palette",
+          "items": [
+            "Custom design from a blank Figma canvas",
+            "No AI page-builders, no recycled themes",
+            "Matched to your client's brand and audience",
+            "Full design files handed over with the build"
+          ]
+        },
+        {
+          "id": "feat-stack",
+          "title": "Built on your stack",
+          "icon": "code",
+          "items": [
+            "Next.js for performance-critical builds",
+            "HighLevel (GHL) builder for funnel-first clients",
+            "Webflow, WordPress, Shopify, or Framer",
+            "You pick the platform — we build native to it"
+          ]
+        },
+        {
+          "id": "feat-performance",
+          "title": "Performance & SEO",
+          "icon": "gauge",
+          "items": [
+            "Sub-2s loads, Core Web Vitals in the green",
+            "Semantic HTML, meta tags, sitemap baked in",
+            "Lighthouse scores that survive client scrutiny",
+            "Analytics and pixel wiring included"
+          ]
+        },
+        {
+          "id": "feat-security",
+          "title": "Security",
+          "icon": "shield",
+          "items": [
+            "SSL everywhere with hardened security headers",
+            "Spam-protected forms and sanitized inputs",
+            "Role-based CMS access for your client's team",
+            "Backup and restore plan documented at handoff"
+          ]
+        },
+        {
+          "id": "feat-maintenance",
+          "title": "Maintenance & care",
+          "icon": "wrench",
+          "items": [
+            "14-day post-launch fix window included",
+            "Optional white-label care plans after launch",
+            "Updates, patches, and uptime monitoring",
+            "Sell maintenance on top as recurring revenue"
+          ]
+        },
+        {
+          "id": "feat-support",
+          "title": "Support",
+          "icon": "headset",
+          "items": [
+            "Dedicated account manager on paid tiers",
+            "Same-day responses on business days",
+            "Direct Slack or WhatsApp channel to our team",
+            "All support white-label — under your brand"
+          ]
+        }
+      ]
+    },
+    "pains": {
+      "id": "mod-website-pains",
+      "eyebrow": "The reselling problem",
+      "headline": {
+        "parts": [
+          { "type": "text", "value": "Selling websites is easy. " },
+          { "type": "highlight", "value": "Delivering them is what breaks agencies." }
+        ]
+      },
+      "sub": "Every agency owner has won website work they had no clean way to fulfill. That gap has a price.",
+      "cards": [
+        {
+          "id": "pain-website-1",
+          "title": "Freelancer roulette",
+          "blurb": "Every project is a new gamble on quality, and your brand takes the hit when the gamble misses.",
+          "icon": "user-x",
+          "points": [
+            "Portfolio looked great, delivery didn't",
+            "Ghosted mid-project, deadline gone",
+            "Every fix round costs you margin"
+          ]
+        },
+        {
+          "id": "pain-website-2",
+          "title": "Quotes that kill deals",
+          "blurb": "Your client asks for a price, and you wait three days for a dev to answer. The deal cools while you wait.",
+          "icon": "clock",
+          "points": [
+            "Slow quotes read as slow delivery",
+            "Guessed quotes eat your margin later",
+            "Fixed rates mean instant answers"
+          ]
+        },
+        {
+          "id": "pain-website-3",
+          "title": "Scope creep eats the margin",
+          "blurb": "You sold at a fixed price, then \"one more revision\" turned your profit into unpaid project management.",
+          "icon": "trending-down",
+          "points": [
+            "Hourly builders profit when scope slips",
+            "You absorb what you can't rebill",
+            "Scope-locked quotes end the bleed"
+          ]
+        },
+        {
+          "id": "pain-website-4",
+          "title": "Turning down website work",
+          "blurb": "Every \"we don't do websites\" sends your client to another agency that does everything — including what you do.",
+          "icon": "triangle-alert",
+          "points": [
+            "Declined work opens the door to rivals",
+            "Retainers follow the full-stack agency",
+            "Say yes, keep the relationship"
+          ]
+        }
+      ]
+    },
+    "work": {
+      "category": "web",
+      "eyebrow": "Recent builds",
+      "headline": {
+        "parts": [
+          { "type": "text", "value": "Built by us. " },
+          { "type": "highlight", "value": "Shipped as yours." }
+        ]
+      },
+      "sub": "A sample of recent website work delivered through partner agencies. None of these carried our name — that's the point."
+    },
+    "pricing": {
+      "eyebrow": "Transparent pricing",
+      "headline": {
+        "parts": [
+          { "type": "text", "value": "Our price is your cost. " },
+          { "type": "highlight", "value": "The margin is yours." }
+        ]
+      },
+      "sub": "One flat rate per page, quoted before you commit. You invoice your client at your price — we never touch the relationship.",
+      "markupOptions": [1.5, 2, 3],
+      "defaultMarkup": 2,
+      "guarantees": [
+        {
+          "id": "g-website-1",
+          "title": "Scope-locked quote",
+          "description": "The quoted price is the final price. Revisions inside scope are included, and scope is agreed before we start."
+        },
+        {
+          "id": "g-website-2",
+          "title": "14-day fix window",
+          "description": "Anything that breaks in the first two weeks after launch is fixed at no cost — your client never sees an invoice for it."
+        },
+        {
+          "id": "g-website-3",
+          "title": "White-label confidentiality",
+          "description": "Your logo on every file, your name in every thread. Your client never learns we exist."
+        },
+        {
+          "id": "g-website-4",
+          "title": "You approve first",
+          "description": "Nothing reaches your client before you've signed off. You present the work as yours, because it is."
+        }
+      ],
+      "note": "Not ready to talk? Create a free partner account and browse the whole catalog at your own pace."
+    },
+    "differentiators": {
+      "eyebrow": "Why growX",
+      "headline": {
+        "parts": [
+          { "type": "text", "value": "Better than hiring. " },
+          { "type": "highlight", "value": "Safer than freelancers." }
+        ]
+      },
+      "sub": "One in-house team, fixed pricing, and a delivery record your brand can stand on."
+    },
+    "faqExtra": [
+      {
+        "id": "faq-website-6",
+        "question": "What if my client finds out you built it?",
+        "answer": "They won't from us. Every file, preview link, and document is branded as yours, and confidentiality is standard in our partner terms. We never contact your client, list the work, or reference the project anywhere."
+      },
+      {
+        "id": "faq-website-7",
+        "question": "Who owns the website and its IP?",
+        "answer": "Your client does, fully. All code, design files, and content transfer with the handoff — 100% commercial rights, no license-back, no strings."
+      },
+      {
+        "id": "faq-website-8",
+        "question": "What about hosting and ongoing maintenance?",
+        "answer": "We hand off clean so your client (or you) can host anywhere. Many partners sell a monthly care plan on top — we can quietly handle those updates under your brand too, turning one build into recurring revenue."
+      },
+      {
+        "id": "faq-website-9",
+        "question": "What counts as a page?",
+        "answer": "A distinct designed template: home, about, a services page, a landing page. Repeating layouts (like 20 blog posts on one template) count once. Your quote lists the exact page map before you commit."
+      }
+    ]
+  }
 }

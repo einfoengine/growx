@@ -180,7 +180,7 @@ export default function HeroAnimatedContent({
 
         {/* Expectation-setter under the CTAs: what clicking actually costs
             the visitor (30 minutes, no pressure) — lowers the ask. */}
-        {isHome && data.ctaNote && (
+        {data.ctaNote && (
           <motion.p
             id={`${data.id}-cta-note`}
             className="mt-3 text-xs text-white/50"

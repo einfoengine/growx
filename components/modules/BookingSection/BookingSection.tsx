@@ -53,7 +53,9 @@ export default function BookingSection() {
     <section
       id="gw-mod-book"
       aria-labelledby="gw-book-headline"
-      data-nav-theme="dark" data-dark-surface
+      // Stays black in BOTH themes — the close matches the home CtaBanner
+      // standard (strongest contrast at the moment of action).
+      data-nav-theme="dark"
       className="relative isolate overflow-hidden bg-foreground text-background"
     >
       {/* Emerald bloom + faint grid, matching the site's dark CTA treatment. */}

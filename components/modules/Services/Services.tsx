@@ -38,14 +38,22 @@ const ICON_BY_KEY: Record<ServiceIcon, ComponentType<IconProps>> = {
   terminal: Terminal,
 };
 
-export default async function Services({ data }: { data?: ServicesContent } = {}) {
+export default async function Services({
+  data,
+  tone = "surface",
+}: { data?: ServicesContent; tone?: "surface" | "background" } = {}) {
   const servicesData = data ?? (await getServices());
+  // Cell fill inverts against the section ground so hover always contrasts.
+  const cellCls =
+    tone === "surface"
+      ? "bg-surface hover:bg-background"
+      : "bg-background hover:bg-surface";
 
   return (
     <section
       id={`gw-${servicesData.id}`}
       aria-labelledby={`${servicesData.id}-headline`}
-      className="bg-surface"
+      className={tone === "surface" ? "bg-surface" : "bg-background"}
       style={{ "--cg": "max(2rem, calc((100vw - 1400px) / 2 + 2rem))" } as React.CSSProperties}
     >
       {/* Header stays inside container */}
@@ -59,6 +67,7 @@ export default async function Services({ data }: { data?: ServicesContent } = {}
               eyebrow={servicesData.eyebrow}
               headline={servicesData.headline.parts}
               headlineId={`${servicesData.id}-headline`}
+              highlightClassName="text-gradient-brand"
               headlineClassName="mt-4 text-4xl font-bold leading-[1.15] tracking-tight text-foreground sm:text-5xl lg:text-6xl"
               className="lg:col-span-7"
             />
@@ -81,7 +90,7 @@ export default async function Services({ data }: { data?: ServicesContent } = {}
               key={card.id}
               id={card.id}
               href={card.href}
-              className="group flex flex-col h-full border-b border-r border-border bg-surface p-8 transition-colors hover:bg-background"
+              className={`group flex flex-col h-full border-b border-r border-border p-8 transition-colors ${cellCls}`}
             >
               <ScrollFadeIn delay={0.1 + (i % 3) * 0.1}>
                 <div className="flex items-center justify-between">
