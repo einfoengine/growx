@@ -283,30 +283,28 @@ function GrowthArt() {
  *  attachment: fixed), so the section scrolls over it for a parallax reveal.
  *  A whitish wash mutes it for readability, and the signature grid adds texture.
  *  (iOS Safari ignores fixed attachment and falls back to a static background.) */
-export function ProblemBackground({ tone = "light" }: { tone?: "light" | "dark" } = {}) {
+export function ProblemBackground() {
   return (
     <div aria-hidden="true" className="pointer-events-none absolute inset-0 -z-10 overflow-hidden">
-      {/* Parallax image layer. */}
+      {/* Theme-paired parallax image: a REAL dark asset for the dark site (a
+          generated near-black emerald launch scene, no overlay tricks needed)
+          and the original light scene for the light site. */}
       <div
-        className="absolute inset-0 bg-cover bg-center bg-no-repeat bg-fixed"
+        className="absolute inset-0 bg-cover bg-center bg-no-repeat bg-fixed light:hidden"
+        style={{ backgroundImage: "url('/problem-bg-dark.png')" }}
+      />
+      <div
+        className="hidden light:block absolute inset-0 bg-cover bg-center bg-no-repeat bg-fixed"
         style={{ backgroundImage: `url('${PROBLEM_BG}')` }}
       />
 
-      {/* Wash — mutes the image so the copy reads; a touch heavier toward the
-          cards at the bottom. Dark tone reuses the SAME image under a
-          near-black wash (no separate asset needed). */}
-      {tone === "dark" ? (
-        <div className="absolute inset-0 bg-[linear-gradient(to_bottom,rgba(10,10,10,0.82),rgba(10,10,10,0.9))]" />
-      ) : (
-        <div className="absolute inset-0 bg-[linear-gradient(to_bottom,rgba(255,255,255,0.7),rgba(255,255,255,0.86))]" />
-      )}
+      {/* Light side keeps its designed white wash; the dark asset is already
+          text-safe and ships bare. */}
+      <div className="hidden light:block absolute inset-0 bg-[linear-gradient(to_bottom,rgba(255,255,255,0.7),rgba(255,255,255,0.86))]" />
 
       {/* Signature grid texture, softly masked so it has no hard edges. */}
-      {tone === "dark" ? (
-        <div className="absolute inset-0 bg-[linear-gradient(to_right,rgba(255,255,255,0.045)_1px,transparent_1px),linear-gradient(to_bottom,rgba(255,255,255,0.045)_1px,transparent_1px)] bg-size-[48px_48px] mask-[radial-gradient(ellipse_80%_75%_at_50%_40%,#000,transparent_88%)]" />
-      ) : (
-        <div className="absolute inset-0 bg-[linear-gradient(to_right,rgba(10,10,10,0.05)_1px,transparent_1px),linear-gradient(to_bottom,rgba(10,10,10,0.05)_1px,transparent_1px)] bg-size-[48px_48px] mask-[radial-gradient(ellipse_80%_75%_at_50%_40%,#000,transparent_88%)]" />
-      )}
+      <div className="absolute inset-0 light:hidden bg-[linear-gradient(to_right,rgba(255,255,255,0.045)_1px,transparent_1px),linear-gradient(to_bottom,rgba(255,255,255,0.045)_1px,transparent_1px)] bg-size-[48px_48px] mask-[radial-gradient(ellipse_80%_75%_at_50%_40%,#000,transparent_88%)]" />
+      <div className="hidden light:block absolute inset-0 bg-[linear-gradient(to_right,rgba(10,10,10,0.05)_1px,transparent_1px),linear-gradient(to_bottom,rgba(10,10,10,0.05)_1px,transparent_1px)] bg-size-[48px_48px] mask-[radial-gradient(ellipse_80%_75%_at_50%_40%,#000,transparent_88%)]" />
     </div>
   );
 }
@@ -347,13 +345,15 @@ export default function GrowthPillars({
   return (
     <section
       id="gw-mod-growth-pillars"
-      // Dark contrast band in BOTH themes (no data-dark-surface): the problem
-      // section joins the marquee/CTA family of dark accents.
+      // Theme-aware dark section: near-black with the generated dark scene on
+      // the dark site; flips to the original light look (light scene + white
+      // wash) on the light site via data-dark-surface.
       data-nav-theme="dark"
+      data-dark-surface
       className="relative isolate border-b border-white/10 bg-foreground text-background"
     >
-      {/* Background image — same asset, near-black wash. */}
-      <ProblemBackground tone="dark" />
+      {/* Theme-paired background scene. */}
+      <ProblemBackground />
 
       <div className="container-1200 gw-section px-6 sm:px-8">
         {title}
@@ -362,7 +362,7 @@ export default function GrowthPillars({
         <div className={`grid gap-5 md:grid-cols-3 ${title || moduleTitle ? "mt-0" : "mt-14"}`}>
           {PILLARS.map((pillar, i) => (
             <ScrollFadeIn key={pillar.n} delay={0.15 + i * 0.1} className="h-full">
-              <article id={`gw-pillar-${pillar.n}`} className="group flex h-full flex-col rounded-3xl border border-white/10 bg-white p-7 transition-colors hover:border-brand/40">
+              <article id={`gw-pillar-${pillar.n}`} className="group flex h-full flex-col rounded-3xl border border-black/8 bg-white p-7 transition-colors hover:border-brand/40">
                 {/* Pinned-light card on the dark band (the illustrations are
                     white-canvas art) — literal inks so it holds in both themes. */}
                 <p className="font-label text-xs font-semibold uppercase tracking-[0.18em] text-[#047857]">
@@ -395,8 +395,9 @@ export default function GrowthPillars({
             CtaBanner (bg-foreground + brand glow + faint grid), but a
             self-contained rounded box inside this light section. */}
         <ScrollFadeIn delay={0.2}>
-          {/* Stays black in both themes (deliberate contrast card). */}
-          <div className="relative isolate mt-8 overflow-hidden rounded-xl border border-white/10 bg-foreground px-6 py-10 text-background sm:mt-10 sm:px-12 sm:py-12">
+          {/* Stays black in both themes (deliberate contrast card) — literal
+              colors so the light-theme data-dark-surface remaps can't flip it. */}
+          <div className="relative isolate mt-8 overflow-hidden rounded-xl border border-[#ffffff1a] bg-[#0a0a0a] px-6 py-10 text-[#fafafa] sm:mt-10 sm:px-12 sm:py-12">
             {/* Brand glow, top-center. */}
             <div
               aria-hidden="true"
@@ -414,7 +415,7 @@ export default function GrowthPillars({
                   Let&apos;s talk about how much more you could{" "}
                   <span className="text-gradient-brand">grow and close</span>.
                 </h3>
-                <p className="mt-3 text-base text-white/70 sm:text-lg">
+                <p className="mt-3 text-base text-[#ffffffb3] sm:text-lg">
                   Book a partner call and we&apos;ll map how growX takes
                   fulfillment, client management, and scale off your plate — so
                   you take on more work and close bigger deals.
@@ -427,6 +428,10 @@ export default function GrowthPillars({
                   href="#book"
                   icon={<ArrowRight size={16} />}
                   darkBg
+                  // Pinned light-on-black: the card stays black in both themes,
+                  // so the button must too — !important beats the light-theme
+                  // data-dark-surface remap that would flip it dark.
+                  className="bg-[#f5f6f7]! text-[#0a0a0a]!"
                 />
               </div>
             </div>

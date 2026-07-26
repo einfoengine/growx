@@ -356,26 +356,16 @@ main section[id^="gw-"][id$="-hero"] + div[id^="gw-"][id$="-title"]::before {
   display: none;
 }
 
-/* Exception to the band suppression: gw-mod-growth-pillars is a full content
-   band (not a thin strip like the marquee/TrustBar), so its joints DO get the
-   diamond clips — the seam with gw-mod-services above and with whatever
-   follows below. Its own halves render in light ink (they sit on the dark
-   band); the neighbours' halves keep the dark ink — a two-tone diamond that
-   visibly binds the light and dark cards. */
-main section#gw-mod-growth-pillars::before,
-main section#gw-mod-growth-pillars::after {
-  display: block;
-  background-image: conic-gradient(from 315deg at 50% 100%, rgba(255, 255, 255, 0.4) 0 90deg, transparent 0),
-    conic-gradient(from 315deg at 50% 100%, rgba(255, 255, 255, 0.4) 0 90deg, transparent 0);
-}
-main section#gw-mod-growth-pillars::after {
-  background-image: conic-gradient(from 135deg at 50% 0%, rgba(255, 255, 255, 0.4) 0 90deg, transparent 0),
-    conic-gradient(from 135deg at 50% 0%, rgba(255, 255, 255, 0.4) 0 90deg, transparent 0);
-}
-main section#gw-mod-growth-pillars + section[id^="gw-"]::before,
-main section#gw-mod-growth-pillars + div[id^="gw-"][id$="-title"]::before {
+
+/* The marquee IS clipped to its neighbours (user standard): the hero-bottom
+   diamond exception is carved back open for the hero → marquee seam, and the
+   marquee's own halves render normally now that it is theme-aware
+   (data-dark-surface defeats the band suppression above). */
+main section[id^="gw-"][id$="-hero"]:has(+ section#gw-mod-partner-marquee)::after,
+main section[id^="gw-"][id$="-hero"]:has(+ div > section#gw-mod-partner-marquee:first-child)::after {
   display: block;
 }
-main :is(section, div)[id^="gw-"]:has(+ section#gw-mod-growth-pillars)::after {
+main section[id^="gw-"][id$="-hero"] + section#gw-mod-partner-marquee::before,
+main section[id^="gw-"][id$="-hero"] + div > section#gw-mod-partner-marquee:first-child::before {
   display: block;
 }

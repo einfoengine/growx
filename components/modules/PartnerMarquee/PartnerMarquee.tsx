@@ -59,9 +59,10 @@ export default function PartnerMarquee({
     <section
       id={id}
       aria-label={ariaLabel}
-      // Stays black in BOTH themes (deliberate contrast band) — no
-      // data-dark-surface here.
+      // Theme-aware: black band on the dark site, flips light on the white
+      // site (data-dark-surface remap) — per the user's light-theme standard.
       data-nav-theme="dark"
+      data-dark-surface
       className="relative isolate overflow-hidden bg-foreground text-white"
     >
       <div aria-hidden="true" className="pointer-events-none absolute inset-0 -z-10 overflow-hidden">
