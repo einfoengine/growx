@@ -106,8 +106,10 @@ export default async function Footer() {
           loading="lazy"
           className="hidden h-full w-full object-cover object-center light:block"
         />
-        <div className="absolute inset-0 bg-[#0a0a0a]/88 light:hidden" />
-        <div className="hidden light:block absolute inset-0 bg-white/90" />
+        {/* Hero-style scrim (not a flat wash): solid at the seams, open in the
+            middle so the scene actually shows through. */}
+        <div className="absolute inset-0 light:hidden bg-[linear-gradient(to_bottom,rgba(10,10,10,0.94)_0%,rgba(10,10,10,0.55)_45%,rgba(10,10,10,0.78)_100%)]" />
+        <div className="hidden light:block absolute inset-0 bg-[linear-gradient(to_bottom,rgba(255,255,255,0.95)_0%,rgba(255,255,255,0.6)_45%,rgba(255,255,255,0.82)_100%)]" />
       </div>
       <CtaBanner
         data={ctaBanner}

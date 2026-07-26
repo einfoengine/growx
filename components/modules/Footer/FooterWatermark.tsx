@@ -24,9 +24,12 @@ export default function FooterWatermark({ name }: { name: string }) {
       id="gw-footer-watermark"
       ref={ref}
       aria-hidden="true"
-      // Tall enough for the full 15vw wordmark: nothing is cropped once it
-      // settles — the logo stops fully visible.
-      className="pointer-events-none relative z-0 -mt-8 flex h-[16vw] items-end justify-center overflow-hidden"
+      // Height = the wordmark's own em box (15vw with leading-none), so the
+      // container adds NO empty headroom of its own; the negative top margin
+      // cancels the font's intrinsic space above the glyphs. Net gap between
+      // the content above and the logo ink stays ~40–50px at every viewport
+      // (well under the 100px ceiling).
+      className="pointer-events-none relative z-0 mt-[-2vw] flex h-[15vw] items-end justify-center overflow-hidden"
     >
       <motion.span
         style={{
