@@ -283,7 +283,7 @@ function GrowthArt() {
  *  attachment: fixed), so the section scrolls over it for a parallax reveal.
  *  A whitish wash mutes it for readability, and the signature grid adds texture.
  *  (iOS Safari ignores fixed attachment and falls back to a static background.) */
-export function ProblemBackground() {
+export function ProblemBackground({ tone = "light" }: { tone?: "light" | "dark" } = {}) {
   return (
     <div aria-hidden="true" className="pointer-events-none absolute inset-0 -z-10 overflow-hidden">
       {/* Parallax image layer. */}
@@ -292,12 +292,21 @@ export function ProblemBackground() {
         style={{ backgroundImage: `url('${PROBLEM_BG}')` }}
       />
 
-      {/* Whitish wash — mutes the image so the copy reads; a touch heavier toward
-          the cards at the bottom. Tune the two alpha stops to taste. */}
-      <div className="absolute inset-0 bg-[linear-gradient(to_bottom,rgba(255,255,255,0.7),rgba(255,255,255,0.86))]" />
+      {/* Wash — mutes the image so the copy reads; a touch heavier toward the
+          cards at the bottom. Dark tone reuses the SAME image under a
+          near-black wash (no separate asset needed). */}
+      {tone === "dark" ? (
+        <div className="absolute inset-0 bg-[linear-gradient(to_bottom,rgba(10,10,10,0.82),rgba(10,10,10,0.9))]" />
+      ) : (
+        <div className="absolute inset-0 bg-[linear-gradient(to_bottom,rgba(255,255,255,0.7),rgba(255,255,255,0.86))]" />
+      )}
 
       {/* Signature grid texture, softly masked so it has no hard edges. */}
-      <div className="absolute inset-0 bg-[linear-gradient(to_right,rgba(10,10,10,0.05)_1px,transparent_1px),linear-gradient(to_bottom,rgba(10,10,10,0.05)_1px,transparent_1px)] bg-size-[48px_48px] mask-[radial-gradient(ellipse_80%_75%_at_50%_40%,#000,transparent_88%)]" />
+      {tone === "dark" ? (
+        <div className="absolute inset-0 bg-[linear-gradient(to_right,rgba(255,255,255,0.045)_1px,transparent_1px),linear-gradient(to_bottom,rgba(255,255,255,0.045)_1px,transparent_1px)] bg-size-[48px_48px] mask-[radial-gradient(ellipse_80%_75%_at_50%_40%,#000,transparent_88%)]" />
+      ) : (
+        <div className="absolute inset-0 bg-[linear-gradient(to_right,rgba(10,10,10,0.05)_1px,transparent_1px),linear-gradient(to_bottom,rgba(10,10,10,0.05)_1px,transparent_1px)] bg-size-[48px_48px] mask-[radial-gradient(ellipse_80%_75%_at_50%_40%,#000,transparent_88%)]" />
+      )}
     </div>
   );
 }
@@ -338,10 +347,13 @@ export default function GrowthPillars({
   return (
     <section
       id="gw-mod-growth-pillars"
-      className="relative isolate border-b border-border bg-surface text-foreground"
+      // Dark contrast band in BOTH themes (no data-dark-surface): the problem
+      // section joins the marquee/CTA family of dark accents.
+      data-nav-theme="dark"
+      className="relative isolate border-b border-white/10 bg-foreground text-background"
     >
-      {/* Background image. */}
-      <ProblemBackground />
+      {/* Background image — same asset, near-black wash. */}
+      <ProblemBackground tone="dark" />
 
       <div className="container-1200 gw-section px-6 sm:px-8">
         {title}
@@ -350,17 +362,19 @@ export default function GrowthPillars({
         <div className={`grid gap-5 md:grid-cols-3 ${title || moduleTitle ? "mt-0" : "mt-14"}`}>
           {PILLARS.map((pillar, i) => (
             <ScrollFadeIn key={pillar.n} delay={0.15 + i * 0.1} className="h-full">
-              <article id={`gw-pillar-${pillar.n}`} className="group flex h-full flex-col rounded-3xl border border-border bg-background p-7 transition-colors hover:border-brand/40">
-                <p className="font-label text-xs font-semibold uppercase tracking-[0.18em] text-brand-text">
+              <article id={`gw-pillar-${pillar.n}`} className="group flex h-full flex-col rounded-3xl border border-white/10 bg-white p-7 transition-colors hover:border-brand/40">
+                {/* Pinned-light card on the dark band (the illustrations are
+                    white-canvas art) — literal inks so it holds in both themes. */}
+                <p className="font-label text-xs font-semibold uppercase tracking-[0.18em] text-[#047857]">
                   Problem {pillar.n}
                 </p>
-                <h3 className="mt-3 text-xl font-semibold tracking-tight text-foreground">
+                <h3 className="mt-3 text-xl font-semibold tracking-tight text-[#0a0a0a]">
                   {pillar.title}
                 </h3>
-                <p className="mt-2.5 text-sm leading-relaxed text-muted">{pillar.blurb}</p>
+                <p className="mt-2.5 text-sm leading-relaxed text-[#6b7280]">{pillar.blurb}</p>
 
                 {/* Illustration well: faint grid, subtle brand wash, art on top. */}
-                <div className="relative mt-6 h-44 overflow-hidden rounded-2xl border border-border bg-surface">
+                <div className="relative mt-6 h-44 overflow-hidden rounded-2xl border border-black/8 bg-[#f7f7f5]">
                   <div
                     aria-hidden="true"
                     className="pointer-events-none absolute inset-0 bg-[linear-gradient(to_right,rgba(10,10,10,0.04)_1px,transparent_1px),linear-gradient(to_bottom,rgba(10,10,10,0.04)_1px,transparent_1px)] bg-size-[22px_22px]"

@@ -315,3 +315,67 @@ main section[id^="gw-"][id$="-hero"]::before {
 footer.gw-frame::after {
   display: none;
 }
+
+/* Black contrast bands (data-nav-theme="dark" WITHOUT data-dark-surface: the
+   marquee, TrustBar, BookingSection) keep their fill in both themes — a seam
+   diamond would show as a floating half on the light neighbour. Suppress the
+   halves on both sides of any seam touching a band. */
+main section[data-nav-theme="dark"]:not([data-dark-surface])::before,
+main section[data-nav-theme="dark"]:not([data-dark-surface])::after {
+  display: none;
+}
+main section[data-nav-theme="dark"]:not([data-dark-surface]) + section[id^="gw-"]::before,
+main section[data-nav-theme="dark"]:not([data-dark-surface]) + div[id^="gw-"][id$="-title"]::before {
+  display: none;
+}
+main :is(section, div)[id^="gw-"]:has(+ section[data-nav-theme="dark"]:not([data-dark-surface]))::after {
+  display: none;
+}
+
+/* Dark theme: sections are dark cards, so the seam diamonds flip to light ink. */
+:root[data-theme="dark"] main section[id^="gw-"]:not(:where(section, footer) *)::before,
+:root[data-theme="dark"] main div[id^="gw-"][id$="-title"]:not(:where(section, footer) *)::before,
+:root[data-theme="dark"] footer.gw-frame::before {
+  background-image: conic-gradient(from 315deg at 50% 100%, rgba(255, 255, 255, 0.35) 0 90deg, transparent 0),
+    conic-gradient(from 315deg at 50% 100%, rgba(255, 255, 255, 0.35) 0 90deg, transparent 0);
+}
+:root[data-theme="dark"] main section[id^="gw-"]:not(:where(section, footer) *)::after,
+:root[data-theme="dark"] main div[id^="gw-"][id$="-title"]:not(:where(section, footer) *)::after {
+  background-image: conic-gradient(from 135deg at 50% 0%, rgba(255, 255, 255, 0.35) 0 90deg, transparent 0),
+    conic-gradient(from 135deg at 50% 0%, rgba(255, 255, 255, 0.35) 0 90deg, transparent 0);
+}
+
+/* No diamonds anywhere on the hero: its bottom-edge halves are hidden and so
+   are the top halves of whatever follows it — the hero joins the page without
+   joint hardware, top and bottom. */
+main section[id^="gw-"][id$="-hero"]::after {
+  display: none;
+}
+main section[id^="gw-"][id$="-hero"] + section[id^="gw-"]::before,
+main section[id^="gw-"][id$="-hero"] + div[id^="gw-"][id$="-title"]::before {
+  display: none;
+}
+
+/* Exception to the band suppression: gw-mod-growth-pillars is a full content
+   band (not a thin strip like the marquee/TrustBar), so its joints DO get the
+   diamond clips — the seam with gw-mod-services above and with whatever
+   follows below. Its own halves render in light ink (they sit on the dark
+   band); the neighbours' halves keep the dark ink — a two-tone diamond that
+   visibly binds the light and dark cards. */
+main section#gw-mod-growth-pillars::before,
+main section#gw-mod-growth-pillars::after {
+  display: block;
+  background-image: conic-gradient(from 315deg at 50% 100%, rgba(255, 255, 255, 0.4) 0 90deg, transparent 0),
+    conic-gradient(from 315deg at 50% 100%, rgba(255, 255, 255, 0.4) 0 90deg, transparent 0);
+}
+main section#gw-mod-growth-pillars::after {
+  background-image: conic-gradient(from 135deg at 50% 0%, rgba(255, 255, 255, 0.4) 0 90deg, transparent 0),
+    conic-gradient(from 135deg at 50% 0%, rgba(255, 255, 255, 0.4) 0 90deg, transparent 0);
+}
+main section#gw-mod-growth-pillars + section[id^="gw-"]::before,
+main section#gw-mod-growth-pillars + div[id^="gw-"][id$="-title"]::before {
+  display: block;
+}
+main :is(section, div)[id^="gw-"]:has(+ section#gw-mod-growth-pillars)::after {
+  display: block;
+}

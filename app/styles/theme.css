@@ -79,9 +79,11 @@
   --footer-muted: #6b7280;
 }
 
-/* Body canvas: dark by default (base.css), light here. */
+/* Body canvas is INVERTED per theme (user standard): white canvas behind the
+   dark site (base.css), BLACK canvas behind the light site — the framed cards
+   always sit on a contrasting ground. */
 [data-theme="light"] body {
-  background: var(--background);
+  background: #0a0a0a;
   color: var(--foreground);
 }
 
@@ -191,4 +193,50 @@
   --radius-2xl: 10px;
   --radius-3xl: 10px;
   --radius-4xl: 10px;
+}
+
+/* ────────────────────────────────────────────────────────────────────────────
+   TRUE DARK THEME
+   Flip the neutral tokens so the (designed-light) content sections render as
+   dark cards. --foreground becomes the INK (light); the black contrast bands
+   and dark inner cards keep their fill via the explicit .bg-foreground /
+   .text-background remaps below — same technique as the light-theme remap of
+   data-dark-surface sections, just pointed the other way.
+   ──────────────────────────────────────────────────────────────────────────── */
+:root[data-theme="dark"] {
+  --background: #111214;
+  --foreground: #f5f6f7;
+  --muted: #a1a1aa;
+  --border: rgba(255, 255, 255, 0.12);
+  --surface: #17181b;
+  --accent: #fafafa;
+  --brand-text: #34d399;
+}
+
+/* Bands + dark inner cards: bg-foreground stays a BLACK fill (never the
+   flipped light ink), and text-background stays light text. */
+:root[data-theme="dark"] .bg-foreground {
+  background-color: #0a0a0a;
+}
+:root[data-theme="dark"] .text-background {
+  color: #f5f6f7;
+}
+
+/* Hero component classes bake their colors in via @apply, so the class
+   remaps above can't reach them — pin the designed dark-hero palette. */
+:root[data-theme="dark"] .hero-headline,
+:root[data-theme="dark"] .hero-tagline {
+  color: #fafafa;
+}
+:root[data-theme="dark"] .hero-eyebrow,
+:root[data-theme="dark"] .hero-sub,
+:root[data-theme="dark"] .hero-stat {
+  color: rgba(250, 250, 250, 0.75);
+}
+
+/* Dark-band buttons: "primary on a black band" must stay the light-filled
+   button (bg-background would now resolve to a dark fill). */
+:root[data-theme="dark"] .btn-primary-dark {
+  background-color: #f5f6f7;
+  color: #0a0a0a;
 }

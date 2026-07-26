@@ -17,7 +17,7 @@
        OPPOSITE of the active theme — a white canvas behind the dark site, a
        black canvas behind the light site — so the framed cards always sit on
        a contrasting ground and the seams stay visible in both themes. */
-    background: var(--background);
+    background: #ffffff;
     color: var(--foreground);
     font-family: var(--font-sans), Arial, Helvetica, sans-serif;
   }
@@ -31,5 +31,27 @@
   h3,
   h4 {
     font-family: var(--font-heading);
+  }
+
+  /* Every clickable control shows the pointer cursor. Tailwind v4 (and modern
+     browsers) leave <button> at cursor:default — this restores the expected
+     affordance for buttons, ARIA-interactive roles, form controls, and
+     accordion summaries. Disabled states keep the default cursor; explicit
+     utilities (e.g. the portal link's cursor-default) still win, being
+     unlayered over this base layer. */
+  a[href],
+  button:not(:disabled),
+  [role="button"]:not([aria-disabled="true"]),
+  [role="tab"],
+  [role="link"]:not([aria-disabled="true"]),
+  input[type="button"],
+  input[type="submit"],
+  input[type="checkbox"],
+  input[type="radio"],
+  input[type="range"],
+  select,
+  summary,
+  label[for] {
+    cursor: pointer;
   }
 }
