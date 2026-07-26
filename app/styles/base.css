@@ -11,10 +11,19 @@
     /* Dark page canvas — matches the hero/footer (#0a0a0a) so the area around
        and below the sections reads dark instead of white. Section-level
        `bg-background`/`bg-surface` still paint their own light surfaces on top,
-       so this only changes the exposed body backdrop, not the components. */
-    background: var(--foreground);
+       so this only changes the exposed body backdrop, not the components.
+
+       INVERTED CANVAS: the 5px frame gaps between the section cards show the
+       OPPOSITE of the active theme — a white canvas behind the dark site, a
+       black canvas behind the light site — so the framed cards always sit on
+       a contrasting ground and the seams stay visible in both themes. */
+    background: var(--background);
     color: var(--foreground);
     font-family: var(--font-sans), Arial, Helvetica, sans-serif;
+  }
+
+  :root[data-theme="light"] body {
+    background: var(--foreground);
   }
 
   h1,

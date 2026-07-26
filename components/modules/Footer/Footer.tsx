@@ -84,7 +84,9 @@ export default async function Footer() {
       id={data.id}
       // `overflow-clip` (not `hidden`) still clips the glow bleed but doesn't
       // create a scroll container, which would break the sticky watermark below.
-      className="mt-auto w-full bg-(--footer-bg) text-(--footer-fg) relative overflow-clip"
+      // gw-frame: the shared framed-card treatment (5px side + bottom gap,
+      // rounded, corner diamonds) — see components.css FRAMED PAGE.
+      className="gw-frame mt-auto bg-(--footer-bg) text-(--footer-fg) relative overflow-clip"
     >
       {/* Hero-family backdrop: the same scene image as the hero, under a heavy
           overlay so the footer content stays fully legible. Theme pair — dark

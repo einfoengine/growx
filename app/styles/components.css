@@ -218,3 +218,100 @@
     @apply inline-flex items-center gap-1.5 rounded-full bg-brand/10 px-3 py-1 text-xs font-semibold text-brand;
   }
 }
+
+/* ────────────────────────────────────────────────────────────────────────────
+   FRAMED PAGE
+   Every top-level section floats 5px off the viewport sides as a rounded card
+   on the dark canvas, with small diamond nodes (the catalog-crossing motif) at
+   the top corner joints. `overflow: clip` — NOT hidden — enforces the rounded
+   clipping on full-bleed decor layers without creating a scroll container, so
+   position: sticky inside sections keeps working.
+   Scope: section roots follow the `gw-` id convention; standalone SectionTitle
+   blocks end in `-title`. Blocks nested inside a section or the footer (titles
+   passed as props, the footer's CtaBanner) are excluded — they're part of a
+   larger card. A `-title` block fuses with the section that follows it (shared
+   card: no seam radius, no seam diamonds).
+   ──────────────────────────────────────────────────────────────────────────── */
+main section[id^="gw-"]:not(:where(section, footer) *),
+main div[id^="gw-"][id$="-title"]:not(:where(section, footer) *),
+footer.gw-frame {
+  position: relative;
+  margin-inline: 5px;
+  border-radius: 10px;
+  overflow: clip;
+}
+
+footer.gw-frame {
+  margin-bottom: 5px;
+}
+
+/* Diamond joints straddling every seam. overflow:clip means no element can
+   draw across a card edge, so each card paints the LOWER halves of the
+   diamonds along its top edge (::before) and the UPPER halves along its
+   bottom edge (::after); flush stacking joins the halves into whole diamonds
+   that pinch the two cards together. Canvas-black, so they read as the canvas
+   clipping through the joint. Halves are drawn as conic-gradient wedges — two
+   per strip (left + right), placed inward of the 10px corner curve. */
+main section[id^="gw-"]:not(:where(section, footer) *)::before,
+main section[id^="gw-"]:not(:where(section, footer) *)::after,
+main div[id^="gw-"][id$="-title"]:not(:where(section, footer) *)::before,
+main div[id^="gw-"][id$="-title"]:not(:where(section, footer) *)::after,
+footer.gw-frame::before,
+footer.gw-frame::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 5px;
+  z-index: 30;
+  background-size: 10px 5px;
+  background-repeat: no-repeat;
+  background-position: 12px 0, calc(100% - 12px) 0;
+  pointer-events: none;
+}
+/* Top edge: lower halves (widest at the seam, apex pointing down). */
+main section[id^="gw-"]:not(:where(section, footer) *)::before,
+main div[id^="gw-"][id$="-title"]:not(:where(section, footer) *)::before,
+footer.gw-frame::before {
+  top: 0;
+  background-image: conic-gradient(from 315deg at 50% 100%, rgba(10, 10, 10, 0.35) 0 90deg, transparent 0),
+    conic-gradient(from 315deg at 50% 100%, rgba(10, 10, 10, 0.35) 0 90deg, transparent 0);
+}
+/* Bottom edge: upper halves (apex pointing up, widest at the seam). */
+main section[id^="gw-"]:not(:where(section, footer) *)::after,
+main div[id^="gw-"][id$="-title"]:not(:where(section, footer) *)::after,
+footer.gw-frame::after {
+  bottom: 0;
+  background-image: conic-gradient(from 135deg at 50% 0%, rgba(10, 10, 10, 0.35) 0 90deg, transparent 0),
+    conic-gradient(from 135deg at 50% 0%, rgba(10, 10, 10, 0.35) 0 90deg, transparent 0);
+}
+
+/* Title block + following section = ONE card: square off the shared seam and
+   drop the seam-diamond halves on both sides of the fused joint. */
+main div[id^="gw-"][id$="-title"]:not(:where(section, footer) *) {
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+}
+main div[id^="gw-"][id$="-title"]:not(:where(section, footer) *)::after {
+  display: none;
+}
+main div[id^="gw-"][id$="-title"]:not(:where(section, footer) *) + section[id^="gw-"] {
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+}
+main div[id^="gw-"][id$="-title"]:not(:where(section, footer) *) + section[id^="gw-"]::before {
+  display: none;
+}
+
+/* The first card (every page's hero) opens the frame: a clear 5px gap from
+   the viewport top and no diamond halves on its top edge — diamonds only
+   appear where two cards actually join. The footer mirrors it at the bottom. */
+main section[id^="gw-"][id$="-hero"] {
+  margin-top: 5px;
+}
+main section[id^="gw-"][id$="-hero"]::before {
+  display: none;
+}
+footer.gw-frame::after {
+  display: none;
+}

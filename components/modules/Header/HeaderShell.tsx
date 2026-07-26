@@ -81,7 +81,9 @@ export default function HeaderShell({ children }: { children: React.ReactNode })
       // Fixed, not sticky: the bar occupies zero flow space, so the page
       // (and the hero's dark background) starts at the very top of the
       // viewport with no background strip above it.
-      className="group/nav fixed inset-x-0 top-2 z-50 px-3 sm:px-4"
+      // 5px frame gap from the viewport top and sides, matching the framed
+      // section cards below.
+      className="group/nav fixed inset-x-0 top-[5px] z-50 px-[5px]"
     >
       {/* Header row: logo at the left, menu centered, CTA at the right. At
           the top of the page the bar is fully transparent and spans the
