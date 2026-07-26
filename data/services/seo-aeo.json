@@ -80,5 +80,234 @@
       "question": "Can I add this on top of a web dev project?",
       "answer": "Absolutely, and we recommend it. A new site without ongoing SEO won't rank. Bundling both is the strongest position for your client."
     }
-  ]
+  ],
+  "landing": {
+    "hero": {
+      "stats": [
+        { "id": "st-seo-1", "label": "$400 per cluster, monthly" },
+        { "id": "st-seo-2", "label": "SEO + AEO in one retainer" },
+        { "id": "st-seo-3", "label": "100% white-label reports" },
+        { "id": "st-seo-4", "label": "Month-to-month available" }
+      ],
+      "ctaNote": "30 minutes with our founding team. No pitch deck, no pressure.",
+      "secondaryCta": {
+        "id": "service-page-seo-aeo-cta-pricing",
+        "label": "See retainer pricing",
+        "href": "#gw-mod-service-pricing"
+      }
+    },
+    "vsl": { "videoId": "oGKjh10TbK0" },
+    "platforms": [
+      "Ahrefs",
+      "SEMrush",
+      "Search Console",
+      "GA4",
+      "Screaming Frog",
+      "ChatGPT",
+      "Perplexity",
+      "AI Overviews"
+    ],
+    "pains": {
+      "id": "mod-seo-aeo-pains",
+      "eyebrow": "The retainer problem",
+      "headline": {
+        "parts": [
+          { "type": "text", "value": "Every agency sells SEO. " },
+          { "type": "highlight", "value": "Few can keep the retainer alive." }
+        ]
+      },
+      "sub": "SEO retainers are the best MRR in agency work — and the easiest to lose when delivery can't back the pitch.",
+      "cards": [
+        {
+          "id": "pain-seo-1",
+          "title": "Churn kills the retainer",
+          "blurb": "SEO takes months to show, and clients quit in month three when nobody shows them what's moving.",
+          "icon": "trending-down",
+          "points": [
+            "No visible progress = cancelled retainer",
+            "Every cancellation resets your MRR",
+            "Client-ready reporting keeps them in"
+          ]
+        },
+        {
+          "id": "pain-seo-2",
+          "title": "AI answers are eating clicks",
+          "blurb": "Your clients ask what you're doing about ChatGPT and AI Overviews — and most agencies have no answer.",
+          "icon": "triangle-alert",
+          "points": [
+            "AI search already takes real query share",
+            "\"We do classic SEO\" sounds outdated",
+            "AEO coverage wins the pitch"
+          ]
+        },
+        {
+          "id": "pain-seo-3",
+          "title": "Reports that expose you",
+          "blurb": "A rented dashboard with someone else's branding is one screenshot away from blowing your white label.",
+          "icon": "user-x",
+          "points": [
+            "Tool watermarks leak your vendor",
+            "Raw exports confuse clients",
+            "Your brand on every page, or it's a risk"
+          ]
+        },
+        {
+          "id": "pain-seo-4",
+          "title": "Can't staff SEO for one client",
+          "blurb": "A real SEO hire needs five retainers to pay for themselves. Until then, every retainer you sell is a gamble.",
+          "icon": "layers",
+          "points": [
+            "Strategist + writer + link builder per client",
+            "Freelancers can't own a compounding channel",
+            "A bench you only pay for when you sell"
+          ]
+        }
+      ]
+    },
+    "features": {
+      "eyebrow": "The full retainer scope",
+      "headline": {
+        "parts": [
+          { "type": "text", "value": "Both sides of search, " },
+          { "type": "highlight", "value": "covered." }
+        ]
+      },
+      "sub": "Traditional rankings and AI citations, delivered as one retainer under your brand — nothing is an upsell surprise.",
+      "groups": [
+        {
+          "id": "feat-seo-strategy",
+          "title": "Strategy",
+          "icon": "search",
+          "items": [
+            "Intent-mapped keyword clusters, not vanity terms",
+            "Competitor gap analysis per cluster",
+            "Quarterly roadmap you can show your client",
+            "Priorities re-ranked as results come in"
+          ]
+        },
+        {
+          "id": "feat-seo-onpage",
+          "title": "On-page & technical",
+          "icon": "code",
+          "items": [
+            "Titles, metas, headings, internal linking",
+            "Core Web Vitals and site-speed fixes",
+            "Crawlability and indexation resolved",
+            "Content optimization on priority pages"
+          ]
+        },
+        {
+          "id": "feat-seo-aeo",
+          "title": "AEO — AI answers",
+          "icon": "bot",
+          "items": [
+            "Content structured to be cited by ChatGPT",
+            "Perplexity and AI Overviews positioning",
+            "FAQ, HowTo, and entity schema markup",
+            "AI citation tracking in every report"
+          ]
+        },
+        {
+          "id": "feat-seo-authority",
+          "title": "Authority building",
+          "icon": "link-2",
+          "items": [
+            "White-hat editorial link acquisition",
+            "Digital PR and niche placements",
+            "No PBNs, no bought links — ever",
+            "Anchor and velocity kept natural"
+          ]
+        },
+        {
+          "id": "feat-seo-reporting",
+          "title": "Reporting",
+          "icon": "bar-chart-3",
+          "items": [
+            "Client-ready monthly reports, your brand",
+            "Rankings, traffic, and AEO citations",
+            "Plain-English \"what moved and why\"",
+            "Forwardable as-is — no editing needed"
+          ]
+        },
+        {
+          "id": "feat-seo-terms",
+          "title": "Retainer terms",
+          "icon": "shield",
+          "items": [
+            "Month-to-month available — no lock-in",
+            "Commitment discounts up to 15%",
+            "Scale clusters up or down monthly",
+            "Cancel with 30 days' notice, keep everything"
+          ]
+        }
+      ]
+    },
+    "pricing": {
+      "eyebrow": "Transparent retainer pricing",
+      "headline": {
+        "parts": [
+          { "type": "text", "value": "Our retainer is your cost. " },
+          { "type": "highlight", "value": "The MRR is yours." }
+        ]
+      },
+      "sub": "One flat rate per keyword cluster, billed monthly. You set your client's retainer — the recurring margin is yours, every month it renews.",
+      "markupOptions": [1.5, 2, 3],
+      "defaultMarkup": 2,
+      "guarantees": [
+        {
+          "id": "g-seo-1",
+          "title": "You see it before your client",
+          "description": "Every report and every content piece clears your approval before anything reaches your client."
+        },
+        {
+          "id": "g-seo-2",
+          "title": "White-label confidentiality",
+          "description": "Your brand on every report, every doc, every thread. Your client never learns we exist."
+        },
+        {
+          "id": "g-seo-3",
+          "title": "No long-term lock-in",
+          "description": "Month-to-month is a real option, not a teaser. Commitment discounts are there when you want them."
+        },
+        {
+          "id": "g-seo-4",
+          "title": "White-hat only",
+          "description": "No bought links, no shortcuts that put your client's domain at risk under your name."
+        }
+      ],
+      "note": "Not ready to talk? Create a free partner account and browse the whole catalog at your own pace."
+    },
+    "differentiators": {
+      "eyebrow": "Why growX",
+      "headline": {
+        "parts": [
+          { "type": "text", "value": "Search is splitting. " },
+          { "type": "highlight", "value": "We cover both sides." }
+        ]
+      },
+      "sub": "One team for rankings and AI citations, on a retainer model built to compound — and to renew."
+    },
+    "faqExtra": [
+      {
+        "id": "faq-seo-5",
+        "question": "Do you guarantee rankings?",
+        "answer": "No — and be wary of anyone who does. Rankings depend on competition, domain history, and algorithm changes nobody controls. What we commit to: the full scope delivered every month, transparent reporting, and compounding progress you can defend to your client."
+      },
+      {
+        "id": "faq-seo-6",
+        "question": "What exactly is a keyword cluster?",
+        "answer": "A group of closely related terms targeting one intent — e.g. \"emergency plumber austin\" plus its variations. One cluster typically covers 5–15 keywords, one target page, and its supporting content. Your quote lists every cluster before you commit."
+      },
+      {
+        "id": "faq-seo-7",
+        "question": "What if my client asks who does the work?",
+        "answer": "The same answer as every growX service: it's your team. Reports carry your brand, calls are yours, and our partner terms make that confidentiality contractual."
+      },
+      {
+        "id": "faq-seo-8",
+        "question": "What happens in the first month?",
+        "answer": "Full technical audit and fixes, keyword-cluster research, baseline reporting, and quick wins on low-competition terms — so your client sees motion in the very first report, not a \"please wait six months\" email."
+      }
+    ]
+  }
 }

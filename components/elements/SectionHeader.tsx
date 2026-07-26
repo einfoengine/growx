@@ -3,6 +3,7 @@ import Eyebrow from "./Eyebrow";
 import Headline from "./Headline";
 
 type SectionHeaderProps = {
+  id?: string;
   eyebrow?: string;
   /** Rich headline with highlight segments - use with the Headline component. */
   headline?: HeadlinePart[];
@@ -22,6 +23,7 @@ type SectionHeaderProps = {
 };
 
 export default function SectionHeader({
+  id,
   eyebrow,
   headline,
   headlineText,
@@ -46,7 +48,7 @@ export default function SectionHeader({
     : "mt-4 text-base text-muted";
 
   return (
-    <div className={wrapperClass}>
+    <div id={id} className={wrapperClass}>
       {eyebrow && <Eyebrow text={eyebrow} />}
       {headline && (
         <Headline

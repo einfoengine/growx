@@ -1,5 +1,5 @@
 import ScrollFadeIn from "@/components/elements/ScrollFadeIn";
-import Eyebrow from "@/components/elements/Eyebrow";
+import ModuleTitle from "@/components/elements/ModuleTitle";
 
 /** Our family of brands, framed as lineage: growX is the newest name from the
  *  operators already running GHL Video and socialX — a legacy, not a cold
@@ -26,32 +26,20 @@ const BRANDS: { name: string; src: string; alt: string; tagline: string }[] = [
   },
 ];
 
-export default function SisterBrands() {
+export default function SisterBrands({
+  moduleTitle,
+}: { moduleTitle?: string } = {}) {
   return (
     <section
       id="gw-mod-sister-brands"
-      aria-labelledby="sister-brands-headline"
       className="relative overflow-hidden border-b border-border bg-background py-24 text-foreground sm:py-28 lg:py-32"
     >
       <div className="container-1200">
-        <ScrollFadeIn delay={0.1}>
-        <div className="mx-auto max-w-2xl text-center">
-          <Eyebrow text="Three brands. One mission." />
-          <h2
-            id="sister-brands-headline"
-            className="mt-4 text-3xl font-bold leading-[1.15] tracking-tight sm:text-4xl md:text-5xl"
-          >
-            A new name. The same team since 2019.
-          </h2>
-          <p className="mt-5 text-base text-muted sm:text-lg">
-            growX was built by the operators behind GHL Video and socialX: one
-            in-house team that has been fulfilling agency work for years, now
-            under one roof. Partner with one brand and you tap into all of
-            them.
-          </p>
-        </div>
-        </ScrollFadeIn>
-
+        {moduleTitle && (
+          <ModuleTitle id="gw-sister-brands-module-title">
+            {moduleTitle}
+          </ModuleTitle>
+        )}
         <ScrollFadeIn delay={0.2}>
         <ul className="mx-auto mt-14 grid max-w-4xl grid-cols-1 gap-5 sm:mt-16 sm:grid-cols-3">
           {BRANDS.map((brand) => (

@@ -1,32 +1,26 @@
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 import { getBlog } from "@/lib/content";
-import SectionHeader from "@/components/elements/SectionHeader";
 import ScrollFadeIn from "@/components/elements/ScrollFadeIn";
+import ModuleTitle from "@/components/elements/ModuleTitle";
 import BlogScroller from "./BlogScroller";
 
-export default async function BlogSection() {
-  const { eyebrow, headline, sub, posts } = await getBlog();
+export default async function BlogSection({
+  moduleTitle,
+  noPaddingTop,
+}: { moduleTitle?: string; noPaddingTop?: boolean } = {}) {
+  const { posts } = await getBlog();
   if (posts.length === 0) return null;
 
   return (
     <section
       id="gw-mod-blog"
-      aria-labelledby="blog-headline"
-      className="relative overflow-hidden bg-surface py-24 sm:py-28 lg:py-32"
+      className={`relative overflow-hidden bg-surface ${noPaddingTop ? "pb-24 pt-0 sm:pb-28 lg:pb-32" : "py-24 sm:py-28 lg:py-32"}`}
     >
       <div className="container-1200">
+        {moduleTitle && <ModuleTitle id="gw-blog-section-module-title">{moduleTitle}</ModuleTitle>}
         <ScrollFadeIn>
           <div className="flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
-            <SectionHeader
-              eyebrow={eyebrow}
-              headline={headline.parts}
-              headlineId="blog-headline"
-              highlightClassName="text-gradient-brand"
-              sub={sub}
-              subClassName="mt-4 max-w-xl text-base text-muted"
-              className="max-w-2xl"
-            />
             <Link
               href="/blog"
               className="group inline-flex shrink-0 items-center gap-2 text-sm font-semibold text-foreground transition-colors hover:text-brand"

@@ -1,3 +1,4 @@
+import ModuleTitle from "@/components/elements/ModuleTitle";
 import { getLogoMarquee } from "@/lib/content";
 
 /** Sister-brand logos. `dark` brands ship on a black background, so their card
@@ -8,7 +9,9 @@ const LOGOS: Record<string, { src: string; alt: string; dark?: boolean }> = {
   socialX: { src: "/assets/socialx.png", alt: "socialX" },
 };
 
-export default async function LogoMarquee() {
+export default async function LogoMarquee({
+  moduleTitle,
+}: { moduleTitle?: string } = {}) {
   const data = await getLogoMarquee();
 
   return (
@@ -18,7 +21,9 @@ export default async function LogoMarquee() {
       className="relative overflow-hidden border-y border-border bg-background py-14 text-foreground sm:py-16"
     >
       <div className="container-1200">
-        <p className="eyebrow text-center text-muted">{data.label}</p>
+        {moduleTitle && (
+          <ModuleTitle id="gw-logo-marquee-module-title">{moduleTitle}</ModuleTitle>
+        )}
 
         <div className="mx-auto mt-8 grid max-w-4xl grid-cols-1 gap-4 sm:mt-10 sm:grid-cols-3 sm:gap-5">
           {data.items.map((name) => {

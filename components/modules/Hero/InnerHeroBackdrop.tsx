@@ -12,6 +12,7 @@ export default function InnerHeroBackdrop() {
     <>
       {/* Emerald aurora wash from the top edge. */}
       <div
+        id="gw-inner-hero-backdrop"
         aria-hidden="true"
         className="pointer-events-none absolute inset-0 -z-10 bg-[radial-gradient(ellipse_75%_55%_at_50%_-5%,var(--brand-soft),transparent_60%)]"
       />

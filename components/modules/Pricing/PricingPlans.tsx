@@ -1,8 +1,7 @@
 import { Check } from "lucide-react";
-import Eyebrow from "@/components/elements/Eyebrow";
-import Headline from "@/components/elements/Headline";
 import { getPricing } from "@/lib/content";
 import ScrollFadeIn from "@/components/elements/ScrollFadeIn";
+import ModuleTitle from "@/components/elements/ModuleTitle";
 import PlanButton from "./PlanButton";
 
 /** Homepage pricing cards. Tiers come from data/modules/pricing.json — the same
@@ -12,6 +11,7 @@ export default async function PricingPlans({
   noPaddingTop,
   noPaddingBottom,
   hidePopularBadge,
+  moduleTitle,
 }: {
   noPaddingTop?: boolean;
   noPaddingBottom?: boolean;
@@ -19,6 +19,7 @@ export default async function PricingPlans({
    *  Used on /pricing, where the savings calculator recommends a tier so the
    *  page never has to stamp a manufactured badge on a new program. */
   hidePopularBadge?: boolean;
+  moduleTitle?: string;
 } = {}) {
   const data = await getPricing();
   const pt = noPaddingTop ? "pt-0" : "pt-24 sm:pt-28 lg:pt-32";
@@ -27,7 +28,6 @@ export default async function PricingPlans({
   return (
     <section
       id="gw-mod-pricing"
-      aria-labelledby="pricing-headline"
       // Surface, so the offer band separates from white SisterBrands above and
       // white Comparison below (the tier cards pop on the tinted ground).
       className={`relative isolate overflow-hidden border-b border-border bg-surface text-foreground ${pt} ${pb}`}
@@ -43,30 +43,7 @@ export default async function PricingPlans({
       />
 
       <div className="container-1200">
-        {/* Header */}
-        <ScrollFadeIn delay={0.1}>
-        {/* The ladder narrative from pricing.json — "Vendor. Team member.
-            Department." — pays off the hero typewriter (we are your vendor /
-            team member / department) instead of generic SaaS boilerplate. */}
-        <div className="mx-auto max-w-2xl text-center">
-          <Eyebrow text={data.eyebrow} />
-          <Headline
-            id="pricing-headline"
-            parts={data.headline.parts}
-            as="h2"
-            className="mt-4 text-3xl font-bold leading-[1.15] tracking-tight sm:text-4xl md:text-5xl"
-            highlightClassName="text-gradient-brand"
-          />
-          <p className="mt-5 text-base text-muted sm:text-lg">{data.sub}</p>
-          {/* Kills the "$295 covers fulfillment" misread before the sales
-              call has to: membership buys the team, services are per-project. */}
-          {data.clarifier && (
-            <p className="mx-auto mt-4 max-w-xl rounded-full border border-border bg-surface px-5 py-2.5 text-xs leading-relaxed text-foreground/70 sm:text-sm">
-              {data.clarifier}
-            </p>
-          )}
-        </div>
-        </ScrollFadeIn>
+        {moduleTitle && <ModuleTitle id="gw-pricing-module-title">{moduleTitle}</ModuleTitle>}
 
         {/* Compact plan cards */}
         <ScrollFadeIn delay={0.2}>

@@ -5,7 +5,7 @@ import { useInView } from "framer-motion";
 
 const LETTERS = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 
-export default function Eyebrow({ text, className = "" }: { text: string; className?: string }) {
+export default function Eyebrow({ text, className = "", id }: { text: string; className?: string; id?: string }) {
   const [displayText, setDisplayText] = useState(text.toUpperCase());
   const ref = useRef<HTMLParagraphElement>(null);
   const isInView = useInView(ref, { amount: "some", margin: "-50px" });
@@ -49,7 +49,7 @@ export default function Eyebrow({ text, className = "" }: { text: string; classN
   }, [text, isInView]);
 
   return (
-    <p ref={ref} className={`font-label text-xs font-semibold uppercase tracking-[0.18em] text-brand ${className}`}>
+    <p ref={ref} id={id} className={`font-label text-xs font-semibold uppercase tracking-[0.18em] text-brand ${className}`}>
       [ {displayText} ]
     </p>
   );

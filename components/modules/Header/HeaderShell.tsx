@@ -75,6 +75,7 @@ export default function HeaderShell({ children }: { children: React.ReactNode })
 
   return (
     <header
+      id="gw-header-shell"
       data-theme={dark ? "dark" : "light"}
       style={dark ? DARK_TOKENS : undefined}
       // Fixed, not sticky: the bar occupies zero flow space, so the page

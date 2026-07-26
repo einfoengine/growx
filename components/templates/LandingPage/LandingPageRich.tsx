@@ -1,23 +1,10 @@
-import {
-  Check,
-  Clock,
-  Code,
-  Gauge,
-  Headset,
-  Layers,
-  Palette,
-  Shield,
-  TrendingDown,
-  TriangleAlert,
-  UserX,
-  Wrench,
-  type LucideIcon,
-} from "lucide-react";
 import Hero from "@/components/modules/Hero";
 import HeroVideo from "@/components/modules/Hero/HeroVideo";
 import HeroVideoPerspective from "@/components/modules/Hero/HeroVideoPerspective";
-import TrustBar from "@/components/modules/TrustBar/TrustBar";
-import Services from "@/components/modules/Services";
+import PartnerMarquee from "@/components/modules/PartnerMarquee/PartnerMarquee";
+import ServicesCatalog, {
+  type ServicesCatalogData,
+} from "@/components/modules/Services/ServicesCatalog";
 import Portfolio from "@/components/modules/Portfolio/Portfolio";
 import ServicePricing from "@/components/modules/ServicePricing/ServicePricing";
 import ProcessJourney from "@/components/modules/ProcessJourney/ProcessJourney";
@@ -26,57 +13,52 @@ import TrustedBy from "@/components/modules/TrustedBy/TrustedBy";
 import PricingPlans from "@/components/modules/Pricing";
 import Comparison from "@/components/modules/Comparison";
 import Faq from "@/components/modules/Faq";
-import BookingSection from "@/components/modules/BookingSection/BookingSection";
-import { ProblemBackground } from "@/components/modules/GrowthPillars/GrowthPillars";
-import SectionHeader from "@/components/elements/SectionHeader";
-import ScrollFadeIn from "@/components/elements/ScrollFadeIn";
-import { getServicePricingConfig } from "@/lib/content";
+import SisterBrands from "@/components/modules/SisterBrands/SisterBrands";
+import GrowthPillars, {
+  type GrowthPillarsData,
+} from "@/components/modules/GrowthPillars/GrowthPillars";
+import SectionTitle from "@/components/modules/SectionTitle/SectionTitle";
+import {
+  getComparison,
+  getPricing,
+  getServicePricingConfig,
+  getTestimonials,
+} from "@/lib/content";
 import type {
   FaqContent,
   HeroContent,
-  PainIcon,
   ServiceIcon,
-  ServiceLandingFeatureGroup,
   ServicePageContent,
-  ServicesContent,
 } from "@/lib/content";
 
 const SERVICE_ICONS: ServiceIcon[] = [
   "code", "search", "bot", "pen-tool", "share-2", "funnel", "target",
 ];
 
-/** PainIcon key → lucide glyph, for the problem cards' black icon stickers
- *  (same treatment as the home ProcessJourney step chips). */
-const PAIN_GLYPHS: Record<PainIcon, LucideIcon> = {
-  "triangle-alert": TriangleAlert,
-  "user-x": UserX,
-  layers: Layers,
-  "trending-down": TrendingDown,
-  clock: Clock,
-};
-
-/** Feature-group icon key → lucide glyph (black sticker chips). */
-const FEATURE_GLYPHS: Record<ServiceLandingFeatureGroup["icon"], LucideIcon> = {
-  palette: Palette,
-  code: Code,
-  gauge: Gauge,
-  shield: Shield,
-  wrench: Wrench,
-  headset: Headset,
-};
-
 type Props = { data: ServicePageContent };
 
 /** The high-converting service landing layout, used by services whose JSON
- *  carries a `landing` block. Composed from the HOME page's design system —
- *  same modules, same section rhythm (white/surface alternation, black
- *  contrast bands), same card + gradient-headline language. The arc:
- *  promise → credibility → agitate → solution → proof → money → mechanics →
- *  differentiation → objections → close. */
+ *  carries a `landing` block. Every section is a HOME-page component fed with
+ *  this service's data (GrowthPillars renders the pains, features, and why-us
+ *  sections; PartnerMarquee scrolls the platform list) — the only page-specific
+ *  module is ServicePricing, whose margin calculator has no home equivalent.
+ *  The arc: promise → VSL → credibility → agitate → solution → features →
+ *  proof → endorsement → money → mechanics → social proof → packages →
+ *  differentiation → objections; the footer's global CtaBanner closes. */
 export default async function LandingPageRich({ data }: Props) {
   const landing = data.landing!;
-  const pricingConfig = await getServicePricingConfig(data.slug);
+  // Shared-module headers: every section heading is a standalone SectionTitle
+  // module now, so the template fetches the header copy the shared modules
+  // (Testimonials, PricingPlans, Comparison) used to render themselves.
+  const [pricingConfig, testimonialsHeader, tiersHeader, comparisonHeader] =
+    await Promise.all([
+      getServicePricingConfig(data.slug),
+      getTestimonials(),
+      getPricing(),
+      getComparison(),
+    ]);
   const workId = `gw-mod-${data.slug}-work`;
+  const hasWork = Boolean(landing.work);
 
   // ── Hero: the classic mapping, upgraded with proof stats + a lower ask ───
   const heroData: HeroContent = {
@@ -102,9 +84,72 @@ export default async function LandingPageRich({ data }: Props) {
     stats: landing.hero?.stats ?? [],
   };
 
-  // ── Deliverables → Services grid, framed for sellability ────────────────
-  const deliverablesData: ServicesContent = {
-    id: `${data.id}-deliverables`,
+  // ── Pains → GrowthPillars (the home problems section, our data) ──────────
+  const painsData: GrowthPillarsData | null = landing.pains
+    ? {
+        id: landing.pains.id,
+        eyebrow: landing.pains.eyebrow,
+        headline: landing.pains.headline,
+        sub: landing.pains.sub,
+        pointsIcon: "dot",
+        noPaddingTop: true,
+        cards: landing.pains.cards.map((card, i) => ({
+          id: card.id,
+          label: `Problem 0${i + 1}`,
+          icon: card.icon,
+          title: card.title,
+          blurb: card.blurb,
+          points: card.points,
+        })),
+      }
+    : null;
+
+  // ── Feature groups → GrowthPillars (checklist cards, no backdrop) ────────
+  const featuresData: GrowthPillarsData | null = landing.features
+    ? {
+        id: `mod-${data.slug}-features`,
+        eyebrow: landing.features.eyebrow,
+        headline: landing.features.headline,
+        sub: landing.features.sub,
+        backdrop: false,
+        // With work present: pains(S) → features(W) → work(S) → pricing(W).
+        // Without work the parity breaks; features drops to surface so the
+        // only repeated ground sits beside the pains section, whose parallax
+        // backdrop keeps the two visually distinct.
+        tone: hasWork ? "background" : "surface",
+        pointsIcon: "check",
+        noPaddingTop: true,
+        cards: landing.features.groups.map((group) => ({
+          id: group.id,
+          icon: group.icon,
+          title: group.title,
+          points: group.items,
+        })),
+      }
+    : null;
+
+  // ── WhyUs trio → GrowthPillars (numbered cards on white, before the table) ─
+  const whyData: GrowthPillarsData | null = landing.differentiators
+    ? {
+        id: `${data.id}-why`,
+        eyebrow: landing.differentiators.eyebrow,
+        headline: landing.differentiators.headline,
+        sub: landing.differentiators.sub,
+        backdrop: false,
+        tone: "background",
+        noPaddingTop: true,
+        cards: data.whyUs.map((item, i) => ({
+          id: item.id,
+          label: `0${i + 1}`,
+          title: item.title,
+          blurb: item.description,
+        })),
+      }
+    : null;
+
+  // ── Deliverables → the home catalog grid, framed for sellability ─────────
+  const deliverablesData: ServicesCatalogData = {
+    id: `mod-${data.slug}-deliverables`,
     eyebrow: "What's included",
     headline: {
       parts: [
@@ -113,11 +158,10 @@ export default async function LandingPageRich({ data }: Props) {
       ],
     },
     sub: "Every deliverable scoped and agreed upfront. No surprises at handoff — and nothing left for you to finish.",
-    cards: data.deliverables.map((d, i) => ({
+    items: data.deliverables.map((d, i) => ({
       id: d.id,
       title: d.title,
-      blurb: d.description,
-      href: "#book",
+      desc: d.description,
       icon: SERVICE_ICONS[i % SERVICE_ICONS.length],
     })),
   };
@@ -159,223 +203,148 @@ export default async function LandingPageRich({ data }: Props) {
         </section>
       )}
 
-      {/* 2 — Instant "these people actually build" credibility (black band,
-          same contrast-band standard as the home marquee). */}
-      <TrustBar />
-
-      {/* 3 — Agitate: the real cost of reselling without a bench. Same visual
-          language as the home problems section (GrowthPillars): surface
-          ground, parallax problem backdrop, white cards, black icon stickers. */}
-      {landing.pains && (
-        <section
-          id={`gw-${landing.pains.id}`}
-          aria-labelledby={`${landing.pains.id}-headline`}
-          className="relative isolate border-b border-border bg-surface text-foreground"
-        >
-          <ProblemBackground />
-          <div className="container-1200 py-20 sm:py-24 lg:py-28">
-            <ScrollFadeIn delay={0.1}>
-              <SectionHeader
-                eyebrow={landing.pains.eyebrow}
-                headline={landing.pains.headline.parts}
-                headlineId={`${landing.pains.id}-headline`}
-                highlightClassName="text-gradient-brand"
-                sub={landing.pains.sub}
-                align="center"
-                maxWidth="max-w-2xl"
-                headlineClassName="mt-4 text-3xl font-bold leading-[1.15] tracking-tight sm:text-4xl md:text-5xl"
-                subClassName="mx-auto mt-5 text-base text-muted sm:text-lg"
-              />
-            </ScrollFadeIn>
-            <div className="mt-12 grid gap-5 sm:grid-cols-2">
-              {landing.pains.cards.map((card, i) => {
-                const Glyph = PAIN_GLYPHS[card.icon];
-                return (
-                  <ScrollFadeIn key={card.id} delay={0.15 + (i % 2) * 0.1}>
-                    <article className="flex h-full flex-col rounded-xl border border-border bg-background p-7">
-                      <div className="flex items-center justify-between">
-                        <span className="inline-flex h-9 w-9 items-center justify-center rounded-lg bg-foreground text-white">
-                          <Glyph size={17} aria-hidden="true" />
-                        </span>
-                        <span className="font-mono text-xs font-semibold uppercase tracking-[0.14em] text-brand-text">
-                          Problem 0{i + 1}
-                        </span>
-                      </div>
-                      <h3 className="mt-5 text-lg font-semibold tracking-tight text-foreground">
-                        {card.title}
-                      </h3>
-                      <p className="mt-2 text-sm leading-relaxed text-muted">
-                        {card.blurb}
-                      </p>
-                      {card.points && (
-                        <ul className="mt-4 space-y-2 border-t border-border pt-4">
-                          {card.points.map((point) => (
-                            <li key={point} className="flex items-start gap-2.5">
-                              <span
-                                aria-hidden="true"
-                                className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-brand/70"
-                              />
-                              <span className="text-xs leading-relaxed text-foreground/70">
-                                {point}
-                              </span>
-                            </li>
-                          ))}
-                        </ul>
-                      )}
-                    </article>
-                  </ScrollFadeIn>
-                );
-              })}
-            </div>
-          </div>
-        </section>
-      )}
-
-      {/* 4 — Solution: the productized deliverable (white ground so the
-          bordered grid reads like the home catalog). */}
-      <Services data={deliverablesData} tone="background" />
-
-      {/* 4b — The complete feature list: unique design (never AI templates),
-          the stack (Next.js / GHL builder / Webflow / WordPress), performance,
-          security, maintenance, and support — grouped checklists. */}
-      {landing.features && (
-        <section
-          id={`gw-${data.id}-features`}
-          aria-labelledby={`${data.id}-features-headline`}
-          className="relative border-b border-border bg-surface py-20 text-foreground sm:py-24 lg:py-28"
-        >
-          <div className="container-1200">
-            <ScrollFadeIn delay={0.1}>
-              <SectionHeader
-                eyebrow={landing.features.eyebrow}
-                headline={landing.features.headline.parts}
-                headlineId={`${data.id}-features-headline`}
-                highlightClassName="text-gradient-brand"
-                sub={landing.features.sub}
-                align="center"
-                maxWidth="max-w-2xl"
-                headlineClassName="mt-4 text-3xl font-bold leading-[1.15] tracking-tight sm:text-4xl md:text-5xl"
-                subClassName="mx-auto mt-5 text-base text-muted sm:text-lg"
-              />
-            </ScrollFadeIn>
-            <div className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-              {landing.features.groups.map((group, i) => {
-                const Glyph = FEATURE_GLYPHS[group.icon];
-                return (
-                  <ScrollFadeIn key={group.id} delay={0.15 + (i % 3) * 0.08}>
-                    <div className="flex h-full flex-col rounded-xl border border-border bg-background p-6">
-                      <div className="flex items-center gap-3">
-                        <span className="inline-flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-foreground text-white">
-                          <Glyph size={17} aria-hidden="true" />
-                        </span>
-                        <h3 className="text-base font-semibold tracking-tight text-foreground">
-                          {group.title}
-                        </h3>
-                      </div>
-                      <ul className="mt-4 space-y-2.5">
-                        {group.items.map((item) => (
-                          <li key={item} className="flex items-start gap-2.5">
-                            <span className="mt-0.5 flex h-4.5 w-4.5 shrink-0 items-center justify-center rounded-full bg-brand/10">
-                              <Check size={11} strokeWidth={3} className="text-brand" aria-hidden="true" />
-                            </span>
-                            <span className="text-sm leading-relaxed text-muted">
-                              {item}
-                            </span>
-                          </li>
-                        ))}
-                      </ul>
-                    </div>
-                  </ScrollFadeIn>
-                );
-              })}
-            </div>
-          </div>
-        </section>
-      )}
-
-      {/* 5 — Proof: recent builds, shipped white-label. */}
-      {landing.work && (
-        <Portfolio
-          id={workId}
-          category={landing.work.category}
-          header={{
-            eyebrow: landing.work.eyebrow,
-            headline: landing.work.headline,
-            sub: landing.work.sub,
-          }}
+      {/* 2 — Credibility: the platforms we build on, scrolled in the home
+          marquee band (black contrast band in both themes). */}
+      {landing.platforms && (
+        <PartnerMarquee
+          id={`gw-mod-${data.slug}-platforms`}
+          ariaLabel="Platforms we build on"
+          items={landing.platforms}
         />
       )}
 
-      {/* 5b — Endorsement: the agency logo wall (home module). */}
-      <TrustedBy />
+      {/* 3 — Solution first, home order (catalog → problems): the productized
+          deliverable in the home catalog's exact bordered diamond-node grid. */}
+      <ServicesCatalog data={deliverablesData} />
 
-      {/* 6+7 — Money: transparent rate card, margin math, risk reversal. */}
-      {landing.pricing && pricingConfig && (
-        <ServicePricing config={pricingConfig} content={landing.pricing} />
+      {/* 4 — Agitate: the real cost of reselling without a bench — the home
+          problems section, fed with this service's pains. */}
+      {painsData && landing.pains && (
+        <>
+          <SectionTitle
+            id={`gw-${landing.pains.id}-title`}
+            eyebrow={landing.pains.eyebrow}
+            headline={landing.pains.headline.parts}
+            sub={landing.pains.sub}
+            className="bg-surface"
+          />
+          <GrowthPillars data={painsData} />
+        </>
       )}
 
-      {/* 8 — Mechanics: the same how-it-works section the home page uses. */}
+      {/* 5 — The complete feature list (home's showcase slot): unique design
+          (never AI templates), the stack (Next.js / GHL builder), performance,
+          security, maintenance, support. */}
+      {featuresData && landing.features && (
+        <>
+          <SectionTitle
+            id={`gw-mod-${data.slug}-features-title`}
+            eyebrow={landing.features.eyebrow}
+            headline={landing.features.headline.parts}
+            sub={landing.features.sub}
+            className={hasWork ? "bg-background" : "bg-surface"}
+          />
+          <GrowthPillars data={featuresData} />
+        </>
+      )}
+
+      {/* 5b — Proof: recent builds, shipped white-label. */}
+      {landing.work && (
+        <>
+          <SectionTitle
+            id={`${workId}-title`}
+            eyebrow={landing.work.eyebrow}
+            headline={landing.work.headline.parts}
+            sub={landing.work.sub}
+            className="bg-surface"
+          />
+          <Portfolio
+            id={workId}
+            tone="surface"
+            category={landing.work.category}
+            noPaddingTop
+          />
+        </>
+      )}
+
+      {/* 6 — Money: transparent rate card, margin math, risk reversal. */}
+      {landing.pricing && pricingConfig && (
+        <>
+          <SectionTitle
+            id="gw-mod-service-pricing-title"
+            eyebrow={landing.pricing.eyebrow}
+            headline={landing.pricing.headline.parts}
+            sub={landing.pricing.sub}
+            className="bg-background"
+          />
+          <ServicePricing
+            config={pricingConfig}
+            content={landing.pricing}
+            noPaddingTop
+          />
+        </>
+      )}
+
+      {/* 7 — Mechanics: the same how-it-works section the home page uses. */}
       <ProcessJourney />
 
-      {/* 8b — Social proof: partner quotes (home module). */}
-      <Testimonials />
+      {/* 8-10 — The home trust cluster, in home order: quotes → logo wall →
+          lineage. The offer below lands on maximum credibility. */}
+      <SectionTitle
+        id="gw-mod-testimonials-title"
+        eyebrow={testimonialsHeader.eyebrow}
+        headline={testimonialsHeader.headline.parts}
+        sub={testimonialsHeader.sub}
+        className="bg-background"
+      />
+      <Testimonials noPaddingTop />
+      <TrustedBy />
+      <SisterBrands />
 
-      {/* 8c — The membership packages: what paid members get on every order,
+      {/* 11 — The membership packages: what paid members get on every order,
           and the free Vendor tier — the "join free" invitation (home module). */}
-      <PricingPlans />
+      <SectionTitle
+        id="gw-mod-pricing-title"
+        eyebrow={tiersHeader.eyebrow}
+        headline={tiersHeader.headline.parts}
+        sub={tiersHeader.sub}
+        className="bg-surface"
+      />
+      <PricingPlans noPaddingTop />
 
-      {/* 9 — Differentiation: the whyUs trio, then the comparison table. */}
-      {landing.differentiators && (
-        <section
-          id={`gw-${data.id}-why`}
-          aria-labelledby={`${data.id}-why-headline`}
-          className="relative bg-background pt-20 pb-16 text-foreground sm:pt-24 sm:pb-20 lg:pt-28"
-        >
-          <div className="container-1200">
-            <ScrollFadeIn delay={0.1}>
-              <SectionHeader
-                eyebrow={landing.differentiators.eyebrow}
-                headline={landing.differentiators.headline.parts}
-                headlineId={`${data.id}-why-headline`}
-                highlightClassName="text-gradient-brand"
-                sub={landing.differentiators.sub}
-                align="center"
-                maxWidth="max-w-2xl"
-                headlineClassName="mt-4 text-3xl font-bold leading-[1.15] tracking-tight sm:text-4xl md:text-5xl"
-                subClassName="mx-auto mt-5 text-base text-muted sm:text-lg"
-              />
-            </ScrollFadeIn>
-            <ScrollFadeIn delay={0.2}>
-              <div className="mt-12 grid gap-5 sm:grid-cols-3">
-                {data.whyUs.map((item, i) => (
-                  <div
-                    key={item.id}
-                    className="flex flex-col rounded-xl border border-border bg-surface p-7"
-                  >
-                    <span className="font-mono text-3xl font-semibold tracking-tight text-foreground/10">
-                      0{i + 1}
-                    </span>
-                    <h3 className="mt-4 text-lg font-semibold tracking-tight text-foreground">
-                      {item.title}
-                    </h3>
-                    <p className="mt-2 text-sm leading-relaxed text-muted">
-                      {item.description}
-                    </p>
-                  </div>
-                ))}
-              </div>
-            </ScrollFadeIn>
-          </div>
-        </section>
+      {/* 12 — Differentiation: the whyUs trio, then the comparison table. */}
+      {whyData && landing.differentiators && (
+        <>
+          <SectionTitle
+            id={`gw-${data.id}-why-title`}
+            eyebrow={landing.differentiators.eyebrow}
+            headline={landing.differentiators.headline.parts}
+            sub={landing.differentiators.sub}
+            className="bg-background"
+          />
+          <GrowthPillars data={whyData} />
+        </>
       )}
-      <Comparison noPaddingTop={Boolean(landing.differentiators)} />
+      <SectionTitle
+        id="gw-mod-comparison-title"
+        eyebrow={comparisonHeader.eyebrow}
+        headline={comparisonHeader.headline.parts}
+        sub={comparisonHeader.sub}
+        className="bg-background"
+      />
+      <Comparison noPaddingTop />
 
-      {/* 10 — Objections. */}
-      <Faq data={faqData} />
-
-      {/* 12 — Close: the live calendar, zero friction. The footer's global
-          CtaBanner follows as the true last word — never duplicate it here. */}
-      <BookingSection />
+      {/* 10 — Objections. The footer's global CtaBanner ("Ready when you
+          are", #book) is the page's close — booking itself opens in the
+          globally-mounted BookingModal, exactly like the home page. */}
+      <SectionTitle
+        id={`gw-${data.id}-faq-title`}
+        eyebrow={faqData.eyebrow}
+        headline={faqData.headline.parts}
+        sub={faqData.sub}
+        className="bg-surface"
+      />
+      <Faq data={faqData} noPaddingTop />
     </>
   );
 }

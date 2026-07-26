@@ -12,6 +12,7 @@ import {
 type Props = {
   children: ReactNode;
   className?: string;
+  id?: string;
 };
 
 const SPRING = { stiffness: 300, damping: 24, mass: 0.6 };
@@ -19,7 +20,7 @@ const SPRING = { stiffness: 300, damping: 24, mass: 0.6 };
 /** 3D magnetic frame: the card tilts toward the cursor and drifts a few px
  *  after it, springing back flat on leave. Mouse-only — touch pointers and
  *  reduced-motion users get the plain card. */
-export default function MagneticTiltCard({ children, className }: Props) {
+export default function MagneticTiltCard({ children, className, id }: Props) {
   const ref = useRef<HTMLDivElement>(null);
   const reduceMotion = useReducedMotion();
 
@@ -33,7 +34,7 @@ export default function MagneticTiltCard({ children, className }: Props) {
   const y = useSpring(useTransform(py, [-0.5, 0.5], [-5, 5]), SPRING);
 
   if (reduceMotion) {
-    return <div className={className}>{children}</div>;
+    return <div id={id} className={className}>{children}</div>;
   }
 
   const onPointerMove = (e: React.PointerEvent<HTMLDivElement>) => {
@@ -51,6 +52,7 @@ export default function MagneticTiltCard({ children, className }: Props) {
 
   return (
     <motion.div
+      id={id}
       ref={ref}
       onPointerMove={onPointerMove}
       onPointerLeave={reset}

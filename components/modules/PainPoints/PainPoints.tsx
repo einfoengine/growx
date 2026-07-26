@@ -1,17 +1,19 @@
-import SectionHeader from "@/components/elements/SectionHeader";
-import ScrollFadeIn from "@/components/elements/ScrollFadeIn";
 import EvervaultBackground from "@/components/elements/EvervaultBackground";
+import ModuleTitle from "@/components/elements/ModuleTitle";
 import PainPointsCards from "./PainPointsCards";
 import { getPainPoints } from "@/lib/content";
 import type { PainPointsContent } from "@/lib/content";
 
-export default async function PainPoints({ data }: { data?: PainPointsContent } = {}) {
+export default async function PainPoints({
+  data,
+  moduleTitle,
+  noPaddingTop,
+}: { data?: PainPointsContent; moduleTitle?: string; noPaddingTop?: boolean } = {}) {
   const painData = data ?? await getPainPoints();
 
   return (
     <section
       id={`gw-${painData.id}`}
-      aria-labelledby={`${painData.id}-headline`}
       data-nav-theme="dark" data-dark-surface
       className="relative isolate z-45 overflow-x-clip bg-foreground text-background"
     >
@@ -31,19 +33,13 @@ export default async function PainPoints({ data }: { data?: PainPointsContent } 
       {/* Evervault-style cursor reveal */}
       <EvervaultBackground className="-z-10" />
 
-      <div className="container-1200 relative py-24 sm:py-28 lg:py-32">
-        <ScrollFadeIn delay={0.1}>
-          <SectionHeader
-            eyebrow={painData.eyebrow}
-            headline={painData.headline.parts}
-            headlineId={`${painData.id}-headline`}
-            sub={painData.sub}
-            align="center"
-            maxWidth="max-w-2xl"
-            headlineClassName="mt-4 text-4xl font-bold leading-[1.15] tracking-tight sm:text-5xl lg:text-6xl"
-            subClassName="mx-auto mt-5 max-w-xl text-base text-white/70 sm:text-lg"
-          />
-        </ScrollFadeIn>
+      {/* noPaddingTop: a SectionTitle module sits directly above. */}
+      <div
+        className={`container-1200 relative ${
+          noPaddingTop ? "pb-24 pt-0 sm:pb-28 lg:pb-32" : "py-24 sm:py-28 lg:py-32"
+        }`}
+      >
+        {moduleTitle && <ModuleTitle id="gw-pain-points-module-title">{moduleTitle}</ModuleTitle>}
 
         <PainPointsCards cards={painData.cards} />
       </div>

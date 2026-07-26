@@ -36,6 +36,7 @@ import BlogSection from "@/components/modules/BlogSection/BlogSection";
 import JoinCta from "@/components/modules/JoinCta/JoinCta";
 import BookingSection from "@/components/modules/BookingSection/BookingSection";
 import Process from "@/components/modules/Process";
+import SectionTitle from "@/components/modules/SectionTitle/SectionTitle";
 
 import OnboardingDemoButton from "./OnboardingDemoButton";
 
@@ -320,67 +321,74 @@ export default function UiKitsPage() {
         </p>
       </div>
 
-      <Kit id="hero" tag="Module" name="Hero" path="components/modules/Hero" note="home variant — loads the VSL" full>
+      <Kit id="section-title" tag="Module" name="Section Intro Heading" path="components/modules/SectionTitle" note="Eyebrow, gradient headline, short description; introduces a section (needs no module title — it is one)" full>
+        <SectionTitle
+          eyebrow="Our services"
+          headline={demoHeadline}
+          sub="Web, SEO, paid media, content, social, funnels, and video."
+        />
+      </Kit>
+      <Kit id="hero" tag="Module" name="Centered Hero With Media Panel" path="components/modules/Hero" note="Centered copy over full-bleed backdrop; media panel tilts on scroll" full>
         <Hero />
       </Kit>
-      <Kit id="partner-marquee" tag="Module" name="PartnerMarquee" path="components/modules/PartnerMarquee" full>
+      <Kit id="partner-marquee" tag="Module" name="Infinite Icon Chip Marquee" path="components/modules/PartnerMarquee" note="Endless icon-label chips scroll; pauses on hover" full>
         <PartnerMarquee />
       </Kit>
-      <Kit id="logo-marquee" tag="Module" name="LogoMarquee" path="components/modules/LogoMarquee" full>
+      <Kit id="logo-marquee" tag="Module" name="Bordered Logo Card Grid" path="components/modules/LogoMarquee" note="Hover-lift cards for logos, badges, or integrations" full>
         <LogoMarquee />
       </Kit>
-      <Kit id="text-marquee" tag="Module" name="TextMarquee" path="components/modules/TextMarquee" full>
+      <Kit id="text-marquee" tag="Module" name="Infinite Text Ticker Strip" path="components/modules/TextMarquee" note="Continuously scrolling labels; edge fade, pause on hover" full>
         <TextMarquee />
       </Kit>
-      <Kit id="trust-bar" tag="Module" name="TrustBar" path="components/modules/TrustBar" full>
+      <Kit id="trust-bar" tag="Module" name="Centered Logo Strip" path="components/modules/TrustBar" note="Centered wrapping logo row; hover brightens each item" full>
         <TrustBar />
       </Kit>
-      <Kit id="pain-points" tag="Module" name="PainPoints" path="components/modules/PainPoints" full>
+      <Kit id="pain-points" tag="Module" name="Sticky Stacked Timeline Cards" path="components/modules/PainPoints" note="Scroll pins cards into a stacked icon timeline; steps or reasons" full>
         <PainPoints />
       </Kit>
-      <Kit id="fulfillment-reasons" tag="Module" name="FulfillmentReasons" path="components/modules/FulfillmentReasons" note="'The real bottleneck'" full>
+      <Kit id="fulfillment-reasons" tag="Module" name="Full-Bleed Image Card Grid" path="components/modules/FulfillmentReasons" note="Photo-backed feature cards in a row; hover tilt" full>
         <FulfillmentReasons />
       </Kit>
-      <Kit id="services" tag="Module" name="Services" path="components/modules/Services" full>
+      <Kit id="services" tag="Module" name="Split-Header Icon Card Grid" path="components/modules/Services" note="Clickable icon cards invert on hover; hairline-ruled grid" full>
         <Services />
       </Kit>
-      <Kit id="services-catalog" tag="Module" name="ServicesCatalog" path="components/modules/Services/ServicesCatalog" note="clickable, opens ServiceDetailModal" full>
+      <Kit id="services-catalog" tag="Module" name="Modal Icon Tile Grid" path="components/modules/Services/ServicesCatalog" note="Hairline-seamed tiles with diamond nodes; click for detail" full>
         <ServicesCatalog />
       </Kit>
-      <Kit id="how-it-works" tag="Module" name="HowItWorks" path="components/modules/HowItWorks" full>
+      <Kit id="how-it-works" tag="Module" name="Horizontal Numbered Step Timeline" path="components/modules/HowItWorks" note="Connected numbered badges; glow marker auto-travels the steps" full>
         <HowItWorks />
       </Kit>
-      <Kit id="pricing" tag="Module" name="Pricing" path="components/modules/Pricing" full>
+      <Kit id="pricing" tag="Module" name="Featured Tier Card Row" path="components/modules/Pricing" note="Equal-height tier trio, one emphasized; figure, checklist, CTA" full>
         <Pricing />
       </Kit>
-      <Kit id="comparison" tag="Module" name="Comparison" path="components/modules/Comparison" full>
-        <Comparison />
+      <Kit id="comparison" tag="Module" name="Highlighted Comparison Matrix" path="components/modules/Comparison" note="Compare options across feature rows; one column emphasized · demo: optional moduleTitle shown above" full>
+        <Comparison moduleTitle="Optional module title" />
       </Kit>
-      <Kit id="portfolio" tag="Module" name="Portfolio" path="components/modules/Portfolio" full>
+      <Kit id="portfolio" tag="Module" name="Filterable Masonry Image Grid" path="components/modules/Portfolio" note="Tab-filtered masonry of image cards; reuse for galleries" full>
         <Portfolio />
       </Kit>
-      <Kit id="testimonials" tag="Module" name="Testimonials" path="components/modules/Testimonials" full>
+      <Kit id="testimonials" tag="Module" name="Auto-Advancing Spotlight Carousel" path="components/modules/Testimonials" note="One card at a time, autoplay arrows/dots; stat band" full>
         <Testimonials />
       </Kit>
-      <Kit id="sister-brands" tag="Module" name="SisterBrands" path="components/modules/SisterBrands" full>
+      <Kit id="sister-brands" tag="Module" name="Captioned Logo Card Grid" path="components/modules/SisterBrands" note="Intro header over hover-lift logo cards with captions" full>
         <SisterBrands />
       </Kit>
-      <Kit id="faq" tag="Module" name="Faq" path="components/modules/Faq" full>
+      <Kit id="faq" tag="Module" name="Numbered Accordion List" path="components/modules/Faq" note="Expandable question or feature rows; single-open toggle" full>
         <Faq />
       </Kit>
-      <Kit id="newsletter" tag="Module" name="Newsletter" path="components/modules/Newsletter" note="form errors on submit until ESP is wired" full>
+      <Kit id="newsletter" tag="Module" name="Centered Form Capture Panel" path="components/modules/Newsletter" note="Boxed centered stack with inline form; signups or waitlists" full>
         <Newsletter />
       </Kit>
-      <Kit id="blog-section" tag="Module" name="BlogSection" path="components/modules/BlogSection" full>
+      <Kit id="blog-section" tag="Module" name="Horizontal Snap Card Carousel" path="components/modules/BlogSection" note="Snap-scroll card row with header and view-all link" full>
         <BlogSection />
       </Kit>
-      <Kit id="join-cta" tag="Module" name="JoinCta" path="components/modules/JoinCta" note="'Do not miss this'" full>
+      <Kit id="join-cta" tag="Module" name="Centered CTA Banner" path="components/modules/JoinCta" note="Centered headline, checklist grid, dual action buttons" full>
         <JoinCta />
       </Kit>
-      <Kit id="booking-section" tag="Module" name="BookingSection" path="components/modules/BookingSection" note="lazy-loads the GHL calendar on scroll" full>
+      <Kit id="booking-section" tag="Module" name="Framed Embed Panel" path="components/modules/BookingSection" note="Centered intro above framed, lazy-loaded iframe; schedulers or forms" full>
         <BookingSection />
       </Kit>
-      <Kit id="process" tag="Module" name="Process" path="components/modules/Process" note="scroll-jacked / pinned — scroll through it slowly" full>
+      <Kit id="process" tag="Module" name="Scroll-Pinned Card Reveal" path="components/modules/Process" note="Pinned panel reveals a card row while scrolling" full>
         <Process />
       </Kit>
     </div>

@@ -136,7 +136,7 @@ export default function OnboardingModal() {
   return (
     <AnimatePresence>
       {plan && (
-        <div className="fixed inset-0 z-100 flex items-center justify-center p-4 sm:p-6">
+        <div id="gw-onboarding-modal" className="fixed inset-0 z-100 flex items-center justify-center p-4 sm:p-6">
           {/* Backdrop */}
           <motion.div
             key="backdrop"

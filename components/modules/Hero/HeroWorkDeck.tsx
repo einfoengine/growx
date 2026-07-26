@@ -54,6 +54,7 @@ export default function HeroWorkDeck({
 
   return (
     <div
+      id="gw-hero-work-deck"
       aria-hidden="true"
       className={`pointer-events-none relative h-[194px] w-[150px] ${className}`}
     >

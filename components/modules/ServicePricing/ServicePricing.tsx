@@ -1,6 +1,6 @@
 import { BadgeCheck, ShieldCheck } from "lucide-react";
 import Link from "next/link";
-import SectionHeader from "@/components/elements/SectionHeader";
+import ModuleTitle from "@/components/elements/ModuleTitle";
 import ScrollFadeIn from "@/components/elements/ScrollFadeIn";
 import MarginCalculator from "./MarginCalculator";
 import { TIERS, TIER_ORDER } from "@/lib/config/pricing";
@@ -13,37 +13,33 @@ function usd(n: number): string {
 type Props = {
   config: PricingServiceConfig;
   content: ServiceLandingPricing;
+  moduleTitle?: string;
+  /** A SectionTitle module sits directly above and provides the top spacing. */
+  noPaddingTop?: boolean;
 };
 
 /** The money section of a rich service landing page: the transparent rate card
  *  (straight from the shared pricing config), the interactive margin
  *  calculator beside it, and the risk-reversal guarantees underneath — safety
  *  shown at the exact moment the price is being weighed. */
-export default function ServicePricing({ config, content }: Props) {
+export default function ServicePricing({ config, content, moduleTitle, noPaddingTop }: Props) {
   const paidTiers = TIER_ORDER.filter((k) => TIERS[k].discount > 0);
 
   return (
     <section
       id="gw-mod-service-pricing"
-      aria-labelledby="gw-service-pricing-headline"
-      className="relative border-b border-border bg-background py-20 sm:py-24 lg:py-28 text-foreground"
+      className={`relative border-b border-border bg-background text-foreground ${
+        noPaddingTop ? "pb-20 pt-0 sm:pb-24 lg:pb-28" : "py-20 sm:py-24 lg:py-28"
+      }`}
     >
       <div className="container-1200">
-        <ScrollFadeIn delay={0.1}>
-          <SectionHeader
-            eyebrow={content.eyebrow}
-            headline={content.headline.parts}
-            headlineId="gw-service-pricing-headline"
-            highlightClassName="text-gradient-brand"
-            sub={content.sub}
-            align="center"
-            maxWidth="max-w-2xl"
-            headlineClassName="mt-4 text-3xl font-bold leading-[1.15] tracking-tight sm:text-4xl md:text-5xl"
-            subClassName="mx-auto mt-5 text-base text-muted sm:text-lg"
-          />
-        </ScrollFadeIn>
+        {moduleTitle && <ModuleTitle id="gw-service-pricing-module-title">{moduleTitle}</ModuleTitle>}
 
-        <div className="mt-14 grid items-start gap-8 lg:grid-cols-[1fr_1.15fr] lg:gap-10">
+        <div
+          className={`grid items-start gap-8 lg:grid-cols-[1fr_1.15fr] lg:gap-10 ${
+            noPaddingTop && !moduleTitle ? "mt-0" : "mt-14"
+          }`}
+        >
           {/* ── Rate card — the numbers, nothing hidden ─────────────────── */}
           <ScrollFadeIn delay={0.2}>
             <div className="rounded-xl border border-border bg-surface p-6 sm:p-8">
@@ -54,15 +50,20 @@ export default function ServicePricing({ config, content }: Props) {
                 <span className="font-mono text-5xl font-bold tracking-tight text-foreground">
                   {usd(config.unitPrice)}
                 </span>
-                <span className="text-base text-muted">per {config.unit}, flat</span>
+                <span className="text-base text-muted">
+                  per {config.unit}
+                  {config.billing === "monthly" ? " / month" : ", flat"}
+                </span>
               </p>
               <p className="mt-2 text-sm text-muted">
                 {config.minQty}-{config.unit} minimum ·{" "}
-                {config.billing === "one-off" ? "one-off project, no retainer required" : "monthly"}
+                {config.billing === "one-off"
+                  ? "one-off project, no retainer required"
+                  : "monthly retainer, month-to-month available"}
               </p>
 
               <p className="mt-7 font-label text-xs font-semibold uppercase tracking-widest text-muted">
-                Pick your timeline
+                {config.billing === "monthly" ? "Pick your commitment" : "Pick your timeline"}
               </p>
               <ul className="mt-3 divide-y divide-border">
                 {config.durations.map((d) => (

@@ -9,14 +9,16 @@ type ScrollFadeInProps = {
   className?: string;
   direction?: "up" | "down" | "left" | "right" | "none";
   fullWidth?: boolean;
+  id?: string;
 };
 
-export default function ScrollFadeIn({ 
-  children, 
-  delay = 0, 
-  className = "", 
+export default function ScrollFadeIn({
+  children,
+  delay = 0,
+  className = "",
   direction = "up",
   fullWidth = false,
+  id,
 }: ScrollFadeInProps) {
   const directions = {
     up: { y: 40, x: 0 },
@@ -28,6 +30,7 @@ export default function ScrollFadeIn({
 
   return (
     <motion.div
+      id={id}
       initial={{ opacity: 0, ...directions[direction] }}
       whileInView={{ opacity: 1, x: 0, y: 0 }}
       viewport={{ once: true, margin: "-100px" }}

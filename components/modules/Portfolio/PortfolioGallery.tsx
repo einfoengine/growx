@@ -61,7 +61,7 @@ export default function PortfolioGallery({
   );
 
   return (
-    <div>
+    <div id="gw-portfolio-gallery">
       {/* Filter pills */}
       <div
         role="tablist"

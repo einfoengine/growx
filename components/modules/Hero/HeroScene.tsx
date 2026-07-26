@@ -97,6 +97,7 @@ export default function HeroScene({ className = "" }: { className?: string }) {
   return (
     <div
       ref={ref}
+      id="gw-hero-scene"
       aria-hidden="true"
       className={`pointer-events-none absolute inset-0 overflow-hidden ${className}`}
     >

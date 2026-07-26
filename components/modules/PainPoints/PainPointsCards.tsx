@@ -235,7 +235,7 @@ export default function PainPointsCards({ cards }: { cards: Card[] }) {
   return (
     <>
       {/* Timeline rail */}
-      <div className="relative mt-24">
+      <div id="gw-pain-points-cards" className="relative mt-24">
         <div className="flex flex-col gap-10">
           {cards.map((card, index) => {
             const Icon = ICON_BY_KEY[card.icon];
@@ -246,6 +246,7 @@ export default function PainPointsCards({ cards }: { cards: Card[] }) {
             return (
               <div
                 key={card.id}
+                id={`gw-pain-points-card-${card.id}`}
                 ref={(el) => {
                   wrapperRefs.current[index] = el;
                 }}

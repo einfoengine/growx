@@ -3,7 +3,7 @@
 import { useEffect, useState } from "react";
 import { PhoneCall, Tag, Cog, Send, type LucideIcon } from "lucide-react";
 import type { ProcessContent } from "@/lib/content";
-import SectionHeader from "@/components/elements/SectionHeader";
+import ModuleTitle from "@/components/elements/ModuleTitle";
 import { STEP_ART } from "./StepArt";
 
 /** One line icon per step, in step order (Book a call → Order → Produce →
@@ -20,7 +20,13 @@ const STEP_MS = 4600;
  *  an interval and can be jumped to by click; the panel crossfades to the
  *  matching illustration — same light, emerald-accented art language as the
  *  GrowthPillars cards. */
-export default function ProcessJourneyClient({ data }: { data: ProcessContent }) {
+export default function ProcessJourneyClient({
+  data,
+  moduleTitle,
+}: {
+  data: ProcessContent;
+  moduleTitle?: string;
+}) {
   const steps = data.steps;
   const [active, setActive] = useState(0);
 
@@ -39,23 +45,10 @@ export default function ProcessJourneyClient({ data }: { data: ProcessContent })
   return (
     <section
       id="gw-mod-process-journey"
-      aria-labelledby="process-journey-headline"
       className="relative border-b border-border bg-surface py-20 text-foreground sm:py-24 lg:py-28"
     >
       <div className="container-1200">
-        {/* ── Header: full width, above both columns ─────────────────── */}
-        <SectionHeader
-          eyebrow={data.eyebrow}
-          headline={data.headline.parts}
-          headlineId="process-journey-headline"
-          highlightClassName="text-gradient-brand"
-          sub={data.sub}
-          align="left"
-          maxWidth=""
-          headlineClassName="mt-4 text-3xl font-bold leading-[1.15] tracking-tight sm:text-4xl md:text-5xl"
-          subClassName="mt-5 max-w-lg text-base text-muted sm:text-lg"
-        />
-
+        {moduleTitle && <ModuleTitle id="gw-process-journey-module-title">{moduleTitle}</ModuleTitle>}
         {/* ── Steps left, illustration right — top-aligned to each other ── */}
         <div className="mt-10 grid items-stretch gap-10 lg:grid-cols-2 lg:gap-16">
           <ol className="space-y-2">

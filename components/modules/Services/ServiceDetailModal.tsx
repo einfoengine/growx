@@ -127,6 +127,7 @@ export default function ServiceDetailModal({
     <AnimatePresence onExitComplete={releaseScroll}>
       {service && (
         <motion.div
+          id="gw-service-detail-modal"
           key="svc-modal-backdrop"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}

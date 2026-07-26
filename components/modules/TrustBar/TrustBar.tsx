@@ -1,4 +1,4 @@
-import Eyebrow from "@/components/elements/Eyebrow";
+import ModuleTitle from "@/components/elements/ModuleTitle";
 
 /** Capability strip under the hero: the platforms our team ships client work
  *  on every week. These are factual tool claims presented as quiet wordmarks,
@@ -19,7 +19,7 @@ const PLATFORMS = [
   "Figma",
 ];
 
-export default function TrustBar() {
+export default function TrustBar({ moduleTitle }: { moduleTitle?: string } = {}) {
   return (
     <section
       id="gw-mod-trust-bar"
@@ -30,7 +30,7 @@ export default function TrustBar() {
       className="border-b border-white/10 bg-foreground py-12 text-background sm:py-14"
     >
       <div className="container-1200 text-center">
-        <Eyebrow text="Fulfilling client work every week across" />
+        {moduleTitle && <ModuleTitle id="gw-trust-bar-module-title">{moduleTitle}</ModuleTitle>}
         <ul className="mx-auto mt-7 flex max-w-4xl flex-wrap items-center justify-center gap-x-10 gap-y-4">
           {PLATFORMS.map((name) => (
             <li

@@ -72,6 +72,7 @@ export default function Analytics() {
 
       {consent === "unset" && (
         <div
+          id="el-analytics"
           role="region"
           aria-label="Cookie consent"
           className="fixed inset-x-4 bottom-4 z-90 mx-auto max-w-lg rounded-2xl border border-border bg-background/95 p-5 shadow-2xl shadow-black/15 backdrop-blur-xl"

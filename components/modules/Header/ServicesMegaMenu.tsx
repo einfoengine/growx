@@ -56,7 +56,7 @@ export default function ServicesMegaMenu({ item, services }: Props) {
   const extras = children.filter((c) => !cardByHref.has(c.href));
 
   return (
-    <li className="relative group">
+    <li id={`gw-services-mega-menu-${item.id}`} className="relative group">
       <Link
         id={item.id}
         href={item.href}

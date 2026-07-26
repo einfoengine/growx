@@ -35,7 +35,7 @@ export default function BlogScroller({ posts }: { posts: BlogPost[] }) {
   };
 
   return (
-    <div className="relative">
+    <div id="gw-blog-scroller" className="relative">
       <div
         ref={ref}
         className="flex snap-x snap-mandatory gap-6 overflow-x-auto pb-2 [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"

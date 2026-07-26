@@ -13,9 +13,10 @@ export function formatBlogDate(iso: string): string {
   return `${MONTHS[m - 1]} ${d}, ${y}`;
 }
 
-export function AuthorAvatar({ author, small }: { author: BlogAuthor; small?: boolean }) {
+export function AuthorAvatar({ author, small, id }: { author: BlogAuthor; small?: boolean; id?: string }) {
   return (
     <span
+      id={id}
       aria-hidden="true"
       className={`flex ${small ? "h-7 w-7" : "h-9 w-9"} shrink-0 items-center justify-center rounded-full bg-brand/10 text-xs font-bold text-brand`}
     >
@@ -24,9 +25,9 @@ export function AuthorAvatar({ author, small }: { author: BlogAuthor; small?: bo
   );
 }
 
-function MetaLine({ post, className = "" }: { post: BlogPost; className?: string }) {
+function MetaLine({ post, className = "", id }: { post: BlogPost; className?: string; id?: string }) {
   return (
-    <div className={`flex items-center gap-2 text-xs text-muted ${className}`}>
+    <div id={id} className={`flex items-center gap-2 text-xs text-muted ${className}`}>
       <time dateTime={post.date}>{formatBlogDate(post.date)}</time>
       <span aria-hidden="true" className="inline-block h-1 w-1 rounded-full bg-current opacity-40" />
       <span>{post.readMinutes} min read</span>
@@ -38,6 +39,7 @@ function MetaLine({ post, className = "" }: { post: BlogPost; className?: string
 export function BlogFeatureCard({ post, priority }: { post: BlogPost; priority?: boolean }) {
   return (
     <Link
+      id={`gw-blog-feature-card-${post.slug}`}
       href={`/blog/${post.slug}`}
       className="group flex h-full flex-col overflow-hidden rounded-3xl border border-border bg-background transition-all duration-300 hover:border-brand/40 hover:shadow-xl hover:shadow-brand/5"
     >
@@ -78,6 +80,7 @@ export function BlogFeatureCard({ post, priority }: { post: BlogPost; priority?:
 export function BlogListItem({ post }: { post: BlogPost }) {
   return (
     <Link
+      id={`gw-blog-list-item-${post.slug}`}
       href={`/blog/${post.slug}`}
       className="group flex items-center gap-4 py-5 first:pt-0 last:pb-0"
     >
@@ -108,6 +111,7 @@ export function BlogListItem({ post }: { post: BlogPost }) {
 export function BlogCard({ post }: { post: BlogPost }) {
   return (
     <Link
+      id={`gw-blog-card-${post.slug}`}
       href={`/blog/${post.slug}`}
       className="group flex h-full flex-col overflow-hidden rounded-3xl border border-border bg-background transition-all duration-300 hover:-translate-y-0.5 hover:border-brand/40 hover:shadow-lg hover:shadow-brand/5"
     >

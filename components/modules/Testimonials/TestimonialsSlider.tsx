@@ -57,6 +57,7 @@ export default function TestimonialsSlider({
 
   return (
     <div
+      id="gw-testimonials-slider"
       className="relative mx-auto max-w-4xl"
       onMouseEnter={() => setPaused(true)}
       onMouseLeave={() => setPaused(false)}

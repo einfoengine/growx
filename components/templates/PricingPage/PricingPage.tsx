@@ -10,6 +10,7 @@ import Faq from "@/components/modules/Faq";
 import ServiceCatalog from "./ServiceCatalog";
 import EstimateCalculator, { type PlanInfo } from "./EstimateCalculator";
 import JoinCta from "@/components/modules/JoinCta/JoinCta";
+import SectionTitle from "@/components/modules/SectionTitle/SectionTitle";
 
 type Props = {
   pageData: PricingPageContent;
@@ -49,14 +50,21 @@ export default async function PricingPage({ pageData }: Props) {
             align="center"
           />
           <div className="mt-9 flex flex-col items-center justify-center gap-3 sm:flex-row">
-            <PlanButton label="Join free" planKey="free" className="btn btn-brand" />
+            <PlanButton label="Join free" planKey="free" id="gw-plan-button-free-hero" className="btn btn-brand" />
             <PlanButton label="How it works" href="#how-it-works" className="btn btn-secondary-dark" />
           </div>
         </div>
       </section>
 
       {/* Membership plans */}
-      <PricingPlans hidePopularBadge />
+      <SectionTitle
+        id="gw-pricing-plans-title"
+        eyebrow={pricing.eyebrow}
+        headline={pricing.headline.parts}
+        sub={pricing.sub}
+        className="bg-surface"
+      />
+      <PricingPlans hidePopularBadge noPaddingTop />
 
       {/* Service catalog with add-to-cart */}
       <ServiceCatalog />
@@ -65,13 +73,41 @@ export default async function PricingPage({ pageData }: Props) {
       <EstimateCalculator plans={plans} />
 
       {/* Purchase-mechanics objections, answered before the ask */}
-      <Faq data={pageData.faq} />
+      <SectionTitle
+        id="gw-pricing-faq-title"
+        eyebrow={pageData.faq.eyebrow}
+        headline={pageData.faq.headline.parts}
+        sub={pageData.faq.sub}
+        className="bg-surface"
+      />
+      <Faq data={pageData.faq} noPaddingTop />
 
       {/* Book a call */}
-      <BookingSection />
+      <SectionTitle
+        id="gw-pricing-book-title"
+        eyebrow="Book a partner call"
+        headline={[
+          { type: "text", value: "Let's talk about " },
+          { type: "highlight", value: "your fulfillment." },
+        ]}
+        sub="Grab 30 minutes with our founding team, on your schedule. No pressure, just a straight answer on whether we're a fit."
+        className="bg-foreground text-background"
+      />
+      <BookingSection noPaddingTop />
 
       {/* Join / do-not-miss close */}
-      <JoinCta />
+      <div className="bg-foreground text-background" data-nav-theme="dark" data-dark-surface>
+        <SectionTitle
+          id="gw-pricing-join-title"
+          eyebrow="Do not miss this"
+          headline={[
+            { type: "text", value: "Join now. Order when you " },
+            { type: "highlight", value: "win the work." },
+          ]}
+          sub="A free account puts the whole catalog and its fixed pricing in front of you today. There is nothing to lose and a fulfillment team to gain."
+        />
+      </div>
+      <JoinCta noPaddingTop />
     </>
   );
 }

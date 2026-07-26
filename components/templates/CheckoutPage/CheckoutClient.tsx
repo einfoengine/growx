@@ -36,7 +36,7 @@ export default function CheckoutClient({ plans }: { plans: PlanInfo[] }) {
   };
 
   return (
-    <section className="relative isolate min-h-[70vh] bg-background">
+    <section id="tpl-checkout-client" className="relative isolate min-h-[70vh] bg-background">
       <div className="container-1200 pb-24 pt-32 sm:pt-36">
         <div className="mx-auto max-w-3xl">
           <h1 className="text-3xl font-bold tracking-tight text-foreground sm:text-4xl">Your order</h1>

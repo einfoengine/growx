@@ -10,6 +10,7 @@ import {
   type LucideIcon,
 } from "lucide-react";
 import ScrollFadeIn from "@/components/elements/ScrollFadeIn";
+import ModuleTitle from "@/components/elements/ModuleTitle";
 
 /** What an agency owner actually gets by partnering with growX — the
  *  white-label fulfillment value props, not lead-gen perks. */
@@ -38,11 +39,26 @@ const BENEFITS: { label: string; Icon: LucideIcon }[] = [
  *  so the zone still reads as one continuous dark band, just glassy instead
  *  of flat. Self-contained (its own blur source), so it doesn't straddle the
  *  hero/next-section seam the way an earlier glass experiment here did. */
-export default function PartnerMarquee() {
+export default function PartnerMarquee({
+  items,
+  ariaLabel = "Benefits of becoming a partner",
+  id = "gw-mod-partner-marquee",
+  moduleTitle,
+}: {
+  /** Override the scrolled items (plain labels, no icons) — e.g. a service
+   *  page's platform list. Default: the partner-benefit chips. */
+  items?: string[];
+  ariaLabel?: string;
+  id?: string;
+  moduleTitle?: string;
+} = {}) {
+  const entries: { label: string; Icon: LucideIcon | null }[] = items
+    ? items.map((label) => ({ label, Icon: null }))
+    : BENEFITS;
   return (
     <section
-      id="gw-mod-partner-marquee"
-      aria-label="Benefits of becoming a partner"
+      id={id}
+      aria-label={ariaLabel}
       // Stays black in BOTH themes (deliberate contrast band) — no
       // data-dark-surface here.
       data-nav-theme="dark"
@@ -54,19 +70,22 @@ export default function PartnerMarquee() {
       </div>
 
       <div className="relative border-y border-white/15 bg-white/8 py-6 backdrop-blur-xl sm:py-7">
+        {moduleTitle && <ModuleTitle id="gw-partner-marquee-module-title">{moduleTitle}</ModuleTitle>}
         <ScrollFadeIn delay={0.1}>
         <div className="relative flex w-full overflow-hidden mask-[linear-gradient(to_right,transparent,#000_8%,#000_92%,transparent)]">
           <div className="flex w-fit animate-marquee hover:[animation-play-state:paused]">
             {[0, 1].map((copy) => (
               <div key={copy} className="flex shrink-0 items-center" aria-hidden={copy === 1}>
-                {BENEFITS.map(({ label, Icon }, i) => (
+                {entries.map(({ label, Icon }, i) => (
                   <div key={`${copy}-${i}`} className="flex items-center">
-                    <Icon
-                      size={18}
-                      strokeWidth={2.5}
-                      aria-hidden="true"
-                      className="shrink-0 text-brand"
-                    />
+                    {Icon && (
+                      <Icon
+                        size={18}
+                        strokeWidth={2.5}
+                        aria-hidden="true"
+                        className="shrink-0 text-brand"
+                      />
+                    )}
                     <span className="mx-2.5 whitespace-nowrap text-sm font-bold uppercase tracking-wider text-white/85 sm:mx-3 sm:text-base">
                       {label}
                     </span>

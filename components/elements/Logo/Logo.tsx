@@ -18,7 +18,7 @@ const NATURAL_WIDTH = 830;
 const NATURAL_HEIGHT = 251;
 
 export default function Logo({
-  id = "el-logo",
+  id,
   href = "/",
   tone = "dark",
   width = 140,

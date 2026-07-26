@@ -27,7 +27,7 @@ export default function PortfolioSlideshow({
   }, [images.length, interval]);
 
   return (
-    <div aria-hidden="true" className={`absolute inset-0 -z-10 ${className}`}>
+    <div id={`gw-portfolio-slideshow-${images[0]?.split("/").pop()?.replace(/\.\w+$/, "") ?? "0"}`} aria-hidden="true" className={`absolute inset-0 -z-10 ${className}`}>
       {images.map((src, i) => (
         // eslint-disable-next-line @next/next/no-img-element
         <img

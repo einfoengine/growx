@@ -1,5 +1,5 @@
 import { GROUPS } from "@/components/modules/Services/servicesData";
-import SectionHeader from "@/components/elements/SectionHeader";
+import ModuleTitle from "@/components/elements/ModuleTitle";
 import ScrollFadeIn from "@/components/elements/ScrollFadeIn";
 import PortfolioSlideshow from "./PortfolioSlideshow";
 
@@ -94,30 +94,22 @@ const SLIDESHOW_SKIN = {
   chip: "bg-white/15 text-white ring-1 ring-white/25 backdrop-blur",
 };
 
-export default function ServiceGallery() {
+export default function ServiceGallery({
+  moduleTitle,
+}: {
+  moduleTitle?: string;
+}) {
   return (
     <section
       id="gw-mod-service-gallery"
-      aria-labelledby="service-gallery-headline"
       className="relative border-b border-border bg-background py-20 text-foreground sm:py-24 lg:py-28"
     >
       <div className="container-1200">
-        <ScrollFadeIn delay={0.1}>
-          <SectionHeader
-            eyebrow="Where you get our support"
-            headline={[
-              { type: "text", value: "The major areas " },
-              { type: "highlight", value: "we've got covered." },
-            ]}
-            headlineId="service-gallery-headline"
-            highlightClassName="text-gradient-brand"
-            sub="These are the service groups where growX carries the work under your brand — you sell it, we deliver it, from web and funnels to whatever comes next."
-            align="center"
-            maxWidth="max-w-2xl"
-            headlineClassName="mt-4 text-3xl font-bold leading-[1.15] tracking-tight sm:text-4xl md:text-5xl"
-            subClassName="mx-auto mt-5 text-base text-muted sm:text-lg"
-          />
-        </ScrollFadeIn>
+        {moduleTitle && (
+          <ModuleTitle id="gw-service-gallery-module-title">
+            {moduleTitle}
+          </ModuleTitle>
+        )}
 
         <ScrollFadeIn delay={0.2}>
           <div className="mt-12 grid auto-rows-[220px] grid-cols-1 gap-4 sm:grid-cols-2 lg:auto-rows-[210px] lg:grid-cols-3">

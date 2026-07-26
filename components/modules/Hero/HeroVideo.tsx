@@ -48,6 +48,7 @@ export default function HeroVideo({ videoId, title = "growX" }: Props) {
   return (
     <div
       ref={frameRef}
+      id="gw-hero-video"
       className="relative aspect-video w-full overflow-hidden rounded-2xl border border-border bg-surface shadow-xl shadow-black/6"
     >
       {loaded ? (

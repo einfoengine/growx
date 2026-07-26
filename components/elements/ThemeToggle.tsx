@@ -48,6 +48,7 @@ export default function ThemeToggle({ className }: { className?: string }) {
 
   return (
     <button
+      id="el-theme-toggle"
       type="button"
       onClick={toggle}
       aria-label={

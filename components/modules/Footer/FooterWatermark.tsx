@@ -20,6 +20,7 @@ export default function FooterWatermark({ name }: { name: string }) {
 
   return (
     <div
+      id="gw-footer-watermark"
       ref={ref}
       aria-hidden="true"
       className="pointer-events-none relative z-0 -mt-8 flex h-[12vw] items-start justify-center overflow-hidden"

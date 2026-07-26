@@ -1,6 +1,6 @@
 import { ArrowRight } from "lucide-react";
-import SectionHeader from "@/components/elements/SectionHeader";
 import Button from "@/components/elements/Button";
+import ModuleTitle from "@/components/elements/ModuleTitle";
 import ScrollFadeIn from "@/components/elements/ScrollFadeIn";
 import { getCtaBanner } from "@/lib/content";
 import type { CtaBannerContent } from "@/lib/content";
@@ -8,13 +8,12 @@ import type { CtaBannerContent } from "@/lib/content";
 /** Site-wide closing CTA. Defaults to the shared banner data, but accepts an
  *  override so a page (e.g. /pricing) can reuse the exact same component with
  *  its own headline and CTAs instead of a bespoke rebuild. */
-export default async function CtaBanner({ data }: { data?: CtaBannerContent } = {}) {
+export default async function CtaBanner({ data, moduleTitle, noPaddingTop }: { data?: CtaBannerContent; moduleTitle?: string; noPaddingTop?: boolean } = {}) {
   const banner = data ?? (await getCtaBanner());
 
   return (
     <section
       id={`gw-${banner.id}`}
-      aria-labelledby={`${banner.id}-headline`}
       // Stays black in BOTH themes: the final close should be the strongest
       // contrast band on the page (and it separates the tail from the light
       // footer in light mode).
@@ -33,19 +32,8 @@ export default async function CtaBanner({ data }: { data?: CtaBannerContent } = 
         className="pointer-events-none absolute inset-0 -z-10 bg-[linear-gradient(to_right,rgba(255,255,255,0.05)_1px,transparent_1px),linear-gradient(to_bottom,rgba(255,255,255,0.05)_1px,transparent_1px)] bg-size-[64px_64px] mask-[radial-gradient(ellipse_60%_50%_at_50%_50%,#000,transparent_85%)]"
       />
 
-      <div className="container-1200 relative py-24 sm:py-28 lg:py-32">
-        <ScrollFadeIn delay={0.1}>
-          <SectionHeader
-            eyebrow={banner.eyebrow}
-            headline={banner.headline.parts}
-            headlineId={`${banner.id}-headline`}
-            sub={banner.sub}
-            align="center"
-            headlineClassName="mt-4 text-4xl font-bold leading-[1.15] tracking-tight sm:text-5xl lg:text-6xl"
-            subClassName="mx-auto mt-6 max-w-xl text-base text-white/70 sm:text-lg"
-          />
-        </ScrollFadeIn>
-
+      <div className={`container-1200 relative ${noPaddingTop ? "pb-24 pt-0 sm:pb-28 lg:pb-32" : "py-24 sm:py-28 lg:py-32"}`}>
+        {moduleTitle && <ModuleTitle id="gw-cta-banner-module-title">{moduleTitle}</ModuleTitle>}
           <ScrollFadeIn delay={0.3}>
             <div
               id={`${banner.id}-ctas`}

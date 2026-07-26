@@ -18,7 +18,7 @@ export default function FaqAccordion({ items }: { items: FaqItem[] }) {
   };
 
   return (
-    <div className="mx-auto mt-12 max-w-4xl space-y-4">
+    <div id="gw-faq-accordion" className="mx-auto mt-12 max-w-4xl space-y-4">
       {items.map((item, i) => {
         const isOpen = openId === item.id;
         const num = String(i + 1).padStart(2, "0");

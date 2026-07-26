@@ -2,10 +2,24 @@
 
 import { useRef, useState } from "react";
 import ServiceDetailModal from "./ServiceDetailModal";
-import { GROUPS, type Service } from "./servicesData";
+import { GROUPS, SERVICE_ICON_BY_KEY, type Service } from "./servicesData";
 import ScrollFadeIn from "@/components/elements/ScrollFadeIn";
-import Eyebrow from "@/components/elements/Eyebrow";
 import Button from "@/components/elements/Button";
+import ModuleTitle from "@/components/elements/ModuleTitle";
+import type { HeadlinePart, ServiceIcon } from "@/lib/content/types";
+
+/** Serializable catalog override (this is a client component, so callers pass
+ *  icon KEYS, never component refs). Cells render as plain tiles — no detail
+ *  modal — in the exact same bordered diamond-node grid as the home catalog. */
+export type ServicesCatalogData = {
+  id: string;
+  eyebrow: string;
+  headline: { parts: HeadlinePart[] };
+  sub: string;
+  items: { id: string; title: string; desc: string; icon: ServiceIcon }[];
+  /** Optional footer CTA (home default links the pricing catalog). */
+  cta?: { label: string; href: string };
+};
 
 // Flatten the tab groups into a single ordered list (S01…S12) — the catalog
 // now shows every service at once instead of stepping through groups.
@@ -41,7 +55,10 @@ function diamondVisibility(index: number, total: number): string {
   return DIAMOND_VISIBILITY[sm + md + lg];
 }
 
-export default function ServicesCatalog() {
+export default function ServicesCatalog({
+  data,
+  moduleTitle,
+}: { data?: ServicesCatalogData; moduleTitle?: string } = {}) {
   const [detailService, setDetailService] = useState<Service | null>(null);
   // The element that opened the modal, so focus can return to it on close.
   const triggerRef = useRef<HTMLElement | null>(null);
@@ -59,8 +76,7 @@ export default function ServicesCatalog() {
 
   return (
     <section
-      id="gw-mod-services"
-      aria-labelledby="services-headline"
+      id={data ? `gw-${data.id}` : "gw-mod-services"}
       className="relative isolate border-b border-border bg-background text-foreground"
     >
       {/* Decorative grid backdrop. */}
@@ -70,23 +86,7 @@ export default function ServicesCatalog() {
       />
 
       <div className="container-1200 px-6 py-20 sm:px-8 sm:py-24">
-        <ScrollFadeIn delay={0.1}>
-          <div className="mx-auto max-w-3xl text-center">
-            <Eyebrow text="Full-stack catalog" />
-            <h2
-              id="services-headline"
-              className="mt-4 text-3xl font-bold leading-[1.15] tracking-tight sm:text-4xl md:text-5xl"
-            >
-              Every service you sell,{" "}
-              <span className="text-gradient-brand">delivered under your brand.</span>
-            </h2>
-            <p className="mt-5 text-base text-muted sm:text-lg">
-              Freelancer patchworks miss deadlines, drift off-brand, and cap
-              what you can sell. One in-house team covers all twelve under
-              fixed pricing, so every ask becomes revenue, not a scramble.
-            </p>
-          </div>
-        </ScrollFadeIn>
+        {moduleTitle && <ModuleTitle id="gw-services-catalog-module-title">{moduleTitle}</ModuleTitle>}
 
         {/* Every service in one view: icon, title, one-line description.
             One bordered block, not separate cards: a real 1px border draws the
@@ -99,49 +99,83 @@ export default function ServicesCatalog() {
             the join even though the rows are auto-height. */}
         <ScrollFadeIn delay={0.2}>
           <ul className="mt-12 grid grid-cols-1 gap-px overflow-hidden rounded-xl border border-border bg-border sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
-            {SERVICES.map((service, i) => (
-              <li key={service.n} className="relative">
-                <button
-                  type="button"
-                  onClick={() => openService(service)}
-                  aria-label={`View details for ${service.title}`}
-                  className="group flex h-full w-full flex-col bg-background p-6 text-left transition-colors hover:bg-surface focus-visible:relative focus-visible:z-10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-brand"
-                >
-                  <span className="inline-flex h-10 w-10 items-center justify-center rounded-xl bg-brand/10 transition-colors group-hover:bg-brand/15">
-                    <service.Icon size={18} className="text-brand" />
-                  </span>
-                  <h3 className="mt-4 text-base font-semibold leading-snug tracking-tight text-foreground">
-                    {service.title}
-                  </h3>
-                  <p className="mt-1.5 line-clamp-2 text-sm leading-snug text-muted">
-                    {service.desc}
-                  </p>
-                </button>
-                {/* Diamond centred on this cell's bottom-right corner — the
-                    exact interior crossing. z-10 lifts it above later cells'
-                    fills; the <li> keeps z-auto so the node paints in the
-                    grid's stacking context and never hides behind a neighbour. */}
-                <span
-                  aria-hidden="true"
-                  className={`pointer-events-none absolute bottom-0 right-0 z-10 h-2 w-2 translate-x-1/2 translate-y-1/2 rotate-45 border border-border bg-background ${diamondVisibility(i, SERVICES.length)}`}
-                />
-              </li>
-            ))}
+            {data
+              ? data.items.map((item, i) => {
+                  const Icon = SERVICE_ICON_BY_KEY[item.icon];
+                  return (
+                    <li key={item.id} className="relative">
+                      {/* Plain tile — deliverable-style data has no detail
+                          modal behind it, so the cell is not interactive. */}
+                      <div className="flex h-full w-full flex-col bg-background p-6 text-left">
+                        <span className="inline-flex h-10 w-10 items-center justify-center rounded-xl bg-brand/10">
+                          <Icon size={18} className="text-brand" />
+                        </span>
+                        <h3 className="mt-4 text-base font-semibold leading-snug tracking-tight text-foreground">
+                          {item.title}
+                        </h3>
+                        <p className="mt-1.5 text-sm leading-snug text-muted">
+                          {item.desc}
+                        </p>
+                      </div>
+                      <span
+                        aria-hidden="true"
+                        className={`pointer-events-none absolute bottom-0 right-0 z-10 h-2 w-2 translate-x-1/2 translate-y-1/2 rotate-45 border border-border bg-background ${diamondVisibility(i, data.items.length)}`}
+                      />
+                    </li>
+                  );
+                })
+              : SERVICES.map((service, i) => (
+                  <li key={service.n} className="relative">
+                    <button
+                      type="button"
+                      onClick={() => openService(service)}
+                      aria-label={`View details for ${service.title}`}
+                      className="group flex h-full w-full flex-col bg-background p-6 text-left transition-colors hover:bg-surface focus-visible:relative focus-visible:z-10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-brand"
+                    >
+                      <span className="inline-flex h-10 w-10 items-center justify-center rounded-xl bg-brand/10 transition-colors group-hover:bg-brand/15">
+                        <service.Icon size={18} className="text-brand" />
+                      </span>
+                      <h3 className="mt-4 text-base font-semibold leading-snug tracking-tight text-foreground">
+                        {service.title}
+                      </h3>
+                      <p className="mt-1.5 line-clamp-2 text-sm leading-snug text-muted">
+                        {service.desc}
+                      </p>
+                    </button>
+                    {/* Diamond centred on this cell's bottom-right corner — the
+                        exact interior crossing. z-10 lifts it above later cells'
+                        fills; the <li> keeps z-auto so the node paints in the
+                        grid's stacking context and never hides behind a neighbour. */}
+                    <span
+                      aria-hidden="true"
+                      className={`pointer-events-none absolute bottom-0 right-0 z-10 h-2 w-2 translate-x-1/2 translate-y-1/2 rotate-45 border border-border bg-background ${diamondVisibility(i, SERVICES.length)}`}
+                    />
+                  </li>
+                ))}
           </ul>
         </ScrollFadeIn>
 
         {/* Route the price-motivated visitor to the working buy flow — the
-            "fixed pricing" claim above is demonstrated on /pricing, not here. */}
-        <div className="mt-12 text-center">
-          <Button label="See fixed prices in the catalog" href="/pricing" variant="secondary" />
-        </div>
+            "fixed pricing" claim above is demonstrated on /pricing, not here.
+            Data mode only shows a CTA when the caller provides one. */}
+        {(data ? data.cta : { label: "See fixed prices in the catalog", href: "/pricing" }) && (
+          <div className="mt-12 text-center">
+            <Button
+              label={data?.cta ? data.cta.label : "See fixed prices in the catalog"}
+              href={data?.cta ? data.cta.href : "/pricing"}
+              variant="secondary"
+            />
+          </div>
+        )}
       </div>
 
-      <ServiceDetailModal
-        service={detailService}
-        onClose={closeDetail}
-        onBook={handleBook}
-      />
+      {!data && (
+        <ServiceDetailModal
+          service={detailService}
+          onClose={closeDetail}
+          onBook={handleBook}
+        />
+      )}
     </section>
   );
 }

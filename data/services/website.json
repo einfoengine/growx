@@ -107,6 +107,16 @@
       }
     },
     "vsl": { "videoId": "oGKjh10TbK0" },
+    "platforms": [
+      "Next.js",
+      "HighLevel",
+      "WordPress",
+      "Webflow",
+      "Shopify",
+      "Framer",
+      "Figma",
+      "Vercel"
+    ],
     "features": {
       "eyebrow": "The full feature list",
       "headline": {

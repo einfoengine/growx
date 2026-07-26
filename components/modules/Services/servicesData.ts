@@ -1,5 +1,6 @@
 import type { ComponentType } from "react";
 import {
+  Bot,
   Clapperboard,
   Code,
   Film,
@@ -18,8 +19,26 @@ import {
   UserPlus,
   Video,
 } from "lucide-react";
+import type { ServiceIcon } from "@/lib/content/types";
 
 export type IconProps = { size?: number; className?: string };
+
+/** ServiceIcon key → lucide glyph. Client-safe (lucide only), shared by the
+ *  Services grid and the ServicesCatalog data mode. */
+export const SERVICE_ICON_BY_KEY: Record<ServiceIcon, ComponentType<IconProps>> = {
+  code: Code,
+  search: Search,
+  bot: Bot,
+  "pen-tool": PenTool,
+  "share-2": Share2,
+  funnel: Funnel,
+  target: Target,
+  clapperboard: Clapperboard,
+  film: Film,
+  "user-plus": UserPlus,
+  headset: Headset,
+  terminal: Terminal,
+};
 
 /** One entry in a service's modal media gallery. Supports images and videos;
  *  add `{ type: "video", src, poster }` entries to `media` to show clips. */

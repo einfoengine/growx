@@ -3,8 +3,9 @@ import { ArrowUpRight, Mail } from "lucide-react";
 import Logo from "@/components/elements/Logo";
 import MouseGlow from "@/components/elements/MouseGlow";
 import CtaBanner from "@/components/modules/CtaBanner";
+import SectionTitle from "@/components/modules/SectionTitle/SectionTitle";
 import FooterWatermark from "./FooterWatermark";
-import { getFooter, getSite } from "@/lib/content";
+import { getCtaBanner, getFooter, getSite } from "@/lib/content";
 import type { SocialIcon } from "@/lib/content";
 
 type SocialGlyphProps = { className?: string };
@@ -75,7 +76,7 @@ const SOCIAL_GLYPHS: Record<SocialIcon, (p: SocialGlyphProps) => React.ReactElem
 };
 
 export default async function Footer() {
-  const [data, site] = await Promise.all([getFooter(), getSite()]);
+  const [data, site, ctaBanner] = await Promise.all([getFooter(), getSite(), getCtaBanner()]);
   const year = new Date().getFullYear();
 
   return (
@@ -85,7 +86,14 @@ export default async function Footer() {
       // create a scroll container, which would break the sticky watermark below.
       className="mt-auto w-full bg-(--footer-bg) text-(--footer-fg) relative overflow-clip"
     >
-      <CtaBanner />
+      <SectionTitle
+        id="gw-cta-banner-title"
+        eyebrow={ctaBanner.eyebrow}
+        headline={ctaBanner.headline.parts}
+        sub={ctaBanner.sub}
+        className="bg-foreground text-background"
+      />
+      <CtaBanner data={ctaBanner} noPaddingTop />
       <MouseGlow />
       <div
         className="pointer-events-none absolute inset-0 z-0 bg-[linear-gradient(to_right,rgba(255,255,255,0.03)_1px,transparent_1px),linear-gradient(to_bottom,rgba(255,255,255,0.03)_1px,transparent_1px)] bg-size-[48px_48px]"

@@ -1,6 +1,6 @@
 import { Check, X } from "lucide-react";
-import SectionHeader from "@/components/elements/SectionHeader";
 import ScrollFadeIn from "@/components/elements/ScrollFadeIn";
+import ModuleTitle from "@/components/elements/ModuleTitle";
 import { getComparison } from "@/lib/content";
 
 function Cell({
@@ -34,31 +34,18 @@ function Cell({
   );
 }
 
-export default async function Comparison({ noPaddingTop }: { noPaddingTop?: boolean }) {
+export default async function Comparison({ noPaddingTop, moduleTitle }: { noPaddingTop?: boolean; moduleTitle?: string }) {
   const data = await getComparison();
 
   return (
     <section
       id={`gw-${data.id}`}
-      aria-labelledby={`${data.id}-headline`}
       className="relative isolate overflow-hidden bg-background"
     >
       <div className="pointer-events-none absolute inset-0 -z-10 bg-[linear-gradient(to_right,rgba(10,10,10,0.05)_1px,transparent_1px),linear-gradient(to_bottom,rgba(10,10,10,0.05)_1px,transparent_1px)] bg-size-[48px_48px] mask-[radial-gradient(ellipse_80%_70%_at_50%_30%,#000_20%,transparent_85%)]" />
 
       <div className={`container-1200 relative ${noPaddingTop ? "pb-24 pt-0 sm:pb-28 lg:pb-32" : "py-24 sm:py-28 lg:py-32"}`}>
-        <ScrollFadeIn delay={0.1}>
-          <SectionHeader
-            eyebrow={data.eyebrow}
-            headline={data.headline.parts}
-            headlineId={`${data.id}-headline`}
-            sub={data.sub}
-            align="center"
-            headlineClassName="mt-4 text-3xl font-bold leading-[1.15] tracking-tight text-foreground sm:text-4xl md:text-5xl"
-            highlightClassName="text-gradient-brand"
-            underlineHighlight={false}
-          />
-        </ScrollFadeIn>
-
+        {moduleTitle && <ModuleTitle id="gw-comparison-module-title">{moduleTitle}</ModuleTitle>}
         <ScrollFadeIn delay={0.3}>
           {/* Dark table */}
           <div className="mt-16 overflow-hidden rounded-2xl border border-white/10 bg-foreground shadow-2xl shadow-black/20">

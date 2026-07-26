@@ -5,6 +5,7 @@ import { motion } from "framer-motion";
 import { ArrowRight, Check } from "lucide-react";
 import Typewriter from "@/components/elements/Typewriter";
 import Headline from "@/components/elements/Headline";
+import ModuleTitle from "@/components/elements/ModuleTitle";
 import HeroHeadlineWords from "@/components/modules/Hero/HeroHeadlineWords";
 import Button from "@/components/elements/Button";
 import { HERO_LAYOUT, type HeroVariant } from "@/components/modules/Hero/hero-variants";
@@ -13,6 +14,7 @@ import type { HeroContent } from "@/lib/content/types";
 type HeroAnimatedContentProps = {
   data: HeroContent;
   variant?: HeroVariant;
+  moduleTitle?: string;
 };
 
 const containerVariants = {
@@ -65,6 +67,7 @@ const statVariants = {
 export default function HeroAnimatedContent({
   data,
   variant = "home",
+  moduleTitle,
 }: HeroAnimatedContentProps) {
   const L = HERO_LAYOUT[variant];
   const isHome = variant === "home";
@@ -72,12 +75,16 @@ export default function HeroAnimatedContent({
 
   return (
     <motion.div
+      id="gw-hero-animated-content"
       className={isHome ? "mx-auto w-full" : L.shell}
       variants={containerVariants}
       initial="hidden"
       animate="visible"
     >
       <div className={isHome ? "text-center" : "mx-auto text-center"}>
+        {moduleTitle && (
+          <ModuleTitle id="gw-hero-module-title">{moduleTitle}</ModuleTitle>
+        )}
         {/* The cycled words are the three partnership tiers by name (The Vendor /
             The Team Member / The Department), so the eyebrow links to them —
             `eyebrow.href` had been carried in the data but never wired up. */}

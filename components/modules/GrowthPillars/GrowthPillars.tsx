@@ -1,8 +1,83 @@
 import type { ReactNode } from "react";
-import { ArrowRight } from "lucide-react";
-import SectionHeader from "@/components/elements/SectionHeader";
+import {
+  ArrowRight,
+  BarChart3,
+  Bot,
+  Check,
+  Clock,
+  Code,
+  Gauge,
+  Headset,
+  Layers,
+  Link2,
+  Palette,
+  Search,
+  Shield,
+  TrendingDown,
+  TriangleAlert,
+  UserX,
+  Wrench,
+  type LucideIcon,
+} from "lucide-react";
 import ScrollFadeIn from "@/components/elements/ScrollFadeIn";
 import Button from "@/components/elements/Button";
+import ModuleTitle from "@/components/elements/ModuleTitle";
+import type { HeadlinePart } from "@/lib/content";
+
+/* ── Data mode ─────────────────────────────────────────────────
+   The home page renders the hardcoded pillars below (illustrated). Other pages
+   reuse this exact section design for their own card data — icon sticker or
+   mono label instead of the illustration well, optional checklist points. */
+
+export type GrowthPillarsIcon =
+  | "triangle-alert" | "user-x" | "layers" | "trending-down" | "clock"
+  | "palette" | "code" | "gauge" | "shield" | "wrench" | "headset"
+  | "search" | "bot" | "link-2" | "bar-chart-3";
+
+const GLYPHS: Record<GrowthPillarsIcon, LucideIcon> = {
+  "triangle-alert": TriangleAlert,
+  "user-x": UserX,
+  layers: Layers,
+  "trending-down": TrendingDown,
+  clock: Clock,
+  palette: Palette,
+  code: Code,
+  gauge: Gauge,
+  shield: Shield,
+  wrench: Wrench,
+  headset: Headset,
+  search: Search,
+  bot: Bot,
+  "link-2": Link2,
+  "bar-chart-3": BarChart3,
+};
+
+export type GrowthPillarsCard = {
+  id: string;
+  /** Small mono label over the title, e.g. "Problem 01". */
+  label?: string;
+  /** Black sticker chip glyph (home ProcessJourney treatment). */
+  icon?: GrowthPillarsIcon;
+  title: string;
+  blurb?: string;
+  points?: string[];
+};
+
+export type GrowthPillarsData = {
+  id: string;
+  eyebrow: string;
+  headline: { parts: HeadlinePart[] };
+  sub: string;
+  cards: GrowthPillarsCard[];
+  /** Bullet marker for `points` rows: positive check or neutral dot. */
+  pointsIcon?: "check" | "dot";
+  /** The parallax problem backdrop (home default: on). */
+  backdrop?: boolean;
+  /** Section ground, for white/surface page alternation. */
+  tone?: "surface" | "background";
+  /** A SectionTitle module sits directly above and provides the top spacing. */
+  noPaddingTop?: boolean;
+};
 
 /** Full-bleed background image for the problem section. */
 const PROBLEM_BG = "/problem-bg-1.png";
@@ -253,38 +328,38 @@ const PILLARS: Pillar[] = [
   },
 ];
 
-export default function GrowthPillars() {
+export default function GrowthPillars({
+  data,
+  moduleTitle,
+  noPaddingTop,
+}: { data?: GrowthPillarsData; moduleTitle?: string; noPaddingTop?: boolean } = {}) {
+  if (data)
+    return (
+      <GrowthPillarsWithData
+        data={noPaddingTop ? { ...data, noPaddingTop: true } : data}
+        moduleTitle={moduleTitle}
+      />
+    );
   return (
     <section
       id="gw-mod-growth-pillars"
-      aria-labelledby="growth-pillars-headline"
       className="relative isolate border-b border-border bg-surface text-foreground"
     >
       {/* Background image. */}
       <ProblemBackground />
 
-      <div className="container-1200 px-6 py-20 sm:px-8 sm:py-24">
-        <ScrollFadeIn delay={0.1}>
-          <SectionHeader
-            eyebrow="What we take off your plate"
-            headline={[
-              { type: "text", value: "Three problems that cap growth, " },
-              { type: "highlight", value: "handled for you." },
-            ]}
-            headlineId="growth-pillars-headline"
-            highlightClassName="text-gradient-brand"
-            sub="You sell and scale. We handle fulfillment, your client relationships, and a partnership that expands as fast as you do."
-            align="center"
-            maxWidth="max-w-2xl"
-            headlineClassName="mt-4 text-3xl font-bold leading-[1.15] tracking-tight sm:text-4xl md:text-5xl"
-            subClassName="mx-auto mt-5 text-base text-muted sm:text-lg"
-          />
-        </ScrollFadeIn>
+      {/* noPaddingTop: a SectionTitle module sits directly above. */}
+      <div
+        className={`container-1200 px-6 sm:px-8 ${
+          noPaddingTop ? "pb-20 pt-0 sm:pb-24" : "py-20 sm:py-24"
+        }`}
+      >
+        {moduleTitle && <ModuleTitle id="gw-growth-pillars-module-title">{moduleTitle}</ModuleTitle>}
 
-        <div className="mt-14 grid gap-5 md:grid-cols-3">
+        <div className={`grid gap-5 md:grid-cols-3 ${noPaddingTop && !moduleTitle ? "mt-0" : "mt-14"}`}>
           {PILLARS.map((pillar, i) => (
             <ScrollFadeIn key={pillar.n} delay={0.15 + i * 0.1} className="h-full">
-              <article className="group flex h-full flex-col rounded-3xl border border-border bg-background p-7 transition-colors hover:border-brand/40">
+              <article id={`gw-pillar-${pillar.n}`} className="group flex h-full flex-col rounded-3xl border border-border bg-background p-7 transition-colors hover:border-brand/40">
                 <p className="font-label text-xs font-semibold uppercase tracking-[0.18em] text-brand-text">
                   Problem {pillar.n}
                 </p>
@@ -352,6 +427,105 @@ export default function GrowthPillars() {
             </div>
           </div>
         </ScrollFadeIn>
+      </div>
+    </section>
+  );
+}
+
+/** The section rendered from caller data — same shell, header treatment, and
+ *  card language as the home pillars, minus the illustrations and CTA band. */
+function GrowthPillarsWithData({
+  data,
+  moduleTitle,
+}: {
+  data: GrowthPillarsData;
+  moduleTitle?: string;
+}) {
+  const {
+    backdrop = true,
+    tone = "surface",
+    pointsIcon = "check",
+    noPaddingTop = false,
+    cards,
+  } = data;
+  const cols =
+    cards.length >= 5
+      ? "sm:grid-cols-2 lg:grid-cols-3"
+      : cards.length === 4
+        ? "sm:grid-cols-2"
+        : "md:grid-cols-3";
+
+  return (
+    <section
+      id={`gw-${data.id}`}
+      className={`relative isolate border-b border-border text-foreground ${
+        tone === "surface" ? "bg-surface" : "bg-background"
+      }`}
+    >
+      {backdrop && <ProblemBackground />}
+
+      <div
+        className={`container-1200 px-6 sm:px-8 ${
+          noPaddingTop ? "pb-20 pt-0 sm:pb-24" : "py-20 sm:py-24"
+        }`}
+      >
+        {moduleTitle && <ModuleTitle id="gw-growth-pillars-module-title">{moduleTitle}</ModuleTitle>}
+
+        <div className={`grid gap-5 ${cols} ${noPaddingTop && !moduleTitle ? "mt-0" : "mt-14"}`}>
+          {cards.map((card, i) => {
+            const Glyph = card.icon ? GLYPHS[card.icon] : null;
+            return (
+              <ScrollFadeIn key={card.id} delay={0.15 + (i % 3) * 0.1} className="h-full">
+                <article id={`gw-pillar-${card.id}`} className="group flex h-full flex-col rounded-3xl border border-border bg-background p-7 transition-colors hover:border-brand/40">
+                  {(Glyph || card.label) && (
+                    <div className="flex items-center justify-between">
+                      {Glyph && (
+                        <span className="inline-flex h-9 w-9 items-center justify-center rounded-lg bg-foreground text-white">
+                          <Glyph size={17} aria-hidden="true" />
+                        </span>
+                      )}
+                      {card.label && (
+                        <p className="font-label text-xs font-semibold uppercase tracking-[0.18em] text-brand-text">
+                          {card.label}
+                        </p>
+                      )}
+                    </div>
+                  )}
+                  <h3 className="mt-4 text-xl font-semibold tracking-tight text-foreground">
+                    {card.title}
+                  </h3>
+                  {card.blurb && (
+                    <p className="mt-2.5 text-sm leading-relaxed text-muted">{card.blurb}</p>
+                  )}
+                  {card.points && card.points.length > 0 && (
+                    <ul className="mt-4 space-y-2.5 border-t border-border pt-4">
+                      {card.points.map((point) => (
+                        <li key={point} className="flex items-start gap-2.5">
+                          {pointsIcon === "check" ? (
+                            <span className="mt-0.5 flex h-4.5 w-4.5 shrink-0 items-center justify-center rounded-full bg-brand/10">
+                              <Check
+                                size={11}
+                                strokeWidth={3}
+                                className="text-brand"
+                                aria-hidden="true"
+                              />
+                            </span>
+                          ) : (
+                            <span
+                              aria-hidden="true"
+                              className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-brand/70"
+                            />
+                          )}
+                          <span className="text-sm leading-relaxed text-muted">{point}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  )}
+                </article>
+              </ScrollFadeIn>
+            );
+          })}
+        </div>
       </div>
     </section>
   );

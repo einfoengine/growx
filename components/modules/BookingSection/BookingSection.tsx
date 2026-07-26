@@ -3,8 +3,8 @@
 import { useEffect, useRef, useState } from "react";
 import { Check } from "lucide-react";
 import { GHL_BOOKING_URL, GHL_EMBED_SCRIPT } from "@/lib/config/conversion";
-import SectionHeader from "@/components/elements/SectionHeader";
 import ScrollFadeIn from "@/components/elements/ScrollFadeIn";
+import ModuleTitle from "@/components/elements/ModuleTitle";
 
 const POINTS = [
   "A 30-minute call with our founding team",
@@ -17,7 +17,10 @@ const POINTS = [
  *  framed with the pitch on the left. The iframe + GHL script only load once
  *  the section nears the viewport, so it never weighs down the initial page.
  *  The booking modal still handles every other "Book a call" CTA. */
-export default function BookingSection() {
+export default function BookingSection({
+  moduleTitle,
+  noPaddingTop,
+}: { moduleTitle?: string; noPaddingTop?: boolean } = {}) {
   const sentinelRef = useRef<HTMLDivElement>(null);
   const [loaded, setLoaded] = useState(false);
 
@@ -52,7 +55,6 @@ export default function BookingSection() {
   return (
     <section
       id="gw-mod-book"
-      aria-labelledby="gw-book-headline"
       // Stays black in BOTH themes — the close matches the home CtaBanner
       // standard (strongest contrast at the moment of action).
       data-nav-theme="dark"
@@ -70,23 +72,13 @@ export default function BookingSection() {
         className="pointer-events-none absolute inset-0 -z-10 bg-[linear-gradient(to_right,rgba(255,255,255,0.04)_1px,transparent_1px),linear-gradient(to_bottom,rgba(255,255,255,0.04)_1px,transparent_1px)] bg-size-[64px_64px] mask-[radial-gradient(ellipse_60%_50%_at_50%_50%,#000,transparent_85%)]"
       />
 
-      <div className="container-1200 py-24 sm:py-28 lg:py-32">
+      <div
+        className={`container-1200 ${noPaddingTop ? "pb-24 pt-0 sm:pb-28 lg:pb-32" : "py-24 sm:py-28 lg:py-32"}`}
+      >
+        {moduleTitle && <ModuleTitle id="gw-booking-section-module-title">{moduleTitle}</ModuleTitle>}
         {/* Top: the pitch, centered */}
         <ScrollFadeIn delay={0.1}>
           <div className="mx-auto max-w-2xl text-center">
-            <SectionHeader
-              eyebrow="Book a partner call"
-              headline={[
-                { type: "text", value: "Let's talk about " },
-                { type: "highlight", value: "your fulfillment." },
-              ]}
-              headlineId="gw-book-headline"
-              headlineClassName="mt-4 text-4xl font-bold leading-[1.12] tracking-tight sm:text-5xl"
-              highlightClassName="text-gradient-brand"
-              sub="Grab 30 minutes with our founding team, on your schedule. No pressure, just a straight answer on whether we're a fit."
-              subClassName="mx-auto mt-5 max-w-md text-base leading-relaxed text-white/70 sm:text-lg"
-              align="center"
-            />
             <ul className="mx-auto mt-8 flex max-w-3xl flex-wrap items-start justify-center gap-x-8 gap-y-3">
               {POINTS.map((point) => (
                 <li key={point} className="flex items-start gap-2.5">

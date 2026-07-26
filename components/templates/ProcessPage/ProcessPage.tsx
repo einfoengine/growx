@@ -26,6 +26,7 @@ import SectionHeader from "@/components/elements/SectionHeader";
 import Button from "@/components/elements/Button";
 import Hero from "@/components/modules/Hero";
 import Faq from "@/components/modules/Faq";
+import SectionTitle from "@/components/modules/SectionTitle/SectionTitle";
 import WhiteLabelWall from "./WhiteLabelWall";
 
 const CHANNEL_ICONS: Record<string, typeof Check> = {
@@ -309,7 +310,14 @@ export default function ProcessPage({ data }: Props) {
       />
 
       {/* ── FAQ (shared module, same as the home page) ────────── */}
-      <Faq data={data.faq} />
+      <SectionTitle
+        id="gw-process-faq-title"
+        eyebrow={data.faq.eyebrow}
+        headline={data.faq.headline.parts}
+        sub={data.faq.sub}
+        className="bg-surface"
+      />
+      <Faq data={data.faq} noPaddingTop />
 
       {/* ── CTA ──────────────────────────────────────────────── */}
       <section id="gw-process-cta" className="relative overflow-hidden bg-background">

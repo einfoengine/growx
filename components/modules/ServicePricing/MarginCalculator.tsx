@@ -27,10 +27,20 @@ type Props = {
  *  All math runs client-side from the shared pricing config (the same entry
  *  the pricing page and checkout use), so the numbers can never drift. */
 export default function MarginCalculator({ config, markupOptions, defaultMarkup }: Props) {
+  // Retainer services ($/unit per month) speak in MRR; one-off in project totals.
+  const monthly = config.billing === "monthly";
+  const per = monthly ? "/mo" : "";
   const defaultDuration =
     config.durations.find((d) => d.multiplier === 1) ?? config.durations[0];
 
-  const [qty, setQty] = useState(Math.min(5, config.maxQty));
+  // Default to the range midpoint (capped at 5): a representative project, not
+  // the maximum — opening on the top price reads like a hard sell.
+  const [qty, setQty] = useState(
+    Math.min(
+      5,
+      Math.max(config.minQty, Math.round((config.minQty + config.maxQty) / 2))
+    )
+  );
   const [durationId, setDurationId] = useState(defaultDuration.id);
   const [markup, setMarkup] = useState(defaultMarkup);
 
@@ -45,7 +55,7 @@ export default function MarginCalculator({ config, markupOptions, defaultMarkup 
   }, [qty, config.unitPrice, duration.multiplier, markup]);
 
   return (
-    <div className="rounded-xl border border-border bg-surface p-6 sm:p-8">
+    <div id="gw-margin-calculator" className="rounded-xl border border-border bg-surface p-6 sm:p-8">
       {/* 1 — project size */}
       <div>
         <div className="flex items-baseline justify-between">
@@ -53,7 +63,7 @@ export default function MarginCalculator({ config, markupOptions, defaultMarkup 
             htmlFor="margin-calc-pages"
             className="font-label text-xs font-semibold uppercase tracking-widest text-muted"
           >
-            1. Project size
+            1. {monthly ? "Retainer size" : "Project size"}
           </label>
           <span className="font-mono text-sm font-bold text-foreground">
             {qty} {config.unit}
@@ -68,7 +78,7 @@ export default function MarginCalculator({ config, markupOptions, defaultMarkup 
           step={config.qtyStep}
           value={qty}
           onChange={(e) => setQty(Number(e.target.value))}
-          className="mt-3 w-full accent-(--brand)"
+          className="mt-3 w-full accent-brand"
         />
         <div className="mt-1 flex justify-between font-mono text-[11px] text-muted">
           <span>{config.minQty} min</span>
@@ -79,7 +89,7 @@ export default function MarginCalculator({ config, markupOptions, defaultMarkup 
       {/* 2 — timeline */}
       <div className="mt-6">
         <p className="font-label text-xs font-semibold uppercase tracking-widest text-muted">
-          2. Timeline
+          2. {monthly ? "Commitment" : "Timeline"}
         </p>
         <div className="mt-3 grid grid-cols-2 gap-2">
           {config.durations.map((d) => {
@@ -140,22 +150,31 @@ export default function MarginCalculator({ config, markupOptions, defaultMarkup 
         <dl className="space-y-2.5">
           <div className="flex items-baseline justify-between gap-4">
             <dt className="text-sm text-white/60">Your cost (from us)</dt>
-            <dd className="font-mono text-base font-bold">{usd(cost)}</dd>
+            <dd className="font-mono text-base font-bold">
+              {usd(cost)}
+              {per}
+            </dd>
           </div>
           <div className="flex items-baseline justify-between gap-4">
             <dt className="text-sm text-white/60">
               You invoice your client ({markup}×)
             </dt>
-            <dd className="font-mono text-base font-bold">{usd(charge)}</dd>
+            <dd className="font-mono text-base font-bold">
+              {usd(charge)}
+              {per}
+            </dd>
           </div>
           <div className="mt-1 flex items-baseline justify-between gap-4 border-t border-white/10 pt-3.5">
             <dt className="text-sm font-semibold text-white">You keep</dt>
             <dd className="text-right">
               <span className="font-mono text-3xl font-bold tracking-tight text-gradient-brand sm:text-4xl">
                 {usd(profit)}
+                {per}
               </span>
               <span className="mt-0.5 block font-mono text-[11px] text-white/50">
-                {marginPct}% margin, one project
+                {monthly
+                  ? `${marginPct}% margin, recurring every month`
+                  : `${marginPct}% margin, one project`}
               </span>
             </dd>
           </div>

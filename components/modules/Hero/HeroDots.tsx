@@ -9,6 +9,9 @@ import {
 type Props = {
   /** Extra classes (e.g. z-index / mask) for the canvas layer. */
   className?: string;
+  /** Root id — defaults to `gw-hero-dots`; override to keep ids unique if
+   *  more than one dot field ever renders on the same page. */
+  id?: string;
 };
 
 const SPACING = 26; // px between dots
@@ -21,7 +24,7 @@ const BRAND = [16, 185, 129]; // emerald, matches --brand
 /** Interactive dot field for the hero: dots brighten (and tint green) near the
  *  cursor, and every so often a random dot flickers with a dim light. Canvas so
  *  a few thousand dots animate cheaply. Decorative + aria-hidden. */
-export default function HeroDots({ className = "" }: Props) {
+export default function HeroDots({ className = "", id = "gw-hero-dots" }: Props) {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const mouse = useRef({ x: -9999, y: -9999, on: false });
 
@@ -170,6 +173,7 @@ export default function HeroDots({ className = "" }: Props) {
   return (
     <canvas
       ref={canvasRef}
+      id={id}
       aria-hidden="true"
       className={`pointer-events-none absolute inset-0 h-full w-full ${className}`}
     />

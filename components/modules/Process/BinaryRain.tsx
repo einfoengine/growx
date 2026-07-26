@@ -74,6 +74,7 @@ export default function BinaryRain() {
 
   return (
     <canvas
+      id="gw-binary-rain"
       ref={ref}
       aria-hidden="true"
       className="absolute inset-0 h-full w-full opacity-50 mask-[radial-gradient(ellipse_70%_60%_at_50%_50%,transparent_15%,#000_80%)]"

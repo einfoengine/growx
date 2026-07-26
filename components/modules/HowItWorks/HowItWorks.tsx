@@ -3,7 +3,7 @@
 import { useEffect, useState } from "react";
 import { motion, useReducedMotion } from "framer-motion";
 import ScrollFadeIn from "@/components/elements/ScrollFadeIn";
-import Eyebrow from "@/components/elements/Eyebrow";
+import ModuleTitle from "@/components/elements/ModuleTitle";
 import { useMediaQuery } from "@/lib/hooks/useActiveWhenVisible";
 import { HOW_IT_WORKS_STEPS as STEPS } from "./steps";
 
@@ -14,7 +14,10 @@ const PATH = [0, 1, 2, 3, 2, 1];
 const TRAVEL_S = 0.8; // light glide time between badges
 const DWELL_MS = 1600; // time the light rests on a badge (kindled)
 
-export default function HowItWorks() {
+export default function HowItWorks({
+  moduleTitle,
+  noPaddingTop = false,
+}: { moduleTitle?: string; noPaddingTop?: boolean } = {}) {
   const desktop = useMediaQuery("(min-width: 1024px)");
   const reduceMotion = useReducedMotion();
   // The animation is desktop-only geometry (the connector line is lg+) and
@@ -48,7 +51,6 @@ export default function HowItWorks() {
   return (
     <section
       id="gw-mod-how-it-works"
-      aria-labelledby="how-it-works-headline"
       data-nav-theme="dark" data-dark-surface
       className="relative isolate overflow-hidden bg-foreground text-background"
     >
@@ -58,24 +60,10 @@ export default function HowItWorks() {
         className="pointer-events-none absolute -z-10 left-1/2 -top-24 h-72 w-300 max-w-none -translate-x-1/2 bg-brand/8 blur-[130px]"
       />
 
-      <div className="container-1200 py-24 sm:py-28 lg:py-32">
-        {/* Header */}
-        <ScrollFadeIn delay={0.1}>
-          <div className="mx-auto max-w-2xl text-center">
-            <Eyebrow text="How it works" />
-            <h2
-              id="how-it-works-headline"
-              className="mt-4 text-3xl font-bold leading-[1.15] tracking-tight sm:text-4xl md:text-5xl"
-            >
-              From partner call to shipped.
-            </h2>
-            <p className="mt-5 text-base text-white/70 sm:text-lg">
-              You sell it, we produce it, your client only ever sees you. No
-              quotes to chase, no vendors to manage.
-            </p>
-          </div>
-        </ScrollFadeIn>
-
+      <div className={`container-1200 ${noPaddingTop ? "pb-24 pt-0 sm:pb-28 lg:pb-32" : "py-24 sm:py-28 lg:py-32"}`}>
+        {moduleTitle && (
+          <ModuleTitle id="gw-how-it-works-module-title">{moduleTitle}</ModuleTitle>
+        )}
         {/* Steps */}
         <ScrollFadeIn delay={0.2}>
           <ol className="relative mt-16 grid gap-y-12 lg:mt-20 lg:grid-cols-4 lg:gap-x-8">

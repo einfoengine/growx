@@ -26,6 +26,7 @@ export default function NewsletterForm({
   if (state.status === "success") {
     return (
       <div
+        id="gw-newsletter-form"
         role="status"
         className="mx-auto flex w-full max-w-md items-center gap-3 rounded-2xl border border-brand/30 bg-brand/10 px-5 py-4 text-left"
       >
@@ -38,7 +39,7 @@ export default function NewsletterForm({
   const invalid = state.status === "error";
 
   return (
-    <div className="mx-auto w-full max-w-md">
+    <div id="gw-newsletter-form" className="mx-auto w-full max-w-md">
       <form action={formAction} className="flex flex-col gap-3 sm:flex-row">
         <label htmlFor="newsletter-email" className="sr-only">
           Email address

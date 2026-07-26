@@ -1,4 +1,5 @@
 import React from "react";
+import ModuleTitle from "@/components/elements/ModuleTitle";
 
 const ITEMS = [
   "Web Design",
@@ -9,13 +10,14 @@ const ITEMS = [
   "Brand Identity",
 ];
 
-export default function TextMarquee() {
+export default function TextMarquee({ moduleTitle }: { moduleTitle?: string } = {}) {
   return (
     <section
       id="gw-mod-text-marquee"
       aria-label="What we do"
       className="relative overflow-hidden border-y border-border bg-background py-6 sm:py-12"
     >
+      {moduleTitle && <ModuleTitle id="gw-text-marquee-module-title">{moduleTitle}</ModuleTitle>}
       <div className="relative flex w-full overflow-hidden mask-[linear-gradient(to_right,transparent,#000_8%,#000_92%,transparent)]">
         <div className="flex w-fit animate-[marquee_25s_linear_infinite] hover:[animation-play-state:paused]">
           {[...Array(4)].map((_, groupIndex) => (

@@ -6,6 +6,7 @@ import { usePrefersReducedMotion } from "@/lib/hooks/useActiveWhenVisible";
 type Props = {
   words: string[];
   className?: string;
+  id?: string;
   /** ms per typed character */
   typeSpeed?: number;
   /** ms per deleted character */
@@ -19,6 +20,7 @@ type Props = {
 export default function Typewriter({
   words,
   className = "",
+  id,
   typeSpeed = 95,
   deleteSpeed = 45,
   holdTime = 1600,
@@ -58,11 +60,11 @@ export default function Typewriter({
   }, [text, deleting, index, words, typeSpeed, deleteSpeed, holdTime, reduced]);
 
   if (reduced) {
-    return <span className={className}>{words[0] ?? ""}</span>;
+    return <span id={id} className={className}>{words[0] ?? ""}</span>;
   }
 
   return (
-    <span className={className}>
+    <span id={id} className={className}>
       {text}
       <span
         aria-hidden="true"

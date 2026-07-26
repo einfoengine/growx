@@ -94,6 +94,7 @@ export default function BinaryShower({ className = "" }: Props) {
 
   return (
     <canvas
+      id="gw-binary-shower"
       ref={canvasRef}
       aria-hidden="true"
       className={`pointer-events-none absolute inset-0 h-full w-full ${className}`}

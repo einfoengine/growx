@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 import Image from "next/image";
 import { ArrowRight, Check } from "lucide-react";
 import ScrollFadeIn from "@/components/elements/ScrollFadeIn";
-import Eyebrow from "@/components/elements/Eyebrow";
+import ModuleTitle from "@/components/elements/ModuleTitle";
 import MagneticTiltCard from "@/components/modules/Services/MagneticTiltCard";
 
 /** The four ceilings fulfillment puts on an agency, each told as the solution:
@@ -79,11 +79,10 @@ const SOLUTIONS: Solution[] = [
   },
 ];
 
-export default function FulfillmentReasons() {
+export default function FulfillmentReasons({ moduleTitle, noPaddingTop }: { moduleTitle?: string; noPaddingTop?: boolean } = {}) {
   return (
     <section
       id="gw-mod-fulfillment-reasons"
-      aria-labelledby="fulfillment-reasons-headline"
       data-nav-theme="dark" data-dark-surface
       // Deep Pine, the brand's dark green — the one green section on home.
       className="relative isolate overflow-clip bg-[#07533a] text-background"
@@ -105,29 +104,8 @@ export default function FulfillmentReasons() {
         className="pointer-events-none absolute inset-0 -z-10 bg-film-grain opacity-30"
       />
 
-      <div className="container-1200 py-24 sm:py-28 lg:py-32">
-        <ScrollFadeIn delay={0.1}>
-          <div className="mx-auto max-w-3xl text-center">
-            <Eyebrow text="The real bottleneck" />
-            {/* Problem framing (the signature hook) followed by the one-line
-                resolution turn, so nobody leaves the headline without the answer. */}
-            <h2
-              id="fulfillment-reasons-headline"
-              className="mt-4 text-3xl font-bold leading-[1.15] tracking-tight sm:text-4xl md:text-5xl"
-            >
-              Fulfillment eats the founders.
-            </h2>
-            {/* Light mint instead of the emerald gradient: emerald-on-green
-                would sink into the Deep Pine background. */}
-            <p className="mt-4 text-lg font-semibold text-[#d1fae5] sm:text-xl">
-              We take it off your plate and make it the reason you thrive.
-            </p>
-            <p className="mt-4 text-base text-white/70 sm:text-lg">
-              Agencies do not fail because they cannot sell. Here is how we
-              remove the four ceilings that cap how big you can get.
-            </p>
-          </div>
-        </ScrollFadeIn>
+      <div className={`container-1200 ${noPaddingTop ? "pb-24 pt-0 sm:pb-28 lg:pb-32" : "py-24 sm:py-28 lg:py-32"}`}>
+        {moduleTitle && <ModuleTitle id="gw-fulfillment-reasons-module-title">{moduleTitle}</ModuleTitle>}
 
         {/* All four at a glance: one row on desktop, 2x2 on tablet. */}
         <div className="mt-14 grid gap-4 sm:grid-cols-2 lg:grid-cols-4 lg:gap-5">

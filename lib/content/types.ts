@@ -286,7 +286,9 @@ export type ServiceLandingFeatureGroup = {
   id: string;
   title: string;
   /** Icon key rendered as the group's black sticker chip. */
-  icon: "palette" | "code" | "gauge" | "shield" | "wrench" | "headset";
+  icon:
+    | "palette" | "code" | "gauge" | "shield" | "wrench" | "headset"
+    | "search" | "bot" | "link-2" | "bar-chart-3";
   items: string[];
 };
 
@@ -294,6 +296,8 @@ export type ServiceLandingContent = {
   hero?: { stats?: HeroStat[]; ctaNote?: string; secondaryCta?: CTA };
   /** VSL under the hero (same treatment as the home hero's video). */
   vsl?: { videoId: string };
+  /** Platforms/tools scrolled in the marquee band under the hero. */
+  platforms?: string[];
   pains?: PainPointsContent;
   /** The complete feature list: design, stack, performance, security,
    *  maintenance, support — grouped checklists. */

@@ -10,7 +10,7 @@ import type { ReactNode } from "react";
 /** 01 — Book a partner call: a scheduled video call, two seats, 30-min pill. */
 function CallArt() {
   return (
-    <svg viewBox="0 0 240 168" fill="none" aria-hidden="true" className="h-full w-full">
+    <svg id="gw-step-art-call" viewBox="0 0 240 168" fill="none" aria-hidden="true" className="h-full w-full">
       <defs>
         <linearGradient id="pj-brand-a" x1="0" y1="0" x2="1" y2="1">
           <stop offset="0" stopColor="#10b981" />
@@ -69,7 +69,7 @@ function CallArt() {
 /** 02 — Order at fixed prices: the service menu, fixed price chips, one added. */
 function OrderArt() {
   return (
-    <svg viewBox="0 0 240 168" fill="none" aria-hidden="true" className="h-full w-full">
+    <svg id="gw-step-art-order" viewBox="0 0 240 168" fill="none" aria-hidden="true" className="h-full w-full">
       <defs>
         <linearGradient id="pj-brand-b" x1="0" y1="0" x2="1" y2="1">
           <stop offset="0" stopColor="#10b981" />
@@ -128,7 +128,7 @@ function OrderArt() {
 /** 03 — We produce: task board in motion — one shipped, one in progress, gear. */
 function ProduceArt() {
   return (
-    <svg viewBox="0 0 240 168" fill="none" aria-hidden="true" className="h-full w-full">
+    <svg id="gw-step-art-produce" viewBox="0 0 240 168" fill="none" aria-hidden="true" className="h-full w-full">
       <defs>
         <linearGradient id="pj-brand-c" x1="0" y1="0" x2="1" y2="1">
           <stop offset="0" stopColor="#10b981" />
@@ -188,7 +188,7 @@ function ProduceArt() {
 /** 04 — Deliver under your brand: the handoff doc wearing the agency's badge. */
 function DeliverArt() {
   return (
-    <svg viewBox="0 0 240 168" fill="none" aria-hidden="true" className="h-full w-full">
+    <svg id="gw-step-art-deliver" viewBox="0 0 240 168" fill="none" aria-hidden="true" className="h-full w-full">
       <defs>
         <linearGradient id="pj-brand-d" x1="0" y1="0" x2="1" y2="1">
           <stop offset="0" stopColor="#10b981" />

@@ -7,6 +7,8 @@ import PricingPlans from "@/components/modules/Pricing";
 import Comparison from "@/components/modules/Comparison";
 import Process from "@/components/modules/Process";
 import Faq from "@/components/modules/Faq";
+import SectionTitle from "@/components/modules/SectionTitle/SectionTitle";
+import { getComparison, getPricing } from "@/lib/content";
 import type {
   FaqContent,
   HeroContent,
@@ -108,17 +110,53 @@ export default async function LandingPageClassic({ data }: Props) {
     items: data.faq,
   };
 
+  const [tiersHeader, comparisonHeader] = await Promise.all([
+    getPricing(),
+    getComparison(),
+  ]);
+
   return (
     <>
       <Hero data={heroData} variant="inner" />
       <LogoMarquee />
-      <PainPoints data={whyUsData} />
+      {/* Section headings are standalone SectionTitle modules; the content
+          modules render bodies only and take noPaddingTop under a title. */}
+      <div className="bg-foreground text-background" data-nav-theme="dark" data-dark-surface>
+        <SectionTitle
+          id={`gw-${whyUsData.id}-title`}
+          eyebrow={whyUsData.eyebrow}
+          headline={whyUsData.headline.parts}
+          sub={whyUsData.sub}
+        />
+      </div>
+      <PainPoints data={whyUsData} noPaddingTop />
       <Services data={deliverablesData} />
       <TextMarquee />
+      <SectionTitle
+        id="gw-mod-pricing-title"
+        eyebrow={tiersHeader.eyebrow}
+        headline={tiersHeader.headline.parts}
+        sub={tiersHeader.sub}
+        className="bg-surface"
+      />
       <PricingPlans noPaddingTop />
+      <SectionTitle
+        id="gw-mod-comparison-title"
+        eyebrow={comparisonHeader.eyebrow}
+        headline={comparisonHeader.headline.parts}
+        sub={comparisonHeader.sub}
+        className="bg-background"
+      />
       <Comparison noPaddingTop />
       <Process />
-      <Faq data={faqData} />
+      <SectionTitle
+        id={`gw-${faqData.id}-title`}
+        eyebrow={faqData.eyebrow}
+        headline={faqData.headline.parts}
+        sub={faqData.sub}
+        className="bg-surface"
+      />
+      <Faq data={faqData} noPaddingTop />
     </>
   );
 }

@@ -1,47 +1,18 @@
 import type React from "react";
 import Link from "next/link";
-import {
-  ArrowUpRight,
-  Bot,
-  Clapperboard,
-  Code,
-  Film,
-  Funnel,
-  Headset,
-  PenTool,
-  Search,
-  Share2,
-  Target,
-  Terminal,
-  UserPlus,
-} from "lucide-react";
-import type { ComponentType } from "react";
-import SectionHeader from "@/components/elements/SectionHeader";
+import { ArrowUpRight } from "lucide-react";
 import ScrollFadeIn from "@/components/elements/ScrollFadeIn";
+import ModuleTitle from "@/components/elements/ModuleTitle";
+import { SERVICE_ICON_BY_KEY as ICON_BY_KEY } from "./servicesData";
 import { getServices } from "@/lib/content";
-import type { ServiceIcon, ServicesContent } from "@/lib/content";
-
-type IconProps = { size?: number; className?: string };
-
-const ICON_BY_KEY: Record<ServiceIcon, ComponentType<IconProps>> = {
-  code: Code,
-  search: Search,
-  bot: Bot,
-  "pen-tool": PenTool,
-  "share-2": Share2,
-  funnel: Funnel,
-  target: Target,
-  clapperboard: Clapperboard,
-  film: Film,
-  "user-plus": UserPlus,
-  headset: Headset,
-  terminal: Terminal,
-};
+import type { ServicesContent } from "@/lib/content";
 
 export default async function Services({
   data,
   tone = "surface",
-}: { data?: ServicesContent; tone?: "surface" | "background" } = {}) {
+  moduleTitle,
+  noPaddingTop,
+}: { data?: ServicesContent; tone?: "surface" | "background"; moduleTitle?: string; noPaddingTop?: boolean } = {}) {
   const servicesData = data ?? (await getServices());
   // Cell fill inverts against the section ground so hover always contrasts.
   const cellCls =
@@ -52,30 +23,11 @@ export default async function Services({
   return (
     <section
       id={`gw-${servicesData.id}`}
-      aria-labelledby={`${servicesData.id}-headline`}
       className={tone === "surface" ? "bg-surface" : "bg-background"}
       style={{ "--cg": "max(2rem, calc((100vw - 1400px) / 2 + 2rem))" } as React.CSSProperties}
     >
-      {/* Header stays inside container */}
-      <div className="container-1200 pb-14 pt-24 sm:pb-16 sm:pt-28 lg:pb-20 lg:pt-32">
-        <ScrollFadeIn delay={0.1}>
-          <div
-            id={`${servicesData.id}-intro`}
-            className="grid gap-10 lg:grid-cols-12 lg:items-end"
-          >
-            <SectionHeader
-              eyebrow={servicesData.eyebrow}
-              headline={servicesData.headline.parts}
-              headlineId={`${servicesData.id}-headline`}
-              highlightClassName="text-gradient-brand"
-              headlineClassName="mt-4 text-4xl font-bold leading-[1.15] tracking-tight text-foreground sm:text-5xl lg:text-6xl"
-              className="lg:col-span-7"
-            />
-            <p className="text-base text-muted lg:col-span-5 lg:max-w-md">
-              {servicesData.sub}
-            </p>
-          </div>
-        </ScrollFadeIn>
+      <div className={`container-1200 ${noPaddingTop ? "pb-14 pt-0 sm:pb-16 lg:pb-20" : "pb-14 pt-24 sm:pb-16 sm:pt-28 lg:pb-20 lg:pt-32"}`}>
+        {moduleTitle && <ModuleTitle id="gw-services-module-title">{moduleTitle}</ModuleTitle>}
       </div>
 
       {/* Full-width bordered grid - parent owns top + left edge */}

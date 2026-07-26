@@ -36,14 +36,14 @@ export default function HeroVideoPerspective({ children, className }: Props) {
 
   if (reduceMotion) {
     return (
-      <div className={className}>
+      <div id="gw-hero-video-perspective" className={className}>
         <div className="hero-video">{children}</div>
       </div>
     );
   }
 
   return (
-    <div ref={ref} className={className}>
+    <div ref={ref} id="gw-hero-video-perspective" className={className}>
       <motion.div
         className="hero-video mx-auto"
         style={{

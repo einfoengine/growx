@@ -1,5 +1,5 @@
 import { Check } from "lucide-react";
-import Eyebrow from "@/components/elements/Eyebrow";
+import ModuleTitle from "@/components/elements/ModuleTitle";
 import PlanButton from "@/components/modules/Pricing/PlanButton";
 
 const REASONS = [
@@ -10,7 +10,7 @@ const REASONS = [
 ];
 
 /** Closing section: the reasons not to wait, plus the free-signup handoff. */
-export default function JoinCta() {
+export default function JoinCta({ moduleTitle, noPaddingTop }: { moduleTitle?: string; noPaddingTop?: boolean } = {}) {
   return (
     <section
       id="gw-pricing-join"
@@ -25,15 +25,8 @@ export default function JoinCta() {
         className="pointer-events-none absolute inset-0 -z-10 bg-[linear-gradient(to_right,rgba(255,255,255,0.05)_1px,transparent_1px),linear-gradient(to_bottom,rgba(255,255,255,0.05)_1px,transparent_1px)] bg-size-[64px_64px] mask-[radial-gradient(ellipse_60%_50%_at_50%_50%,#000,transparent_85%)]"
       />
 
-      <div className="container-1200 py-24 text-center sm:py-28 lg:py-32">
-        <Eyebrow text="Do not miss this" />
-        <h2 className="mx-auto mt-4 max-w-2xl text-3xl font-bold leading-[1.15] tracking-tight sm:text-4xl lg:text-5xl">
-          Join now. Order when you win the work.
-        </h2>
-        <p className="mx-auto mt-5 max-w-xl text-base text-white/70 sm:text-lg">
-          A free account puts the whole catalog and its fixed pricing in front of
-          you today. There is nothing to lose and a fulfillment team to gain.
-        </p>
+      <div className={`container-1200 text-center ${noPaddingTop ? "pb-24 pt-0 sm:pb-28 lg:pb-32" : "py-24 sm:py-28 lg:py-32"}`}>
+        {moduleTitle && <ModuleTitle id="gw-join-cta-module-title">{moduleTitle}</ModuleTitle>}
 
         <ul className="mx-auto mt-10 grid max-w-2xl grid-cols-1 gap-3 text-left sm:grid-cols-2">
           {REASONS.map((r) => (
@@ -47,7 +40,7 @@ export default function JoinCta() {
         </ul>
 
         <div className="mt-10 flex flex-col items-center justify-center gap-3 sm:flex-row">
-          <PlanButton label="Join free" planKey="free" className="btn btn-brand" />
+          <PlanButton label="Join free" planKey="free" id="gw-plan-button-free-join" className="btn btn-brand" />
           <PlanButton label="Book a call" href="#book" className="btn btn-secondary-dark" />
         </div>
       </div>

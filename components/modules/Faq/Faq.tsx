@@ -1,32 +1,29 @@
-import SectionHeader from "@/components/elements/SectionHeader";
 import ScrollFadeIn from "@/components/elements/ScrollFadeIn";
+import ModuleTitle from "@/components/elements/ModuleTitle";
 import { getFaq } from "@/lib/content";
 import type { FaqContent } from "@/lib/content";
 import FaqAccordion from "./FaqAccordion";
 
-export default async function Faq({ data }: { data?: FaqContent } = {}) {
+export default async function Faq({
+  data,
+  moduleTitle,
+  noPaddingTop,
+}: { data?: FaqContent; moduleTitle?: string; noPaddingTop?: boolean } = {}) {
   const faqData = data ?? await getFaq();
 
   return (
     <section
       id={`gw-${faqData.id}`}
-      aria-labelledby={`${faqData.id}-headline`}
       className="relative bg-surface"
     >
-      <div className="container-1200 py-24 sm:py-28 lg:py-32">
-        <ScrollFadeIn delay={0.1}>
-          <SectionHeader
-            eyebrow={faqData.eyebrow}
-            headline={faqData.headline.parts}
-            headlineId={`${faqData.id}-headline`}
-            sub={faqData.sub}
-            align="center"
-            headlineClassName="mt-4 text-3xl font-bold leading-[1.15] tracking-tight text-foreground sm:text-4xl md:text-5xl"
-            subClassName="mx-auto mt-5 max-w-xl text-base text-muted sm:text-lg"
-            className="mx-auto max-w-3xl"
-          />
-        </ScrollFadeIn>
-
+      {/* noPaddingTop: a SectionTitle module sits directly above and already
+          provides the top spacing. */}
+      <div
+        className={`container-1200 ${
+          noPaddingTop ? "pb-24 pt-0 sm:pb-28 lg:pb-32" : "py-24 sm:py-28 lg:py-32"
+        }`}
+      >
+        {moduleTitle && <ModuleTitle id="gw-faq-module-title">{moduleTitle}</ModuleTitle>}
         <ScrollFadeIn delay={0.3}>
           <FaqAccordion items={faqData.items} />
         </ScrollFadeIn>

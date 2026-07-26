@@ -40,7 +40,7 @@ export default function ReasonCard({ reason }: { reason: Reason }) {
   };
 
   return (
-    <li className="group [perspective:1200px]">
+    <li id={`gw-reason-card-${reason.n}`} className="group [perspective:1200px]">
       <button
         ref={ref}
         type="button"

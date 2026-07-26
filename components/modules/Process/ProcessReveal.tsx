@@ -10,7 +10,7 @@ import {
 } from "framer-motion";
 import { FileText, Hammer, PackageCheck, PhoneCall } from "lucide-react";
 import type { ComponentType } from "react";
-import SectionHeader from "@/components/elements/SectionHeader";
+import ModuleTitle from "@/components/elements/ModuleTitle";
 import BinaryRain from "./BinaryRain";
 import type { ProcessContent } from "@/lib/content";
 
@@ -75,7 +75,13 @@ function StepCard({
   );
 }
 
-export default function ProcessReveal({ data }: { data: ProcessContent }) {
+export default function ProcessReveal({
+  data,
+  moduleTitle,
+}: {
+  data: ProcessContent;
+  moduleTitle?: string;
+}) {
   const ref = useRef<HTMLDivElement>(null);
   const { scrollYProgress } = useScroll({
     target: ref,
@@ -86,7 +92,6 @@ export default function ProcessReveal({ data }: { data: ProcessContent }) {
   return (
     <section
       id={`gw-${data.id}`}
-      aria-labelledby={`${data.id}-headline`}
       ref={ref}
       data-nav-theme="dark" data-dark-surface
       className="relative bg-background text-foreground"
@@ -98,15 +103,9 @@ export default function ProcessReveal({ data }: { data: ProcessContent }) {
         <BinaryRain />
 
         <div className="container-1200 relative z-10">
-          <SectionHeader
-            eyebrow={data.eyebrow}
-            headline={data.headline.parts}
-            headlineId={`${data.id}-headline`}
-            sub={data.sub}
-            align="center"
-            headlineClassName="mt-4 text-4xl font-bold leading-[1.15] tracking-tight text-foreground sm:text-5xl lg:text-6xl"
-            subClassName="mx-auto mt-5 max-w-xl text-base text-muted sm:text-lg"
-          />
+          {moduleTitle && (
+            <ModuleTitle id="gw-process-module-title">{moduleTitle}</ModuleTitle>
+          )}
 
           {/* Cards */}
           <div className="mt-12 grid grid-cols-2 gap-4 sm:gap-5 lg:mt-16 lg:grid-cols-4">

@@ -23,6 +23,7 @@ type Props = {
   radius?: number;
   /** Extra classes (e.g. z-index placement) for the layer. */
   className?: string;
+  id?: string;
 };
 
 /** Evervault-style reveal (à la Aceternity UI): a radial mask follows the
@@ -31,6 +32,7 @@ type Props = {
 export default function EvervaultBackground({
   radius = 150,
   className = "",
+  id,
 }: Props) {
   const ref = useRef<HTMLDivElement>(null);
   const mouseX = useMotionValue(0);
@@ -106,6 +108,7 @@ export default function EvervaultBackground({
   return (
     <div
       ref={ref}
+      id={id}
       aria-hidden="true"
       className={`pointer-events-none absolute inset-0 overflow-hidden ${className}`}
     >

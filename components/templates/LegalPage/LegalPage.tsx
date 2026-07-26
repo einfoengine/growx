@@ -27,7 +27,7 @@ export default function LegalPage({
   sections,
 }: LegalPageProps) {
   return (
-    <section className="relative overflow-hidden bg-background">
+    <section id="tpl-legal-page" className="relative overflow-hidden bg-background">
       <div
         aria-hidden="true"
         className="pointer-events-none absolute -z-10 left-1/2 -top-24 h-96 w-190 max-w-none -translate-x-1/2 bg-brand/6 blur-[120px]"

@@ -14,7 +14,7 @@ import {
  *  could never be seen but would still cost a listener and two live springs.
  *  It also parks while its container is off-screen: mounted in the footer, it
  *  would otherwise read a rect on every mousemove for the whole page. */
-export default function MouseGlow() {
+export default function MouseGlow({ id }: { id?: string }) {
   const containerRef = useRef<HTMLDivElement>(null);
 
   // Doubles as the mount guard: false on the server and on the first client
@@ -52,6 +52,7 @@ export default function MouseGlow() {
   return (
     <div
       ref={containerRef}
+      id={id}
       aria-hidden="true"
       className="pointer-events-none absolute inset-0 overflow-hidden"
     >

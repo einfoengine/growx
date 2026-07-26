@@ -1,5 +1,4 @@
-import Eyebrow from "@/components/elements/Eyebrow";
-import Headline from "@/components/elements/Headline";
+import ModuleTitle from "@/components/elements/ModuleTitle";
 import ScrollFadeIn from "@/components/elements/ScrollFadeIn";
 import TestimonialsSlider from "./TestimonialsSlider";
 import { getTestimonials } from "@/lib/content";
@@ -20,34 +19,28 @@ const FACTS = [
   { value: "4", label: "Markets: US, CA, UK, AU" },
 ];
 
-export default async function Testimonials() {
+export default async function Testimonials({
+  moduleTitle,
+  noPaddingTop,
+}: { moduleTitle?: string; noPaddingTop?: boolean } = {}) {
   const data = await getTestimonials();
 
   return (
     <section
       id={`gw-${data.id}`}
-      aria-labelledby="testimonials-headline"
       // White, so it alternates against ProcessJourney's surface above and
-      // TrustedBy's surface below.
-      className="relative overflow-hidden border-b border-border bg-background py-24 text-foreground sm:py-28 lg:py-32"
+      // TrustedBy's surface below. noPaddingTop: a SectionTitle module sits
+      // directly above and already provides the top spacing.
+      className={`relative overflow-hidden border-b border-border bg-background text-foreground ${
+        noPaddingTop ? "pb-24 pt-0 sm:pb-28 lg:pb-32" : "py-24 sm:py-28 lg:py-32"
+      }`}
     >
       <div className="container-1200">
-        <ScrollFadeIn delay={0.1}>
-          <div className="mx-auto max-w-2xl text-center">
-            <Eyebrow text={data.eyebrow} />
-            <Headline
-              id="testimonials-headline"
-              parts={data.headline.parts}
-              as="h2"
-              className="mt-4 text-3xl font-bold leading-[1.15] tracking-tight sm:text-4xl md:text-5xl"
-              highlightClassName="text-gradient-brand"
-            />
-            <p className="mt-5 text-base text-muted sm:text-lg">{data.sub}</p>
-          </div>
-        </ScrollFadeIn>
-
+        {moduleTitle && (
+          <ModuleTitle id="gw-testimonials-module-title">{moduleTitle}</ModuleTitle>
+        )}
         <ScrollFadeIn delay={0.2}>
-          <div className="mt-14">
+          <div className={noPaddingTop && !moduleTitle ? "mt-0" : "mt-14"}>
             <TestimonialsSlider testimonials={data.testimonials} />
           </div>
         </ScrollFadeIn>

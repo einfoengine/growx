@@ -15,9 +15,11 @@ export type HeroProps = {
    * `inner` - compact centered hero for inner / marketing subpages.
    */
   variant?: HeroVariant;
+  /** Optional single-line module title rendered above the hero copy. */
+  moduleTitle?: string;
 };
 
-export default async function Hero({ data, variant = "home" }: HeroProps = {}) {
+export default async function Hero({ data, variant = "home", moduleTitle }: HeroProps = {}) {
   const heroData = data ?? await getHero("home");
 
   // ── Inner / subpage hero ──────────────────────────────────────────────────
@@ -33,7 +35,7 @@ export default async function Hero({ data, variant = "home" }: HeroProps = {}) {
         className="relative isolate overflow-hidden bg-foreground text-background"
       >
         <InnerHeroBackdrop />
-        <HeroAnimatedContent data={heroData} variant={variant} />
+        <HeroAnimatedContent data={heroData} variant={variant} moduleTitle={moduleTitle} />
       </section>
     );
   }
@@ -74,7 +76,7 @@ export default async function Hero({ data, variant = "home" }: HeroProps = {}) {
         {/* Top padding clears the fixed glass bar (72px zone) with real air
             to spare, so the eyebrow never crowds it. */}
         <div className="flex w-full items-center justify-center pt-36 pb-10 sm:pt-40 lg:min-h-[82svh] lg:pb-16 lg:pt-32">
-          <HeroAnimatedContent data={heroData} variant={variant} />
+          <HeroAnimatedContent data={heroData} variant={variant} moduleTitle={moduleTitle} />
         </div>
         <HeroVideoPerspective className="w-full">
           <HeroVideo videoId="oGKjh10TbK0" />

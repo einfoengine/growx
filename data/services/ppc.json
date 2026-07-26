@@ -75,5 +75,234 @@
       "question": "How do you handle the client's ad account?",
       "answer": "We work inside your client's ad account (or one set up in their name). All spend and history stays with them. They own it, we run it."
     }
-  ]
+  ],
+  "landing": {
+    "hero": {
+      "stats": [
+        { "id": "st-ppc-1", "label": "$800 per channel, monthly" },
+        { "id": "st-ppc-2", "label": "Google, Meta, TikTok & more" },
+        { "id": "st-ppc-3", "label": "No markup on ad spend" },
+        { "id": "st-ppc-4", "label": "Month-to-month available" }
+      ],
+      "ctaNote": "30 minutes with our founding team. No pitch deck, no pressure.",
+      "secondaryCta": {
+        "id": "service-page-ppc-cta-pricing",
+        "label": "See management pricing",
+        "href": "#gw-mod-service-pricing"
+      }
+    },
+    "vsl": { "videoId": "oGKjh10TbK0" },
+    "platforms": [
+      "Google Ads",
+      "Meta Ads",
+      "TikTok Ads",
+      "LinkedIn Ads",
+      "YouTube Ads",
+      "GA4",
+      "Tag Manager",
+      "Meta Pixel"
+    ],
+    "pains": {
+      "id": "mod-ppc-pains",
+      "eyebrow": "The paid-media problem",
+      "headline": {
+        "parts": [
+          { "type": "text", "value": "Every client wants ads. " },
+          { "type": "highlight", "value": "Few agencies can run them profitably." }
+        ]
+      },
+      "sub": "Paid media is the fastest retainer to sell — and the fastest to lose when the account underperforms under your name.",
+      "cards": [
+        {
+          "id": "pain-ppc-1",
+          "title": "Media buyers are expensive",
+          "blurb": "A senior buyer costs a real salary and needs five client accounts to pay for themselves. Until then, every ads retainer you sell is a hiring problem.",
+          "icon": "layers",
+          "points": [
+            "Senior buyers command senior salaries",
+            "Juniors learn on your client's budget",
+            "A bench you only pay for when you sell"
+          ]
+        },
+        {
+          "id": "pain-ppc-2",
+          "title": "One bad month kills trust",
+          "blurb": "Performance dips, the client asks what they're paying for, and the retainer you worked months to win is suddenly on notice.",
+          "icon": "trending-down",
+          "points": [
+            "Dips happen — unexplained dips churn",
+            "Vanity metrics make it worse",
+            "ROAS-focused reporting keeps trust"
+          ]
+        },
+        {
+          "id": "pain-ppc-3",
+          "title": "The creative bottleneck",
+          "blurb": "Ad fatigue is real: accounts stall without fresh creatives, and your designer is already buried in client work.",
+          "icon": "clock",
+          "points": [
+            "Fatigued ads quietly burn budget",
+            "Every refresh waits on a designer",
+            "Creative is included here, not extra"
+          ]
+        },
+        {
+          "id": "pain-ppc-4",
+          "title": "A stranger in the ad account",
+          "blurb": "Your client opens their ad account and sees a name they've never heard of. The white label you sold is one screen away from unraveling.",
+          "icon": "user-x",
+          "points": [
+            "Freelancer names leak in shared accounts",
+            "Rented dashboards carry the wrong brand",
+            "We operate under your identity"
+          ]
+        }
+      ]
+    },
+    "features": {
+      "eyebrow": "The full management scope",
+      "headline": {
+        "parts": [
+          { "type": "text", "value": "Everything a performance retainer " },
+          { "type": "highlight", "value": "should include." }
+        ]
+      },
+      "sub": "Strategy, creative, tracking, and reporting — one management fee, nothing metered, delivered under your brand.",
+      "groups": [
+        {
+          "id": "feat-ppc-strategy",
+          "title": "Strategy & media planning",
+          "icon": "search",
+          "items": [
+            "Channel mix built around the client's buyers",
+            "Budget split and bid strategy per channel",
+            "Competitor and auction insights",
+            "Funnel-stage campaign architecture"
+          ]
+        },
+        {
+          "id": "feat-ppc-creative",
+          "title": "Ad creative",
+          "icon": "palette",
+          "items": [
+            "Ad copy and static visuals included",
+            "Video edits from your client's assets",
+            "Creative refresh before fatigue bites",
+            "Landing-page advice that lifts conversion"
+          ]
+        },
+        {
+          "id": "feat-ppc-targeting",
+          "title": "Audience & targeting",
+          "icon": "bot",
+          "items": [
+            "Audience research and segmentation",
+            "Retargeting and lookalike structures",
+            "First-party list activation",
+            "Continuous audience pruning"
+          ]
+        },
+        {
+          "id": "feat-ppc-tracking",
+          "title": "Tracking & attribution",
+          "icon": "gauge",
+          "items": [
+            "Pixel + Conversions API wiring",
+            "GA4 and Tag Manager configured right",
+            "Conversion events your client agrees to",
+            "Attribution you can defend in a meeting"
+          ]
+        },
+        {
+          "id": "feat-ppc-reporting",
+          "title": "Reporting",
+          "icon": "bar-chart-3",
+          "items": [
+            "Client-ready monthly reports, your brand",
+            "ROAS and CPA front and center",
+            "Plain-English \"what moved and why\"",
+            "Forwardable as-is — no editing needed"
+          ]
+        },
+        {
+          "id": "feat-ppc-terms",
+          "title": "Terms & account safety",
+          "icon": "shield",
+          "items": [
+            "Your client owns the ad account, always",
+            "Fee-only — zero markup on ad spend",
+            "Month-to-month available, no lock-in",
+            "Scale channels up or down monthly"
+          ]
+        }
+      ]
+    },
+    "pricing": {
+      "eyebrow": "Transparent retainer pricing",
+      "headline": {
+        "parts": [
+          { "type": "text", "value": "Our fee is your cost. " },
+          { "type": "highlight", "value": "The retainer is yours." }
+        ]
+      },
+      "sub": "One flat management fee per ad channel, billed monthly. Your client's spend goes to the platforms untouched — and your margin renews every month.",
+      "markupOptions": [1.5, 2, 3],
+      "defaultMarkup": 2,
+      "guarantees": [
+        {
+          "id": "g-ppc-1",
+          "title": "No markup on ad spend",
+          "description": "Our fee covers management only. Every dollar of your client's budget reaches the ad platforms — auditable in their own account."
+        },
+        {
+          "id": "g-ppc-2",
+          "title": "Your client owns the account",
+          "description": "Campaigns run in your client's ad account, in their name. History, pixels, and data stay theirs if they ever leave."
+        },
+        {
+          "id": "g-ppc-3",
+          "title": "White-label confidentiality",
+          "description": "Your brand on every report and every thread. Your client never learns we exist."
+        },
+        {
+          "id": "g-ppc-4",
+          "title": "No long-term lock-in",
+          "description": "Month-to-month is a real option, not a teaser. Commitment discounts are there when you want them."
+        }
+      ],
+      "note": "Not ready to talk? Create a free partner account and browse the whole catalog at your own pace."
+    },
+    "differentiators": {
+      "eyebrow": "Why growX",
+      "headline": {
+        "parts": [
+          { "type": "text", "value": "Built for conversions. " },
+          { "type": "highlight", "value": "Priced for your margin." }
+        ]
+      },
+      "sub": "Revenue-focused buying, platform flexibility, and a fee structure with nothing hidden in the spend."
+    },
+    "faqExtra": [
+      {
+        "id": "faq-ppc-5",
+        "question": "Do you guarantee ROAS?",
+        "answer": "No — and be wary of anyone who does. Performance depends on offer, market, budget, and creative, and platforms change weekly. What we commit to: full management scope every month, honest ROAS-focused reporting, and killing what doesn't work fast."
+      },
+      {
+        "id": "faq-ppc-6",
+        "question": "Who pays for the ad spend?",
+        "answer": "Your client pays the platforms directly from their own account. We never touch or pass through ad budget, so there's no hidden markup and no trust gap to defend."
+      },
+      {
+        "id": "faq-ppc-7",
+        "question": "Who owns the ad account and its data?",
+        "answer": "Your client, always. Pixels, audiences, and campaign history live in their account. If they ever leave, everything stays with them — that's a selling point, use it."
+      },
+      {
+        "id": "faq-ppc-8",
+        "question": "Can you take over an existing ad account?",
+        "answer": "Yes. We start with a structured audit — tracking, structure, wasted spend — and share it as a white-label report you can present. Then we rebuild only what the audit justifies."
+      }
+    ]
+  }
 }
