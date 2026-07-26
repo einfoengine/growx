@@ -113,22 +113,31 @@ export default function ProcessJourneyClient({
 
           {/* ── Right: the active step, illustrated ──────────────────── */}
           <div className="relative min-h-110 overflow-hidden rounded-xl border border-border bg-background lg:min-h-0">
-            {/* Soft grid ground behind the art (GrowthPillars signature). */}
-            <div
-              aria-hidden="true"
-              className="absolute inset-0 bg-[linear-gradient(to_right,rgba(16,185,129,0.06)_1px,transparent_1px),linear-gradient(to_bottom,rgba(16,185,129,0.06)_1px,transparent_1px)] bg-size-[40px_40px] mask-[radial-gradient(ellipse_75%_70%_at_50%_45%,#000,transparent_90%)]"
-            />
-
-            {/* Crossfading illustration layers, clear of the label zone. */}
+            {/* Crossfading illustration layers, clear of the label zone. Each
+                layer holds the art inside a framed WELL — bordered box with the
+                grid ground and brand wash (GrowthPillars signature), the
+                animated art painting over it. */}
             {STEP_ART.map((art, i) => (
               <div
                 key={i}
                 aria-hidden="true"
-                className={`absolute inset-x-0 top-0 bottom-20 p-8 transition-opacity duration-700 ease-in-out sm:p-10 ${
+                className={`absolute inset-x-0 top-0 bottom-20 p-5 transition-opacity duration-700 ease-in-out sm:p-7 ${
                   i === activeArt ? "opacity-100" : "opacity-0"
                 }`}
               >
-                {art}
+                <div className="relative h-full w-full overflow-hidden rounded-xl border border-border bg-surface">
+                  {/* Grid ground. */}
+                  <div
+                    aria-hidden="true"
+                    className="pointer-events-none absolute inset-0 bg-[linear-gradient(to_right,rgba(10,10,10,0.05)_1px,transparent_1px),linear-gradient(to_bottom,rgba(10,10,10,0.05)_1px,transparent_1px)] bg-size-[22px_22px]"
+                  />
+                  {/* Brand wash behind the subject. */}
+                  <div
+                    aria-hidden="true"
+                    className="pointer-events-none absolute -top-16 left-1/2 h-52 w-52 -translate-x-1/2 rounded-full bg-(--brand-soft) blur-3xl"
+                  />
+                  <div className="absolute inset-0 p-5 sm:p-6">{art}</div>
+                </div>
               </div>
             ))}
 

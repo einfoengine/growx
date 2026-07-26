@@ -43,8 +43,8 @@ function CallArt() {
       <rect x="152.5" y="106.5" width="8" height="7" rx="2" fill="rgba(10,10,10,0.4)" />
       <path d="M160.5 109 l3.5 -2 v6 l-3.5 -2z" fill="rgba(10,10,10,0.4)" />
 
-      {/* 30-min pill, straddling the window edge. */}
-      <g>
+      {/* 30-min pill, straddling the window edge — floats gently. */}
+      <g className="animate-art-float">
         <rect x="156" y="26" width="56" height="22" rx="11" fill="url(#pj-brand-a)" />
         <circle cx="169" cy="37" r="6" fill="none" stroke="#ffffff" strokeWidth="1.6" />
         <path d="M169 33.5 v3.5 l2.5 1.5" stroke="#ffffff" strokeWidth="1.6" strokeLinecap="round" fill="none" />
@@ -53,15 +53,15 @@ function CallArt() {
         </text>
       </g>
 
-      {/* Calendar check, bottom-left. */}
-      <g>
+      {/* Calendar check, bottom-left — soft pulse. */}
+      <g className="animate-art-pulse">
         <rect x="26" y="118" width="34" height="30" rx="7" fill="#ffffff" stroke="rgba(10,10,10,0.12)" />
         <line x1="26" y1="127" x2="60" y2="127" stroke="rgba(10,10,10,0.12)" />
         <path d="M36 136 l4 4 8 -8" stroke="url(#pj-brand-a)" strokeWidth="2.6" strokeLinecap="round" strokeLinejoin="round" fill="none" />
       </g>
 
       {/* Sparkle. */}
-      <path d="M206 120 l2 5 5 2 -5 2 -2 5 -2 -5 -5 -2 5 -2z" fill="#10b981" opacity="0.5" />
+      <path className="animate-art-twinkle" d="M206 120 l2 5 5 2 -5 2 -2 5 -2 -5 -5 -2 5 -2z" fill="#10b981" opacity="0.5" />
     </svg>
   );
 }
@@ -106,8 +106,8 @@ function OrderArt() {
         </g>
       ))}
 
-      {/* Added-to-order tag, straddling the card. */}
-      <g>
+      {/* Added-to-order tag, straddling the card — floats gently. */}
+      <g className="animate-art-float">
         <circle cx="196" cy="84" r="15" fill="url(#pj-brand-b)" />
         <path d="M189 84 l5 5 9 -10" stroke="#ffffff" strokeWidth="2.6" strokeLinecap="round" strokeLinejoin="round" fill="none" />
       </g>
@@ -120,7 +120,7 @@ function OrderArt() {
       </g>
 
       {/* Sparkle. */}
-      <path d="M206 34 l2 5 5 2 -5 2 -2 5 -2 -5 -5 -2 5 -2z" fill="#10b981" opacity="0.5" />
+      <path className="animate-art-twinkle" d="M206 34 l2 5 5 2 -5 2 -2 5 -2 -5 -5 -2 5 -2z" fill="#10b981" opacity="0.5" />
     </svg>
   );
 }
@@ -155,13 +155,24 @@ function ProduceArt() {
             <circle cx="52" cy={row.y} r="8.5" fill="none" stroke="rgba(16,185,129,0.4)" strokeWidth="2" strokeDasharray={row.p > 0.5 ? "0" : "3 3"} />
           )}
           <rect x="70" y={row.y - 8} width="86" height="6" rx="3" fill="rgba(10,10,10,0.08)" />
-          <rect x="70" y={row.y - 8} width={86 * row.p} height="6" rx="3" fill={row.done ? "rgba(16,185,129,0.28)" : "url(#pj-brand-c)"} />
+          {/* In-flight bars fill and reset in a loop (staggered per row). */}
+          <rect
+            className={row.done ? undefined : "animate-art-progress"}
+            style={row.done ? undefined : { animationDelay: `${row.y * 8}ms` }}
+            x="70"
+            y={row.y - 8}
+            width={86 * row.p}
+            height="6"
+            rx="3"
+            fill={row.done ? "rgba(16,185,129,0.28)" : "url(#pj-brand-c)"}
+          />
           <rect x="70" y={row.y + 2} width="52" height="5" rx="2.5" fill="rgba(10,10,10,0.07)" />
         </g>
       ))}
 
       {/* Gear — the fulfillment engine, straddling the edge (same as pillars). */}
       <g transform="translate(184 44)" stroke="url(#pj-brand-c)" strokeWidth="3" strokeLinecap="round">
+        <g className="animate-art-spin">
         <circle cx="0" cy="0" r="15" fill="#ffffff" />
         <circle cx="0" cy="0" r="6" fill="none" />
         {Array.from({ length: 8 }).map((_, i) => {
@@ -176,11 +187,12 @@ function ProduceArt() {
             />
           );
         })}
+        </g>
       </g>
 
       {/* Sparkles. */}
-      <path d="M28 120 l2 5 5 2 -5 2 -2 5 -2 -5 -5 -2 5 -2z" fill="#10b981" opacity="0.55" />
-      <path d="M200 122 l1.5 3.5 3.5 1.5 -3.5 1.5 -1.5 3.5 -1.5 -3.5 -3.5 -1.5 3.5 -1.5z" fill="#10b981" opacity="0.4" />
+      <path className="animate-art-twinkle" d="M28 120 l2 5 5 2 -5 2 -2 5 -2 -5 -5 -2 5 -2z" fill="#10b981" opacity="0.55" />
+      <path className="animate-art-twinkle" d="M200 122 l1.5 3.5 3.5 1.5 -3.5 1.5 -1.5 3.5 -1.5 -3.5 -3.5 -1.5 3.5 -1.5z" fill="#10b981" opacity="0.4" />
     </svg>
   );
 }
@@ -212,16 +224,16 @@ function DeliverArt() {
       <rect x="68" y="112" width="44" height="16" rx="8" fill="rgba(16,185,129,0.14)" stroke="rgba(16,185,129,0.35)" />
       <path d="M76 120 l3 3 6 -7" stroke="#047857" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" fill="none" />
 
-      {/* Send — paper plane up-right, off the doc. */}
-      <g>
+      {/* Send — paper plane up-right, off the doc — floats gently. */}
+      <g className="animate-art-float">
         <path d="M162 74 l44 -18 -14 40 -10 -14 -20 -8z" fill="url(#pj-brand-d)" />
         <path d="M182 82 l24 -26" stroke="#ffffff" strokeWidth="1.6" opacity="0.8" />
       </g>
       {/* Motion dashes. */}
       <path d="M150 60 h12 M144 70 h10" stroke="rgba(16,185,129,0.5)" strokeWidth="2" strokeLinecap="round" strokeDasharray="1 6" />
 
-      {/* Client heart, bottom-right. */}
-      <g>
+      {/* Client heart, bottom-right — soft pulse. */}
+      <g className="animate-art-pulse">
         <circle cx="186" cy="126" r="13" fill="#ffffff" stroke="rgba(10,10,10,0.1)" />
         <path
           d="M186 132 c-5 -3.6 -7.5 -6.4 -7.5 -9.2 a4 4 0 0 1 7.5 -1.8 a4 4 0 0 1 7.5 1.8 c0 2.8 -2.5 5.6 -7.5 9.2z"
@@ -230,7 +242,7 @@ function DeliverArt() {
       </g>
 
       {/* Sparkle. */}
-      <path d="M40 118 l2 5 5 2 -5 2 -2 5 -2 -5 -5 -2 5 -2z" fill="#10b981" opacity="0.5" />
+      <path className="animate-art-twinkle" d="M40 118 l2 5 5 2 -5 2 -2 5 -2 -5 -5 -2 5 -2z" fill="#10b981" opacity="0.5" />
     </svg>
   );
 }

@@ -14,7 +14,7 @@ export default function CartIcon({ className, id = "gw-cart-icon" }: { className
       id={id}
       href="/checkout"
       aria-label={count > 0 ? `Cart, ${count} item${count === 1 ? "" : "s"}` : "Cart, empty"}
-      className={`relative inline-flex h-10 w-10 items-center justify-center rounded-full border border-border/60 bg-background/50 text-foreground/80 backdrop-blur-md transition-colors hover:bg-background/80 hover:text-foreground ${
+      className={`relative inline-flex h-10 w-10 items-center justify-center rounded-full border border-foreground/20 bg-background/50 text-foreground/80 backdrop-blur-md transition-colors hover:border-foreground/35 hover:bg-background/80 hover:text-foreground ${
         className ?? ""
       }`}
     >

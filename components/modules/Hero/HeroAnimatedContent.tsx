@@ -1,7 +1,13 @@
 "use client";
 
 import Link from "next/link";
-import { motion } from "framer-motion";
+import { useRef } from "react";
+import {
+  motion,
+  useReducedMotion,
+  useScroll,
+  useTransform,
+} from "framer-motion";
 import { ArrowRight, Check } from "lucide-react";
 import Typewriter from "@/components/elements/Typewriter";
 import Headline from "@/components/elements/Headline";
@@ -73,8 +79,24 @@ export default function HeroAnimatedContent({
   const isHome = variant === "home";
   const hasStats = data.stats.length > 0;
 
+  // Scroll-scrubbed split: as the hero scrolls out, the headline half drifts
+  // up while the CTA half drifts down — the copy pulls apart on the way out
+  // and reassembles on the way back (scrubbing is bidirectional for free).
+  // Entrance animations (variants) are unaffected — these are style
+  // transforms on two wrapper groups, multiplied on top.
+  const splitRef = useRef<HTMLDivElement>(null);
+  const reduceMotion = useReducedMotion();
+  const { scrollYProgress } = useScroll({
+    target: splitRef,
+    offset: ["start start", "end start"],
+  });
+  const yTop = useTransform(scrollYProgress, [0, 1], [0, -90]);
+  const yBottom = useTransform(scrollYProgress, [0, 1], [0, 90]);
+  const splitOpacity = useTransform(scrollYProgress, [0, 0.75], [1, 0]);
+
   return (
     <motion.div
+      ref={splitRef}
       id="gw-hero-animated-content"
       className={isHome ? "mx-auto w-full" : L.shell}
       variants={containerVariants}
@@ -85,6 +107,13 @@ export default function HeroAnimatedContent({
         {moduleTitle && (
           <ModuleTitle id="gw-hero-module-title">{moduleTitle}</ModuleTitle>
         )}
+        {/* ── Split group A: eyebrow + headline (+tagline) drift UP on exit ── */}
+        <motion.div
+          style={{
+            y: reduceMotion ? 0 : yTop,
+            opacity: reduceMotion ? 1 : splitOpacity,
+          }}
+        >
         {/* The cycled words are the three partnership tiers by name (The Vendor /
             The Team Member / The Department), so the eyebrow links to them —
             `eyebrow.href` had been carried in the data but never wired up. */}
@@ -155,6 +184,15 @@ export default function HeroAnimatedContent({
           </motion.p>
         )}
 
+        </motion.div>
+
+        {/* ── Split group B: sub + CTAs + stats drift DOWN on exit ── */}
+        <motion.div
+          style={{
+            y: reduceMotion ? 0 : yBottom,
+            opacity: reduceMotion ? 1 : splitOpacity,
+          }}
+        >
         {/* The plain-English explanation of the business. Both variants show it:
             a visitor who only reads the headline still needs to learn what growX
             actually does. */}
@@ -212,6 +250,7 @@ export default function HeroAnimatedContent({
             ))}
           </motion.ul>
         )}
+        </motion.div>
       </div>
     </motion.div>
   );

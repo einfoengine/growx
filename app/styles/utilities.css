@@ -248,6 +248,80 @@
   }
 }
 
+/* Step-art micro animations (ProcessJourney illustration wells). Applied to
+   SVG groups/shapes — transform-box: fill-box makes each transform originate
+   from the element's own bounding box instead of the SVG canvas origin.
+   NOTE: CSS transforms REPLACE an element's `transform` attribute, so never
+   put these classes on a group that carries transform="translate(...)" — wrap
+   an inner group instead. Reduced motion: covered by the global net below. */
+@keyframes art-float {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-5px);
+  }
+}
+
+@utility animate-art-float {
+  animation: art-float 4s ease-in-out infinite;
+  transform-box: fill-box;
+  transform-origin: center;
+}
+
+@keyframes art-pulse {
+  0%,
+  100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.08);
+  }
+}
+
+@utility animate-art-pulse {
+  animation: art-pulse 2.8s ease-in-out infinite;
+  transform-box: fill-box;
+  transform-origin: center;
+}
+
+@keyframes art-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@utility animate-art-spin {
+  animation: art-spin 9s linear infinite;
+  transform-box: fill-box;
+  transform-origin: center;
+}
+
+@keyframes art-progress {
+  0% {
+    transform: scaleX(0.25);
+  }
+  55% {
+    transform: scaleX(1);
+  }
+  100% {
+    transform: scaleX(0.25);
+  }
+}
+
+@utility animate-art-progress {
+  animation: art-progress 3.6s ease-in-out infinite;
+  transform-box: fill-box;
+  transform-origin: left center;
+}
+
+@utility animate-art-twinkle {
+  animation: star-twinkle 3.2s ease-in-out infinite;
+  transform-box: fill-box;
+  transform-origin: center;
+}
+
 /* ----------------------------------------------------------------------------
    REDUCED-MOTION SAFETY NET
    Global kill-switch for CSS-driven motion: the marquees (40s/25s infinite),

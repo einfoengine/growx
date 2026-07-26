@@ -86,6 +86,29 @@ export default async function Footer() {
       // create a scroll container, which would break the sticky watermark below.
       className="mt-auto w-full bg-(--footer-bg) text-(--footer-fg) relative overflow-clip"
     >
+      {/* Hero-family backdrop: the same scene image as the hero, under a heavy
+          overlay so the footer content stays fully legible. Theme pair — dark
+          scene + near-black wash normally, light scene + white wash in light
+          mode. Sits at the very back (z-0); every content block above is
+          positioned. (CtaBanner keeps its own solid band by design.) */}
+      <div aria-hidden="true" className="pointer-events-none absolute inset-0 z-0">
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <img
+          src="/hero-dark.png"
+          alt=""
+          loading="lazy"
+          className="h-full w-full object-cover object-center light:hidden"
+        />
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <img
+          src="/hero-white.png"
+          alt=""
+          loading="lazy"
+          className="hidden h-full w-full object-cover object-center light:block"
+        />
+        <div className="absolute inset-0 bg-[#0a0a0a]/88 light:hidden" />
+        <div className="hidden light:block absolute inset-0 bg-white/90" />
+      </div>
       <CtaBanner
         data={ctaBanner}
         title={

@@ -154,7 +154,7 @@ export default function FulfillmentReasons({ moduleTitle }: { moduleTitle?: stri
                           aria-hidden="true"
                           initial={{ scaleX: 0 }}
                           whileInView={{ scaleX: 1 }}
-                          viewport={{ once: true, margin: "-80px" }}
+                          viewport={{ once: false, margin: "-80px" }}
                           transition={{ delay: 0.55, duration: 0.4, ease: "easeInOut" }}
                           className="absolute inset-x-0 top-1/2 h-0.5 origin-left bg-[#d1fae5]/80"
                         />

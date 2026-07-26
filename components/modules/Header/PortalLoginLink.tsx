@@ -20,7 +20,7 @@ export default function PortalLoginLink({
 }) {
   if (iconOnly) {
     const glass =
-      "relative inline-flex h-10 w-10 items-center justify-center rounded-full border border-border/60 bg-background/50 text-foreground/80 backdrop-blur-md transition-colors hover:bg-background/80 hover:text-foreground";
+      "relative inline-flex h-10 w-10 items-center justify-center rounded-full border border-foreground/20 bg-background/50 text-foreground/80 backdrop-blur-md transition-colors hover:border-foreground/35 hover:bg-background/80 hover:text-foreground";
 
     // Small dot marks the pre-launch "coming soon" state without any label.
     const soonDot = (

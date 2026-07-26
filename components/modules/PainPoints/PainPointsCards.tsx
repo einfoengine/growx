@@ -260,7 +260,7 @@ export default function PainPointsCards({ cards }: { cards: Card[] }) {
                 <motion.div
                   initial={{ opacity: 0, y: 40 }}
                   whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true, margin: "-100px" }}
+                  viewport={{ once: false, margin: "-100px" }}
                   transition={{ duration: 0.5, delay: index * 0.08 }}
                   className={`relative mx-auto w-full max-w-5xl rounded-4xl border border-white/10 bg-foreground/95 px-8 pb-12 shadow-2xl backdrop-blur-xl transition-[padding] duration-300 ease-out sm:px-16 ${
                     isCompact ? "pt-6" : "pt-8"
@@ -326,7 +326,7 @@ export default function PainPointsCards({ cards }: { cards: Card[] }) {
         <motion.a
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-50px" }}
+          viewport={{ once: false, margin: "-50px" }}
           transition={{ duration: 0.5, delay: 0.2 }}
           href="#book"
           className="group mt-12 inline-flex items-center gap-2 rounded-full bg-gradient-brand px-8 py-4 text-sm font-semibold text-black transition-all hover:scale-105 hover:brightness-110 hover:shadow-[0_0_30px_rgba(16,185,129,0.4)]"

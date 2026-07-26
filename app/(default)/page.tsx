@@ -12,6 +12,7 @@ import Faq from "@/components/modules/Faq";
 import Newsletter from "@/components/modules/Newsletter";
 import SisterBrands from "@/components/modules/SisterBrands/SisterBrands";
 import SectionTitle from "@/components/modules/SectionTitle/SectionTitle";
+import StickyReveal from "@/components/elements/StickyReveal";
 import {
   getComparison,
   getFaq,
@@ -108,17 +109,20 @@ export default async function HomePage() {
             />
           }
         />
-        {/* [ THE GROWX LETTER ] — soft capture for the not-ready-yet. */}
-        <Newsletter
-          title={
-            <SectionTitle
-              id="gw-mod-newsletter-title"
-              eyebrow={newsletter.eyebrow}
-              headline={newsletter.headline.parts}
-              sub={newsletter.sub}
-            />
-          }
-        />
+        {/* [ THE GROWX LETTER ] — soft capture for the not-ready-yet. Pinned
+            while the footer scrolls over it (StickyReveal). */}
+        <StickyReveal id="el-newsletter-sticky">
+          <Newsletter
+            title={
+              <SectionTitle
+                id="gw-mod-newsletter-title"
+                eyebrow={newsletter.eyebrow}
+                headline={newsletter.headline.parts}
+                sub={newsletter.sub}
+              />
+            }
+          />
+        </StickyReveal>
       </div>
       {/* [ READY WHEN YOU ARE ] — the global CtaBanner in the footer, no longer
           hidden on this route. */}

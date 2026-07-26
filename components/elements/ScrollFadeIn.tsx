@@ -33,7 +33,10 @@ export default function ScrollFadeIn({
       id={id}
       initial={{ opacity: 0, ...directions[direction] }}
       whileInView={{ opacity: 1, x: 0, y: 0 }}
-      viewport={{ once: true, margin: "-100px" }}
+      // once: false — the reveal replays every time the element re-enters the
+      // viewport (scrolling down OR back up); framer reverts it to `initial`
+      // when it leaves, so it's ready to play again.
+      viewport={{ once: false, margin: "-100px" }}
       transition={{ duration: 0.7, delay: delay, ease: [0.21, 0.47, 0.32, 0.98] }}
       className={`${fullWidth ? "w-full" : ""} ${className}`}
     >

@@ -16,7 +16,13 @@ export default async function Newsletter({
       id={`gw-${data.id}`}
       className="relative bg-background gw-section"
     >
-      <div className="container-1200">
+      {/* Signature grid ground — this section pins on home while the footer
+          slides over it, and the grid keeps the held frame visually alive. */}
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute inset-0 bg-[linear-gradient(to_right,rgba(10,10,10,0.05)_1px,transparent_1px),linear-gradient(to_bottom,rgba(10,10,10,0.05)_1px,transparent_1px)] bg-size-[48px_48px] mask-[radial-gradient(ellipse_80%_75%_at_50%_45%,#000,transparent_88%)]"
+      />
+      <div className="container-1200 relative">
         {title}
         {moduleTitle && (
           <ModuleTitle id="gw-newsletter-module-title">{moduleTitle}</ModuleTitle>

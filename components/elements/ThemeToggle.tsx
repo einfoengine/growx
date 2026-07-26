@@ -44,7 +44,7 @@ export default function ThemeToggle({ className }: { className?: string }) {
   const isLight = theme === "light";
   const cls =
     className ??
-    "relative inline-flex h-10 w-10 items-center justify-center rounded-full border border-border/60 bg-background/50 text-foreground/80 backdrop-blur-md transition-colors hover:bg-background/80 hover:text-foreground";
+    "relative inline-flex h-10 w-10 items-center justify-center rounded-full border border-foreground/20 bg-background/50 text-foreground/80 backdrop-blur-md transition-colors hover:border-foreground/35 hover:bg-background/80 hover:text-foreground";
 
   return (
     <button
