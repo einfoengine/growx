@@ -1,5 +1,7 @@
+import type { ReactNode } from "react";
 import ScrollFadeIn from "@/components/elements/ScrollFadeIn";
 import ModuleTitle from "@/components/elements/ModuleTitle";
+import SectionTitle from "@/components/modules/SectionTitle/SectionTitle";
 
 /** Our family of brands, framed as lineage: growX is the newest name from the
  *  operators already running GHL Video and socialX — a legacy, not a cold
@@ -28,20 +30,32 @@ const BRANDS: { name: string; src: string; alt: string; tagline: string }[] = [
 
 export default function SisterBrands({
   moduleTitle,
-}: { moduleTitle?: string } = {}) {
+  title,
+}: { moduleTitle?: string; title?: ReactNode } = {}) {
   return (
     <section
       id="gw-mod-sister-brands"
-      className="relative overflow-hidden border-b border-border bg-background py-24 text-foreground sm:py-28 lg:py-32"
+      className="relative overflow-hidden border-b border-border bg-background text-foreground gw-section"
     >
       <div className="container-1200">
+        {title ?? (
+          <SectionTitle
+            id="gw-mod-sister-brands-title"
+            eyebrow="Three brands. One mission."
+            headline={[
+              { type: "text", value: "A new name. " },
+              { type: "highlight", value: "The same team since 2019." },
+            ]}
+            sub="growX was built by the operators behind GHL Video and socialX: one in-house team that has been fulfilling agency work for years, now under one roof. Partner with one brand and you tap into all of them."
+          />
+        )}
         {moduleTitle && (
           <ModuleTitle id="gw-sister-brands-module-title">
             {moduleTitle}
           </ModuleTitle>
         )}
         <ScrollFadeIn delay={0.2}>
-        <ul className="mx-auto mt-14 grid max-w-4xl grid-cols-1 gap-5 sm:mt-16 sm:grid-cols-3">
+        <ul className="mx-auto mt-0 grid max-w-4xl grid-cols-1 gap-5 sm:grid-cols-3">
           {BRANDS.map((brand) => (
             <li
               key={brand.name}

@@ -5,6 +5,7 @@ import ScrollFadeIn from "@/components/elements/ScrollFadeIn";
 import MarginCalculator from "./MarginCalculator";
 import { TIERS, TIER_ORDER } from "@/lib/config/pricing";
 import type { PricingServiceConfig, ServiceLandingPricing } from "@/lib/content";
+import type { ReactNode } from "react";
 
 function usd(n: number): string {
   return `$${Math.round(n).toLocaleString("en-US")}`;
@@ -13,31 +14,30 @@ function usd(n: number): string {
 type Props = {
   config: PricingServiceConfig;
   content: ServiceLandingPricing;
+  /** Optional section heading rendered inside the module container, above the body. */
+  title?: ReactNode;
   moduleTitle?: string;
-  /** A SectionTitle module sits directly above and provides the top spacing. */
-  noPaddingTop?: boolean;
 };
 
 /** The money section of a rich service landing page: the transparent rate card
  *  (straight from the shared pricing config), the interactive margin
  *  calculator beside it, and the risk-reversal guarantees underneath — safety
  *  shown at the exact moment the price is being weighed. */
-export default function ServicePricing({ config, content, moduleTitle, noPaddingTop }: Props) {
+export default function ServicePricing({ config, content, title, moduleTitle }: Props) {
   const paidTiers = TIER_ORDER.filter((k) => TIERS[k].discount > 0);
 
   return (
     <section
       id="gw-mod-service-pricing"
-      className={`relative border-b border-border bg-background text-foreground ${
-        noPaddingTop ? "pb-20 pt-0 sm:pb-24 lg:pb-28" : "py-20 sm:py-24 lg:py-28"
-      }`}
+      className="relative border-b border-border bg-background text-foreground gw-section"
     >
       <div className="container-1200">
+        {title}
         {moduleTitle && <ModuleTitle id="gw-service-pricing-module-title">{moduleTitle}</ModuleTitle>}
 
         <div
           className={`grid items-start gap-8 lg:grid-cols-[1fr_1.15fr] lg:gap-10 ${
-            noPaddingTop && !moduleTitle ? "mt-0" : "mt-14"
+            title || moduleTitle ? "mt-0" : "mt-14"
           }`}
         >
           {/* ── Rate card — the numbers, nothing hidden ─────────────────── */}

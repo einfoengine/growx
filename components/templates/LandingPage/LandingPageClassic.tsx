@@ -119,44 +119,53 @@ export default async function LandingPageClassic({ data }: Props) {
     <>
       <Hero data={heroData} variant="inner" />
       <LogoMarquee />
-      {/* Section headings are standalone SectionTitle modules; the content
-          modules render bodies only and take noPaddingTop under a title. */}
-      <div className="bg-foreground text-background" data-nav-theme="dark" data-dark-surface>
-        <SectionTitle
-          id={`gw-${whyUsData.id}-title`}
-          eyebrow={whyUsData.eyebrow}
-          headline={whyUsData.headline.parts}
-          sub={whyUsData.sub}
-        />
-      </div>
-      <PainPoints data={whyUsData} noPaddingTop />
+      {/* Section headings render INSIDE the module they introduce, via each
+          module's `title` prop. */}
+      <PainPoints
+        data={whyUsData}
+        title={
+          <SectionTitle
+            id={`gw-${whyUsData.id}-title`}
+            eyebrow={whyUsData.eyebrow}
+            headline={whyUsData.headline.parts}
+            sub={whyUsData.sub}
+          />
+        }
+      />
       <Services data={deliverablesData} />
       <TextMarquee />
-      <SectionTitle
-        id="gw-mod-pricing-title"
-        eyebrow={tiersHeader.eyebrow}
-        headline={tiersHeader.headline.parts}
-        sub={tiersHeader.sub}
-        className="bg-surface"
+      <PricingPlans
+        title={
+          <SectionTitle
+            id="gw-mod-pricing-title"
+            eyebrow={tiersHeader.eyebrow}
+            headline={tiersHeader.headline.parts}
+            sub={tiersHeader.sub}
+          />
+        }
       />
-      <PricingPlans noPaddingTop />
-      <SectionTitle
-        id="gw-mod-comparison-title"
-        eyebrow={comparisonHeader.eyebrow}
-        headline={comparisonHeader.headline.parts}
-        sub={comparisonHeader.sub}
-        className="bg-background"
+      <Comparison
+        title={
+          <SectionTitle
+            id="gw-mod-comparison-title"
+            eyebrow={comparisonHeader.eyebrow}
+            headline={comparisonHeader.headline.parts}
+            sub={comparisonHeader.sub}
+          />
+        }
       />
-      <Comparison noPaddingTop />
       <Process />
-      <SectionTitle
-        id={`gw-${faqData.id}-title`}
-        eyebrow={faqData.eyebrow}
-        headline={faqData.headline.parts}
-        sub={faqData.sub}
-        className="bg-surface"
+      <Faq
+        data={faqData}
+        title={
+          <SectionTitle
+            id={`gw-${faqData.id}-title`}
+            eyebrow={faqData.eyebrow}
+            headline={faqData.headline.parts}
+            sub={faqData.sub}
+          />
+        }
       />
-      <Faq data={faqData} noPaddingTop />
     </>
   );
 }

@@ -1,5 +1,6 @@
 "use client";
 
+import type { ReactNode } from "react";
 import { useEffect, useRef, useState } from "react";
 import { Check } from "lucide-react";
 import { GHL_BOOKING_URL, GHL_EMBED_SCRIPT } from "@/lib/config/conversion";
@@ -18,9 +19,9 @@ const POINTS = [
  *  the section nears the viewport, so it never weighs down the initial page.
  *  The booking modal still handles every other "Book a call" CTA. */
 export default function BookingSection({
+  title,
   moduleTitle,
-  noPaddingTop,
-}: { moduleTitle?: string; noPaddingTop?: boolean } = {}) {
+}: { title?: ReactNode; moduleTitle?: string } = {}) {
   const sentinelRef = useRef<HTMLDivElement>(null);
   const [loaded, setLoaded] = useState(false);
 
@@ -72,9 +73,8 @@ export default function BookingSection({
         className="pointer-events-none absolute inset-0 -z-10 bg-[linear-gradient(to_right,rgba(255,255,255,0.04)_1px,transparent_1px),linear-gradient(to_bottom,rgba(255,255,255,0.04)_1px,transparent_1px)] bg-size-[64px_64px] mask-[radial-gradient(ellipse_60%_50%_at_50%_50%,#000,transparent_85%)]"
       />
 
-      <div
-        className={`container-1200 ${noPaddingTop ? "pb-24 pt-0 sm:pb-28 lg:pb-32" : "py-24 sm:py-28 lg:py-32"}`}
-      >
+      <div className="container-1200 gw-section">
+        {title}
         {moduleTitle && <ModuleTitle id="gw-booking-section-module-title">{moduleTitle}</ModuleTitle>}
         {/* Top: the pitch, centered */}
         <ScrollFadeIn delay={0.1}>

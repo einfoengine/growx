@@ -75,5 +75,234 @@
       "question": "What do you need from us to get started?",
       "answer": "Brand assets (logo, colours, fonts), existing content samples or tone notes, and platform access. You add these when you place the order, and your account manager confirms anything missing."
     }
-  ]
+  ],
+  "landing": {
+    "hero": {
+      "stats": [
+        { "id": "st-social-1", "label": "$350 per platform, monthly" },
+        { "id": "st-social-2", "label": "Calendar, design, captions, scheduling" },
+        { "id": "st-social-3", "label": "100% under your agency's name" },
+        { "id": "st-social-4", "label": "Month-to-month available" }
+      ],
+      "ctaNote": "30 minutes with our founding team. No pitch deck, no pressure.",
+      "secondaryCta": {
+        "id": "service-page-social-cta-pricing",
+        "label": "See management pricing",
+        "href": "#gw-mod-service-pricing"
+      }
+    },
+    "vsl": { "videoId": "oGKjh10TbK0" },
+    "platforms": [
+      "Instagram",
+      "Facebook",
+      "LinkedIn",
+      "TikTok",
+      "X",
+      "Pinterest",
+      "Meta Business Suite",
+      "Canva"
+    ],
+    "pains": {
+      "id": "mod-social-pains",
+      "eyebrow": "The social problem",
+      "headline": {
+        "parts": [
+          { "type": "text", "value": "Every client wants social. " },
+          { "type": "highlight", "value": "Nobody wants to run it." }
+        ]
+      },
+      "sub": "Social management is the easiest retainer to sell and the most relentless one to deliver — every day, every platform, in public.",
+      "cards": [
+        {
+          "id": "pain-social-1",
+          "title": "The daily grind nobody bills for",
+          "blurb": "Posting every day is real work that never shows up as a line item — it just quietly eats your team's week.",
+          "icon": "clock",
+          "points": [
+            "Daily posts, stories, and formats add up",
+            "Low-margin work crowds out high-margin work",
+            "A flat fee that keeps the grind off your team"
+          ]
+        },
+        {
+          "id": "pain-social-2",
+          "title": "Design + copy + scheduling = three hires",
+          "blurb": "One social retainer needs a designer, a copywriter, and a scheduler. That math doesn't work for one client.",
+          "icon": "layers",
+          "points": [
+            "Three skill sets for one retainer",
+            "Freelancer patchworks drift off-brand",
+            "One team covers all three, per platform"
+          ]
+        },
+        {
+          "id": "pain-social-3",
+          "title": "Ghost-town feeds kill retainers",
+          "blurb": "The moment your team gets busy, the client's feed goes quiet — and everyone can see it, including the client.",
+          "icon": "trending-down",
+          "points": [
+            "Inconsistency is publicly visible",
+            "Quiet feeds get retainers questioned",
+            "A cadence that never depends on your week"
+          ]
+        },
+        {
+          "id": "pain-social-4",
+          "title": "Flaky freelancers fail in public",
+          "blurb": "A missed deadline on a website is private. A missed post is a public miss under your client's name.",
+          "icon": "user-x",
+          "points": [
+            "Every miss happens on a public feed",
+            "Your brand absorbs the blame",
+            "Scheduled, approved, and never missed"
+          ]
+        }
+      ]
+    },
+    "features": {
+      "eyebrow": "The full management scope",
+      "headline": {
+        "parts": [
+          { "type": "text", "value": "Everything a social retainer needs, " },
+          { "type": "highlight", "value": "every single month." }
+        ]
+      },
+      "sub": "Strategy, design, copy, publishing, and reporting — one flat fee per platform, delivered under your brand.",
+      "groups": [
+        {
+          "id": "feat-social-strategy",
+          "title": "Strategy & calendar",
+          "icon": "search",
+          "items": [
+            "Monthly content calendar per client",
+            "Content mix tuned to each platform",
+            "Campaign and seasonal planning",
+            "Calendar approved before anything posts"
+          ]
+        },
+        {
+          "id": "feat-social-creative",
+          "title": "Design & creative",
+          "icon": "palette",
+          "items": [
+            "Platform-native graphics, not resizes",
+            "On-brand templates built per client",
+            "Voice-matched captions with real hooks",
+            "Hashtag and format research included"
+          ]
+        },
+        {
+          "id": "feat-social-publishing",
+          "title": "Publishing & scheduling",
+          "icon": "wrench",
+          "items": [
+            "Scheduled cadence that never slips",
+            "Best-time publishing per platform",
+            "Stories and feed formats covered",
+            "Works in your client's native tools"
+          ]
+        },
+        {
+          "id": "feat-social-safety",
+          "title": "Approval & brand safety",
+          "icon": "shield",
+          "items": [
+            "Nothing posts without your sign-off",
+            "Client brand guidelines enforced",
+            "Instant pause process for sensitive days",
+            "Clear escalation if anything blows up"
+          ]
+        },
+        {
+          "id": "feat-social-reporting",
+          "title": "Reporting",
+          "icon": "bar-chart-3",
+          "items": [
+            "Client-ready monthly reports, your brand",
+            "Growth, reach, and engagement tracked",
+            "Plain-English \"what worked and why\"",
+            "Forwardable as-is — no editing needed"
+          ]
+        },
+        {
+          "id": "feat-social-terms",
+          "title": "Flexible terms",
+          "icon": "headset",
+          "items": [
+            "Month-to-month available — no lock-in",
+            "Commitment discounts up to 15%",
+            "Add or drop platforms monthly",
+            "White-label support under your brand"
+          ]
+        }
+      ]
+    },
+    "pricing": {
+      "eyebrow": "Transparent retainer pricing",
+      "headline": {
+        "parts": [
+          { "type": "text", "value": "Our fee is your cost. " },
+          { "type": "highlight", "value": "The retainer is yours." }
+        ]
+      },
+      "sub": "One flat management fee per platform, billed monthly. You set your client's retainer — and the margin renews every month the feed stays alive.",
+      "markupOptions": [1.5, 2, 3],
+      "defaultMarkup": 2,
+      "guarantees": [
+        {
+          "id": "g-social-1",
+          "title": "Nothing posts without sign-off",
+          "description": "Every calendar and every post clears your approval before it reaches a public feed. No surprises under your client's name."
+        },
+        {
+          "id": "g-social-2",
+          "title": "Brand-safe by process",
+          "description": "Client guidelines enforced on every post, an instant pause process for sensitive days, and clear escalation if anything needs attention."
+        },
+        {
+          "id": "g-social-3",
+          "title": "White-label confidentiality",
+          "description": "Your brand on every calendar, report, and thread. Your client never learns we exist."
+        },
+        {
+          "id": "g-social-4",
+          "title": "No long-term lock-in",
+          "description": "Month-to-month is a real option, not a teaser. Commitment discounts are there when you want them."
+        }
+      ],
+      "note": "Not ready to talk? Create a free partner account and browse the whole catalog at your own pace."
+    },
+    "differentiators": {
+      "eyebrow": "Why growX",
+      "headline": {
+        "parts": [
+          { "type": "text", "value": "Hands-off for you. " },
+          { "type": "highlight", "value": "On-brand for them." }
+        ]
+      },
+      "sub": "Fully managed under your name, platform-native execution, and retainer stability you can build revenue on."
+    },
+    "faqExtra": [
+      {
+        "id": "faq-social-5",
+        "question": "Do you guarantee follower growth?",
+        "answer": "No — and treat anyone who does with suspicion, because bought numbers are the only way to guarantee them. What we commit to: consistent, on-brand publishing, engagement-focused content, and honest monthly reporting on what's growing and why."
+      },
+      {
+        "id": "faq-social-6",
+        "question": "Who owns the social accounts?",
+        "answer": "Your client, always. We work inside their accounts (or ones created in their name) — followers, content, and history stay theirs if they ever leave."
+      },
+      {
+        "id": "faq-social-7",
+        "question": "How fast can a new client go live?",
+        "answer": "About a week from brand assets to the first approved calendar: voice and visual setup, a sample batch for your sign-off, then scheduled publishing begins. Rush onboarding is possible when a client is switching mid-month."
+      },
+      {
+        "id": "faq-social-8",
+        "question": "What if my client dislikes a post?",
+        "answer": "It never gets that far — every post clears your approval before publishing. If tastes change after approval, revisions are quick and the calendar adjusts from the next batch."
+      }
+    ]
+  }
 }

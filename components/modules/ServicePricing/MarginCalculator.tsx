@@ -34,11 +34,17 @@ export default function MarginCalculator({ config, markupOptions, defaultMarkup 
     config.durations.find((d) => d.multiplier === 1) ?? config.durations[0];
 
   // Default to the range midpoint (capped at 5): a representative project, not
-  // the maximum — opening on the top price reads like a hard sell.
+  // the maximum — opening on the top price reads like a hard sell. Snapped to
+  // the qty step grid so the default is always a value the slider can hold.
+  const rawDefault = Math.min(
+    5,
+    Math.max(config.minQty, Math.round((config.minQty + config.maxQty) / 2))
+  );
   const [qty, setQty] = useState(
     Math.min(
-      5,
-      Math.max(config.minQty, Math.round((config.minQty + config.maxQty) / 2))
+      config.maxQty,
+      config.minQty +
+        Math.round((rawDefault - config.minQty) / config.qtyStep) * config.qtyStep
     )
   );
   const [durationId, setDurationId] = useState(defaultDuration.id);

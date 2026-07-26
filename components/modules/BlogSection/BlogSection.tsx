@@ -7,15 +7,14 @@ import BlogScroller from "./BlogScroller";
 
 export default async function BlogSection({
   moduleTitle,
-  noPaddingTop,
-}: { moduleTitle?: string; noPaddingTop?: boolean } = {}) {
+}: { moduleTitle?: string } = {}) {
   const { posts } = await getBlog();
   if (posts.length === 0) return null;
 
   return (
     <section
       id="gw-mod-blog"
-      className={`relative overflow-hidden bg-surface ${noPaddingTop ? "pb-24 pt-0 sm:pb-28 lg:pb-32" : "py-24 sm:py-28 lg:py-32"}`}
+      className="relative overflow-hidden bg-surface gw-section"
     >
       <div className="container-1200">
         {moduleTitle && <ModuleTitle id="gw-blog-section-module-title">{moduleTitle}</ModuleTitle>}

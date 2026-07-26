@@ -1,3 +1,4 @@
+import type { ReactNode } from "react";
 import { Check } from "lucide-react";
 import ScrollFadeIn from "@/components/elements/ScrollFadeIn";
 import ModuleTitle from "@/components/elements/ModuleTitle";
@@ -6,19 +7,17 @@ import NewsletterForm from "./NewsletterForm";
 
 export default async function Newsletter({
   moduleTitle,
-  noPaddingTop,
-}: { moduleTitle?: string; noPaddingTop?: boolean } = {}) {
+  title,
+}: { moduleTitle?: string; title?: ReactNode } = {}) {
   const data = await getNewsletter();
 
   return (
     <section
       id={`gw-${data.id}`}
-      // noPaddingTop: a SectionTitle module sits directly above.
-      className={`relative bg-background ${
-        noPaddingTop ? "pb-24 pt-0 sm:pb-28 lg:pb-32" : "py-24 sm:py-28 lg:py-32"
-      }`}
+      className="relative bg-background gw-section"
     >
       <div className="container-1200">
+        {title}
         {moduleTitle && (
           <ModuleTitle id="gw-newsletter-module-title">{moduleTitle}</ModuleTitle>
         )}

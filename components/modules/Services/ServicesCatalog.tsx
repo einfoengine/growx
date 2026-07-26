@@ -1,11 +1,12 @@
 "use client";
 
-import { useRef, useState } from "react";
+import { useRef, useState, type ReactNode } from "react";
 import ServiceDetailModal from "./ServiceDetailModal";
 import { GROUPS, SERVICE_ICON_BY_KEY, type Service } from "./servicesData";
 import ScrollFadeIn from "@/components/elements/ScrollFadeIn";
 import Button from "@/components/elements/Button";
 import ModuleTitle from "@/components/elements/ModuleTitle";
+import SectionTitle from "@/components/modules/SectionTitle/SectionTitle";
 import type { HeadlinePart, ServiceIcon } from "@/lib/content/types";
 
 /** Serializable catalog override (this is a client component, so callers pass
@@ -58,7 +59,8 @@ function diamondVisibility(index: number, total: number): string {
 export default function ServicesCatalog({
   data,
   moduleTitle,
-}: { data?: ServicesCatalogData; moduleTitle?: string } = {}) {
+  title,
+}: { data?: ServicesCatalogData; moduleTitle?: string; title?: ReactNode } = {}) {
   const [detailService, setDetailService] = useState<Service | null>(null);
   // The element that opened the modal, so focus can return to it on close.
   const triggerRef = useRef<HTMLElement | null>(null);
@@ -85,7 +87,23 @@ export default function ServicesCatalog({
         className="pointer-events-none absolute inset-0 -z-10 bg-[linear-gradient(to_right,rgba(10,10,10,0.05)_1px,transparent_1px),linear-gradient(to_bottom,rgba(10,10,10,0.05)_1px,transparent_1px)] bg-size-[48px_48px] mask-[radial-gradient(ellipse_75%_70%_at_50%_45%,#000,transparent_85%)]"
       />
 
-      <div className="container-1200 px-6 py-20 sm:px-8 sm:py-24">
+      <div className="container-1200 px-6 sm:px-8 gw-section">
+        {title ?? (
+          <SectionTitle
+            id="gw-mod-services-catalog-title"
+            eyebrow={data?.eyebrow ?? "Full-stack catalog"}
+            headline={
+              data?.headline.parts ?? [
+                { type: "text", value: "Every service you sell, " },
+                { type: "highlight", value: "delivered under your brand." },
+              ]
+            }
+            sub={
+              data?.sub ??
+              "Freelancer patchworks miss deadlines, drift off-brand, and cap what you can sell. One in-house team covers all twelve under fixed pricing, so every ask becomes revenue, not a scramble."
+            }
+          />
+        )}
         {moduleTitle && <ModuleTitle id="gw-services-catalog-module-title">{moduleTitle}</ModuleTitle>}
 
         {/* Every service in one view: icon, title, one-line description.
@@ -98,7 +116,7 @@ export default function ServicesCatalog({
             the owning cell's real bottom-right corner, so it lands exactly on
             the join even though the rows are auto-height. */}
         <ScrollFadeIn delay={0.2}>
-          <ul className="mt-12 grid grid-cols-1 gap-px overflow-hidden rounded-xl border border-border bg-border sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
+          <ul className="mt-0 grid grid-cols-1 gap-px overflow-hidden rounded-xl border border-border bg-border sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
             {data
               ? data.items.map((item, i) => {
                   const Icon = SERVICE_ICON_BY_KEY[item.icon];

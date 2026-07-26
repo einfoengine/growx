@@ -26,9 +26,9 @@ import {
  *  tiers → why-us comparison → FAQ → newsletter → sister brands. The footer's
  *  global CtaBanner ("Ready when you are") closes the page.
  *
- *  Section headings are standalone SectionTitle modules (the content modules
- *  render bodies only); each titled module gets noPaddingTop since the title
- *  provides the top spacing. */
+ *  Section headings render inside the module they introduce, passed via each
+ *  module's `title` prop as a background-less SectionTitle, so the heading
+ *  inherits the module's own surface and padding. */
 export default async function HomePage() {
   const [testimonials, tiers, comparison, faq, newsletter] = await Promise.all([
     getTestimonials(),
@@ -45,68 +45,80 @@ export default async function HomePage() {
         <PartnerMarquee />
         <ServicesCatalog />
         {/* [ WHAT WE TAKE OFF YOUR PLATE ] — the problem/pillars section. */}
-        <SectionTitle
-          id="gw-mod-growth-pillars-title"
-          eyebrow="What we take off your plate"
-          headline={[
-            { type: "text", value: "Three problems that cap growth, " },
-            { type: "highlight", value: "handled for you." },
-          ]}
-          sub="You sell and scale. We handle fulfillment, your client relationships, and a partnership that expands as fast as you do."
-          className="bg-surface"
+        <GrowthPillars
+          title={
+            <SectionTitle
+              id="gw-mod-growth-pillars-title"
+              eyebrow="What we take off your plate"
+              headline={[
+                { type: "text", value: "Three problems that cap growth, " },
+                { type: "highlight", value: "handled for you." },
+              ]}
+              sub="You sell and scale. We handle fulfillment, your client relationships, and a partnership that expands as fast as you do."
+            />
+          }
         />
-        <GrowthPillars noPaddingTop />
         <ServiceGallery />
         <ProcessJourney />
         {/* Trust cluster: quotes → logo wall → lineage, so the offer below
             lands on maximum credibility. */}
-        <SectionTitle
-          id="gw-mod-testimonials-title"
-          eyebrow={testimonials.eyebrow}
-          headline={testimonials.headline.parts}
-          sub={testimonials.sub}
-          className="bg-background"
+        <Testimonials
+          title={
+            <SectionTitle
+              id="gw-mod-testimonials-title"
+              eyebrow={testimonials.eyebrow}
+              headline={testimonials.headline.parts}
+              sub={testimonials.sub}
+            />
+          }
         />
-        <Testimonials noPaddingTop />
         <TrustedBy />
         {/* [ THREE BRANDS. ONE MISSION. ] */}
         <SisterBrands />
         {/* [ PARTNERSHIP TIERS ] — the offer, on the trust just built. */}
-        <SectionTitle
-          id="gw-mod-pricing-title"
-          eyebrow={tiers.eyebrow}
-          headline={tiers.headline.parts}
-          sub={tiers.sub}
-          className="bg-surface"
+        <PricingPlans
+          title={
+            <SectionTitle
+              id="gw-mod-pricing-title"
+              eyebrow={tiers.eyebrow}
+              headline={tiers.headline.parts}
+              sub={tiers.sub}
+            />
+          }
         />
-        <PricingPlans noPaddingTop />
         {/* [ WHY AGENCIES CHOOSE US ] — the alternatives, priced against it. */}
-        <SectionTitle
-          id="gw-mod-comparison-title"
-          eyebrow={comparison.eyebrow}
-          headline={comparison.headline.parts}
-          sub={comparison.sub}
-          className="bg-background"
+        <Comparison
+          title={
+            <SectionTitle
+              id="gw-mod-comparison-title"
+              eyebrow={comparison.eyebrow}
+              headline={comparison.headline.parts}
+              sub={comparison.sub}
+            />
+          }
         />
-        <Comparison noPaddingTop />
         {/* [ COMMON QUESTIONS ] — objections. */}
-        <SectionTitle
-          id="gw-mod-faq-title"
-          eyebrow={faq.eyebrow}
-          headline={faq.headline.parts}
-          sub={faq.sub}
-          className="bg-surface"
+        <Faq
+          title={
+            <SectionTitle
+              id="gw-mod-faq-title"
+              eyebrow={faq.eyebrow}
+              headline={faq.headline.parts}
+              sub={faq.sub}
+            />
+          }
         />
-        <Faq noPaddingTop />
         {/* [ THE GROWX LETTER ] — soft capture for the not-ready-yet. */}
-        <SectionTitle
-          id="gw-mod-newsletter-title"
-          eyebrow={newsletter.eyebrow}
-          headline={newsletter.headline.parts}
-          sub={newsletter.sub}
-          className="bg-background"
+        <Newsletter
+          title={
+            <SectionTitle
+              id="gw-mod-newsletter-title"
+              eyebrow={newsletter.eyebrow}
+              headline={newsletter.headline.parts}
+              sub={newsletter.sub}
+            />
+          }
         />
-        <Newsletter noPaddingTop />
       </div>
       {/* [ READY WHEN YOU ARE ] — the global CtaBanner in the footer, no longer
           hidden on this route. */}

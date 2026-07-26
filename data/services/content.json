@@ -75,5 +75,234 @@
       "question": "What industries do you write for?",
       "answer": "We work across the industries your clients serve: local services, e-commerce, SaaS, professional services, and more. The voice-matching process handles the niche specifics."
     }
-  ]
+  ],
+  "landing": {
+    "hero": {
+      "stats": [
+        { "id": "st-content-1", "label": "$250 per piece, flat" },
+        { "id": "st-content-2", "label": "One-off batches or monthly" },
+        { "id": "st-content-3", "label": "Human-written, editor-checked" },
+        { "id": "st-content-4", "label": "Voice-matched to your client" }
+      ],
+      "ctaNote": "30 minutes with our founding team. No pitch deck, no pressure.",
+      "secondaryCta": {
+        "id": "service-page-content-cta-pricing",
+        "label": "See content pricing",
+        "href": "#gw-mod-service-pricing"
+      }
+    },
+    "vsl": { "videoId": "oGKjh10TbK0" },
+    "platforms": [
+      "Google Docs",
+      "Notion",
+      "WordPress",
+      "Webflow",
+      "Surfer SEO",
+      "Grammarly",
+      "Mailchimp",
+      "Klaviyo"
+    ],
+    "pains": {
+      "id": "mod-content-pains",
+      "eyebrow": "The content problem",
+      "headline": {
+        "parts": [
+          { "type": "text", "value": "Every client needs content. " },
+          { "type": "highlight", "value": "Nobody can staff for it." }
+        ]
+      },
+      "sub": "Content is the retainer every client asks for — and the first thing that slips when your team is stretched.",
+      "cards": [
+        {
+          "id": "pain-content-1",
+          "title": "AI slop is flooding the feed",
+          "blurb": "Clients can smell generic AI output — and when it ships under their brand, the damage lands on the agency that sold it.",
+          "icon": "triangle-alert",
+          "points": [
+            "Generic output reads as a cut corner",
+            "Google and readers both punish it",
+            "Human writing is the differentiator now"
+          ]
+        },
+        {
+          "id": "pain-content-2",
+          "title": "Writers who don't get marketing",
+          "blurb": "Plenty of writers produce pretty paragraphs. Few write to rank, convert, and move a client's pipeline.",
+          "icon": "user-x",
+          "points": [
+            "Pretty words, zero search intent",
+            "No CTA thinking, no offer awareness",
+            "Copy should sell, not just read well"
+          ]
+        },
+        {
+          "id": "pain-content-3",
+          "title": "The content treadmill",
+          "blurb": "Every retainer means blogs, emails, and pages — every month, forever. Your in-house capacity was gone two clients ago.",
+          "icon": "clock",
+          "points": [
+            "Volume compounds with every client",
+            "Deadlines slip, retainers wobble",
+            "A bench that scales with your roster"
+          ]
+        },
+        {
+          "id": "pain-content-4",
+          "title": "Voice drift across writers",
+          "blurb": "Five freelancers means five voices under one client's brand — and your client notices by the second post.",
+          "icon": "layers",
+          "points": [
+            "Inconsistency erodes client trust",
+            "Onboarding every writer eats margin",
+            "One voice guide, held by one team"
+          ]
+        }
+      ]
+    },
+    "features": {
+      "eyebrow": "The full writing scope",
+      "headline": {
+        "parts": [
+          { "type": "text", "value": "Copy that ranks, converts, " },
+          { "type": "highlight", "value": "and holds a voice." }
+        ]
+      },
+      "sub": "Every piece is SEO-informed, conversion-aware, and matched to your client's voice — delivered under your brand.",
+      "groups": [
+        {
+          "id": "feat-content-seo",
+          "title": "SEO-informed writing",
+          "icon": "search",
+          "items": [
+            "Keyword-mapped briefs before writing starts",
+            "Search-intent structure, not word soup",
+            "Internal links and on-page basics included",
+            "AEO-ready formatting AI engines can cite"
+          ]
+        },
+        {
+          "id": "feat-content-conversion",
+          "title": "Conversion copywriting",
+          "icon": "gauge",
+          "items": [
+            "Offer-aware landing and email copy",
+            "CTAs written to move the pipeline",
+            "Ad copy variants ready for testing",
+            "Tone calibrated to the funnel stage"
+          ]
+        },
+        {
+          "id": "feat-content-voice",
+          "title": "Voice & brand matching",
+          "icon": "palette",
+          "items": [
+            "A voice guide built per client",
+            "Sample piece approved before volume starts",
+            "Consistent across every writer and format",
+            "Reads like it came from their team"
+          ]
+        },
+        {
+          "id": "feat-content-quality",
+          "title": "Human quality control",
+          "icon": "shield",
+          "items": [
+            "Human-written — never AI-spun filler",
+            "Editor pass on every single piece",
+            "Originality-checked before delivery",
+            "Facts and claims verified in-draft"
+          ]
+        },
+        {
+          "id": "feat-content-ops",
+          "title": "Content ops & reporting",
+          "icon": "bar-chart-3",
+          "items": [
+            "Monthly content calendar per client",
+            "Briefs you can forward for approval",
+            "On-time delivery you can promise",
+            "Client-ready reporting, your brand"
+          ]
+        },
+        {
+          "id": "feat-content-terms",
+          "title": "Flexible terms",
+          "icon": "headset",
+          "items": [
+            "One-off batches or monthly retainers",
+            "Two revision rounds on every piece",
+            "Scale pieces up or down monthly",
+            "White-label support under your brand"
+          ]
+        }
+      ]
+    },
+    "pricing": {
+      "eyebrow": "Transparent pricing",
+      "headline": {
+        "parts": [
+          { "type": "text", "value": "Our rate is your cost. " },
+          { "type": "highlight", "value": "The markup is yours." }
+        ]
+      },
+      "sub": "One flat rate per piece — order a one-off batch or run a monthly content retainer. You set your client's price; the margin is yours.",
+      "markupOptions": [1.5, 2, 3],
+      "defaultMarkup": 2,
+      "guarantees": [
+        {
+          "id": "g-content-1",
+          "title": "Human-written, guaranteed",
+          "description": "Real writers, an editor pass, and originality checks on every piece. AI-spun filler never ships under your client's name."
+        },
+        {
+          "id": "g-content-2",
+          "title": "Two revision rounds included",
+          "description": "Every piece includes two rounds of revisions inside scope — no surprise invoices for polish."
+        },
+        {
+          "id": "g-content-3",
+          "title": "White-label confidentiality",
+          "description": "Your brand on every doc, brief, and report. Your client never learns we exist."
+        },
+        {
+          "id": "g-content-4",
+          "title": "You approve first",
+          "description": "Nothing reaches your client before you've signed off. You present the work as yours, because it is."
+        }
+      ],
+      "note": "Not ready to talk? Create a free partner account and browse the whole catalog at your own pace."
+    },
+    "differentiators": {
+      "eyebrow": "Why growX",
+      "headline": {
+        "parts": [
+          { "type": "text", "value": "Written by humans. " },
+          { "type": "highlight", "value": "Priced for resellers." }
+        ]
+      },
+      "sub": "SEO-informed, voice-matched, and consistent at volume — content your client renews for."
+    },
+    "faqExtra": [
+      {
+        "id": "faq-content-5",
+        "question": "Is the content AI-generated?",
+        "answer": "No. Every piece is written by a human writer and passes an editor review plus originality checks before delivery. We may use AI for research assistance, but the writing your client receives is human — that's the whole point of the voice guarantee."
+      },
+      {
+        "id": "faq-content-6",
+        "question": "What counts as one piece?",
+        "answer": "One blog post or article up to ~1,500 words, one landing page, or one email sequence of up to five emails. Bigger scopes (pillar pages, long-form guides) are quoted as multiples — your quote lists every piece before you commit."
+      },
+      {
+        "id": "faq-content-7",
+        "question": "Can you hold a monthly publishing schedule?",
+        "answer": "Yes — that's what the retainer is for. Each client gets a monthly content calendar, briefs are approved up front, and delivery dates are commitments you can pass on to your client."
+      },
+      {
+        "id": "faq-content-8",
+        "question": "Who owns the content?",
+        "answer": "Your client, fully. All drafts, final files, and publishing rights transfer with delivery — no license-back, no reuse by us, ever."
+      }
+    ]
+  }
 }

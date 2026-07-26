@@ -90,5 +90,234 @@
       "question": "How is it priced?",
       "answer": "Onboarding and custom builds are fixed-price per project; ongoing admin is a monthly retainer. Everything is ordered in one click from the partner portal."
     }
-  ]
+  ],
+  "landing": {
+    "hero": {
+      "stats": [
+        { "id": "st-hl-1", "label": "$500 per account, monthly" },
+        { "id": "st-hl-2", "label": "Onboarding, admin, custom dev" },
+        { "id": "st-hl-3", "label": "SLA'd support under your brand" },
+        { "id": "st-hl-4", "label": "Month-to-month available" }
+      ],
+      "ctaNote": "30 minutes with our founding team. No pitch deck, no pressure.",
+      "secondaryCta": {
+        "id": "service-page-highlevel-cta-pricing",
+        "label": "See account pricing",
+        "href": "#gw-mod-service-pricing"
+      }
+    },
+    "vsl": { "videoId": "oGKjh10TbK0" },
+    "platforms": [
+      "HighLevel",
+      "Twilio",
+      "Mailgun",
+      "Stripe",
+      "Zapier",
+      "Google Workspace",
+      "Slack",
+      "WordPress"
+    ],
+    "pains": {
+      "id": "mod-highlevel-pains",
+      "eyebrow": "The HighLevel problem",
+      "headline": {
+        "parts": [
+          { "type": "text", "value": "Selling HighLevel is easy. " },
+          { "type": "highlight", "value": "Running it is a full-time department." }
+        ]
+      },
+      "sub": "Every subaccount you sell comes with setup, support, and upkeep attached — and that work lands on whoever sold it.",
+      "cards": [
+        {
+          "id": "pain-hl-1",
+          "title": "SaaS you sold, support you owe",
+          "blurb": "The subscription margin looked great until every subaccount turned into an open support queue with your name on it.",
+          "icon": "clock",
+          "points": [
+            "Every client account generates tickets",
+            "Support hours eat the SaaS margin",
+            "An SLA'd queue that isn't your inbox"
+          ]
+        },
+        {
+          "id": "pain-hl-2",
+          "title": "The platform is deep — most teams aren't",
+          "blurb": "Workflows, LC phone, calendars, snapshots, API — HighLevel rewards expertise and quietly punishes guesswork.",
+          "icon": "layers",
+          "points": [
+            "Powerful features, steep learning curve",
+            "Misconfigurations surface as client bugs",
+            "It's our home turf — we live in it daily"
+          ]
+        },
+        {
+          "id": "pain-hl-3",
+          "title": "Half-built accounts churn",
+          "blurb": "A subaccount that never got fully configured quietly stops being used — and then quietly cancels.",
+          "icon": "trending-down",
+          "points": [
+            "Unused features read as no value",
+            "Onboarding depth decides retention",
+            "Fully-built accounts renew themselves"
+          ]
+        },
+        {
+          "id": "pain-hl-4",
+          "title": "Deliverability disasters",
+          "blurb": "Unverified domains and skipped registrations land your client's email and SMS in spam — under your brand.",
+          "icon": "triangle-alert",
+          "points": [
+            "Skipped setup burns sending domains",
+            "Carrier registration isn't optional",
+            "Verified sending, done properly, first"
+          ]
+        }
+      ]
+    },
+    "features": {
+      "eyebrow": "The full department scope",
+      "headline": {
+        "parts": [
+          { "type": "text", "value": "Everything a HighLevel department does, " },
+          { "type": "highlight", "value": "under your name." }
+        ]
+      },
+      "sub": "Onboarding, sending, automations, custom development, and support — one flat fee per client account.",
+      "groups": [
+        {
+          "id": "feat-hl-onboarding",
+          "title": "Onboarding engine",
+          "icon": "search",
+          "items": [
+            "Intake to live account, done for you",
+            "Snapshots deployed and customized",
+            "Calendars, pipelines, and forms configured",
+            "Go-live checklist signed off with you"
+          ]
+        },
+        {
+          "id": "feat-hl-sending",
+          "title": "Deliverability & sending",
+          "icon": "shield",
+          "items": [
+            "Verified email and SMS sending setup",
+            "Domain configuration and warmup",
+            "Carrier compliance registration handled",
+            "Deliverability monitored month to month"
+          ]
+        },
+        {
+          "id": "feat-hl-automations",
+          "title": "Automations & campaigns",
+          "icon": "bot",
+          "items": [
+            "Workflows built to the client's process",
+            "Campaigns wired end to end",
+            "AI features configured where they help",
+            "Everything tested before handoff"
+          ]
+        },
+        {
+          "id": "feat-hl-dev",
+          "title": "Custom dev & integrations",
+          "icon": "code",
+          "items": [
+            "Custom widgets, pages, and functions",
+            "API and webhook integrations",
+            "Zapier bridges where APIs stop",
+            "Membership and community setups"
+          ]
+        },
+        {
+          "id": "feat-hl-support",
+          "title": "Admin & support",
+          "icon": "headset",
+          "items": [
+            "Day-to-day admin off your plate",
+            "Predictable SLAs on every request",
+            "White-label replies under your brand",
+            "Faster SLAs on paid partner tiers"
+          ]
+        },
+        {
+          "id": "feat-hl-health",
+          "title": "Snapshots & health",
+          "icon": "bar-chart-3",
+          "items": [
+            "Reusable snapshot builds you keep",
+            "New clients live in days, not weeks",
+            "Monthly account health reports",
+            "Upsell signals you can actually sell"
+          ]
+        }
+      ]
+    },
+    "pricing": {
+      "eyebrow": "Transparent retainer pricing",
+      "headline": {
+        "parts": [
+          { "type": "text", "value": "Our fee is your cost. " },
+          { "type": "highlight", "value": "The SaaS margin stays yours." }
+        ]
+      },
+      "sub": "One flat fee per managed client account, billed monthly. Your agency plan, your subaccounts, your subscription revenue — we're just the department running it.",
+      "markupOptions": [1.5, 2, 3],
+      "defaultMarkup": 2,
+      "guarantees": [
+        {
+          "id": "g-hl-1",
+          "title": "SLA'd response times",
+          "description": "Every request lands in a queue with a committed response window — predictable enough to promise your clients."
+        },
+        {
+          "id": "g-hl-2",
+          "title": "Your accounts stay yours",
+          "description": "We work inside your agency account. Subaccounts, snapshots, and SaaS revenue are yours — leaving us costs you nothing."
+        },
+        {
+          "id": "g-hl-3",
+          "title": "White-label confidentiality",
+          "description": "Dashboards, replies, and reports all carry your brand. Your client never learns we exist."
+        },
+        {
+          "id": "g-hl-4",
+          "title": "No long-term lock-in",
+          "description": "Month-to-month is a real option, not a teaser. Commitment discounts are there when you want them."
+        }
+      ],
+      "note": "Not ready to talk? Create a free partner account and browse the whole catalog at your own pace."
+    },
+    "differentiators": {
+      "eyebrow": "Why growX",
+      "headline": {
+        "parts": [
+          { "type": "text", "value": "Built in HighLevel. " },
+          { "type": "highlight", "value": "Run as your team." }
+        ]
+      },
+      "sub": "Home-turf expertise, predictable SLAs, and a department that stays invisible behind your brand."
+    },
+    "faqExtra": [
+      {
+        "id": "hl-f6",
+        "question": "What counts as one account?",
+        "answer": "One client subaccount under active management — its onboarding upkeep, admin queue, and health reporting. Agency-level work that benefits all accounts (snapshots, templates) is spread across them, not billed twice."
+      },
+      {
+        "id": "hl-f7",
+        "question": "Do we keep our own HighLevel agency plan?",
+        "answer": "Yes — that's the point. You keep your agency account, your subaccounts, and your SaaS subscription margin. We work inside what you own; nothing about your HighLevel economics changes."
+      },
+      {
+        "id": "hl-f8",
+        "question": "Can you rescue a messy existing account?",
+        "answer": "Yes. We start with an account audit — configuration, sending, automations, unused features — delivered as a white-label report. Then we clean up and rebuild only what the audit justifies."
+      },
+      {
+        "id": "hl-f9",
+        "question": "Do you handle A2P and compliance registration?",
+        "answer": "Yes — carrier compliance registration for SMS and proper domain verification for email are part of the sending setup, not an extra. It's the difference between messages that land and campaigns that quietly fail."
+      }
+    ]
+  }
 }

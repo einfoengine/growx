@@ -1,3 +1,4 @@
+import type { ReactNode } from "react";
 import { Check, X } from "lucide-react";
 import ScrollFadeIn from "@/components/elements/ScrollFadeIn";
 import ModuleTitle from "@/components/elements/ModuleTitle";
@@ -34,7 +35,7 @@ function Cell({
   );
 }
 
-export default async function Comparison({ noPaddingTop, moduleTitle }: { noPaddingTop?: boolean; moduleTitle?: string }) {
+export default async function Comparison({ moduleTitle, title }: { moduleTitle?: string; title?: ReactNode }) {
   const data = await getComparison();
 
   return (
@@ -44,11 +45,12 @@ export default async function Comparison({ noPaddingTop, moduleTitle }: { noPadd
     >
       <div className="pointer-events-none absolute inset-0 -z-10 bg-[linear-gradient(to_right,rgba(10,10,10,0.05)_1px,transparent_1px),linear-gradient(to_bottom,rgba(10,10,10,0.05)_1px,transparent_1px)] bg-size-[48px_48px] mask-[radial-gradient(ellipse_80%_70%_at_50%_30%,#000_20%,transparent_85%)]" />
 
-      <div className={`container-1200 relative ${noPaddingTop ? "pb-24 pt-0 sm:pb-28 lg:pb-32" : "py-24 sm:py-28 lg:py-32"}`}>
+      <div className="container-1200 relative gw-section">
+        {title}
         {moduleTitle && <ModuleTitle id="gw-comparison-module-title">{moduleTitle}</ModuleTitle>}
         <ScrollFadeIn delay={0.3}>
           {/* Dark table */}
-          <div className="mt-16 overflow-hidden rounded-2xl border border-white/10 bg-foreground shadow-2xl shadow-black/20">
+          <div className={`${title || moduleTitle ? "mt-0" : "mt-16"} overflow-hidden rounded-2xl border border-white/10 bg-foreground shadow-2xl shadow-black/20`}>
             <div className="overflow-x-auto">
               <table className="w-full min-w-[640px] text-sm">
                 <thead>

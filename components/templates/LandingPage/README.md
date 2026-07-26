@@ -35,14 +35,11 @@ both themes (no `data-dark-surface` on contrast bands); every headline
 highlights one phrase with `text-gradient-brand`; every CTA books via `#book`
 (global BookingModal).
 
-**Section headings are standalone `SectionTitle` modules** (content modules
-render bodies only): place `<SectionTitle>` directly before the module and pass
-the module `noPaddingTop` so the title provides the top spacing. `SectionTitle`
-itself has **no background** and inherits the surrounding colour — give it the
-next section's ground via `className` (`bg-surface` / `bg-background` /
-`bg-foreground text-background`). Dark titles that must follow the light/dark
-theme (a `data-dark-surface` module below) go inside a
-`<div className="bg-foreground text-background" data-nav-theme="dark" data-dark-surface>`
-wrapper. `align` (`center` default / `left` / `right`) sets text alignment.
-Exceptions that still render their own headers: `ServicesCatalog`, `Services`,
-`ProcessJourney`, `TrustedBy`, `SisterBrands`, the hero.
+**Section headings render INSIDE the module they introduce**, passed via that
+module's `title` prop: `<Faq data={faqData} title={<SectionTitle … />} />`.
+`SectionTitle` has **no background** and no container/padding — it renders as
+the first child of the module's own container, inheriting that section's surface
+and text colour, so it always fits. No `className` background and no
+`noPaddingTop` are needed. `align` (`center` default / `left` / `right`) sets
+text alignment. Sections that still render their own inline headers: the hero
+and the page-specific `SectionHeader` blocks.

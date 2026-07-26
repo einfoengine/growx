@@ -1,5 +1,7 @@
+import type { ReactNode } from "react";
 import { GROUPS } from "@/components/modules/Services/servicesData";
 import ModuleTitle from "@/components/elements/ModuleTitle";
+import SectionTitle from "@/components/modules/SectionTitle/SectionTitle";
 import ScrollFadeIn from "@/components/elements/ScrollFadeIn";
 import PortfolioSlideshow from "./PortfolioSlideshow";
 
@@ -96,15 +98,29 @@ const SLIDESHOW_SKIN = {
 
 export default function ServiceGallery({
   moduleTitle,
+  title,
 }: {
   moduleTitle?: string;
+  title?: ReactNode;
 }) {
   return (
     <section
       id="gw-mod-service-gallery"
-      className="relative border-b border-border bg-background py-20 text-foreground sm:py-24 lg:py-28"
+      className="relative border-b border-border bg-background text-foreground gw-section"
     >
       <div className="container-1200">
+        {title ?? (
+          <SectionTitle
+            id="gw-mod-service-gallery-title"
+            eyebrow="Where you get our support"
+            headline={[
+              { type: "text", value: "The major areas " },
+              { type: "highlight", value: "we've got covered." },
+            ]}
+            sub="These are the service groups where growX carries the work under your brand — you sell it, we deliver it, from web and funnels to whatever comes next."
+          />
+        )}
+
         {moduleTitle && (
           <ModuleTitle id="gw-service-gallery-module-title">
             {moduleTitle}
@@ -112,7 +128,7 @@ export default function ServiceGallery({
         )}
 
         <ScrollFadeIn delay={0.2}>
-          <div className="mt-12 grid auto-rows-[220px] grid-cols-1 gap-4 sm:grid-cols-2 lg:auto-rows-[210px] lg:grid-cols-3">
+          <div className="mt-0 grid auto-rows-[220px] grid-cols-1 gap-4 sm:grid-cols-2 lg:auto-rows-[210px] lg:grid-cols-3">
             {TILES.map(({ group, desc, images, interval, tone, span }) => {
               const g = GROUPS[group];
               const Icon = g.Icon;

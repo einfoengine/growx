@@ -310,14 +310,17 @@ export default function ProcessPage({ data }: Props) {
       />
 
       {/* ── FAQ (shared module, same as the home page) ────────── */}
-      <SectionTitle
-        id="gw-process-faq-title"
-        eyebrow={data.faq.eyebrow}
-        headline={data.faq.headline.parts}
-        sub={data.faq.sub}
-        className="bg-surface"
+      <Faq
+        data={data.faq}
+        title={
+          <SectionTitle
+            id="gw-process-faq-title"
+            eyebrow={data.faq.eyebrow}
+            headline={data.faq.headline.parts}
+            sub={data.faq.sub}
+          />
+        }
       />
-      <Faq data={data.faq} noPaddingTop />
 
       {/* ── CTA ──────────────────────────────────────────────── */}
       <section id="gw-process-cta" className="relative overflow-hidden bg-background">

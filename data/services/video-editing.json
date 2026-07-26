@@ -90,5 +90,234 @@
       "question": "How is it priced?",
       "answer": "Fixed pricing per deliverable or per monthly retainer, ordered in one click from the partner portal with revision rounds included."
     }
-  ]
+  ],
+  "landing": {
+    "hero": {
+      "stats": [
+        { "id": "st-ve-1", "label": "$150 per video, monthly" },
+        { "id": "st-ve-2", "label": "Any footage: shoots, podcasts, webinars" },
+        { "id": "st-ve-3", "label": "Every aspect ratio included" },
+        { "id": "st-ve-4", "label": "Month-to-month available" }
+      ],
+      "ctaNote": "30 minutes with our founding team. No pitch deck, no pressure.",
+      "secondaryCta": {
+        "id": "service-page-video-editing-cta-pricing",
+        "label": "See editing pricing",
+        "href": "#gw-mod-service-pricing"
+      }
+    },
+    "vsl": { "videoId": "oGKjh10TbK0" },
+    "platforms": [
+      "Premiere Pro",
+      "DaVinci Resolve",
+      "After Effects",
+      "Descript",
+      "CapCut",
+      "YouTube",
+      "TikTok",
+      "Reels"
+    ],
+    "pains": {
+      "id": "mod-video-editing-pains",
+      "eyebrow": "The editing problem",
+      "headline": {
+        "parts": [
+          { "type": "text", "value": "Everyone films now. " },
+          { "type": "highlight", "value": "Nobody has time to edit." }
+        ]
+      },
+      "sub": "Short-form turned every client into a daily publisher — and every agency into an editing shop it never planned to be.",
+      "cards": [
+        {
+          "id": "pain-ve-1",
+          "title": "The content machine never stops",
+          "blurb": "Daily publishing means daily editing — every client, every platform, forever. That volume breaks an in-house workflow fast.",
+          "icon": "clock",
+          "points": [
+            "Short-form demands relentless cadence",
+            "Editing is the slowest step in the chain",
+            "A bench that absorbs the volume"
+          ]
+        },
+        {
+          "id": "pain-ve-2",
+          "title": "Editors are the first bottleneck",
+          "blurb": "One in-house editor needs several video clients to pay off — until then, every editing retainer you sell is a queue.",
+          "icon": "layers",
+          "points": [
+            "Salaries don't scale per client",
+            "Queues grow, turnarounds slip",
+            "Pay per video, scale per month"
+          ]
+        },
+        {
+          "id": "pain-ve-3",
+          "title": "The raw-footage graveyard",
+          "blurb": "Your clients are sitting on hours of podcasts, webinars, and shoots that never became content. That's retainer value decaying on a drive.",
+          "icon": "trending-down",
+          "points": [
+            "Unedited footage is unsold work",
+            "One recording can feed a month of posts",
+            "Turn the archive into a retainer"
+          ]
+        },
+        {
+          "id": "pain-ve-4",
+          "title": "Every freelancer edits differently",
+          "blurb": "Pacing, caption style, and color drift from editor to editor — and your client's feed shows the seams.",
+          "icon": "user-x",
+          "points": [
+            "Inconsistent cuts read as sloppy",
+            "Re-briefing every editor eats margin",
+            "One team, per-client style presets"
+          ]
+        }
+      ]
+    },
+    "features": {
+      "eyebrow": "The full editing scope",
+      "headline": {
+        "parts": [
+          { "type": "text", "value": "Publish-ready on every platform, " },
+          { "type": "highlight", "value": "from one upload." }
+        ]
+      },
+      "sub": "Retention-first cuts, captions, color, and clean audio — every deliverable ships finished, under your brand.",
+      "groups": [
+        {
+          "id": "feat-ve-editing",
+          "title": "Retention-first editing",
+          "icon": "gauge",
+          "items": [
+            "Hooks cut for the first three seconds",
+            "Pacing and pattern interrupts that hold",
+            "Long-form structured to keep watch time",
+            "Edited for the platform it's headed to"
+          ]
+        },
+        {
+          "id": "feat-ve-captions",
+          "title": "Captions & graphics",
+          "icon": "palette",
+          "items": [
+            "Styled captions, timed to the word",
+            "Titles, lower thirds, and callouts",
+            "Per-client caption style presets",
+            "Motion graphics where they earn it"
+          ]
+        },
+        {
+          "id": "feat-ve-audio",
+          "title": "Audio & color",
+          "icon": "wrench",
+          "items": [
+            "Noise cleanup and level balancing",
+            "Color grading and correction",
+            "Consistent look across every cut",
+            "Podcast and webinar audio rescued"
+          ]
+        },
+        {
+          "id": "feat-ve-formats",
+          "title": "Every platform, one upload",
+          "icon": "code",
+          "items": [
+            "Landscape, vertical, and square versions",
+            "Sized for YouTube, TikTok, and Reels",
+            "Thumbnails and cover frames included",
+            "The same cut counts once, not three times"
+          ]
+        },
+        {
+          "id": "feat-ve-music",
+          "title": "Copyright-safe music & SFX",
+          "icon": "shield",
+          "items": [
+            "Licensed tracks cleared for commercial use",
+            "No copyright strikes under your client's name",
+            "Sound effects that lift retention",
+            "Licensing documented at delivery"
+          ]
+        },
+        {
+          "id": "feat-ve-workflow",
+          "title": "Workflow & terms",
+          "icon": "headset",
+          "items": [
+            "Shared-drive intake per client",
+            "Brief templates that take minutes",
+            "Month-to-month available — no lock-in",
+            "Scale videos up or down monthly"
+          ]
+        }
+      ]
+    },
+    "pricing": {
+      "eyebrow": "Transparent retainer pricing",
+      "headline": {
+        "parts": [
+          { "type": "text", "value": "Our rate is your cost. " },
+          { "type": "highlight", "value": "The retainer is yours." }
+        ]
+      },
+      "sub": "One flat rate per edited video, billed monthly. You set your client's editing retainer — the margin renews with every publishing month.",
+      "markupOptions": [1.5, 2, 3],
+      "defaultMarkup": 2,
+      "guarantees": [
+        {
+          "id": "g-ve-1",
+          "title": "Copyright-safe, guaranteed",
+          "description": "Every track and effect is licensed for commercial use and documented at delivery — no strikes under your client's name."
+        },
+        {
+          "id": "g-ve-2",
+          "title": "Revisions included",
+          "description": "Revision rounds are part of every deliverable — polish never arrives as a surprise invoice."
+        },
+        {
+          "id": "g-ve-3",
+          "title": "White-label confidentiality",
+          "description": "Your brand on every delivery, brief, and thread. Your client never learns we exist."
+        },
+        {
+          "id": "g-ve-4",
+          "title": "No long-term lock-in",
+          "description": "Month-to-month is a real option, not a teaser. Commitment discounts are there when you want them."
+        }
+      ],
+      "note": "Not ready to talk? Create a free partner account and browse the whole catalog at your own pace."
+    },
+    "differentiators": {
+      "eyebrow": "Why growX",
+      "headline": {
+        "parts": [
+          { "type": "text", "value": "Raw footage in. " },
+          { "type": "highlight", "value": "Retention out." }
+        ]
+      },
+      "sub": "Edited to keep viewers watching, delivered in every ratio, and shipped 100% under your brand."
+    },
+    "faqExtra": [
+      {
+        "id": "ve-f6",
+        "question": "What counts as one video?",
+        "answer": "One edited deliverable — a short-form cut or a long-form edit. The aspect-ratio versions of the same cut (landscape, vertical, square) count once, not three times. Your monthly quote lists the exact deliverable mix."
+      },
+      {
+        "id": "ve-f7",
+        "question": "How do we send footage?",
+        "answer": "Each client gets a shared-drive intake folder — drop raw files there with a short brief and the queue picks them up. No exports, no compression gymnastics, no email attachments."
+      },
+      {
+        "id": "ve-f8",
+        "question": "Can each client have their own caption style?",
+        "answer": "Yes — every client gets their own preset: caption style, fonts, colors, and pacing preferences. Set once at onboarding, applied to every cut after, no re-briefing."
+      },
+      {
+        "id": "ve-f9",
+        "question": "Can you create video from scratch?",
+        "answer": "This service edits footage you send. For animated explainers, product demos, and motion graphics built from nothing, that's our Video Production service — same white-label terms, and many partners run both."
+      }
+    ]
+  }
 }

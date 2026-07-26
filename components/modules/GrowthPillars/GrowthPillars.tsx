@@ -75,8 +75,6 @@ export type GrowthPillarsData = {
   backdrop?: boolean;
   /** Section ground, for white/surface page alternation. */
   tone?: "surface" | "background";
-  /** A SectionTitle module sits directly above and provides the top spacing. */
-  noPaddingTop?: boolean;
 };
 
 /** Full-bleed background image for the problem section. */
@@ -331,14 +329,11 @@ const PILLARS: Pillar[] = [
 export default function GrowthPillars({
   data,
   moduleTitle,
-  noPaddingTop,
-}: { data?: GrowthPillarsData; moduleTitle?: string; noPaddingTop?: boolean } = {}) {
+  title,
+}: { data?: GrowthPillarsData; moduleTitle?: string; title?: ReactNode } = {}) {
   if (data)
     return (
-      <GrowthPillarsWithData
-        data={noPaddingTop ? { ...data, noPaddingTop: true } : data}
-        moduleTitle={moduleTitle}
-      />
+      <GrowthPillarsWithData data={data} moduleTitle={moduleTitle} title={title} />
     );
   return (
     <section
@@ -348,15 +343,11 @@ export default function GrowthPillars({
       {/* Background image. */}
       <ProblemBackground />
 
-      {/* noPaddingTop: a SectionTitle module sits directly above. */}
-      <div
-        className={`container-1200 px-6 sm:px-8 ${
-          noPaddingTop ? "pb-20 pt-0 sm:pb-24" : "py-20 sm:py-24"
-        }`}
-      >
+      <div className="container-1200 gw-section px-6 sm:px-8">
+        {title}
         {moduleTitle && <ModuleTitle id="gw-growth-pillars-module-title">{moduleTitle}</ModuleTitle>}
 
-        <div className={`grid gap-5 md:grid-cols-3 ${noPaddingTop && !moduleTitle ? "mt-0" : "mt-14"}`}>
+        <div className={`grid gap-5 md:grid-cols-3 ${title || moduleTitle ? "mt-0" : "mt-14"}`}>
           {PILLARS.map((pillar, i) => (
             <ScrollFadeIn key={pillar.n} delay={0.15 + i * 0.1} className="h-full">
               <article id={`gw-pillar-${pillar.n}`} className="group flex h-full flex-col rounded-3xl border border-border bg-background p-7 transition-colors hover:border-brand/40">
@@ -437,15 +428,16 @@ export default function GrowthPillars({
 function GrowthPillarsWithData({
   data,
   moduleTitle,
+  title,
 }: {
   data: GrowthPillarsData;
   moduleTitle?: string;
+  title?: ReactNode;
 }) {
   const {
     backdrop = true,
     tone = "surface",
     pointsIcon = "check",
-    noPaddingTop = false,
     cards,
   } = data;
   const cols =
@@ -464,14 +456,11 @@ function GrowthPillarsWithData({
     >
       {backdrop && <ProblemBackground />}
 
-      <div
-        className={`container-1200 px-6 sm:px-8 ${
-          noPaddingTop ? "pb-20 pt-0 sm:pb-24" : "py-20 sm:py-24"
-        }`}
-      >
+      <div className="container-1200 gw-section px-6 sm:px-8">
+        {title}
         {moduleTitle && <ModuleTitle id="gw-growth-pillars-module-title">{moduleTitle}</ModuleTitle>}
 
-        <div className={`grid gap-5 ${cols} ${noPaddingTop && !moduleTitle ? "mt-0" : "mt-14"}`}>
+        <div className={`grid gap-5 ${cols} ${title || moduleTitle ? "mt-0" : "mt-14"}`}>
           {cards.map((card, i) => {
             const Glyph = card.icon ? GLYPHS[card.icon] : null;
             return (

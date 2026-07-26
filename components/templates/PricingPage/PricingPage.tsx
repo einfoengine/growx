@@ -57,14 +57,17 @@ export default async function PricingPage({ pageData }: Props) {
       </section>
 
       {/* Membership plans */}
-      <SectionTitle
-        id="gw-pricing-plans-title"
-        eyebrow={pricing.eyebrow}
-        headline={pricing.headline.parts}
-        sub={pricing.sub}
-        className="bg-surface"
+      <PricingPlans
+        hidePopularBadge
+        title={
+          <SectionTitle
+            id="gw-pricing-plans-title"
+            eyebrow={pricing.eyebrow}
+            headline={pricing.headline.parts}
+            sub={pricing.sub}
+          />
+        }
       />
-      <PricingPlans hidePopularBadge noPaddingTop />
 
       {/* Service catalog with add-to-cart */}
       <ServiceCatalog />
@@ -73,41 +76,47 @@ export default async function PricingPage({ pageData }: Props) {
       <EstimateCalculator plans={plans} />
 
       {/* Purchase-mechanics objections, answered before the ask */}
-      <SectionTitle
-        id="gw-pricing-faq-title"
-        eyebrow={pageData.faq.eyebrow}
-        headline={pageData.faq.headline.parts}
-        sub={pageData.faq.sub}
-        className="bg-surface"
+      <Faq
+        data={pageData.faq}
+        title={
+          <SectionTitle
+            id="gw-pricing-faq-title"
+            eyebrow={pageData.faq.eyebrow}
+            headline={pageData.faq.headline.parts}
+            sub={pageData.faq.sub}
+          />
+        }
       />
-      <Faq data={pageData.faq} noPaddingTop />
 
       {/* Book a call */}
-      <SectionTitle
-        id="gw-pricing-book-title"
-        eyebrow="Book a partner call"
-        headline={[
-          { type: "text", value: "Let's talk about " },
-          { type: "highlight", value: "your fulfillment." },
-        ]}
-        sub="Grab 30 minutes with our founding team, on your schedule. No pressure, just a straight answer on whether we're a fit."
-        className="bg-foreground text-background"
+      <BookingSection
+        title={
+          <SectionTitle
+            id="gw-pricing-book-title"
+            eyebrow="Book a partner call"
+            headline={[
+              { type: "text", value: "Let's talk about " },
+              { type: "highlight", value: "your fulfillment." },
+            ]}
+            sub="Grab 30 minutes with our founding team, on your schedule. No pressure, just a straight answer on whether we're a fit."
+          />
+        }
       />
-      <BookingSection noPaddingTop />
 
       {/* Join / do-not-miss close */}
-      <div className="bg-foreground text-background" data-nav-theme="dark" data-dark-surface>
-        <SectionTitle
-          id="gw-pricing-join-title"
-          eyebrow="Do not miss this"
-          headline={[
-            { type: "text", value: "Join now. Order when you " },
-            { type: "highlight", value: "win the work." },
-          ]}
-          sub="A free account puts the whole catalog and its fixed pricing in front of you today. There is nothing to lose and a fulfillment team to gain."
-        />
-      </div>
-      <JoinCta noPaddingTop />
+      <JoinCta
+        title={
+          <SectionTitle
+            id="gw-pricing-join-title"
+            eyebrow="Do not miss this"
+            headline={[
+              { type: "text", value: "Join now. Order when you " },
+              { type: "highlight", value: "win the work." },
+            ]}
+            sub="A free account puts the whole catalog and its fixed pricing in front of you today. There is nothing to lose and a fulfillment team to gain."
+          />
+        }
+      />
     </>
   );
 }

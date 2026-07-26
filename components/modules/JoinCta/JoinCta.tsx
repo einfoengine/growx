@@ -1,3 +1,4 @@
+import type { ReactNode } from "react";
 import { Check } from "lucide-react";
 import ModuleTitle from "@/components/elements/ModuleTitle";
 import PlanButton from "@/components/modules/Pricing/PlanButton";
@@ -10,7 +11,7 @@ const REASONS = [
 ];
 
 /** Closing section: the reasons not to wait, plus the free-signup handoff. */
-export default function JoinCta({ moduleTitle, noPaddingTop }: { moduleTitle?: string; noPaddingTop?: boolean } = {}) {
+export default function JoinCta({ title, moduleTitle }: { title?: ReactNode; moduleTitle?: string } = {}) {
   return (
     <section
       id="gw-pricing-join"
@@ -25,10 +26,11 @@ export default function JoinCta({ moduleTitle, noPaddingTop }: { moduleTitle?: s
         className="pointer-events-none absolute inset-0 -z-10 bg-[linear-gradient(to_right,rgba(255,255,255,0.05)_1px,transparent_1px),linear-gradient(to_bottom,rgba(255,255,255,0.05)_1px,transparent_1px)] bg-size-[64px_64px] mask-[radial-gradient(ellipse_60%_50%_at_50%_50%,#000,transparent_85%)]"
       />
 
-      <div className={`container-1200 text-center ${noPaddingTop ? "pb-24 pt-0 sm:pb-28 lg:pb-32" : "py-24 sm:py-28 lg:py-32"}`}>
+      <div className="container-1200 text-center gw-section">
+        {title}
         {moduleTitle && <ModuleTitle id="gw-join-cta-module-title">{moduleTitle}</ModuleTitle>}
 
-        <ul className="mx-auto mt-10 grid max-w-2xl grid-cols-1 gap-3 text-left sm:grid-cols-2">
+        <ul className={`mx-auto grid max-w-2xl grid-cols-1 gap-3 text-left sm:grid-cols-2 ${title || moduleTitle ? "mt-0" : "mt-10"}`}>
           {REASONS.map((r) => (
             <li key={r} className="flex items-start gap-3 rounded-xl border border-white/10 bg-white/5 px-4 py-3">
               <span className="mt-0.5 grid h-5 w-5 shrink-0 place-items-center rounded-full bg-brand/20">

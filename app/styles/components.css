@@ -19,6 +19,19 @@
     @apply py-20 sm:py-24 lg:py-28;
   }
 
+  /* Canonical section padding. EVERY content section carries `gw-section` for a
+     uniform top/bottom rhythm — put it on the section's inner container (next to
+     `container-1200`). A section that intentionally has no vertical padding
+     (marquees, abutting bands, self-padded embeds) uses `gw-section-flush`
+     instead, so "no padding" is a deliberate, greppable choice rather than an
+     omission. */
+  .gw-section {
+    @apply py-24 sm:py-28 lg:py-32;
+  }
+  .gw-section-flush {
+    @apply py-0;
+  }
+
   /* ---- Typography -------------------------------------------------------- */
   /* Overline / kicker above a title. Pair with a colour inline. */
   .eyebrow {

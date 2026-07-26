@@ -90,5 +90,234 @@
       "question": "How is it priced?",
       "answer": "Fixed price per production with a clear scope and delivery SLA, ordered in one click from the partner portal."
     }
-  ]
+  ],
+  "landing": {
+    "hero": {
+      "stats": [
+        { "id": "st-vp-1", "label": "$1,200 per video, flat" },
+        { "id": "st-vp-2", "label": "Script to final cut, in-house" },
+        { "id": "st-vp-3", "label": "Shipped in 2–6 weeks" },
+        { "id": "st-vp-4", "label": "White-label + source files" }
+      ],
+      "ctaNote": "30 minutes with our founding team. No pitch deck, no pressure.",
+      "secondaryCta": {
+        "id": "service-page-video-production-cta-pricing",
+        "label": "See video pricing",
+        "href": "#gw-mod-service-pricing"
+      }
+    },
+    "vsl": { "videoId": "oGKjh10TbK0" },
+    "platforms": [
+      "After Effects",
+      "Premiere Pro",
+      "Illustrator",
+      "Figma",
+      "Blender",
+      "DaVinci Resolve",
+      "YouTube",
+      "TikTok"
+    ],
+    "pains": {
+      "id": "mod-video-production-pains",
+      "eyebrow": "The video problem",
+      "headline": {
+        "parts": [
+          { "type": "text", "value": "Every client wants video. " },
+          { "type": "highlight", "value": "Almost nobody can produce it." }
+        ]
+      },
+      "sub": "Video is the most requested deliverable in marketing — and the hardest one to staff, scope, and ship on time.",
+      "cards": [
+        {
+          "id": "pain-vp-1",
+          "title": "A motion team is five specialists",
+          "blurb": "Scriptwriter, illustrator, animator, voiceover, sound design — one explainer needs all five, and you can't hire them for one client.",
+          "icon": "layers",
+          "points": [
+            "Five crafts behind every finished video",
+            "Hiring one animator doesn't cover it",
+            "A full production bench, per project"
+          ]
+        },
+        {
+          "id": "pain-vp-2",
+          "title": "Freelance animators vanish",
+          "blurb": "Mid-project silence, missed handoffs — and when they go, the project files usually go with them.",
+          "icon": "user-x",
+          "points": [
+            "Ghosted timelines stall campaigns",
+            "Lost source files mean starting over",
+            "Source files delivered, every time"
+          ]
+        },
+        {
+          "id": "pain-vp-3",
+          "title": "Timelines that kill the sale",
+          "blurb": "Production drags for months, the campaign window closes, and the client remembers who missed it.",
+          "icon": "clock",
+          "points": [
+            "Open-ended production burns trust",
+            "Campaigns can't wait on \"almost done\"",
+            "Fixed 2–6 week timelines, committed"
+          ]
+        },
+        {
+          "id": "pain-vp-4",
+          "title": "Template videos scream stock",
+          "blurb": "Your client can spot a template pack — and so can their customers. Generic motion damages the brand it's meant to sell.",
+          "icon": "triangle-alert",
+          "points": [
+            "Template packs all look the same",
+            "Off-brand style erodes trust",
+            "Custom illustration, styled per brand"
+          ]
+        }
+      ]
+    },
+    "features": {
+      "eyebrow": "The full production scope",
+      "headline": {
+        "parts": [
+          { "type": "text", "value": "Script to final cut, " },
+          { "type": "highlight", "value": "one production." }
+        ]
+      },
+      "sub": "Writing, design, animation, voice, and delivery — one in-house team, one fixed price, delivered under your brand.",
+      "groups": [
+        {
+          "id": "feat-vp-script",
+          "title": "Script & storyboard",
+          "icon": "search",
+          "items": [
+            "Message-first scripts, not visuals first",
+            "Storyboard approved before animation",
+            "Hooks written for the first 3 seconds",
+            "Your client's CTA baked into the cut"
+          ]
+        },
+        {
+          "id": "feat-vp-animation",
+          "title": "Design & animation",
+          "icon": "palette",
+          "items": [
+            "Custom illustration — no template packs",
+            "Style frames approved up front",
+            "Broadcast-quality motion design",
+            "Styled to your client's brand kit"
+          ]
+        },
+        {
+          "id": "feat-vp-sound",
+          "title": "Voice & sound",
+          "icon": "headset",
+          "items": [
+            "Professional voiceover options",
+            "Sound design and final mix included",
+            "Music licensing handled and cleared",
+            "Caption files for silent autoplay"
+          ]
+        },
+        {
+          "id": "feat-vp-formats",
+          "title": "Formats & cutdowns",
+          "icon": "wrench",
+          "items": [
+            "16:9, 9:16, and 1:1 masters",
+            "Platform cutdowns for social",
+            "Thumbnails and cover frames",
+            "Every format in one delivery"
+          ]
+        },
+        {
+          "id": "feat-vp-approvals",
+          "title": "Approvals & revisions",
+          "icon": "shield",
+          "items": [
+            "Staged sign-offs: script → board → final",
+            "Revision rounds included per stage",
+            "You approve before your client sees",
+            "No surprise invoices for polish"
+          ]
+        },
+        {
+          "id": "feat-vp-delivery",
+          "title": "Delivery & rights",
+          "icon": "code",
+          "items": [
+            "Source and project files included",
+            "Full commercial rights transfer",
+            "Truly unbranded — no watermarks",
+            "Organized handoff your client can keep"
+          ]
+        }
+      ]
+    },
+    "pricing": {
+      "eyebrow": "Transparent pricing",
+      "headline": {
+        "parts": [
+          { "type": "text", "value": "Our price is your cost. " },
+          { "type": "highlight", "value": "The margin is yours." }
+        ]
+      },
+      "sub": "One flat rate per video, quoted before you commit. You invoice your client at your price — we never touch the relationship.",
+      "markupOptions": [1.5, 2, 3],
+      "defaultMarkup": 2,
+      "guarantees": [
+        {
+          "id": "g-vp-1",
+          "title": "Scope-locked quote",
+          "description": "The quoted price is the final price. Length, style, and deliverables are agreed before production starts."
+        },
+        {
+          "id": "g-vp-2",
+          "title": "Truly unbranded delivery",
+          "description": "No watermarks, no credits, no fingerprints anywhere — and the source files we hand over prove it."
+        },
+        {
+          "id": "g-vp-3",
+          "title": "Staged approvals",
+          "description": "You sign off at script, storyboard, and final cut — nothing moves forward, or reaches your client, without you."
+        },
+        {
+          "id": "g-vp-4",
+          "title": "Full rights + source files",
+          "description": "Your client owns the video, the rights, and the project files. Nothing is held back or licensed back."
+        }
+      ],
+      "note": "Not ready to talk? Create a free partner account and browse the whole catalog at your own pace."
+    },
+    "differentiators": {
+      "eyebrow": "Why growX",
+      "headline": {
+        "parts": [
+          { "type": "text", "value": "In-house motion team. " },
+          { "type": "highlight", "value": "Your name in the credits." }
+        ]
+      },
+      "sub": "Full production under one roof, styled to each client's brand, and delivered ready for every platform."
+    },
+    "faqExtra": [
+      {
+        "id": "vp-f6",
+        "question": "What counts as one video?",
+        "answer": "One master video up to roughly 90 seconds, including its platform cutdowns, thumbnails, and caption files. Longer formats or genuinely separate concepts are quoted as multiples — your quote lists everything before you commit."
+      },
+      {
+        "id": "vp-f7",
+        "question": "Do you do live-action video?",
+        "answer": "This service is animation and motion graphics end to end. For live-action footage your client already has, our Video Editing service cuts, grades, and packages it — same white-label terms, and the two pair well."
+      },
+      {
+        "id": "vp-f8",
+        "question": "Can you match an existing animation style?",
+        "answer": "Yes. We build style frames from your client's existing brand or reference videos and get your sign-off before any animation starts — so the finished video looks like episode two, not a different studio."
+      },
+      {
+        "id": "vp-f9",
+        "question": "Who owns the video and its rights?",
+        "answer": "Your client, fully: the final cuts, the source files, and full commercial rights. Voiceover and music licensing are cleared for commercial use before delivery."
+      }
+    ]
+  }
 }

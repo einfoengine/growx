@@ -1,9 +1,10 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useState, type ReactNode } from "react";
 import { PhoneCall, Tag, Cog, Send, type LucideIcon } from "lucide-react";
 import type { ProcessContent } from "@/lib/content";
 import ModuleTitle from "@/components/elements/ModuleTitle";
+import SectionTitle from "@/components/modules/SectionTitle/SectionTitle";
 import { STEP_ART } from "./StepArt";
 
 /** One line icon per step, in step order (Book a call → Order → Produce →
@@ -23,9 +24,11 @@ const STEP_MS = 4600;
 export default function ProcessJourneyClient({
   data,
   moduleTitle,
+  title,
 }: {
   data: ProcessContent;
   moduleTitle?: string;
+  title?: ReactNode;
 }) {
   const steps = data.steps;
   const [active, setActive] = useState(0);
@@ -45,12 +48,22 @@ export default function ProcessJourneyClient({
   return (
     <section
       id="gw-mod-process-journey"
-      className="relative border-b border-border bg-surface py-20 text-foreground sm:py-24 lg:py-28"
+      className="relative border-b border-border bg-surface text-foreground gw-section"
     >
       <div className="container-1200">
+        {title ?? (
+          <SectionTitle
+            id="gw-mod-process-journey-title"
+            eyebrow={data.eyebrow}
+            headline={data.headline.parts}
+            sub={data.sub}
+            align="left"
+          />
+        )}
+
         {moduleTitle && <ModuleTitle id="gw-process-journey-module-title">{moduleTitle}</ModuleTitle>}
         {/* ── Steps left, illustration right — top-aligned to each other ── */}
-        <div className="mt-10 grid items-stretch gap-10 lg:grid-cols-2 lg:gap-16">
+        <div className="mt-0 grid items-stretch gap-10 lg:grid-cols-2 lg:gap-16">
           <ol className="space-y-2">
             {steps.map((step, i) => {
               const on = i === active;

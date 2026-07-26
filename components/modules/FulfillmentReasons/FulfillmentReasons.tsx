@@ -79,7 +79,7 @@ const SOLUTIONS: Solution[] = [
   },
 ];
 
-export default function FulfillmentReasons({ moduleTitle, noPaddingTop }: { moduleTitle?: string; noPaddingTop?: boolean } = {}) {
+export default function FulfillmentReasons({ moduleTitle }: { moduleTitle?: string } = {}) {
   return (
     <section
       id="gw-mod-fulfillment-reasons"
@@ -104,7 +104,7 @@ export default function FulfillmentReasons({ moduleTitle, noPaddingTop }: { modu
         className="pointer-events-none absolute inset-0 -z-10 bg-film-grain opacity-30"
       />
 
-      <div className={`container-1200 ${noPaddingTop ? "pb-24 pt-0 sm:pb-28 lg:pb-32" : "py-24 sm:py-28 lg:py-32"}`}>
+      <div className="container-1200 gw-section">
         {moduleTitle && <ModuleTitle id="gw-fulfillment-reasons-module-title">{moduleTitle}</ModuleTitle>}
 
         {/* All four at a glance: one row on desktop, 2x2 on tablet. */}

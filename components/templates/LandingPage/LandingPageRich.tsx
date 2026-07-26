@@ -91,9 +91,7 @@ export default async function LandingPageRich({ data }: Props) {
         eyebrow: landing.pains.eyebrow,
         headline: landing.pains.headline,
         sub: landing.pains.sub,
-        pointsIcon: "dot",
-        noPaddingTop: true,
-        cards: landing.pains.cards.map((card, i) => ({
+        pointsIcon: "dot",        cards: landing.pains.cards.map((card, i) => ({
           id: card.id,
           label: `Problem 0${i + 1}`,
           icon: card.icon,
@@ -117,9 +115,7 @@ export default async function LandingPageRich({ data }: Props) {
         // only repeated ground sits beside the pains section, whose parallax
         // backdrop keeps the two visually distinct.
         tone: hasWork ? "background" : "surface",
-        pointsIcon: "check",
-        noPaddingTop: true,
-        cards: landing.features.groups.map((group) => ({
+        pointsIcon: "check",        cards: landing.features.groups.map((group) => ({
           id: group.id,
           icon: group.icon,
           title: group.title,
@@ -136,9 +132,7 @@ export default async function LandingPageRich({ data }: Props) {
         headline: landing.differentiators.headline,
         sub: landing.differentiators.sub,
         backdrop: false,
-        tone: "background",
-        noPaddingTop: true,
-        cards: data.whyUs.map((item, i) => ({
+        tone: "background",        cards: data.whyUs.map((item, i) => ({
           id: item.id,
           label: `0${i + 1}`,
           title: item.title,
@@ -220,69 +214,67 @@ export default async function LandingPageRich({ data }: Props) {
       {/* 4 — Agitate: the real cost of reselling without a bench — the home
           problems section, fed with this service's pains. */}
       {painsData && landing.pains && (
-        <>
-          <SectionTitle
-            id={`gw-${landing.pains.id}-title`}
-            eyebrow={landing.pains.eyebrow}
-            headline={landing.pains.headline.parts}
-            sub={landing.pains.sub}
-            className="bg-surface"
-          />
-          <GrowthPillars data={painsData} />
-        </>
+        <GrowthPillars
+          data={painsData}
+          title={
+            <SectionTitle
+              id={`gw-${landing.pains.id}-title`}
+              eyebrow={landing.pains.eyebrow}
+              headline={landing.pains.headline.parts}
+              sub={landing.pains.sub}
+            />
+          }
+        />
       )}
 
       {/* 5 — The complete feature list (home's showcase slot): unique design
           (never AI templates), the stack (Next.js / GHL builder), performance,
           security, maintenance, support. */}
       {featuresData && landing.features && (
-        <>
-          <SectionTitle
-            id={`gw-mod-${data.slug}-features-title`}
-            eyebrow={landing.features.eyebrow}
-            headline={landing.features.headline.parts}
-            sub={landing.features.sub}
-            className={hasWork ? "bg-background" : "bg-surface"}
-          />
-          <GrowthPillars data={featuresData} />
-        </>
+        <GrowthPillars
+          data={featuresData}
+          title={
+            <SectionTitle
+              id={`gw-mod-${data.slug}-features-title`}
+              eyebrow={landing.features.eyebrow}
+              headline={landing.features.headline.parts}
+              sub={landing.features.sub}
+            />
+          }
+        />
       )}
 
       {/* 5b — Proof: recent builds, shipped white-label. */}
       {landing.work && (
-        <>
-          <SectionTitle
-            id={`${workId}-title`}
-            eyebrow={landing.work.eyebrow}
-            headline={landing.work.headline.parts}
-            sub={landing.work.sub}
-            className="bg-surface"
-          />
-          <Portfolio
-            id={workId}
-            tone="surface"
-            category={landing.work.category}
-            noPaddingTop
-          />
-        </>
+        <Portfolio
+          id={workId}
+          tone="surface"
+          category={landing.work.category}
+          title={
+            <SectionTitle
+              id={`${workId}-title`}
+              eyebrow={landing.work.eyebrow}
+              headline={landing.work.headline.parts}
+              sub={landing.work.sub}
+            />
+          }
+        />
       )}
 
       {/* 6 — Money: transparent rate card, margin math, risk reversal. */}
       {landing.pricing && pricingConfig && (
-        <>
-          <SectionTitle
-            id="gw-mod-service-pricing-title"
-            eyebrow={landing.pricing.eyebrow}
-            headline={landing.pricing.headline.parts}
-            sub={landing.pricing.sub}
-            className="bg-background"
-          />
-          <ServicePricing
-            config={pricingConfig}
-            content={landing.pricing}
-            noPaddingTop
-          />
-        </>
+        <ServicePricing
+          config={pricingConfig}
+          content={landing.pricing}
+          title={
+            <SectionTitle
+              id="gw-mod-service-pricing-title"
+              eyebrow={landing.pricing.eyebrow}
+              headline={landing.pricing.headline.parts}
+              sub={landing.pricing.sub}
+            />
+          }
+        />
       )}
 
       {/* 7 — Mechanics: the same how-it-works section the home page uses. */}
@@ -290,61 +282,71 @@ export default async function LandingPageRich({ data }: Props) {
 
       {/* 8-10 — The home trust cluster, in home order: quotes → logo wall →
           lineage. The offer below lands on maximum credibility. */}
-      <SectionTitle
-        id="gw-mod-testimonials-title"
-        eyebrow={testimonialsHeader.eyebrow}
-        headline={testimonialsHeader.headline.parts}
-        sub={testimonialsHeader.sub}
-        className="bg-background"
+      <Testimonials
+        title={
+          <SectionTitle
+            id="gw-mod-testimonials-title"
+            eyebrow={testimonialsHeader.eyebrow}
+            headline={testimonialsHeader.headline.parts}
+            sub={testimonialsHeader.sub}
+          />
+        }
       />
-      <Testimonials noPaddingTop />
       <TrustedBy />
       <SisterBrands />
 
       {/* 11 — The membership packages: what paid members get on every order,
           and the free Vendor tier — the "join free" invitation (home module). */}
-      <SectionTitle
-        id="gw-mod-pricing-title"
-        eyebrow={tiersHeader.eyebrow}
-        headline={tiersHeader.headline.parts}
-        sub={tiersHeader.sub}
-        className="bg-surface"
+      <PricingPlans
+        title={
+          <SectionTitle
+            id="gw-mod-pricing-title"
+            eyebrow={tiersHeader.eyebrow}
+            headline={tiersHeader.headline.parts}
+            sub={tiersHeader.sub}
+          />
+        }
       />
-      <PricingPlans noPaddingTop />
 
       {/* 12 — Differentiation: the whyUs trio, then the comparison table. */}
       {whyData && landing.differentiators && (
-        <>
-          <SectionTitle
-            id={`gw-${data.id}-why-title`}
-            eyebrow={landing.differentiators.eyebrow}
-            headline={landing.differentiators.headline.parts}
-            sub={landing.differentiators.sub}
-            className="bg-background"
-          />
-          <GrowthPillars data={whyData} />
-        </>
+        <GrowthPillars
+          data={whyData}
+          title={
+            <SectionTitle
+              id={`gw-${data.id}-why-title`}
+              eyebrow={landing.differentiators.eyebrow}
+              headline={landing.differentiators.headline.parts}
+              sub={landing.differentiators.sub}
+            />
+          }
+        />
       )}
-      <SectionTitle
-        id="gw-mod-comparison-title"
-        eyebrow={comparisonHeader.eyebrow}
-        headline={comparisonHeader.headline.parts}
-        sub={comparisonHeader.sub}
-        className="bg-background"
+      <Comparison
+        title={
+          <SectionTitle
+            id="gw-mod-comparison-title"
+            eyebrow={comparisonHeader.eyebrow}
+            headline={comparisonHeader.headline.parts}
+            sub={comparisonHeader.sub}
+          />
+        }
       />
-      <Comparison noPaddingTop />
 
       {/* 10 — Objections. The footer's global CtaBanner ("Ready when you
           are", #book) is the page's close — booking itself opens in the
           globally-mounted BookingModal, exactly like the home page. */}
-      <SectionTitle
-        id={`gw-${data.id}-faq-title`}
-        eyebrow={faqData.eyebrow}
-        headline={faqData.headline.parts}
-        sub={faqData.sub}
-        className="bg-surface"
+      <Faq
+        data={faqData}
+        title={
+          <SectionTitle
+            id={`gw-${data.id}-faq-title`}
+            eyebrow={faqData.eyebrow}
+            headline={faqData.headline.parts}
+            sub={faqData.sub}
+          />
+        }
       />
-      <Faq data={faqData} noPaddingTop />
     </>
   );
 }

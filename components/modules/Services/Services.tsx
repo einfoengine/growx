@@ -10,9 +10,9 @@ import type { ServicesContent } from "@/lib/content";
 export default async function Services({
   data,
   tone = "surface",
+  title,
   moduleTitle,
-  noPaddingTop,
-}: { data?: ServicesContent; tone?: "surface" | "background"; moduleTitle?: string; noPaddingTop?: boolean } = {}) {
+}: { data?: ServicesContent; tone?: "surface" | "background"; title?: React.ReactNode; moduleTitle?: string } = {}) {
   const servicesData = data ?? (await getServices());
   // Cell fill inverts against the section ground so hover always contrasts.
   const cellCls =
@@ -26,7 +26,8 @@ export default async function Services({
       className={tone === "surface" ? "bg-surface" : "bg-background"}
       style={{ "--cg": "max(2rem, calc((100vw - 1400px) / 2 + 2rem))" } as React.CSSProperties}
     >
-      <div className={`container-1200 ${noPaddingTop ? "pb-14 pt-0 sm:pb-16 lg:pb-20" : "pb-14 pt-24 sm:pb-16 sm:pt-28 lg:pb-20 lg:pt-32"}`}>
+      <div className="container-1200 gw-section">
+        {title}
         {moduleTitle && <ModuleTitle id="gw-services-module-title">{moduleTitle}</ModuleTitle>}
       </div>
 

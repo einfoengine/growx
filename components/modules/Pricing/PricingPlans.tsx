@@ -1,3 +1,4 @@
+import type { ReactNode } from "react";
 import { Check } from "lucide-react";
 import { getPricing } from "@/lib/content";
 import ScrollFadeIn from "@/components/elements/ScrollFadeIn";
@@ -8,29 +9,27 @@ import PlanButton from "./PlanButton";
  *  source the service-page <Pricing> module and the onboarding modal read, so
  *  names and prices cannot drift apart across the funnel. */
 export default async function PricingPlans({
-  noPaddingTop,
   noPaddingBottom,
   hidePopularBadge,
   moduleTitle,
+  title,
 }: {
-  noPaddingTop?: boolean;
   noPaddingBottom?: boolean;
   /** Suppress the "Popular" tag but keep the featured card's emerald lift.
    *  Used on /pricing, where the savings calculator recommends a tier so the
    *  page never has to stamp a manufactured badge on a new program. */
   hidePopularBadge?: boolean;
   moduleTitle?: string;
+  title?: ReactNode;
 } = {}) {
   const data = await getPricing();
-  const pt = noPaddingTop ? "pt-0" : "pt-24 sm:pt-28 lg:pt-32";
-  const pb = noPaddingBottom ? "pb-0" : "pb-24 sm:pb-28 lg:pb-32";
 
   return (
     <section
       id="gw-mod-pricing"
       // Surface, so the offer band separates from white SisterBrands above and
       // white Comparison below (the tier cards pop on the tinted ground).
-      className={`relative isolate overflow-hidden border-b border-border bg-surface text-foreground ${pt} ${pb}`}
+      className="relative isolate overflow-hidden border-b border-border bg-surface text-foreground"
     >
       {/* Faint grid + soft brand glow backdrop. */}
       <div
@@ -42,12 +41,13 @@ export default async function PricingPlans({
         className="pointer-events-none absolute -z-10 left-1/2 -top-20 h-72 w-300 max-w-none -translate-x-1/2 bg-brand/8 blur-[130px]"
       />
 
-      <div className="container-1200">
+      <div className={`container-1200 gw-section${noPaddingBottom ? " pb-0" : ""}`}>
+        {title}
         {moduleTitle && <ModuleTitle id="gw-pricing-module-title">{moduleTitle}</ModuleTitle>}
 
         {/* Compact plan cards */}
         <ScrollFadeIn delay={0.2}>
-        <div className="mx-auto mt-10 grid max-w-6xl items-stretch gap-6 lg:grid-cols-3">
+        <div className={`mx-auto ${title || moduleTitle ? "mt-0" : "mt-10"} grid max-w-6xl items-stretch gap-6 lg:grid-cols-3`}>
           {data.tiers.map((tier) => {
             const featured = !!tier.highlighted;
             return (

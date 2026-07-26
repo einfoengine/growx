@@ -1,4 +1,6 @@
+import type { ReactNode } from "react";
 import ScrollFadeIn from "@/components/elements/ScrollFadeIn";
+import SectionTitle from "@/components/modules/SectionTitle/SectionTitle";
 
 /** Endorsement logo wall, paired with the Testimonials above: the agencies that
  *  partner with growX, shown as wordmarks in a grid.
@@ -18,22 +20,28 @@ const COMPANIES = [
   "Northbound",
 ];
 
-export default function TrustedBy() {
+export default function TrustedBy({ title }: { title?: ReactNode } = {}) {
   return (
     <section
       id="gw-mod-trusted-by"
       aria-label="Agencies that partner with growX"
       // Surface, so it separates from the white Testimonials above and the
       // white SisterBrands below.
-      className="relative overflow-hidden border-b border-border bg-surface py-16 text-foreground sm:py-20"
+      className="relative overflow-hidden border-b border-border bg-surface text-foreground gw-section"
     >
       <div className="container-1200">
-        <ScrollFadeIn delay={0.1}>
-          <p className="eyebrow text-center text-muted">Trusted by growing agencies</p>
-        </ScrollFadeIn>
+        {title ?? (
+          <SectionTitle
+            id="gw-mod-trusted-by-title"
+            headline={[
+              { type: "text", value: "Trusted by " },
+              { type: "highlight", value: "growing agencies" },
+            ]}
+          />
+        )}
 
         <ScrollFadeIn delay={0.2}>
-          <ul className="mx-auto mt-10 grid max-w-5xl grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-6 lg:gap-5">
+          <ul className="mx-auto mt-0 grid max-w-5xl grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-6 lg:gap-5">
             {COMPANIES.map((name) => (
               <li
                 key={name}

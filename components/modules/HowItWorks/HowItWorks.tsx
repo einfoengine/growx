@@ -16,8 +16,7 @@ const DWELL_MS = 1600; // time the light rests on a badge (kindled)
 
 export default function HowItWorks({
   moduleTitle,
-  noPaddingTop = false,
-}: { moduleTitle?: string; noPaddingTop?: boolean } = {}) {
+}: { moduleTitle?: string } = {}) {
   const desktop = useMediaQuery("(min-width: 1024px)");
   const reduceMotion = useReducedMotion();
   // The animation is desktop-only geometry (the connector line is lg+) and
@@ -60,7 +59,7 @@ export default function HowItWorks({
         className="pointer-events-none absolute -z-10 left-1/2 -top-24 h-72 w-300 max-w-none -translate-x-1/2 bg-brand/8 blur-[130px]"
       />
 
-      <div className={`container-1200 ${noPaddingTop ? "pb-24 pt-0 sm:pb-28 lg:pb-32" : "py-24 sm:py-28 lg:py-32"}`}>
+      <div className="container-1200 gw-section">
         {moduleTitle && (
           <ModuleTitle id="gw-how-it-works-module-title">{moduleTitle}</ModuleTitle>
         )}

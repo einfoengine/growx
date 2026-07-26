@@ -80,5 +80,234 @@
       "question": "Can you connect it to the client's existing tools?",
       "answer": "Yes. We integrate with most major CRMs, email platforms, and booking tools. If you're unsure about a specific integration, flag it when you order and we'll confirm."
     }
-  ]
+  ],
+  "landing": {
+    "hero": {
+      "stats": [
+        { "id": "st-funnels-1", "label": "$1,500 per funnel, flat" },
+        { "id": "st-funnels-2", "label": "Strategy, build, emails, tracking" },
+        { "id": "st-funnels-3", "label": "Shipped in 3–8 weeks" },
+        { "id": "st-funnels-4", "label": "100% white-label" }
+      ],
+      "ctaNote": "30 minutes with our founding team. No pitch deck, no pressure.",
+      "secondaryCta": {
+        "id": "service-page-funnels-cta-pricing",
+        "label": "See funnel pricing",
+        "href": "#gw-mod-service-pricing"
+      }
+    },
+    "vsl": { "videoId": "oGKjh10TbK0" },
+    "platforms": [
+      "HighLevel",
+      "ClickFunnels",
+      "Webflow",
+      "WordPress",
+      "Mailchimp",
+      "Klaviyo",
+      "Zapier",
+      "Stripe"
+    ],
+    "pains": {
+      "id": "mod-funnels-pains",
+      "eyebrow": "The funnel problem",
+      "headline": {
+        "parts": [
+          { "type": "text", "value": "Everyone sells funnels. " },
+          { "type": "highlight", "value": "Few ever get one live." }
+        ]
+      },
+      "sub": "A funnel is five disciplines pretending to be one deliverable — and it only pays when every piece actually ships.",
+      "cards": [
+        {
+          "id": "pain-funnels-1",
+          "title": "Funnels die between vendors",
+          "blurb": "A designer, a developer, an email person, and a tracking person — four handoffs, and every seam is where the funnel breaks.",
+          "icon": "layers",
+          "points": [
+            "Every handoff loses context",
+            "Nobody owns the end result",
+            "One team, one owner, one funnel"
+          ]
+        },
+        {
+          "id": "pain-funnels-2",
+          "title": "Pretty pages that don't convert",
+          "blurb": "A beautiful landing page with no offer logic is decoration. Your client is paying for pipeline, not applause.",
+          "icon": "trending-down",
+          "points": [
+            "Design without strategy converts nothing",
+            "Copy and offer decide the numbers",
+            "Strategy is step one here, not a extra"
+          ]
+        },
+        {
+          "id": "pain-funnels-3",
+          "title": "The launch that never launches",
+          "blurb": "Weeks of back-and-forth, a form that won't fire, an automation that won't trigger — and a client watching the calendar.",
+          "icon": "clock",
+          "points": [
+            "Integration hell eats timelines",
+            "Every delayed launch burns trust",
+            "A fixed timeline you can promise"
+          ]
+        },
+        {
+          "id": "pain-funnels-4",
+          "title": "Tracking as an afterthought",
+          "blurb": "If conversions aren't measured, the funnel never officially works — and the retainer conversation dies with it.",
+          "icon": "triangle-alert",
+          "points": [
+            "No attribution, no proof, no renewal",
+            "Pixels and events wired from day one",
+            "Numbers your client can see themselves"
+          ]
+        }
+      ]
+    },
+    "features": {
+      "eyebrow": "The full build scope",
+      "headline": {
+        "parts": [
+          { "type": "text", "value": "Every piece of the funnel, " },
+          { "type": "highlight", "value": "one deliverable." }
+        ]
+      },
+      "sub": "Strategy, pages, automations, and tracking — built as one system, delivered under your brand.",
+      "groups": [
+        {
+          "id": "feat-funnels-strategy",
+          "title": "Strategy & mapping",
+          "icon": "search",
+          "items": [
+            "Offer and audience mapped before build",
+            "Funnel architecture on one page",
+            "Competitor funnel scan included",
+            "You approve the map before we build"
+          ]
+        },
+        {
+          "id": "feat-funnels-design",
+          "title": "Copy & design",
+          "icon": "palette",
+          "items": [
+            "Conversion copy written for the offer",
+            "On-brand, mobile-first page design",
+            "Thank-you and confirmation pages",
+            "Built to your client's brand kit"
+          ]
+        },
+        {
+          "id": "feat-funnels-build",
+          "title": "Build & integrations",
+          "icon": "code",
+          "items": [
+            "Native build on the platform you pick",
+            "Forms wired into the client's CRM",
+            "Payments and booking tools connected",
+            "Zapier bridges where APIs stop"
+          ]
+        },
+        {
+          "id": "feat-funnels-email",
+          "title": "Email automation",
+          "icon": "bot",
+          "items": [
+            "Welcome and nurture sequences written",
+            "Triggers mapped to funnel behaviour",
+            "Deliverability basics configured",
+            "Handoff doc for future edits"
+          ]
+        },
+        {
+          "id": "feat-funnels-tracking",
+          "title": "Tracking & analytics",
+          "icon": "bar-chart-3",
+          "items": [
+            "Pixels and conversion events wired",
+            "GA4 and platform dashboards set up",
+            "Attribution your client can see",
+            "Baseline report at go-live"
+          ]
+        },
+        {
+          "id": "feat-funnels-launch",
+          "title": "Launch & QA",
+          "icon": "shield",
+          "items": [
+            "End-to-end test: forms, emails, payments",
+            "Cross-device and cross-browser QA",
+            "Go-live support on launch day",
+            "Documented handoff, no loose ends"
+          ]
+        }
+      ]
+    },
+    "pricing": {
+      "eyebrow": "Transparent pricing",
+      "headline": {
+        "parts": [
+          { "type": "text", "value": "Our price is your cost. " },
+          { "type": "highlight", "value": "The margin is yours." }
+        ]
+      },
+      "sub": "One flat rate per funnel, quoted before you commit. You invoice your client at your price — we never touch the relationship.",
+      "markupOptions": [1.5, 2, 3],
+      "defaultMarkup": 2,
+      "guarantees": [
+        {
+          "id": "g-funnels-1",
+          "title": "Scope-locked quote",
+          "description": "The quoted price is the final price. The funnel map is agreed before we build, and revisions inside scope are included."
+        },
+        {
+          "id": "g-funnels-2",
+          "title": "Launch-ready QA",
+          "description": "Forms, automations, payments, and tracking tested end-to-end before handoff — your client's first lead won't be the test."
+        },
+        {
+          "id": "g-funnels-3",
+          "title": "White-label confidentiality",
+          "description": "Your brand on every page, doc, and thread. Your client never learns we exist."
+        },
+        {
+          "id": "g-funnels-4",
+          "title": "You approve first",
+          "description": "The map, the pages, and the emails all clear your sign-off before your client sees anything."
+        }
+      ],
+      "note": "Not ready to talk? Create a free partner account and browse the whole catalog at your own pace."
+    },
+    "differentiators": {
+      "eyebrow": "Why growX",
+      "headline": {
+        "parts": [
+          { "type": "text", "value": "Strategy first. " },
+          { "type": "highlight", "value": "Launch-ready always." }
+        ]
+      },
+      "sub": "Platform-flexible builds that start with the offer and end with a funnel that's actually live."
+    },
+    "faqExtra": [
+      {
+        "id": "faq-funnels-5",
+        "question": "What counts as one funnel?",
+        "answer": "One offer, end to end: the landing page, thank-you/confirmation pages, the email sequence behind it, and tracking. A second offer or a genuinely separate flow is a second funnel — your quote maps it out before you commit."
+      },
+      {
+        "id": "faq-funnels-6",
+        "question": "Do you run the ads that feed the funnel?",
+        "answer": "Not inside this service — funnels ship launch-ready for traffic. Many partners pair this with our Meta Ads & PPC service so the same team builds the funnel and buys the traffic, white-label on both."
+      },
+      {
+        "id": "faq-funnels-7",
+        "question": "Who owns the funnel and its assets?",
+        "answer": "Your client, fully. Pages, copy, automations, and all account access transfer at handoff — no license-back, nothing held hostage."
+      },
+      {
+        "id": "faq-funnels-8",
+        "question": "Can you fix or improve an existing funnel?",
+        "answer": "Yes. We start with a structured audit — offer, pages, automations, tracking — delivered as a white-label report you can present. Then we rebuild only what the audit justifies, at the same per-funnel rate."
+      }
+    ]
+  }
 }

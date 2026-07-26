@@ -3,12 +3,13 @@ import ModuleTitle from "@/components/elements/ModuleTitle";
 import PainPointsCards from "./PainPointsCards";
 import { getPainPoints } from "@/lib/content";
 import type { PainPointsContent } from "@/lib/content";
+import type { ReactNode } from "react";
 
 export default async function PainPoints({
   data,
+  title,
   moduleTitle,
-  noPaddingTop,
-}: { data?: PainPointsContent; moduleTitle?: string; noPaddingTop?: boolean } = {}) {
+}: { data?: PainPointsContent; title?: ReactNode; moduleTitle?: string } = {}) {
   const painData = data ?? await getPainPoints();
 
   return (
@@ -33,12 +34,8 @@ export default async function PainPoints({
       {/* Evervault-style cursor reveal */}
       <EvervaultBackground className="-z-10" />
 
-      {/* noPaddingTop: a SectionTitle module sits directly above. */}
-      <div
-        className={`container-1200 relative ${
-          noPaddingTop ? "pb-24 pt-0 sm:pb-28 lg:pb-32" : "py-24 sm:py-28 lg:py-32"
-        }`}
-      >
+      <div className="container-1200 relative gw-section">
+        {title}
         {moduleTitle && <ModuleTitle id="gw-pain-points-module-title">{moduleTitle}</ModuleTitle>}
 
         <PainPointsCards cards={painData.cards} />

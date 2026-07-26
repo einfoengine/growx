@@ -86,14 +86,17 @@ export default async function Footer() {
       // create a scroll container, which would break the sticky watermark below.
       className="mt-auto w-full bg-(--footer-bg) text-(--footer-fg) relative overflow-clip"
     >
-      <SectionTitle
-        id="gw-cta-banner-title"
-        eyebrow={ctaBanner.eyebrow}
-        headline={ctaBanner.headline.parts}
-        sub={ctaBanner.sub}
-        className="bg-foreground text-background"
+      <CtaBanner
+        data={ctaBanner}
+        title={
+          <SectionTitle
+            id="gw-cta-banner-title"
+            eyebrow={ctaBanner.eyebrow}
+            headline={ctaBanner.headline.parts}
+            sub={ctaBanner.sub}
+          />
+        }
       />
-      <CtaBanner data={ctaBanner} noPaddingTop />
       <MouseGlow />
       <div
         className="pointer-events-none absolute inset-0 z-0 bg-[linear-gradient(to_right,rgba(255,255,255,0.03)_1px,transparent_1px),linear-gradient(to_bottom,rgba(255,255,255,0.03)_1px,transparent_1px)] bg-size-[48px_48px]"
