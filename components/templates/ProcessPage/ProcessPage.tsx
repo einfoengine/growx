@@ -79,7 +79,7 @@ function processHeroToHeroContent(page: ProcessPageContent): HeroContent {
 export default function ProcessPage({ data }: Props) {
   return (
     <>
-      <Hero data={processHeroToHeroContent(data)} variant="inner" />
+      <Hero data={processHeroToHeroContent(data)} variant="compact" />
 
       {/* ── Journey ──────────────────────────────────────────── */}
       <section id="gw-process-journey" className="bg-surface">

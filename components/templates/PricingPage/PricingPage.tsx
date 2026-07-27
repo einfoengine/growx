@@ -38,7 +38,7 @@ export default async function PricingPage({ pageData }: Props) {
         className="relative isolate overflow-hidden bg-foreground text-background"
       >
         <InnerHeroBackdrop />
-        <div className="container-1200 pb-20 pt-28 text-center sm:pb-24 sm:pt-32 lg:pt-36">
+        <div className="container-1200 pb-14 pt-24 text-center sm:pb-16 sm:pt-28 lg:pt-30">
           <SectionHeader
             eyebrow={pageData.hero.eyebrow}
             headline={pageData.hero.headline.parts}

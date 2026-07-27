@@ -1,5 +1,5 @@
 /** Visual scale for the shared Hero shell + animated content. */
-export type HeroVariant = "home" | "inner";
+export type HeroVariant = "home" | "inner" | "compact";
 
 export const HERO_LAYOUT: Record<
   HeroVariant,
@@ -22,6 +22,19 @@ export const HERO_LAYOUT: Record<
     sub: "mx-auto mt-6 max-w-185 text-pretty hero-sub",
     ctas: "mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row",
     stats: "mt-10 grid grid-cols-2 gap-2.5 sm:grid-cols-4",
+    eyebrowArrow: 12,
+  },
+  /* Inner pages that don't need the landing-scale hero (become-a-partner,
+     process, etc.): tighter paddings, one headline size down. Service landing
+     pages keep the full `inner` scale. */
+  compact: {
+    shell: "container-1200 relative pt-24 pb-12 sm:pt-28 sm:pb-14 lg:pt-30 lg:pb-16",
+    headline:
+      "mt-6 text-4xl font-extrabold leading-[1.15] tracking-tight text-background sm:text-5xl lg:text-6xl",
+    tagline: "mt-5 text-base font-semibold tracking-tight text-background/90 sm:text-lg",
+    sub: "mx-auto mt-3 max-w-xl text-pretty text-sm text-white/70 sm:text-base",
+    ctas: "mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row",
+    stats: "mt-8 grid grid-cols-2 gap-2.5 sm:grid-cols-4",
     eyebrowArrow: 12,
   },
   inner: {

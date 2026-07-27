@@ -23,7 +23,7 @@ export default async function ContactRoute() {
         className="relative isolate overflow-hidden bg-foreground text-background"
       >
         <InnerHeroBackdrop />
-        <div className="container-1200 pb-20 pt-28 text-center sm:pb-24 sm:pt-32 lg:pt-36">
+        <div className="container-1200 pb-14 pt-24 text-center sm:pb-16 sm:pt-28 lg:pt-30">
           <div className="mx-auto max-w-2xl">
             <Eyebrow text="Contact" />
             <h1 className="mt-4 text-4xl font-bold leading-[1.15] tracking-tight sm:text-5xl lg:text-6xl">

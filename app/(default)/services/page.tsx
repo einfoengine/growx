@@ -99,7 +99,7 @@ export default async function ServicesOverviewRoute() {
         className="relative isolate overflow-hidden bg-foreground text-background"
       >
         <InnerHeroBackdrop />
-        <div className="container-1200 pb-20 pt-28 text-center sm:pt-32 lg:pb-24 lg:pt-36">
+        <div className="container-1200 pb-14 pt-24 text-center sm:pt-28 lg:pb-16 lg:pt-30">
           <ScrollFadeIn delay={0.1}>
             <SectionHeader
               as="h1"
