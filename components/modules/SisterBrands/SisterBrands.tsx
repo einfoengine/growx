@@ -10,7 +10,7 @@ import SectionTitle from "@/components/modules/SectionTitle/SectionTitle";
 const BRANDS: { name: string; src: string; alt: string; tagline: string }[] = [
   {
     name: "growX",
-    src: "/assets/logo-black.png",
+    src: "/assets/growX-black-logo.svg",
     alt: "growX",
     tagline: "White-label fulfillment for agencies",
   },
