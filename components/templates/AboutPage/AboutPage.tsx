@@ -29,7 +29,7 @@ export default function AboutPage({ data }: Props) {
             subClassName="mt-6 max-w-2xl text-base leading-relaxed text-white/70 sm:text-lg"
           />
           <div className="mt-8 flex flex-wrap gap-3">
-            <Button label="Become a partner" href="#book" icon={<ArrowRight size={15} />} darkBg />
+            <Button label="Become a partner" href="/become-a-partner" icon={<ArrowRight size={15} />} darkBg />
             <Button label="See our work" href="/services" variant="secondary" darkBg />
           </div>
         </div>
@@ -151,7 +151,7 @@ export default function AboutPage({ data }: Props) {
             align="center"
           />
           <div className="mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row">
-            <Button label="Become a partner" href="#book" icon={<ArrowRight size={15} />} />
+            <Button label="Become a partner" href="/become-a-partner" icon={<ArrowRight size={15} />} />
             <Button label="Book a discovery call" href="#book" variant="secondary" />
           </div>
         </div>

@@ -26,7 +26,7 @@
     {
       "id": "mod-hero-cta-primary",
       "label": "Become a partner",
-      "href": "#book",
+      "href": "/become-a-partner",
       "variant": "primary"
     },
     {

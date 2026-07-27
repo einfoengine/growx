@@ -85,7 +85,7 @@ export default function WhiteLabelWall({ eyebrow, headline, sub, promises }: Pro
       />
       <Button
         label="Become a partner"
-        href="#book"
+        href="/become-a-partner"
         icon={<ArrowRight size={15} />}
         className="mt-7"
       />

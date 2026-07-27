@@ -77,17 +77,12 @@
       "id": "nav-pricing",
       "label": "Pricing",
       "href": "/pricing"
-    },
-    {
-      "id": "nav-contact",
-      "label": "Contact",
-      "href": "/contact"
     }
   ],
   "cta": {
     "id": "mod-header-cta",
     "label": "Become a partner",
-    "href": "#book",
+    "href": "/become-a-partner",
     "variant": "primary"
   }
 }
