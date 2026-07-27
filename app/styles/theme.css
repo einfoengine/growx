@@ -17,7 +17,7 @@
   --foreground: #0a0a0a;
   --muted: #6b7280;
   --border: #e5e7eb;
-  --surface: #f7f7f5;
+  --surface: #f1f0ec;
   --accent: #0a0a0a;
 
   /* Brand */
@@ -204,11 +204,11 @@
    data-dark-surface sections, just pointed the other way.
    ──────────────────────────────────────────────────────────────────────────── */
 :root[data-theme="dark"] {
-  --background: #111214;
+  --background: #101114;
   --foreground: #f5f6f7;
   --muted: #a1a1aa;
-  --border: rgba(255, 255, 255, 0.12);
-  --surface: #17181b;
+  --border: rgba(255, 255, 255, 0.14);
+  --surface: #1c1e23;
   --accent: #fafafa;
   --brand-text: #34d399;
 }
