@@ -15,11 +15,14 @@ export default async function Header() {
     <HeaderShell>
       <div id={data.id} className="container-1200 flex h-16 items-center justify-between gap-6">
         {/* Two logo tones - only one shows per bar theme */}
-        <span className="group-data-[theme=dark]/nav:hidden">
-          <Logo id="el-logo-header" tone="dark" width={140} eager />
-        </span>
-        <span className="hidden group-data-[theme=dark]/nav:block">
+        {/* Theme pair via CSS (not the bar's JS state): white logo on the
+            dark site, black logo on the light site — correct from the very
+            first paint, immune to hydration/state timing. */}
+        <span className="light:hidden">
           <Logo id="el-logo-header-light" tone="light" width={140} eager />
+        </span>
+        <span className="hidden light:block">
+          <Logo id="el-logo-header" tone="dark" width={140} eager />
         </span>
 
         {/* The menu floats bare; the glass treatment lives on the whole bar

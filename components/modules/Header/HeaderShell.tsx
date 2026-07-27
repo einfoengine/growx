@@ -16,9 +16,10 @@ const DARK_TOKENS = {
 /** Sticky top bar that turns dark when a `[data-nav-theme="dark"]` section sits
  *  beneath it, and light when a normal (light) section scrolls up to meet it. */
 export default function HeaderShell({ children }: { children: React.ReactNode }) {
-  // Start light (the home/inner heroes are light); the first measurement
-  // flips it instantly over any dark top section.
-  const [dark, setDark] = useState(false);
+  // Initial value matches the SITE default (dark); the mount effect corrects
+  // it immediately if a persisted light theme is active. suppressHydration on
+  // the header absorbs the one-attribute diff in that case.
+  const [dark, setDark] = useState(true);
   const [animate, setAnimate] = useState(false);
   // Condensed state: once the page scrolls, the bar narrows from the section
   // container's outer box to its padded content width.
@@ -27,25 +28,12 @@ export default function HeaderShell({ children }: { children: React.ReactNode })
   useEffect(() => {
     let raf = 0;
     const compute = () => {
-      // Global light theme repaints every dark band white, so the bar must
-      // read those sections as light too — skip dark detection entirely.
-      if (document.documentElement.dataset.theme === "light") {
-        setDark(false);
-        setScrolled((prev) => (prev ? window.scrollY > 8 : window.scrollY > 32));
-        return;
-      }
-      // Sample just below the bar (8px top gap + h-16) to read the section
-      // beneath it.
-      const probe = 80;
-      let isDark = false;
-      for (const el of document.querySelectorAll('[data-nav-theme="dark"]')) {
-        const r = el.getBoundingClientRect();
-        if (r.top <= probe && r.bottom > probe) {
-          isDark = true;
-          break;
-        }
-      }
-      setDark(isDark);
+      // The bar simply follows the SITE theme now. Light theme repaints every
+      // dark band white → bar reads light everywhere; the true-dark theme
+      // renders every section as a dark card → bar reads dark everywhere.
+      // (The old per-section probe predates the true-dark theme, when dark
+      // pages still contained light sections — that mix no longer exists.)
+      setDark(document.documentElement.dataset.theme !== "light");
       // Hysteresis: engage past 32px, release under 8px. A single threshold
       // made the bar's width toggle back and forth when the page idled right
       // at the boundary (or shifted a pixel from late-loading content).
@@ -76,6 +64,7 @@ export default function HeaderShell({ children }: { children: React.ReactNode })
   return (
     <header
       id="gw-header-shell"
+      suppressHydrationWarning
       data-theme={dark ? "dark" : "light"}
       style={dark ? DARK_TOKENS : undefined}
       // Fixed, not sticky: the bar occupies zero flow space, so the page

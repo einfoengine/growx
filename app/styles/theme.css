@@ -221,6 +221,13 @@
 :root[data-theme="dark"] .text-background {
   color: #f5f6f7;
 }
+/* Opacity variants (text-background/70 etc.) are distinct class names the
+   exact selector above can't match — cover them by attribute. Every current
+   usage is a light-text-on-dark-surface intent (featured pricing card rows,
+   the inner-hero kicker), so a single readable light value is correct. */
+:root[data-theme="dark"] [class*="text-background/"] {
+  color: rgba(245, 246, 247, 0.75);
+}
 
 /* Hero component classes bake their colors in via @apply, so the class
    remaps above can't reach them — pin the designed dark-hero palette. */

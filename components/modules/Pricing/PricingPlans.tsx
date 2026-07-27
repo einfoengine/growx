@@ -55,7 +55,7 @@ export default async function PricingPlans({
                 key={tier.id}
                 className={`relative isolate flex h-full flex-col overflow-hidden rounded-2xl border p-7 ${
                   featured
-                    ? "border-foreground bg-foreground text-background shadow-[0_20px_60px_rgba(10,10,10,0.25)]"
+                    ? "border-brand bg-foreground text-background shadow-[0_20px_60px_rgba(10,10,10,0.25)]"
                     : "border-border bg-background shadow-sm"
                 }`}
               >

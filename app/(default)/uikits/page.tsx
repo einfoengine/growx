@@ -47,7 +47,9 @@ export const metadata: Metadata = {
   robots: { index: false, follow: false },
 };
 
-/* ── Design tokens (mirrors app/styles/theme.css :root) ───────────────── */
+/* ── Design tokens (mirrors app/styles/theme.css :root). `value` is the
+   documented LIGHT-side default; the swatch itself renders the live var so it
+   is truthful in whichever theme you are viewing. ───────────────────────── */
 const COLOR_TOKENS: { name: string; value: string; note?: string }[] = [
   { name: "--brand", value: "#10b981", note: "fills" },
   { name: "--brand-strong", value: "#059669" },
@@ -174,11 +176,12 @@ export default function UiKitsPage() {
         <div className="grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-4">
           {COLOR_TOKENS.map((t) => (
             <div key={t.name} className="overflow-hidden rounded-xl border border-white/10">
-              <div className="h-20 w-full" style={{ backgroundColor: t.value }} />
+              {/* Live var — shows the ACTIVE theme's value, not a stale hex. */}
+              <div className="h-20 w-full" style={{ backgroundColor: `var(${t.name})` }} />
               <div className="bg-white/5 px-3 py-2">
                 <p className="font-mono text-xs text-white">{t.name}</p>
                 <p className="font-mono text-[11px] text-white/45">
-                  {t.value}
+                  light: {t.value}
                   {t.note ? ` · ${t.note}` : ""}
                 </p>
               </div>
@@ -220,7 +223,7 @@ export default function UiKitsPage() {
       {/* ── ELEMENTS: Button ───────────────────────────────────────── */}
       <Kit id="buttons" tag="Element" name="Button" path="components/elements/Button" note="primary / secondary / ghost, icon, darkBg, disabled">
         <div className="grid gap-4 lg:grid-cols-2">
-          <Surface label="On light">
+          <Surface label="Token surface (follows theme)">
             <Button label="Primary" />
             <Button label="Secondary" variant="secondary" />
             <Button label="Ghost" variant="ghost" />
@@ -228,7 +231,7 @@ export default function UiKitsPage() {
             <Button label="No icon" icon={null} />
             <Button label="Disabled" disabled />
           </Surface>
-          <Surface dark label="On dark (darkBg)">
+          <Surface dark label="Pinned dark (darkBg)">
             <Button label="Primary" darkBg />
             <Button label="Secondary" variant="secondary" darkBg />
             <Button label="Ghost" variant="ghost" darkBg />

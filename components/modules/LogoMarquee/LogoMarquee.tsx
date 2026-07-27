@@ -32,8 +32,10 @@ export default async function LogoMarquee({
             return (
               <div
                 key={name}
-                className={`card flex h-24 items-center justify-center px-8 transition-transform duration-300 hover:-translate-y-0.5 sm:h-28 ${
-                  logo.dark ? "border-white/10 bg-black" : ""
+                // Pinned tiles: light-designed logos on white, dark-baked
+                // logos on black — neither follows the theme token flip.
+                className={`flex h-24 items-center justify-center rounded-2xl border px-8 transition-transform duration-300 hover:-translate-y-0.5 sm:h-28 ${
+                  logo.dark ? "border-white/10 bg-black" : "border-black/8 bg-white"
                 }`}
               >
                 {/* eslint-disable-next-line @next/next/no-img-element */}

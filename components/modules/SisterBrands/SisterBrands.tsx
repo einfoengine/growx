@@ -59,7 +59,9 @@ export default function SisterBrands({
           {BRANDS.map((brand) => (
             <li
               key={brand.name}
-              className="card flex flex-col items-center gap-5 px-8 py-10 text-center transition-transform duration-300 hover:-translate-y-1"
+              // Pinned white tile: the brand logos are light-designed assets,
+              // so the tile must not follow the dark theme's token flip.
+              className="flex flex-col items-center gap-5 rounded-2xl border border-black/8 bg-white px-8 py-10 text-center transition-transform duration-300 hover:-translate-y-1"
             >
               <div className="flex h-12 items-center justify-center">
                 {/* eslint-disable-next-line @next/next/no-img-element */}
@@ -69,7 +71,7 @@ export default function SisterBrands({
                   className="h-9 w-auto max-w-[180px] object-contain"
                 />
               </div>
-              <p className="text-sm text-muted">{brand.tagline}</p>
+              <p className="text-sm text-[#6b7280]">{brand.tagline}</p>
             </li>
           ))}
         </ul>
